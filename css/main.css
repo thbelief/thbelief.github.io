@@ -1833,7 +1833,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #908b74;
+  background: #3c378e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2757,15 +2757,6 @@ pre .javascript .function {
 .sidebar-position-right .footer-inner {
   padding-left: 0;
   padding-right: 260px;
-}
-.header {
-  width: 80%;
-}
-.container .main-inner {
-  width: 80%;
-}
-.content-wrap {
-  width: calc(100% - 260px);
 }
 .site-brand-wrapper {
   position: relative;
