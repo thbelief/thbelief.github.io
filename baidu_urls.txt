@@ -1,2 +1,1 @@
-http://thbelief.github.io/2019/01/08/Hexo进阶/
 http://thbelief.github.io/2019/01/08/如何利用hexo-Github搭建个人博客（个人向）/
