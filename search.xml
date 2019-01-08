@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[Hexo进阶]]></title>
     <url>%2F2019%2F01%2F08%2FHexo%E8%BF%9B%E9%98%B6%2F</url>
-    <content type="text"><![CDATA[layout: posttitle: Hexo进阶date: 2019-01-08 15:25:55tags:Hexo 前端 搭建博客 前言：在初步搭建博客后，我们会发现，自己的博客实在是太单调了，下面给出一个hexo主题个性化的链接：hexo个性化，上面的其实也不是全部，还有很多诸如相册，留言板之类的优秀功能，可以自行百度已达到博客个性化的目的。 正文：在Github上部署的博客是没有被百度谷歌搜索收纳的，具体表现就是百度不到博客。 如何检测是否被百度或者谷歌收录呢？在谷歌或者百度搜索栏上输入“site:你的网址”即可，一般都是这样的： 这就是没有收录的典型。 提交百度搜索引擎登录http://ziyuan.baidu.com/site/index ps：可能需要个人信息认证，按照提示认证即可！ 点击添加站点会看到如下界面： 在图中文本框添加你的个人网站域名最好是带上www 设置站点领域这里我选择其它，点击下一步。 选择验证方式验证方式一：文件验证（推荐） 这里我选择的是文件验证，建议大家也使用文件验证方式，这样比较简单。 1.请点击 下载验证文件 获取验证文件（当前最新：baidu_verify_Rkofa3ZBzc.html） 2.将验证文件放置于您所配置域名(www.bianxiaofeng.com)的根目录下 3.点击这里确认验证文件可以正常访问 4.请点击“完成验证”按钮 注：为保持验证通过的状态,成功验证后请不要删除HTML文件 网站的根目录在那里呢？在你的博客的本地根目录的Source文件夹内。 然后控制台输入：hexo g -d，部署到网站上。 验证方式：点击3步骤的验证。如果能点击进去证明成功。 随后点完成验证。谷歌验证登录https://www.google.com/webmasters/tools/home?hl=zh-CN如图： 在上图输入你的网站地址验证 按照下图进行选择： 在阿里云的解析当中添加下面的解析： 点击验证即可。 安装百度和谷歌的站点地图文件：站点地图：站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。 在网站根目录下右键Git Bash输入下面代码块儿。（如果不是根目录，请cd过去再操作） 123npm install hexo-generator-sitemap --savenpm install hexo-generator-baidu-sitemap --save 修改博客配置文件打开站点配置文件： 目的是将url设置为你的站点名称。 注：站点配置文件指的是hexo网站根目录下的config.yml 主题配置文件指的是next目录下的config.yml 然后执行：hexo clean和hexo g 这样在你的网站根目录的public文件夹下生成sitemap.xml文件和baidusitemap.xml文件： 其中sitemap.xml文件是搜索引擎通用的文件，baidusitemap.xml是百度专用的sitemap文件。 向谷歌提交链接： google站点平台：https://www.google.com/webmasters/tools/home?hl=zh-CN，然后就是注册账号、验证站点、提交sitemap， 提交你的site就行了。 百度收录百度收录非常麻烦，效率也低，一般提交之后一个月之后才会真正搜索得到。 设置自动推送在主题配置文件下设置,将baidu_push设置为true： sitemap将生成的baidusitemap.xml提交到百度http://ziyuan.baidu.com/linksubmit/index 点击链接提交 ： 耐心等待就好。 注：由于百度收录的效率实在是太低，不可能马上搜得到，建议至少一个月之后再看。Google的话几天之内应该就收录了。我自己验证的时候，google秒过，百度~仍然在等待中方法都是这样，只是奈何百度不给力… 参考文章：hexo高阶教程]]></content>
+    <content type="text"><![CDATA[前言：在初步搭建博客后，我们会发现，自己的博客实在是太单调了，下面给出一个hexo主题个性化的链接：hexo个性化，上面的其实也不是全部，还有很多诸如相册，留言板之类的优秀功能，可以自行百度已达到博客个性化的目的。 正文：在Github上部署的博客是没有被百度谷歌搜索收纳的，具体表现就是百度不到博客。 如何检测是否被百度或者谷歌收录呢？在谷歌或者百度搜索栏上输入“site:你的网址”即可，一般都是这样的： 这就是没有收录的典型。 提交百度搜索引擎登录http://ziyuan.baidu.com/site/index ps：可能需要个人信息认证，按照提示认证即可！ 点击添加站点会看到如下界面： 在图中文本框添加你的个人网站域名最好是带上www 设置站点领域这里我选择其它，点击下一步。 选择验证方式验证方式一：文件验证（推荐） 这里我选择的是文件验证，建议大家也使用文件验证方式，这样比较简单。 1.请点击 下载验证文件 获取验证文件（当前最新：baidu_verify_Rkofa3ZBzc.html） 2.将验证文件放置于您所配置域名(www.bianxiaofeng.com)的根目录下 3.点击这里确认验证文件可以正常访问 4.请点击“完成验证”按钮 注：为保持验证通过的状态,成功验证后请不要删除HTML文件 网站的根目录在那里呢？在你的博客的本地根目录的Source文件夹内。 然后控制台输入：hexo g -d，部署到网站上。 验证方式：点击3步骤的验证。如果能点击进去证明成功。 随后点完成验证。谷歌验证登录https://www.google.com/webmasters/tools/home?hl=zh-CN如图： 在上图输入你的网站地址验证 按照下图进行选择： 在阿里云的解析当中添加下面的解析： 点击验证即可。 安装百度和谷歌的站点地图文件：站点地图：站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。 在网站根目录下右键Git Bash输入下面代码块儿。（如果不是根目录，请cd过去再操作） 123npm install hexo-generator-sitemap --savenpm install hexo-generator-baidu-sitemap --save 修改博客配置文件打开站点配置文件： 目的是将url设置为你的站点名称。 注：站点配置文件指的是hexo网站根目录下的config.yml 主题配置文件指的是next目录下的config.yml 然后执行：hexo clean和hexo g 这样在你的网站根目录的public文件夹下生成sitemap.xml文件和baidusitemap.xml文件： 其中sitemap.xml文件是搜索引擎通用的文件，baidusitemap.xml是百度专用的sitemap文件。 向谷歌提交链接： google站点平台：https://www.google.com/webmasters/tools/home?hl=zh-CN，然后就是注册账号、验证站点、提交sitemap， 提交你的site就行了。 百度收录百度收录非常麻烦，效率也低，一般提交之后一个月之后才会真正搜索得到。 设置自动推送在主题配置文件下设置,将baidu_push设置为true： sitemap将生成的baidusitemap.xml提交到百度http://ziyuan.baidu.com/linksubmit/index 点击链接提交 ： 耐心等待就好。 注：由于百度收录的效率实在是太低，不可能马上搜得到，建议至少一个月之后再看。Google的话几天之内应该就收录了。我自己验证的时候，google秒过，百度~仍然在等待中方法都是这样，只是奈何百度不给力… 参考文章：hexo高阶教程 https://segmentfault.com/a/1190000013660062#articleHeader9)]]></content>
+      <categories>
+        <category>前端 - 搭建博客</category>
+      </categories>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>前端</tag>
+        <tag>Next</tag>
+        <tag>Hexo</tag>
+        <tag>备忘</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[如何利用hexo+Github搭建个人博客（个人向）]]></title>
