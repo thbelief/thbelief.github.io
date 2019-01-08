@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[如何利用hexo+Github搭建个人博客（个人向）]]></title>
+    <url>%2F2019%2F01%2F08%2F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%AA%E4%BA%BA%E5%90%91%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[hexo的介绍官网上的描述是Hexo是一个快速，简单而强大的博客框架。我们可以使用Markdown（或其他语言）来编写文章，同时Hexo可以在几秒钟内生成具有美丽主题的静态文件以供我们使用。 简单来说它就是一个主打简单快速的博客框架，这个可以对比下知名度更高一些的WordPress，相对来说后者更强，不过更适合有服务器的人使用，只想做一个简单博客的首选hexo。 准备首先必须安装Git和NodeJS。（安装过程傻瓜式next操作即可） 注意一点就是NodeJS的路径。推荐D:\NodeJS (原因后面会阐述) 检测NodeJS是否安装成功的方式是： 输入Win+R输入cmd打开控制台输入下面代码： 12node -vnpm -v 如果两个都返回版本号即安装成功，否则需要再配环境变量。 NodeJS1.在NodeJS安装路径下面建立”node_global”及”node_cache”两个文件夹。 2.启动cmd输入： 12npm config set prefix &quot;D:\Program Files\nodejs\node_global&quot;npm config set cache &quot;D:\Program Files\nodejs\node_cache&quot; 3.配置环境变量： 环境变量-&gt;Path-&gt;编辑：添加上下面三行：（有的话就不用了） 123D:\NodeJS\D:\NodeJS\node_globalD:\NodeJs\node_cache 4.测试是否配置完成： 如果打开cmd输入下面代码然后在node_global目录下有express目录即完成了。 1npm install express -g Hexo安装打开git bash（为了避免出现错误后面的操作在git bash进行） 首先新建一个存放hexo文件的目录，例如在D盘根目录新建hexo文件夹，然后cd到该目录下，开始安装 1234567$ cd D:hexo/ #换成你的目录$ npm install -g hexo-cli #安装hexo脚手架$ hexo init #Hexo自动在当前文件夹下下载搭建网站所需的所有文件$ npm install #安装依赖包$ hexo g #完整命令为hexo generate，生成静态文件$ hexo s #完整命令为hexo server，启动服务器，用来本地预览 用浏览器访问http://localhost:4000，这时就可以看到了一个比较漂亮的博客了，这个是hexo的默认主题landscape，而我们会使用的是NexT主题，后面会说到怎么配置。 GitHub部分1.Github Page打开github主页，新建仓库（repository），这里要注意仓库的名称，比如我的帐号是thbelief，那么仓库名称应该是：thbelief.github.io。然后选择Public（公开）。 2.配置SSH以上过程完成后就是把hexo生成的静态页面上传了，到这里还没结束，还需要配置SSH，首先要本地生成公钥私钥 1$ ssh-keygen -t rsa -C &quot;你的邮件地址&quot; 引号里面的内容输入你的邮箱地址，然后回车，会提示你文件保存的路径，这时候按回车键确认，然后会提示你输入密码，输入即可（输入密码是看不到的），然后会确认输入一次，就可以在刚刚的路径看到生成了两个文件，一个是id_rsa，另一个是id_rsa.pub，用sublime打开id_rsa.pub然后选中里面的全部内容，复制下来。打开GitHub或Coding的SSH页面Github：setting–&gt;SSH and GPG keys–&gt;New SSH key在Key下面的框中粘贴刚刚复制的东西。 发布打开D:\hexo，用sublime打开_config.yml文件，文件最后可以看到 12deploy: type: 修改（注意要换上自己的链接） 12345deploy: type: git repository: git@github.com:yourname/yourname.github.io.git #发布到github #repository: git@git.coding.net:yourname/yourname.git #发布到Coding branch: master ctrl+s保存修改。打开git bash在当前目录输入以下命令： 1$ hexo d #完整命令为hexo deploy，将本地文件发布到page服务平台上 如遇遇到异常可以 12$ hexo clean &amp;&amp; hexo g$ hexo d 如果出现以下异常 1ERROR Deployer not found: git 尝试输入以下命令，然后重新执行刚刚的两条命令 1$ npm install hexo-deployer-git --save 这时候如果弹出一个对话框，输入在github/coding上面的用户名和密码即可这时候我们就可以在浏览器输入https://yourname.github.io 或者https://youname.coding.me 打开。（yourname记得替换） 更改主题D:\hexo目录下的theme文件夹下存放的就是博客的主题，hexo便是依据主题来生成静态文件的，挑选主题可以在官网https://hexo.io/themes/ 查找，根据自己的喜好来挑选。下载主题的一般方式如下： 12$ cd your-hexo-site #eg:D:\hexo$ git clone &#123;主题链接&#125; themes/&#123;主题名称&#125; 但是最好还是直接去官网下载压缩包解压到hexo目录下面的themes中，因为国内下这个很慢。（解压的时候名字一定要换成next，方便后序操作） 其实还有一种方法，也是对第一种方法的补充，直接更换npm的来源地，换成淘宝的即可，详情百度，这里不过多赘述。 启用主题的方式也很简单sublime打开上文提到的hexo目录下的_config.yml，ctrl+f输入theme查找这个关键字，修改其主题名称为下载的主题名称即可。 1theme: &#123;主题名称&#125; 以本人使用的next主题为例：下载最新版： 12$ cd D:hexo/$ git clone https://github.com/iissnan/hexo-theme-next themes/next 修改hexo目录下的_config.yml 1theme: next 具体可以到主题官网看看–NexT 参考文章：hexo搭建个人博客]]></content>
+      <categories>
+        <category>前端 - 搭建博客</category>
+      </categories>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>前端</tag>
+        <tag>Next</tag>
+        <tag>Hexo</tag>
+        <tag>备忘</tag>
+      </tags>
+  </entry>
+</search>
