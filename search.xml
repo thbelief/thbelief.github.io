@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Markdown常用语法]]></title>
+    <url>%2F2019%2F01%2F12%2FMarkdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[前言​ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 一.标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题 注意：这里的标准语法是必须#结束后再加上一个空格再加上想要写的文字。（但是有些地方貌似不加空格也可以，例如简书。但是最好还是按照标准的语法来写） 二.字体 加粗 要加粗的文字左右分别用两个*号包起来 斜体 要倾斜的文字左右分别用一个*号包起来 斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来 删除线 要加删除线的文字左右分别用两个~~号包起来 1234**这是加粗的文字***这是倾斜的文字*`***这是斜体加粗的文字***~~这是加删除线的文字~~ 三.引用在引用的文字前面加上&gt;即可。引用也可以嵌套，比如说两个&gt;&gt;三个&gt;&gt;&gt;之类的，貌似可以一直加下去，但是好像没什么用… 123&gt;这是引用的内容&gt;&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容 四.分割线三个或者三个以上的-或者*都可以。 1234-------******** 五.图片1234![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)图片alt就是显示在图片下面的文字，相当于对图片内容的解释。图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 六.超链接12[超链接名](超链接地址 &quot;超链接title&quot;)title可加可不加 例如： 12[简书](http://jianshu.com)[百度](http://baidu.com) 七.列表无序列表用-+*任何一种都可以。 12345- 列表内容+ 列表内容* 列表内容注意：- + * 跟内容之间都要有一个空格 有序列表数字加点即可。 123451.列表内容2.列表内容3.列表内容注意：序号跟内容之间要有空格 列表嵌套：上一级和下一级之间敲上三个空格即可。 八.表格1234567891011表头|表头|表头---|:--:|---:内容|内容|内容内容|内容|内容第二行分割表头和内容。- 有一个就行，为了对齐，多加了几个文字默认居左-两边加：表示文字居中-右边加：表示文字居右注：原生的语法两边都要用 | 包起来。此处省略 示例： 12345姓名|技能|排行--|:--:|--:刘备|哭|大哥关羽|打|二哥张飞|骂|三弟 九.代码单行代码直接代码之间分别用一个反引号包起来即可。 1`代码内容` 代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行。 12345(```) 代码... 代码... 代码...(```) 十.流程图123456789​```flowst=&gt;start: 开始op=&gt;operation: My Operationcond=&gt;condition: Yes or No?e=&gt;endst-&gt;op-&gt;condcond(yes)-&gt;econd(no)-&gt;op&amp; ` 参考文章：Markdown基本语法]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于Android6.0以上部分权限的动态获取]]></title>
     <url>%2F2019%2F01%2F12%2F%E5%85%B3%E4%BA%8EAndroid6-0%E4%BB%A5%E4%B8%8A%E9%83%A8%E5%88%86%E6%9D%83%E9%99%90%E7%9A%84%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%2F</url>
     <content type="text"><![CDATA[普通权限暂且不表，下面只列举Android6.0以后必须进行动态申请的权限。 下面以SD卡读取权限作为例子（如果实在不懂的话可以直接复制粘贴，只需要改一下权限的名称即可）： 12345678910111213141516171819202122232425262728293031323334353637383940414243/** * 请求授权 */ private void requestPermission()&#123; if (Build.VERSION.SDK_INT &gt;= 23) &#123; int checkCallPhonePermission = ContextCompat.checkSelfPermission (this, Manifest.permission.READ_EXTERNAL_STORAGE); if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) &#123; //在String[]中传入需要申请的权限 ActivityCompat.requestPermissions(this, new String[]&#123;Manifest.permission.READ_EXTERNAL_STORAGE&#125;, 1); &#125; else&#123; //sendHomework(); //已经拥有了权限 Toast.makeText(this,"已经获取读SD卡权限",Toast.LENGTH_SHORT).show(); &#125; &#125; else &#123; //低版本 Toast.makeText(this,"已经获取读SD卡权限",Toast.LENGTH_SHORT).show(); &#125; &#125; @Override public void onRequestPermissionsResult(int requestCode, String[] permissions,int[] grantResults) &#123; switch (requestCode) &#123; case 1: if (grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123; //sendHomework(); //获取权限成功后的处理 Toast.makeText(this,"已经成功获取读SD卡权限",Toast.LENGTH_SHORT).show(); &#125; else &#123; //showToast("fail"); //获取权限失败的处理 Toast.makeText(this,"获取读SD卡权限失败",Toast.LENGTH_SHORT).show(); &#125; break; default: super.onRequestPermissionsResult(requestCode, permissions, grantResults); &#125; &#125; 对于新手来说，需要注意的是，如果你想要使用这个动态权限，除了上面这段代码之外，你还需要在项目的Manifest中注册你想要获取的权限（一般来说，只要不是危险权限，无论Android6.0前后，只要注册之后就可以直接使用了，但是危险权限，除了注册之外还需要手动的动态申请）。 另外，除了上面这段代码和注册之外，还需要在初始化之前在MainActivity中写上 1requestPermission() 来调用下面写的动态申请。 参考文章：Android6.0动态权限]]></content>
