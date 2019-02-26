@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo常用指令（个人向）]]></title>
+    <url>%2F2019%2F02%2F26%2Fhexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%AA%E4%BA%BA%E5%90%91%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &quot;articleName&quot; 2.新建页面：新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件； 1$ hexo new page &quot;pageName&quot; 3.生成静态页面：主要是为了方便调试自己的博客，在未发布之前检查是否有问题。 12$ hexo generate$ hexo g 4.开启本地服务器的端口：开启预览访问的端口，默认端口为4000。关闭server使用 ctrl + c。 本地网址如下： 1http://localhost：4000 命令为： 12$ hexo server$ hexo s 在使用hexo server 可能会遇到端口被占用的情况，不妨使用以下指令来更改端口： 1$ hexo server -p 4001 5.部署到网页上：将目录下的 .deploy_git 文件夹部署到Github。部署前需要预先 hexo generate 生成静态文件。 关闭server使用 ctrl + c。 “INFO Deploy done: git”时即表示部署已经完成。 12$ hexo deploy$ hexo d 6.清除文件：清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。网页正常情况下可以忽略此条命令。 1$ hexo clean 7.查看hexo版本：查看当前使用的hexo的版本号。 1$ hexo version 8.复合指令：hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。 简写形式hexo n #等价于 hexo newhexo g #等价于 hexo generatehexo s #等价于 hexo serverhexo d #等价于 hexo deployhexo v #等价于 hexo version 12$ hexo g -d$ hexo s -d 9.卸载hexo：3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g. 10.如何安装旧版本hexo：先卸载当前版本，以2.8.3为例，执行npm install hexo@2.8.3 -g，再初始化并安装依赖和插件。]]></content>
+      <categories>
+        <category>前端</category>
+        <category>搭建博客</category>
+      </categories>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>前端</tag>
+        <tag>Next</tag>
+        <tag>Hexo</tag>
+        <tag>备忘</tag>
+        <tag>指令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[android学习路线总结plus]]></title>
     <url>%2F2019%2F02%2F26%2Fandroid%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E7%BB%93plus%2F</url>
     <content type="text"><![CDATA[1.java se基础：1).Java基本数据类型与表达式，分支循环。2).String和StringBuffer的使用、正则表达式。3).面向对象的抽象，封装，继承，多态，类与对象，对象初始化和回收；构造函数、this关键字、方法和方法的参数传递过程、static关键字、内部类。4).对象实例化过程、方法的覆盖、final关键字、抽象类、接口、继承的优点和缺点剖析；对象的多态性：子类和父类之间的转换、抽象类和接口在多态中的应用、多态带来的好处。5).Java异常处理，异常的机制原理。6).常用的设计模式：Singleton、Template、Strategy模式。7).JavaAPI介绍：种基本数据类型包装类，System和Runtime类，Date和DateFomat类等。8).Java集合介绍：Collection、Set、List、ArrayList、LinkedList、Hashset、Map、HashMap、Iterator等常用集合类API。9).JavaI/O输入输出流：File和FileRandomAccess类，字节流InputStream和OutputStream，字符流Reader和Writer，以及相应实现类，IO性能分析，字节和字符的转化流，包装流的概念，以及常用包装类，计算机编码。10).Java高级特性：反射和泛型。11).多线程原理：如何在程序中创建多线程(Thread、Runnable)，线程安全问题，线程的同步，线程之间的通讯、死锁。 2.android UI编程：1）android初级控件的使用：TextView控件的使用Button控件的使用方法EditText控件的使用方法ImageView的使用方法RadioButton的使用方法Checkbox的使用方法Menu的使用方法 2）android高级控件的使用：ListView的使用方法GridView的使用方法Adapter的使用方法Spinner的使用方法Gallary的使用方法ScrollView的使用方法RecyclerView 3）对话框与菜单的使用：Dialog的基本概念BlockquoteAlertDialog的使用方法DatePickerDialog的使用方法Menu的使用方法自定义Menu的实现方法 4）控件的布局方法：线性布局的使用方法相对布局的使用方法 5）多activity的管理：AndroidManifest.xml文件的作用Intent的使用方法使用Intent传递数据的方法启动Activity的方法IntentFilter的使用方法Activity Group的使用方法 6）自定义控件的实现方法：自定义ListView的实现方法可折叠ListView的使用方法自定义Adapter的实现方法自定义View的实现方法动态控件布局的上实现方法上拉刷新下拉加载更多 3.android网络编程以及数据储存：1）基于android平台的http通讯：Http协议回顾使用Get方法向服务器提交数据的方法使用POST方法向服务器提交数据的实现方法使用Http协议实现多线程下载使用Http协议实现断点续传 2）android数据储存技术：SQLite3数据库简介SQL语句回顾SQLite3编程接口介绍SQLite3事务管理SQLite3游标使用方法SQLite3性能分析访问SDCard的方法访问SharedPreferences的方法 4.进阶之路：初级工程师： 基本知识点比如四大组件如何使用、如何创建Service、如何进行布局、简单的自定义View、动画等常见技术 书籍推荐《第一行代码 Android》、《疯狂Android》 中级工程师： AIDL：熟悉AIDL，理解其工作原理，懂transact和onTransact的区别； Binder：从Java层大概理解Binder的工作原理，懂Parcel对象的使用； 多进程：熟练掌握多进程的运行机制，懂Messenger、Socket等； 事件分发：弹性滑动、滑动冲突等； 玩转View：View的绘制原理、各种自定义View； 动画系列：熟悉View动画和属性动画的不同点，懂属性动画的工作原理； 懂性能优化、熟悉mat等工具 懂点常见的设计模式 书籍推荐《Android开发艺术探索》、《Android群英传》 高级工程师： 继续加深理解”稍微深入的知识点“中所定义的内容 了解系统核心机制： 了解SystemServer的启动过程 了解主线程的消息循环模型 了解AMS和PMS的工作原理 能够回答问题”一个应用存在多少个Window？“ 了解四大组件的大概工作流程 … 基本知识点的细节 Activity的启动模式以及异常情况下不同Activity的表现 Service的onBind和onReBind的关联 onServiceDisconnected(ComponentName className)和binderDied()的区别 AsyncTask在不同版本上的表现细节 线程池的细节和参数配置 … 熟悉设计模式，有架构意识学习方法 书籍推荐《Android开发艺术探索》、《Android 源码设计模式解析与实战》、《Android内核剖析》 参考链接]]></content>
