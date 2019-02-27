@@ -294,6 +294,280 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/27/Java基础-初窥门径/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/27/Java基础-初窥门径/" itemprop="url">Java基础 初窥门径</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T19:26:55+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#1java的基本数据类型">1.Java的基本数据类型：</a><ul>
+<li><a href="#对应的包装类">对应的包装类：</a></li>
+<li><a href="#基本数据类型的默认值">基本数据类型的默认值：</a></li>
+</ul>
+</li>
+<li><a href="#2java分支循环">2.Java分支循环：</a><ul>
+<li><a href="#分支语句">分支语句：</a><ul>
+<li><a href="#if语句">if语句：</a></li>
+<li><a href="#switch语句">switch语句：</a></li>
+<li><a href="#三目运算符">三目运算符：</a></li>
+<li><a href="#转义符">转义符：</a></li>
+</ul>
+</li>
+<li><a href="#循环语句">循环语句：</a><ul>
+<li><a href="#for循环">for循环：</a></li>
+<li><a href="#while语句">while语句：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3string-stringbuffer-stringbuilder">3.String、StringBuffer、StringBuilder：</a><ul>
+<li><a href="#区别">区别：</a></li>
+<li><a href="#string对象">String对象：</a><ul>
+<li><a href="#string本质">String本质：</a></li>
+<li><a href="#常量池">常量池：</a></li>
+<li><a href="#实例">实例：</a></li>
+</ul>
+</li>
+<li><a href="#stringbuffer字符串变量线程安全是一个容器最终会通过tostring方法变成字符串">StringBuffer字符串变量（线程安全）是一个容器，最终会通过toString方法变成字符串：</a></li>
+<li><a href="#stringbuilder-字符串变量非线程安全">StringBuilder 字符串变量（非线程安全）：</a></li>
+<li><a href="#string与stringbuffer区别">String与StringBuffer区别：</a><ul>
+<li><a href="#在修改的时候对象自身是否改变">在修改的时候对象自身是否改变：</a></li>
+<li><a href="#是否可变测试">是否可变测试：</a></li>
+<li><a href="#初始化区别">初始化区别：</a></li>
+<li><a href="#stringbuffer对象和string对象之间的互转">StringBuffer对象和String对象之间的互转:</a></li>
+<li><a href="#偏重">偏重：</a></li>
+<li><a href="#总结">总结：</a></li>
+</ul>
+</li>
+<li><a href="#stringbuffer与stringbuilder区别">StringBuffer与StringBuilder区别：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="1java的基本数据类型">1.Java的基本数据类型：</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">整型 byte（字节型） short（短整型） int long（长整型）</span><br><span class="line"></span><br><span class="line">浮点型 float（单精度浮点型） double（双精度浮点型）</span><br><span class="line"></span><br><span class="line">逻辑型 boolean(它只有两个值可取 true false)</span><br><span class="line"></span><br><span class="line">字符型 char</span><br></pre></td></tr></table></figure>
+<h3><span id="对应的包装类">对应的包装类：</span></h3><p>java.lang.Byte、java.lang.Short、java.lang.Integer、java.lang.Long、java.lang.Float、java.lang.Double、java.lang.Boolean、java.lang.Character.</p>
+<h3><span id="基本数据类型的默认值">基本数据类型的默认值：</span></h3><p><img src="/2019/02/27/Java基础-初窥门径/基本数据类型默认值.jpg" alt=""></p>
+<h2><span id="2java分支循环">2.Java分支循环：</span></h2><h3><span id="分支语句">分支语句：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">顺序语句</span><br><span class="line">分支语句</span><br><span class="line">循环语句</span><br></pre></td></tr></table></figure>
+<h4><span id="if语句">if语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(boolean类型表达式)&#123;</span><br><span class="line"></span><br><span class="line">         语句1</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">         语句2</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="switch语句">switch语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">switch(变量)&#123;</span><br><span class="line"></span><br><span class="line">         case常量1:语句1;break;</span><br><span class="line"></span><br><span class="line">         case常量2:语句2;break;</span><br><span class="line"></span><br><span class="line">         case常量3:</span><br><span class="line"></span><br><span class="line">                   语句3;</span><br><span class="line"></span><br><span class="line">                   break;</span><br><span class="line"></span><br><span class="line">         default:</span><br><span class="line"></span><br><span class="line">                   语句0;</span><br><span class="line"></span><br><span class="line">                   break;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">注：default可以忽略掉~</span><br></pre></td></tr></table></figure>
+<h4><span id="三目运算符">三目运算符：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">表达式1?表达式2:表达式3</span><br><span class="line"></span><br><span class="line">表达式1是布尔类型的，右边的问号表示判断它是true还是false，如果是true，整个表达式返回表达式2，如果是false整个表达式返回表达式3</span><br></pre></td></tr></table></figure>
+<h4><span id="转义符">转义符：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">回车(return)  &apos;\r&apos;    13</span><br><span class="line"></span><br><span class="line">换行(nextLine)  &apos;\n&apos;  10</span><br><span class="line"></span><br><span class="line">(在windows中执行换行动作用\r\n；在linux中执行换行动作用\n)</span><br><span class="line"></span><br><span class="line">制表(tab)     &apos;\t&apos; (可以用来对齐打印的文字)</span><br><span class="line"></span><br><span class="line">双引号        &apos;\&quot;&apos; (反斜杠+双引号表示双引号字符)</span><br><span class="line"></span><br><span class="line">单引号        &apos;\&apos;&apos; (反斜杠+单引号表示单引号字符)</span><br><span class="line"></span><br><span class="line">反斜杠        &apos;\\&apos; (两个反斜杠表示一个反斜杠)</span><br></pre></td></tr></table></figure>
+<h3><span id="循环语句">循环语句：</span></h3><h4><span id="for循环">for循环：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for(表达式1;表达式2;表达式3)&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">表达式1  在循环开始前执行一次，一般用于初始化</span><br><span class="line"></span><br><span class="line">表达式2  循环条件，一般为boolean类型，为true则循环继续，为false则循环终止(不写则表示一直为true)</span><br><span class="line"></span><br><span class="line">表达式3  每次循环在语句执行完后执行，一般用于对循环条件进行变更</span><br></pre></td></tr></table></figure>
+<h4><span id="while语句">while语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">while(条件)&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当条件为true时，不停地执行语句</span><br><span class="line"></span><br><span class="line">do...while语句</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;while(条件);</span><br><span class="line"></span><br><span class="line">和while逻辑一样，但是会先执行语句，再判断。</span><br><span class="line"></span><br><span class="line">do...while在任何情况下至少执行一次语句。</span><br></pre></td></tr></table></figure>
+<h2><span id="3string-stringbuffer-stringbuilder">3.String、StringBuffer、StringBuilder：</span></h2><h3><span id="区别">区别：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String对象是常量，它的值不能被创建后改变，StringBuffer和StringBuilder可以可变；</span><br><span class="line">StringBuilder非线程安全（单线程使用），String与StringBuffer线程安全（多线程使用）；</span><br><span class="line">如果程序不是多线程的，那么使用StringBuilder效率高于StringBuffer。</span><br></pre></td></tr></table></figure>
+<h3><span id="string对象">String对象：</span></h3><h4><span id="string本质">String本质：</span></h4><p>String是<strong>值不可变的常量</strong>，是<strong>线程安全</strong>的。</p>
+<p>String类使用了final修饰符，String类是<strong>不可继承的</strong>。</p>
+<h4><span id="常量池">常量池：</span></h4><p>常量池是一个内存空间，不同于使用new关键字创建的对象所在的堆空间。</p>
+<p> 常量池是为了避免频繁的创建和销毁对象而影响系统性能，其实现了对象的共享。当需要一个对象时，就可以从池中取一个出来（如果池中没有则创建一个），则在需要重复创建相等变量时节省了很多时间。</p>
+<p>在编译期被确定，并被保存在已编译的.class文件中的一些数据，包括类、方法、接口等中的常量和字符串常量。常量池还具备动态性，运行期间可以将新的常量放入池中。java中基本类型的包装类的大部分都实现了常量池技术， 即Byte,Short,Integer,Long,Character,Boolean；</p>
+<h4><span id="实例">实例：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = new String(&quot;s1&quot;) ; </span><br><span class="line">String s2 = new String(&quot;s1&quot;) ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 3个，编译期在常量池中创建1个，即“s1”常量对象；运行期堆中创建2个，即s1和s2对象。</span><br><span class="line">String s1 = &quot;s1&quot;;  </span><br><span class="line">String s2 = s1;  </span><br><span class="line">s2 = &quot;s2&quot;;</span><br></pre></td></tr></table></figure>
+<h3><span id="stringbuffer字符串变量线程安全是一个容器最终会通过tostring方法变成字符串">StringBuffer字符串变量（线程安全）是一个容器，最终会通过toString方法变成字符串：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuffer extends AbstractStringBuilder implements Serializable, Appendable, CharSequence &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Constructs a string buffer with no characters in it and an initial capacity of 16 characters.</span><br><span class="line">     */</span><br><span class="line">    public StringBuffer() &#123;</span><br><span class="line">        super(16);</span><br><span class="line">    &#125;</span><br><span class="line">    public synchronized StringBuffer append(int i) &#123;</span><br><span class="line">        super.append(i);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    public synchronized StringBuffer delete(int start, int end) &#123;</span><br><span class="line">        super.delete(start, end);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="stringbuilder-字符串变量非线程安全">StringBuilder 字符串变量（非线程安全）：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuilder extends AbstractStringBuilder implements java.io.Serializable, Appendable, CharSequence &#123;</span><br><span class="line">   public StringBuilder() &#123;</span><br><span class="line">        super(16);</span><br><span class="line">   &#125;</span><br><span class="line">   public StringBuilder append(String str) &#123;</span><br><span class="line">        super.append(str);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">	public StringBuilder delete(int start, int end) &#123;</span><br><span class="line">        super.delete(start, end);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="string与stringbuffer区别">String与StringBuffer区别：</span></h3><h4><span id="在修改的时候对象自身是否改变">在修改的时候对象自身是否改变：</span></h4><p>（1） String在修改时不会改变对象自身<br>　　在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;abc&quot;;//地址str1</span><br><span class="line">str = &quot;def&quot;;//地址str2</span><br></pre></td></tr></table></figure>
+<p>（2） StringBuffer在修改时会改变对象自身<br>　　每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。StringBuffer 上的主要操作是 append 和 insert 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer strBuffer = new StringBuffer(&quot;abc&quot;);//地址strBuffer,值是abc</span><br><span class="line">strBuffer.append(&quot;def&quot;);//地址strBuffer,值是abcdef</span><br></pre></td></tr></table></figure>
+<h4><span id="是否可变测试">是否可变测试：</span></h4><p>String的地址已改变，对象已经改变为另一个；StringBuffer地址不变，还是同样的对象。</p>
+<h4><span id="初始化区别">初始化区别：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String：</span><br><span class="line">StringBuffer s = null;   </span><br><span class="line">StringBuffer s = “abc”;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer：</span><br><span class="line">StringBuffer s = null; //结果警告：Null pointer access: The variable result can only be null at this location</span><br><span class="line">StringBuffer s = new StringBuffer();//StringBuffer对象是一个空的对象</span><br><span class="line">StringBuffer s = new StringBuffer(“abc”);//创建带有内容的StringBuffer对象,对象的内容就是字符串”abc”</span><br></pre></td></tr></table></figure>
+<h4><span id="stringbuffer对象和string对象之间的互转">StringBuffer对象和String对象之间的互转:</span></h4><p>他们属于不同的类型，不能直接进行强制类型转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = “abc”;</span><br><span class="line">StringBuffer sb1 = new StringBuffer(“123”);</span><br><span class="line">StringBuffer sb2 = new StringBuffer(s);   //String转换为StringBuffer</span><br><span class="line">String s1 = sb1.toString();              //StringBuffer转换为String</span><br></pre></td></tr></table></figure>
+<h4><span id="偏重">偏重：</span></h4><p>StringBuffer类中的方法主要偏重于对于字符串的变化，例如追加、插入和删除等，常用方法有：append方法、insert方法、deleteCharAt方法、reverse方法等。</p>
+<h4><span id="总结">总结：</span></h4><p>（1）如果要操作少量的数据用 String；<br>       （2）（多线程下）经常需要对一个字符串进行修改，例如追加、插入和删除等操作，使用StringBuffer要更加适合一些。</p>
+<h3><span id="stringbuffer与stringbuilder区别">StringBuffer与StringBuilder区别：</span></h3><p>1.StringBuilder是一个可变的对象，是5.0新增的，提供一个与StringBuffer兼容的API，但不保证同步，主要是用在字符串缓冲区被单个线程使用的时候。</p>
+<p>2.线程安全性：</p>
+<p>​    StringBuffer：线程安全。</p>
+<p>​    StringBuilder：线程非安全。</p>
+<p>3.大部分情况下：StringBuffer&gt;String</p>
+<p>同时由于String对象不可变，重复新建对象：StringBuffer对象可变。</p>
+<p>4.StringBuilder&gt;StringBuffer</p>
+<p>当我们在字符串缓冲去被多个线程使用是，JVM不能保证StringBuilder的操作是安全的，虽然他的速度最快，但是可以保证StringBuffer是可以正确操作的。当然大多数情况下就是我们是在单线程下进行的操作，所以大多数情况下是建议用StringBuilder而不用StringBuffer的。</p>
+<p>5.特殊情况下，String&gt;StringBuffer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//String效率是远要比StringBuffer快的：</span><br><span class="line">String S1 = “This is only a” + “ simple” + “ test”;</span><br><span class="line">StringBuffer Sb = new StringBuilder(“This is only a”).append(“simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//String速度是非常慢的：</span><br><span class="line">String S2 = “This is only a”;</span><br><span class="line">String S3 = “ simple”;</span><br><span class="line">String S4 = “ test”;</span><br><span class="line">String S1 = S2 +S3 + S4;</span><br></pre></td></tr></table></figure>
+<p>6.总结：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）如果要操作少量的数据用 String；</span><br><span class="line">（2）多线程操作字符串缓冲区下操作大量数据 StringBuffer；</span><br><span class="line">（3）单线程操作字符串缓冲区下操作大量数据 StringBuilder。</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/chenliguan/article/details/51911906" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/26/hexo常用指令（个人向）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -390,7 +664,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  499
+                  643
                 </span>
               
 
@@ -429,32 +703,59 @@
       
         
           
-            <h2 id="Hexo的常用指令："><a href="#Hexo的常用指令：" class="headerlink" title="Hexo的常用指令："></a>Hexo的常用指令：</h2><h3 id="1-新建文章："><a href="#1-新建文章：" class="headerlink" title="1.新建文章："></a>1.新建文章：</h3><p>如果文章名包含空格必须加双引号，如果没有则可以不加。</p>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#hexo的常用指令">Hexo的常用指令：</a><ul>
+<li><a href="#1新建文章">1.新建文章：</a></li>
+<li><a href="#2新建页面">2.新建页面：</a></li>
+<li><a href="#3生成静态页面">3.生成静态页面：</a></li>
+<li><a href="#4开启本地服务器的端口">4.开启本地服务器的端口：</a></li>
+<li><a href="#5部署到网页上">5.部署到网页上：</a></li>
+<li><a href="#6清除文件">6.清除文件：</a></li>
+<li><a href="#7查看hexo版本">7.查看hexo版本：</a></li>
+<li><a href="#8复合指令">8.复合指令：</a></li>
+<li><a href="#9卸载hexo">9.卸载hexo：</a></li>
+<li><a href="#10如何安装旧版本hexo">10.如何安装旧版本hexo：</a></li>
+<li><a href="#特殊操作hexo支持目录">特殊操作：Hexo支持目录：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="hexo的常用指令">Hexo的常用指令：</span></h2><h3><span id="1新建文章">1.新建文章：</span></h3><p>如果文章名包含空格必须加双引号，如果没有则可以不加。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;articleName&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="2-新建页面："><a href="#2-新建页面：" class="headerlink" title="2.新建页面："></a>2.新建页面：</h3><p>新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件；</p>
+<h3><span id="2新建页面">2.新建页面：</span></h3><p>新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page &quot;pageName&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="3-生成静态页面："><a href="#3-生成静态页面：" class="headerlink" title="3.生成静态页面："></a>3.生成静态页面：</h3><p>主要是为了方便调试自己的博客，在未发布之前检查是否有问题。</p>
+<h3><span id="3生成静态页面">3.生成静态页面：</span></h3><p>主要是为了方便调试自己的博客，在未发布之前检查是否有问题。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-<h3 id="4-开启本地服务器的端口："><a href="#4-开启本地服务器的端口：" class="headerlink" title="4.开启本地服务器的端口："></a>4.开启本地服务器的端口：</h3><p>开启预览访问的端口，默认端口为4000。<br>关闭server使用 ctrl + c。</p>
+<h3><span id="4开启本地服务器的端口">4.开启本地服务器的端口：</span></h3><p>开启预览访问的端口，默认端口为4000。<br>关闭server使用 ctrl + c。</p>
 <p>本地网址如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost：4000</span><br></pre></td></tr></table></figure>
 <p>命令为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 <p>在使用hexo server 可能会遇到端口被占用的情况，不妨使用以下指令来更改端口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p 4001</span><br></pre></td></tr></table></figure>
-<h3 id="5-部署到网页上："><a href="#5-部署到网页上：" class="headerlink" title="5.部署到网页上："></a>5.部署到网页上：</h3><p>将目录下的 .deploy_git 文件夹部署到Github。<br>部署前需要预先 hexo generate 生成静态文件。</p>
+<h3><span id="5部署到网页上">5.部署到网页上：</span></h3><p>将目录下的 .deploy_git 文件夹部署到Github。<br>部署前需要预先 hexo generate 生成静态文件。</p>
 <p>关闭server使用 ctrl + c。</p>
 <p>“INFO Deploy done: git”时即表示部署已经完成。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<h3 id="6-清除文件："><a href="#6-清除文件：" class="headerlink" title="6.清除文件："></a>6.清除文件：</h3><p>清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。<br>网页正常情况下可以忽略此条命令。</p>
+<h3><span id="6清除文件">6.清除文件：</span></h3><p>清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。<br>网页正常情况下可以忽略此条命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<h3 id="7-查看hexo版本："><a href="#7-查看hexo版本：" class="headerlink" title="7.查看hexo版本："></a>7.查看hexo版本：</h3><p>查看当前使用的hexo的版本号。</p>
+<h3><span id="7查看hexo版本">7.查看hexo版本：</span></h3><p>查看当前使用的hexo的版本号。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
-<h3 id="8-复合指令："><a href="#8-复合指令：" class="headerlink" title="8.复合指令："></a>8.复合指令：</h3><p>hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。<br>hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。</p>
+<h3><span id="8复合指令">8.复合指令：</span></h3><p>hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。<br>hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。</p>
 <p>简写形式<br>hexo n #等价于 hexo new<br>hexo g #等价于 hexo generate<br>hexo s #等价于 hexo server<br>hexo d #等价于 hexo deploy<br>hexo v #等价于 hexo version</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br><span class="line">$ hexo s -d</span><br></pre></td></tr></table></figure>
-<h3 id="9-卸载hexo："><a href="#9-卸载hexo：" class="headerlink" title="9.卸载hexo："></a>9.卸载hexo：</h3><p>3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g.</p>
-<h3 id="10-如何安装旧版本hexo："><a href="#10-如何安装旧版本hexo：" class="headerlink" title="10.如何安装旧版本hexo："></a>10.如何安装旧版本hexo：</h3><p>先卸载当前版本，以2.8.3为例，执行npm install <a href="mailto:hexo@2.8.3" target="_blank" rel="noopener">hexo@2.8.3</a> -g，再初始化并安装依赖和插件。</p>
+<h3><span id="9卸载hexo">9.卸载hexo：</span></h3><p>3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g.</p>
+<h3><span id="10如何安装旧版本hexo">10.如何安装旧版本hexo：</span></h3><p>先卸载当前版本，以2.8.3为例，执行npm install <a href="mailto:hexo@2.8.3" target="_blank" rel="noopener">hexo@2.8.3</a> -g，再初始化并安装依赖和插件。</p>
+<h3><span id="特殊操作hexo支持目录">特殊操作：Hexo支持目录：</span></h3><p>1.安装hexo-toc插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-toc --save</span><br></pre></td></tr></table></figure>
+<p>2.配置站点配置文件_config.yml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  maxdepth: 5</span><br></pre></td></tr></table></figure>
+<p>3.使用：</p>
+<p>在markdown文章中加入TOC占位符即可自动生成目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- toc --&gt;</span><br></pre></td></tr></table></figure>
+<p>4.效果：</p>
+<p><img src="/2019/02/26/hexo常用指令（个人向）/效果.jpg" alt=""></p>
 
           
         
@@ -599,7 +900,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.3k
                 </span>
               
 
@@ -638,20 +939,45 @@
       
         
           
-            <h2 id="1-java-se基础："><a href="#1-java-se基础：" class="headerlink" title="1.java se基础："></a>1.java se基础：</h2><p>1).Java基本数据类型与表达式，分支循环。<br>2).String和StringBuffer的使用、正则表达式。<br>3).面向对象的抽象，封装，继承，多态，类与对象，对象初始化和回收；构造函数、this关键字、方法和方法的参数传递过程、static关键字、内部类。<br>4).对象实例化过程、方法的覆盖、final关键字、抽象类、接口、继承的优点和缺点剖析；对象的多态性：子类和父类之间的转换、抽象类和接口在多态中的应用、多态带来的好处。<br>5).Java异常处理，异常的机制原理。<br>6).常用的设计模式：Singleton、Template、Strategy模式。<br>7).JavaAPI介绍：种基本数据类型包装类，System和Runtime类，Date和DateFomat类等。<br>8).Java集合介绍：Collection、Set、List、ArrayList、LinkedList、Hashset、Map、HashMap、Iterator等常用集合类API。<br>9).JavaI/O输入输出流：File和FileRandomAccess类，字节流InputStream和OutputStream，字符流Reader和Writer，以及相应实现类，IO性能分析，字节和字符的转化流，包装流的概念，以及常用包装类，计算机编码。<br>10).Java高级特性：反射和泛型。<br>11).多线程原理：如何在程序中创建多线程(Thread、Runnable)，线程安全问题，线程的同步，线程之间的通讯、死锁。</p>
-<h2 id="2-android-UI编程："><a href="#2-android-UI编程：" class="headerlink" title="2.android UI编程："></a>2.android UI编程：</h2><h3 id="1）android初级控件的使用："><a href="#1）android初级控件的使用：" class="headerlink" title="1）android初级控件的使用："></a>1）android初级控件的使用：</h3><p>TextView控件的使用<br>Button控件的使用方法<br>EditText控件的使用方法<br>ImageView的使用方法<br>RadioButton的使用方法<br>Checkbox的使用方法<br>Menu的使用方法</p>
-<h3 id="2）android高级控件的使用："><a href="#2）android高级控件的使用：" class="headerlink" title="2）android高级控件的使用："></a>2）android高级控件的使用：</h3><p>ListView的使用方法<br>GridView的使用方法<br>Adapter的使用方法<br>Spinner的使用方法<br>Gallary的使用方法<br>ScrollView的使用方法<br>RecyclerView</p>
-<h3 id="3）对话框与菜单的使用："><a href="#3）对话框与菜单的使用：" class="headerlink" title="3）对话框与菜单的使用："></a>3）对话框与菜单的使用：</h3><p>Dialog的基本概念<br>BlockquoteAlertDialog的使用方法<br>DatePickerDialog的使用方法<br>Menu的使用方法<br>自定义Menu的实现方法</p>
-<h3 id="4）控件的布局方法："><a href="#4）控件的布局方法：" class="headerlink" title="4）控件的布局方法："></a>4）控件的布局方法：</h3><p>线性布局的使用方法<br>相对布局的使用方法</p>
-<h3 id="5）多activity的管理："><a href="#5）多activity的管理：" class="headerlink" title="5）多activity的管理："></a>5）多activity的管理：</h3><p>AndroidManifest.xml文件的作用<br>Intent的使用方法<br>使用Intent传递数据的方法<br>启动Activity的方法<br>IntentFilter的使用方法<br>Activity Group的使用方法</p>
-<h3 id="6）自定义控件的实现方法："><a href="#6）自定义控件的实现方法：" class="headerlink" title="6）自定义控件的实现方法："></a>6）自定义控件的实现方法：</h3><p>自定义ListView的实现方法<br>可折叠ListView的使用方法<br>自定义Adapter的实现方法<br>自定义View的实现方法<br>动态控件布局的上实现方法<br>上拉刷新下拉加载更多</p>
-<h2 id="3-android网络编程以及数据储存："><a href="#3-android网络编程以及数据储存：" class="headerlink" title="3.android网络编程以及数据储存："></a>3.android网络编程以及数据储存：</h2><h3 id="1）基于android平台的http通讯："><a href="#1）基于android平台的http通讯：" class="headerlink" title="1）基于android平台的http通讯："></a>1）基于android平台的http通讯：</h3><p>Http协议回顾<br>使用Get方法向服务器提交数据的方法<br>使用POST方法向服务器提交数据的实现方法<br>使用Http协议实现多线程下载<br>使用Http协议实现断点续传</p>
-<h3 id="2）android数据储存技术："><a href="#2）android数据储存技术：" class="headerlink" title="2）android数据储存技术："></a>2）android数据储存技术：</h3><p>SQLite3数据库简介<br>SQL语句回顾<br>SQLite3编程接口介绍<br>SQLite3事务管理<br>SQLite3游标使用方法<br>SQLite3性能分析<br>访问SDCard的方法<br>访问SharedPreferences的方法</p>
-<h2 id="4-进阶之路："><a href="#4-进阶之路：" class="headerlink" title="4.进阶之路："></a>4.进阶之路：</h2><h3 id="初级工程师："><a href="#初级工程师：" class="headerlink" title="初级工程师："></a>初级工程师：</h3><ul>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#1java-se基础">1.java se基础：</a></li>
+<li><a href="#2android-ui编程">2.android UI编程：</a><ul>
+<li><a href="#1android初级控件的使用">1）android初级控件的使用：</a></li>
+<li><a href="#2android高级控件的使用">2）android高级控件的使用：</a></li>
+<li><a href="#3对话框与菜单的使用">3）对话框与菜单的使用：</a></li>
+<li><a href="#4控件的布局方法">4）控件的布局方法：</a></li>
+<li><a href="#5多activity的管理">5）多activity的管理：</a></li>
+<li><a href="#6自定义控件的实现方法">6）自定义控件的实现方法：</a></li>
+</ul>
+</li>
+<li><a href="#3android网络编程以及数据储存">3.android网络编程以及数据储存：</a><ul>
+<li><a href="#1基于android平台的http通讯">1）基于android平台的http通讯：</a></li>
+<li><a href="#2android数据储存技术">2）android数据储存技术：</a></li>
+</ul>
+</li>
+<li><a href="#4进阶之路">4.进阶之路：</a><ul>
+<li><a href="#初级工程师">初级工程师：</a></li>
+<li><a href="#中级工程师">中级工程师：</a></li>
+<li><a href="#高级工程师">高级工程师：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="1java-se基础">1.java se基础：</span></h2><p>1).Java基本数据类型与表达式，分支循环。<br>2).String和StringBuffer的使用、正则表达式。<br>3).面向对象的抽象，封装，继承，多态，类与对象，对象初始化和回收；构造函数、this关键字、方法和方法的参数传递过程、static关键字、内部类。<br>4).对象实例化过程、方法的覆盖、final关键字、抽象类、接口、继承的优点和缺点剖析；对象的多态性：子类和父类之间的转换、抽象类和接口在多态中的应用、多态带来的好处。<br>5).Java异常处理，异常的机制原理。<br>6).常用的设计模式：Singleton、Template、Strategy模式。<br>7).JavaAPI介绍：种基本数据类型包装类，System和Runtime类，Date和DateFomat类等。<br>8).Java集合介绍：Collection、Set、List、ArrayList、LinkedList、Hashset、Map、HashMap、Iterator等常用集合类API。<br>9).JavaI/O输入输出流：File和FileRandomAccess类，字节流InputStream和OutputStream，字符流Reader和Writer，以及相应实现类，IO性能分析，字节和字符的转化流，包装流的概念，以及常用包装类，计算机编码。<br>10).Java高级特性：反射和泛型。<br>11).多线程原理：如何在程序中创建多线程(Thread、Runnable)，线程安全问题，线程的同步，线程之间的通讯、死锁。</p>
+<h2><span id="2android-ui编程">2.android UI编程：</span></h2><h3><span id="1android初级控件的使用">1）android初级控件的使用：</span></h3><p>TextView控件的使用<br>Button控件的使用方法<br>EditText控件的使用方法<br>ImageView的使用方法<br>RadioButton的使用方法<br>Checkbox的使用方法<br>Menu的使用方法</p>
+<h3><span id="2android高级控件的使用">2）android高级控件的使用：</span></h3><p>ListView的使用方法<br>GridView的使用方法<br>Adapter的使用方法<br>Spinner的使用方法<br>Gallary的使用方法<br>ScrollView的使用方法<br>RecyclerView</p>
+<h3><span id="3对话框与菜单的使用">3）对话框与菜单的使用：</span></h3><p>Dialog的基本概念<br>BlockquoteAlertDialog的使用方法<br>DatePickerDialog的使用方法<br>Menu的使用方法<br>自定义Menu的实现方法</p>
+<h3><span id="4控件的布局方法">4）控件的布局方法：</span></h3><p>线性布局的使用方法<br>相对布局的使用方法</p>
+<h3><span id="5多activity的管理">5）多activity的管理：</span></h3><p>AndroidManifest.xml文件的作用<br>Intent的使用方法<br>使用Intent传递数据的方法<br>启动Activity的方法<br>IntentFilter的使用方法<br>Activity Group的使用方法</p>
+<h3><span id="6自定义控件的实现方法">6）自定义控件的实现方法：</span></h3><p>自定义ListView的实现方法<br>可折叠ListView的使用方法<br>自定义Adapter的实现方法<br>自定义View的实现方法<br>动态控件布局的上实现方法<br>上拉刷新下拉加载更多</p>
+<h2><span id="3android网络编程以及数据储存">3.android网络编程以及数据储存：</span></h2><h3><span id="1基于android平台的http通讯">1）基于android平台的http通讯：</span></h3><p>Http协议回顾<br>使用Get方法向服务器提交数据的方法<br>使用POST方法向服务器提交数据的实现方法<br>使用Http协议实现多线程下载<br>使用Http协议实现断点续传</p>
+<h3><span id="2android数据储存技术">2）android数据储存技术：</span></h3><p>SQLite3数据库简介<br>SQL语句回顾<br>SQLite3编程接口介绍<br>SQLite3事务管理<br>SQLite3游标使用方法<br>SQLite3性能分析<br>访问SDCard的方法<br>访问SharedPreferences的方法</p>
+<h2><span id="4进阶之路">4.进阶之路：</span></h2><h3><span id="初级工程师">初级工程师：</span></h3><ul>
 <li>基本知识点<br>比如四大组件如何使用、如何创建Service、如何进行布局、简单的自定义View、动画等常见技术</li>
 <li>书籍推荐<br>《第一行代码 Android》、《疯狂Android》</li>
 </ul>
-<h3 id="中级工程师："><a href="#中级工程师：" class="headerlink" title="中级工程师："></a>中级工程师：</h3><ul>
+<h3><span id="中级工程师">中级工程师：</span></h3><ul>
 <li>AIDL：熟悉AIDL，理解其工作原理，懂transact和onTransact的区别；</li>
 <li>Binder：从Java层大概理解Binder的工作原理，懂Parcel对象的使用；</li>
 <li>多进程：熟练掌握多进程的运行机制，懂Messenger、Socket等；</li>
@@ -662,7 +988,7 @@
 <li>懂点常见的设计模式</li>
 <li>书籍推荐<br>《Android开发艺术探索》、《Android群英传》</li>
 </ul>
-<h3 id="高级工程师："><a href="#高级工程师：" class="headerlink" title="高级工程师："></a>高级工程师：</h3><ul>
+<h3><span id="高级工程师">高级工程师：</span></h3><ul>
 <li>继续加深理解”稍微深入的知识点“中所定义的内容</li>
 <li>了解系统核心机制：</li>
 </ul>
@@ -834,7 +1160,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.1k
                 </span>
               
 
@@ -873,8 +1199,48 @@
       
         
           
-            <h2 id="目录"><a href="#目录" class="headerlink" title="目录:"></a>目录:</h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/目录.jpg" alt=""></p>
-<h3 id="Java基础："><a href="#Java基础：" class="headerlink" title="Java基础："></a>Java基础：</h3><p>Java Object类方法</p>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#java基础">Java基础：</a></li>
+<li><a href="#java高阶">Java高阶：</a><ul>
+<li><a href="#数据结构及算法">数据结构及算法：</a></li>
+</ul>
+</li>
+<li><a href="#数据结构">数据结构：</a></li>
+<li><a href="#算法">算法：</a><ul>
+<li><a href="#android基础">Android基础：</a></li>
+</ul>
+<ul>
+<li><a href="#android技术难点">Android技术难点</a></li>
+<li><a href="#android框架层源码掌握">Android框架层源码掌握</a></li>
+<li><a href="#各种原理经典第三方库源码系列">各种原理，经典第三方库源码系列</a></li>
+<li><a href="#android进程通信以及多进程开发">Android进程通信以及多进程开发</a></li>
+<li><a href="#android动画机制">Android动画机制</a></li>
+<li><a href="#android绘图原理">Android绘图原理</a></li>
+<li><a href="#android页面恢复">Android页面恢复</a></li>
+<li><a href="#混合开发及android-webview应用">混合开发及Android WebView应用</a></li>
+<li><a href="#gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</a></li>
+</ul>
+<ul>
+<li><a href="#android系统">Android系统</a></li>
+</ul>
+<ul>
+<li><a href="#android-studio编译过程">Android Studio编译过程</a></li>
+</ul>
+<ul>
+<li><a href="#android架构">Android架构：</a></li>
+<li><a href="#android优化">Android优化：</a></li>
+<li><a href="#移动开发外围">移动开发外围</a></li>
+</ul>
+<ul>
+<li><a href="#服务器开发相关">服务器开发相关</a></li>
+<li><a href="#前端开发相关">前端开发相关</a></li>
+<li><a href="#开发调试各种工具">开发调试各种工具</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h3><span id="java基础">Java基础：</span></h3><p>Java Object类方法</p>
 <p>HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理</p>
 <p>HashMap 和 HashTable 区别</p>
 <p>HashCode 作用，如何重载hashCode方法</p>
@@ -890,7 +1256,7 @@
 <p>ThreadLocal的原理和用法</p>
 <p>ThreadPool的用法和示例</p>
 <p>wait()和sleep()的区别</p>
-<h3 id="Java高阶："><a href="#Java高阶：" class="headerlink" title="Java高阶："></a>Java高阶：</h3><p>Java虚拟机，Java运行，Java GC机制（可达性分析法，引用计数法）</p>
+<h3><span id="java高阶">Java高阶：</span></h3><p>Java虚拟机，Java运行，Java GC机制（可达性分析法，引用计数法）</p>
 <p>Java对象的完整生命周期</p>
 <p>JVM内存模型</p>
 <p>进程间通信，线程间通信</p>
@@ -904,7 +1270,7 @@
 <p>序列化和反序列化</p>
 <p>线程池的实现原理</p>
 <p>数据库基础知识：多表查询、索引、数据库事务</p>
-<h2 id="数据结构及算法："><a href="#数据结构及算法：" class="headerlink" title="数据结构及算法："></a>数据结构及算法：</h2><h3 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h3><p>栈和队列</p>
+<h2><span id="数据结构及算法">数据结构及算法：</span></h2><h3><span id="数据结构">数据结构：</span></h3><p>栈和队列</p>
 <p>数组和链表，自定义一个动态数组</p>
 <p>Hash表，及Hash冲突的解决</p>
 <p>二叉树</p>
@@ -916,11 +1282,11 @@
 <p>字符串操作，字符串查找，KMP算法</p>
 <p>图的BFS、DFS、prim、Dijkstra算法（高阶技能）</p>
 <p>经典问题：海量数据的处理  （10亿个数中找出最大的10000个数 TOP K问题）</p>
-<h3 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h3><p>分治算法</p>
+<h3><span id="算法">算法：</span></h3><p>分治算法</p>
 <p>动态规划</p>
 <p>贪心算法</p>
 <p>分支限界法</p>
-<h2 id="Android基础："><a href="#Android基础：" class="headerlink" title="Android基础："></a>Android基础：</h2><p>Application生命周期</p>
+<h2><span id="android基础">Android基础：</span></h2><p>Application生命周期</p>
 <p>Android Activity生命周期</p>
 <p>Android Service、IntentService，Service和组件间通信</p>
 <p>Activity的onNewIntent</p>
@@ -953,8 +1319,8 @@
 <li>对Android性能优化，安全，软件加固，自动化测试有深刻认识;</li>
 <li>博客，开源项目</li>
 </ol>
-<h4 id="Android技术难点"><a href="#Android技术难点" class="headerlink" title="Android技术难点"></a>Android技术难点</h4><p>AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等。这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。</p>
-<h4 id="Android框架层源码掌握"><a href="#Android框架层源码掌握" class="headerlink" title="Android框架层源码掌握"></a>Android框架层源码掌握</h4><p>Android框架层有很多东西，以下几个是高级程序员必须要掌握的：</p>
+<h4><span id="android技术难点">Android技术难点</span></h4><p>AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等。这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。</p>
+<h4><span id="android框架层源码掌握">Android框架层源码掌握</span></h4><p>Android框架层有很多东西，以下几个是高级程序员必须要掌握的：</p>
 <ol>
 <li>Android包管理机制，核心PackageManagerService</li>
 <li>Window管理，核心WindowManagerService</li>
@@ -962,7 +1328,7 @@
 <li>根Activity工作流程</li>
 <li>Context关联类</li>
 </ol>
-<h4 id="各种原理，经典第三方库源码系列"><a href="#各种原理，经典第三方库源码系列" class="headerlink" title="各种原理，经典第三方库源码系列"></a>各种原理，经典第三方库源码系列</h4><ul>
+<h4><span id="各种原理经典第三方库源码系列">各种原理，经典第三方库源码系列</span></h4><ul>
 <li>自定义LayoutManager，RecyclerView中如何自定义LayoutManager</li>
 <li>VLayout实现原理，即如何自定义LayoutManager</li>
 <li>Glide加载原理，缓存方案，LRU算法</li>
@@ -975,11 +1341,11 @@
 <li>热修复实现原理，解决方案</li>
 <li>组件化原理和解决方案</li>
 </ul>
-<h4 id="Android进程通信以及多进程开发"><a href="#Android进程通信以及多进程开发" class="headerlink" title="Android进程通信以及多进程开发"></a>Android进程通信以及多进程开发</h4><p>Android 多进程和Application关系</p>
+<h4><span id="android进程通信以及多进程开发">Android进程通信以及多进程开发</span></h4><p>Android 多进程和Application关系</p>
 <p>经典解决方案：<a href="https://mp.weixin.qq.com/s/PZs1wss3PizqSE8U2RGXYw" target="_blank" rel="noopener">多进程通信解决方案：Andromeda</a></p>
-<h4 id="Android动画机制"><a href="#Android动画机制" class="headerlink" title="Android动画机制"></a>Android动画机制</h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
-<h4 id="Android绘图原理"><a href="#Android绘图原理" class="headerlink" title="Android绘图原理"></a>Android绘图原理</h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
-<h4 id="Android页面恢复"><a href="#Android页面恢复" class="headerlink" title="Android页面恢复"></a>Android页面恢复</h4><p>Android的页面恢复采用以下两个方法：</p>
+<h4><span id="android动画机制">Android动画机制</span></h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
+<h4><span id="android绘图原理">Android绘图原理</span></h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
+<h4><span id="android页面恢复">Android页面恢复</span></h4><p>Android的页面恢复采用以下两个方法：</p>
 <p>onSaveInstanceState(Bundle outState)</p>
 <p>onRestoreInstanceState(Bundle savedInstanceState)</p>
 <p>onSaveInstanceState: 当Activity容易被系统销毁时，会触发该方法。具体的说</p>
@@ -988,7 +1354,7 @@
 <li>用户点击Home键，切换到其他应用程序</li>
 <li>有电话来了等附加操作</li>
 </ol>
-<h4 id="混合开发及Android-WebView应用"><a href="#混合开发及Android-WebView应用" class="headerlink" title="混合开发及Android WebView应用"></a>混合开发及Android WebView应用</h4><p>混合开发涉及到的知识点主要包括：</p>
+<h4><span id="混合开发及android-webview应用">混合开发及Android WebView应用</span></h4><p>混合开发涉及到的知识点主要包括：</p>
 <ol>
 <li>APP调用WebView加载url</li>
 <li>掌握WebView的封装，了解所有的WebSettings配置，掌握WebViewClient、WebChromeClient</li>
@@ -996,7 +1362,7 @@
 </ol>
 <p>对WebView的封装可参考：<a href="https://github.com/Justson/AgentWeb" target="_blank" rel="noopener">GitHub: AgentWeb</a></p>
 <p>对通信中间件原理理解：<a href="https://github.com/xudjx/webprogress" target="_blank" rel="noopener">GitHub：webprogress</a></p>
-<h4 id="Gradle，自动化构建，持续集成相关"><a href="#Gradle，自动化构建，持续集成相关" class="headerlink" title="Gradle，自动化构建，持续集成相关"></a>Gradle，自动化构建，持续集成相关</h4><h2 id="Android系统"><a href="#Android系统" class="headerlink" title="Android系统"></a>Android系统</h2><h4 id="Android-Studio编译过程"><a href="#Android-Studio编译过程" class="headerlink" title="Android Studio编译过程"></a>Android Studio编译过程</h4><p>其中使用到的编译工具：<br> aapt、aidl、Java Compiler、dex、 zipalign</p>
+<h4><span id="gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</span></h4><h2><span id="android系统">Android系统</span></h2><h4><span id="android-studio编译过程">Android Studio编译过程</span></h4><p>其中使用到的编译工具：<br> aapt、aidl、Java Compiler、dex、 zipalign</p>
 <p>主要步骤描述：</p>
 <ol>
 <li>通过aapt打包res资源文件，生成R.java、resources.arsc和res文件（二进制 &amp; 非二进制如res/raw和pic保持原样）</li>
@@ -1007,7 +1373,7 @@
 <li>通过Jarsigner工具，对上面的apk进行debug或release签名</li>
 <li>通过zipalign工具，将签名后的apk进行对齐处理。</li>
 </ol>
-<h2 id="Android架构："><a href="#Android架构：" class="headerlink" title="Android架构："></a>Android架构：</h2><ul>
+<h2><span id="android架构">Android架构：</span></h2><ul>
 <li>MVC模式</li>
 <li>MVP模式</li>
 <li>MVVM模式</li>
@@ -1015,8 +1381,8 @@
 <li>组件化开发</li>
 <li>跨平台开发：Flutter、ReactNative（RN未来要黄，了解一下就好）</li>
 </ul>
-<h2 id="Android优化："><a href="#Android优化：" class="headerlink" title="Android优化："></a>Android优化：</h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/android优化.jpg" alt=""></p>
-<h2 id="移动开发外围"><a href="#移动开发外围" class="headerlink" title="移动开发外围"></a>移动开发外围</h2><h4 id="服务器开发相关"><a href="#服务器开发相关" class="headerlink" title="服务器开发相关"></a>服务器开发相关</h4><ul>
+<h2><span id="android优化">Android优化：</span></h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/android优化.jpg" alt=""></p>
+<h2><span id="移动开发外围">移动开发外围</span></h2><h4><span id="服务器开发相关">服务器开发相关</span></h4><ul>
 <li>SpringBoot技术</li>
 <li>Restful API开发</li>
 <li>网络协议理解：TCP/IP、HTTP/HTTPS、OSI七层协议</li>
@@ -1026,7 +1392,7 @@
 <li>消息队列技术</li>
 <li>监控、日志分析技术</li>
 </ul>
-<h4 id="前端开发相关"><a href="#前端开发相关" class="headerlink" title="前端开发相关"></a>前端开发相关</h4><p>前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。</p>
+<h4><span id="前端开发相关">前端开发相关</span></h4><p>前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。</p>
 <ul>
 <li>核心必备：HTML、CSS、JavaScript</li>
 <li>入门提高：浏览器兼容性、自定义UI和动效</li>
@@ -1034,7 +1400,7 @@
 <li>协作开发技能：包管理、模块化，工具采用 npm、webpack等</li>
 <li>高级技能：框架原理源码研究</li>
 </ul>
-<h4 id="开发调试各种工具"><a href="#开发调试各种工具" class="headerlink" title="开发调试各种工具"></a>开发调试各种工具</h4><ul>
+<h4><span id="开发调试各种工具">开发调试各种工具</span></h4><ul>
 <li>性能分析工具：Memory Monitor</li>
 <li>性能追踪及方法执行分析： TraceView</li>
 <li>视图分析：Hierarchy Viewer</li>
@@ -1176,7 +1542,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  813
+                  872
                 </span>
               
 
@@ -1192,7 +1558,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -1215,47 +1581,66 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
-<h2 id="一-标题"><a href="#一-标题" class="headerlink" title="一.标题"></a>一.标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#一标题">一.标题</a></li>
+<li><a href="#二字体">二.字体</a><pre><code>- [加粗](#加粗)
+- [斜体](#斜体)
+- [斜体加粗](#斜体加粗)
+- [删除线](#删除线)
+</code></pre></li>
+<li><a href="#三引用">三.引用</a></li>
+<li><a href="#四分割线">四.分割线</a></li>
+<li><a href="#五图片">五.图片</a></li>
+<li><a href="#六超链接">六.超链接</a></li>
+<li><a href="#七列表">七.列表</a></li>
+<li><a href="#八表格">八.表格</a></li>
+<li><a href="#九代码">九.代码</a></li>
+<li><a href="#十流程图">十.流程图</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>​    Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<h2><span id="一标题">一.标题</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
 <p>注意：这里的标准语法是必须#结束后再加上一个空格再加上想要写的文字。（但是有些地方貌似不加空格也可以，例如简书。但是最好还是按照标准的语法来写）</p>
-<h2 id="二-字体"><a href="#二-字体" class="headerlink" title="二.字体"></a>二.字体</h2><ul>
-<li><h5 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h5></li>
+<h2><span id="二字体">二.字体</span></h2><ul>
+<li><h5><span id="加粗">加粗</span></h5></li>
 </ul>
 <p>要加粗的文字左右分别用两个*号包起来</p>
 <ul>
-<li><h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5></li>
+<li><h5><span id="斜体">斜体</span></h5></li>
 </ul>
 <p>要倾斜的文字左右分别用一个*号包起来</p>
 <ul>
-<li><h5 id="斜体加粗"><a href="#斜体加粗" class="headerlink" title="斜体加粗"></a>斜体加粗</h5></li>
+<li><h5><span id="斜体加粗">斜体加粗</span></h5></li>
 </ul>
 <p>要倾斜和加粗的文字左右分别用三个*号包起来</p>
 <ul>
-<li><h5 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h5></li>
+<li><h5><span id="删除线">删除线</span></h5></li>
 </ul>
 <p>要加删除线的文字左右分别用两个~~号包起来</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*`</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
-<h2 id="三-引用"><a href="#三-引用" class="headerlink" title="三.引用"></a>三.引用</h2><p>在引用的文字前面加上&gt;即可。引用也可以嵌套，比如说两个&gt;&gt;三个&gt;&gt;&gt;之类的，貌似可以一直加下去，但是好像没什么用…</p>
+<h2><span id="三引用">三.引用</span></h2><p>在引用的文字前面加上&gt;即可。引用也可以嵌套，比如说两个&gt;&gt;三个&gt;&gt;&gt;之类的，貌似可以一直加下去，但是好像没什么用…</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
-<h2 id="四-分割线"><a href="#四-分割线" class="headerlink" title="四.分割线"></a>四.分割线</h2><p>三个或者三个以上的-或者*都可以。</p>
+<h2><span id="四分割线">四.分割线</span></h2><p>三个或者三个以上的-或者*都可以。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
-<h2 id="五-图片"><a href="#五-图片" class="headerlink" title="五.图片"></a>五.图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
-<h2 id="六-超链接"><a href="#六-超链接" class="headerlink" title="六.超链接"></a>六.超链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+<h2><span id="五图片">五.图片</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+<h2><span id="六超链接">六.超链接</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[简书](http://jianshu.com)</span><br><span class="line">[百度](http://baidu.com)</span><br></pre></td></tr></table></figure>
-<h2 id="七-列表"><a href="#七-列表" class="headerlink" title="七.列表"></a>七.列表</h2><p>无序列表用-+*任何一种都可以。</p>
+<h2><span id="七列表">七.列表</span></h2><p>无序列表用-+*任何一种都可以。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"></span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
 <p>有序列表数字加点即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.列表内容</span><br><span class="line">2.列表内容</span><br><span class="line">3.列表内容</span><br><span class="line"></span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure>
 <p>列表嵌套：上一级和下一级之间敲上三个空格即可。</p>
-<h2 id="八-表格"><a href="#八-表格" class="headerlink" title="八.表格"></a>八.表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure>
+<h2><span id="八表格">八.表格</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">姓名|技能|排行</span><br><span class="line">--|:--:|--:</span><br><span class="line">刘备|哭|大哥</span><br><span class="line">关羽|打|二哥</span><br><span class="line">张飞|骂|三弟</span><br></pre></td></tr></table></figure>
-<h2 id="九-代码"><a href="#九-代码" class="headerlink" title="九.代码"></a>九.代码</h2><p>单行代码直接代码之间分别用一个反引号包起来即可。</p>
+<h2><span id="九代码">九.代码</span></h2><p>单行代码直接代码之间分别用一个反引号包起来即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`代码内容`</span><br></pre></td></tr></table></figure>
 <p>代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(```)</span><br><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">(```)</span><br></pre></td></tr></table></figure>
-<h2 id="十-流程图"><a href="#十-流程图" class="headerlink" title="十.流程图"></a>十.流程图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">​```flow</span><br><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
+<h2><span id="十流程图">十.流程图</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">​```flow</span><br><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>
 <p><code>`</code></p>
 <p>参考文章：<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">Markdown基本语法</a></p>
 
@@ -1442,7 +1827,7 @@
         
           
             <p>普通权限暂且不表，下面只列举Android6.0以后必须进行动态申请的权限。</p>
-<p><img src="https://img-blog.csdn.net/20180702163301178?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoYmVsaWVm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="/2019/01/12/关于Android6-0以上部分权限的动态获取/权限.jpg" alt=""></p>
 <p>下面以SD卡读取权限作为例子（如果实在不懂的话可以直接复制粘贴，只需要改一下权限的名称即可）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求授权</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">requestPermission</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">23</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> checkCallPhonePermission = ContextCompat.checkSelfPermission</span><br><span class="line">                    (<span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE);</span><br><span class="line">            <span class="keyword">if</span> (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                <span class="comment">//在String[]中传入需要申请的权限</span></span><br><span class="line">                ActivityCompat.requestPermissions(<span class="keyword">this</span>,</span><br><span class="line">                        <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_EXTERNAL_STORAGE&#125;, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//sendHomework();</span></span><br><span class="line">                <span class="comment">//已经拥有了权限</span></span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//低版本</span></span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions,<span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> (grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                    <span class="comment">//sendHomework();</span></span><br><span class="line">                    <span class="comment">//获取权限成功后的处理</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经成功获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//showToast("fail");</span></span><br><span class="line">                    <span class="comment">//获取权限失败的处理</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"获取读SD卡权限失败"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
@@ -1585,7 +1970,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  300
+                  383
                 </span>
               
 
@@ -1624,15 +2009,27 @@
       
         
           
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>今天在调试一个有关于SQLite数据库的app的时候，突发奇想，想在手机上直接找到对应的db文件查看，结果是显而易见的，并没有找到相应的调试app的包名以及对应的文件夹。</p>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言：</a><ul>
+<li><a href="#1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</a></li>
+<li><a href="#2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</a></li>
+<li><a href="#3修改下列相关">3.修改下列相关：</a></li>
+<li><a href="#4打开chrome浏览器输入网址chromeinspectchromeinspect">4.打开Chrome浏览器，输入网址：<a href="chrome://inspect" target="_blank" rel="noopener">chrome://inspect</a></a></li>
+<li><a href="#5点击弹出的网页resource-web-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言：</span></h2><p>今天在调试一个有关于SQLite数据库的app的时候，突发奇想，想在手机上直接找到对应的db文件查看，结果是显而易见的，并没有找到相应的调试app的包名以及对应的文件夹。</p>
 <p>然后在网上找了很多方法，试过之后，找到一个较方便且便捷的方法。如下：</p>
-<h3 id="1-首先在app对应下的build-gradle里面添加下面依赖："><a href="#1-首先在app对应下的build-gradle里面添加下面依赖：" class="headerlink" title="1.首先在app对应下的build.gradle里面添加下面依赖："></a>1.首先在app对应下的build.gradle里面添加下面依赖：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Stetho core</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho:1.3.1&apos;</span><br><span class="line">//If you want to add a network helper</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho-okhttp3:1.3.1&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="2-自定义一个MyApplication继承Application，在onCreate中初始化stetho："><a href="#2-自定义一个MyApplication继承Application，在onCreate中初始化stetho：" class="headerlink" title="2.自定义一个MyApplication继承Application，在onCreate中初始化stetho："></a>2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void init()&#123;</span><br><span class="line">        Stetho.initializeWithDefaults(this);</span><br><span class="line">        new OkHttpClient.Builder()</span><br><span class="line">                .addNetworkInterceptor(new StethoInterceptor())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-修改下列相关："><a href="#3-修改下列相关：" class="headerlink" title="3.修改下列相关："></a>3.修改下列相关：</h3><p>在AndroidManifest.xml中修改android:name=”.MyApplication”</p>
+<h3><span id="1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Stetho core</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho:1.3.1&apos;</span><br><span class="line">//If you want to add a network helper</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho-okhttp3:1.3.1&apos;</span><br></pre></td></tr></table></figure>
+<h3><span id="2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void init()&#123;</span><br><span class="line">        Stetho.initializeWithDefaults(this);</span><br><span class="line">        new OkHttpClient.Builder()</span><br><span class="line">                .addNetworkInterceptor(new StethoInterceptor())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="3修改下列相关">3.修改下列相关：</span></h3><p>在AndroidManifest.xml中修改android:name=”.MyApplication”</p>
 <p>然后运行app到手机上即可。</p>
-<h3 id="4-打开Chrome浏览器，输入网址：chrome-inspect"><a href="#4-打开Chrome浏览器，输入网址：chrome-inspect" class="headerlink" title="4.打开Chrome浏览器，输入网址：chrome://inspect"></a>4.打开Chrome浏览器，输入网址：<a href="chrome://inspect" target="_blank" rel="noopener">chrome://inspect</a></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
+<h3><span id="4打开chrome浏览器输入网址chromeinspect">4.打开Chrome浏览器，输入网址：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
 <p>操作好之后就是显示手机型号，下面有一个inspect直接点击即可。</p>
-<h3 id="5-点击弹出的网页Resource-gt-Web-SQL即可看到，下面是我的数据库显示情况："><a href="#5-点击弹出的网页Resource-gt-Web-SQL即可看到，下面是我的数据库显示情况：" class="headerlink" title="5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况："></a>5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg" alt=""></p>
+<h3><span id="5点击弹出的网页resource-gtweb-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg" alt=""></p>
 <p>这样就很简单啦，又方便又快捷！</p>
 
           
@@ -1778,7 +2175,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  939
+                  1.1k
                 </span>
               
 
@@ -1817,14 +2214,34 @@
       
         
           
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>首先，在我们刚刚搭建好这个博客的时候，我们会发现自己的博客显得很是简陋以及，单调，这个时候就是显示个性化的好时机了。<a href="https://www.jianshu.com/p/f054333ac9e6" target="_blank" rel="noopener">hexo主题个性化</a>是一个集合了许多方法的网址，可以参考。当然这只是沧海一粟，不值一提。还有更多的，诸如留言板，相册，网易云外链之类的优秀功能，具体详情可以直接百度，这里不过多赘述。</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）"><a href="#关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）" class="headerlink" title="关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）"></a>关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）</h3><p>原因：Github和Coding都做了防爬虫处理，这样子我们博客可能就无法被搜索引擎收录，需要我们手动提交！</p>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言：</a></li>
+<li><a href="#正文">正文：</a><ul>
+<li><a href="#关于如何将自己的博客推送至百度与谷歌默认情况下是不会被爬取的这个时候就需要我们主动出击让我们的博客可以直接被搜索到">关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）</a></li>
+</ul>
+</li>
+<li><a href="#提交百度搜索引擎谷歌同理过程一样">提交百度搜索引擎：（谷歌同理，过程一样）</a></li>
+<li><a href="#站点地图">站点地图：</a><ul>
+<li><a href="#安装百度谷歌的站点地图">安装百度谷歌的站点地图：</a></li>
+</ul>
+</li>
+<li><a href="#向谷歌提交链接">向谷歌提交链接：</a></li>
+<li><a href="#百度收录">百度收录：</a></li>
+<li><a href="#sitemap">sitemap：</a><ul>
+<li><a href="#结语百度的抓取速度是真的慢另外githubio的博客不允许百度蜘蛛爬取直接再把博客推送到codingme即可百度收录的时候一定要用codingme的网址-关于如何推送到coding与github类似">结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言：</span></h2><p>首先，在我们刚刚搭建好这个博客的时候，我们会发现自己的博客显得很是简陋以及，单调，这个时候就是显示个性化的好时机了。<a href="https://www.jianshu.com/p/f054333ac9e6" target="_blank" rel="noopener">hexo主题个性化</a>是一个集合了许多方法的网址，可以参考。当然这只是沧海一粟，不值一提。还有更多的，诸如留言板，相册，网易云外链之类的优秀功能，具体详情可以直接百度，这里不过多赘述。</p>
+<h2><span id="正文">正文：</span></h2><h3><span id="关于如何将自己的博客推送至百度与谷歌默认情况下是不会被爬取的这个时候就需要我们主动出击让我们的博客可以直接被搜索到">关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）</span></h3><p>原因：Github和Coding都做了防爬虫处理，这样子我们博客可能就无法被搜索引擎收录，需要我们手动提交！</p>
 <p>验证是否被百度或者谷歌收录，即在相应的搜索栏中输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site: thbelief.coding.me</span><br></pre></td></tr></table></figure>
 <p>（注：site:后面是你的博客网址）</p>
 <p>如果显示找不到相关网址，即没有被收录。如果找到了….那就恭喜不用操作了。</p>
 <p>言归正传，回到正题。</p>
-<h2 id="提交百度搜索引擎：（谷歌同理，过程一样）"><a href="#提交百度搜索引擎：（谷歌同理，过程一样）" class="headerlink" title="提交百度搜索引擎：（谷歌同理，过程一样）"></a>提交百度搜索引擎：（谷歌同理，过程一样）</h2><p>登录<a href="http://ziyuan.baidu.com/site/index" target="_blank" rel="noopener">百度搜索引擎</a></p>
+<h2><span id="提交百度搜索引擎谷歌同理过程一样">提交百度搜索引擎：（谷歌同理，过程一样）</span></h2><p>登录<a href="http://ziyuan.baidu.com/site/index" target="_blank" rel="noopener">百度搜索引擎</a></p>
 <p>ps：可能需要个人信息认证，按照提示认证即可！</p>
 <p><img src="/2019/01/09/Hexo进阶（个人向）/YpUnA4O.png" alt="1"></p>
 <p>然后是：添加站点-&gt;输入博客网址-&gt;设置站点领域（我设置的是信息技术）-&gt;选择验证方式。</p>
@@ -1836,8 +2253,8 @@
 <p>4.请点击“完成验证”按钮</p>
 <p>注：为保持验证通过的状态,成功验证后请不要删除HTML文件</p>
 <p>然后git bash输入框内输入hexo g -d部署到网站上面即可。</p>
-<h2 id="站点地图："><a href="#站点地图：" class="headerlink" title="站点地图："></a>站点地图：</h2><p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
-<h3 id="安装百度谷歌的站点地图："><a href="#安装百度谷歌的站点地图：" class="headerlink" title="安装百度谷歌的站点地图："></a>安装百度谷歌的站点地图：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<h2><span id="站点地图">站点地图：</span></h2><p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
+<h3><span id="安装百度谷歌的站点地图">安装百度谷歌的站点地图：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
 <p>然后打开站点配置文件：</p>
 <p><img src="/2019/01/09/Hexo进阶（个人向）/image3.jpg" alt=""></p>
 <p>将url设置为你的站点名称。</p>
@@ -1845,18 +2262,18 @@
 <p>这样在你的网站根目录的<code>public</code>文件夹下生成sitemap.xml文件和baidusitemap.xml文件：</p>
 <p><img src="/2019/01/09/Hexo进阶（个人向）/image4.jpg" alt=""></p>
 <p>其中sitemap.xml文件是搜索引擎通用的文件，baidusitemap.xml是百度专用的sitemap文件。</p>
-<h2 id="向谷歌提交链接："><a href="#向谷歌提交链接：" class="headerlink" title="向谷歌提交链接："></a>向谷歌提交链接：</h2><p>google站点平台：<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌站点</a>，然后就是注册账号、验证站点、提交sitemap，</p>
+<h2><span id="向谷歌提交链接">向谷歌提交链接：</span></h2><p>google站点平台：<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌站点</a>，然后就是注册账号、验证站点、提交sitemap，</p>
 <p><img src="/2019/01/09/Hexo进阶（个人向）/image5.jpg" alt=""></p>
 <p>提交site之后即可。</p>
 <p>注意：无论是百度还是谷歌，都不是已通过就能直接搜索到，谷歌大致需要几小时，百度大致一个月左右，请耐心等待。</p>
-<h2 id="百度收录："><a href="#百度收录：" class="headerlink" title="百度收录："></a>百度收录：</h2><p>百度收录较慢。故设置自动推送：</p>
+<h2><span id="百度收录">百度收录：</span></h2><p>百度收录较慢。故设置自动推送：</p>
 <p>在主题配置文件下设置,将baidu_push设置为true：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO</span><br><span class="line">baidu_push: true</span><br></pre></td></tr></table></figure>
-<h2 id="sitemap："><a href="#sitemap：" class="headerlink" title="sitemap："></a>sitemap：</h2><p>将生成的baidusitemap.xml提交到<a href="http://ziyuan.baidu.com/linksubmit/index" target="_blank" rel="noopener">百度站点</a></p>
+<h2><span id="sitemap">sitemap：</span></h2><p>将生成的baidusitemap.xml提交到<a href="http://ziyuan.baidu.com/linksubmit/index" target="_blank" rel="noopener">百度站点</a></p>
 <p>点击链接提交：</p>
 <p><img src="/2019/01/09/Hexo进阶（个人向）/image6.jpg" alt=""></p>
 <p>然后刷新页面即可。</p>
-<h3 id="结语：百度的抓取速度是真的慢，另外，github-io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding-me即可，百度收录的时候一定要用coding-me的网址。关于如何推送到coding，与github类似…"><a href="#结语：百度的抓取速度是真的慢，另外，github-io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding-me即可，百度收录的时候一定要用coding-me的网址。关于如何推送到coding，与github类似…" class="headerlink" title="结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…"></a>结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…</h3>
+<h3><span id="结语百度的抓取速度是真的慢另外githubio的博客不允许百度蜘蛛爬取直接再把博客推送到codingme即可百度收录的时候一定要用codingme的网址-关于如何推送到coding与github类似">结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…</span></h3>
           
         
       
@@ -2039,15 +2456,30 @@
       
         
           
-            <h2 id="hexo的介绍"><a href="#hexo的介绍" class="headerlink" title="hexo的介绍"></a>hexo的介绍</h2><p>官网上的描述是<a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo</a>是一个快速，简单而强大的博客框架。我们可以使用Markdown（或其他语言）来编写文章，同时Hexo可以在几秒钟内生成具有美丽主题的静态文件以供我们使用。</p>
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#hexo的介绍">hexo的介绍</a></li>
+<li><a href="#准备">准备</a></li>
+<li><a href="#nodejs">NodeJS</a></li>
+<li><a href="#hexo安装">Hexo安装</a></li>
+<li><a href="#github部分">GitHub部分</a><ul>
+<li><a href="#1github-page">1.Github Page</a></li>
+<li><a href="#2配置ssh">2.配置SSH</a></li>
+</ul>
+</li>
+<li><a href="#发布">发布</a></li>
+<li><a href="#更改主题">更改主题</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="hexo的介绍">hexo的介绍</span></h2><p>官网上的描述是<a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo</a>是一个快速，简单而强大的博客框架。我们可以使用Markdown（或其他语言）来编写文章，同时Hexo可以在几秒钟内生成具有美丽主题的静态文件以供我们使用。</p>
 <p>简单来说它就是一个主打简单快速的博客框架，这个可以对比下知名度更高一些的WordPress，相对来说后者更强，不过更适合有服务器的人使用，只想做一个简单博客的首选hexo。</p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先必须安装Git和NodeJS。（安装过程傻瓜式next操作即可）</p>
+<h2><span id="准备">准备</span></h2><p>首先必须安装Git和NodeJS。（安装过程傻瓜式next操作即可）</p>
 <p>注意一点就是NodeJS的路径。推荐D:\NodeJS (原因后面会阐述)</p>
 <p>检测NodeJS是否安装成功的方式是：</p>
 <p>输入Win+R输入cmd打开控制台输入下面代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <p>如果两个都返回版本号即安装成功，否则需要再配环境变量。</p>
-<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><p>1.在NodeJS安装路径下面建立”node_global”及”node_cache”两个文件夹。</p>
+<h2><span id="nodejs">NodeJS</span></h2><p>1.在NodeJS安装路径下面建立”node_global”及”node_cache”两个文件夹。</p>
 <p>2.启动cmd输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\Program Files\nodejs\node_global&quot;</span><br><span class="line">npm config set cache &quot;D:\Program Files\nodejs\node_cache&quot;</span><br></pre></td></tr></table></figure>
 <p>3.配置环境变量：</p>
@@ -2056,15 +2488,15 @@
 <p>4.测试是否配置完成：</p>
 <p>如果打开cmd输入下面代码然后在node_global目录下有express目录即完成了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express -g</span><br></pre></td></tr></table></figure>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><p>打开git bash（为了避免出现错误后面的操作在git bash进行）</p>
+<h2><span id="hexo安装">Hexo安装</span></h2><p>打开git bash（为了避免出现错误后面的操作在git bash进行）</p>
 <p>首先新建一个存放hexo文件的目录，例如在D盘根目录新建<code>hexo</code>文件夹，然后cd到该目录下，开始安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cd D:hexo/     #换成你的目录</span><br><span class="line">$ npm install -g hexo-cli  #安装hexo脚手架</span><br><span class="line">$ hexo init      #Hexo自动在当前文件夹下下载搭建网站所需的所有文件</span><br><span class="line">$ npm install      #安装依赖包</span><br><span class="line"></span><br><span class="line">$ hexo g         #完整命令为hexo generate，生成静态文件</span><br><span class="line">$ hexo s         #完整命令为hexo server，启动服务器，用来本地预览</span><br></pre></td></tr></table></figure>
 <p>用浏览器访问<code>http://localhost:4000</code>，这时就可以看到了一个比较漂亮的博客了，这个是hexo的默认主题landscape，而我们会使用的是NexT主题，后面会说到怎么配置。</p>
-<h2 id="GitHub部分"><a href="#GitHub部分" class="headerlink" title="GitHub部分"></a>GitHub部分</h2><h3 id="1-Github-Page"><a href="#1-Github-Page" class="headerlink" title="1.Github Page"></a>1.Github Page</h3><p>打开github主页，新建仓库（repository），这里要注意仓库的名称，比如我的帐号是<code>thbelief</code>，那么仓库名称应该是：<code>thbelief.github.io</code>。然后选择Public（公开）。</p>
-<h3 id="2-配置SSH"><a href="#2-配置SSH" class="headerlink" title="2.配置SSH"></a>2.配置SSH</h3><p>以上过程完成后就是把hexo生成的静态页面上传了，到这里还没结束，还需要配置SSH，首先要本地生成公钥私钥</p>
+<h2><span id="github部分">GitHub部分</span></h2><h3><span id="1github-page">1.Github Page</span></h3><p>打开github主页，新建仓库（repository），这里要注意仓库的名称，比如我的帐号是<code>thbelief</code>，那么仓库名称应该是：<code>thbelief.github.io</code>。然后选择Public（公开）。</p>
+<h3><span id="2配置ssh">2.配置SSH</span></h3><p>以上过程完成后就是把hexo生成的静态页面上传了，到这里还没结束，还需要配置SSH，首先要本地生成公钥私钥</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;你的邮件地址&quot;</span><br></pre></td></tr></table></figure>
 <p>引号里面的内容输入你的邮箱地址，然后回车，会提示你文件保存的路径，这时候按回车键确认，然后会提示你输入密码，输入即可（输入密码是看不到的），然后会确认输入一次，就可以在刚刚的路径看到生成了两个文件，一个是<code>id_rsa</code>，另一个是<code>id_rsa.pub</code>，用<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">sublime</a>打开<code>id_rsa.pub</code>然后选中里面的全部内容，复制下来。<br>打开GitHub或Coding的SSH页面<br>Github：setting–&gt;SSH and GPG keys–&gt;New SSH key在Key下面的框中粘贴刚刚复制的东西。</p>
-<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>打开<code>D:\hexo</code>，用sublime打开<code>_config.yml</code>文件，文件最后可以看到</p>
+<h2><span id="发布">发布</span></h2><p>打开<code>D:\hexo</code>，用sublime打开<code>_config.yml</code>文件，文件最后可以看到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type:</span><br></pre></td></tr></table></figure>
 <p>修改（注意要换上自己的链接）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:yourname/yourname.github.io.git   #发布到github</span><br><span class="line">  #repository: git@git.coding.net:yourname/yourname.git            #发布到Coding</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
@@ -2077,7 +2509,7 @@
 <p>尝试输入以下命令，然后重新执行刚刚的两条命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>这时候如果弹出一个对话框，输入在github/coding上面的用户名和密码即可<br>这时候我们就可以在浏览器输入<a href="https://yourname.github.io/" target="_blank" rel="noopener">https://yourname.github.io</a> 或者<a href="https://youname.coding.me/" target="_blank" rel="noopener">https://youname.coding.me</a> 打开。（yourname记得替换）</p>
-<h2 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h2><p><code>D:\hexo</code>目录下的<code>theme</code>文件夹下存放的就是博客的主题，hexo便是依据主题来生成静态文件的，挑选主题可以在官网<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 查找，根据自己的喜好来挑选。<br>下载主题的一般方式如下：</p>
+<h2><span id="更改主题">更改主题</span></h2><p><code>D:\hexo</code>目录下的<code>theme</code>文件夹下存放的就是博客的主题，hexo便是依据主题来生成静态文件的，挑选主题可以在官网<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 查找，根据自己的喜好来挑选。<br>下载主题的一般方式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site  #eg:D:\hexo</span><br><span class="line">$ git clone &#123;主题链接&#125; themes/&#123;主题名称&#125;</span><br></pre></td></tr></table></figure>
 <p>但是最好还是直接去官网下载压缩包解压到hexo目录下面的themes中，因为国内下这个很慢。（解压的时候名字一定要换成next，方便后序操作）</p>
 <p>其实还有一种方法，也是对第一种方法的补充，直接更换npm的来源地，换成淘宝的即可，详情百度，这里不过多赘述。</p>
@@ -2172,7 +2604,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2183,7 +2615,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2194,7 +2626,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2266,7 +2698,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.5k字</span>
+  <span class="post-count">博客全站共10.3k字</span>
 </div>
         
 

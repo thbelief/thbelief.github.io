@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="目录: Java基础：Java Object类方法 HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理 HashMap 和 HashTable 区别 HashCode 作用，如何重载hashCode方法 ArrayList与LinkList区别与联系 GC机制 Java反射机制，Java代理模式 Java泛型 Synchronized原理 Volatile实现原理 方法锁、对象锁、">
+<meta name="description" content="目录：  Java基础： Java高阶： 数据结构及算法：   数据结构： 算法： Android基础：   Android技术难点 Android框架层源码掌握 各种原理，经典第三方库源码系列 Android进程通信以及多进程开发 Android动画机制 Android绘图原理 Android页面恢复 混合开发及Android WebView应用 Gradle，自动化构建，持续集成相关   An">
 <meta name="keywords" content="Android,总结,学习路线">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习路线总结（个人向）">
 <meta property="og:url" content="http://thbelief.coding.me/2019/01/14/Android学习路线总结（个人向）/index.html">
 <meta property="og:site_name" content="THBELIEF">
-<meta property="og:description" content="目录: Java基础：Java Object类方法 HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理 HashMap 和 HashTable 区别 HashCode 作用，如何重载hashCode方法 ArrayList与LinkList区别与联系 GC机制 Java反射机制，Java代理模式 Java泛型 Synchronized原理 Volatile实现原理 方法锁、对象锁、">
+<meta property="og:description" content="目录：  Java基础： Java高阶： 数据结构及算法：   数据结构： 算法： Android基础：   Android技术难点 Android框架层源码掌握 各种原理，经典第三方库源码系列 Android进程通信以及多进程开发 Android动画机制 Android绘图原理 Android页面恢复 混合开发及Android WebView应用 Gradle，自动化构建，持续集成相关   An">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://thbelief.coding.me/2019/01/14/Android学习路线总结（个人向）/目录.jpg">
 <meta property="og:image" content="http://thbelief.coding.me/2019/01/14/Android学习路线总结（个人向）/android优化.jpg">
-<meta property="og:updated_time" content="2019-02-26T01:33:58.373Z">
+<meta property="og:updated_time" content="2019-02-27T12:59:26.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习路线总结（个人向）">
-<meta name="twitter:description" content="目录: Java基础：Java Object类方法 HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理 HashMap 和 HashTable 区别 HashCode 作用，如何重载hashCode方法 ArrayList与LinkList区别与联系 GC机制 Java反射机制，Java代理模式 Java泛型 Synchronized原理 Volatile实现原理 方法锁、对象锁、">
-<meta name="twitter:image" content="http://thbelief.coding.me/2019/01/14/Android学习路线总结（个人向）/目录.jpg">
+<meta name="twitter:description" content="目录：  Java基础： Java高阶： 数据结构及算法：   数据结构： 算法： Android基础：   Android技术难点 Android框架层源码掌握 各种原理，经典第三方库源码系列 Android进程通信以及多进程开发 Android动画机制 Android绘图原理 Android页面恢复 混合开发及Android WebView应用 Gradle，自动化构建，持续集成相关   An">
+<meta name="twitter:image" content="http://thbelief.coding.me/2019/01/14/Android学习路线总结（个人向）/android优化.jpg">
 
 
 
@@ -392,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.1k
                 </span>
               
 
@@ -429,8 +428,48 @@
       
 
       
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录:"></a>目录:</h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/目录.jpg" alt=""></p>
-<h3 id="Java基础："><a href="#Java基础：" class="headerlink" title="Java基础："></a>Java基础：</h3><p>Java Object类方法</p>
+        <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#java基础">Java基础：</a></li>
+<li><a href="#java高阶">Java高阶：</a><ul>
+<li><a href="#数据结构及算法">数据结构及算法：</a></li>
+</ul>
+</li>
+<li><a href="#数据结构">数据结构：</a></li>
+<li><a href="#算法">算法：</a><ul>
+<li><a href="#android基础">Android基础：</a></li>
+</ul>
+<ul>
+<li><a href="#android技术难点">Android技术难点</a></li>
+<li><a href="#android框架层源码掌握">Android框架层源码掌握</a></li>
+<li><a href="#各种原理经典第三方库源码系列">各种原理，经典第三方库源码系列</a></li>
+<li><a href="#android进程通信以及多进程开发">Android进程通信以及多进程开发</a></li>
+<li><a href="#android动画机制">Android动画机制</a></li>
+<li><a href="#android绘图原理">Android绘图原理</a></li>
+<li><a href="#android页面恢复">Android页面恢复</a></li>
+<li><a href="#混合开发及android-webview应用">混合开发及Android WebView应用</a></li>
+<li><a href="#gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</a></li>
+</ul>
+<ul>
+<li><a href="#android系统">Android系统</a></li>
+</ul>
+<ul>
+<li><a href="#android-studio编译过程">Android Studio编译过程</a></li>
+</ul>
+<ul>
+<li><a href="#android架构">Android架构：</a></li>
+<li><a href="#android优化">Android优化：</a></li>
+<li><a href="#移动开发外围">移动开发外围</a></li>
+</ul>
+<ul>
+<li><a href="#服务器开发相关">服务器开发相关</a></li>
+<li><a href="#前端开发相关">前端开发相关</a></li>
+<li><a href="#开发调试各种工具">开发调试各种工具</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h3><span id="java基础">Java基础：</span></h3><p>Java Object类方法</p>
 <p>HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理</p>
 <p>HashMap 和 HashTable 区别</p>
 <p>HashCode 作用，如何重载hashCode方法</p>
@@ -446,7 +485,7 @@
 <p>ThreadLocal的原理和用法</p>
 <p>ThreadPool的用法和示例</p>
 <p>wait()和sleep()的区别</p>
-<h3 id="Java高阶："><a href="#Java高阶：" class="headerlink" title="Java高阶："></a>Java高阶：</h3><p>Java虚拟机，Java运行，Java GC机制（可达性分析法，引用计数法）</p>
+<h3><span id="java高阶">Java高阶：</span></h3><p>Java虚拟机，Java运行，Java GC机制（可达性分析法，引用计数法）</p>
 <p>Java对象的完整生命周期</p>
 <p>JVM内存模型</p>
 <p>进程间通信，线程间通信</p>
@@ -460,7 +499,7 @@
 <p>序列化和反序列化</p>
 <p>线程池的实现原理</p>
 <p>数据库基础知识：多表查询、索引、数据库事务</p>
-<h2 id="数据结构及算法："><a href="#数据结构及算法：" class="headerlink" title="数据结构及算法："></a>数据结构及算法：</h2><h3 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h3><p>栈和队列</p>
+<h2><span id="数据结构及算法">数据结构及算法：</span></h2><h3><span id="数据结构">数据结构：</span></h3><p>栈和队列</p>
 <p>数组和链表，自定义一个动态数组</p>
 <p>Hash表，及Hash冲突的解决</p>
 <p>二叉树</p>
@@ -472,11 +511,11 @@
 <p>字符串操作，字符串查找，KMP算法</p>
 <p>图的BFS、DFS、prim、Dijkstra算法（高阶技能）</p>
 <p>经典问题：海量数据的处理  （10亿个数中找出最大的10000个数 TOP K问题）</p>
-<h3 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h3><p>分治算法</p>
+<h3><span id="算法">算法：</span></h3><p>分治算法</p>
 <p>动态规划</p>
 <p>贪心算法</p>
 <p>分支限界法</p>
-<h2 id="Android基础："><a href="#Android基础：" class="headerlink" title="Android基础："></a>Android基础：</h2><p>Application生命周期</p>
+<h2><span id="android基础">Android基础：</span></h2><p>Application生命周期</p>
 <p>Android Activity生命周期</p>
 <p>Android Service、IntentService，Service和组件间通信</p>
 <p>Activity的onNewIntent</p>
@@ -509,8 +548,8 @@
 <li>对Android性能优化，安全，软件加固，自动化测试有深刻认识;</li>
 <li>博客，开源项目</li>
 </ol>
-<h4 id="Android技术难点"><a href="#Android技术难点" class="headerlink" title="Android技术难点"></a>Android技术难点</h4><p>AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等。这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。</p>
-<h4 id="Android框架层源码掌握"><a href="#Android框架层源码掌握" class="headerlink" title="Android框架层源码掌握"></a>Android框架层源码掌握</h4><p>Android框架层有很多东西，以下几个是高级程序员必须要掌握的：</p>
+<h4><span id="android技术难点">Android技术难点</span></h4><p>AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等。这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。</p>
+<h4><span id="android框架层源码掌握">Android框架层源码掌握</span></h4><p>Android框架层有很多东西，以下几个是高级程序员必须要掌握的：</p>
 <ol>
 <li>Android包管理机制，核心PackageManagerService</li>
 <li>Window管理，核心WindowManagerService</li>
@@ -518,7 +557,7 @@
 <li>根Activity工作流程</li>
 <li>Context关联类</li>
 </ol>
-<h4 id="各种原理，经典第三方库源码系列"><a href="#各种原理，经典第三方库源码系列" class="headerlink" title="各种原理，经典第三方库源码系列"></a>各种原理，经典第三方库源码系列</h4><ul>
+<h4><span id="各种原理经典第三方库源码系列">各种原理，经典第三方库源码系列</span></h4><ul>
 <li>自定义LayoutManager，RecyclerView中如何自定义LayoutManager</li>
 <li>VLayout实现原理，即如何自定义LayoutManager</li>
 <li>Glide加载原理，缓存方案，LRU算法</li>
@@ -531,11 +570,11 @@
 <li>热修复实现原理，解决方案</li>
 <li>组件化原理和解决方案</li>
 </ul>
-<h4 id="Android进程通信以及多进程开发"><a href="#Android进程通信以及多进程开发" class="headerlink" title="Android进程通信以及多进程开发"></a>Android进程通信以及多进程开发</h4><p>Android 多进程和Application关系</p>
+<h4><span id="android进程通信以及多进程开发">Android进程通信以及多进程开发</span></h4><p>Android 多进程和Application关系</p>
 <p>经典解决方案：<a href="https://mp.weixin.qq.com/s/PZs1wss3PizqSE8U2RGXYw" target="_blank" rel="noopener">多进程通信解决方案：Andromeda</a></p>
-<h4 id="Android动画机制"><a href="#Android动画机制" class="headerlink" title="Android动画机制"></a>Android动画机制</h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
-<h4 id="Android绘图原理"><a href="#Android绘图原理" class="headerlink" title="Android绘图原理"></a>Android绘图原理</h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
-<h4 id="Android页面恢复"><a href="#Android页面恢复" class="headerlink" title="Android页面恢复"></a>Android页面恢复</h4><p>Android的页面恢复采用以下两个方法：</p>
+<h4><span id="android动画机制">Android动画机制</span></h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
+<h4><span id="android绘图原理">Android绘图原理</span></h4><p>经典学习资料：<a href="http://hencoder.com/?utm_source=gank&amp;utm_medium=website&amp;utm_campaign=rxjava" target="_blank" rel="noopener">HenCoder: 给高级Android工程师的进阶手册</a></p>
+<h4><span id="android页面恢复">Android页面恢复</span></h4><p>Android的页面恢复采用以下两个方法：</p>
 <p>onSaveInstanceState(Bundle outState)</p>
 <p>onRestoreInstanceState(Bundle savedInstanceState)</p>
 <p>onSaveInstanceState: 当Activity容易被系统销毁时，会触发该方法。具体的说</p>
@@ -544,7 +583,7 @@
 <li>用户点击Home键，切换到其他应用程序</li>
 <li>有电话来了等附加操作</li>
 </ol>
-<h4 id="混合开发及Android-WebView应用"><a href="#混合开发及Android-WebView应用" class="headerlink" title="混合开发及Android WebView应用"></a>混合开发及Android WebView应用</h4><p>混合开发涉及到的知识点主要包括：</p>
+<h4><span id="混合开发及android-webview应用">混合开发及Android WebView应用</span></h4><p>混合开发涉及到的知识点主要包括：</p>
 <ol>
 <li>APP调用WebView加载url</li>
 <li>掌握WebView的封装，了解所有的WebSettings配置，掌握WebViewClient、WebChromeClient</li>
@@ -552,7 +591,7 @@
 </ol>
 <p>对WebView的封装可参考：<a href="https://github.com/Justson/AgentWeb" target="_blank" rel="noopener">GitHub: AgentWeb</a></p>
 <p>对通信中间件原理理解：<a href="https://github.com/xudjx/webprogress" target="_blank" rel="noopener">GitHub：webprogress</a></p>
-<h4 id="Gradle，自动化构建，持续集成相关"><a href="#Gradle，自动化构建，持续集成相关" class="headerlink" title="Gradle，自动化构建，持续集成相关"></a>Gradle，自动化构建，持续集成相关</h4><h2 id="Android系统"><a href="#Android系统" class="headerlink" title="Android系统"></a>Android系统</h2><h4 id="Android-Studio编译过程"><a href="#Android-Studio编译过程" class="headerlink" title="Android Studio编译过程"></a>Android Studio编译过程</h4><p>其中使用到的编译工具：<br> aapt、aidl、Java Compiler、dex、 zipalign</p>
+<h4><span id="gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</span></h4><h2><span id="android系统">Android系统</span></h2><h4><span id="android-studio编译过程">Android Studio编译过程</span></h4><p>其中使用到的编译工具：<br> aapt、aidl、Java Compiler、dex、 zipalign</p>
 <p>主要步骤描述：</p>
 <ol>
 <li>通过aapt打包res资源文件，生成R.java、resources.arsc和res文件（二进制 &amp; 非二进制如res/raw和pic保持原样）</li>
@@ -563,7 +602,7 @@
 <li>通过Jarsigner工具，对上面的apk进行debug或release签名</li>
 <li>通过zipalign工具，将签名后的apk进行对齐处理。</li>
 </ol>
-<h2 id="Android架构："><a href="#Android架构：" class="headerlink" title="Android架构："></a>Android架构：</h2><ul>
+<h2><span id="android架构">Android架构：</span></h2><ul>
 <li>MVC模式</li>
 <li>MVP模式</li>
 <li>MVVM模式</li>
@@ -571,8 +610,8 @@
 <li>组件化开发</li>
 <li>跨平台开发：Flutter、ReactNative（RN未来要黄，了解一下就好）</li>
 </ul>
-<h2 id="Android优化："><a href="#Android优化：" class="headerlink" title="Android优化："></a>Android优化：</h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/android优化.jpg" alt=""></p>
-<h2 id="移动开发外围"><a href="#移动开发外围" class="headerlink" title="移动开发外围"></a>移动开发外围</h2><h4 id="服务器开发相关"><a href="#服务器开发相关" class="headerlink" title="服务器开发相关"></a>服务器开发相关</h4><ul>
+<h2><span id="android优化">Android优化：</span></h2><p><img src="/2019/01/14/Android学习路线总结（个人向）/android优化.jpg" alt=""></p>
+<h2><span id="移动开发外围">移动开发外围</span></h2><h4><span id="服务器开发相关">服务器开发相关</span></h4><ul>
 <li>SpringBoot技术</li>
 <li>Restful API开发</li>
 <li>网络协议理解：TCP/IP、HTTP/HTTPS、OSI七层协议</li>
@@ -582,7 +621,7 @@
 <li>消息队列技术</li>
 <li>监控、日志分析技术</li>
 </ul>
-<h4 id="前端开发相关"><a href="#前端开发相关" class="headerlink" title="前端开发相关"></a>前端开发相关</h4><p>前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。</p>
+<h4><span id="前端开发相关">前端开发相关</span></h4><p>前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。</p>
 <ul>
 <li>核心必备：HTML、CSS、JavaScript</li>
 <li>入门提高：浏览器兼容性、自定义UI和动效</li>
@@ -590,7 +629,7 @@
 <li>协作开发技能：包管理、模块化，工具采用 npm、webpack等</li>
 <li>高级技能：框架原理源码研究</li>
 </ul>
-<h4 id="开发调试各种工具"><a href="#开发调试各种工具" class="headerlink" title="开发调试各种工具"></a>开发调试各种工具</h4><ul>
+<h4><span id="开发调试各种工具">开发调试各种工具</span></h4><ul>
 <li>性能分析工具：Memory Monitor</li>
 <li>性能追踪及方法执行分析： TraceView</li>
 <li>视图分析：Hierarchy Viewer</li>
@@ -730,7 +769,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -741,7 +780,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -752,7 +791,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -795,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java基础："><span class="nav-number">1.1.</span> <span class="nav-text">Java基础：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java高阶："><span class="nav-number">1.2.</span> <span class="nav-text">Java高阶：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构及算法："><span class="nav-number">2.</span> <span class="nav-text">数据结构及算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构："><span class="nav-number">2.1.</span> <span class="nav-text">数据结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法："><span class="nav-number">2.2.</span> <span class="nav-text">算法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android基础："><span class="nav-number">3.</span> <span class="nav-text">Android基础：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android技术难点"><span class="nav-number">3.0.1.</span> <span class="nav-text">Android技术难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android框架层源码掌握"><span class="nav-number">3.0.2.</span> <span class="nav-text">Android框架层源码掌握</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种原理，经典第三方库源码系列"><span class="nav-number">3.0.3.</span> <span class="nav-text">各种原理，经典第三方库源码系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android进程通信以及多进程开发"><span class="nav-number">3.0.4.</span> <span class="nav-text">Android进程通信以及多进程开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android动画机制"><span class="nav-number">3.0.5.</span> <span class="nav-text">Android动画机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android绘图原理"><span class="nav-number">3.0.6.</span> <span class="nav-text">Android绘图原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android页面恢复"><span class="nav-number">3.0.7.</span> <span class="nav-text">Android页面恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合开发及Android-WebView应用"><span class="nav-number">3.0.8.</span> <span class="nav-text">混合开发及Android WebView应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradle，自动化构建，持续集成相关"><span class="nav-number">3.0.9.</span> <span class="nav-text">Gradle，自动化构建，持续集成相关</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Android系统"><span class="nav-number">4.</span> <span class="nav-text">Android系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Studio编译过程"><span class="nav-number">4.0.1.</span> <span class="nav-text">Android Studio编译过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android架构："><span class="nav-number">5.</span> <span class="nav-text">Android架构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android优化："><span class="nav-number">6.</span> <span class="nav-text">Android优化：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动开发外围"><span class="nav-number">7.</span> <span class="nav-text">移动开发外围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器开发相关"><span class="nav-number">7.0.1.</span> <span class="nav-text">服务器开发相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端开发相关"><span class="nav-number">7.0.2.</span> <span class="nav-text">前端开发相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发调试各种工具"><span class="nav-number">7.0.3.</span> <span class="nav-text">开发调试各种工具</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">Java基础：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">Java高阶：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构及算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">算法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Android基础：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Android技术难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Android框架层源码掌握</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">各种原理，经典第三方库源码系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">Android进程通信以及多进程开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">Android动画机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">Android绘图原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.7.</span> <span class="nav-text">Android页面恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.8.</span> <span class="nav-text">混合开发及Android WebView应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.9.</span> <span class="nav-text">Gradle，自动化构建，持续集成相关</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Android系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Android Studio编译过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Android架构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">Android优化：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.</span> <span class="nav-text">移动开发外围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">服务器开发相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">前端开发相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.0.3.</span> <span class="nav-text">开发调试各种工具</span></a></li></ol></li></div>
             
 
           </div>
@@ -840,7 +879,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.5k字</span>
+  <span class="post-count">博客全站共10.3k字</span>
 </div>
         
 

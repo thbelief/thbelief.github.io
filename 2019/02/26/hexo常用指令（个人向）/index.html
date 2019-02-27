@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot;articleName&amp;quot; 2.新建页面：新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件； 1$ hexo new page &amp;quot;pageName&amp;quot; 3">
+<meta name="description" content="目录：  Hexo的常用指令： 1.新建文章： 2.新建页面： 3.生成静态页面： 4.开启本地服务器的端口： 5.部署到网页上： 6.清除文件： 7.查看hexo版本： 8.复合指令： 9.卸载hexo： 10.如何安装旧版本hexo： 特殊操作：Hexo支持目录：     Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot">
 <meta name="keywords" content="搭建博客,前端,Next,Hexo,备忘,指令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo常用指令（个人向）">
 <meta property="og:url" content="http://thbelief.coding.me/2019/02/26/hexo常用指令（个人向）/index.html">
 <meta property="og:site_name" content="THBELIEF">
-<meta property="og:description" content="Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot;articleName&amp;quot; 2.新建页面：新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件； 1$ hexo new page &amp;quot;pageName&amp;quot; 3">
+<meta property="og:description" content="目录：  Hexo的常用指令： 1.新建文章： 2.新建页面： 3.生成静态页面： 4.开启本地服务器的端口： 5.部署到网页上： 6.清除文件： 7.查看hexo版本： 8.复合指令： 9.卸载hexo： 10.如何安装旧版本hexo： 特殊操作：Hexo支持目录：     Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T02:07:27.945Z">
+<meta property="og:image" content="http://thbelief.coding.me/2019/02/26/hexo常用指令（个人向）/效果.jpg">
+<meta property="og:updated_time" content="2019-02-27T13:05:40.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo常用指令（个人向）">
-<meta name="twitter:description" content="Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot;articleName&amp;quot; 2.新建页面：新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件； 1$ hexo new page &amp;quot;pageName&amp;quot; 3">
+<meta name="twitter:description" content="目录：  Hexo的常用指令： 1.新建文章： 2.新建页面： 3.生成静态页面： 4.开启本地服务器的端口： 5.部署到网页上： 6.清除文件： 7.查看hexo版本： 8.复合指令： 9.卸载hexo： 10.如何安装旧版本hexo： 特殊操作：Hexo支持目录：     Hexo的常用指令：1.新建文章：如果文章名包含空格必须加双引号，如果没有则可以不加。 1$ hexo new &amp;quot">
+<meta name="twitter:image" content="http://thbelief.coding.me/2019/02/26/hexo常用指令（个人向）/效果.jpg">
 
 
 
@@ -389,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  499
+                  643
                 </span>
               
 
@@ -426,32 +428,59 @@
       
 
       
-        <h2 id="Hexo的常用指令："><a href="#Hexo的常用指令：" class="headerlink" title="Hexo的常用指令："></a>Hexo的常用指令：</h2><h3 id="1-新建文章："><a href="#1-新建文章：" class="headerlink" title="1.新建文章："></a>1.新建文章：</h3><p>如果文章名包含空格必须加双引号，如果没有则可以不加。</p>
+        <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#hexo的常用指令">Hexo的常用指令：</a><ul>
+<li><a href="#1新建文章">1.新建文章：</a></li>
+<li><a href="#2新建页面">2.新建页面：</a></li>
+<li><a href="#3生成静态页面">3.生成静态页面：</a></li>
+<li><a href="#4开启本地服务器的端口">4.开启本地服务器的端口：</a></li>
+<li><a href="#5部署到网页上">5.部署到网页上：</a></li>
+<li><a href="#6清除文件">6.清除文件：</a></li>
+<li><a href="#7查看hexo版本">7.查看hexo版本：</a></li>
+<li><a href="#8复合指令">8.复合指令：</a></li>
+<li><a href="#9卸载hexo">9.卸载hexo：</a></li>
+<li><a href="#10如何安装旧版本hexo">10.如何安装旧版本hexo：</a></li>
+<li><a href="#特殊操作hexo支持目录">特殊操作：Hexo支持目录：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="hexo的常用指令">Hexo的常用指令：</span></h2><h3><span id="1新建文章">1.新建文章：</span></h3><p>如果文章名包含空格必须加双引号，如果没有则可以不加。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;articleName&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="2-新建页面："><a href="#2-新建页面：" class="headerlink" title="2.新建页面："></a>2.新建页面：</h3><p>新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件；</p>
+<h3><span id="2新建页面">2.新建页面：</span></h3><p>新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page &quot;pageName&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="3-生成静态页面："><a href="#3-生成静态页面：" class="headerlink" title="3.生成静态页面："></a>3.生成静态页面：</h3><p>主要是为了方便调试自己的博客，在未发布之前检查是否有问题。</p>
+<h3><span id="3生成静态页面">3.生成静态页面：</span></h3><p>主要是为了方便调试自己的博客，在未发布之前检查是否有问题。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-<h3 id="4-开启本地服务器的端口："><a href="#4-开启本地服务器的端口：" class="headerlink" title="4.开启本地服务器的端口："></a>4.开启本地服务器的端口：</h3><p>开启预览访问的端口，默认端口为4000。<br>关闭server使用 ctrl + c。</p>
+<h3><span id="4开启本地服务器的端口">4.开启本地服务器的端口：</span></h3><p>开启预览访问的端口，默认端口为4000。<br>关闭server使用 ctrl + c。</p>
 <p>本地网址如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost：4000</span><br></pre></td></tr></table></figure>
 <p>命令为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 <p>在使用hexo server 可能会遇到端口被占用的情况，不妨使用以下指令来更改端口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p 4001</span><br></pre></td></tr></table></figure>
-<h3 id="5-部署到网页上："><a href="#5-部署到网页上：" class="headerlink" title="5.部署到网页上："></a>5.部署到网页上：</h3><p>将目录下的 .deploy_git 文件夹部署到Github。<br>部署前需要预先 hexo generate 生成静态文件。</p>
+<h3><span id="5部署到网页上">5.部署到网页上：</span></h3><p>将目录下的 .deploy_git 文件夹部署到Github。<br>部署前需要预先 hexo generate 生成静态文件。</p>
 <p>关闭server使用 ctrl + c。</p>
 <p>“INFO Deploy done: git”时即表示部署已经完成。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<h3 id="6-清除文件："><a href="#6-清除文件：" class="headerlink" title="6.清除文件："></a>6.清除文件：</h3><p>清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。<br>网页正常情况下可以忽略此条命令。</p>
+<h3><span id="6清除文件">6.清除文件：</span></h3><p>清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。<br>网页正常情况下可以忽略此条命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<h3 id="7-查看hexo版本："><a href="#7-查看hexo版本：" class="headerlink" title="7.查看hexo版本："></a>7.查看hexo版本：</h3><p>查看当前使用的hexo的版本号。</p>
+<h3><span id="7查看hexo版本">7.查看hexo版本：</span></h3><p>查看当前使用的hexo的版本号。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
-<h3 id="8-复合指令："><a href="#8-复合指令：" class="headerlink" title="8.复合指令："></a>8.复合指令：</h3><p>hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。<br>hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。</p>
+<h3><span id="8复合指令">8.复合指令：</span></h3><p>hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。<br>hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。</p>
 <p>简写形式<br>hexo n #等价于 hexo new<br>hexo g #等价于 hexo generate<br>hexo s #等价于 hexo server<br>hexo d #等价于 hexo deploy<br>hexo v #等价于 hexo version</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br><span class="line">$ hexo s -d</span><br></pre></td></tr></table></figure>
-<h3 id="9-卸载hexo："><a href="#9-卸载hexo：" class="headerlink" title="9.卸载hexo："></a>9.卸载hexo：</h3><p>3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g.</p>
-<h3 id="10-如何安装旧版本hexo："><a href="#10-如何安装旧版本hexo：" class="headerlink" title="10.如何安装旧版本hexo："></a>10.如何安装旧版本hexo：</h3><p>先卸载当前版本，以2.8.3为例，执行npm install <a href="mailto:hexo@2.8.3" target="_blank" rel="noopener">hexo@2.8.3</a> -g，再初始化并安装依赖和插件。</p>
+<h3><span id="9卸载hexo">9.卸载hexo：</span></h3><p>3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g.</p>
+<h3><span id="10如何安装旧版本hexo">10.如何安装旧版本hexo：</span></h3><p>先卸载当前版本，以2.8.3为例，执行npm install <a href="mailto:hexo@2.8.3" target="_blank" rel="noopener">hexo@2.8.3</a> -g，再初始化并安装依赖和插件。</p>
+<h3><span id="特殊操作hexo支持目录">特殊操作：Hexo支持目录：</span></h3><p>1.安装hexo-toc插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-toc --save</span><br></pre></td></tr></table></figure>
+<p>2.配置站点配置文件_config.yml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  maxdepth: 5</span><br></pre></td></tr></table></figure>
+<p>3.使用：</p>
+<p>在markdown文章中加入TOC占位符即可自动生成目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- toc --&gt;</span><br></pre></td></tr></table></figure>
+<p>4.效果：</p>
+<p><img src="/2019/02/26/hexo常用指令（个人向）/效果.jpg" alt=""></p>
 
       
     </div>
@@ -513,6 +542,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/27/Java基础-初窥门径/" rel="prev" title="Java基础 初窥门径">
+                Java基础 初窥门径 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -591,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +635,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -613,7 +646,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -656,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo的常用指令："><span class="nav-number">1.</span> <span class="nav-text">Hexo的常用指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-新建文章："><span class="nav-number">1.1.</span> <span class="nav-text">1.新建文章：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-新建页面："><span class="nav-number">1.2.</span> <span class="nav-text">2.新建页面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-生成静态页面："><span class="nav-number">1.3.</span> <span class="nav-text">3.生成静态页面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-开启本地服务器的端口："><span class="nav-number">1.4.</span> <span class="nav-text">4.开启本地服务器的端口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-部署到网页上："><span class="nav-number">1.5.</span> <span class="nav-text">5.部署到网页上：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-清除文件："><span class="nav-number">1.6.</span> <span class="nav-text">6.清除文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-查看hexo版本："><span class="nav-number">1.7.</span> <span class="nav-text">7.查看hexo版本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-复合指令："><span class="nav-number">1.8.</span> <span class="nav-text">8.复合指令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-卸载hexo："><span class="nav-number">1.9.</span> <span class="nav-text">9.卸载hexo：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-如何安装旧版本hexo："><span class="nav-number">1.10.</span> <span class="nav-text">10.如何安装旧版本hexo：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo的常用指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.新建文章：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.新建页面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.生成静态页面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.开启本地服务器的端口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.部署到网页上：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.清除文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.查看hexo版本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.8.</span> <span class="nav-text">8.复合指令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.9.</span> <span class="nav-text">9.卸载hexo：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.10.</span> <span class="nav-text">10.如何安装旧版本hexo：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.11.</span> <span class="nav-text">特殊操作：Hexo支持目录：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -701,7 +734,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.5k字</span>
+  <span class="post-count">博客全站共10.3k字</span>
 </div>
         
 
