@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址：chrome://inspect 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今">
+<meta name="description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址： 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今天在调试一个有关于SQLite数">
 <meta name="keywords" content="Android,SQLite,调试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="真机调试时如何用Androidstudio查询SQLite数据库">
 <meta property="og:url" content="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/index.html">
 <meta property="og:site_name" content="THBELIEF">
-<meta property="og:description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址：chrome://inspect 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今">
+<meta property="og:description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址： 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今天在调试一个有关于SQLite数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg">
 <meta property="og:image" content="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg">
-<meta property="og:updated_time" content="2019-02-27T13:01:10.384Z">
+<meta property="og:updated_time" content="2019-03-04T12:25:27.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="真机调试时如何用Androidstudio查询SQLite数据库">
-<meta name="twitter:description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址：chrome://inspect 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今">
+<meta name="twitter:description" content="目录：  前言： 1.首先在app对应下的build.gradle里面添加下面依赖： 2.自定义一个MyApplication继承Application，在onCreate中初始化stetho： 3.修改下列相关： 4.打开Chrome浏览器，输入网址： 5.点击弹出的网页Resource-&amp;gt;Web SQL即可看到，下面是我的数据库显示情况：     前言：今天在调试一个有关于SQLite数">
 <meta name="twitter:image" content="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg">
 
 
@@ -424,7 +424,7 @@
 <li><a href="#1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</a></li>
 <li><a href="#2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</a></li>
 <li><a href="#3修改下列相关">3.修改下列相关：</a></li>
-<li><a href="#4打开chrome浏览器输入网址chromeinspectchromeinspect">4.打开Chrome浏览器，输入网址：<a href="chrome://inspect" target="_blank" rel="noopener">chrome://inspect</a></a></li>
+<li><a href="#4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</a></li>
 <li><a href="#5点击弹出的网页resource-web-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</a></li>
 </ul>
 </li>
@@ -436,7 +436,8 @@
 <h3><span id="2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void init()&#123;</span><br><span class="line">        Stetho.initializeWithDefaults(this);</span><br><span class="line">        new OkHttpClient.Builder()</span><br><span class="line">                .addNetworkInterceptor(new StethoInterceptor())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="3修改下列相关">3.修改下列相关：</span></h3><p>在AndroidManifest.xml中修改android:name=”.MyApplication”</p>
 <p>然后运行app到手机上即可。</p>
-<h3><span id="4打开chrome浏览器输入网址chromeinspect">4.打开Chrome浏览器，输入网址：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
+<h3><span id="4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://inspect</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
 <p>操作好之后就是显示手机型号，下面有一个inspect直接点击即可。</p>
 <h3><span id="5点击弹出的网页resource-gtweb-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg" alt=""></p>
 <p>这样就很简单啦，又方便又快捷！</p>
