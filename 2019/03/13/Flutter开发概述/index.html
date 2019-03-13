@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flutter,概述,Dart,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录：  1.Dart语言的简介： 1）var 2）dynamic与Object 3）final与const 4）函数 函数声明 简写语法 函数作为变量 函数作为参数 可选位置参数 可选命名参数   5）异步编程 Future Future.then Future.catchError Future.whenComlete Future.wait   Async/await 回调地狱（Callba">
+<meta name="keywords" content="Flutter,概述,Dart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter开发概述">
+<meta property="og:url" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/index.html">
+<meta property="og:site_name" content="THBELIEF">
+<meta property="og:description" content="目录：  1.Dart语言的简介： 1）var 2）dynamic与Object 3）final与const 4）函数 函数声明 简写语法 函数作为变量 函数作为参数 可选位置参数 可选命名参数   5）异步编程 Future Future.then Future.catchError Future.whenComlete Future.wait   Async/await 回调地狱（Callba">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E8%AE%A1%E6%95%B0%E5%99%A8.jpg">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E8%B7%AF%E7%94%B1.jpg">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/Pub.jpg">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E4%B8%8B%E8%BD%BD%E5%8C%85.jpg">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/androidappicon.jpg">
+<meta property="og:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/iosappicon.jpg">
+<meta property="og:updated_time" content="2019-03-13T13:31:58.881Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter开发概述">
+<meta name="twitter:description" content="目录：  1.Dart语言的简介： 1）var 2）dynamic与Object 3）final与const 4）函数 函数声明 简写语法 函数作为变量 函数作为参数 可选位置参数 可选命名参数   5）异步编程 Future Future.then Future.catchError Future.whenComlete Future.wait   Async/await 回调地狱（Callba">
+<meta name="twitter:image" content="http://thbelief.coding.me/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E8%AE%A1%E6%95%B0%E5%99%A8.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://thbelief.coding.me/2019/03/13/Flutter开发概述/">
+
+
+
+
+
+  <title>Flutter开发概述 | THBELIEF</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">THBELIEF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Thbelief's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/13/Flutter开发概述/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter开发概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T21:21:54+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  35
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#1dart语言的简介">1.Dart语言的简介：</a><ul>
+<li><a href="#1var">1）var</a></li>
+<li><a href="#2dynamic与object">2）dynamic与Object</a></li>
+<li><a href="#3final与const">3）final与const</a></li>
+<li><a href="#4函数">4）函数</a><ul>
+<li><a href="#函数声明">函数声明</a></li>
+<li><a href="#简写语法">简写语法</a></li>
+<li><a href="#函数作为变量">函数作为变量</a></li>
+<li><a href="#函数作为参数">函数作为参数</a></li>
+<li><a href="#可选位置参数">可选位置参数</a></li>
+<li><a href="#可选命名参数">可选命名参数</a></li>
+</ul>
+</li>
+<li><a href="#5异步编程">5）异步编程</a><ul>
+<li><a href="#future">Future</a><ul>
+<li><a href="#futurethen">Future.then</a></li>
+<li><a href="#futurecatcherror">Future.catchError</a></li>
+<li><a href="#futurewhencomlete">Future.whenComlete</a></li>
+<li><a href="#futurewait">Future.wait</a></li>
+</ul>
+</li>
+<li><a href="#asyncawait">Async/await</a><ul>
+<li><a href="#回调地狱callback-hell">回调地狱（Callback hell）</a></li>
+<li><a href="#使用future消除callback-hell">使用Future消除callback hell</a></li>
+<li><a href="#使用asyncawait消除callback-hell">使用async/await消除callback hell</a></li>
+</ul>
+</li>
+<li><a href="#stream">Stream</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2flutter简单实例">2.Flutter简单实例</a><ul>
+<li><a href="#1计数器">1）计数器</a><ul>
+<li><a href="#分析">分析</a><ul>
+<li><a href="#导入包">导入包</a></li>
+<li><a href="#应用入口">应用入口</a></li>
+<li><a href="#应用结构">应用结构</a></li>
+<li><a href="#应用首页">应用首页</a></li>
+<li><a href="#为什么要将build方法放在state中而不是放在statefulwidget中">为什么要将build方法放在State中，而不是放在StatefulWidget中？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2路由">2）路由</a><ul>
+<li><a href="#示例">示例</a><ul>
+<li><a href="#创建一个新路由命名newroute">创建一个新路由，命名“NewRoute”</a></li>
+<li><a href="#在_myhomepagestatebuild方法中的column的子widget中添加一个按钮flatbutton">在_MyHomePageState.build方法中的Column的子widget中添加一个按钮（FlatButton）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#materialpageroute">MaterialPageRoute</a></li>
+<li><a href="#navigator">Navigator</a><ul>
+<li><a href="#future-pushbuildcontext-context-route-route">Future push(BuildContext context, Route route)</a></li>
+<li><a href="#bool-popbuildcontext-context-result">bool pop(BuildContext context, [ result ])</a></li>
+</ul>
+</li>
+<li><a href="#命名路由">命名路由</a><ul>
+<li><a href="#路由表">路由表</a></li>
+<li><a href="#注册路由表">注册路由表</a></li>
+<li><a href="#通过路由名打开新路由页">通过路由名打开新路由页</a></li>
+<li><a href="#优缺点">优缺点</a></li>
+</ul>
+</li>
+<li><a href="#3包管理">3）包管理：</a><ul>
+<li><a href="#pub仓库">Pub仓库</a></li>
+<li><a href="#其它依赖方式">其它依赖方式</a><ul>
+<li><a href="#依赖本地包">依赖本地包</a></li>
+<li><a href="#依赖git">依赖Git</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4资源管理">4）资源管理</a><ul>
+<li><a href="#指定-assets">指定 assets</a></li>
+<li><a href="#asset-变体variant">Asset 变体（variant）</a></li>
+<li><a href="#加载-assets">加载 assets</a><ul>
+<li><a href="#加载文本assets">加载文本assets</a></li>
+<li><a href="#加载图片">加载图片</a><ul>
+<li><a href="#声明分辨率相关的图片-assets">声明分辨率相关的图片 assets</a></li>
+</ul>
+</li>
+<li><a href="#依赖包中的资源图片">依赖包中的资源图片</a><ul>
+<li><a href="#打包包中的-assets">打包包中的 assets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#特定平台-assets">特定平台 assets</a><ul>
+<li><a href="#设置app图标">设置APP图标</a></li>
+<li><a href="#更新启动页">更新启动页</a></li>
+<li><a href="#android">Android</a></li>
+<li><a href="#ios">iOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5调试flutter-app">5）调试Flutter APP</a></li>
+<li><a href="#6dart线程模式以及异常捕捉">6）Dart线程模式以及异常捕捉</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<p>前言：最近实验室师兄叫我们多去了解了解一下flutter，顺带的学习一下Dart语言，这篇博客就记录一下学习过程中遇到的一些我觉得比较有意思的东西。然后就是为后面自己想写的一个东西做点儿准备。</p>
+<h2><span id="1dart语言的简介">1.Dart语言的简介：</span></h2><h3><span id="1var">1）var</span></h3><p>这个词不陌生了，用写脚本的时候用到的JS里面就有这个。</p>
+<p>Dart语言里面和那个类似，只是需要注意不同的是：它可以接受任何类型的变量，但是在Dart里面，var变量一旦赋值之后，类型就确定了，以后无法更改，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var t;</span><br><span class="line">t=&quot;hello world&quot;;</span><br><span class="line">// 下面代码在dart中会报错，因为变量t的类型已经确定为String，</span><br><span class="line">// 类型一旦确定后则不能再更改其类型。</span><br><span class="line">t=1;</span><br></pre></td></tr></table></figure>
+<h3><span id="2dynamic与object">2）dynamic与Object</span></h3><p><code>Object</code> 是dart所有对象的根基类，也就是说所有类型都是<code>Object</code>的子类(包括Function和Null)，所以任何类型的数据都可以赋值给<code>Object</code>声明的对象. </p>
+<p><code>dynamic</code>与<code>var</code>一样都是关键词,声明的变量可以赋值任意对象.<code>dynamic</code>与<code>var</code>不同之处在于,<code>dynamic</code>与<code>Object</code>声明的变量一样都可以在后期改变赋值类型.</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dynamic t;</span><br><span class="line">Object x;</span><br><span class="line">t = &quot;Hello world&quot;;</span><br><span class="line">x = &apos;Hello Object&apos;;</span><br><span class="line">//下面代码没有问题</span><br><span class="line">t = 1000;</span><br><span class="line">x = 1000;</span><br></pre></td></tr></table></figure>
+<p><code>dynamic</code>与<code>Object</code>不同的是,<code>dynamic</code>声明的对象编译器会提供所有可能的组合, <code>Object</code>声明的对象只能使用Object的属性与方法, 否则编译器会报错. 例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dynamic a;</span><br><span class="line">Object b;</span><br><span class="line">main() &#123;</span><br><span class="line">    a = &quot;&quot;;</span><br><span class="line">    b = &quot;&quot;;</span><br><span class="line">    printLengths();</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">printLengths() &#123;</span><br><span class="line">    // no warning</span><br><span class="line">    print(a.length);</span><br><span class="line">    // warning:</span><br><span class="line">    // The getter &apos;length&apos; is not defined for the class &apos;Object&apos;</span><br><span class="line">    print(b.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="3final与const">3）final与const</span></h3><p>这个final很多编程语言里面都有，意思都是大同小异。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//可以省略String这个类型声明</span><br><span class="line">final str = &quot;hello world&quot;;</span><br><span class="line">//final String str = &quot;hi world&quot;; </span><br><span class="line">const str1 = &quot;hello world&quot;;</span><br><span class="line">//const String str1 = &quot;hi world&quot;;</span><br></pre></td></tr></table></figure>
+<h3><span id="4函数">4）函数</span></h3><p>Dart是一种真正的<strong>面向对象</strong>的语言，所以即使是函数也是<strong>对象</strong>，并且有一个类型<strong>Function</strong>。这意味着函数可以赋值给变量或作为参数传递给其他函数，这是函数式编程的典型特征。</p>
+<h4><span id="函数声明">函数声明</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool isNoble(int atomicNumber) &#123;</span><br><span class="line">  return _nobleGases[atomicNumber] != null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>dart函数声明如果没有显式声明返回值类型时会默认当做<code>dynamic</code>处理，注意，函数返回值没有类型推断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef bool CALLBACK();</span><br><span class="line"></span><br><span class="line">//不指定返回类型，此时默认为dynamic，不是bool</span><br><span class="line">isNoble(int atomicNumber) &#123;</span><br><span class="line">  return _nobleGases[atomicNumber] != null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test(CALLBACK cb)&#123;</span><br><span class="line">   print(cb()); </span><br><span class="line">&#125;</span><br><span class="line">//报错，isNoble不是bool类型</span><br><span class="line">test(isNoble);</span><br></pre></td></tr></table></figure>
+<h4><span id="简写语法">简写语法</span></h4><p>当只包含一个表达式的时候，函数可以简写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool isNoble （int atomicNumber ）=&gt; _nobleGases [ atomicNumber ] ！= null ;</span><br></pre></td></tr></table></figure>
+<h4><span id="函数作为变量">函数作为变量</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var say= (str)&#123;</span><br><span class="line">  print(str);</span><br><span class="line">&#125;;</span><br><span class="line">say(&quot;hello world&quot;);</span><br></pre></td></tr></table></figure>
+<h4><span id="函数作为参数">函数作为参数</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void execute(var callback)&#123;</span><br><span class="line">    callback();</span><br><span class="line">&#125;</span><br><span class="line">execute(()=&gt;print(&quot;xxx&quot;))</span><br></pre></td></tr></table></figure>
+<h4><span id="可选位置参数">可选位置参数</span></h4><p>包装一组函数参数，用[]标记为可选位置参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String say(String from, String msg, [String device]) &#123;</span><br><span class="line">  var result = &apos;$from says $msg&apos;;</span><br><span class="line">  if (device != null) &#123;</span><br><span class="line">    result = &apos;$result with a $device&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个不带可选参数调用此函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say(&apos;Bob&apos;, &apos;Howdy&apos;); //结果是： Bob says Howdy</span><br></pre></td></tr></table></figure>
+<p>用第三个参数调用此函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say(&apos;Bob&apos;, &apos;Howdy&apos;, &apos;smoke signal&apos;); //结果是：Bob says Howdy with a smoke signal</span><br></pre></td></tr></table></figure>
+<h4><span id="可选命名参数">可选命名参数</span></h4><p>定义函数时，使用{param1, param2, …}，用于指定命名参数。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//设置[bold]和[hidden]标志</span><br><span class="line">void enableFlags(&#123;bool bold, bool hidden&#125;) &#123;</span><br><span class="line">    // ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用函数时，可以使用指定命名参数。例如：<code>paramName: value</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enableFlags(bold: true, hidden: false);</span><br></pre></td></tr></table></figure>
+<h3><span id="5异步编程">5）异步编程</span></h3><p>Dart类库有非常多的返回<code>Future</code>或者<code>Stream</code>对象的函数。 这些函数被称为<strong>异步函数</strong>：它们只会在设置好一些耗时操作之后返回，比如像 IO操作。而不是等到这个操作完成。</p>
+<h4><span id="future">Future</span></h4><p>表示一个异步操作的最终完成（或失败）及其结果值的表示。简单来说，它就是用于处理<strong>异步操作</strong>的，异步处理成功了就执行成功的操作，异步处理失败了就捕获错误或者停止后续操作。一个Future<strong>只会对应一个结果</strong>，要么成功，要么失败。</p>
+<p>注意：<strong>Future</strong>所有的API返回值依然是一个Future对象，由此可以很方便的进行链式调用！</p>
+<h5><span id="futurethen">Future.then</span></h5><p>为了方便演示，使用<code>Future.delayed</code> 创建了一个延时任务（实际场景会是一个真正的耗时任务，比如一次网络请求），即2秒后返回结果字符串”hello world!”，然后在<code>then</code>中接收异步结果并打印结果，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Future.delayed(new Duration(seconds: 2),()&#123;</span><br><span class="line">   return &quot;hello world!&quot;;</span><br><span class="line">&#125;).then((data)&#123;</span><br><span class="line">   print(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5><span id="futurecatcherror">Future.catchError</span></h5><p>这个API是用来捕获错误的，当异步任务发生错误的时候。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Future.delayed(new Duration(seconds: 2),()&#123;</span><br><span class="line">   //return &quot;hello world!&quot;;</span><br><span class="line">   throw AssertionError(&quot;Error&quot;);  </span><br><span class="line">&#125;).then((data)&#123;</span><br><span class="line">   //执行成功会走到这里  </span><br><span class="line">   print(&quot;success&quot;);</span><br><span class="line">&#125;).catchError((e)&#123;</span><br><span class="line">   //执行失败会走到这里  </span><br><span class="line">   print(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>还有一个<strong>onError</strong>也可以捕捉异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Future.delayed(new Duration(seconds: 2), () &#123;</span><br><span class="line">    //return &quot;hello world!&quot;;</span><br><span class="line">    throw AssertionError(&quot;Error&quot;);</span><br><span class="line">&#125;).then((data) &#123;</span><br><span class="line">    print(&quot;success&quot;);</span><br><span class="line">&#125;, onError: (e) &#123;</span><br><span class="line">    print(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5><span id="futurewhencomlete">Future.whenComlete</span></h5><p>有时候会遇到无论异步任务执行成功或失败都需要做一些事的场景，比如在网络请求前弹出加载对话框，在请求结束后关闭对话框。这种场景，有两种方法，第一种是分别在<code>then</code>或<code>catch</code>中关闭一下对话框，第二种就是使用<code>Future</code>的<code>whenComplete</code>回调。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Future.delayed(new Duration(seconds: 2),()&#123;</span><br><span class="line">   //return &quot;hello world!&quot;;</span><br><span class="line">   throw AssertionError(&quot;Error&quot;);</span><br><span class="line">&#125;).then((data)&#123;</span><br><span class="line">   //执行成功会走到这里 </span><br><span class="line">   print(data);</span><br><span class="line">&#125;).catchError((e)&#123;</span><br><span class="line">   //执行失败会走到这里   </span><br><span class="line">   print(e);</span><br><span class="line">&#125;).whenComplete(()&#123;</span><br><span class="line">   //无论成功或失败都会走到这里</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5><span id="futurewait">Future.wait</span></h5><p>有些时候需要等待多个异步任务都执行结束后才进行一些操作，比如我们有一个界面，需要先分别从两个网络接口获取数据，获取成功后，我们需要将两个接口数据进行特定的处理后再显示到UI界面上，应该怎么做？答案是<code>Future.wait</code>，它接受一个<code>Future</code>数组参数，只有数组中所有<code>Future</code>都执行成功后，才会触发<code>then</code>的成功回调，只要有一个<code>Future</code>执行失败，就会触发错误回调。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Future.wait([</span><br><span class="line">  // 2秒后返回结果  </span><br><span class="line">  Future.delayed(new Duration(seconds: 2), () &#123;</span><br><span class="line">    return &quot;hello&quot;;</span><br><span class="line">  &#125;),</span><br><span class="line">  // 4秒后返回结果  </span><br><span class="line">  Future.delayed(new Duration(seconds: 4), () &#123;</span><br><span class="line">    return &quot; world&quot;;</span><br><span class="line">  &#125;)</span><br><span class="line">]).then((results)&#123;</span><br><span class="line">  print(results[0]+results[1]);</span><br><span class="line">&#125;).catchError((e)&#123;</span><br><span class="line">  print(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>执行代码之后，几秒之后你会看到helloworld？答案是4秒。</p>
+<h4><span id="asyncawait">Async/await</span></h4><p>Dart中的<code>async/await</code> 和JavaScript中的<code>async/await</code>功能和用法是一模一样的，学过JS的可以直接跳过。</p>
+<h5><span id="回调地狱callback-hell">回调地狱（Callback hell）</span></h5><p>如果代码中有大量异步逻辑，并且出现大量异步任务依赖其它异步任务的结果时，必然会出现<code>Future.then</code>回调中套回调情况。举个例子，比如现在有个需求场景是用户先登录，登录成功后会获得用户Id，然后通过用户Id，再去请求用户个人信息，获取到用户个人信息后，为了使用方便，就需要将其缓存在本地文件系统。</p>
+<p>过多的嵌套会导致的代码可读性下降以及出错率提高，并且非常难维护，这个问题被形象的称为<strong>回调地狱（Callback hell）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//先分别定义各个异步任务</span><br><span class="line">Future&lt;String&gt; login(String userName, String pwd)&#123;</span><br><span class="line">    ...</span><br><span class="line">    //用户登录</span><br><span class="line">&#125;;</span><br><span class="line">Future&lt;String&gt; getUserInfo(String id)&#123;</span><br><span class="line">    ...</span><br><span class="line">    //获取用户信息 </span><br><span class="line">&#125;;</span><br><span class="line">Future saveUserInfo(String userInfo)&#123;</span><br><span class="line">    ...</span><br><span class="line">    // 保存用户信息 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>接下来就是整个任务流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">login(&quot;thbelief&quot;,&quot;******&quot;).then((id)&#123;</span><br><span class="line"> //登录成功后通过，id获取用户信息    </span><br><span class="line"> getUserInfo(id).then((userInfo)&#123;</span><br><span class="line">    //获取用户信息后保存 </span><br><span class="line">    saveUserInfo(userInfo).then(()&#123;</span><br><span class="line">       //保存用户信息，接下来执行其它操作</span><br><span class="line">        ...</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5><span id="使用future消除callback-hell">使用Future消除callback hell</span></h5><p><strong>Future</strong> 的所有API的返回值仍然是一个Future对象，所以可以很方便的进行链式调用 ，如果在then中返回的是一个<code>Future</code>的话，该<code>future</code>会执行，执行结束后会触发后面的<code>then</code>回调，这样依次向下，就避免了层层嵌套。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">login(&quot;alice&quot;,&quot;******&quot;).then((id)&#123;</span><br><span class="line">      return getUserInfo(id);</span><br><span class="line">&#125;).then((userInfo)&#123;</span><br><span class="line">    return saveUserInfo(userInfo);</span><br><span class="line">&#125;).then((e)&#123;</span><br><span class="line">   //执行接下来的操作 </span><br><span class="line">&#125;).catchError((e)&#123;</span><br><span class="line">  //错误处理  </span><br><span class="line">  print(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5><span id="使用asyncawait消除callback-hell">使用async/await消除callback hell</span></h5><p>通过<code>Future</code>回调中再返回<code>Future</code>的方式虽然能避免层层嵌套，但是还是有一层回调，这就要使用<code>async/await</code>了。</p>
+<ul>
+<li><code>async</code>用来表示函数是异步的，定义的函数会返回一个<code>Future</code>对象，可以使用then方法添加回调函数。</li>
+<li><code>await</code> 后面是一个<code>Future</code>，表示等待该异步任务完成，异步完成后才会往下走；<code>await</code>必须出现在 <code>async</code>函数内部。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">task() async &#123;</span><br><span class="line">   try&#123;</span><br><span class="line">    String id = await login(&quot;alice&quot;,&quot;******&quot;);</span><br><span class="line">    String userInfo = await getUserInfo(id);</span><br><span class="line">    await saveUserInfo(userInfo);</span><br><span class="line">    //执行接下来的操作   </span><br><span class="line">   &#125; catch(e)&#123;</span><br><span class="line">    //错误处理   </span><br><span class="line">    print(e);   </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="stream">Stream</span></h4><p><code>Stream</code> 也是用于接收异步事件数据，和<code>Future</code> 不同的是，它可以接收多个异步操作的结果（成功或失败）。 也就是说，在执行异步任务时，可以通过多次触发成功或失败事件来传递结果数据或错误异常。 <code>Stream</code> 常用于会多次读取数据的异步任务场景，如网络内容下载、文件读写等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Stream.fromFutures([</span><br><span class="line">  // 1秒后返回结果</span><br><span class="line">  Future.delayed(new Duration(seconds: 1), () &#123;</span><br><span class="line">    return &quot;hello 1&quot;;</span><br><span class="line">  &#125;),</span><br><span class="line">  // 抛出一个异常</span><br><span class="line">  Future.delayed(new Duration(seconds: 2),()&#123;</span><br><span class="line">    throw AssertionError(&quot;Error&quot;);</span><br><span class="line">  &#125;),</span><br><span class="line">  // 3秒后返回结果</span><br><span class="line">  Future.delayed(new Duration(seconds: 3), () &#123;</span><br><span class="line">    return &quot;hello 3&quot;;</span><br><span class="line">  &#125;)</span><br><span class="line">]).listen((data)&#123;</span><br><span class="line">   print(data);</span><br><span class="line">&#125;, onError: (e)&#123;</span><br><span class="line">   print(e.message);</span><br><span class="line">&#125;,onDone: ()&#123;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I/flutter (17666): hello 1</span><br><span class="line">I/flutter (17666): Error</span><br><span class="line">I/flutter (17666): hello 3</span><br></pre></td></tr></table></figure>
+<h2><span id="2flutter简单实例">2.Flutter简单实例</span></h2><h3><span id="1计数器">1）计数器</span></h3><p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E8%AE%A1%E6%95%B0%E5%99%A8.jpg" alt=""></p>
+<p><strong>lib/main.dart</strong>中的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br><span class="line"></span><br><span class="line">void main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line">  // This widget is the root of your application.</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &apos;Flutter Demo&apos;,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      home: MyHomePage(title: &apos;Flutter Demo Home Page&apos;),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyHomePage extends StatefulWidget &#123;</span><br><span class="line">  MyHomePage(&#123;Key key, this.title&#125;) : super(key: key);</span><br><span class="line"></span><br><span class="line">  final String title;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _MyHomePageState createState() =&gt; _MyHomePageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;</span><br><span class="line">  int _counter = 0;</span><br><span class="line"></span><br><span class="line">  void _incrementCounter() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _counter++;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(widget.title),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              &apos;You have pushed the button this many times:&apos;,</span><br><span class="line">            ),</span><br><span class="line">            Text(</span><br><span class="line">              &apos;$_counter&apos;,</span><br><span class="line">              style: Theme.of(context).textTheme.display1,</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: _incrementCounter,</span><br><span class="line">        tooltip: &apos;Increment&apos;,</span><br><span class="line">        child: Icon(Icons.add),</span><br><span class="line">      ), // This trailing comma makes auto-formatting nicer for build methods.</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5><span id="分析">分析</span></h5><h6><span id="导入包">导入包</span></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;package:flutter/material.dart&apos;;</span><br></pre></td></tr></table></figure>
+<p>作用是导入了Material UI组件库。<a href="https://material.io/guidelines/" target="_blank" rel="noopener">Material</a>是一种标准的移动端和web端的视觉设计语言， Flutter默认提供了一套丰富的Material风格的UI组件。</p>
+<h6><span id="应用入口">应用入口</span></h6><ul>
+<li>与C/C++、Java类似，Flutter 应用中<strong>main函数</strong>为应用程序的入口，main函数中调用了<code>runApp</code> 方法，它的功能是启动Flutter应用，它接受一个<code>Widget</code>参数，在本示例中它是<code>MyApp</code>类的一个实例，该参数代表Flutter应用。</li>
+<li>main函数使用了(<code>=&gt;</code>)符号，这是Dart中<strong>单行函数或方法</strong>的简写。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void main() =&gt; runApp(new MyApp());</span><br></pre></td></tr></table></figure>
+<h6><span id="应用结构">应用结构</span></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return new MaterialApp(</span><br><span class="line">      //应用名称  </span><br><span class="line">      title: &apos;Flutter Demo&apos;, </span><br><span class="line">      theme: new ThemeData(</span><br><span class="line">        //蓝色主题  </span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      //应用首页路由  </span><br><span class="line">      home: new MyHomePage(title: &apos;Flutter Demo Home Page&apos;),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>MyApp</code>类代表Flutter应用，它继承了 <code>StatelessWidget</code>类，这也就意味着应用本身也是一个widget。</li>
+<li>在Flutter中，大多数东西都是widget，包括对齐(alignment)、填充(padding)和布局(layout)。</li>
+<li>Flutter在构建页面时，会调用组件的<code>build</code>方法，widget的主要工作是提供一个build()方法来描述如何构建UI界面（通常是通过组合、拼装其它基础widget）。</li>
+<li><code>MaterialApp</code> 是Material库中提供的Flutter APP框架，通过它可以设置应用的名称、主题、语言、首页及路由列表等。<code>MaterialApp</code>也是一个widget。</li>
+<li><code>Scaffold</code> 是Material库中提供的页面脚手架，它包含导航栏和Body以及FloatingActionButton（如果需要的话）。 本书后面示例中，路由默认都是通过<code>Scaffold</code>创建。</li>
+<li><code>home</code> 为Flutter应用的首页，它也是一个widget。</li>
+</ul>
+<h6><span id="应用首页">应用首页</span></h6><p><code>MyHomePage</code> 是应用的首页，它继承自<code>StatefulWidget</code>类，表示它是一个有状态的widget（Stateful widget）。现在，我们可以简单认为Stateful widget 和Stateless widget有两点不同：</p>
+<ol>
+<li><p>Stateful widget可以拥有状态，这些状态在widget生命周期中是可以变的，而Stateless widget是不可变的。</p>
+</li>
+<li><p>Stateful widget至少由两个类组成：</p>
+<ul>
+<li>一个<code>StatefulWidget</code>类。</li>
+<li>一个 State类； <code>StatefulWidget</code>类本身是不变的，但是 State类中持有的状态在widget生命周期中可能会发生变化。</li>
+</ul>
+<p><code>_MyHomePageState</code>类是<code>MyHomePage</code>类对应的状态类。和<code>MyApp</code> 类不同， <code>MyHomePage</code>类中并没有<code>build</code>方法，取而代之的是，<code>build</code>方法被挪到了<code>_MyHomePageState</code>方法中，理由在后面说。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class MyHomePage extends StatefulWidget &#123;</span><br><span class="line">  MyHomePage(&#123;Key key, this.title&#125;) : super(key: key);</span><br><span class="line">  final String title;</span><br><span class="line">  @override</span><br><span class="line">  _MyHomePageState createState() =&gt; new _MyHomePageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>_MyHomePageState中都包含哪些东西？</p>
+<p>状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int _counter = 0;//_counter这里是保存屏幕右下角带“+”号按钮点击次数的状态。</span><br></pre></td></tr></table></figure>
+<p>设置状态的自增函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void _incrementCounter() &#123;</span><br><span class="line">  setState(() &#123;</span><br><span class="line">     _counter++;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当按钮点击时，会调用此函数，该函数的作用是先自增<code>_counter</code>，然后调用<code>setState</code> 方法。<code>setState</code>方法的作用是通知Flutter框架，有状态发生了改变，Flutter框架收到通知后，会执行<code>build</code>方法来根据新的状态重新构建界面， Flutter 对此方法做了优化，使重新执行变的很快，所以你可以重新构建任何需要更新的东西，而无需分别去修改各个widget。</p>
+<p>构建UI界面：</p>
+<p>构建UI界面的逻辑在<code>build</code>方法中，当<code>MyHomePage</code>第一次创建时，<code>_MyHomePageState</code>类会被创建，当初始化完成后，Flutter框架会调用Widget的<code>build</code>方法来构建widget树，最终将widget树渲染到设备屏幕上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">   return new Scaffold(</span><br><span class="line">     appBar: new AppBar(</span><br><span class="line">       title: new Text(widget.title),</span><br><span class="line">     ),</span><br><span class="line">     body: new Center(</span><br><span class="line">       child: new Column(</span><br><span class="line">         mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">         children: &lt;Widget&gt;[</span><br><span class="line">           new Text(</span><br><span class="line">             &apos;You have pushed the button this many times:&apos;,</span><br><span class="line">           ),</span><br><span class="line">           new Text(</span><br><span class="line">             &apos;$_counter&apos;,</span><br><span class="line">             style: Theme.of(context).textTheme.display1,</span><br><span class="line">           ),</span><br><span class="line">         ],</span><br><span class="line">       ),</span><br><span class="line">     ),</span><br><span class="line">     floatingActionButton: new FloatingActionButton(</span><br><span class="line">       onPressed: _incrementCounter,</span><br><span class="line">       tooltip: &apos;Increment&apos;,</span><br><span class="line">       child: new Icon(Icons.add),</span><br><span class="line">     ),</span><br><span class="line">   );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Scaffold 是 Material库中提供的一个widget, 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性。widget树可以很复杂。</li>
+<li>body的widget树中包含了一个<code>Center</code> widget，<code>Center</code> 可以将其子widget树对齐到屏幕中心， <code>Center</code>子widget是一个<code>Column</code> widget，<code>Column</code>的作用是将其所有子widget沿屏幕垂直方向依次排列， 此例中<code>Column</code>包含两个 <code>Text</code>子widget，第一个<code>Text</code> widget显示固定文本 “You have pushed the button this many times:”，第二个<code>Text</code> widget显示<code>_counter</code>状态的数值。</li>
+<li>floatingActionButton是页面右下角的带“+”的悬浮按钮，它的<code>onPressed</code>属性接受一个回调函数，代表它本点击后的处理器，本例中直接将<code>_incrementCounter</code>作为其处理函数。</li>
+</ul>
+<p>整个流程：</p>
+<p>当右下角的floatingActionButton按钮被点击之后，会调用<code>_incrementCounter</code>，在<code>_incrementCounter</code>中，首先会自增<code>_counter</code>计数器（状态），然后<code>setState</code>会通知Flutter框架状态发生变化，接着，Flutter会调用<code>build</code>方法以新的状态重新构建UI，最终显示在设备屏幕上。</p>
+<h6><span id="为什么要将build方法放在state中而不是放在statefulwidget中">为什么要将build方法放在State中，而不是放在StatefulWidget中？</span></h6><p>状态访问不便：</p>
+<p>试想一下，如果我们的Stateful widget 有很多状态，而每次状态改变都要调用<code>build</code>方法，由于状态是保存在State中的，如果将<code>build</code>方法放在StatefulWidget中，那么构建时读取状态将会很不方便，试想一下，如果真的将<code>build</code>方法放在StatefulWidget中的话，由于构建用户界面过程需要依赖State，所以<code>build</code>方法将必须加一个<code>State</code>参数。</p>
+<p>这样的话就只能将State的所有状态声明为公开的状态，这样才能在State类外部访问状态，但将状态设置为公开后，状态将不再具有私密性，这样依赖，对状态的修改将会变的不可控。将<code>build()</code>方法放在State中的话，构建过程则可以直接访问状态，这样会很方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context, State state)&#123;</span><br><span class="line">     //state.counter</span><br><span class="line">     ...</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>继承StatefulWidget不便：</p>
+<p>例如，Flutter中有一个动画widget的基类<code>AnimatedWidget</code>，它继承自<code>StatefulWidget</code>类。<code>AnimatedWidget</code>中引入了一个抽象方法<code>build(BuildContext context)</code>，继承自<code>AnimatedWidget</code>的动画widget都要实现这个<code>build</code>方法。现在设想一下，如果<code>StatefulWidget</code> 类中已经有了一个<code>build</code>方法，正如上面所述，此时<code>build</code>方法需要接收一个state对象，这就意味着<code>AnimatedWidget</code>必须将自己的State对象(记为_animatedWidgetState)提供给其子类，因为子类需要在其<code>build</code>方法中调用父类的<code>build</code>方法。</p>
+<p>这样很显然是不合理的，因为</p>
+<ol>
+<li><code>AnimatedWidget</code>的状态对象是<code>AnimatedWidget</code>内部实现细节，不应该暴露给外部。</li>
+<li>如果要将父类状态暴露给子类，那么必须得有一种传递机制，而做这一套传递机制是无意义的，因为父子类之间状态的传递和子类本身逻辑是无关的。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class MyAnimationWidget extends AnimatedWidget&#123;</span><br><span class="line">    @override</span><br><span class="line">    Widget build(BuildContext context, State state)&#123;</span><br><span class="line">      //由于子类要用到AnimatedWidget的状态对象_animatedWidgetState，</span><br><span class="line">      //所以AnimatedWidget必须通过某种方式将其状态对象_animatedWidgetState</span><br><span class="line">      //暴露给其子类   </span><br><span class="line">      super.build(context, _animatedWidgetState)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="2路由">2）路由</span></h3><p>route在Android中通常指一个Activity，在iOS中指一个ViewController。所谓路由管理，就是管理页面之间如何跳转，通常也可被称为导航管理。这和原生开发类似，无论是Android还是iOS，导航管理都会维护一个路由栈，路由入栈(push)操作对应打开一个新页面，路由出栈(pop)操作对应页面关闭操作，而路由管理主要是指如何来管理路由栈。</p>
+<h4><span id="示例">示例</span></h4><h5><span id="创建一个新路由命名newroute">创建一个新路由，命名“NewRoute”</span></h5><p>新路由继承自<code>StatelessWidget</code>，界面很简单，在页面中间显示一句”This is new route”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class NewRoute extends StatelessWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(&quot;New route&quot;),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Text(&quot;This is new route&quot;),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5><span id="在_myhomepagestatebuild方法中的column的子widget中添加一个按钮flatbutton">在_MyHomePageState.build方法中的Column的子widget中添加一个按钮（FlatButton）</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Column(</span><br><span class="line">      mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">      children: &lt;Widget&gt;[</span><br><span class="line">      ... //省略无关代码</span><br><span class="line">      FlatButton(</span><br><span class="line">         child: Text(&quot;open new route&quot;),</span><br><span class="line">         textColor: Colors.blue,</span><br><span class="line">         onPressed: () &#123;</span><br><span class="line">          //导航到新路由   </span><br><span class="line">          Navigator.push( context,</span><br><span class="line">           new MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">                  return new NewRoute();</span><br><span class="line">             &#125;));</span><br><span class="line">          &#125;,</span><br><span class="line">         ),</span><br><span class="line">       ],</span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E8%B7%AF%E7%94%B1.jpg" alt=""></p>
+<h3><span id="materialpageroute">MaterialPageRoute</span></h3><p><code>MaterialPageRoute</code>继承自<code>PageRoute</code>类，<code>PageRoute</code>类是一个抽象类，表示占有整个屏幕空间的一个模态路由页面，它还定义了路由构建及切换时过渡动画的相关接口及属性。<code>MaterialPageRoute</code> 是Material组件库的一个Widget，它可以针对不同平台，实现与平台页面切换动画风格一致的路由切换动画：</p>
+<ul>
+<li>对于Android，当打开新页面时，新的页面会从屏幕底部滑动到屏幕顶部；当关闭页面时，当前页面会从屏幕顶部滑动到屏幕底部后消失，同时上一个页面会显示到屏幕上。</li>
+<li>对于iOS，当打开页面时，新的页面会从屏幕右侧边缘一致滑动到屏幕左边，直到新页面全部显示到屏幕上，而上一个页面则会从当前屏幕滑动到屏幕左侧而消失；当关闭页面时，正好相反，当前页面会从屏幕右侧滑出，同时上一个页面会从屏幕左侧滑入。</li>
+</ul>
+<p>下面是各个参数的含义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MaterialPageRoute(&#123;</span><br><span class="line">  WidgetBuilder builder,</span><br><span class="line">  RouteSettings settings,</span><br><span class="line">  bool maintainState = true,</span><br><span class="line">  bool fullscreenDialog = false,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>builder</code> 是一个WidgetBuilder类型的回调函数，它的作用是构建路由页面的具体内容，返回值是一个widget。我们通常要实现此回调，返回新路由的实例。</li>
+<li><code>settings</code> 包含路由的配置信息，如路由名称、是否初始路由（首页）。</li>
+<li><code>maintainState</code>：默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，如果想在路由没用的时候释放其所占用的所有资源，可以设置<code>maintainState</code>为false。</li>
+<li><code>fullscreenDialog</code>表示新的路由页面是否是一个全屏的模态对话框，在iOS中，如果<code>fullscreenDialog</code>为<code>true</code>，新页面将会从屏幕底部滑入（而不是水平方向）。</li>
+</ul>
+<h3><span id="navigator">Navigator</span></h3><p><code>Navigator</code>是一个路由管理的widget，它通过一个<strong>栈</strong>来管理一个路由widget集合。通常当前屏幕显示的页面就是<strong>栈顶</strong>的路由。<code>Navigator</code>提供了一系列方法来管理路由栈，只介绍其最常用的两个方法（已经是成年人了，要学会面对百度编程）：</p>
+<h4><span id="future-pushbuildcontext-context-route-route">Future push(BuildContext context, Route route)</span></h4><p>将给定的路由入栈（即打开新的页面），返回值是一个<code>Future</code>对象，用以接收新路由出栈（及关闭）时的返回数据。</p>
+<h4><span id="bool-popbuildcontext-context-result">bool pop(BuildContext context, [ result ])</span></h4><p>将栈顶路由出栈，<code>result</code>为页面关闭时返回给上一个页面的数据。</p>
+<h3><span id="命名路由">命名路由</span></h3><p>所谓命名路由（Named Route）即给路由起一个名字，然后可以通过路由名字直接打开新的路由。</p>
+<h4><span id="路由表">路由表</span></h4><p>要想使用命名路由，我们必须先提供并注册一个路由表（routing table），这样应用程序才知道哪个名称与哪个路由Widget对应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, WidgetBuilder&gt; routes；</span><br></pre></td></tr></table></figure>
+<p>它是一个<code>Map</code>， key 为路由的名称，是个字符串；value是个builder回调函数，用于生成相应的路由Widget。我们在通过路由名称入栈新路由时，应用会根据路由名称在路由表中找到对应的WidgetBuilder回调函数，然后调用该回调函数生成路由widget并返回。</p>
+<h4><span id="注册路由表">注册路由表</span></h4><p>注册路由表后，Flutter应用才能正确处理命名路由的跳转。注册方式很简单，回到之前“计数器”的示例，然后在<code>MyApp</code>类的<code>build</code>方法中找到<code>MaterialApp</code>，添加<code>routes</code>属性即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">return new MaterialApp(</span><br><span class="line">  title: &apos;Flutter Demo&apos;,</span><br><span class="line">  theme: new ThemeData(</span><br><span class="line">    primarySwatch: Colors.blue,</span><br><span class="line">  ),</span><br><span class="line">  //注册路由表</span><br><span class="line">  routes:&#123;</span><br><span class="line">   &quot;new_page&quot;:(context)=&gt;NewRoute(),</span><br><span class="line">  &#125; ,</span><br><span class="line">  home: new MyHomePage(title: &apos;Flutter Demo Home Page&apos;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4><span id="通过路由名打开新路由页">通过路由名打开新路由页</span></h4><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Future pushNamed(BuildContext context, String routeName)</span><br></pre></td></tr></table></figure>
+<p><code>Navigator</code> 除了<code>pushNamed</code>方法，还有<code>pushReplacementNamed</code>等其他管理命名路由的方法，建议自己查看对应的API文档。</p>
+<p>接下来通过路由名来打开新的路由页，修改<code>FlatButton</code>的<code>onPressed</code>回调代码，修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">onPressed: () &#123;</span><br><span class="line">  Navigator.pushNamed(context, &quot;new_page&quot;);</span><br><span class="line">  //Navigator.push(context,</span><br><span class="line">  //  new MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">  //  return new NewRoute();</span><br><span class="line">  //&#125;));  </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>热重载应用，再次点击“open new route”按钮，依然可以打开新的路由页，即成功了！</p>
+<h4><span id="优缺点">优缺点</span></h4><p>命名路由的最大优点是直观，我们可以通过语义化的字符串来管理路由。但其有一个明显的缺点：不能直接传递路由参数。举个例子，假设有一个新路由EchoRoute，它的功能是接受一个字符串参数<code>tip</code>，然后再在屏幕中心将<code>tip</code>的内容显示出来，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class EchoRoute extends StatelessWidget &#123;</span><br><span class="line">  EchoRoute(this.tip);</span><br><span class="line">  final String tip;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(&quot;Echo route&quot;),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        //回显tip内容  </span><br><span class="line">        child: Text(tip),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用命名参数，就必须将路由提前注册到路由表中，所以就无法<strong>动态</strong>修改<code>tip</code>参数，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;tip_widgets&quot;:(context)=&gt;EchoRoute(&quot;内容固定&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以使用的时候需要根据实际情况来确定。</p>
+<h3><span id="3包管理">3）包管理：</span></h3><p>Flutter也有自己的依赖管理工具，flutter如何使用配置文件<code>pubspec.yaml</code>（位于项目根目录）来管理第三方依赖包？</p>
+<p>YAML是一种直观、可读性高并且容易被人类阅读的文件格式，它和xml或Json相比，它语法简单并非常容易解析，所以YAML常用于配置文件，Flutter也是用yaml文件作为其配置文件，Flutter项目默认的配置文件是<code>pubspec.yaml</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">name: flutter_in_action</span><br><span class="line">description: First Flutter application.</span><br><span class="line"></span><br><span class="line">version: 1.0.0+1</span><br><span class="line"></span><br><span class="line">dependencies:</span><br><span class="line">  flutter:</span><br><span class="line">    sdk: flutter</span><br><span class="line">  cupertino_icons: ^0.1.2</span><br><span class="line"></span><br><span class="line">dev_dependencies:</span><br><span class="line">  flutter_test:</span><br><span class="line">    sdk: flutter</span><br><span class="line"></span><br><span class="line">flutter:</span><br><span class="line">  uses-material-design: true</span><br></pre></td></tr></table></figure>
+<p>含义：</p>
+<ul>
+<li>name：应用或包名称。</li>
+<li>description: 应用或包的描述、简介。</li>
+<li>version：应用或包的版本号。</li>
+<li>dependencies：应用或包依赖的其它包或插件。</li>
+<li>dev_dependencies：开发环境依赖的工具包（而不是flutter应用本身依赖的包）。</li>
+<li>flutter：flutter相关的配置选项。</li>
+</ul>
+<p><strong>Flutter应用本身依赖某个包，我们需要将所依赖的包添加到dependencies 下即可。</strong></p>
+<h4><span id="pub仓库">Pub仓库</span></h4><p>Pub其实就是是Google官方的Dart Packages仓库，类似于node中的npm仓库，android中的jcenter，用户可以在上面查找需要的包和插件，也可以向pub发布包和插件。</p>
+<p>示例：</p>
+<p>实现一个显示随机字符串的widget。有一个名为“english_words”的开源软件包，其中包含数千个常用的英文单词以及一些实用功能。首先在pub上找到english_words这个包，确定其最新的版本号和是否支持Flutter。</p>
+<p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/Pub.jpg" alt=""></p>
+<p>然后的步骤就是：</p>
+<p>1.将english_words（3.1.3版本）添加到依赖项列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  flutter:</span><br><span class="line">    sdk: flutter</span><br><span class="line"></span><br><span class="line">  cupertino_icons: ^0.1.0</span><br><span class="line">  # 新添加的依赖</span><br><span class="line">  english_words: ^3.1.3</span><br></pre></td></tr></table></figure>
+<p>2.下载对应的包。</p>
+<p>在Android Studio的编辑器视图中查看<strong>pubspec.yaml</strong>时，单击右上角的 <strong>Packages get</strong> 。</p>
+<p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/%E4%B8%8B%E8%BD%BD%E5%8C%85.jpg" alt=""></p>
+<p>控制台会显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flutter packages get</span><br><span class="line">   Running &quot;flutter packages get&quot; in flutter_in_action...</span><br><span class="line">   Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<h4><span id="其它依赖方式">其它依赖方式</span></h4><h5><span id="依赖本地包">依赖本地包</span></h5><p>如果我们正在本地开发一个包，包名为pkg1，我们可以通过下面方式依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">    pkg1:</span><br><span class="line">        path: ../../code/pkg1</span><br></pre></td></tr></table></figure>
+<p>路径可以是相对的，也可以是绝对的。</p>
+<h5><span id="依赖git">依赖Git</span></h5><p>如果软件包位于仓库的根目录中，请使用以下语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  pkg1:</span><br><span class="line">    git:</span><br><span class="line">      url: git://github.com/xxx/pkg1.git</span><br></pre></td></tr></table></figure>
+<p>如果不是这种情况，可以使用path参数指定相对位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  package1:</span><br><span class="line">    git:</span><br><span class="line">      url: git://github.com/flutter/packages.git</span><br><span class="line">      path: packages/package1</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.dartlang.org/tools/pub/dependencies" target="_blank" rel="noopener">官方文档依赖方式大全</a></p>
+<h3><span id="4资源管理">4）资源管理</span></h3><p>Flutter应用程序可以包含代码和 assets（有时称为资源）。assets是会打包到程序安装包中的，可在运行时访问。常见类型的assets包括静态数据（例如JSON文件）、配置文件、图标和图片（JPEG，WebP，GIF，动画WebP / GIF，PNG，BMP和WBMP）等。</p>
+<h4><span id="指定-assets">指定 assets</span></h4><p>和包管理一样，Flutter也使用<a href="https://www.dartlang.org/tools/pub/pubspec" target="_blank" rel="noopener"><code>pubspec.yaml</code></a>文件来管理应用程序所需的资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flutter:</span><br><span class="line">  assets:</span><br><span class="line">    - assets/my_icon.png</span><br><span class="line">    - assets/background.png</span><br></pre></td></tr></table></figure>
+<p><code>assets</code>指定应包含在应用程序中的文件。 每个asset都通过相对于<code>pubspec.yaml</code>文件所在位置的<strong>显式路径</strong>进行标识。asset的声明顺序是无关紧要的。asset的实际目录可以是任意文件夹（在本示例中是assets）。</p>
+<p>在构建期间，Flutter将asset放置到称为 <em>asset bundle</em> 的特殊存档中，应用程序可以在运行时读取它们（但不能修改）。</p>
+<h4><span id="asset-变体variant">Asset 变体（variant）</span></h4><p>构建过程支持asset变体的概念：不同版本的asset可能会显示在不同的上下文中。 在<code>pubspec.yaml</code>的assets部分中指定asset路径时，构建过程中，会在相邻子目录中查找具有相同名称的任何文件。这些文件随后会与指定的asset一起被包含在asset bundle中。</p>
+<p>例如，如果应用程序目录中有以下文件:</p>
+<ul>
+<li>…/pubspec.yaml</li>
+<li>…/graphics/my_icon.png</li>
+<li>…/graphics/background.png</li>
+<li>…/graphics/dark/background.png</li>
+<li>…etc.</li>
+</ul>
+<p>然后<code>pubspec.yaml</code>文件中只需包含:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flutter:</span><br><span class="line">  assets:</span><br><span class="line">    - graphics/background.png</span><br></pre></td></tr></table></figure>
+<p>那么这两个<code>graphics/background.png</code>和<code>graphics/dark/background.png</code> 都将包含在您的asset bundle中。前者被认为是<em>main asset</em> （主资源），后者被认为是一种变体（variant）。</p>
+<p>在选择匹配当前设备分辨率的图片时，Flutter会使用到asset变体（见下文），将来，Flutter可能会将这种机制扩展到本地化、阅读提示等方面。</p>
+<h4><span id="加载-assets">加载 assets</span></h4><p>应用可以通过<a href="https://docs.flutter.io/flutter/services/AssetBundle-class.html" target="_blank" rel="noopener"><code>AssetBundle</code></a>对象访问其asset 。有两种主要方法允许从Asset bundle中加载字符串或图片(二进制)文件。</p>
+<h5><span id="加载文本assets">加载文本assets</span></h5><ul>
+<li>通过<a href="https://docs.flutter.io/flutter/services/rootBundle.html" target="_blank" rel="noopener"><code>rootBundle</code></a> 对象加载：每个Flutter应用程序都有一个<a href="https://docs.flutter.io/flutter/services/rootBundle.html" target="_blank" rel="noopener"><code>rootBundle</code></a>对象， 通过它可以轻松访问主资源包，直接使用<code>package:flutter/services.dart</code>中全局静态的<code>rootBundle</code>对象来加载asset即可。</li>
+<li>通过 <a href="https://docs.flutter.io/flutter/widgets/DefaultAssetBundle-class.html" target="_blank" rel="noopener"><code>DefaultAssetBundle</code></a> 加载：建议使用 <a href="https://docs.flutter.io/flutter/widgets/DefaultAssetBundle-class.html" target="_blank" rel="noopener"><code>DefaultAssetBundle</code></a> 来获取当前BuildContext的AssetBundle。 这种方法不是使用应用程序构建的默认asset bundle，而是使父级widget在运行时动态替换的不同的AssetBundle，这对于本地化或测试场景很有用。</li>
+</ul>
+<p>通常，可以使用<code>DefaultAssetBundle.of()</code>在应用运行时来间接加载asset（例如JSON文件），而在widget上下文之外，或其它<code>AssetBundle</code>句柄不可用时，可以使用<code>rootBundle</code>直接加载这些asset，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &apos;dart:async&apos; show Future;</span><br><span class="line">import &apos;package:flutter/services.dart&apos; show rootBundle;</span><br><span class="line"></span><br><span class="line">Future&lt;String&gt; loadAsset() async &#123;</span><br><span class="line">  return await rootBundle.loadString(&apos;assets/config.json&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5><span id="加载图片">加载图片</span></h5><p>类似于原生开发，Flutter也可以为当前设备加载适合其分辨率的图像。</p>
+<h6><span id="声明分辨率相关的图片-assets">声明分辨率相关的图片 assets</span></h6><p><a href="https://docs.flutter.io/flutter/painting/AssetImage-class.html" target="_blank" rel="noopener"><code>AssetImage</code></a> 可以将asset的请求逻辑映射到最接近当前设备像素比例(dpi)的asset。为了使这种映射起作用，必须根据特定的目录结构来保存asset：</p>
+<ul>
+<li>…/image.png</li>
+<li>…/<strong>M</strong>x/image.png</li>
+<li>…/<strong>N</strong>x/image.png</li>
+<li>…etc.</li>
+</ul>
+<p>其中M和N是数字标识符，对应于其中包含的图像的分辨率，也就是说，它们指定不同设备像素比例的图片。</p>
+<p>主资源默认对应于1.0倍的分辨率图片。看一个例子：</p>
+<ul>
+<li>…/my_icon.png</li>
+<li>…/2.0x/my_icon.png</li>
+<li>…/3.0x/my_icon.png</li>
+</ul>
+<p>在设备像素比率为1.8的设备上，<code>.../2.0x/my_icon.png</code> 将被选择。对于2.7的设备像素比率，<code>.../3.0x/my_icon.png</code>将被选择。</p>
+<p>如果未在<code>Image</code> widget上指定渲染图像的宽度和高度，那么<code>Image</code> widget将占用与主资源相同的屏幕空间大小。 也就是说，如果<code>.../my_icon.png</code>是72px乘72px，那么<code>.../3.0x/my_icon.png</code>应该是216px乘216px; 但如果未指定宽度和高度，它们都将渲染为72像素×72像素（以逻辑像素为单位）。</p>
+<p><code>pubspec.yaml</code>中asset部分中的每一项都应与实际文件相对应，但主资源项除外。当主资源缺少某个资源时，会按分辨率从低到高的顺序去选择 ，也就是说1x中没有的话会在2x中找，2x中还没有的话就在3x中找。</p>
+<p>要加载图片，可以使用 <a href="https://docs.flutter.io/flutter/painting/AssetImage-class.html" target="_blank" rel="noopener"><code>AssetImage</code></a>类。例如，我们可以从上面的asset声明中加载背景图片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return new DecoratedBox(</span><br><span class="line">    decoration: new BoxDecoration(</span><br><span class="line">      image: new DecorationImage(</span><br><span class="line">        image: new AssetImage(&apos;graphics/background.png&apos;),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，<code>AssetImage</code> 并非是一个widget， 它实际上是一个<code>ImageProvider</code>，有些时候你可能期望直接得到一个显示图片的widget，那么你可以使用<code>Image.asset()</code>方法，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return Image.asset(&apos;graphics/background.png&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用默认的 asset bundle 加载资源时，内部会自动处理分辨率等，这些处理对开发者来说是无感知的。 (如果使用一些更低级别的类，如 <a href="https://docs.flutter.io/flutter/painting/ImageStream-class.html" target="_blank" rel="noopener"><code>ImageStream</code></a>或 <a href="https://docs.flutter.io/flutter/painting/ImageCache-class.html" target="_blank" rel="noopener"><code>ImageCache</code></a> 时你会注意到有与缩放相关的参数)</p>
+<h5><span id="依赖包中的资源图片">依赖包中的资源图片</span></h5><p>要加载依赖包中的图像，必须给<code>AssetImage</code>提供<code>package</code>参数。</p>
+<p>例如，假设您的应用程序依赖于一个名为“my_icons”的包，它具有如下目录结构：</p>
+<ul>
+<li>…/pubspec.yaml</li>
+<li>…/icons/heart.png</li>
+<li>…/icons/1.5x/heart.png</li>
+<li>…/icons/2.0x/heart.png</li>
+<li>…etc.</li>
+</ul>
+<p>然后加载图像，使用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new AssetImage(&apos;icons/heart.png&apos;, package: &apos;my_icons&apos;)</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Image.asset(&apos;icons/heart.png&apos;, package: &apos;my_icons&apos;)</span><br></pre></td></tr></table></figure>
+<p>注意：包在使用本身的资源的时候也应该加上<strong>package参数</strong>来获取。</p>
+<h6><span id="打包包中的-assets">打包包中的 assets</span></h6><p>如果在<code>pubspec.yaml</code>文件中声明了期望的资源，它将会打包到相应的package中。特别是，包本身使用的资源必须在<code>pubspec.yaml</code>中指定。</p>
+<p>包也可以选择在其<code>lib/</code>文件夹中包含未在其<code>pubspec.yaml</code>文件中声明的资源。在这种情况下，对于要打包的图片，应用程序必须在<code>pubspec.yaml</code>中指定包含哪些图像。 例如，一个名为“fancy_backgrounds”的包，可能包含以下文件：</p>
+<ul>
+<li>…/lib/backgrounds/background1.png</li>
+<li>…/lib/backgrounds/background2.png</li>
+<li>…/lib/backgrounds/background3.png</li>
+</ul>
+<p>要包含第一张图像，必须在<code>pubspec.yaml</code>的assets部分中声明它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flutter:</span><br><span class="line">  assets:</span><br><span class="line">    - packages/fancy_backgrounds/backgrounds/background1.png</span><br></pre></td></tr></table></figure>
+<p><code>lib/</code>是隐含的，所以它不应该包含在资产路径中。</p>
+<h4><span id="特定平台-assets">特定平台 assets</span></h4><p>如果要给我们的应用设置APP图标或者添加启动图，那我们必须使用特定平台的assets。</p>
+<h5><span id="设置app图标">设置APP图标</span></h5><p>更新Flutter应用程序启动图标的方式与在本机Android或iOS应用程序中更新启动图标的方式相同。</p>
+<p><strong>Android</strong></p>
+<p>在Flutter项目的根目录中，导航到<code>.../android/app/src/main/res</code>目录，里面包含了各种资源文件夹（如<code>mipmap-hdpi</code>已包含占位符图像”ic_launcher.png”）。 只需按照<a href="https://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html#size" target="_blank" rel="noopener">Android开发人员指南</a>中的说明， 将其替换为所需的资源，并遵守每种屏幕密度（dpi）的建议图标大小标准。</p>
+<p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/androidappicon.jpg" alt=""></p>
+<p><strong>iOS</strong></p>
+<p>在Flutter项目的根目录中，导航到<code>.../ios/Runner</code>。该目录中<code>Assets.xcassets/AppIcon.appiconset</code>已经包含占位符图片。 只需将它们替换为适当大小的图片。保留原始文件名称。</p>
+<p><img src="/2019/03/13/Flutter开发概述/C:/Users/40941/Desktop/%E5%8D%9A%E5%AE%A2/iosappicon.jpg" alt=""></p>
+<h5><span id="更新启动页">更新启动页</span></h5><p>在Flutter框架加载时，Flutter会使用本地平台机制绘制启动页。此启动页将持续到Flutter渲染应用程序的第一帧时。</p>
+<h5><span id="android">Android</span></h5><p>要将启动屏幕（splash screen）添加到您的Flutter应用程序， 请导航至<code>.../android/app/src/main</code>。在<code>res/drawable/launch_background.xml</code>，通过自定义drawable来实现自定义启动界面（你也可以直接换一张图片）。</p>
+<h5><span id="ios">iOS</span></h5><p>要将图片添加到启动屏幕（splash screen）的中心，请导航至<code>.../ios/Runner</code>。在<code>Assets.xcassets/LaunchImage.imageset</code>， 拖入图片，并命名为<code>LaunchImage.png</code>、<a href="mailto:`LaunchImage@2x.png" target="_blank" rel="noopener">`LaunchImage@2x.png</a><code>、</code><a href="mailto:LaunchImage@3x.png" target="_blank" rel="noopener">LaunchImage@3x.png</a><code>。 如果你使用不同的文件名，那您还必须更新同一目录中的</code>Contents.json`文件，图片的具体尺寸可以查看苹果官方的标准。</p>
+<p>您也可以通过打开Xcode完全自定义storyboard。在Project Navigator中导航到<code>Runner/Runner</code>然后通过打开<code>Assets.xcassets</code>拖入图片，或者通过在LaunchScreen.storyboard中使用Interface Builder进行自定义。</p>
+<h3><span id="5调试flutter-app">5）调试Flutter APP</span></h3><p>未完待续…</p>
+<h3><span id="6dart线程模式以及异常捕捉">6）Dart线程模式以及异常捕捉</span></h3><p>未完待续</p>
+<p><a href="https://book.flutterchina.club/chapter2/flutter_app_debug.html" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"><i class="fa fa-tag"></i>
+
+ Flutter</a>
+          
+            <a href="/tags/概述/" rel="tag"><i class="fa fa-tag"></i>
+
+ 概述</a>
+          
+            <a href="/tags/Dart/" rel="tag"><i class="fa fa-tag"></i>
+
+ Dart</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/java番外-多线程编程/" rel="next" title="java番外-多线程编程">
+                <i class="fa fa-chevron-left"></i> java番外-多线程编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/zhangguoron.jpg" alt="THBELIEF">
+            
+              <p class="site-author-name" itemprop="name">THBELIEF</p>
+              <p class="site-description motion-element" itemprop="description">我这个人只是英俊 潇洒了些许~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:thbelief520@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1.Dart语言的简介：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">1）var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">2）dynamic与Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.3.</span> <span class="nav-text">3）final与const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.</span> <span class="nav-text">4）函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">简写语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">函数作为变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">函数作为参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">可选位置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.4.6.</span> <span class="nav-text">可选命名参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.</span> <span class="nav-text">5）异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Future</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.1.1.</span> <span class="nav-text">Future.then</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.1.2.</span> <span class="nav-text">Future.catchError</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.1.3.</span> <span class="nav-text">Future.whenComlete</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.1.4.</span> <span class="nav-text">Future.wait</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Async/await</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.2.1.</span> <span class="nav-text">回调地狱（Callback hell）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.2.2.</span> <span class="nav-text">使用Future消除callback hell</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.2.3.</span> <span class="nav-text">使用async/await消除callback hell</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">Stream</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">2.Flutter简单实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text">1）计数器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.1.</span> <span class="nav-text">导入包</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.2.</span> <span class="nav-text">应用入口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.3.</span> <span class="nav-text">应用结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.4.</span> <span class="nav-text">应用首页</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.0.1.5.</span> <span class="nav-text">为什么要将build方法放在State中，而不是放在StatefulWidget中？</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text">2）路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">创建一个新路由，命名“NewRoute”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">在_MyHomePageState.build方法中的Column的子widget中添加一个按钮（FlatButton）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.3.</span> <span class="nav-text">MaterialPageRoute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.</span> <span class="nav-text">Navigator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Future push(BuildContext context, Route route)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">bool pop(BuildContext context, [ result ])</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.</span> <span class="nav-text">命名路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">路由表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">注册路由表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">通过路由名打开新路由页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.</span> <span class="nav-text">3）包管理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">Pub仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">其它依赖方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.2.1.</span> <span class="nav-text">依赖本地包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.2.2.</span> <span class="nav-text">依赖Git</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.</span> <span class="nav-text">4）资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">指定 assets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">Asset 变体（variant）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.</span> <span class="nav-text">加载 assets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.1.</span> <span class="nav-text">加载文本assets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.2.</span> <span class="nav-text">加载图片</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.2.1.</span> <span class="nav-text">声明分辨率相关的图片 assets</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.3.</span> <span class="nav-text">依赖包中的资源图片</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.3.3.1.</span> <span class="nav-text">打包包中的 assets</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.4.</span> <span class="nav-text">特定平台 assets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.4.1.</span> <span class="nav-text">设置APP图标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.4.2.</span> <span class="nav-text">更新启动页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.4.3.</span> <span class="nav-text">Android</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.7.4.4.</span> <span class="nav-text">iOS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.8.</span> <span class="nav-text">5）调试Flutter APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.9.</span> <span class="nav-text">6）Dart线程模式以及异常捕捉</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">THBELIEF</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共38.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
