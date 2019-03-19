@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/03/19/Auto-js-Script开发-一/
 http://thbelief.coding.me/2019/03/18/JavaScript学习笔记-一/
 http://thbelief.coding.me/2019/03/09/java番外-多线程编程/
 http://thbelief.coding.me/2019/03/07/java基础-融会贯通/

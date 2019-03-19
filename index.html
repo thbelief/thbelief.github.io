@@ -294,6 +294,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/19/Auto-js-Script开发-一/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/Auto-js-Script开发-一/" itemprop="url">Auto.js Script开发(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T10:20:57+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#正文">正文</a></li>
+<li><a href="#总结">总结</a></li>
+<li><a href="#下个版本">下个版本</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="简介">简介</span></h2><p>Auto.js使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript</a>作为脚本语言，目前使用<a href="https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/Rhino" target="_blank" rel="noopener">Rhino 1.7.7.2</a>作为脚本引擎，支持ES5与部分ES6特性。</p>
+<p>最开始接触Auto.js只是单纯的想写一个I西科自动签到的脚本，接触后才发现，写这样一个脚本其实简单的不行，然后了解了Auto.js的相关特性之后，我决定好好的学习一下这个工具，毕竟，它实在是太简约了，不像其他的脚本语言那么复杂，虽然…有点儿bug，毕竟开发者自己也只是一个大学生，不能指望有多完善，但是这种自动化脚本编辑实在是太有魅力了。</p>
+<h2><span id="正文">正文</span></h2><p>最近正在开发的<strong>Script</strong>，主要目的是借用Auto.js自带的UI模块儿集成一个个人向的脚本库。</p>
+<p>这个版本的展示图：</p>
+<p><img src="/2019/03/19/Auto-js-Script开发-一/菜单.png" alt=""></p>
+<p><img src="/2019/03/19/Auto-js-Script开发-一/自动签到.png" alt=""></p>
+<p><img src="/2019/03/19/Auto-js-Script开发-一/自动回复.jpg" alt=""></p>
+<p>目前代码展示如下，由于太简单，懒得上传到Github了，直接贴代码（后期如果有升级或者说是改良，会在下一个博客继续写）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">&quot;ui&quot;;</span><br><span class="line">//下面就是主界面</span><br><span class="line">ui.layout(</span><br><span class="line">    &lt;vertical&gt;</span><br><span class="line">        &lt;horizontal&gt;</span><br><span class="line">            &lt;text text=&quot;菜单&quot; w=&quot;*&quot; h=&quot;*&quot; layout_weight=&quot;1&quot; gravity=&quot;center&quot; textSize=&quot;30sp&quot; color=&quot;#000000&quot;/&gt;</span><br><span class="line">        &lt;/horizontal&gt;</span><br><span class="line">        &lt;horizontal&gt;</span><br><span class="line">            &lt;button id=&quot;autoReply&quot; text=&quot;QQ自动回复&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">            &lt;button id=&quot;autoReplyClose&quot; text=&quot;关闭&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">        &lt;/horizontal&gt;</span><br><span class="line">        &lt;horizontal&gt;</span><br><span class="line">            &lt;button id=&quot;autoSignIn&quot; text=&quot;i西科自动签到&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">            &lt;button id=&quot;autoSignInClose&quot; text=&quot;关闭&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">        &lt;/horizontal&gt;</span><br><span class="line">    &lt;/vertical&gt;</span><br><span class="line">);</span><br><span class="line">//封装的回复方法</span><br><span class="line">function WhatReply(notificationText)&#123;</span><br><span class="line">    if(notificationText==&apos;A&apos;)&#123;</span><br><span class="line">        return(&quot;您好，我是主人正在开发的人工智障robot001.\n   ——robot001欢喜的答道。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(notificationText==&apos;B&apos;)&#123;</span><br><span class="line">        return(&quot;好的，我马上联系主人...\n   ——robot001郑重的答道。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        return &quot;主人在忙呢！\n有问题请回复下列单个字母：\n A.robot是谁？\n B.有要事迅速联系thbelief. \n   ——robot001如此回答道。&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//先封装一个自动回复的方法</span><br><span class="line">function autoReplyFunction()&#123;</span><br><span class="line">    auto();//检查是否开启了无障碍服务权限</span><br><span class="line">    events.observeNotification();//监听消息</span><br><span class="line">    events.onNotification(function(notification)&#123;</span><br><span class="line">        var string1=&quot;com.tencent.mobileqq&quot;;//如果是QQ消息的话</span><br><span class="line">        if(string1==notification.getPackageName())&#123;</span><br><span class="line">            notification.click();//点击直接进入对应的聊天界面</span><br><span class="line">            //跳转必须要用startActivity</span><br><span class="line">            waitForPackage(&quot;com.tencent.mobileqq&quot;);</span><br><span class="line">            var t=className(&quot;android.widget.EditText&quot;).id(&quot;input&quot;).findOnce();//找到聊天输入控件</span><br><span class="line">            t.setText(WhatReply(notification.getText()));//这里加入回复的方法</span><br><span class="line">            className(&quot;android.widget.Button&quot;).id(&quot;fun_btn&quot;).findOnce().click();//发送即可</span><br><span class="line">            home();//直接返回桌面</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">//自动签到的方法</span><br><span class="line">function autoSignInFunction()&#123;</span><br><span class="line">    auto();</span><br><span class="line">    //打开i西科</span><br><span class="line">    launchApp(&quot;i西科&quot;);</span><br><span class="line">    //跳转到相应的界面</span><br><span class="line">    waitForPackage(&quot;org.weixvn.frame&quot;);</span><br><span class="line">    //找到首页上签到的按钮，点击进去</span><br><span class="line">    id(&quot;it_sign_in&quot;).clickable().findOne().click();</span><br><span class="line">    waitForActivity(&quot;com.example.z.iswust.view.activity.impl.SignInActivity&quot;);</span><br><span class="line">    //点击签到</span><br><span class="line">    if(id(&quot;btn_signin&quot;).clickable().findOne().click())&#123;</span><br><span class="line">        //完成任务后返回桌面</span><br><span class="line">        home();</span><br><span class="line">        toast(&quot;签到成功了哟，亲~~~&quot;);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">//自动回复按钮的点击事件</span><br><span class="line">ui.autoReply.click(()=&gt;&#123;</span><br><span class="line">    //UI模式的情况下必须用Promise形式或者回调模式</span><br><span class="line">    confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">        if(sure)&#123;</span><br><span class="line">            //修改控件信息必须更改线程</span><br><span class="line">            threads.start(function()&#123;</span><br><span class="line">                autoReplyFunction();</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//自动回复按钮的关闭点击事件</span><br><span class="line">ui.autoReplyClose.click(()=&gt;&#123;</span><br><span class="line">    //这里由于只有一个脚本，我就直接把所有的脚本都关闭了，如果是很多脚本的话必须改</span><br><span class="line">    engines.stopAll();</span><br><span class="line">    toast(&quot;自动回复脚本已经关闭了哦，亲~&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">//i西科自动签到的点击事件</span><br><span class="line">ui.autoSignIn.click(()=&gt;&#123;</span><br><span class="line">    confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">        if(sure)&#123;</span><br><span class="line">            //修改控件信息必须更改线程</span><br><span class="line">            threads.start(function()&#123;</span><br><span class="line">                //自动签到的方法</span><br><span class="line">                autoSignInFunction();</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2><span id="总结">总结</span></h2><p>1.一定要判断是否开启了<strong>无障碍服务权限</strong>以及<strong>通知使用权</strong>。</p>
+<p>2.无论是不是用intent跳转页面或者应用，都应该用<strong>waitForActivity或者waitForPackage</strong>来跳转，不然容易出错。</p>
+<p>3.基于控件的操作的时候，一定要注意寻找的依据，<strong>尽量使用不重复的依据</strong>，例如desc或者说id这种，提高兼容性。</p>
+<p>4.方法的封装应该是根据<strong>功能</strong>来的，这一点本版本还没有做完善。</p>
+<p>5.提示信息一定要做到位，该Toast的地方就一定要毫不犹豫的<strong>Toast</strong>.</p>
+<p>6.如果想进入某个界面做某事，可以直接在外面套个if，这样出错的几率会小很多，比如说本版本的<strong>autoSignInFunction</strong>函数里面的点击签到。</p>
+<p>7.UI模式情况下必须使用<strong>Promise形式</strong>或者说是<strong>回调模式</strong>。</p>
+<p>8.还有就是，运行多个脚本的时候，都要使用<strong>多线程</strong>。</p>
+<h2><span id="下个版本">下个版本</span></h2><p>1.UI界面做的是真的丑，下个版本尽量修复。</p>
+<p>2.添加检查更新的功能，直接app内检查更新并更新到最新版本。</p>
+<p>3.添加更多的脚本选项。</p>
+<p>4.定时运行，比如说，定时自启之类的，例如本版本的i西科自动签到功能，定时启动签到。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/18/JavaScript学习笔记-一/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -3416,200 +3628,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/01/12/关于Android6-0以上部分权限的动态获取/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/12/关于Android6-0以上部分权限的动态获取/" itemprop="url">关于Android6.0以上部分权限的动态获取</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T18:13:39+08:00">
-                2019-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  421
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>普通权限暂且不表，下面只列举Android6.0以后必须进行动态申请的权限。</p>
-<p><img src="/2019/01/12/关于Android6-0以上部分权限的动态获取/权限.jpg" alt=""></p>
-<p>下面以SD卡读取权限作为例子（如果实在不懂的话可以直接复制粘贴，只需要改一下权限的名称即可）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求授权</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">requestPermission</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">23</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> checkCallPhonePermission = ContextCompat.checkSelfPermission</span><br><span class="line">                    (<span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE);</span><br><span class="line">            <span class="keyword">if</span> (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                <span class="comment">//在String[]中传入需要申请的权限</span></span><br><span class="line">                ActivityCompat.requestPermissions(<span class="keyword">this</span>,</span><br><span class="line">                        <span class="keyword">new</span> String[]&#123;Manifest.permission.READ_EXTERNAL_STORAGE&#125;, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//sendHomework();</span></span><br><span class="line">                <span class="comment">//已经拥有了权限</span></span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//低版本</span></span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions,<span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> (grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                    <span class="comment">//sendHomework();</span></span><br><span class="line">                    <span class="comment">//获取权限成功后的处理</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"已经成功获取读SD卡权限"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//showToast("fail");</span></span><br><span class="line">                    <span class="comment">//获取权限失败的处理</span></span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"获取读SD卡权限失败"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>对于新手来说，需要注意的是，如果你想要使用这个动态权限，除了上面这段代码之外，你还需要在项目的Manifest中注册你想要获取的权限（一般来说，只要不是危险权限，无论Android6.0前后，只要注册之后就可以直接使用了，但是危险权限，除了注册之外还需要手动的动态申请）。</p>
-<p>另外，除了上面这段代码和注册之外，还需要在初始化之前在MainActivity中写上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestPermission()</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>来调用下面写的动态申请。</p>
-<p>参考文章：<a href="https://blog.csdn.net/qq_38520096/article/details/78697744" target="_blank" rel="noopener">Android6.0动态权限</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3662,7 +3680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3673,7 +3691,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3684,7 +3702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3756,7 +3774,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共32.8k字</span>
+  <span class="post-count">博客全站共34.2k字</span>
 </div>
         
 
