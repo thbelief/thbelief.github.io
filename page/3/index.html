@@ -294,6 +294,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/" itemprop="url">真机调试时如何用Androidstudio查询SQLite数据库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T22:04:39+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  383
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言：</a><ul>
+<li><a href="#1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</a></li>
+<li><a href="#2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</a></li>
+<li><a href="#3修改下列相关">3.修改下列相关：</a></li>
+<li><a href="#4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</a></li>
+<li><a href="#5点击弹出的网页resource-web-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言：</span></h2><p>今天在调试一个有关于SQLite数据库的app的时候，突发奇想，想在手机上直接找到对应的db文件查看，结果是显而易见的，并没有找到相应的调试app的包名以及对应的文件夹。</p>
+<p>然后在网上找了很多方法，试过之后，找到一个较方便且便捷的方法。如下：</p>
+<h3><span id="1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Stetho core</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho:1.3.1&apos;</span><br><span class="line">//If you want to add a network helper</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho-okhttp3:1.3.1&apos;</span><br></pre></td></tr></table></figure>
+<h3><span id="2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void init()&#123;</span><br><span class="line">        Stetho.initializeWithDefaults(this);</span><br><span class="line">        new OkHttpClient.Builder()</span><br><span class="line">                .addNetworkInterceptor(new StethoInterceptor())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="3修改下列相关">3.修改下列相关：</span></h3><p>在AndroidManifest.xml中修改android:name=”.MyApplication”</p>
+<p>然后运行app到手机上即可。</p>
+<h3><span id="4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://inspect</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
+<p>操作好之后就是显示手机型号，下面有一个inspect直接点击即可。</p>
+<h3><span id="5点击弹出的网页resource-gtweb-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg" alt=""></p>
+<p>这样就很简单啦，又方便又快捷！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/01/09/Hexo进阶（个人向）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -823,7 +1018,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -845,7 +1040,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -917,7 +1112,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.5k字</span>
+  <span class="post-count">博客全站共49.3k字</span>
 </div>
         
 
