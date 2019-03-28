@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[素性测试]]></title>
+    <url>%2F2019%2F03%2F28%2F%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[目录： 素性测试 随机算法 Fermat primality test Miller–Rabin primality test Solovay–Strassen primality test 确定型启发式算法 AKS primality test Baillie–PSW primality test 试除法 Lucas primality test Lucas–Lehmer primality test 素性测试所谓的素性测试就是判定一个整数是否为素数的方法。 素性测试算法分为确定型启发式算法以及随机算法。 随机算法Fermat primality test费马素性检验是一种素数判定法则，利用随机化算法判断一个数是合数还是可能是素数。 Miller–Rabin primality test米勒-拉宾素性检验是一种素数判定法则，利用随机化算法判断一个数是合数还是可能是素数。 Solovay–Strassen primality test 确定型启发式算法AKS primality testAKS素性测试（又被称为 Agrawal–Kayal–Saxena素性测试 和 Cyclotomic AKS test）是一个决定型素性测试算法 ，这个算法可以在多项式时间之内，决定一个给定整数是素数或者合数。 Baillie–PSW primality test维基百科参考链接 试除法Lucas primality test Lucas–Lehmer primality test维基百科参考链接]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>素性测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Flutter-Widget框架（一）]]></title>
     <url>%2F2019%2F03%2F27%2FFlutter-Widget%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： Widget框架 简单实例 基础Widget 常用基础widget Text Row，Column Stack Container 手势 StatefulWidget 响应widget生命周期事件 Key 备注： Widget框架参考地址：Flutter中文网。 简单实例123456789101112import &apos;package:flutter/material.dart&apos;;void main() &#123; runApp( new Center( child: new Text( &apos;Hello, world!&apos;, textDirection: TextDirection.ltr, ), ), );&#125; 在编写应用程序时，通常会创建新的widget，这些widget是无状态的StatelessWidget或者是有状态的StatefulWidget， 具体的选择取决于您的widget是否需要管理一些状态。widget的主要工作是实现一个build函数，用以构建自身。 基础Widget常用基础widgetText创建一个带格式的文本。 Row，Column水平与垂直方向上面灵活的布局。 Stack与线性布局类似，允许Widget堆叠。同时可以使用Positioned来定位堆叠的Widget相对于Stack的上下左右四条边的位置。 Container创建矩形视觉元素。 手势手势的交互首先就是要检测输入的手势。 12345678910111213141516171819202122class MyButton extends StatelessWidget &#123; @override Widget build(BuildContext context) &#123; return new GestureDetector( onTap: () &#123; print(&apos;MyButton was tapped!&apos;); &#125;, child: new Container( height: 36.0, padding: const EdgeInsets.all(8.0), margin: const EdgeInsets.symmetric(horizontal: 8.0), decoration: new BoxDecoration( borderRadius: new BorderRadius.circular(5.0), color: Colors.lightGreen[500], ), child: new Center( child: new Text(&apos;Engage&apos;), ), ), ); &#125;&#125; GestureDetector widget并不具有显示效果，而是检测由用户做出的手势。 许多widget都会使用一个GestureDetector为其他widget提供可选的回调。 StatefulWidgetStatefulWidgets是特殊的widget，它知道如何生成State对象，然后用它来保持状态。 在Flutter中，Stateful与State是单独的对象，他们的对象具有不同的生命周期： Widget是临时对象，用于构建当前状态下的应用程序，而State对象在多次调用build()之间保持不变，允许它们记住信息(状态)。 在Flutter中，事件流是“向上”传递的，而状态流是“向下”传递的，重定向这一流程的共同父元素是State。 响应widget生命周期事件在StatefulWidget调用createState之后，框架将新的状态对象插入树中，然后调用状态对象的initState。 子类化State可以重写initState，以完成仅需要执行一次的工作。 当一个状态对象不再需要时，框架调用状态对象的dispose。 可以覆盖该dispose方法来执行清理工作。 Key可以使用key来控制框架将在widget重建时与哪些其他widget匹配。默认情况下，框架根据它们的runtimeType和它们的显示顺序来匹配。 使用key时，框架要求两个widget具有相同的key和runtimeType。 全局的key可以用来标识子Widget。同时在整个Widget结构中必须是全局唯一的，所以可以用全局Key来检索与WIdget关联的状态。 备注：Flutter中文网Widget目录]]></content>
