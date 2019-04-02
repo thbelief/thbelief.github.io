@@ -294,6 +294,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/02/Auto-js-Script开发-二/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/Auto-js-Script开发-二/" itemprop="url">Auto.js Script开发(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T21:27:24+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>今天改了一下上次的UI还有添加了一下新功能。不得不说，这个UI是真的难调<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 正文</span><br><span class="line"></span><br><span class="line">### 图标</span><br><span class="line"></span><br><span class="line">![](/图标.png)</span><br><span class="line"></span><br><span class="line">### 主页面</span><br><span class="line"></span><br><span class="line">![](/主页面.png)</span><br><span class="line"></span><br><span class="line">### 菜单</span><br><span class="line"></span><br><span class="line">![](/菜单.png)</span><br><span class="line"></span><br><span class="line">### 代码</span><br><span class="line"></span><br><span class="line">```</span><br><span class="line">//下面是UI层，主要就是图形</span><br><span class="line"></span><br><span class="line">&quot;ui&quot;;</span><br><span class="line">var color = &quot;#66ccff&quot;;</span><br><span class="line">//打开主页面UI</span><br><span class="line">mainUI();</span><br><span class="line">//下面是各个不同的页面UI</span><br><span class="line">//主页面UI</span><br><span class="line">function mainUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">    &lt;frame&gt;</span><br><span class="line">    &lt;drawer id=&quot;drawer&quot;&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;appbar&gt;</span><br><span class="line">                &lt;toolbar id=&quot;toolbar&quot; title=&quot;脚本列表&quot;/&gt;</span><br><span class="line">                &lt;tabs id=&quot;tabs&quot;/&gt;</span><br><span class="line">            &lt;/appbar&gt;</span><br><span class="line">            &lt;viewpager id=&quot;viewpager&quot;&gt;</span><br><span class="line">                &lt;frame&gt;</span><br><span class="line">                    &lt;vertical&gt;</span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                             &lt;button id=&quot;autoGood&quot; text=&quot;QQ名片自动点赞&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">                             &lt;button id=&quot;autoGoodRelate&quot; text=&quot;相关&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;3&quot;/&gt;</span><br><span class="line">                        &lt;/horizontal&gt;    </span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                             &lt;button id=&quot;autoSignIn&quot; text=&quot;I西科自动签到&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">                             &lt;button id=&quot;autoSignInRelate&quot; text=&quot;相关&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;3&quot;/&gt;</span><br><span class="line">                        &lt;/horizontal&gt;   </span><br><span class="line">                    &lt;/vertical&gt;  </span><br><span class="line">                    </span><br><span class="line">                &lt;/frame&gt;</span><br><span class="line">                &lt;frame&gt;</span><br><span class="line">                    </span><br><span class="line">                &lt;/frame&gt;</span><br><span class="line">            &lt;/viewpager&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">        &lt;vertical layout_gravity=&quot;left&quot; bg=&quot;#ffffff&quot; w=&quot;280&quot;&gt;</span><br><span class="line">            &lt;img w=&quot;280&quot; h=&quot;200&quot; scaleType=&quot;fitXY&quot; src=&quot;http://i1.bvimg.com/682525/a1c337b714162972.jpg&quot;/&gt;</span><br><span class="line">            &lt;list id=&quot;menu&quot;&gt;</span><br><span class="line">                &lt;horizontal bg=&quot;?selectableItemBackground&quot; w=&quot;*&quot;&gt;</span><br><span class="line">                    &lt;img w=&quot;50&quot; h=&quot;50&quot; padding=&quot;16&quot; src=&quot;&#123;&#123;this.icon&#125;&#125;&quot; tint=&quot;&#123;&#123;color&#125;&#125;&quot;/&gt;</span><br><span class="line">                    &lt;text  textColor=&quot;black&quot; w=&quot;*&quot; h=&quot;*&quot; textSize=&quot;15sp&quot; text=&quot;&#123;&#123;this.title&#125;&#125;&quot; gravity=&quot;center&quot;  singleLine=&quot;true&quot;/&gt;                                         </span><br><span class="line">                &lt;/horizontal&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">    &lt;/drawer&gt;</span><br><span class="line">    &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    //自动点击的相关点击事件</span><br><span class="line">    ui.autoGoodRelate.click(()=&gt;&#123;</span><br><span class="line">        autoGoodRelateUI();</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.autoSignInRelate.click(()=&gt;&#123;</span><br><span class="line">        autoSignInUI();</span><br><span class="line">    &#125;);</span><br><span class="line">    //toolbar</span><br><span class="line">    activity.setSupportActionBar(ui.toolbar);</span><br><span class="line">    //设置滑动页面的标题</span><br><span class="line">    ui.viewpager.setTitles([&quot;可使用脚本&quot;, &quot;开发中脚本&quot;]);</span><br><span class="line">    //让滑动页面和标签栏联动</span><br><span class="line">    ui.tabs.setupWithViewPager(ui.viewpager);</span><br><span class="line">    //让工具栏左上角可以打开侧拉菜单</span><br><span class="line">    ui.toolbar.setupWithDrawer(ui.drawer);</span><br><span class="line"></span><br><span class="line">    ui.menu.setDataSource([</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;个人信息&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/ninja-turtle.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;注意事项&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/assignment-late.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        title: &quot;关于&quot;,</span><br><span class="line">        icon: &quot;https://img.icons8.com/ios/100/000000/info.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;退出&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/esc.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]);</span><br><span class="line">    ui.menu.on(&quot;item_click&quot;, item =&gt; &#123;</span><br><span class="line">        switch(item.title)&#123;</span><br><span class="line">            case &quot;个人信息&quot;:</span><br><span class="line">                toast(&quot;尚在开发中哟，亲~&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;注意事项&quot;: </span><br><span class="line">                alert(&quot;本APP里面的脚本都是依托于无障碍服务，所以无障碍服务权限必须开启。&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;关于&quot;: </span><br><span class="line">                alert(&quot;Developed by THBELIEF!&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;退出&quot;:</span><br><span class="line">                ui.finish();</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    //QQ自动点赞的点击事件</span><br><span class="line">    ui.autoGood.click(()=&gt;&#123;</span><br><span class="line">        confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">            if(sure)&#123;</span><br><span class="line">                //修改控件信息必须更改线程</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //自动点赞</span><br><span class="line">                    StartClick();</span><br><span class="line">                &#125;);</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //另外一个线程检测是否点击了音量下键</span><br><span class="line">                    isKeyDown();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    //i西科自动签到点击事件</span><br><span class="line">    ui.autoSignIn.click(()=&gt;&#123;</span><br><span class="line">        confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">            if(sure)&#123;</span><br><span class="line">                //修改控件信息必须更改线程</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //自动签到</span><br><span class="line">                    autoSignInFunction();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//QQ名片自动点赞UI</span><br><span class="line">function autoGoodRelateUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">      &lt;frame&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;button id=&quot;backMainUIByGoodRelateUI&quot; text=&quot;返回&quot; w=&quot;auto&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; /&gt;</span><br><span class="line">            &lt;text text=&quot;本脚本适配V7.9.9.3965版QQ.注意：本脚本使用之前必须打开无障碍服务权限，否则不会运行。&quot; textSize=&quot;20sp&quot;/&gt;</span><br><span class="line">        &lt;/vertical&gt; </span><br><span class="line">      &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    //返回键返回主界面</span><br><span class="line">    ui.backMainUIByGoodRelateUI.click(()=&gt;&#123;</span><br><span class="line">        mainUI();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//i西科自动签到UI</span><br><span class="line">function autoSignInUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">      &lt;frame&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;button id=&quot;backMainUIBySignInUI&quot; text=&quot;返回&quot; w=&quot;auto&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; /&gt;</span><br><span class="line">            &lt;text text=&quot;本脚本适配3.9.0Android版i西科.注意：本脚本使用之前必须打开无障碍服务权限，否则不会运行。&quot; textSize=&quot;20sp&quot;/&gt;</span><br><span class="line">        &lt;/vertical&gt; </span><br><span class="line">      &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    ui.backMainUIBySignInUI.click(()=&gt;&#123;</span><br><span class="line">        mainUI();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//下面是各类方法的实现</span><br><span class="line"></span><br><span class="line">//从桌面一直打开到点赞页面的函数</span><br><span class="line">function open()&#123;</span><br><span class="line">    //需要无障碍权限</span><br><span class="line">    auto(&quot;normal&quot;);</span><br><span class="line">    //直接打开QQ（应该还要判断一下是否已经登录了）</span><br><span class="line">    launchApp(&quot;QQ&quot;);</span><br><span class="line">    //调用QQ提供的Android以及ios通用API打开QQ名片</span><br><span class="line">    var i = app.intent(&#123;</span><br><span class="line">    action:&quot;android.intent.action.VIEW&quot;,</span><br><span class="line">        data:&quot;mqqapi://card/show_pslcard?&amp;uin=&quot;</span><br><span class="line">    &#125;); </span><br><span class="line">    app.startActivity(i);</span><br><span class="line">    //打开点赞列表</span><br><span class="line">    toast(&quot;请点击QQ点赞的图标进入点赞页面哦，亲~~~&quot;);</span><br><span class="line">    sleep(250);</span><br><span class="line">&#125;</span><br><span class="line">//具体点赞的方法</span><br><span class="line">function good() &#123;</span><br><span class="line">    //寻找点赞的小图标</span><br><span class="line">    var goodClick = desc(&quot;赞&quot;).untilFind();</span><br><span class="line">    var i = 0;</span><br><span class="line">    while (i &lt; goodClick.size()) &#123;</span><br><span class="line">        var j = 0;</span><br><span class="line">        while (j &lt; 10) &#123;//十次点击</span><br><span class="line">            goodClick.get(i).click();</span><br><span class="line">            j = j + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        i = i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //点击完之后要往下翻</span><br><span class="line">    className(&quot;android.widget.AbsListView&quot;).scrollForward();</span><br><span class="line">    sleep(500);</span><br><span class="line">    //如果出现显示更多就点击一下</span><br><span class="line">    if (text(&quot;显示更多&quot;).exists()) &#123;</span><br><span class="line">        text(&quot;显示更多&quot;).findOne().parent().click();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//这个是QQ名片自动点赞的主方法</span><br><span class="line">function StartClick()&#123;</span><br><span class="line">    //下面就是主函数部分</span><br><span class="line">    toast(&quot;请确保QQ已经登录哦亲~~~&quot;);</span><br><span class="line">    open();</span><br><span class="line">    //进入点赞页面，页面跳转需要时间，必须延迟才行。</span><br><span class="line">    waitForActivity(&quot;com.tencent.mobileqq.activity.VisitorsActivity&quot;);</span><br><span class="line">    toast(&quot;停止此脚本请按音量下键，亲~~~&quot;);</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        good();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//检测是否点击了音量下键的方法</span><br><span class="line">function isKeyDown()&#123;</span><br><span class="line">    //按键时不会弹出音量框</span><br><span class="line">    events.setKeyInterceptionEnabled(&quot;volume_down&quot;,true);</span><br><span class="line">    //监听按键</span><br><span class="line">    events.observeKey();</span><br><span class="line">    events.on(&quot;key_down&quot;,function(volume_down,event)&#123;</span><br><span class="line">        toast(&quot;正在关闭此脚本,亲~~~&quot;);</span><br><span class="line">        //退出脚本</span><br><span class="line">        sleep(500);</span><br><span class="line">        engines.stopAll();</span><br><span class="line">        //直接返回桌面</span><br><span class="line">        home();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//2019.4.2 i西科自动签到方法</span><br><span class="line">function autoSignInFunction()&#123;</span><br><span class="line">    auto();</span><br><span class="line">    //打开i西科</span><br><span class="line">    launchApp(&quot;i西科&quot;);</span><br><span class="line">    //跳转到相应的界面</span><br><span class="line">    waitForPackage(&quot;org.weixvn.frame&quot;);</span><br><span class="line">    //找到首页上签到的按钮，点击进去</span><br><span class="line">    id(&quot;it_sign_in&quot;).clickable().findOne().click();</span><br><span class="line">    waitForActivity(&quot;com.example.z.iswust.view.activity.impl.SignInActivity&quot;);</span><br><span class="line">    //点击签到</span><br><span class="line">    sleep(1000);</span><br><span class="line">    id(&quot;btn_signin&quot;).clickable().untilFind().click();</span><br><span class="line">    toast(&quot;签到成功了哟，亲~~~&quot;);</span><br><span class="line">    sleep(500);</span><br><span class="line">    //签到完成之后直接返回桌面</span><br><span class="line">    home();</span><br><span class="line">&#125;</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">## 总结</span><br><span class="line"></span><br><span class="line">1.布局和UI的设计还是需要好好斟酌。</span><br><span class="line"></span><br><span class="line">2.尽量函数方法话。</span><br><span class="line"></span><br><span class="line">3.下次升级蚂蚁森林自动化收取功能。</span><br><span class="line"></span><br><span class="line">4.所有功能尽量都提供定时开启的功能。</span><br><span class="line"></span><br><span class="line">未完待续</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/01/Android-活动/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2747,337 +2936,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/23/java基础-略知一二/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/23/java基础-略知一二/" itemprop="url">java基础-略知一二</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T17:45:45+08:00">
-                2019-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#collection">Collection</a></li>
-<li><a href="#set">Set</a><ul>
-<li><a href="#hashset">HashSet</a></li>
-<li><a href="#linkedhashset">LinkedHashSet</a></li>
-<li><a href="#sortedset">SortedSet</a></li>
-<li><a href="#treeset">TreeSet</a></li>
-</ul>
-</li>
-<li><a href="#list">List</a></li>
-<li><a href="#arraylist">ArrayList</a><ul>
-<li><a href="#构造方法">构造方法</a></li>
-</ul>
-</li>
-<li><a href="#linkedlist">LinkedList</a><ul>
-<li><a href="#构造方法-1">构造方法</a></li>
-</ul>
-</li>
-<li><a href="#map">Map</a><ul>
-<li><a href="#特性">特性</a></li>
-<li><a href="#方法">方法</a></li>
-</ul>
-</li>
-<li><a href="#hashmap">HashMap</a><ul>
-<li><a href="#常用操作">常用操作</a></li>
-</ul>
-</li>
-<li><a href="#iterator">Iterator</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="collection">Collection</span></h2><p><strong>集合中只能放置对象的引用，不能放置原生数据类型。</strong></p>
-<p>常用方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 将所有元素从一个列表复制到另一个列表</span><br><span class="line">Collections.copy(new ArrayList(), new ArrayList());</span><br><span class="line">// 如果两个指定collection中没有相同的元素,则返回 true</span><br><span class="line">Collections.disjoint(new ArrayList(), new ArrayList());</span><br><span class="line">// 使用指定元素替换指定列表中的所有元素</span><br><span class="line">Collections.fill(new ArrayList(), new Object());</span><br><span class="line">// 返回指定 collection 中等于指定对象的元素数</span><br><span class="line">Collections.frequency(new ArrayList(), new Object());</span><br><span class="line">// 返回指定源列表中第一次出现指定目标列表的起始位置,如果没有出现这样的列表,则返回 -1</span><br><span class="line">Collections.indexOfSubList(new ArrayList(), new ArrayList());</span><br><span class="line">// 根据元素的自然顺序，返回给定 collection 的最大元素</span><br><span class="line">Collections.max(new ArrayList());</span><br><span class="line">// //根据元素的自然顺序，返回给定 collection 的最大元素</span><br><span class="line">Collections.min(new ArrayList());</span><br><span class="line">// 使用另一个值替换列表中出现的所有某一指定值</span><br><span class="line">Collections.replaceAll(new ArrayList(), &quot;oldVal&quot;, &quot;newVal&quot;);</span><br><span class="line">// 反转指定列表中元素的顺序</span><br><span class="line">Collections.reverse(new ArrayList());</span><br><span class="line">// 返回一个比较器,它强行反转</span><br><span class="line">Collections.reverseOrder();</span><br><span class="line">// 返回一个比较器,它强行反转指定比较器的顺序</span><br><span class="line">Collections.reverseOrder(new Comparator() &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public int compare(Object o1, Object o2) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">// 使用默认随机源随机更改指定列表的序列</span><br><span class="line">Collections.shuffle(new ArrayList());</span><br><span class="line">// 根据元素的自然顺序对指定列表按升序进行排序</span><br><span class="line">Collections.sort(new ArrayList());</span><br><span class="line">// 根据元素的自然顺序对指定列表按降序进行排序</span><br><span class="line">Collections.sort(new ArrayList(), Collections.reverseOrder());</span><br><span class="line">// 在指定列表的指定位置处交换元素</span><br><span class="line">Collections.swap(new ArrayList(), 1, 2);</span><br></pre></td></tr></table></figure>
-<h2><span id="set">Set</span></h2><p><strong>实现类：HashSet,LinkedHashSet.</strong></p>
-<p><strong>子接口：SortSet，TreeSet.</strong></p>
-<p>不包含重复元素，最多包含一个null，元素没有顺序。</p>
-<h3><span id="hashset">HashSet</span></h3><p>HashSet不是Ordered也不是Sorted,存储对象引用时是按照<strong>哈希策略</strong>来实现的,<br>    HashSet中是否存在一个对象是通过<strong>equals()</strong>和<strong>hashCode()</strong>协同判断，不保证顺序。</p>
-<p><strong>构造方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public HashSet()  </span><br><span class="line">public HashSet(int initialCapacity)  </span><br><span class="line">public HashSet(Collection c)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public HashSet(Collection c)</span><br></pre></td></tr></table></figure>
-<p>HashSet底层是使用<strong>HashMap</strong>实现的<br>HashSet的add()方法详解:<br>    <strong>判断已经存储在集合中的对象hashCode值是否与增加对象的hashCode值一致。</strong><br>    如果不一致,直接加进去。<br>    如果一致,再进行equals()比较，如果equals()返回true,对象已经存在不增加进去，如果equals()返回false,把对象增加进去。</p>
-<h3><span id="linkedhashset">LinkedHashSet</span></h3><p>LinkedHashSet是Ordered,采用<strong>双链表</strong>实现的，有<strong>固定顺序</strong>,也就是插入顺序。<br>LinkedHashSet底层是使用<strong>LinkedHashMap</strong>实现的。</p>
-<p><strong>构造方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public LinkedHashSet()  </span><br><span class="line">public LinkedHashSet(int initialCapacity)  </span><br><span class="line">public LinkedHashSet(Collection c)</span><br></pre></td></tr></table></figure>
-<h3><span id="sortedset">SortedSet</span></h3><p><strong>保证迭代器按照元素递增顺序遍历的集合,可以按照元素的自然顺序进行排序。</strong></p>
-<p><strong>常用方法：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Object first()</span><br><span class="line">		 返回此有序集合中当前第一个(最小的)元素</span><br><span class="line">	Object last()</span><br><span class="line">		返回此有序集合中最后一个(最大的)元素</span><br><span class="line">	SortedSet headSet(Object toElement)</span><br><span class="line">		返回此有序集合的部分视图,其元素严格小于toElement</span><br><span class="line">	SortedSet tailSet(Object fromElement)</span><br><span class="line">		返回此有序集合的部分视图,其元素大于或等于fromElement</span><br><span class="line">	SortedSet subSet(Object fromElement,Object toElement)</span><br><span class="line">		返回此有序集合的部分视图,元素范围从fromElement(包括)到toElement(不包括)</span><br><span class="line">	Comparator comparator()</span><br><span class="line">		返回与此有序集合关联的比较器,如果使用元素的自然顺序,则返回 null</span><br></pre></td></tr></table></figure>
-<h3><span id="treeset">TreeSet</span></h3><p>TreeSet是SortedSet接口的实现,<strong>元素不论以什么元素插入,在遍历的时候,都会以天然顺序遍历</strong>。因为它是自带排序的，所以如果想要增加自定义类型就必须指定排序的规则。<br>TreeSet底层是使用<strong>TreeMap</strong>实现的。</p>
-<p><strong>构造方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public TreeSet()</span><br><span class="line">public TreeSet(SortedSet s)  </span><br><span class="line">public TreeSet(int initialCapacity)</span><br><span class="line">public TreeSet(Comparator&lt;? super E&gt;)</span><br><span class="line">public TreeSet(Collection c)</span><br></pre></td></tr></table></figure>
-<h2><span id="list">List</span></h2><p>具有<strong>列表</strong>的功能,元素顺序均是<strong>按添加的先后进行排列的,</strong>允许<strong>重复的</strong>元素,允许多个null元素。</p>
-<p><strong>常用方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">List list = new ArrayList();</span><br><span class="line">// 向列表的尾部追加指定的元素</span><br><span class="line">list.add(&quot;lwc&quot;);</span><br><span class="line">// 在列表的指定位置插入指定元素</span><br><span class="line">list.add(1, &quot;nxj&quot;);</span><br><span class="line">// 追加指定 collection 中的所有元素到此列表的结尾</span><br><span class="line">list.addAll(new ArrayList());</span><br><span class="line">// 从列表中移除所有元素</span><br><span class="line">list.clear();</span><br><span class="line">// 如果列表包含指定的元素,则返回true</span><br><span class="line">list.contains(&quot;nxj&quot;);</span><br><span class="line">// 如果列表包含指定 collection 的所有元素,则返回 true</span><br><span class="line">list.containsAll(new ArrayList());</span><br><span class="line">// 比较指定的对象与列表是否相等</span><br><span class="line">list.equals(new ArrayList());</span><br><span class="line">// 返回列表中指定位置的元素</span><br><span class="line">list.get(0);</span><br><span class="line">// 返回列表的哈希码值</span><br><span class="line">list.hashCode();</span><br><span class="line">// 返回列表中首次出现指定元素的索引,如果列表不包含此元素,则返回 -1</span><br><span class="line">list.indexOf(&quot;lwc&quot;);</span><br><span class="line">// 返回列表中最后出现指定元素的索引,如果列表不包含此元素,则返回 -1</span><br><span class="line">list.lastIndexOf(&quot;lwc&quot;);</span><br><span class="line">// 如果列表不包含元素,则返回 true</span><br><span class="line">list.isEmpty();</span><br><span class="line">// 移除列表中指定位置的元素</span><br><span class="line">list.remove(0);</span><br><span class="line">// 移除列表中出现的首个指定元素</span><br><span class="line">list.remove(&quot;lwc&quot;);</span><br><span class="line">// 从列表中移除指定 collection 中包含的所有元素</span><br><span class="line">list.removeAll(new ArrayList());</span><br><span class="line">// 用指定元素替换列表中指定位置的元素</span><br><span class="line">list.set(0, &quot;lp&quot;);</span><br><span class="line">// 返回列表中的元素数</span><br><span class="line">list.size();</span><br><span class="line">// 返回列表中指定的fromIndex(包括)和toIndex(不包括)之间的部分视图</span><br><span class="line">list.subList(1, 2);</span><br><span class="line">// 返回以正确顺序包含列表中的所有元素的数组</span><br><span class="line">list.toArray();</span><br><span class="line">// 返回以正确顺序包含列表中所有元素的数组</span><br><span class="line">list.toArray(new String[] &#123; &quot;a&quot;, &quot;b&quot; &#125;);</span><br></pre></td></tr></table></figure>
-<h2><span id="arraylist">ArrayList</span></h2><h3><span id="构造方法">构造方法</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList()</span><br><span class="line">public ArrayList(int initialCapacity)</span><br><span class="line">public ArrayList(Collection c)</span><br></pre></td></tr></table></figure>
-<p> ArrayList依赖于<strong>数组</strong>实现的,初始长度为10的Object[],并且可随需要而增加的<strong>动态数组</strong>。<br>    当元素超过10,那么ArrayList底层会<strong>新生成一个数组,</strong>长度为原来的1.5倍+1,然后将原数组内容复制到新数组中,并且后续增加的内容会放到新数组中,当新数组无法容纳增加的元素,重复该过程即可。</p>
-<h2><span id="linkedlist">LinkedList</span></h2><p>LinkedList功能与ArrayList,Vector相同,内部是<strong>依赖双链表实现</strong>的,因此有很好的插入和删除性能,但随机访问元素的性能很差。</p>
-<h3><span id="构造方法">构造方法</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public LinkedList()</span><br><span class="line">public LinkedList(Collection c)</span><br></pre></td></tr></table></figure>
-<p>LinkedList类中有一个<strong>Entry内部类</strong>,Entry内部类包含3个部分<strong>向前的引用,向后的引用,数据</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header.next = header.previous = header;</span><br></pre></td></tr></table></figure>
-<h2><span id="map">Map</span></h2><p><strong>Map接口中键和值一一映射. 可以通过键来获取值.</strong></p>
-<h3><span id="特性">特性</span></h3><ul>
-<li>给定一个键和一个值，你可以将该值存储在一个Map对象. 之后，你可以通过键来访问对应的值。</li>
-<li>当访问的值不存在的时候，方法就会抛出一个NoSuchElementException异常。</li>
-<li>当对象的类型和Map里元素类型不兼容的时候，就会抛出一个 ClassCastException异常。</li>
-<li>当在不允许使用Null对象的Map中使用Null对象，会抛出一个NullPointerException 异常。</li>
-<li>当尝试修改一个只读的Map时，会抛出一个UnsupportedOperationException异常。</li>
-</ul>
-<h3><span id="方法">方法</span></h3><table>
-<thead>
-<tr>
-<th>1</th>
-<th>void clear( )  从此映射中移除所有映射关系（可选操作）。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>boolean containsKey(Object k) 如果此映射包含指定键的映射关系，则返回 true。</td>
-</tr>
-<tr>
-<td>3</td>
-<td>boolean containsValue(Object v) 如果此映射将一个或多个键映射到指定值，则返回 true。</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Set entrySet( ) 返回此映射中包含的映射关系的 Set 视图。</td>
-</tr>
-<tr>
-<td>5</td>
-<td>boolean equals(Object obj) 比较指定的对象与此映射是否相等。</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Object get(Object k) 返回指定键所映射的值；如果此映射不包含该键的映射关系，则返回 null。</td>
-</tr>
-<tr>
-<td>7</td>
-<td>int hashCode( ) 返回此映射的哈希码值。</td>
-</tr>
-<tr>
-<td>8</td>
-<td>boolean isEmpty( ) 如果此映射未包含键-值映射关系，则返回 true。</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Set keySet( ) 返回此映射中包含的键的 Set 视图。</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Object put(Object k, Object v) 将指定的值与此映射中的指定键关联（可选操作）。</td>
-</tr>
-<tr>
-<td>11</td>
-<td>void putAll(Map m) 从指定映射中将所有映射关系复制到此映射中（可选操作）。</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Object remove(Object k) 如果存在一个键的映射关系，则将其从此映射中移除（可选操作）。</td>
-</tr>
-<tr>
-<td>13</td>
-<td>int size( ) 返回此映射中的键-值映射关系数。</td>
-</tr>
-<tr>
-<td>14</td>
-<td>Collection values( ) 返回此映射中包含的值的 Collection 视图。</td>
-</tr>
-</tbody>
-</table>
-<h2><span id="hashmap">HashMap</span></h2><h3><span id="常用操作">常用操作</span></h3><p>1.第一步就是给HashMap里面put一些<strong>键值对</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer, Integer&gt; hashMap = new HashMap&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		hashMap.put(5, 2);</span><br><span class="line">		hashMap.put(9, 2);</span><br><span class="line">		hashMap.put(8, 1);</span><br><span class="line">		hashMap.put(7, 3);</span><br><span class="line">		hashMap.put(16, 1);</span><br><span class="line">		hashMap.put(10, 2);</span><br><span class="line">		hashMap.put(6, 2);</span><br><span class="line">		//下面两个键值对是没有存的，因为key存过的不会重复存储，只会覆盖之前的vlue</span><br><span class="line">		hashMap.put(5, 2);</span><br><span class="line">		hashMap.put(5, 3);</span><br></pre></td></tr></table></figure>
-<p>2.containsKey(Object key)方法，返回值为boolean，用于<strong>判断当前HashMap中是否包含key对应的key-value</strong>。</p>
-<p>3.containsValue(Object value)方法，返回值为boolean，用于<strong>判断当前HashMap中是否包含value对应的key-value</strong>。</p>
-<p>4.遍历HashMap的两种方式：</p>
-<p>1）利用haspmap.entrySet().iterator()：利用迭代器，从Entry中取出键、取出值，推荐使用这种方式进行遍历，效率较高：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Entry&lt;Integer, Integer&gt;&gt; iterator = hashMap.entrySet().iterator();</span><br><span class="line">		while (iterator.hasNext()) &#123;</span><br><span class="line">			Entry&lt;Integer, Integer&gt; entry = iterator.next();</span><br><span class="line">			Integer key = entry.getKey();</span><br><span class="line">			Integer value = entry.getValue();</span><br><span class="line">			System.out.print(key + &quot;---&gt;&quot; + value);</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<p>2）利用hashmap.keySet().iterator()：利用键的迭代器，每次取出一个键，再根据键，从HashMap中取出值，这种方式的效率不高，不推荐使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; iterator2 = hashMap.keySet().iterator();</span><br><span class="line">		while (iterator2.hasNext()) &#123;</span><br><span class="line">			Integer key = iterator2.next();</span><br><span class="line">			Integer value = hashMap.get(key);</span><br><span class="line">			System.out.print(key + &quot;---&quot; + value);</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/u013398759/article/details/77679632" target="_blank" rel="noopener">参考链接</a></p>
-<h2><span id="iterator">Iterator</span></h2><p> 在Java中Iterator为一个接口，它只提供了迭代了基本规则，在JDK中他是这样定义的：<strong>对 collection 进行迭代的迭代器。迭代器取代了 Java Collections Framework 中的 Enumeration。</strong>迭代器与枚举有两点不同：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、迭代器允许调用者利用定义良好的语义在迭代期间从迭代器所指向的 collection 移除元素。</span><br><span class="line"></span><br><span class="line">2、方法名称得到了改进。</span><br></pre></td></tr></table></figure>
-<p><strong>接口定义：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Iterator &#123;</span><br><span class="line">　　boolean hasNext();</span><br><span class="line">　　Object next();</span><br><span class="line">　　void remove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Object next()：返回迭代器刚越过的元素的引用，返回值是Object，需要强制转换成自己需要的类型。</p>
-<p>boolean hasNext()：判断容器内是否还有可供访问的元素。</p>
-<p>void remove()：删除迭代器刚越过的元素。</p>
-<p><strong>未完待续~~~</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3130,7 +2988,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3224,7 +3082,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共57.7k字</span>
+  <span class="post-count">博客全站共59.4k字</span>
 </div>
         
 
