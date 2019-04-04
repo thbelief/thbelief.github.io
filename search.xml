@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Auto.js Script开发(四)]]></title>
+    <url>%2F2019%2F04%2F04%2FAuto-js-Script%E5%BC%80%E5%8F%91-%E5%9B%9B%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 总结 前言今天早上八点就起来改代码，现在终于把更新这个功能修改完了。等会儿还有事儿，唉，想睡午觉都不行了。 正文今天一天就更新了这么多版本，也是没谁了，主要是为了测试APP更新的功能。 下面是代码： 12345678910111213141516171819202122232425262728293031323334353637//2019.4.4 开屏进入检查是否有更新，有就提示，没有就不提示function checkHaveUpdate()&#123; threads.start(function()&#123; //网络请求必须更改线程，不能在主线程 //通过fir.im的API来进行版本查询 var url=&quot;http://api.fir.im/apps/latest/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6&amp;type=android&quot;; var res =http.get(url); //下面必须用app.versionCode获取本地APP版本号，3.00是测试用的 if(res.statusCode == 200)&#123; //toast(&quot;请求成功&quot;); //先检测是否有版本号存储本地 var versionShortFromWeb=JSON.parse(res.body.string()).versionShort; if(storage.get(&quot;versionShort&quot;)==versionShortFromWeb)&#123; //如果版本短号一样则不更新 toast(&quot;欢迎回来，亲~~~&quot;); &#125; else&#123; //有更新 //或许这里可以给一个alert框显示一些更新内容 var allUpdateMessageUrl=&quot;http://api.fir.im/apps/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6 &quot;; var allUpdateMessage =JSON.parse(http.get(allUpdateMessageUrl).body.string()); var showallUpdateMessage=&quot;更新内容： &quot;+&quot;\n&quot;+allUpdateMessage.desc; dialogs.build(&#123; title: &quot;发现新版本&quot;, content:showallUpdateMessage, positive: &quot;知道了&quot; &#125;).on(&quot;positive&quot;,()=&gt;&#123; toast(&quot;有更新，请前往菜单页面更新哦，~亲~&quot;); &#125;).show(); log(versionShortFromWeb+app.versionName); &#125; &#125;else&#123;//网络请求失败 toast(&quot;找不到网络呢，亲！&quot;); &#125;; &#125;);&#125; 主要是增添了开屏检查更新的功能： 总结遇到了很多的问题，总归还是很有收获，个人开发APP遇到这么多问题是我始料不及的，但是也很庆幸，因为学到了很多。 现在还有些问题没有解决，包括本地存储的versionShort版本号还是没有完善，只是默认点击了浏览器下载或者直接下载就会更改本地的versionShort为最新版本号，还有就是下载的问题，貌似302？测试不够多现在还不是很明确。 还有就是需要考虑一下在线数据存储器问题。]]></content>
+      <categories>
+        <category>移动端开发</category>
+        <category>Auto.js</category>
+      </categories>
+      <tags>
+        <tag>移动端开发</tag>
+        <tag>Auto.js</tag>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>脚本</tag>
+        <tag>Script</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Auto.js Script开发(三)]]></title>
     <url>%2F2019%2F04%2F03%2FAuto-js-Script%E5%BC%80%E5%8F%91-%E4%B8%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 代码 前言今天又是元气满满的一天，改了一天的代码，累死…主要就是在fir.im上面上传了代码，然后给应用添加了一个可以检查更新的功能，有关于网络请求方面有很多问题，不得不说！ 正文代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556//2019.4.3检查是否有更新，有更新的话就下载function checkIsUpdata()&#123; threads.start(function()&#123; //网络请求必须更改线程，不能在主线程 //通过fir.im的API来进行版本查询 var url=&quot;http://api.fir.im/apps/latest/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6&amp;type=android&quot;; var res =http.get(url); //下面必须用app.versionCode获取本地APP版本号，2.00是测试用的 var now_version=app.versionCode; if(res.statusCode == 200)&#123; //toast(&quot;请求成功&quot;); if(res.body.string().indexOf(now_version)&gt;0) &#123;//已经是最新版 toast(&quot;已经是最新版了哦，亲~~~&quot;); &#125; else &#123;//有新版 //弹出选择框 updataApp(url); &#125; log(res.body.string().indexOf(now_version)); &#125;else&#123;//网络请求失败 toast(&quot;请求失败:&quot; + res.statusMessage); &#125;; &#125;);&#125;;//更新的具体方法function updataApp(url)&#123; //Json.stringify是将Json对象美化,parse是把它变成JSON对象 updateMessage=JSON.parse(http.get(url).body.string()); var updateContent=&quot;名称: &quot;+updateMessage.name+&quot;\n&quot;+&quot;版本号: &quot;+updateMessage.version+&quot;\n&quot;+&quot;版本短号: &quot;+updateMessage.versionShort; dialogs.build(&#123; title: &quot;发现新版本&quot;, content: updateContent, positive: &quot;立即下载&quot;, negative: &quot;取消&quot;, neutral: &quot;去浏览器下载&quot; &#125;).on(&quot;positive&quot;,download) .on(&quot;neutral&quot;, () =&gt; &#123; app.openUrl(&quot;https://fir.im/ha23&quot;); &#125;) .show();&#125;//下载安装包的方法function download()&#123; threads.start(function()&#123; /*var url=&quot;http://api.fir.im/apps/5ca40357548b7a65912fc02b/download_token?api_token=b44bd08868ab6ad1b1c02ca260c389b6&quot;; //转成JSON对象 var downloadApi=JSON.parse(http.get(url).body.string()); //转成字符串 //var a=JSON.stringify(downloadApi.download_token).string();*/ //这里的download_token如果动态拼接的话会出现问题，然后正好前面返回的数据看到的，并且测试之后更新版本并不影响它的值，所以就直接使用了，本来不该这样用 app.openUrl(&quot;http://download.fir.im/apps/5ca40357548b7a65912fc02b/install?download_token=d1a11ae1ae9947fb66777f9540327497&quot;); &#125;);&#125;]]></content>
