@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java基础-线程停止的三种方式]]></title>
+    <url>%2F2019%2F04%2F05%2Fjava%E5%9F%BA%E7%A1%80-%E7%BA%BF%E7%A8%8B%E5%81%9C%E6%AD%A2%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[目录： 前提 方式一 方式二 方式三 前提停止线程在多线程开发中很有必要，掌握线程的停止可以对线程的停止进行有效的处理。 方式一使用退出标志，使得线程正常的退出，也就是run方法之后进程终止。用flag来作为进程是否继续进行的条件。 12345public void run() &#123; while(flag)&#123; //do something &#125;&#125; 方式二使用stop强行中断线程，不推荐使用，暴力终止，可能使一些清理性的工作得不到完成。还可能对锁定的内容进行解锁，容易造成数据不同步的问题。 方式三使用interrupt方法中断线程。 java中有以下两个方法： this.interrupted():测试当前线程是否已经中断（静态方法）。如果连续调用该方法，则第二次调用将返回false。在api文档中说明interrupted()方法具有清除状态的功能。执行后具有将状态标识清除为false的功能。 this.isInterrupted():测试线程是否已经中断，但是不能清除状态标识。 抛异常法： 1234567891011121314151617181920public class MyThread4 extends Thread &#123; @Override public void run() &#123; super.run(); try &#123; for (int i = 0; i &lt; 50000; i++) &#123; if (this.isInterrupted()) &#123; System.out.println( &quot;线程已经结束，我要退出&quot; );// return; throw new InterruptedException(); &#125; System.out.println( &quot;i=&quot; + (i + 1) ); &#125; System.out.println( &quot;我是for下面的语句，我被执行说明线程没有真正结束&quot; ); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;进入MyThread.java类中run方法的catch异常了&quot; ); e.printStackTrace(); &#125; &#125;&#125; 沉睡停止法： 1234567891011121314151617181920212223 @Override public void run() &#123; super.run(); try &#123; System.out.println( &quot;begin run&quot; ); Thread.sleep( 500 ); System.out.println( &quot;begin end&quot; ); &#125; catch (InterruptedException e) &#123; System.out.println(&quot;在沉睡中终止&quot;); e.printStackTrace(); &#125; &#125;public static void main(String[] args) &#123; try &#123; MyThread5 thread5 = new MyThread5(); thread5.start(); Thread.sleep( 20 ); thread5.interrupt(); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;main catch&quot; ); e.printStackTrace(); &#125; &#125; 或者： 12345678910111213141516 try &#123; for (int i = 0; i &lt; 10000; i++) &#123; System.out.println( &quot;i=&quot; +(i + 1) ); &#125; System.out.println( &quot;run begin&quot; ); Thread.sleep( 200 ); System.out.println( &quot;run end&quot; ); &#125; catch (InterruptedException e) &#123; System.out.println( &quot;先停止，后sleep&quot; ); e.printStackTrace(); &#125;public static void main(String[] args) &#123; MyThread5 thread5 = new MyThread5(); thread5.start(); thread5.interrupt(); &#125; 参考链接]]></content>
+      <categories>
+        <category>后端</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Auto.js Script开发(四)]]></title>
     <url>%2F2019%2F04%2F04%2FAuto-js-Script%E5%BC%80%E5%8F%91-%E5%9B%9B%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 总结 前言今天早上八点就起来改代码，现在终于把更新这个功能修改完了。等会儿还有事儿，唉，想睡午觉都不行了。 正文今天一天就更新了这么多版本，也是没谁了，主要是为了测试APP更新的功能。 下面是代码： 12345678910111213141516171819202122232425262728293031323334353637//2019.4.4 开屏进入检查是否有更新，有就提示，没有就不提示function checkHaveUpdate()&#123; threads.start(function()&#123; //网络请求必须更改线程，不能在主线程 //通过fir.im的API来进行版本查询 var url=&quot;http://api.fir.im/apps/latest/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6&amp;type=android&quot;; var res =http.get(url); //下面必须用app.versionCode获取本地APP版本号，3.00是测试用的 if(res.statusCode == 200)&#123; //toast(&quot;请求成功&quot;); //先检测是否有版本号存储本地 var versionShortFromWeb=JSON.parse(res.body.string()).versionShort; if(storage.get(&quot;versionShort&quot;)==versionShortFromWeb)&#123; //如果版本短号一样则不更新 toast(&quot;欢迎回来，亲~~~&quot;); &#125; else&#123; //有更新 //或许这里可以给一个alert框显示一些更新内容 var allUpdateMessageUrl=&quot;http://api.fir.im/apps/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6 &quot;; var allUpdateMessage =JSON.parse(http.get(allUpdateMessageUrl).body.string()); var showallUpdateMessage=&quot;更新内容： &quot;+&quot;\n&quot;+allUpdateMessage.desc; dialogs.build(&#123; title: &quot;发现新版本&quot;, content:showallUpdateMessage, positive: &quot;知道了&quot; &#125;).on(&quot;positive&quot;,()=&gt;&#123; toast(&quot;有更新，请前往菜单页面更新哦，~亲~&quot;); &#125;).show(); log(versionShortFromWeb+app.versionName); &#125; &#125;else&#123;//网络请求失败 toast(&quot;找不到网络呢，亲！&quot;); &#125;; &#125;);&#125; 主要是增添了开屏检查更新的功能： 总结遇到了很多的问题，总归还是很有收获，个人开发APP遇到这么多问题是我始料不及的，但是也很庆幸，因为学到了很多。 现在还有些问题没有解决，包括本地存储的versionShort版本号还是没有完善，只是默认点击了浏览器下载或者直接下载就会更改本地的versionShort为最新版本号，还有就是下载的问题，貌似302？测试不够多现在还不是很明确。 还有就是需要考虑一下在线数据存储器问题。]]></content>
@@ -308,8 +321,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>番外</tag>
         <tag>多线程</tag>
+        <tag>番外</tag>
         <tag>线程</tag>
         <tag>进程</tag>
       </tags>
