@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ACM打表与C/C++字符串输入]]></title>
+    <url>%2F2019%2F04%2F08%2FACM%E6%89%93%E8%A1%A8%E4%B8%8EC-C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5%2F</url>
+    <content type="text"><![CDATA[目录： ACM打表方法 C/C++字符串输入方法 scanf gets getchar cin getline(cin,s) ACM打表方法众所周知，在ACM比赛中，对于代码的运行时间运行内存之类的东西是有要求的，很多时候为了提高速度，会采用打表的方法。 比如说ACM里面一道题让你求第n个质数，n&lt;=10000，如果第一个测试用例让你求第1000个，那么你可以将前1000个已经算好了的存起来，如果题目再问到小于1000的情况，前面已经计算过了，那么我们就可以直接输出，算出的结果继续存起来，以备下一次的实用，如此类推，这个存起来的过程就叫做打表。 C/C++字符串输入方法注意，不同的编译器头文件可能不一样，需要注意一下这个问题。 scanf遇到空格会终止。 1234567891011121314151617#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 101010using namespace std;int main()&#123; char s[N],b[N]; cout&lt;&lt;&quot;请输入字符串：\n&quot;; while(~scanf(&quot;%s&quot;,s))&#123; int i = 0; while((b[i] = s[i])!=&apos;\0&apos;) i++; cout&lt;&lt;&quot;字符串复制如下：\n&quot;; puts(b); cout&lt;&lt;&quot;请输入字符串：\n&quot;; &#125; return 0;&#125; 结果如下： 12345678请输入字符串：DJHHJ DHJKSDH字符串复制如下：DJHHJ请输入字符串：字符串复制如下：DHJKSDH请输入字符串： 它自己会将其分为两个字符串。 gets包括空格，但是遇到’\n’会终止。 getchar终止的条件是自己定的，在终止之前可以读入所有的操作。 12345678910111213141516171819#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 101010using namespace std;int main()&#123; char s[N],b[N]; int i = 0; cout&lt;&lt;&quot;请输入字符串：\n&quot;;//这里就是遇到回车就结束了。 while((s[i] = getchar())!=&apos;\n&apos;)///模仿getline &#123; b[i] = s[i]; i++; &#125; cout&lt;&lt;&quot;字符串复制如下：\n&quot;; puts(b); return 0;&#125; cin这是C++的输入，和scanf类似。 getline(cin,s)这是string的特定输入法。可以读入空格，以”\n”结束。 12345678910111213141516171819#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 101010using namespace std;int main()&#123; //char s[N],b[N]; string s,b; cout&lt;&lt;&quot;请输入字符串：\n&quot;; while(getline(cin,s))&#123; b = s; cout&lt;&lt;&quot;字符串复制如下：\n&quot;; // puts(b); cout&lt;&lt;b&lt;&lt;endl; cout&lt;&lt;&quot;请输入字符串：\n&quot;; &#125; return 0;&#125; 参考链接]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>打表</tag>
+        <tag>ACM</tag>
+        <tag>字符串输入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android-自定义控件简述]]></title>
     <url>%2F2019%2F04%2F07%2FAndroid-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%AE%80%E8%BF%B0%2F</url>
     <content type="text"><![CDATA[目录： 自定义控件要求 制作步骤 自定义控件两个方式 基本原理 1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个： 2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个： 3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。 自定义控件要求1.遵循Android标准的命名，可配置，事件处理。 2.在XML布局中可配置控件属性。 3.点击事件之类的交互行为。 4.兼容性，Android不同版本之间应该具有广泛的适用性。 制作步骤1.view工作原理。 2.编写view类。 3.为view类增添属性。 4.绘制UI。 5.与用户进行交互（响应）。 6.自定义回调函数。 自定义控件两个方式 继承ViewGroup ​ 例如：ViewGroup、LinearLayout、FrameLayout、RelativeLayout等。 继承View ​ 例如：View、TextView、ImageView、Button等。 基本原理View的绘制基本上由measure()、layout()、draw()这个三个函数完成。 1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个：123public final void measure(int widthMeasureSpec, int heightMeasureSpec) protected final void setMeasuredDimension(int measuredWidth, int measuredHeight) protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) measure调用onMeasure，onMeasure测量宽度、高度然后调用setMeasureDimension保存测量结果，measure，setMeasureDimension是final类型，view的子类不需要重写，onMeasure在view的子类中重写。 关于MeasureSpec： (1) UPSPECIFIED :父容器对于子容器没有任何限制,子容器想要多大就多大. (2) EXACTLY父容器已经为子容器设置了尺寸,子容器应当服从这些边界,不论子容器想要多大的空间. (3) AT_MOST子容器可以是声明大小内的任意大小. 2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个：123public void layout(int l, int t, int r, int b)protected boolean setFrame(int left, int top, int right, int bottom)protected void onLayout(boolean changed, int left, int top, int right, int bottom) layout通过调用setFrame（l,t,r,b），l,t,r,b即子视图在父视图中的具体位置，onLayout一般只会在自定义ViewGroup中才会使用。 3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。12public void draw(Canvas canvas)protected void onDraw(Canvas canvas) 通过调用draw函数进行视图绘制，在View类中onDraw函数是个空函数，最终的绘制需求需要在自定义的onDraw函数中进行实现，比如ImageView完成图片的绘制，如果自定义ViewGroup这个函数则不需要重载。]]></content>
