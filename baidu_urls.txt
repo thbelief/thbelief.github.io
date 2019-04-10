@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/04/10/THBELIEFScript帮助文档/
 http://thbelief.coding.me/2019/04/10/Bomb使用（一）/
 http://thbelief.coding.me/2019/04/09/Android-ListView与RecyclerView简述/
 http://thbelief.coding.me/2019/04/08/ACM打表与C-C-字符串输入/
