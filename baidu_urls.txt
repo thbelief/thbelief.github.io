@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/04/11/Auto-js-Script开发-六/
 http://thbelief.coding.me/2019/04/10/THBELIEFScript帮助文档/
 http://thbelief.coding.me/2019/04/10/Bomb使用（一）/
 http://thbelief.coding.me/2019/04/09/Android-ListView与RecyclerView简述/
