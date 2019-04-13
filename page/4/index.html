@@ -294,6 +294,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/09/java番外-多线程编程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/09/java番外-多线程编程/" itemprop="url">java番外-多线程编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-09T15:49:38+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#1线程与进程的异同">1.线程与进程的异同：</a></li>
+<li><a href="#2线程的生命周期">2.线程的生命周期：</a><ul>
+<li><a href="#新建状态">新建状态：</a></li>
+<li><a href="#就绪状态">就绪状态：</a></li>
+<li><a href="#运行状态">运行状态：</a></li>
+<li><a href="#阻塞状态">阻塞状态：</a></li>
+<li><a href="#死亡状态">死亡状态：</a></li>
+</ul>
+</li>
+<li><a href="#3线程的优先级">3.线程的优先级：</a></li>
+<li><a href="#4创建线程的三种方式">4.创建线程的三种方式：</a><ul>
+<li><a href="#通过runnable接口创建线程">通过Runnable接口创建线程：</a></li>
+<li><a href="#通过集成thread类来创建线程">通过集成Thread类来创建线程：</a></li>
+<li><a href="#通过callable和future创建线程">通过Callable和Future创建线程：</a></li>
+<li><a href="#三种方式的对比">三种方式的对比：</a></li>
+</ul>
+</li>
+<li><a href="#线程的几个重要的概念">线程的几个重要的概念：</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="1线程与进程的异同">1.线程与进程的异同：</span></h2><p><strong>线程</strong>：一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<p><strong>进程</strong>：一个进程包括了由操作系统分配的内存空间，包含了一个或者多个线程。一个线程不能独立的存在，它必须是进程的一部分。一个进程一直运行，直到所有的非守护线程都结束运行后才能结束。</p>
+<h2><span id="2线程的生命周期">2.线程的生命周期：</span></h2><p><img src="/2019/03/09/java番外-多线程编程/D:/hexo/source/_posts/%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpg" alt=""></p>
+<p><strong>相关解释：</strong></p>
+<h3><span id="新建状态">新建状态：</span></h3><p>使用 <strong>new</strong> 关键字和 <strong>Thread</strong> 类或其子类建立一个线程对象后，该线程对象就处于新建状态。它保持这个状态直到程序 <strong>start()</strong> 这个线程。</p>
+<h3><span id="就绪状态">就绪状态：</span></h3><p>当线程对象调用了start()方法之后，该线程就进入就绪状态。就绪状态的线程处于就绪队列中，要等待JVM里线程调度器的调度。</p>
+<h3><span id="运行状态">运行状态：</span></h3><p>如果就绪状态的线程获取 CPU 资源，就可以执行 <strong>run()</strong>，此时线程便处于运行状态。处于运行状态的线程最为复杂，它可以变为阻塞状态、就绪状态和死亡状态。</p>
+<h3><span id="阻塞状态">阻塞状态：</span></h3><p>如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。在睡眠时间已到或获得设备资源后可以重新进入就绪状态。可以分为三种：</p>
+<ul>
+<li>等待阻塞：运行状态中的线程执行 wait() 方法，使线程进入到等待阻塞状态。</li>
+<li>同步阻塞：线程在获取 synchronized 同步锁失败(因为同步锁被其他线程占用)。</li>
+<li>其他阻塞：通过调用线程的 sleep() 或 join() 发出了 I/O 请求时，线程就会进入到阻塞状态。当sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。</li>
+</ul>
+<h3><span id="死亡状态">死亡状态：</span></h3><p>一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。</p>
+<h2><span id="3线程的优先级">3.线程的优先级：</span></h2><p>每一个 Java 线程都有一个优先级，这样有助于操作系统确定线程的调度顺序。</p>
+<p>Java 线程的优先级是一个整数，其取值范围是 1 （Thread.MIN_PRIORITY ） - 10 （Thread.MAX_PRIORITY ）。</p>
+<p>默认情况下，每一个线程都会分配一个优先级 NORM_PRIORITY（5）。</p>
+<p>具有较高优先级的线程对程序更重要，并且应该在低优先级的线程之前分配处理器资源。但是，线程优先级不能保证线程执行的顺序，而且非常依赖于平台。</p>
+<h2><span id="4创建线程的三种方式">4.创建线程的三种方式：</span></h2><ul>
+<li>通过实现 Runnable 接口；</li>
+<li>通过继承 Thread 类本身；</li>
+<li>通过 Callable 和 Future 创建线程。</li>
+</ul>
+<h3><span id="通过runnable接口创建线程">通过Runnable接口创建线程：</span></h3><p>实现Runnable是一个类只需要执行一个方法来调用run（）即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void run（）</span><br></pre></td></tr></table></figure>
+<p>该方法可以重写，要理解的是run（）可以调用其他方法，使用其他的类，并且声明变量，就像主线程一样。</p>
+<p>在创建一个实现Runnable接口的类之后，可以在类中实例化一个线程对象。</p>
+<p>Thread中定义了几个构造方法，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread(Runnable threadOb,String threadName);</span><br></pre></td></tr></table></figure>
+<p>这里，threadOb 是一个实现 Runnable 接口的类的实例，并且 threadName 指定新线程的名字。</p>
+<p>新线程创建之后，你调用它的 start() 方法它才会运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void start（）；</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class RunnableDemo implements Runnable &#123;</span><br><span class="line">   private Thread t;</span><br><span class="line">   private String threadName;</span><br><span class="line">   </span><br><span class="line">   RunnableDemo( String name) &#123;</span><br><span class="line">      threadName = name;</span><br><span class="line">      System.out.println(&quot;Creating &quot; +  threadName );</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void run() &#123;</span><br><span class="line">      System.out.println(&quot;Running &quot; +  threadName );</span><br><span class="line">      try &#123;</span><br><span class="line">         for(int i = 4; i &gt; 0; i--) &#123;</span><br><span class="line">            System.out.println(&quot;Thread: &quot; + threadName + &quot;, &quot; + i);</span><br><span class="line">            // 让线程睡眠一会</span><br><span class="line">            Thread.sleep(50);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;catch (InterruptedException e) &#123;</span><br><span class="line">         System.out.println(&quot;Thread &quot; +  threadName + &quot; interrupted.&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(&quot;Thread &quot; +  threadName + &quot; exiting.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void start () &#123;</span><br><span class="line">      System.out.println(&quot;Starting &quot; +  threadName );</span><br><span class="line">      if (t == null) &#123;</span><br><span class="line">         t = new Thread (this, threadName);</span><br><span class="line">         t.start ();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class TestThread &#123;</span><br><span class="line"> </span><br><span class="line">   public static void main(String args[]) &#123;</span><br><span class="line">      RunnableDemo R1 = new RunnableDemo( &quot;Thread-1&quot;);</span><br><span class="line">      R1.start();</span><br><span class="line">      </span><br><span class="line">      RunnableDemo R2 = new RunnableDemo( &quot;Thread-2&quot;);</span><br><span class="line">      R2.start();</span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Creating Thread-1</span><br><span class="line">Starting Thread-1</span><br><span class="line">Creating Thread-2</span><br><span class="line">Starting Thread-2</span><br><span class="line">Running Thread-1</span><br><span class="line">Thread: Thread-1, 4</span><br><span class="line">Running Thread-2</span><br><span class="line">Thread: Thread-2, 4</span><br><span class="line">Thread: Thread-1, 3</span><br><span class="line">Thread: Thread-2, 3</span><br><span class="line">Thread: Thread-1, 2</span><br><span class="line">Thread: Thread-2, 2</span><br><span class="line">Thread: Thread-1, 1</span><br><span class="line">Thread: Thread-2, 1</span><br><span class="line">Thread Thread-1 exiting.</span><br><span class="line">Thread Thread-2 exiting.</span><br></pre></td></tr></table></figure>
+<h3><span id="通过集成thread类来创建线程">通过集成Thread类来创建线程：</span></h3><p>该方法是创建一个新的类然后让这个类继承自Thread类，然后创建一个该类的实例即可。</p>
+<p>继承类的时候必须重写run（）方法，该方法是新线程的入口点，它也必须调用start方法才可以执行。本质上也是实现了Runnable接口的一个实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class ThreadDemo extends Thread &#123;</span><br><span class="line">   private Thread t;</span><br><span class="line">   private String threadName;</span><br><span class="line">   </span><br><span class="line">   ThreadDemo( String name) &#123;</span><br><span class="line">      threadName = name;</span><br><span class="line">      System.out.println(&quot;Creating &quot; +  threadName );</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void run() &#123;</span><br><span class="line">      System.out.println(&quot;Running &quot; +  threadName );</span><br><span class="line">      try &#123;</span><br><span class="line">         for(int i = 4; i &gt; 0; i--) &#123;</span><br><span class="line">            System.out.println(&quot;Thread: &quot; + threadName + &quot;, &quot; + i);</span><br><span class="line">            // 让线程睡眠一会</span><br><span class="line">            Thread.sleep(50);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;catch (InterruptedException e) &#123;</span><br><span class="line">         System.out.println(&quot;Thread &quot; +  threadName + &quot; interrupted.&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(&quot;Thread &quot; +  threadName + &quot; exiting.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void start () &#123;</span><br><span class="line">      System.out.println(&quot;Starting &quot; +  threadName );</span><br><span class="line">      if (t == null) &#123;</span><br><span class="line">         t = new Thread (this, threadName);</span><br><span class="line">         t.start ();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class TestThread &#123;</span><br><span class="line"> </span><br><span class="line">   public static void main(String args[]) &#123;</span><br><span class="line">      ThreadDemo T1 = new ThreadDemo( &quot;Thread-1&quot;);</span><br><span class="line">      T1.start();</span><br><span class="line">      </span><br><span class="line">      ThreadDemo T2 = new ThreadDemo( &quot;Thread-2&quot;);</span><br><span class="line">      T2.start();</span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Creating Thread-1</span><br><span class="line">Starting Thread-1</span><br><span class="line">Creating Thread-2</span><br><span class="line">Starting Thread-2</span><br><span class="line">Running Thread-1</span><br><span class="line">Thread: Thread-1, 4</span><br><span class="line">Running Thread-2</span><br><span class="line">Thread: Thread-2, 4</span><br><span class="line">Thread: Thread-1, 3</span><br><span class="line">Thread: Thread-2, 3</span><br><span class="line">Thread: Thread-1, 2</span><br><span class="line">Thread: Thread-2, 2</span><br><span class="line">Thread: Thread-1, 1</span><br><span class="line">Thread: Thread-2, 1</span><br><span class="line">Thread Thread-1 exiting.</span><br><span class="line">Thread Thread-2 exiting.</span><br></pre></td></tr></table></figure>
+<p>下表列出了Thread类的一些重要方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th><strong>方法描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>public void start()</strong> 使该线程开始执行；<strong>Java</strong> 虚拟机调用该线程的 run 方法。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>public void run()</strong> 如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>public final void setName(String name)</strong> 改变线程名称，使之与参数 name 相同。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>public final void setPriority(int priority)</strong>  更改线程的优先级。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>public final void setDaemon(boolean on)</strong> 将该线程标记为守护线程或用户线程。</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>public final void join(long millisec)</strong> 等待该线程终止的时间最长为 millis 毫秒。</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>public void interrupt()</strong> 中断线程。</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>public final boolean isAlive()</strong> 测试线程是否处于活动状态。</td>
+</tr>
+</tbody>
+</table>
+<p>测试线程是否处于活动状态。 上述方法是被Thread对象调用的。下面的方法是Thread类的静态方法。</p>
+<table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th><strong>方法描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>public static void yield()</strong> 暂停当前正在执行的线程对象，并执行其他线程。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>public static void sleep(long millisec)</strong> 在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>public static boolean holdsLock(Object x)</strong> 当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>public static Thread currentThread()</strong> 返回对当前正在执行的线程对象的引用。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>public static void dumpStack()</strong> 将当前线程的堆栈跟踪打印至标准错误流。</td>
+</tr>
+</tbody>
+</table>
+<p>实例：</p>
+<p>如下的ThreadClassDemo 程序演示了Thread类的一些方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 文件名 : DisplayMessage.java</span><br><span class="line">// 通过实现 Runnable 接口创建线程</span><br><span class="line">public class DisplayMessage implements Runnable &#123;</span><br><span class="line">   private String message;</span><br><span class="line">   </span><br><span class="line">   public DisplayMessage(String message) &#123;</span><br><span class="line">      this.message = message;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void run() &#123;</span><br><span class="line">      while(true) &#123;</span><br><span class="line">         System.out.println(message);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 文件名 : GuessANumber.java</span><br><span class="line">// 通过继承 Thread 类创建线程</span><br><span class="line"> </span><br><span class="line">public class GuessANumber extends Thread &#123;</span><br><span class="line">   private int number;</span><br><span class="line">   public GuessANumber(int number) &#123;</span><br><span class="line">      this.number = number;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void run() &#123;</span><br><span class="line">      int counter = 0;</span><br><span class="line">      int guess = 0;</span><br><span class="line">      do &#123;</span><br><span class="line">         guess = (int) (Math.random() * 100 + 1);</span><br><span class="line">         System.out.println(this.getName() + &quot; guesses &quot; + guess);</span><br><span class="line">         counter++;</span><br><span class="line">      &#125; while(guess != number);</span><br><span class="line">      System.out.println(&quot;** Correct!&quot; + this.getName() + &quot;in&quot; + counter + &quot;guesses.**&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 文件名 : ThreadClassDemo.java</span><br><span class="line">public class ThreadClassDemo &#123;</span><br><span class="line"> </span><br><span class="line">   public static void main(String [] args) &#123;</span><br><span class="line">      Runnable hello = new DisplayMessage(&quot;Hello&quot;);</span><br><span class="line">      Thread thread1 = new Thread(hello);</span><br><span class="line">      thread1.setDaemon(true);</span><br><span class="line">      thread1.setName(&quot;hello&quot;);</span><br><span class="line">      System.out.println(&quot;Starting hello thread...&quot;);</span><br><span class="line">      thread1.start();</span><br><span class="line">      </span><br><span class="line">      Runnable bye = new DisplayMessage(&quot;Goodbye&quot;);</span><br><span class="line">      Thread thread2 = new Thread(bye);</span><br><span class="line">      thread2.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line">      thread2.setDaemon(true);</span><br><span class="line">      System.out.println(&quot;Starting goodbye thread...&quot;);</span><br><span class="line">      thread2.start();</span><br><span class="line"> </span><br><span class="line">      System.out.println(&quot;Starting thread3...&quot;);</span><br><span class="line">      Thread thread3 = new GuessANumber(27);</span><br><span class="line">      thread3.start();</span><br><span class="line">      try &#123;</span><br><span class="line">         thread3.join();</span><br><span class="line">      &#125;catch(InterruptedException e) &#123;</span><br><span class="line">         System.out.println(&quot;Thread interrupted.&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(&quot;Starting thread4...&quot;);</span><br><span class="line">      Thread thread4 = new GuessANumber(75);</span><br><span class="line">      </span><br><span class="line">      thread4.start();</span><br><span class="line">      System.out.println(&quot;main() is ending...&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Starting hello thread...</span><br><span class="line">Starting goodbye thread...</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Goodbye</span><br><span class="line">Goodbye</span><br><span class="line">Goodbye</span><br><span class="line">Goodbye</span><br><span class="line">Goodbye</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+<h3><span id="通过callable和future创建线程">通过Callable和Future创建线程：</span></h3><ul>
+<li>创建 Callable 接口的实现类，并实现 call() 方法，该 call() 方法将作为线程执行体，并且有返回值。</li>
+<li>创建 Callable 实现类的实例，使用 FutureTask 类来包装 Callable 对象，该 FutureTask 对象封装了该 Callable 对象的 call() 方法的返回值。</li>
+<li>使用 FutureTask 对象作为 Thread 对象的 target 创建并启动新线程。</li>
+<li>调用 FutureTask 对象的 get() 方法来获得子线程执行结束后的返回值。</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class CallableThreadTest implements Callable&lt;Integer&gt; &#123;</span><br><span class="line">    public static void main(String[] args)  </span><br><span class="line">    &#123;  </span><br><span class="line">        CallableThreadTest ctt = new CallableThreadTest();  </span><br><span class="line">        FutureTask&lt;Integer&gt; ft = new FutureTask&lt;&gt;(ctt);  </span><br><span class="line">        for(int i = 0;i &lt; 100;i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot; 的循环变量i的值&quot;+i);  </span><br><span class="line">            if(i==20)  </span><br><span class="line">            &#123;  </span><br><span class="line">                new Thread(ft,&quot;有返回值的线程&quot;).start();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        try  </span><br><span class="line">        &#123;  </span><br><span class="line">            System.out.println(&quot;子线程的返回值：&quot;+ft.get());  </span><br><span class="line">        &#125; catch (InterruptedException e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125; catch (ExecutionException e)  </span><br><span class="line">        &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">    @Override  </span><br><span class="line">    public Integer call() throws Exception  </span><br><span class="line">    &#123;  </span><br><span class="line">        int i = 0;  </span><br><span class="line">        for(;i&lt;100;i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);  </span><br><span class="line">        &#125;  </span><br><span class="line">        return i;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="三种方式的对比">三种方式的对比：</span></h3><ul>
+<li>采用实现 Runnable、Callable 接口的方式创建多线程时，线程类只是实现了 Runnable 接口或 Callable 接口，还可以继承其他类。</li>
+<li>使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程。</li>
+</ul>
+<h2><span id="线程的几个重要的概念">线程的几个重要的概念：</span></h2><p>1）线程同步。</p>
+<p>2）线程间通信。</p>
+<p>3）线程死锁。</p>
+<p>4）线程控制，包括挂起停止与恢复。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/07/java基础-融会贯通/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -3123,248 +3466,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/01/09/Hexo进阶（个人向）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/09/Hexo进阶（个人向）/" itemprop="url">Hexo进阶（个人向）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T16:36:45+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言：</a></li>
-<li><a href="#正文">正文：</a><ul>
-<li><a href="#关于如何将自己的博客推送至百度与谷歌默认情况下是不会被爬取的这个时候就需要我们主动出击让我们的博客可以直接被搜索到">关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）</a></li>
-</ul>
-</li>
-<li><a href="#提交百度搜索引擎谷歌同理过程一样">提交百度搜索引擎：（谷歌同理，过程一样）</a></li>
-<li><a href="#站点地图">站点地图：</a><ul>
-<li><a href="#安装百度谷歌的站点地图">安装百度谷歌的站点地图：</a></li>
-</ul>
-</li>
-<li><a href="#向谷歌提交链接">向谷歌提交链接：</a></li>
-<li><a href="#百度收录">百度收录：</a></li>
-<li><a href="#sitemap">sitemap：</a><ul>
-<li><a href="#结语百度的抓取速度是真的慢另外githubio的博客不允许百度蜘蛛爬取直接再把博客推送到codingme即可百度收录的时候一定要用codingme的网址-关于如何推送到coding与github类似">结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言：</span></h2><p>首先，在我们刚刚搭建好这个博客的时候，我们会发现自己的博客显得很是简陋以及，单调，这个时候就是显示个性化的好时机了。<a href="https://www.jianshu.com/p/f054333ac9e6" target="_blank" rel="noopener">hexo主题个性化</a>是一个集合了许多方法的网址，可以参考。当然这只是沧海一粟，不值一提。还有更多的，诸如留言板，相册，网易云外链之类的优秀功能，具体详情可以直接百度，这里不过多赘述。</p>
-<h2><span id="正文">正文：</span></h2><h3><span id="关于如何将自己的博客推送至百度与谷歌默认情况下是不会被爬取的这个时候就需要我们主动出击让我们的博客可以直接被搜索到">关于如何将自己的博客推送至百度与谷歌（默认情况下是不会被爬取的，这个时候就需要我们主动出击，让我们的博客可以直接被搜索到）</span></h3><p>原因：Github和Coding都做了防爬虫处理，这样子我们博客可能就无法被搜索引擎收录，需要我们手动提交！</p>
-<p>验证是否被百度或者谷歌收录，即在相应的搜索栏中输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site: thbelief.coding.me</span><br></pre></td></tr></table></figure>
-<p>（注：site:后面是你的博客网址）</p>
-<p>如果显示找不到相关网址，即没有被收录。如果找到了….那就恭喜不用操作了。</p>
-<p>言归正传，回到正题。</p>
-<h2><span id="提交百度搜索引擎谷歌同理过程一样">提交百度搜索引擎：（谷歌同理，过程一样）</span></h2><p>登录<a href="http://ziyuan.baidu.com/site/index" target="_blank" rel="noopener">百度搜索引擎</a></p>
-<p>ps：可能需要个人信息认证，按照提示认证即可！</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/YpUnA4O.png" alt="1"></p>
-<p>然后是：添加站点-&gt;输入博客网址-&gt;设置站点领域（我设置的是信息技术）-&gt;选择验证方式。</p>
-<p>这里只介绍第一种验证方式：文件验证</p>
-<p>1.请点击 下载验证文件 获取验证文件</p>
-<p>2.将验证文件放置于您所配置hexo博客的根目录下</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/image2.jpg" alt=""></p>
-<p>3.点击这里确认验证文件可以正常访问</p>
-<p>4.请点击“完成验证”按钮</p>
-<p>注：为保持验证通过的状态,成功验证后请不要删除HTML文件</p>
-<p>然后git bash输入框内输入hexo g -d部署到网站上面即可。</p>
-<h2><span id="站点地图">站点地图：</span></h2><p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
-<h3><span id="安装百度谷歌的站点地图">安装百度谷歌的站点地图：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<p>然后打开站点配置文件：</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/image3.jpg" alt=""></p>
-<p>将url设置为你的站点名称。</p>
-<p>然后执行hexo clean 以及 hexo g。</p>
-<p>这样在你的网站根目录的<code>public</code>文件夹下生成sitemap.xml文件和baidusitemap.xml文件：</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/image4.jpg" alt=""></p>
-<p>其中sitemap.xml文件是搜索引擎通用的文件，baidusitemap.xml是百度专用的sitemap文件。</p>
-<h2><span id="向谷歌提交链接">向谷歌提交链接：</span></h2><p>google站点平台：<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌站点</a>，然后就是注册账号、验证站点、提交sitemap，</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/image5.jpg" alt=""></p>
-<p>提交site之后即可。</p>
-<p>注意：无论是百度还是谷歌，都不是已通过就能直接搜索到，谷歌大致需要几小时，百度大致一个月左右，请耐心等待。</p>
-<h2><span id="百度收录">百度收录：</span></h2><p>百度收录较慢。故设置自动推送：</p>
-<p>在主题配置文件下设置,将baidu_push设置为true：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO</span><br><span class="line">baidu_push: true</span><br></pre></td></tr></table></figure>
-<h2><span id="sitemap">sitemap：</span></h2><p>将生成的baidusitemap.xml提交到<a href="http://ziyuan.baidu.com/linksubmit/index" target="_blank" rel="noopener">百度站点</a></p>
-<p>点击链接提交：</p>
-<p><img src="/2019/01/09/Hexo进阶（个人向）/image6.jpg" alt=""></p>
-<p>然后刷新页面即可。</p>
-<h3><span id="结语百度的抓取速度是真的慢另外githubio的博客不允许百度蜘蛛爬取直接再把博客推送到codingme即可百度收录的时候一定要用codingme的网址-关于如何推送到coding与github类似">结语：百度的抓取速度是真的慢，另外，github.io的博客不允许百度蜘蛛爬取，直接再把博客推送到coding.me即可，百度收录的时候一定要用coding.me的网址。关于如何推送到coding，与github类似…</span></h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3417,7 +3518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3439,7 +3540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">80</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3511,7 +3612,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共69k字</span>
+  <span class="post-count">博客全站共69.4k字</span>
 </div>
         
 
