@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[小米五刷机简述]]></title>
+    <url>%2F2019%2F04%2F15%2F%E5%B0%8F%E7%B1%B3%E4%BA%94%E5%88%B7%E6%9C%BA%E7%AE%80%E8%BF%B0%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 ADB工具 主要功能 ADB下载 OS下载 第三方rec的下载 小米手机解锁（小米手机必要） 安装REC 清理 安装OS 注意 收尾 ADB安装APK到手机 前言不久之前刚刚把我退役的小米五刷机刷成了Android原生的LineageOS系统，这里就记录一下过程吧。 正文ADB工具adb（Android Debug Bridge），安卓平台调试桥，是连接Android手机与PC端的桥梁，通过adb可以管理、操作模拟器和设备，如安装软件、查看设备软硬件参数、系统升级、运行shell命令等。 主要功能 1.运行设备的shell(命令行) 。 2.管理模拟器或设备的端口映射 。 3.计算机和设备之间上传/下载文件 。 4.将本地apk软件安装至模拟器或android设备。 ADB下载这里就不详细的写如何下载安装配置ADB工具了，百度即可，安装配置很简单，下面直接贴上官网的链接。 官网链接 OS下载进入LineageOS官网找到相对应的小米五的刷机包，直接下载最新的包就可以了。（一定要记住下载后放置的位置，并且不用解压）。 注意：要求在MIUI版本在8.8.30及以上，这个必须有，因为LineageOS要求固件支持。 第三方rec的下载REC即Recovery模式，也俗称卡刷。 这里用的是TWRP官网这个工具。 小米手机解锁（小米手机必要）注意：只有小米手机才需要！ 如果已经解锁的可以直接跳过。 如果没有解锁的话直接移步到小米官方解锁网站。上面有很详细的步骤，一步一步的跟着做就可以了。 安装REC1.关机状态按住音量下键+关机键。 用数据线连接电脑与手机，在电脑的cmd中输入下面的代码： 1adb reboot bootloader 2.输入命令把rec刷进去： 1fastboot flash recovery &quot;*****.img&quot; //*****是前面下载rec后放置的位置的路径+包的名字 3.运行rec： 1fastboot boot &quot;***.img&quot; //*****是前面下载rec后放置的位置的路径+包的名字 成功的状态： 12bootingFinished. Total time: 1.138s 清理进入界面之后先恢复出厂设置，然后格式化Data，然后选择高级选项，把cache和data清除掉，System不能更改。 安装OS把之前下载的OS包移动到sdcard路径下： 1adb push &quot;****.zip&quot; /sdcard/ 打开twrp里面的安装选项，找到sdcard目录，点击进去会发现一个zip包，这个就是移动进去的OS，然后点击安装即可。 注意有些时候如果提示没有权限或其他错误，先重启重启不是直接重启手机，是重新进入rec。可以在rec的首页面重启，也可以输入adb命令。 收尾需要值得注意的是，刷进去之后的浏览器由于某些众所周知的原因不能使用也就是说下载不了软件这些的，必须通过ADB工具将电脑上下载好的apk安装到手机上去。（还需要打开手机的开发者权限，打开ADB调试）。 ADB安装APK到手机1.电脑的命令行窗口输入下面的代码：（打开开发者权限的ADB调试之后才找得到设备） 1adb devices 2.安装apk： 123adb install (apk完整路径）//(安装)例如：adb install D:/THBELIEFScript.apk 参考链接]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>小米五</tag>
+        <tag>刷机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[汇编实验（一）]]></title>
     <url>%2F2019%2F04%2F15%2F%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 Debug命令 E命令 U命令 T命令 A命令 D命令 前言前不久刚开始上汇编实验，这里就用博客记录一下学习的过程，顺便也做备份，方便自己以后复习。 正文Debug命令1234567891011R命令：查看、修改CPU中寄存器的内容 D命令：查看内存中的内容 E命令：修改内存中的内容（可以写入数据、指令） U命令：将内存中的内容解释为机器指令和对应的汇编指令 T命令：执行CS:IP指向的内存单元处的指令 A命令：以汇编指令的形式向内存中写入指令 E命令用E命令将数据写入内存。 这里是先用E命令写入内存，再用D命令查看了内存的内容，可以看到确实是修改了的，然后再用E命令发现又可以修改了。 U命令查看内存中机器码的含义。 T命令单步执行内存中的机器码。 A命令将汇编指令写入内存中。 D命令查看内存中的内容。]]></content>
