@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(三)]]></title>
+    <url>%2F2019%2F04%2F18%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 JS三种输出方式 window.alert() console系列 document.write() JS标准对象 Date JSON 前言好久都没有更新JS的学习笔记了，现在有点儿空，就抽时间写篇博客记录一下。 正文JS三种输出方式这个其实是例外的，只是突然想在VSCode中调试JS程序，然后就专门的查了一下这个相关的。 window.alert()它会将括号内的内容以弹窗的方式展现出来。 console系列这个方式一般用于在编译器如VSCode之类的地方使用，很方便。 123console.log(&apos;控制台.日志()&apos;); console.warn(&apos;控制台.警告()&apos;); console.error(&apos;控制台.错误()&apos;); document.write()直接在页面上显示内容。 JS标准对象DateDate对象和Android中的一样都是用于获取日期与时间。 注意：这里只是获取本机的时间，不是网络时间，有些时候会出现问题。 常用方法： 1234567891011var now = new Date();now; // Wed Jun 24 2015 19:49:22 GMT+0800 (CST)now.getFullYear(); // 2015, 年份now.getMonth(); // 5, 月份，注意月份范围是0~11，5表示六月now.getDate(); // 24, 表示24号now.getDay(); // 3, 表示星期三now.getHours(); // 19, 24小时制now.getMinutes(); // 49, 分钟now.getSeconds(); // 22, 秒now.getMilliseconds(); // 875, 毫秒数now.getTime(); // 1435146562875, 以number形式表示的时间戳 示例： Date对象的创建 12var d = new Date(2015, 5, 19, 20, 15, 30, 123);//传入参数var d = Date.parse(&apos;2015-06-24T19:49:22.875+08:00&apos;);//ISO 8601格式分字符串 注意：传入参数创建的时候月份是0~11，意思是如果是六月的话需要传入的是5. JSON这个其实也是Android中遇到的朋友，很是熟悉了，这里就简单的说一下。 JSON是JavaScript Object Notation的缩写，它是一种数据交换格式。 123456number：和JavaScript的number完全一致；boolean：就是JavaScript的true或false；string：就是JavaScript的string；null：就是JavaScript的null；array：就是JavaScript的Array表示方式——[]；object：就是JavaScript的&#123; ... &#125;表示方式。 注意：JSON还定死了字符集必须是UTF-8，为了统一解析，JSON的字符串规定必须用双引号””，Object的键也必须用双引号””。 另外，JSON.parse()可以把JSON字符串转变成一个JavaScript对象。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>Auto.js</tag>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>学习</tag>
+        <tag>JS输出</tag>
+        <tag>Date</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Auto.js Script开发(十一)]]></title>
     <url>%2F2019%2F04%2F18%2FAuto-js-Script%E5%BC%80%E5%8F%91-%E5%8D%81%E4%B8%80%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 前言今天就是更新了4.9.0的版本，新增了一个二维码生成的功能，准备下一次重构底层代码了，现在写起来有点儿小难受。 正文二维码生成功能页面： 目前有的规划： 二维码生成的关键代码： 1234567891011121314151617//网络请求图片然后保存到本地 //这里用的是type1，返回的是base64encode编码的字符串,type2返回的就是图片png格式 threads.start(function()&#123; var url=&quot;http://apis.juhe.cn/qrcode/api?key=684e3d257f6034ebdfd80a2bbeddeb18&amp;type=2&amp;fgcolor=&quot;+ui.backgroundColor.text()+&quot;&amp;w=&quot;+ui.size.text()+&quot;&amp;m=&quot;+ui.marginSize.text()+&quot;&amp;text=&quot;+ui.textContent.text(); var img=images.load(url); if(img!=null)&#123; toast(&quot;网络请求成功&quot;); //提示一下是不是要生成？ //在根目录下创建一个文件夹“THBELIEFScript二维码” files.create(&quot;/sdcard/THBELIEFScript二维码/&quot;); images.save(img,&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;,&quot;png&quot;,100); toast(&quot;该二维码图片保存在&quot;+&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;); log(&quot;该二维码图片保存在&quot;+&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;); &#125;else&#123;//网络请求失败 toast(&quot;网络请求失败!&quot;); &#125;; &#125;);]]></content>
