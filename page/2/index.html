@@ -294,6 +294,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/11/Auto-js-Script开发-六/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/Auto-js-Script开发-六/" itemprop="url">Auto.js Script开发(六)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T09:53:18+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#展示">展示</a></li>
+<li><a href="#帮助文档">帮助文档</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#易班批量签到">易班批量签到</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>这两天的话，对于这个软件的更新就包括了帮助文档，界面重构，常见问题，易班批量签到等等。</p>
+<h2><span id="展示">展示</span></h2><p><img src="/2019/04/11/Auto-js-Script开发-六/1.png" alt=""></p>
+<p><img src="/2019/04/11/Auto-js-Script开发-六/2.png" alt=""></p>
+<p><img src="/2019/04/11/Auto-js-Script开发-六/3.png" alt=""></p>
+<p><img src="/2019/04/11/Auto-js-Script开发-六/4.png" alt=""></p>
+<h2><span id="帮助文档">帮助文档</span></h2><p>在主页面的viewpager中添加另外一个页面作为帮助文档的展示。</p>
+<p>帮助文档其实也是直接拉的博客里面的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;frame&gt;</span><br><span class="line">                &lt;vertical&gt;</span><br><span class="line">                    &lt;ScrollView&gt;</span><br><span class="line">                        &lt;vertical&gt;</span><br><span class="line">                            &lt;webview id=&quot;webview&quot; h=&quot;*&quot; margin=&quot;0 16&quot;/&gt;</span><br><span class="line">                        &lt;/vertical&gt;</span><br><span class="line">                    &lt;/ScrollView&gt;</span><br><span class="line">                &lt;/vertical&gt;</span><br><span class="line">            &lt;/frame&gt;</span><br></pre></td></tr></table></figure>
+<p>具体实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//获取帮助文档的网页</span><br><span class="line">    ui.webview.loadUrl(&quot;https://thbelief.github.io/2019/04/10/THBELIEFScript%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3/&quot;);</span><br></pre></td></tr></table></figure>
+<h2><span id="常见问题">常见问题</span></h2><p>和帮助文档差不多的布局。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;frame&gt;</span><br><span class="line">                &lt;vertical&gt;</span><br><span class="line">                    &lt;list id=&quot;answerProblem&quot;&gt;</span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                            &lt;text textColor=&quot;&#123;&#123;this.color&#125;&#125;&quot;  w=&quot;*&quot; h=&quot;*&quot; textSize=&quot;20sp&quot; text=&quot;&#123;&#123;this.line&#125;&#125;&quot; /&gt;</span><br><span class="line">                        &lt;/horizontal&gt;             </span><br><span class="line">                    &lt;/list&gt;</span><br><span class="line">                &lt;/vertical&gt;</span><br><span class="line">            &lt;/frame&gt;</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//先设置标题</span><br><span class="line">ui.viewpager.setTitles([&quot;可使用脚本&quot;, &quot;开发中脚本&quot;,&quot;常见问题&quot;,&quot;帮助文档&quot;]);</span><br><span class="line">//再填充数据</span><br><span class="line"> ui.answerProblem.setDataSource([</span><br><span class="line"> &#123;</span><br><span class="line">     line: &quot;&quot;，</span><br><span class="line">     color： “”</span><br><span class="line"> &#125;</span><br><span class="line"> ]);</span><br></pre></td></tr></table></figure>
+<h2><span id="易班批量签到">易班批量签到</span></h2><p>关键代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line">&quot;ui&quot;;</span><br><span class="line">auto();</span><br><span class="line">//是否按下音量下键</span><br><span class="line">isKeyDown();</span><br><span class="line">//创建两个txt文件，一个是账号一个是密码，一一对应</span><br><span class="line">files.create(&quot;/sdcard/account.txt&quot;);</span><br><span class="line">files.create(&quot;/sdcard/password.txt&quot;);</span><br><span class="line">//本地键值对存储</span><br><span class="line">var storage=storages.create(&quot;易班批量签到速率&quot;);</span><br><span class="line">//先清除所有的本地数据，因为每次的默认值都是15s每次登陆</span><br><span class="line">storage.clear();</span><br><span class="line">storage.put(&quot;speed&quot;,15);</span><br><span class="line">//这个是界面的UI</span><br><span class="line">interfaceUI();</span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">function interfaceUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">        &lt;frame&gt;</span><br><span class="line">          &lt;vertical gravity=&quot;center&quot;&gt;</span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                  &lt;img src=&quot;http://sowcar.com/t6/698/1554895620x1822614218.jpg&quot; w=&quot;*&quot; h=&quot;200&quot; scaleType=&quot;fitXY&quot; /&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                  &lt;text text=&quot;基本设置&quot; h=&quot;*&quot; w=&quot;*&quot; gravity=&quot;center&quot; textSize=&quot;20dp&quot; textColor=&quot;red&quot;/&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                  &lt;list id=&quot;accountList&quot; layout_weight=&quot;1&quot; gravity=&quot;center&quot;&gt;</span><br><span class="line">                        &lt;vertical&gt;</span><br><span class="line">                            &lt;text  textColor=&quot;black&quot; w=&quot;*&quot; h=&quot;*&quot; textSize=&quot;15dp&quot; text=&quot;&#123;&#123;this.title&#125;&#125;&quot; gravity=&quot;center&quot;  singleLine=&quot;true&quot;/&gt;</span><br><span class="line">                        &lt;/vertical&gt;</span><br><span class="line">                  &lt;/list&gt;</span><br><span class="line">                  &lt;list id=&quot;passwordList&quot; layout_weight=&quot;1&quot; gravity=&quot;center&quot;&gt;</span><br><span class="line">                        &lt;vertical&gt;</span><br><span class="line">                            &lt;text  textColor=&quot;black&quot; w=&quot;*&quot; h=&quot;*&quot; textSize=&quot;15dp&quot; text=&quot;&#123;&#123;this.title&#125;&#125;&quot; gravity=&quot;center&quot;  singleLine=&quot;true&quot;/&gt;</span><br><span class="line">                        &lt;/vertical&gt;</span><br><span class="line">                  &lt;/list&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              </span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                &lt;button id=&quot;addDeleteAccount&quot; text=&quot;账户编辑&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; gravity=&quot;center&quot; /&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              </span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                &lt;button id=&quot;addDeletePassword&quot; text=&quot;密码编辑&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; gravity=&quot;center&quot; /&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                &lt;input id=&quot;SignInSpeed&quot; text=&quot;15&quot; hint=&quot;签到速率（默认15s）&quot; inputType=&quot;number&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">                &lt;text text=&quot;秒/登陆&quot; /&gt;</span><br><span class="line">                &lt;button id=&quot;sureSpeed&quot; text=&quot;更改速率&quot;  h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; gravity=&quot;center&quot; layout_weight=&quot;3&quot;/&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">              &lt;horizontal&gt;</span><br><span class="line">                &lt;button id=&quot;start&quot; text=&quot;开始运行&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; gravity=&quot;center&quot; /&gt;</span><br><span class="line">              &lt;/horizontal&gt;</span><br><span class="line">          &lt;/vertical&gt; </span><br><span class="line">        &lt;/frame&gt;</span><br><span class="line">      );</span><br><span class="line">    //增添的点击事件</span><br><span class="line">    ui.addDeleteAccount.click(()=&gt;&#123;</span><br><span class="line">        toast(&quot;可以增添账号啦!~~~&quot;);</span><br><span class="line">        app.viewFile(&quot;/sdcard/account.txt&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.addDeletePassword.click(()=&gt;&#123;</span><br><span class="line">        toast(&quot;可以增添密码啦!~~~&quot;);</span><br><span class="line">        app.viewFile(&quot;/sdcard/password.txt&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.sureSpeed.click(()=&gt;&#123;</span><br><span class="line">        alert(&quot;登陆速率是根据自身手机流畅度调节的，默认是15s/每次登陆签到，如果出现一次登陆签到还没结束就提示了下一次登录的话，建议调大数值，放缓频率，反之亦然！&quot;);</span><br><span class="line">        if(ui.SignInSpeed.text()&lt;5)&#123;</span><br><span class="line">            toast(&quot;修改失败，不建议修改至5s以下。&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            storage.remove(&quot;speed&quot;);</span><br><span class="line">            storage.put(&quot;speed&quot;,ui.SignInSpeed.text());</span><br><span class="line">            toast(&quot;成功修改至:&quot;+storage.get(&quot;speed&quot;));</span><br><span class="line">            ui.SignInSpeed.setText(storage.get(&quot;speed&quot;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.start.click(()=&gt;&#123;</span><br><span class="line">        var accountFile=open(&quot;/sdcard/account.txt&quot;,&quot;r&quot;);</span><br><span class="line">        var passwordFile=open(&quot;/sdcard/password.txt&quot;,&quot;r&quot;);</span><br><span class="line">        var count=1;</span><br><span class="line">        //文件里面第一排必须排除</span><br><span class="line">        //accountFile.readline();</span><br><span class="line">        //passwordFile.readline();</span><br><span class="line">        //var accountFileArray=[];</span><br><span class="line">        //var passwordFileArray=[];</span><br><span class="line">        app.launchApp(&quot;易班&quot;);</span><br><span class="line">        setInterval(function()&#123;    </span><br><span class="line">            var accountFileArray=accountFile.readline();</span><br><span class="line">            var passwordFileArray=passwordFile.readline();</span><br><span class="line">            log(&quot;第&quot;+count+&quot;个文件读取&quot;+accountFileArray+passwordFileArray);</span><br><span class="line">            count++;//计数   </span><br><span class="line">            if(accountFileArray==null)&#123;</span><br><span class="line">                dialogs.build(&#123;</span><br><span class="line">                    title: &quot;友情提示&quot;,</span><br><span class="line">                    content: &quot;已经完成所有的签到了哦，亲~&quot;,</span><br><span class="line">                    positive: &quot;知道了&quot;</span><br><span class="line">                &#125;).on(&quot;positive&quot;,()=&gt;&#123;</span><br><span class="line">                    toast(&quot;正在自动退出脚本...&quot;);</span><br><span class="line">                    exit();//跳出条件不登录</span><br><span class="line">                &#125;).show();         </span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                toast(&quot;正在准备登录中，每一次登录签到约&quot;+storage.get(&quot;speed&quot;)+&quot;s~~~&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            log(&quot;登录&quot;+accountFileArray);</span><br><span class="line">            toast(&quot;登录&quot;+accountFileArray);</span><br><span class="line">            SignIn(accountFileArray,passwordFileArray);</span><br><span class="line">        &#125;, 1000*storage.get(&quot;speed&quot;));   </span><br><span class="line">        //SignIn(&quot;18227410387&quot;,&quot;13547296248tyty&quot;)     </span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">function SignIn(signInAccount,signInPassword)&#123;</span><br><span class="line">    threads.start(function()&#123;</span><br><span class="line">    </span><br><span class="line">        //输入账号密码</span><br><span class="line">        id(&quot;login_account_et&quot;).findOne().setText(signInAccount);</span><br><span class="line">        id(&quot;login_password_et&quot;).findOne().setText(signInPassword);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //登录按钮</span><br><span class="line">        id(&quot;login_btn&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //去签到的页面</span><br><span class="line">        id(&quot;page_home_discover_tab_btn&quot;).findOne().click()</span><br><span class="line">        id(&quot;page_explore_chenckin_layout&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //判断是否有签到，签到了直接退出，没有签到就签到</span><br><span class="line">        if(text(&quot;奖励已经拿过咯~&quot;).exists())&#123;</span><br><span class="line">            toast(&quot;已经签到过了&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            back();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //bounds(0,550,1080,642).findOne().click();</span><br><span class="line">            className(&quot;android.widget.LinearLayout&quot;).clickable().find().click();</span><br><span class="line">            sleep(500);</span><br><span class="line">            text(&quot;下一步&quot;).findOne().click();</span><br><span class="line">            sleep(500);</span><br><span class="line">            id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">        &#125;</span><br><span class="line">        //退出当前账号</span><br><span class="line">        id(&quot;widget_custom_head&quot;).findOne().click();</span><br><span class="line">        sleep(500);</span><br><span class="line">        id(&quot;r_setting&quot;).findOne().click();</span><br><span class="line">        sleep(500);</span><br><span class="line">        text(&quot;退出账号&quot;).findOne().click();</span><br><span class="line">        id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isKeyDown()&#123;</span><br><span class="line"></span><br><span class="line">    //监听音量下键是否按下，退出脚本</span><br><span class="line">    threads.start(function()&#123;</span><br><span class="line">        events.setKeyInterceptionEnabled(&quot;volume_down&quot;,true);</span><br><span class="line">        //监听按键</span><br><span class="line">        events.observeKey();</span><br><span class="line">        events.onKeyDown(&quot;volume_down&quot;, function(event)&#123;</span><br><span class="line">            toast(&quot;已关闭易班批量签到脚本！&quot;);</span><br><span class="line">            engines.myEngine().forceStop();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/10/THBELIEFScript帮助文档/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2244,210 +2452,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/02/Auto-js-Script开发-二/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/Auto-js-Script开发-二/" itemprop="url">Auto.js Script开发(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T21:27:24+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Auto.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#主页面">主页面</a></li>
-<li><a href="#菜单">菜单</a></li>
-<li><a href="#代码">代码</a></li>
-</ul>
-</li>
-<li><a href="#总结">总结</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p><strong>今天改了一下上次的UI还有添加了一下新功能。不得不说，这个UI是真的难调~</strong></p>
-<h2><span id="正文">正文</span></h2><h3><span id="主页面">主页面</span></h3><p><img src="/2019/04/02/Auto-js-Script开发-二/主页面.png" alt=""></p>
-<h3><span id="菜单">菜单</span></h3><p><img src="/2019/04/02/Auto-js-Script开发-二/菜单.png" alt=""></p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line">//下面是UI层，主要就是图形</span><br><span class="line"></span><br><span class="line">&quot;ui&quot;;</span><br><span class="line">var color = &quot;#66ccff&quot;;</span><br><span class="line">//打开主页面UI</span><br><span class="line">mainUI();</span><br><span class="line">//下面是各个不同的页面UI</span><br><span class="line">//主页面UI</span><br><span class="line">function mainUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">    &lt;frame&gt;</span><br><span class="line">    &lt;drawer id=&quot;drawer&quot;&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;appbar&gt;</span><br><span class="line">                &lt;toolbar id=&quot;toolbar&quot; title=&quot;脚本列表&quot;/&gt;</span><br><span class="line">                &lt;tabs id=&quot;tabs&quot;/&gt;</span><br><span class="line">            &lt;/appbar&gt;</span><br><span class="line">            &lt;viewpager id=&quot;viewpager&quot;&gt;</span><br><span class="line">                &lt;frame&gt;</span><br><span class="line">                    &lt;vertical&gt;</span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                             &lt;button id=&quot;autoGood&quot; text=&quot;QQ名片自动点赞&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">                             &lt;button id=&quot;autoGoodRelate&quot; text=&quot;相关&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;3&quot;/&gt;</span><br><span class="line">                        &lt;/horizontal&gt;    </span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                             &lt;button id=&quot;autoSignIn&quot; text=&quot;I西科自动签到&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;1&quot;/&gt;</span><br><span class="line">                             &lt;button id=&quot;autoSignInRelate&quot; text=&quot;相关&quot; w=&quot;*&quot; h=&quot;*&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; layout_weight=&quot;3&quot;/&gt;</span><br><span class="line">                        &lt;/horizontal&gt;   </span><br><span class="line">                    &lt;/vertical&gt;  </span><br><span class="line">                    </span><br><span class="line">                &lt;/frame&gt;</span><br><span class="line">                &lt;frame&gt;</span><br><span class="line">                    </span><br><span class="line">                &lt;/frame&gt;</span><br><span class="line">            &lt;/viewpager&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">        &lt;vertical layout_gravity=&quot;left&quot; bg=&quot;#ffffff&quot; w=&quot;280&quot;&gt;</span><br><span class="line">            &lt;img w=&quot;280&quot; h=&quot;200&quot; scaleType=&quot;fitXY&quot; src=&quot;http://i1.bvimg.com/682525/a1c337b714162972.jpg&quot;/&gt;</span><br><span class="line">            &lt;list id=&quot;menu&quot;&gt;</span><br><span class="line">                &lt;horizontal bg=&quot;?selectableItemBackground&quot; w=&quot;*&quot;&gt;</span><br><span class="line">                    &lt;img w=&quot;50&quot; h=&quot;50&quot; padding=&quot;16&quot; src=&quot;&#123;&#123;this.icon&#125;&#125;&quot; tint=&quot;&#123;&#123;color&#125;&#125;&quot;/&gt;</span><br><span class="line">                    &lt;text  textColor=&quot;black&quot; w=&quot;*&quot; h=&quot;*&quot; textSize=&quot;15sp&quot; text=&quot;&#123;&#123;this.title&#125;&#125;&quot; gravity=&quot;center&quot;  singleLine=&quot;true&quot;/&gt;                                         </span><br><span class="line">                &lt;/horizontal&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">    &lt;/drawer&gt;</span><br><span class="line">    &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    //自动点击的相关点击事件</span><br><span class="line">    ui.autoGoodRelate.click(()=&gt;&#123;</span><br><span class="line">        autoGoodRelateUI();</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.autoSignInRelate.click(()=&gt;&#123;</span><br><span class="line">        autoSignInUI();</span><br><span class="line">    &#125;);</span><br><span class="line">    //toolbar</span><br><span class="line">    activity.setSupportActionBar(ui.toolbar);</span><br><span class="line">    //设置滑动页面的标题</span><br><span class="line">    ui.viewpager.setTitles([&quot;可使用脚本&quot;, &quot;开发中脚本&quot;]);</span><br><span class="line">    //让滑动页面和标签栏联动</span><br><span class="line">    ui.tabs.setupWithViewPager(ui.viewpager);</span><br><span class="line">    //让工具栏左上角可以打开侧拉菜单</span><br><span class="line">    ui.toolbar.setupWithDrawer(ui.drawer);</span><br><span class="line"></span><br><span class="line">    ui.menu.setDataSource([</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;个人信息&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/ninja-turtle.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;注意事项&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/assignment-late.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        title: &quot;关于&quot;,</span><br><span class="line">        icon: &quot;https://img.icons8.com/ios/100/000000/info.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: &quot;退出&quot;,</span><br><span class="line">      icon: &quot;https://img.icons8.com/ios/100/000000/esc.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]);</span><br><span class="line">    ui.menu.on(&quot;item_click&quot;, item =&gt; &#123;</span><br><span class="line">        switch(item.title)&#123;</span><br><span class="line">            case &quot;个人信息&quot;:</span><br><span class="line">                toast(&quot;尚在开发中哟，亲~&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;注意事项&quot;: </span><br><span class="line">                alert(&quot;本APP里面的脚本都是依托于无障碍服务，所以无障碍服务权限必须开启。&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;关于&quot;: </span><br><span class="line">                alert(&quot;Developed by THBELIEF!&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case &quot;退出&quot;:</span><br><span class="line">                ui.finish();</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    //QQ自动点赞的点击事件</span><br><span class="line">    ui.autoGood.click(()=&gt;&#123;</span><br><span class="line">        confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">            if(sure)&#123;</span><br><span class="line">                //修改控件信息必须更改线程</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //自动点赞</span><br><span class="line">                    StartClick();</span><br><span class="line">                &#125;);</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //另外一个线程检测是否点击了音量下键</span><br><span class="line">                    isKeyDown();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    //i西科自动签到点击事件</span><br><span class="line">    ui.autoSignIn.click(()=&gt;&#123;</span><br><span class="line">        confirm(&quot;友情提示：亲，请确保你的无障碍服务权限以及通知使用权限打开了哟~~~&quot;).then(sure =&gt; &#123;</span><br><span class="line">            if(sure)&#123;</span><br><span class="line">                //修改控件信息必须更改线程</span><br><span class="line">                threads.start(function()&#123;</span><br><span class="line">                    //自动签到</span><br><span class="line">                    autoSignInFunction();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//QQ名片自动点赞UI</span><br><span class="line">function autoGoodRelateUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">      &lt;frame&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;button id=&quot;backMainUIByGoodRelateUI&quot; text=&quot;返回&quot; w=&quot;auto&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; /&gt;</span><br><span class="line">            &lt;text text=&quot;本脚本适配V7.9.9.3965版QQ.注意：本脚本使用之前必须打开无障碍服务权限，否则不会运行。&quot; textSize=&quot;20sp&quot;/&gt;</span><br><span class="line">        &lt;/vertical&gt; </span><br><span class="line">      &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    //返回键返回主界面</span><br><span class="line">    ui.backMainUIByGoodRelateUI.click(()=&gt;&#123;</span><br><span class="line">        mainUI();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//i西科自动签到UI</span><br><span class="line">function autoSignInUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">      &lt;frame&gt;</span><br><span class="line">        &lt;vertical&gt;</span><br><span class="line">            &lt;button id=&quot;backMainUIBySignInUI&quot; text=&quot;返回&quot; w=&quot;auto&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; /&gt;</span><br><span class="line">            &lt;text text=&quot;本脚本适配3.9.0Android版i西科.注意：本脚本使用之前必须打开无障碍服务权限，否则不会运行。&quot; textSize=&quot;20sp&quot;/&gt;</span><br><span class="line">        &lt;/vertical&gt; </span><br><span class="line">      &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    ui.backMainUIBySignInUI.click(()=&gt;&#123;</span><br><span class="line">        mainUI();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//下面是各类方法的实现</span><br><span class="line"></span><br><span class="line">//从桌面一直打开到点赞页面的函数</span><br><span class="line">function open()&#123;</span><br><span class="line">    //需要无障碍权限</span><br><span class="line">    auto(&quot;normal&quot;);</span><br><span class="line">    //直接打开QQ（应该还要判断一下是否已经登录了）</span><br><span class="line">    launchApp(&quot;QQ&quot;);</span><br><span class="line">    //调用QQ提供的Android以及ios通用API打开QQ名片</span><br><span class="line">    var i = app.intent(&#123;</span><br><span class="line">    action:&quot;android.intent.action.VIEW&quot;,</span><br><span class="line">        data:&quot;mqqapi://card/show_pslcard?&amp;uin=&quot;</span><br><span class="line">    &#125;); </span><br><span class="line">    app.startActivity(i);</span><br><span class="line">    //打开点赞列表</span><br><span class="line">    toast(&quot;请点击QQ点赞的图标进入点赞页面哦，亲~~~&quot;);</span><br><span class="line">    sleep(250);</span><br><span class="line">&#125;</span><br><span class="line">//具体点赞的方法</span><br><span class="line">function good() &#123;</span><br><span class="line">    //寻找点赞的小图标</span><br><span class="line">    var goodClick = desc(&quot;赞&quot;).untilFind();</span><br><span class="line">    var i = 0;</span><br><span class="line">    while (i &lt; goodClick.size()) &#123;</span><br><span class="line">        var j = 0;</span><br><span class="line">        while (j &lt; 10) &#123;//十次点击</span><br><span class="line">            goodClick.get(i).click();</span><br><span class="line">            j = j + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        i = i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //点击完之后要往下翻</span><br><span class="line">    className(&quot;android.widget.AbsListView&quot;).scrollForward();</span><br><span class="line">    sleep(500);</span><br><span class="line">    //如果出现显示更多就点击一下</span><br><span class="line">    if (text(&quot;显示更多&quot;).exists()) &#123;</span><br><span class="line">        text(&quot;显示更多&quot;).findOne().parent().click();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//这个是QQ名片自动点赞的主方法</span><br><span class="line">function StartClick()&#123;</span><br><span class="line">    //下面就是主函数部分</span><br><span class="line">    toast(&quot;请确保QQ已经登录哦亲~~~&quot;);</span><br><span class="line">    open();</span><br><span class="line">    //进入点赞页面，页面跳转需要时间，必须延迟才行。</span><br><span class="line">    waitForActivity(&quot;com.tencent.mobileqq.activity.VisitorsActivity&quot;);</span><br><span class="line">    toast(&quot;停止此脚本请按音量下键，亲~~~&quot;);</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        good();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//检测是否点击了音量下键的方法</span><br><span class="line">function isKeyDown()&#123;</span><br><span class="line">    //按键时不会弹出音量框</span><br><span class="line">    events.setKeyInterceptionEnabled(&quot;volume_down&quot;,true);</span><br><span class="line">    //监听按键</span><br><span class="line">    events.observeKey();</span><br><span class="line">    events.on(&quot;key_down&quot;,function(volume_down,event)&#123;</span><br><span class="line">        toast(&quot;正在关闭此脚本,亲~~~&quot;);</span><br><span class="line">        //退出脚本</span><br><span class="line">        sleep(500);</span><br><span class="line">        engines.stopAll();</span><br><span class="line">        //直接返回桌面</span><br><span class="line">        home();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">//2019.4.2 i西科自动签到方法</span><br><span class="line">function autoSignInFunction()&#123;</span><br><span class="line">    auto();</span><br><span class="line">    //打开i西科</span><br><span class="line">    launchApp(&quot;i西科&quot;);</span><br><span class="line">    //跳转到相应的界面</span><br><span class="line">    waitForPackage(&quot;org.weixvn.frame&quot;);</span><br><span class="line">    //找到首页上签到的按钮，点击进去</span><br><span class="line">    id(&quot;it_sign_in&quot;).clickable().findOne().click();</span><br><span class="line">    waitForActivity(&quot;com.example.z.iswust.view.activity.impl.SignInActivity&quot;);</span><br><span class="line">    //点击签到</span><br><span class="line">    sleep(1000);</span><br><span class="line">    id(&quot;btn_signin&quot;).clickable().untilFind().click();</span><br><span class="line">    toast(&quot;签到成功了哟，亲~~~&quot;);</span><br><span class="line">    sleep(500);</span><br><span class="line">    //签到完成之后直接返回桌面</span><br><span class="line">    home();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="总结">总结</span></h2><p>1.布局和UI的设计还是需要好好斟酌。</p>
-<p>2.尽量函数方法话。</p>
-<p>3.下次升级蚂蚁森林自动化收取功能。</p>
-<p>4.所有功能尽量都提供定时开启的功能。</p>
-<p>未完待续~~~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2500,7 +2504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2594,7 +2598,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共75.1k字</span>
+  <span class="post-count">博客全站共76.1k字</span>
 </div>
         
 
