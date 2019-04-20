@@ -294,6 +294,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/04/Auto-js-Script开发-四/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/04/Auto-js-Script开发-四/" itemprop="url">Auto.js Script开发(四)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T13:25:41+08:00">
+                2019-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  554
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>今天早上八点就起来改代码，现在终于把更新这个功能修改完了。等会儿还有事儿，唉，想睡午觉都不行了。</p>
+<h2><span id="正文">正文</span></h2><p>今天一天就更新了这么多版本，也是没谁了，主要是为了测试APP更新的功能。</p>
+<p><img src="/2019/04/04/Auto-js-Script开发-四/版本更新.jpg" alt=""></p>
+<p>下面是代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//2019.4.4 开屏进入检查是否有更新，有就提示，没有就不提示</span><br><span class="line">function checkHaveUpdate()&#123;</span><br><span class="line">    threads.start(function()&#123;</span><br><span class="line">        //网络请求必须更改线程，不能在主线程</span><br><span class="line">        //通过fir.im的API来进行版本查询</span><br><span class="line">        var url=&quot;http://api.fir.im/apps/latest/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6&amp;type=android&quot;;</span><br><span class="line">        var res =http.get(url);</span><br><span class="line">        //下面必须用app.versionCode获取本地APP版本号，3.00是测试用的</span><br><span class="line">        if(res.statusCode == 200)&#123;</span><br><span class="line">            //toast(&quot;请求成功&quot;);</span><br><span class="line">            //先检测是否有版本号存储本地</span><br><span class="line">                var versionShortFromWeb=JSON.parse(res.body.string()).versionShort;</span><br><span class="line">                if(storage.get(&quot;versionShort&quot;)==versionShortFromWeb)&#123;</span><br><span class="line">                    //如果版本短号一样则不更新</span><br><span class="line">                    toast(&quot;欢迎回来，亲~~~&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    //有更新</span><br><span class="line">                    //或许这里可以给一个alert框显示一些更新内容  </span><br><span class="line">                    var allUpdateMessageUrl=&quot;http://api.fir.im/apps/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6 &quot;;</span><br><span class="line">                    var allUpdateMessage =JSON.parse(http.get(allUpdateMessageUrl).body.string());</span><br><span class="line">                    var showallUpdateMessage=&quot;更新内容： &quot;+&quot;\n&quot;+allUpdateMessage.desc;</span><br><span class="line">                    dialogs.build(&#123;</span><br><span class="line">                        title: &quot;发现新版本&quot;,</span><br><span class="line">                        content:showallUpdateMessage,</span><br><span class="line">                        positive: &quot;知道了&quot;</span><br><span class="line">                    &#125;).on(&quot;positive&quot;,()=&gt;&#123;</span><br><span class="line">                        toast(&quot;有更新，请前往菜单页面更新哦，~亲~&quot;);</span><br><span class="line">                    &#125;).show(); </span><br><span class="line">                    log(versionShortFromWeb+app.versionName);  </span><br><span class="line">                &#125;           </span><br><span class="line">        &#125;else&#123;//网络请求失败</span><br><span class="line">            toast(&quot;找不到网络呢，亲！&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要是增添了开屏检查更新的功能：</p>
+<p><img src="/2019/04/04/Auto-js-Script开发-四/开屏检查更新.png" alt=""></p>
+<h2><span id="总结">总结</span></h2><p>遇到了很多的问题，总归还是很有收获，个人开发APP遇到这么多问题是我始料不及的，但是也很庆幸，因为学到了很多。</p>
+<p>现在还有些问题没有解决，包括本地存储的versionShort版本号还是没有完善，只是默认点击了浏览器下载或者直接下载就会更改本地的versionShort为最新版本号，还有就是下载的问题，貌似302？测试不够多现在还不是很明确。</p>
+<p>还有就是需要考虑一下在线数据存储器问题。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/03/Auto-js-Script开发-三/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2727,219 +2927,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/25/Win10-64位Debug安装/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/25/Win10-64位Debug安装/" itemprop="url">Win10-64位Debug安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T10:39:36+08:00">
-                2019-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/其它/" itemprop="url" rel="index">
-                    <span itemprop="name">其它</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  842
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#安装">安装</a></li>
-<li><a href="#配置">配置</a></li>
-<li><a href="#测试">测试</a><ul>
-<li><a href="#debug">Debug</a></li>
-<li><a href="#debug常用功能">Debug常用功能</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>由于本学期开设了汇编实验这门课，相对应的，也有了汇编实验的实验课，由于需要用到debug，再加上win10需要配置，不像win7可以直接使用，这里就写一篇博客记录一下配置过程。</p>
-<p>其实win10上使用debug一般有两种方法，一种是在电脑上面装上虚拟机，用win7直接使用debug，第二种就是今天介绍的用<strong>DOSBox</strong>来解决。</p>
-<h2><span id="正文">正文</span></h2><p>DOSBox是一种<strong>模拟器软件</strong>，主要是在IBM PC兼容机下，模拟旧时的操作系统：MS-DOS，支持许多IBM PC兼容的显卡和声卡，为本地的DOS程序提供执行环境，使这些程序可以正常运行于大多数现代计算机上的不同操作系统。DOSBox特别是为运行早期的计算机游戏所设计，主要以C++编写，是以GNU通用公共许可证许可发布的自由软件。</p>
-<p>上面是对DOSBox的简单介绍，摘自维基百科，下面开始介绍具体流程。</p>
-<p>首先，众所周知，win10上面是不支持直接使用debug的，如果一旦点击debug.exe的话，会报错。</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/不支持.jpg" alt=""></p>
-<h3><span id="安装">安装</span></h3><p>关于debug与DOSBox的下载的话，都可以直接在搜索引擎搜索下载，这里要注意一下DOSBox的下载：</p>
-<p><a href="https://www.dosbox.com/download.php?main=1" target="_blank" rel="noopener">DOSBox官网</a>点击进去之后，会看到这样的画面。</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/DOSBox官网.jpg" alt=""></p>
-<p>然后就是点击这个，然后进去下载就可以。</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/DOSBox下载.jpg" alt=""></p>
-<p>下载完DOSBox之后会发现它是一个安装器，自己选择安装到哪里，但是一定要知道位置。至于debug.exe的安装位置的话，我的建议是，在C盘下面直接建一个<strong>MYDEBUG</strong>的文件夹，然后把相关文件放进去。（我这里的DEBUG是网盘里面找到的，实际上搜索下载的貌似只要一个debug.exe就可以）</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/MYDEBUG.jpg" alt=""></p>
-<h3><span id="配置">配置</span></h3><p>安装完成之后，找到DOSBox安装目录下的DOSBox 0.74 Options.bat文件，然后双击:</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/DOSBox文件夹.jpg" alt=""></p>
-<p>然后在末尾添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOUNT C C:\MYDEBUG</span><br><span class="line">C:</span><br><span class="line">debug</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/03/25/Win10-64位Debug安装/DOSBox配置.jpg" alt=""></p>
-<p>这样配置的目的很单纯，只是让每次编译的时候不用准备前面这些条件，就可以直接使用，如果每次都要配置，太麻烦。</p>
-<h3><span id="测试">测试</span></h3><p>安装配置完之后自然要测试一下能不能用，先介绍一下debug，如下：</p>
-<h4><span id="debug">Debug</span></h4><p><strong>Debug是DOS、Windows都提供的实模式(8086方式)程序的调试工具。</strong></p>
-<p><strong>使用它，可以查看CPU各种寄存器中的内容、内存的情况和在机器码级别跟踪程序的运行。</strong></p>
-<h4><span id="debug常用功能">Debug常用功能</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">用Debug的R命令查看、改变CPU寄存器的内容;</span><br><span class="line"></span><br><span class="line"> 用Debug的D命令查看内存中的内容;</span><br><span class="line"></span><br><span class="line"> 用Debug的E命令改写内存中的内容;</span><br><span class="line"></span><br><span class="line"> 用Debug的U命令将内存中的机器指令翻译成汇编指令;</span><br><span class="line"></span><br><span class="line"> 用Debug的T命令执行一条机器指令;</span><br><span class="line"></span><br><span class="line"> 用Debug的A命令以汇编指令的格式在内存中写入一条机器指令;</span><br></pre></td></tr></table></figure>
-<p>这里用命令测试一下是否可以使用：</p>
-<p><img src="/2019/03/25/Win10-64位Debug安装/测试.jpg" alt=""></p>
-<p>绿色部分是之前配置的部分，红色箭头指向的就是命令，实测没问题可以使用，这样就可以开始<strong>愉快的</strong>汇编编程了。。。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2992,7 +2979,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3086,7 +3073,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共77.3k字</span>
+  <span class="post-count">博客全站共82.1k字</span>
 </div>
         
 
