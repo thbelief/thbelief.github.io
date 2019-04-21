@@ -294,6 +294,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/05/java基础-线程停止的三种方式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/05/java基础-线程停止的三种方式/" itemprop="url">java基础-线程停止的三种方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T20:55:22+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  567
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前提">前提</a></li>
+<li><a href="#方式一">方式一</a></li>
+<li><a href="#方式二">方式二</a></li>
+<li><a href="#方式三">方式三</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前提">前提</span></h2><p>停止线程在多线程开发中很有必要，掌握线程的停止可以对线程的停止进行有效的处理。</p>
+<h2><span id="方式一">方式一</span></h2><p>使用<strong>退出标志</strong>，使得线程正常的退出，也就是run方法之后进程终止。用flag来作为进程是否继续进行的条件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void run() &#123;</span><br><span class="line">    while(flag)&#123;</span><br><span class="line">        //do something</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="方式二">方式二</span></h2><p>使用<strong>stop</strong>强行中断线程，<strong>不推荐使用</strong>，暴力终止，可能使一些清理性的工作得不到完成。还可能对锁定的内容进行解锁，容易造成数据不同步的问题。</p>
+<h2><span id="方式三">方式三</span></h2><p><strong>使用interrupt方法中断线程。</strong></p>
+<p>java中有以下两个方法：</p>
+<p><strong>this.interrupted():</strong>测试当前线程是否已经中断（静态方法）。如果连续调用该方法，则第二次调用将返回false。在api文档中说明interrupted()方法具有<strong>清除状态</strong>的功能。执行后具有<strong>将状态标识清除为false</strong>的功能。</p>
+<p><strong>this.isInterrupted():</strong>测试线程是否已经中断，但是<strong>不能清除状态标识</strong>。</p>
+<p>抛异常法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread4 extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        try &#123;</span><br><span class="line">            for (int i = 0; i &lt; 50000; i++) &#123;</span><br><span class="line">                if (this.isInterrupted()) &#123;</span><br><span class="line">                    System.out.println( &quot;线程已经结束，我要退出&quot; );</span><br><span class="line">//                    return;</span><br><span class="line">                    throw new InterruptedException();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println( &quot;i=&quot; + (i + 1) );</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println( &quot;我是for下面的语句，我被执行说明线程没有真正结束&quot; );</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            System.out.println( &quot;进入MyThread.java类中run方法的catch异常了&quot; );</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>沉睡停止法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line">   public void run() &#123;</span><br><span class="line">       super.run();</span><br><span class="line">       try &#123;</span><br><span class="line">           System.out.println( &quot;begin run&quot; );</span><br><span class="line">           Thread.sleep( 500 );</span><br><span class="line">           System.out.println( &quot;begin end&quot; );</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println(&quot;在沉睡中终止&quot;);</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           MyThread5 thread5 = new MyThread5();</span><br><span class="line">           thread5.start();</span><br><span class="line">           Thread.sleep( 20 );</span><br><span class="line">           thread5.interrupt();</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println( &quot;main catch&quot; );</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> try &#123;</span><br><span class="line">           for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">               System.out.println( &quot;i=&quot;  +(i + 1) );</span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println( &quot;run begin&quot; );</span><br><span class="line">           Thread.sleep( 200 );</span><br><span class="line">           System.out.println( &quot;run end&quot; );</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println( &quot;先停止，后sleep&quot; );</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">           MyThread5 thread5 = new MyThread5();</span><br><span class="line">           thread5.start();</span><br><span class="line">           thread5.interrupt();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/jiadajing267/article/details/80137006" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/04/Auto-js-Script开发-四/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2384,549 +2590,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/26/C-常用函数/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/26/C-常用函数/" itemprop="url">C++常用函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T22:00:54+08:00">
-                2019-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/c/" itemprop="url" rel="index">
-                    <span itemprop="name">c++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#c">C++</a><ul>
-<li><a href="#cstdlib">cstdlib</a></li>
-<li><a href="#cctype">cctype</a></li>
-<li><a href="#algorithm">algorithm</a></li>
-<li><a href="#cmath">cmath</a></li>
-<li><a href="#cstdlib-1">cstdlib</a></li>
-</ul>
-</li>
-<li><a href="#c">C</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>目前在备战CCF，算法题刷了蛮多的了，这次就记录一下，常用的C++/C的函数。（只记录<strong>常用且实用</strong>的，不是大全，再次强调）</p>
-<h2><span id="c">C++</span></h2><h3><span id="cstdlib">cstdlib</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">begin       得到指向字符串开头的Iterator（迭代器）</span><br><span class="line">end         得到指向字符串结尾的Iterator</span><br><span class="line">rbegin      得到指向反向字符串开头的Iterator</span><br><span class="line">rend        得到指向反向字符串结尾的Iterator</span><br><span class="line">size        得到字符串的大小</span><br><span class="line">length()    和size函数功能相同</span><br><span class="line">max_size    字符串可能的最大大小</span><br><span class="line">empty       判断是否为空</span><br><span class="line">operator[]  取第几个元素，相当于数组</span><br><span class="line">c_str       取得C风格的const char* 字符串</span><br><span class="line">swap        交换函数</span><br><span class="line">insert      插入字符</span><br><span class="line">append      追加字符</span><br><span class="line">push_back   追加字符</span><br><span class="line">erase       删除字符串</span><br><span class="line">clear       清空字符容器中所有内容</span><br><span class="line">replace     替代</span><br><span class="line">copy        字符串到空间</span><br><span class="line">find        查找,返回基于0的索引号</span><br><span class="line">substr(n1,len)       得到字符串从n1开始的长度为len的子串</span><br><span class="line">compare              比较字符串(支持所有的关系运算符)</span><br><span class="line">getline              从输入流中读入一行</span><br></pre></td></tr></table></figure>
-<h3><span id="cctype">cctype</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using ::isalpha; //是否字母</span><br><span class="line"></span><br><span class="line">using ::isdigit; //是否是数字</span><br><span class="line"></span><br><span class="line">using ::isgraph; //是否字母、数字或标点</span><br><span class="line"></span><br><span class="line">using ::islower; //是否小写</span><br><span class="line"></span><br><span class="line">using ::ispunct; //是否标点</span><br><span class="line"></span><br><span class="line">using ::isspace; //是否空格</span><br><span class="line"></span><br><span class="line">using ::isupper; //是否大写</span><br><span class="line"></span><br><span class="line">using ::isxdigit; //是否十六进制数字</span><br><span class="line"></span><br><span class="line">using ::tolower; //转为小写</span><br><span class="line"></span><br><span class="line">using ::toupper; //转为大写</span><br></pre></td></tr></table></figure>
-<h3><span id="algorithm">algorithm</span></h3><table>
-<thead>
-<tr>
-<th>循环</th>
-<th>对序列中的每个元素执行某项操作</th>
-<th>for_each()</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查找</td>
-<td>在序列中找出某个值的第一次出现的位置</td>
-<td>find(a,a+size,n) 返回<em>b,</em>当<em>b=a+size</em>即没找到，<em>a</em>为指针</td>
-</tr>
-<tr>
-<td>在序列中找出符合某谓词的第一个元素</td>
-<td>find_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>在序列中找出一子序列的最后一次出现的位置</td>
-<td>find_end()</td>
-<td></td>
-</tr>
-<tr>
-<td>在序列中找出第一次出现指定值集中之值位置</td>
-<td>find_first_of()</td>
-<td></td>
-</tr>
-<tr>
-<td>在序列中找出相邻的一对值</td>
-<td>adjacent_find()</td>
-<td></td>
-</tr>
-<tr>
-<td>计数</td>
-<td>在序列中统计某个值出现的次数</td>
-<td>count()</td>
-</tr>
-<tr>
-<td>在序列中统计与某谓词匹配的次数</td>
-<td>count_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>比较</td>
-<td>找出两个序列相异的第一个元素</td>
-<td>mismatch()</td>
-</tr>
-<tr>
-<td>两个序列中的对应元素都相同时为真</td>
-<td>equal(a,a+n,b,cmp)</td>
-<td></td>
-</tr>
-<tr>
-<td>在序列中找到等于某值的连续<em>n</em>次出现的位置</td>
-<td>equal_range(a,a+n,x)</td>
-<td></td>
-</tr>
-<tr>
-<td>搜索</td>
-<td>在序列中找出一子序列的第一次出现的位置</td>
-<td>search()</td>
-</tr>
-<tr>
-<td>在序列中找出一值的连续<em>n</em>次出现的位置</td>
-<td>search_n()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制</td>
-<td>从序列的第一个元素起进行复制</td>
-<td>copy()</td>
-</tr>
-<tr>
-<td>从序列的最后一个元素起进行复制</td>
-<td>copy_backward()</td>
-<td></td>
-</tr>
-<tr>
-<td>交换</td>
-<td>交换两个元素</td>
-<td>swap()</td>
-</tr>
-<tr>
-<td>交换指定范围的元素</td>
-<td>swap_ranges()</td>
-<td></td>
-</tr>
-<tr>
-<td>交换由迭代器所指的两个元素</td>
-<td>iter_swap()</td>
-<td></td>
-</tr>
-<tr>
-<td>变换</td>
-<td>将某操作应用于指定范围的每个元素</td>
-<td>transform()</td>
-</tr>
-<tr>
-<td>替换</td>
-<td>用一个给定值替换一些值</td>
-<td>replace()</td>
-</tr>
-<tr>
-<td>替换满足谓词的一些元素</td>
-<td>replace_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制序列时用一给定值替换元素</td>
-<td>replace_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制序列时替换满足谓词的元素</td>
-<td>replace_copy_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>填充</td>
-<td>用一给定值取代所有元素</td>
-<td>fill()</td>
-</tr>
-<tr>
-<td>用一给定值取代前<em>n</em>个元素</td>
-<td>fill_n()</td>
-<td></td>
-</tr>
-<tr>
-<td>生成</td>
-<td>用一操作的结果取代所有元素</td>
-<td>generate()</td>
-</tr>
-<tr>
-<td>用一操作的结果取代前<em>n</em>个元素</td>
-<td>generate_n()</td>
-<td></td>
-</tr>
-<tr>
-<td>删除</td>
-<td>删除具有给定值的元素</td>
-<td>remove()</td>
-</tr>
-<tr>
-<td>删除满足谓词的元素</td>
-<td>remove_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制序列时删除具有给定值的元素</td>
-<td>remove_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制序列时删除满足谓词的元素</td>
-<td>remove_copy_if()</td>
-<td></td>
-</tr>
-<tr>
-<td>唯一</td>
-<td>删除相邻的重复元素</td>
-<td>unique()</td>
-</tr>
-<tr>
-<td>复制序列时删除相邻的重复元素</td>
-<td>unique_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>反转</td>
-<td>反转元素的次序</td>
-<td>reverse(a,a+n)</td>
-</tr>
-<tr>
-<td>复制序列时反转元素的次序</td>
-<td>reverse_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>环移</td>
-<td>循环移动元素</td>
-<td>rotate(a,a+m,a+n)以<em>m</em>位置为界交换前后序列</td>
-</tr>
-<tr>
-<td>复制序列时循环移动元素</td>
-<td>rotate_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>随机</td>
-<td>采用均匀分布来随机移动元素</td>
-<td>random_shuffle()</td>
-</tr>
-<tr>
-<td>划分</td>
-<td>将满足某谓词的元素都放到前面</td>
-<td>partition()</td>
-</tr>
-<tr>
-<td>将满足某谓词的元素都放到前面并维持原顺序</td>
-<td>stable_partition()</td>
-<td></td>
-</tr>
-<tr>
-<td>排序</td>
-<td>以很好的平均效率排序</td>
-<td>sort(a,a+20,cmp)bool cmp( int a, int b ){ return a&gt;b; }在容器中或<em>string</em>用<em>begin</em>（）</td>
-</tr>
-<tr>
-<td>排序，并维持相同元素的原有顺序</td>
-<td>stable_sort()</td>
-<td></td>
-</tr>
-<tr>
-<td>将序列的前一部分排好序</td>
-<td>partial_sort()</td>
-<td></td>
-</tr>
-<tr>
-<td>复制的同时将序列的前一部分排好序</td>
-<td>partial_sort_copy()</td>
-<td></td>
-</tr>
-<tr>
-<td>第<em>n</em>个元素</td>
-<td>将第<em>n</em>各元素放到它的正确位置</td>
-<td>nth_element()</td>
-</tr>
-<tr>
-<td>二分检索</td>
-<td>找到大于等于某值的第一次出现</td>
-<td>lower_bound()</td>
-</tr>
-<tr>
-<td>找到大于某值的第一次出现</td>
-<td>upper_bound()</td>
-<td></td>
-</tr>
-<tr>
-<td>找到（在不破坏顺序的前提下）可插入给定值的最大范围</td>
-<td>equal_range()</td>
-<td></td>
-</tr>
-<tr>
-<td>在有序序列中确定给定元素是否存在</td>
-<td>binary_search()</td>
-<td></td>
-</tr>
-<tr>
-<td>归并</td>
-<td>归并两个有序序列</td>
-<td>merge()</td>
-</tr>
-<tr>
-<td>归并两个接续的有序序列</td>
-<td>inplace_merge()</td>
-<td></td>
-</tr>
-<tr>
-<td>有序结构上的集合操作</td>
-<td>一序列为另一序列的子序列时为真</td>
-<td>includes()</td>
-</tr>
-<tr>
-<td>构造两个集合的有序并集</td>
-<td>set_union()</td>
-<td></td>
-</tr>
-<tr>
-<td>构造两个集合的有序交集</td>
-<td>set_intersection()</td>
-<td></td>
-</tr>
-<tr>
-<td>构造两个集合的有序差集</td>
-<td>set_difference()</td>
-<td></td>
-</tr>
-<tr>
-<td>构造两个集合的有序对称差集（并<em>-</em>交）</td>
-<td>set_symmetric_difference()</td>
-<td></td>
-</tr>
-<tr>
-<td>堆操作</td>
-<td>向堆中加入元素</td>
-<td>push_heap()</td>
-</tr>
-<tr>
-<td>从堆中弹出元素</td>
-<td>pop_heap()</td>
-<td></td>
-</tr>
-<tr>
-<td>从序列构造堆</td>
-<td>make_heap()</td>
-<td></td>
-</tr>
-<tr>
-<td>给堆排序</td>
-<td>sort_heap()</td>
-<td></td>
-</tr>
-<tr>
-<td>最大和最小</td>
-<td>两个值中较小的</td>
-<td>min()</td>
-</tr>
-<tr>
-<td>两个值中较大的</td>
-<td>max()</td>
-<td></td>
-</tr>
-<tr>
-<td>序列中的最小元素</td>
-<td>min_element(a,a+n)</td>
-<td></td>
-</tr>
-<tr>
-<td>序列中的最大元素</td>
-<td>max_element()</td>
-<td></td>
-</tr>
-<tr>
-<td>词典比较</td>
-<td>两个序列按字典序的第一个在前</td>
-<td>lexicographical_compare()</td>
-</tr>
-<tr>
-<td>排列生成器</td>
-<td>按字典序的下一个排列</td>
-<td>next_permutation()</td>
-</tr>
-<tr>
-<td>按字典序的前一个排列</td>
-<td>prev_permutation()</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="cmath">cmath</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">using ::abs; //绝对值</span><br><span class="line"></span><br><span class="line">using ::exp; //指数值</span><br><span class="line"></span><br><span class="line">using ::fabs; //绝对值</span><br><span class="line"></span><br><span class="line">using ::fmod; //求余</span><br><span class="line"></span><br><span class="line">using ::sqrt; //开方</span><br></pre></td></tr></table></figure>
-<h3><span id="cstdlib">cstdlib</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">double atof(const char *str);</span><br><span class="line"></span><br><span class="line">把字符串str转换成double类型。等价于：strtod(str, (char**)NULL)。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">int atoi(const char *str);</span><br><span class="line"></span><br><span class="line">把字符串str转换成int类型。等价于：(int)strtol(str, (char**)NULL, 10)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int rand(void);</span><br><span class="line"></span><br><span class="line">产生一个0到RAND_MAX之间的伪随机整数。RAND_MAX值至少为32767。</span><br><span class="line"></span><br><span class="line">void srand(unsigned int seed);</span><br><span class="line"></span><br><span class="line">设置新的伪随机数序列的种子为seed。种子的初值为1。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void *malloc(size_t size);</span><br><span class="line"></span><br><span class="line">为大小为size的对象分配足够的内存，并返回指向所分配区域的第一个字节的指针；如果内存不足以满足要求，则返回NULL。</span><br><span class="line"></span><br><span class="line">不对分配的内存区域进行初始化。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void free(void *ptr);</span><br><span class="line"></span><br><span class="line">释放ptr指向的内存空间，若ptr为NULL，则什么也不做。ptr必须指向先前用动态分配函数malloc、realloc或calloc分配的空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void exit(int status);</span><br><span class="line"></span><br><span class="line">使程序正常终止。atexit函数以与注册相反的顺序被调用，所有打开的文件被刷新，所有打开的流被关闭。status的值如何被返回依具体的实现而定，但用0表示正常终止，也可用值EXIT_SUCCESS和EXIT_FAILURE。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void qsort(void *base, size_t n, size_t size,</span><br><span class="line"></span><br><span class="line">int (*compare)(const void *, const void *));</span><br><span class="line"></span><br><span class="line">对由n个大小为size的对象构成的数组base进行升序排序。</span><br><span class="line"></span><br><span class="line">比较函数compare的形式如下：</span><br><span class="line"></span><br><span class="line">int func_name(const void *arg1, const voie *arg2);</span><br><span class="line"></span><br><span class="line">其返回值必须如下所示：</span><br><span class="line"></span><br><span class="line">arg1 &lt; arg2，返回值&lt;0；</span><br><span class="line"></span><br><span class="line">arg1 == arg2，返回值==0；</span><br><span class="line"></span><br><span class="line">arg1 &gt; arg2，返回值&gt;0。</span><br></pre></td></tr></table></figure>
-<h2><span id="c">C</span></h2><p>未完待续（貌似也差不多的说…）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2979,7 +2642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2990,7 +2653,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3001,7 +2664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3073,7 +2736,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.1k字</span>
+  <span class="post-count">博客全站共82.7k字</span>
 </div>
         
 
