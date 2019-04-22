@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://thbelief.coding.me/2019/01/12/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</loc>
+    
+    <lastmod>2019-04-21T12:20:23.123Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://thbelief.coding.me/2019/04/21/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     
     <lastmod>2019-04-21T08:48:25.938Z</lastmod>
@@ -355,13 +362,6 @@
     <loc>http://thbelief.coding.me/2019/02/26/hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%AA%E4%BA%BA%E5%90%91%EF%BC%89/</loc>
     
     <lastmod>2019-02-27T13:05:40.615Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://thbelief.coding.me/2019/01/12/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</loc>
-    
-    <lastmod>2019-02-27T13:00:18.330Z</lastmod>
     
   </url>
   
