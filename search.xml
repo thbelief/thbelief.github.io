@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ACM常见报错详解]]></title>
+    <url>%2F2019%2F04%2F22%2FACM%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[目录： 前言 Waiting Compiling Accepted Wrong Answer Time Limit Exceeded Memory Limit Exceeded Output Limit Exceeded Floating Point Error Segmentation Fault buffer overflow – 缓冲区溢出 stack overflow – 堆栈溢出 Runtime Error Restricted Function Compilation Error Presentation Error 前言有些时候刷OJ会遇到一些OJ提交之后报错，这里就简单的汇总一下方便以后自己学习与回忆。 Waiting正在等待OJ评测程序。 CompilingOJ正在编译程序。 Accepted程序是正确的，已经成功的过了。 Wrong Answer运行的结果在样例下错误了。 Time Limit Exceeded程序运行时间太长了，超过了对应题目的时间限制。 Memory Limit Exceeded程序运行所用的内存太多了，超过了对应题目的限制。 Output Limit Exceeded程序输出了太多的内容了，超过了OJ的限制，可以试着检查程序中是否有可能存在无限循环输出。 Floating Point ErrorDivide by 0，除0错误。 Segmentation Fault下面的两种情况可能导致次错误： buffer overflow – 缓冲区溢出访问 了非法内存，或者在C/C++中访问了空指针等等。 stack overflow – 堆栈溢出有可能在c/c++程序的函数中申请了过大的空间，或者递归层次太多，导致堆栈溢出了。 Runtime Error程序在运行的时候出错了，异常终止了，导致这种状态的情况有许多，一般都是一些非法操作，比如文件操作，Java中的网络操作等等。Java中Runtime Error的更详细的叙述见下。另外C/C++中越界访问函数中定义的数组也会导致Runtime Error。 常见错误类型： 1234567891011121314151617ACCESS_VIOLATION 您的程序想从一些非法的地址空间读取或向其中写入内容。一般例如指针、数组下标越界都会造成这个错误的。ARRAY_BOUNDS_EXCEEDED 您的程序试图访问一个超出硬件支持范围的数组单元。FLOAT_DENORMAL_OPERAND 进行了一个非正常的浮点操作。一般是由于一个非正常的浮点数参与了浮点操作所引起的，比如这个数的浮点格式不正确。FLOAT_DIVIDE_BY_ZERO 浮点数除法出现除数为零的异常。FLOAT_OVERFLOW 浮点溢出。要表示的数太大，超出了浮点数的表示范围。FLOAT_UNDERFLOW 浮点下溢。要表示的数太小，超出了浮点数的表示范围。INTEGER_DIVIDE_BY_ZERO 在进行整数除法的时候出现了除数为零的异常。INTEGER_OVERFLOW 整数溢出。要表示的数值太大，超出了整数变量的范围。STACK_OVERFLOW 栈溢出。一般是由于无限递归或者在函数里使用了太大的数组变量的原因。顾名思义，stack overflow 就是是栈溢出了。在进行数值运算时，我们常常要和运算结果的溢出打交道。数值运算结果可能上溢（overflow），也可能是下溢（underflow）。不过栈的溢出显然只可能是上溢，即栈空间被用完了。 Restricted Function程序调用了不该调用的函数，比如fork(),execv(),socket等等危险的函数，在程序中只作与解决问题有关的事情，其他的操作都会被拦截下来。 Compilation Error编译错误，如果程序在本机能够正常编译，具体的要看OJ给出的提示。 Presentation Error程序运行的结果是正确的，但是格式和正确结果有点不一样。比如中间多了回车或者空格，建议仔细检查程序的输出部分。 出现这个错误有很多可能，比如说大小写？输出空格？换行符制表符？之类的东西很多，仔细研究一下题干就没问题了，离AC也就是一步之遥。]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+        <tag>报错</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（一）]]></title>
     <url>%2F2019%2F04%2F21%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 输入输出 print() input() 基础 字符串 空值 变量 常量 除法 前言其实之前已经学过一部分了，但是很久没用了，就重新学习一下。本学习笔记只记录一些自己觉得蛮重要的东西，不是详细的入门博客。 学习过程中就不用Python Shell编译了，直接使用VSCode来编程。 正文输入输出print()在括号中加入字符串，可以直接打印出来。（单个或者多个字符串），多个字符串的话，遇到逗号就会输出一个空格。 123print(&quot;hello&quot;)print(&quot;hello&quot;,&quot;world&quot;)print(&quot;100+200=&quot;,100+200) 输出结果： 1234[Running] python -u &quot;c:\Users\40941\Desktop\tempCodeRunnerFile.python&quot;hellohello world100+200= 300 input()输入字符串，并存放到一个变量里面。 1name=input()//不会有任何的意思，直接就跳过去执行下一条命令了 基础字符串在Python里面””与’’的作用是一样的，单引号与双引号都是表示的是字符串。 注意：转义字符的使用！ 编码： 1&apos;I\&apos;m \&quot;OK\&quot;!&apos; 输出结果： 1I&apos;m &quot;OK&quot;! 用r’’可以表示’’内部的字符串默认不转义。 1print(r&apos;\\\t\\&apos;) 输出结果： 12[Running] python -u &quot;c:\Users\40941\Desktop\tempCodeRunnerFile.python&quot;\\\t\\ Python支持用’’’…’’’这种格式表示多行的内容，写法如下：（…是提示符，不是代码的一部分） 123print(&apos;&apos;&apos;line1... line2... line3&apos;&apos;&apos;) 空值None。和0不一样，0是有意义的，None则是一种特殊的空值。 变量变量名必须是大小写英文、数字和_下划线的组合，且不能用数字开头。 常量习惯上一般用全部大写的变量表示常量。（实际上PY中没有真正意义上的常量，都是可以改变的） 除法和C++里面的“整除”不同，Python提供了两种不同的除法。 第一种：精确除法’/‘: 结果显示为浮点数，即使整除也是浮点数，如3.0 110/3 结果： 13.3333333333333335 第二种： 地板除’//‘： 两个整数的地板除还是整数，结果只取结果的整数部分。]]></content>
@@ -269,9 +281,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -445,10 +457,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -550,9 +562,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
