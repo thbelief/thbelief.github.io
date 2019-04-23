@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AndroidStudio优秀插件合集]]></title>
+    <url>%2F2019%2F04%2F23%2FAndroidStudio%E4%BC%98%E7%A7%80%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86%2F</url>
+    <content type="text"><![CDATA[目录： 前言 AS插件官方下载地址 插件详解 ADB WiFi Connect Android ButterKnife Zelezny CheckStyle-IDEA CodeGlance Dart fir.im upload Flutter Genymotion Gitee Github Grep Console GsonFormat LayoutFormatter Lifecycle Sorter MVPHelper Nyan Progress Bar Rainbow Brackets Translation WakaTime ECTranslation 前言从开始学习Android开始都是使用的AndroidStudio，也积累下很多的AndroidStudio上面的插件，这里就集合的注释一下，方便自己回忆。 AS插件官方下载地址插件下载官方地址 插件详解ADB WiFi Connect这个插件的作用是通过同一局域网下的WIFI连接Android设备，无线运行调试APP。（初始化连接还是需要USB线的） Android ButterKnife Zelezny官方注解：Simple plug-in for Android Studio/IDEA that allows one-click creation of Butterknife view injections. 其实简单的说，它的作用就是一键从布局文件中生成对应的View 声明和 ButterKnife 注解。这个插件十分的方便，方便什么呢？方便偷懒… CheckStyle-IDEACheckstyle是一种开发工具，可帮助程序员编写符合编码标准的Java代码。它使检查Java代码的过程自动化，从而使人类免于这项无聊（但重要）的任务。这使其成为希望实施编码标准的项目的理想选择。 Checkstyle可以检查源代码的许多方面。它可以找到类设计问题，方法设计问题。它还能够检查代码布局和格式问题。 CodeGlance这个插件的主要功能就是在代码编辑页面的右方提供一个代码小地图。 Dart这个是AS支持Dart语言的包，主要就是为了开发Flutter安装的插件。 fir.im upload这个插件是用于向fir.im平台推送应用新版本的插件。 Flutter这个就是一个新的Android框架的插件。 Genymotion这个是一个Android设备模拟器，比AS自带的好很多。 Gitee这个是向码云上传新代码的时候用到的。 Github向github推送的插件。 Grep ConsoleGrep，tail，filter，highlight …控制台所需的一切。也可以突出显示编辑器 - 非常适合分析日志… GsonFormat快速将JSON字符串转换为InnerClassEntity类.. LayoutFormatter作用于XML文件，主要的功能是规范化的调整XML里面的布局，使代码更加的规范，美化。 Lifecycle Sorter按照应用程序中调用它们的顺序对Activity或Fragment的生命周期方法进行排序。 MVPHelper一个快捷生成MVP框架即各个接口的插件。 Nyan Progress Bar这是一个不实用的插件，就是漂亮的进度条。 Rainbow Brackets彩虹括号，使代码显得更加的花里胡哨。 Translation在AS中翻译的插件。（Google） WakaTime自动检测AS的使用时间等等，主要就是做一个用户的使用情况可视化分析。 ECTranslation将选择的英文翻译成中文。 快捷键：Command+I快捷键。]]></content>
+      <categories>
+        <category>移动端开发</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>插件</tag>
+        <tag>合集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ACM常见报错详解]]></title>
     <url>%2F2019%2F04%2F22%2FACM%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[目录： 前言 Waiting Compiling Accepted Wrong Answer Time Limit Exceeded Memory Limit Exceeded Output Limit Exceeded Floating Point Error Segmentation Fault buffer overflow – 缓冲区溢出 stack overflow – 堆栈溢出 Runtime Error Restricted Function Compilation Error Presentation Error 前言有些时候刷OJ会遇到一些OJ提交之后报错，这里就简单的汇总一下方便以后自己学习与回忆。 Waiting正在等待OJ评测程序。 CompilingOJ正在编译程序。 Accepted程序是正确的，已经成功的过了。 Wrong Answer运行的结果在样例下错误了。 Time Limit Exceeded程序运行时间太长了，超过了对应题目的时间限制。 Memory Limit Exceeded程序运行所用的内存太多了，超过了对应题目的限制。 Output Limit Exceeded程序输出了太多的内容了，超过了OJ的限制，可以试着检查程序中是否有可能存在无限循环输出。 Floating Point ErrorDivide by 0，除0错误。 Segmentation Fault下面的两种情况可能导致次错误： buffer overflow – 缓冲区溢出访问 了非法内存，或者在C/C++中访问了空指针等等。 stack overflow – 堆栈溢出有可能在c/c++程序的函数中申请了过大的空间，或者递归层次太多，导致堆栈溢出了。 Runtime Error程序在运行的时候出错了，异常终止了，导致这种状态的情况有许多，一般都是一些非法操作，比如文件操作，Java中的网络操作等等。Java中Runtime Error的更详细的叙述见下。另外C/C++中越界访问函数中定义的数组也会导致Runtime Error。 常见错误类型： 1234567891011121314151617ACCESS_VIOLATION 您的程序想从一些非法的地址空间读取或向其中写入内容。一般例如指针、数组下标越界都会造成这个错误的。ARRAY_BOUNDS_EXCEEDED 您的程序试图访问一个超出硬件支持范围的数组单元。FLOAT_DENORMAL_OPERAND 进行了一个非正常的浮点操作。一般是由于一个非正常的浮点数参与了浮点操作所引起的，比如这个数的浮点格式不正确。FLOAT_DIVIDE_BY_ZERO 浮点数除法出现除数为零的异常。FLOAT_OVERFLOW 浮点溢出。要表示的数太大，超出了浮点数的表示范围。FLOAT_UNDERFLOW 浮点下溢。要表示的数太小，超出了浮点数的表示范围。INTEGER_DIVIDE_BY_ZERO 在进行整数除法的时候出现了除数为零的异常。INTEGER_OVERFLOW 整数溢出。要表示的数值太大，超出了整数变量的范围。STACK_OVERFLOW 栈溢出。一般是由于无限递归或者在函数里使用了太大的数组变量的原因。顾名思义，stack overflow 就是是栈溢出了。在进行数值运算时，我们常常要和运算结果的溢出打交道。数值运算结果可能上溢（overflow），也可能是下溢（underflow）。不过栈的溢出显然只可能是上溢，即栈空间被用完了。 Restricted Function程序调用了不该调用的函数，比如fork(),execv(),socket等等危险的函数，在程序中只作与解决问题有关的事情，其他的操作都会被拦截下来。 Compilation Error编译错误，如果程序在本机能够正常编译，具体的要看OJ给出的提示。 Presentation Error程序运行的结果是正确的，但是格式和正确结果有点不一样。比如中间多了回车或者空格，建议仔细检查程序的输出部分。 出现这个错误有很多可能，比如说大小写？输出空格？换行符制表符？之类的东西很多，仔细研究一下题干就没问题了，离AC也就是一步之遥。]]></content>
@@ -457,10 +471,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -562,9 +576,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
@@ -735,7 +749,7 @@
   <entry>
     <title><![CDATA[Markdown常用语法]]></title>
     <url>%2F2019%2F01%2F12%2FMarkdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[目录： 前言 一.标题 二.字体- [加粗](#加粗) - [斜体](#斜体) - [斜体加粗](#斜体加粗) - [删除线](#删除线) 三.引用 四.分割线 五.图片 六.超链接 七.列表 八.表格 九.代码 十.流程图 前言​ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 一.标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题 注意：这里的标准语法是必须#结束后再加上一个空格再加上想要写的文字。（但是有些地方貌似不加空格也可以，例如简书。但是最好还是按照标准的语法来写） 二.字体 加粗 要加粗的文字左右分别用两个*号包起来 斜体 要倾斜的文字左右分别用一个*号包起来 斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来 删除线 要加删除线的文字左右分别用两个~~号包起来 1234**这是加粗的文字***这是倾斜的文字*`***这是斜体加粗的文字***~~这是加删除线的文字~~ 三.引用在引用的文字前面加上&gt;即可。引用也可以嵌套，比如说两个&gt;&gt;三个&gt;&gt;&gt;之类的，貌似可以一直加下去，但是好像没什么用… 123&gt;这是引用的内容&gt;&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容 四.分割线三个或者三个以上的-或者*都可以。 1234-------******** 五.图片1234![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)图片alt就是显示在图片下面的文字，相当于对图片内容的解释。图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 六.超链接12[超链接名](超链接地址 &quot;超链接title&quot;)title可加可不加 例如： 12[简书](http://jianshu.com)[百度](http://baidu.com) 七.列表无序列表用-+*任何一种都可以。 12345- 列表内容+ 列表内容* 列表内容注意：- + * 跟内容之间都要有一个空格 有序列表数字加点即可。 123451.列表内容2.列表内容3.列表内容注意：序号跟内容之间要有空格 列表嵌套：上一级和下一级之间敲上三个空格即可。 八.表格1234567891011表头|表头|表头---|:--:|---:内容|内容|内容内容|内容|内容第二行分割表头和内容。- 有一个就行，为了对齐，多加了几个文字默认居左-两边加：表示文字居中-右边加：表示文字居右注：原生的语法两边都要用 | 包起来。此处省略 示例： 12345姓名|技能|排行--|:--:|--:刘备|哭|大哥关羽|打|二哥张飞|骂|三弟 九.代码单行代码直接代码之间分别用一个反引号包起来即可。 1`代码内容` 代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行。 12345(```) 代码... 代码... 代码...(```) 十.流程图123456789​```flowst=&gt;start: 开始op=&gt;operation: My Operationcond=&gt;condition: Yes or No?e=&gt;endst-&gt;op-&gt;condcond(yes)-&gt;econd(no)-&gt;op&amp; 1234567891011121314## 十一.下划线**2019.4.21补充**。下划线可以通过 HTML 的 **&lt;u&gt;** 标签来实现。## 十二.脚注**2019.4.21补充**。脚注其实就是对于文本的补充说明。格式如下： [^要注明的文本]` 实例: 参考文章：Markdown基本语法]]></content>
+    <content type="text"><![CDATA[目录： 前言 一.标题 二.字体 三.引用 四.分割线 五.图片 六.超链接 七.列表 八.表格 九.代码 十.流程图 前言​ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 一.标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题 注意：这里的标准语法是必须#结束后再加上一个空格再加上想要写的文字。（但是有些地方貌似不加空格也可以，例如简书。但是最好还是按照标准的语法来写） 二.字体加粗 要加粗的文字左右分别用两个*号包起来 斜体 要倾斜的文字左右分别用一个*号包起来 斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来 删除线 要加删除线的文字左右分别用两个~~号包起来 1234**这是加粗的文字***这是倾斜的文字*`***这是斜体加粗的文字***~~这是加删除线的文字~~ 三.引用在引用的文字前面加上&gt;即可。引用也可以嵌套，比如说两个&gt;&gt;三个&gt;&gt;&gt;之类的，貌似可以一直加下去，但是好像没什么用… 123&gt;这是引用的内容&gt;&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容 四.分割线三个或者三个以上的-或者*都可以。 1234-------******** 五.图片1234![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)图片alt就是显示在图片下面的文字，相当于对图片内容的解释。图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加 六.超链接12[超链接名](超链接地址 &quot;超链接title&quot;)title可加可不加 例如： 12[简书](http://jianshu.com)[百度](http://baidu.com) 七.列表无序列表用-+*任何一种都可以。 12345- 列表内容+ 列表内容* 列表内容注意：- + * 跟内容之间都要有一个空格 有序列表数字加点即可。 123451.列表内容2.列表内容3.列表内容注意：序号跟内容之间要有空格 列表嵌套：上一级和下一级之间敲上三个空格即可。 八.表格1234567891011表头|表头|表头---|:--:|---:内容|内容|内容内容|内容|内容第二行分割表头和内容。- 有一个就行，为了对齐，多加了几个文字默认居左-两边加：表示文字居中-右边加：表示文字居右注：原生的语法两边都要用 | 包起来。此处省略 示例： 12345姓名|技能|排行--|:--:|--:刘备|哭|大哥关羽|打|二哥张飞|骂|三弟 九.代码单行代码直接代码之间分别用一个反引号包起来即可。 1`代码内容` 代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行。 12345(```) 代码... 代码... 代码...(```) 十.流程图123456789​```flowst=&gt;start: 开始op=&gt;operation: My Operationcond=&gt;condition: Yes or No?e=&gt;endst-&gt;op-&gt;condcond(yes)-&gt;econd(no)-&gt;op&amp; ` 参考文章：Markdown基本语法]]></content>
       <categories>
         <category>其它</category>
       </categories>

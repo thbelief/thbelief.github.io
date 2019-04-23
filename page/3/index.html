@@ -294,6 +294,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/07/Android-自定义控件简述/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/07/Android-自定义控件简述/" itemprop="url">Android-自定义控件简述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T21:14:52+08:00">
+                2019-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  713
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#自定义控件要求">自定义控件要求</a></li>
+<li><a href="#制作步骤">制作步骤</a></li>
+<li><a href="#自定义控件两个方式">自定义控件两个方式</a></li>
+<li><a href="#基本原理">基本原理</a><ul>
+<li><a href="#1测量-measure过程是计算视图大小view-measure过程相关方法主要有三个">1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个：</a></li>
+<li><a href="#2布局-layout过程用于设置视图在屏幕中显示的位置view-layout过程相关方法主要要三个">2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个：</a></li>
+<li><a href="#3绘制-draw过程主要用于利用前两步得到的参数将视图显示在屏幕上到这里也就完成了整个的视图绘制工作">3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="自定义控件要求">自定义控件要求</span></h2><p>1.遵循Android标准的<strong>命名，可配置，事件处理。</strong></p>
+<p>2.在XML布局中可配置控件属性。</p>
+<p>3.点击事件之类的交互行为。</p>
+<p>4.兼容性，Android不同版本之间应该具有广泛的适用性。</p>
+<h2><span id="制作步骤">制作步骤</span></h2><p>1.view工作原理。</p>
+<p>2.编写view类。</p>
+<p>3.为view类增添属性。</p>
+<p>4.绘制UI。</p>
+<p>5.与用户进行交互（响应）。</p>
+<p>6.自定义回调函数。</p>
+<h2><span id="自定义控件两个方式">自定义控件两个方式</span></h2><ol>
+<li>继承ViewGroup </li>
+</ol>
+<p>​      例如：ViewGroup、LinearLayout、FrameLayout、RelativeLayout等。</p>
+<ol start="2">
+<li>继承View</li>
+</ol>
+<p>​      例如：View、TextView、ImageView、Button等。</p>
+<h2><span id="基本原理">基本原理</span></h2><p>View的绘制基本上由<strong>measure()、layout()、draw()</strong>这个三个函数完成。</p>
+<h3><span id="1测量-measure过程是计算视图大小view-measure过程相关方法主要有三个">1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public final void measure(int widthMeasureSpec, int heightMeasureSpec)  </span><br><span class="line">protected final void setMeasuredDimension(int measuredWidth, int measuredHeight)  </span><br><span class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</span><br></pre></td></tr></table></figure>
+<p>measure调用onMeasure，onMeasure测量宽度、高度然后调用setMeasureDimension保存测量结果，measure，setMeasureDimension是final类型，view的子类不需要重写，onMeasure在view的子类中重写。</p>
+<p>关于MeasureSpec：</p>
+<p>(1) <strong>UPSPECIFIED</strong> :父容器对于子容器没有任何限制,子容器想要多大就多大.</p>
+<p>(2) <strong>EXACTLY</strong>父容器已经为子容器设置了尺寸,子容器应当服从这些边界,不论子容器想要多大的空间.</p>
+<p>(3) <strong>AT_MOST</strong>子容器可以是声明大小内的任意大小.</p>
+<h3><span id="2布局-layout过程用于设置视图在屏幕中显示的位置view-layout过程相关方法主要要三个">2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void layout(int l, int t, int r, int b)</span><br><span class="line">protected boolean setFrame(int left, int top, int right, int bottom)</span><br><span class="line">protected void onLayout(boolean changed, int left, int top, int right, int bottom)</span><br></pre></td></tr></table></figure>
+<p>layout通过调用setFrame（l,t,r,b），l,t,r,b即子视图在父视图中的具体位置，onLayout一般只会在自定义ViewGroup中才会使用。</p>
+<h3><span id="3绘制-draw过程主要用于利用前两步得到的参数将视图显示在屏幕上到这里也就完成了整个的视图绘制工作">3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void draw(Canvas canvas)</span><br><span class="line">protected void onDraw(Canvas canvas)</span><br></pre></td></tr></table></figure>
+<p>通过调用draw函数进行视图绘制，在View类中onDraw函数是个空函数，最终的绘制需求需要在自定义的onDraw函数中进行实现，比如ImageView完成图片的绘制，如果自定义ViewGroup这个函数则不需要重载。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/06/Auto-js-Script开发-五/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2392,213 +2617,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/28/素性测试/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/素性测试/" itemprop="url">素性测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T22:59:58+08:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  287
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#素性测试">素性测试</a><ul>
-<li><a href="#随机算法">随机算法</a><ul>
-<li><a href="#fermat-primality-test">Fermat primality test</a></li>
-<li><a href="#millerrabin-primality-test">Miller–Rabin primality test</a></li>
-<li><a href="#solovaystrassen-primality-test">Solovay–Strassen primality test</a></li>
-</ul>
-</li>
-<li><a href="#确定型启发式算法">确定型启发式算法</a><ul>
-<li><a href="#aks-primality-test">AKS primality test</a></li>
-<li><a href="#bailliepsw-primality-test">Baillie–PSW primality test</a></li>
-</ul>
-</li>
-<li><a href="#试除法">试除法</a><ul>
-<li><a href="#lucas-primality-test">Lucas primality test</a></li>
-<li><a href="#lucaslehmer-primality-test">Lucas–Lehmer primality test</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="素性测试">素性测试</span></h2><p>所谓的素性测试就是<strong>判定一个整数是否为素数</strong>的方法。</p>
-<p>素性测试算法分为<strong>确定型启发式算法</strong>以及<strong>随机算法</strong>。</p>
-<h3><span id="随机算法">随机算法</span></h3><h4><span id="fermat-primality-test">Fermat primality test</span></h4><p><strong>费马素性检验是一种素数判定法则，利用随机化算法判断一个数是合数还是可能是素数。</strong></p>
-<p><img src="/2019/03/28/素性测试/费马.jpg" alt=""></p>
-<h4><span id="millerrabin-primality-test">Miller–Rabin primality test</span></h4><p><strong>米勒-拉宾素性检验是一种素数判定法则，利用随机化算法判断一个数是合数还是可能是素数。</strong></p>
-<p><img src="/2019/03/28/素性测试/米勒.jpg" alt=""></p>
-<h4><span id="solovaystrassen-primality-test">Solovay–Strassen primality test</span></h4><p><img src="/2019/03/28/素性测试/Solovay.jpg" alt=""></p>
-<h3><span id="确定型启发式算法">确定型启发式算法</span></h3><h4><span id="aks-primality-test">AKS primality test</span></h4><p>AKS素性测试（又被称为 Agrawal–Kayal–Saxena素性测试 和 Cyclotomic AKS test）是一个<strong>决定型素性测试算法</strong> ，这个算法<strong>可以在多项式时间之内，决定一个给定整数是素数或者合数</strong>。</p>
-<p><img src="/2019/03/28/素性测试/AKS.jpg" alt=""></p>
-<h4><span id="bailliepsw-primality-test">Baillie–PSW primality test</span></h4><p><a href="https://en.wikipedia.org/wiki/Baillie%E2%80%93PSW_primality_test" target="_blank" rel="noopener">维基百科参考链接</a></p>
-<h3><span id="试除法">试除法</span></h3><h4><span id="lucas-primality-test">Lucas primality test</span></h4><p><img src="/2019/03/28/素性测试/Lucas.jpg" alt=""></p>
-<h4><span id="lucaslehmer-primality-test">Lucas–Lehmer primality test</span></h4><p><a href="https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test" target="_blank" rel="noopener">维基百科参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2651,7 +2669,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2673,7 +2691,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2745,7 +2763,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共83.7k字</span>
+  <span class="post-count">博客全站共84.3k字</span>
 </div>
         
 
