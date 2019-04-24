@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java基础-登堂入室]]></title>
+    <url>%2F2019%2F04%2F24%2Fjava%E5%9F%BA%E7%A1%80-%E7%99%BB%E5%A0%82%E5%85%A5%E5%AE%A4%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 Java异常处理机制 Java I/O 泛型 简介 泛型方法 反射 简介 作用 前言前面拖了蛮久的Java学习的最后一篇博客就现在开始吧，不是说完全的学完了，只能说大致了解了，毕竟也不是什么专业的java工程师，对于Android来说，懂一点就行了，但是如果以后遇到猜到的坑或者值得记录的知识还是会写博客的。 这篇博客准备写简略一点，毕竟都开始涉及一些深入的东西了，很多大佬写的也很不错的。泛型反射需要也别注意，在安卓中很重要。 正文Java异常处理机制这里我就不嫌丑了，后面这个链接的大佬写的十分的精妙，直接移步即可。 深入理解java异常处理机制 Java I/OJava 流在处理上分为字符流和字节流。字符流处理的单元为 2 个字节的 Unicode 字符，分别操作字符、字符数组或字符串，而字节流处理单元为 1 个字节，操作字节和字节数组。 字符流一次处理一个缓冲区，字节流一次处理一个字节，明显字符流的效率要高。 参考链接 泛型简介泛型，即“参数化类型”。其实就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。 泛型方法1.所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前。 1&lt;A&gt; 2.每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。 3.类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。 4.泛型方法体的声明和其他方法一样。 注意:类型参数只能代表引用型类型，不能是原始类型（像int,double,char的等）。 反射简介反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。 作用1.运行时能判断任意一个对象所属的类。 2.在运行时构造任意一个类的对象。 3.运行时能判断任意一个类所具有的成员变量和方法。 4.运行时调用任意一个对象的方法。 5.动态代理。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>基础</tag>
+        <tag>登堂入室</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AndroidStudio优秀插件合集]]></title>
     <url>%2F2019%2F04%2F23%2FAndroidStudio%E4%BC%98%E7%A7%80%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86%2F</url>
     <content type="text"><![CDATA[目录： 前言 AS插件官方下载地址 插件详解 ADB WiFi Connect Android ButterKnife Zelezny CheckStyle-IDEA CodeGlance Dart fir.im upload Flutter Genymotion Gitee Github Grep Console GsonFormat LayoutFormatter Lifecycle Sorter MVPHelper Nyan Progress Bar Rainbow Brackets Translation WakaTime ECTranslation 前言从开始学习Android开始都是使用的AndroidStudio，也积累下很多的AndroidStudio上面的插件，这里就集合的注释一下，方便自己回忆。 AS插件官方下载地址插件下载官方地址 插件详解ADB WiFi Connect这个插件的作用是通过同一局域网下的WIFI连接Android设备，无线运行调试APP。（初始化连接还是需要USB线的） Android ButterKnife Zelezny官方注解：Simple plug-in for Android Studio/IDEA that allows one-click creation of Butterknife view injections. 其实简单的说，它的作用就是一键从布局文件中生成对应的View 声明和 ButterKnife 注解。这个插件十分的方便，方便什么呢？方便偷懒… CheckStyle-IDEACheckstyle是一种开发工具，可帮助程序员编写符合编码标准的Java代码。它使检查Java代码的过程自动化，从而使人类免于这项无聊（但重要）的任务。这使其成为希望实施编码标准的项目的理想选择。 Checkstyle可以检查源代码的许多方面。它可以找到类设计问题，方法设计问题。它还能够检查代码布局和格式问题。 CodeGlance这个插件的主要功能就是在代码编辑页面的右方提供一个代码小地图。 Dart这个是AS支持Dart语言的包，主要就是为了开发Flutter安装的插件。 fir.im upload这个插件是用于向fir.im平台推送应用新版本的插件。 Flutter这个就是一个新的Android框架的插件。 Genymotion这个是一个Android设备模拟器，比AS自带的好很多。 Gitee这个是向码云上传新代码的时候用到的。 Github向github推送的插件。 Grep ConsoleGrep，tail，filter，highlight …控制台所需的一切。也可以突出显示编辑器 - 非常适合分析日志… GsonFormat快速将JSON字符串转换为InnerClassEntity类.. LayoutFormatter作用于XML文件，主要的功能是规范化的调整XML里面的布局，使代码更加的规范，美化。 Lifecycle Sorter按照应用程序中调用它们的顺序对Activity或Fragment的生命周期方法进行排序。 MVPHelper一个快捷生成MVP框架即各个接口的插件。 Nyan Progress Bar这是一个不实用的插件，就是漂亮的进度条。 Rainbow Brackets彩虹括号，使代码显得更加的花里胡哨。 Translation在AS中翻译的插件。（Google） WakaTime自动检测AS的使用时间等等，主要就是做一个用户的使用情况可视化分析。 ECTranslation将选择的英文翻译成中文。 快捷键：Command+I快捷键。]]></content>
