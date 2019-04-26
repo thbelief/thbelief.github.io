@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Lua学习笔记(三)]]></title>
+    <url>%2F2019%2F04%2F26%2FLua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89%2F</url>
+    <content type="text"><![CDATA[目录： 模块与包 简介 创建 实例 require函数 加载机制 C包 Metatable元表 两个重要方法 _index元方法 总结 _newindex元方法 操作符 _call元方法 _tostring元方法 模块与包简介模块其实就是封装库。 Lua中的模块由变量、函数等已知元素组成的table构成。 创建创建一个table然后把需要导出的常量与函数放入其中，最后在返回这个table。 注：可以操作模块像操作table中的元素一样，事实上他们本质上并没有什么不同的地方。 实例注意：文件名和模块名需要一一对应… 123456789101112131415-- 文件名为test.lua-- 定义一个名字叫test的模块test=&#123;&#125;-- 定义一个常量test.changliang=&quot;常量&quot;--定义一个函数function test.functionOne() print(&quot;公有函数&quot;)end--下面这个私有函数只有通过公有函数才可以调用local function test.functionTwo() print(&quot;私有函数&quot;)endreturn test require函数这个函数是用来加载模块的。如果要加载模块，只需要简单的调用即可。 1234-- 第一种require(&quot;&lt;模块名&gt;&quot;)-- 第二种require &quot;&lt;模块名&gt;&quot; 执行之后会返回一个模块常量或函数组成的table。同时还会定义一个包含该table的全局变量。 用法如下： 12345-- test.lua 文件-- test 模块为上文提到到 test.luarequire(&quot;test&quot;)print(module.changliang)test.functionOne() 其实也可以另外定义一个名字，如： 1local name=require(&quot;test&quot;) 加载机制自定义模块不是放在所有位置都可以起作用，函数require有自己的加载策略。 require 用于搜索 Lua 文件的路径是存放在全局变量 package.path 中，当 Lua 启动后，会以环境变量 LUA_PATH 的值来初始这个环境变量。如果没有找到该环境变量，则使用一个编译时定义的默认路径来初始化。 这里有点儿小复杂，后面有时间专门写一篇博客详细解释。 C包这里有点儿小复杂，后面有时间专门写一篇博客详细解释。 Metatable元表在Lua中的table中可以根据对应的键key来获取value值，但是没办法对两个table同时进行操作。 元表则允许改变table的行为，每个行为都关联了对应的方法。 两个重要方法123setmetatable(table,metatable): 对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。getmetatable(table): 返回对象的元表(metatable)。 对指定表设置元表： 123mytable = &#123;&#125; -- 普通表 mymetatable = &#123;&#125; -- 元表setmetatable(mytable,mymetatable) -- 把 mymetatable 设为 mytable 的元表 或者： 1mytable = setmetatable(&#123;&#125;,&#123;&#125;) 返回对象的元表： 1getmetatable(mytable) -- 返回mymetatable _index元方法通过键来访问table的时候，如果这个键没有对应的值，就会寻找该table的元表中的_index键，如果_index包含一个表格，系统就会在表格中查找对应的键。 如果__index包含一个函数的话，Lua就会调用那个函数，table和键会作为参数传递给函数。 总结Lua查找一个表元素时候的规则如下： 1231.在表中查找，如果找到，返回该元素，找不到则继续。2.判断该表是否有元表，如果没有元表，返回 nil，有元表则继续。3.判断元表有没有 __index 方法，如果 __index 方法为 nil，则返回 nil；如果 __index 方法是一个表，则重复 1、2、3；如果 __index 方法是一个函数，则返回该函数的返回值。 _newindex元方法这个元方法用来对表做更新。 _index方法则用来对表做访问。 当给表的一个缺少的索引赋值，解释器就会查找__newindex 元方法，如果存在则调用这个函数而不进行赋值操作。 操作符在表可以做到某些的操作。具体操作符号参见下表： 模式 描述 __add 对应的运算符 ‘+’. __sub 对应的运算符 ‘-‘. __mul 对应的运算符 ‘*’. __div 对应的运算符 ‘/‘. __mod 对应的运算符 ‘%’. __unm 对应的运算符 ‘-‘. __concat 对应的运算符 ‘..’. __eq 对应的运算符 ‘==’. __lt 对应的运算符 ‘&lt;’. __le 对应的运算符 ‘&lt;=’. _call元方法这个方法在Lua调用一个值的时候调用。 _tostring元方法这个方法以前也遇到过类似的，顾名思义，其实就是更改表的输出行为。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Lua</category>
+      </categories>
+      <tags>
+        <tag>Lua</tag>
+        <tag>脚本语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android-书籍（进阶）]]></title>
     <url>%2F2019%2F04%2F25%2FAndroid-%E4%B9%A6%E7%B1%8D%EF%BC%88%E8%BF%9B%E9%98%B6%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 《Java核心技术》 《Java解惑》 《Java并发编程实战》 《深入理解Java虚拟机》 《Thinking in java》 《Effective Java》 《数据结构与算法分析》 《图解HTTP》 《图解TCP/IP》 《TCP/IP详解》 Git使用手册 Android官方文档（中文版） 《第一行代码》 《APP研发录》 《Android群英传》 《深入理解Android》 《Android开发艺术探索》 《Android系统源代码情景分析》 《代码整洁之道》 《编写可读代码的艺术》 《HeadFirst设计模式》 《重构：改善既有代码的设计》 《敏捷软件开发-原则、模式与实践》 《Android源码设计模式》 《Android框架揭秘》 《Linux内核设计与实现》 《深入理解Linux内核》 《活着》 前言学Android也快一年多了，大大小小的博客教程也看了蛮多的了，实用性的编程也只是停留在很肤浅的地方，为了充实一下自己，加强自己对Android开发的了解以及打发不在电脑前面时的无聊时间。这里做一个Android学习书籍的总结，都是长久以来收集的，只看了几本书，实际上大部分时候是在看博客那些。准备接下来尽全力看完所有的书籍。 正文《Java核心技术》这个适用于Java的入门。（两本） 《Java解惑》这是一本介绍java烂代码的书… 《Java并发编程实战》全面介绍了Java的并发，以及如何设计并支持并发的数据结构。 《深入理解Java虚拟机》不难，但是很有必要。 《Thinking in java》这个适用于java进阶。 《Effective Java》实用至上！ 《数据结构与算法分析》算法与数据结构也很有学习的必要，如果没学过或者之前没学好的，可以多看看。 《图解HTTP》网络入门。 《图解TCP/IP》也是入门，通俗易懂。 《TCP/IP详解》网络的进阶。 Git使用手册Pro Git其实Android开发中Git也是必不可少的工具。好好的利用可以极大的提升效率。 Android官方文档（中文版）中文版官方文档虽然上面的很多东西都很基础，但是如果一开始就跟着官方的步骤来学的话，无疑后期接收会快很多。 《第一行代码》非常好的一本通俗易懂Android入门的书籍。基础入门的书籍只要一本就足以，这里推荐这一本，大致粗略的了解一番即可，给自己心中留下印象。当然大部分的代码手敲之后会更有效果。 《APP研发录》Android进阶。 《Android群英传》Android进阶。 《深入理解Android》Android进阶。 《Android开发艺术探索》Android进阶。 《Android系统源代码情景分析》Android进阶。 《代码整洁之道》久闻大名，代码写多了之后必看书籍之一！ 《编写可读代码的艺术》这个也是代码整洁之道一类的书籍。 《HeadFirst设计模式》只有对设计模式的深入理解才能对既有框架进行优化，才能设计更加优秀的城西！ 《重构：改善既有代码的设计》重构有些时候也是一种本事，这是毫无疑问的。 《敏捷软件开发-原则、模式与实践》没看过，别人推荐的。 《Android源码设计模式》底层书籍不必深入，但是了解也是必不可少的东西。 《Android框架揭秘》框架啊框架，必经之路。 《Linux内核设计与实现》这个的话如果不是Android全栈工程师不是非常有必要看，如果要看的话大抵能了解即可，不必深究。 《深入理解Linux内核》和上一本书的理由一样，这里给两本做参考，其实没必要看，但是看了会更加了解与深入这也是必然的。 《活着》没错，你没猜错，这本书就是字面意思，啊哈哈。从入门到入坟是不可取的，一定要好好活着！]]></content>
@@ -323,9 +336,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
