@@ -294,6 +294,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/24/递归递推与试除法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/24/递归递推与试除法/" itemprop="url">递归递推与试除法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T20:49:36+08:00">
+                2019-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#递推">递推</a></li>
+<li><a href="#递归">递归</a><ul>
+<li><a href="#1联系">1.联系</a></li>
+<li><a href="#2区别">2.区别</a></li>
+</ul>
+</li>
+<li><a href="#试除法求解素数">试除法（求解素数）</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="递推">递推</span></h2><p>递推是一种经常被使用的简单算法，定义是<strong>一种用若干步可重复的简单运算来描述复杂问题的方法。</strong></p>
+<p>递推的特点在于，<strong>每一项都和他前面的若干项由一定的关联</strong>，这种关联一般可以通过<strong>递推关系式</strong>来表示，可以通过其前面若干项得出某项的数据。</p>
+<p>对于递推问题的求解一般从初始的一个或若干个数据项出发，<strong>通过递推关系式逐步推进，从而得出想要的结果，</strong>这种求解问题的方法叫<strong>递推法</strong>。其中，初始的若干数据项称为<strong>边界</strong>。</p>
+<p>简单实例如下：</p>
+<p>喜欢西游记的同学肯定都知道悟空偷吃蟠桃的故事，你们一定都觉得这猴子太闹腾了，其实你们是有所不知：悟空是在研究一个数学问题！<br>    什么问题？他研究的问题是蟠桃一共有多少个！<br>    不过，到最后，他还是没能解决这个难题，呵呵^-^<br>    当时的情况是这样的：<br>    第一天悟空吃掉桃子总数一半多一个，第二天又将剩下的桃子吃掉一半多一个，以后每天吃掉前一天剩下的一半多一个，到第n天准备吃的时候只剩下一个桃子。聪明的你，请帮悟空算一下，他第一天开始吃的时候桃子一共有多少个呢？</p>
+<p>Input<br>    输入数据有多组，每组占一行，包含一个正整数n（1&lt;n&lt;30），表示只剩下一个桃子的时候是在第n天发生的。</p>
+<p>Output<br>    对于每组输入数据，输出第一天开始吃的时候桃子的总数，每个测试实例占一行。</p>
+<p>Sample Input<br>    2 4</p>
+<p>Sample Output</p>
+<p>4 22</p>
+<p><strong>分析：</strong></p>
+<p>这其实就是一个<strong>递推问题</strong>，需要注意的是，<strong>一般而言递推的计算效率要大于递归</strong>。由题意得f(n) = 2 * ( f(n-1) + 1 )，另外f(1)=1。这就可以求解出相应的答案了，由于题目太简单，这里只写思路。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">int peach(int n) &#123;//这里就是递推</span><br><span class="line">    if(n == 1)</span><br><span class="line">        return 1;</span><br><span class="line">    else &#123;</span><br><span class="line">        long res = 1L;</span><br><span class="line">        while(--n)</span><br><span class="line">            res = 2 * (res + 1);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line"> </span><br><span class="line">    while(scanf(&quot;%d&quot;, &amp;n) != EOF)</span><br><span class="line">        printf(&quot;%d\n&quot;, peach(n));</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="递归">递归</span></h2><p>上面说到，一般来说，递推的计算效率是高于递归的，那么递归与递推有什么区别和联系呢？</p>
+<h3><span id="1联系">1.联系</span></h3><p>递归和递推有一定的相似性。<br>    这两个问题都可以描述为以下形式：<br>    <strong>f(n)=g(f(n-1)，…，f(0))</strong><br>    这是二者的共同特点。</p>
+<h3><span id="2区别">2.区别</span></h3><p>1）递归表现出来的是<strong>自己调用自己</strong>，递推则没有这样的形式。</p>
+<p>2）递归是从问题的<strong>最终目标</strong>出发，将问题<strong>简单化</strong>，这就是<strong>逆向的</strong>求解。</p>
+<p>递推则是从<strong>简单问题</strong>出发，<strong>正向的</strong>解决问题。</p>
+<p>3）递归中，<strong>n是已知的</strong>。递推则可以是在计算中知道，不需要提前知道。</p>
+<p>4）一般来说，<strong>递推的效率是大于递归的。</strong></p>
+<h2><span id="试除法求解素数">试除法（求解素数）</span></h2><p>一般来说，求解素数的话，要用到两种方式，<strong>一个是试除法一个是筛选法</strong>，<a href="https://thbelief.coding.me/2019/03/21/%E5%88%86%E6%8B%86%E7%B4%A0%E6%95%B0%E5%92%8C/">这篇博客</a>里面就写到了Eratosthenes筛选法，这里的话就介绍一下另外一种方法，试除法。试除法其实一般有很多种，这里只介绍一点。大致知道算法就行，现场写也可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;stdbool.h&gt;</span><br><span class="line">/*</span><br><span class="line">质数：一个自然数，如果只有1和它本身两个约数，这个数叫做质数（也称素数）．</span><br><span class="line">对于一个整数n，只需用小于等于√n所有素数去除，所以本算法的时间复杂度为O(√)的。</span><br><span class="line">*/</span><br><span class="line">bool IsPrime(int n,int prime[],int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    for(i = 2; (long long)i*i &lt;= n&amp;&amp;prime[i]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(n %i == 0)</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/23/java基础-略知一二/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2874,583 +3079,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/07/java基础-融会贯通/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/07/java基础-融会贯通/" itemprop="url">java基础-融会贯通</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T08:27:11+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  8.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  34
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#1继承">1.继承：</a><ul>
-<li><a href="#1概念">1）概念：</a></li>
-<li><a href="#2格式">2）格式：</a></li>
-<li><a href="#3类型">3）类型：</a></li>
-<li><a href="#4特性">4）特性：</a></li>
-<li><a href="#5关键字">5）关键字：</a><ul>
-<li><a href="#extends关键字">extends关键字：</a></li>
-<li><a href="#implements关键字">implements关键字：</a></li>
-<li><a href="#super与this关键字">super与this关键字：</a></li>
-<li><a href="#final关键字">final关键字：</a></li>
-<li><a href="#注意">注意：</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#2重写与重载">2.重写与重载：</a><ul>
-<li><a href="#1重写">1）重写：</a><ul>
-<li><a href="#概念">概念：</a></li>
-<li><a href="#super关键字的使用">Super关键字的使用：</a></li>
-</ul>
-</li>
-<li><a href="#2重载">2）重载：</a><ul>
-<li><a href="#规则">规则：</a></li>
-</ul>
-</li>
-<li><a href="#3重载与重写的区别">3）重载与重写的区别：</a></li>
-<li><a href="#4总结">4）总结：</a></li>
-</ul>
-</li>
-<li><a href="#3多态">3.多态：</a><ul>
-<li><a href="#1概念-1">1）概念：</a></li>
-<li><a href="#2表现">2）表现：</a></li>
-<li><a href="#3优点">3）优点：</a></li>
-<li><a href="#4执行条件">4）执行条件：</a></li>
-<li><a href="#5虚函数">5）虚函数：</a></li>
-<li><a href="#6实现方式">6）实现方式：</a></li>
-</ul>
-</li>
-<li><a href="#4抽象类">4.抽象类：</a><ul>
-<li><a href="#1概念-2">1）概念：</a></li>
-<li><a href="#2实例">2）实例：</a></li>
-<li><a href="#3继承抽象类">3）继承抽象类：</a></li>
-<li><a href="#4抽象方法">4）抽象方法：</a></li>
-<li><a href="#5总结">5）总结：</a></li>
-</ul>
-</li>
-<li><a href="#5封装">5.封装：</a><ul>
-<li><a href="#1概念-3">1）概念：</a></li>
-<li><a href="#2优点">2）优点：</a></li>
-<li><a href="#3实现步骤">3）实现步骤：</a></li>
-<li><a href="#4实例">4）实例：</a></li>
-</ul>
-</li>
-<li><a href="#6接口">6.接口：</a><ul>
-<li><a href="#1概念-4">1）概念：</a></li>
-<li><a href="#2接口与类的相似点">2）接口与类的相似点：</a></li>
-<li><a href="#3接口与类的区别">3）接口与类的区别：</a></li>
-<li><a href="#4接口特性">4）接口特性：</a></li>
-<li><a href="#5抽象类与接口的区别">5）抽象类与接口的区别：</a></li>
-<li><a href="#6接口的声明">6）接口的声明：</a></li>
-<li><a href="#7接口的实现">7）接口的实现：</a></li>
-<li><a href="#8接口的继承">8）接口的继承：</a></li>
-<li><a href="#9接口的多继承">9）接口的多继承：</a></li>
-<li><a href="#10标记接口">10）标记接口：</a></li>
-</ul>
-</li>
-<li><a href="#7包">7.包：</a><ul>
-<li><a href="#1作用">1）作用：</a></li>
-<li><a href="#2创建包">2）创建包：</a></li>
-<li><a href="#3import关键字">3）import关键字：</a></li>
-<li><a href="#4package目录结构">4）package目录结构：</a></li>
-<li><a href="#5设置classpath系统变量">5）设置CLASSPATH系统变量：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="1继承">1.继承：</span></h2><h3><span id="1概念">1）概念：</span></h3><p>继承是java面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
-<p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
-<h3><span id="2格式">2）格式：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class 父类 &#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class 子类 extends 父类 &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="3类型">3）类型：</span></h3><p>注意：java不支持多继承，但是支持多重继承。</p>
-<p><img src="/2019/03/07/java基础-融会贯通/多重继承.png" alt=""></p>
-<h3><span id="4特性">4）特性：</span></h3><p>子类拥有父类非 private 的属性、方法。</p>
-<p>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</p>
-<p>子类可以用自己的方式实现父类的方法。</p>
-<p>Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如 A 类继承 B 类，B 类继承 C 类，所以按照关系就是 C 类是 B 类的父类，B 类是 A 类的父类，这是 Java 继承区别于 C++ 继承的一个特性。</p>
-<p>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</p>
-<h3><span id="5关键字">5）关键字：</span></h3><p>注意：继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 <strong>java.lang.Object</strong>，当一个类没有继承的两个关键字，则默认继承object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
-<h4><span id="extends关键字">extends关键字：</span></h4><p>在java中，类的继承是单一的继承，也就是说，一个类只能拥有一个父类，所以extends只能继承一个类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Animal &#123; </span><br><span class="line">    private String name;   </span><br><span class="line">    private int id; </span><br><span class="line">    public Animal(String myName, String myid) &#123; </span><br><span class="line">        //初始化属性值</span><br><span class="line">    &#125; </span><br><span class="line">    public void eat() &#123;  //吃的方法的具体实现  &#125; </span><br><span class="line">    public void sleep() &#123; //睡觉的方法的具体实现  &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">public class Penguin  extends  Animal&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="implements关键字">implements关键字：</span></h4><p>使用 implements 关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public interface A &#123;</span><br><span class="line">    public void eat();</span><br><span class="line">    public void sleep();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public interface B &#123;</span><br><span class="line">    public void show();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class C implements A,B &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="super与this关键字">super与this关键字：</span></h4><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this关键字：指向自己的引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Animal &#123;</span><br><span class="line">  void eat() &#123;</span><br><span class="line">    System.out.println(&quot;animal : eat&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Dog extends Animal &#123;</span><br><span class="line">  void eat() &#123;</span><br><span class="line">    System.out.println(&quot;dog : eat&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  void eatTest() &#123;</span><br><span class="line">    this.eat();   // this 调用自己的方法</span><br><span class="line">    super.eat();  // super 调用父类方法</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class Test &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    Animal a = new Animal();</span><br><span class="line">    a.eat();</span><br><span class="line">    Dog d = new Dog();</span><br><span class="line">    d.eatTest();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="final关键字">final关键字：</span></h4><p>final 关键字声明类可以把类定义为不能继承的，即最终类；或者用于修饰方法，该方法不能被子类重写。</p>
-<p><strong>注</strong>:实例变量也可以被定义为 final，被定义为 final 的变量不能被修改。被声明为 final 类的方法自动地声明为 final，但是实例变量并不是 final</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">声明类：</span><br><span class="line"></span><br><span class="line">final class 类名 &#123;//类体&#125;</span><br><span class="line">声明方法：</span><br><span class="line"></span><br><span class="line">修饰符(public/private/default/protected) final 返回值类型 方法名()&#123;//方法体&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="注意">注意：</span></h4><p>子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 <strong>super</strong> 关键字调用父类的构造器并配以适当的参数列表。</p>
-<p>如果父类构造器没有参数，则在子类的构造器中不需要使用 <strong>super</strong> 关键字调用父类构造器，系统会自动调用父类的无参构造器。</p>
-<h2><span id="2重写与重载">2.重写与重载：</span></h2><h3><span id="1重写">1）重写：</span></h3><h4><span id="概念">概念：</span></h4><p>重写是子类对父类的允许访问的方法的实现过程进行重新编写，<strong>返回值和形参都不能改变</strong>。其实就是<strong>外形不变，核心重写</strong>的意思。</p>
-<p>重写方法不能抛出新的检查异常或者比被重写方法申明更加宽泛的异常。例如： 父类的一个方法申明了一个检查异常 IOException，但是在重写这个方法的时候不能抛出 Exception 异常，因为 Exception 是 IOException 的父类，只能抛出 IOException 的子类异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Animal&#123;</span><br><span class="line">   public void move()&#123;</span><br><span class="line">      System.out.println(&quot;动物可以移动&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Dog extends Animal&#123;</span><br><span class="line">   public void move()&#123;</span><br><span class="line">      System.out.println(&quot;狗可以跑和走&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class TestDog&#123;</span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">      Animal a = new Animal(); // Animal 对象</span><br><span class="line">      Animal b = new Dog(); // Dog 对象</span><br><span class="line"> </span><br><span class="line">      a.move();// 执行 Animal 类的方法</span><br><span class="line"> </span><br><span class="line">      b.move();//执行 Dog 类的方法</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">动物可以移动</span><br><span class="line">狗可以跑和走</span><br></pre></td></tr></table></figure>
-<h4><span id="super关键字的使用">Super关键字的使用：</span></h4><p>当需要在子类中调用父类的被重写方法的时候，就必须使用super关键字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Animal&#123;</span><br><span class="line">   public void move()&#123;</span><br><span class="line">      System.out.println(&quot;动物可以移动&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Dog extends Animal&#123;</span><br><span class="line">   public void move()&#123;</span><br><span class="line">      super.move(); // 应用super类的方法</span><br><span class="line">      System.out.println(&quot;狗可以跑和走&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class TestDog&#123;</span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line"> </span><br><span class="line">      Animal b = new Dog(); // Dog 对象</span><br><span class="line">      b.move(); //执行 Dog类的方法</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">动物可以移动</span><br><span class="line">狗可以跑和走</span><br></pre></td></tr></table></figure>
-<h3><span id="2重载">2）重载：</span></h3><p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
-<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
-<p>最常用的地方就是构造器的重载。</p>
-<h4><span id="规则">规则：</span></h4><p>被重载的方法必须改变参数列表（参数的个数或者类型不一样）。</p>
-<p>被重载的方法可以改变返回类型。</p>
-<p>被重载的方法可以改变访问修饰符。</p>
-<p>被重载的方法可以声明新的或者更广的检查异常。</p>
-<p>方法能够在同一个类中或者在一个子类中被重载。</p>
-<p>无法以返回值类型作为重载函数的区分标准。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Overloading &#123;</span><br><span class="line">    public int test()&#123;</span><br><span class="line">        System.out.println(&quot;test1&quot;);</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public void test(int a)&#123;</span><br><span class="line">        System.out.println(&quot;test2&quot;);</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    //以下两个参数类型顺序不同</span><br><span class="line">    public String test(int a,String s)&#123;</span><br><span class="line">        System.out.println(&quot;test3&quot;);</span><br><span class="line">        return &quot;returntest3&quot;;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    public String test(String s,int a)&#123;</span><br><span class="line">        System.out.println(&quot;test4&quot;);</span><br><span class="line">        return &quot;returntest4&quot;;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Overloading o = new Overloading();</span><br><span class="line">        System.out.println(o.test());</span><br><span class="line">        o.test(1);</span><br><span class="line">        System.out.println(o.test(1,&quot;test3&quot;));</span><br><span class="line">        System.out.println(o.test(&quot;test4&quot;,1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="3重载与重写的区别">3）重载与重写的区别：</span></h3><p><img src="/2019/03/07/java基础-融会贯通/区别.jpg" alt=""></p>
-<h3><span id="4总结">4）总结：</span></h3><p>方法的重写(Overriding)和重载(Overloading)是java多态性的不同表现，重写是父类与子类之间多态性的一种表现，重载可以理解成多态的具体表现形式。</p>
-<ul>
-<li>(1)方法重载是一个类中定义了多个方法名相同,而他们的参数的数量不同或数量相同而类型和次序不同,则称为方法的重载(Overloading)。</li>
-<li>(2)方法重写是在子类存在方法与父类的方法的名字相同,而且参数的个数与类型一样,返回值也一样的方法,就称为重写(Overriding)。</li>
-<li>(3)方法重载是一个类的多态性表现,而方法重写是子类与父类的一种多态性表现。</li>
-</ul>
-<p><img src="/2019/03/07/java基础-融会贯通/总结.jpg" alt=""></p>
-<h2><span id="3多态">3.多态：</span></h2><h3><span id="1概念">1）概念：</span></h3><p>多态就是同一个行为具有多个不同表现形式或者形态的能力。</p>
-<p>（同一个接口，使用不同的实例而执行不同的操作）</p>
-<h3><span id="2表现">2）表现：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">现实中，比如我们按下 F1 键这个动作：</span><br><span class="line"></span><br><span class="line">如果当前在 Flash 界面下弹出的就是 AS 3 的帮助文档；</span><br><span class="line">如果当前在 Word 下弹出的就是 Word 帮助；</span><br><span class="line">在 Windows 下弹出的就是 Windows 帮助和支持。</span><br><span class="line"></span><br><span class="line">同一个事件发生在不同的对象上会产生不同的结果。</span><br></pre></td></tr></table></figure>
-<h3><span id="3优点">3）优点：</span></h3><ul>
-<li>消除类型之间的耦合关系</li>
-<li>可替换性</li>
-<li>可扩充性</li>
-<li>接口性</li>
-<li>灵活性</li>
-<li>简化性</li>
-</ul>
-<h3><span id="4执行条件">4）执行条件：</span></h3><ul>
-<li>继承</li>
-<li>重写</li>
-<li>父类引用指向子类对象</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parent p = new Child();</span><br></pre></td></tr></table></figure>
-<p>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，再去调用子类的同名方法。</p>
-<p>多态的好处：可以使程序有良好的扩展，并可以对所有类的对象进行通用处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">      show(new Cat());  // 以 Cat 对象调用 show 方法</span><br><span class="line">      show(new Dog());  // 以 Dog 对象调用 show 方法</span><br><span class="line">                </span><br><span class="line">      Animal a = new Cat();  // 向上转型  </span><br><span class="line">      a.eat();               // 调用的是 Cat 的 eat</span><br><span class="line">      Cat c = (Cat)a;        // 向下转型  </span><br><span class="line">      c.work();        // 调用的是 Cat 的 work</span><br><span class="line">  &#125;  </span><br><span class="line">            </span><br><span class="line">    public static void show(Animal a)  &#123;</span><br><span class="line">      a.eat();  </span><br><span class="line">        // 类型判断</span><br><span class="line">        if (a instanceof Cat)  &#123;  // 猫做的事</span><br><span class="line">            Cat c = (Cat)a;  </span><br><span class="line">            c.work();  </span><br><span class="line">        &#125; else if (a instanceof Dog) &#123; // 狗做的事</span><br><span class="line">            Dog c = (Dog)a;  </span><br><span class="line">            c.work();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">abstract class Animal &#123;  </span><br><span class="line">    abstract void eat();  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">class Cat extends Animal &#123;  </span><br><span class="line">    public void eat() &#123;  </span><br><span class="line">        System.out.println(&quot;吃鱼&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">    public void work() &#123;  </span><br><span class="line">        System.out.println(&quot;抓老鼠&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">class Dog extends Animal &#123;  </span><br><span class="line">    public void eat() &#123;  </span><br><span class="line">        System.out.println(&quot;吃骨头&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">    public void work() &#123;  </span><br><span class="line">        System.out.println(&quot;看家&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">吃鱼</span><br><span class="line">抓老鼠</span><br><span class="line">吃骨头</span><br><span class="line">看家</span><br><span class="line">吃鱼</span><br><span class="line">抓老鼠</span><br></pre></td></tr></table></figure>
-<h3><span id="5虚函数">5）虚函数：</span></h3><p><strong>虚函数的存在是为了多态</strong>。</p>
-<p>Java 中其实没有虚函数的概念，它的普通函数就相当于 C++ 的虚函数，动态绑定是Java的默认行为。如果 Java 中不希望某个函数具有虚函数特性，可以加上 final 关键字变成非虚函数。</p>
-<h3><span id="6实现方式">6）实现方式：</span></h3><p>三种方式，包括：<strong>重写，接口，抽象类和抽象方法</strong>。</p>
-<h2><span id="4抽象类">4.抽象类：</span></h2><h3><span id="1概念">1）概念：</span></h3><p>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。</p>
-<p>抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。</p>
-<p>由于抽象类不能实例化对象，所以抽象类必须被继承，才能被使用。也是因为这个原因，通常在设计阶段决定要不要设计抽象类。</p>
-<p>父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。</p>
-<p>在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个类却可以实现多个接口。</p>
-<h3><span id="2实例">2）实例：</span></h3><p>在java中使用abstract class来定义抽象类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : Employee.java */</span><br><span class="line">public abstract class Employee</span><br><span class="line">&#123;</span><br><span class="line">   private String name;</span><br><span class="line">   private String address;</span><br><span class="line">   private int number;</span><br><span class="line">   public Employee(String name, String address, int number)</span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(&quot;Constructing an Employee&quot;);</span><br><span class="line">      this.name = name;</span><br><span class="line">      this.address = address;</span><br><span class="line">      this.number = number;</span><br><span class="line">   &#125;</span><br><span class="line">   public double computePay()</span><br><span class="line">   &#123;</span><br><span class="line">     System.out.println(&quot;Inside Employee computePay&quot;);</span><br><span class="line">     return 0.0;</span><br><span class="line">   &#125;</span><br><span class="line">   public void mailCheck()</span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(&quot;Mailing a check to &quot; + this.name</span><br><span class="line">       + &quot; &quot; + this.address);</span><br><span class="line">   &#125;</span><br><span class="line">   public String toString()</span><br><span class="line">   &#123;</span><br><span class="line">      return name + &quot; &quot; + address + &quot; &quot; + number;</span><br><span class="line">   &#125;</span><br><span class="line">   public String getName()</span><br><span class="line">   &#123;</span><br><span class="line">      return name;</span><br><span class="line">   &#125;</span><br><span class="line">   public String getAddress()</span><br><span class="line">   &#123;</span><br><span class="line">      return address;</span><br><span class="line">   &#125;</span><br><span class="line">   public void setAddress(String newAddress)</span><br><span class="line">   &#123;</span><br><span class="line">      address = newAddress;</span><br><span class="line">   &#125;</span><br><span class="line">   public int getNumber()</span><br><span class="line">   &#123;</span><br><span class="line">     return number;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果尝试以下例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : AbstractDemo.java */</span><br><span class="line">public class AbstractDemo</span><br><span class="line">&#123;</span><br><span class="line">   public static void main(String [] args)</span><br><span class="line">   &#123;</span><br><span class="line">      /* 以下是不允许的，会引发错误 */</span><br><span class="line">      Employee e = new Employee(&quot;George W.&quot;, &quot;Houston, TX&quot;, 43);</span><br><span class="line"> </span><br><span class="line">      System.out.println(&quot;\n Call mailCheck using Employee reference--&quot;);</span><br><span class="line">      e.mailCheck();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译时会显示以下的错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Employee.java:46: Employee is abstract; cannot be instantiated</span><br><span class="line">      Employee e = new Employee(&quot;George W.&quot;, &quot;Houston, TX&quot;, 43);</span><br><span class="line">                   ^</span><br><span class="line">1 error</span><br></pre></td></tr></table></figure>
-<h3><span id="3继承抽象类">3）继承抽象类：</span></h3><p>可以通过一般的方法直接继承Employee类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : Salary.java */</span><br><span class="line">public class Salary extends Employee</span><br><span class="line">&#123;</span><br><span class="line">   private double salary; //Annual salary</span><br><span class="line">   public Salary(String name, String address, int number, double</span><br><span class="line">      salary)</span><br><span class="line">   &#123;</span><br><span class="line">       super(name, address, number);</span><br><span class="line">       setSalary(salary);</span><br><span class="line">   &#125;</span><br><span class="line">   public void mailCheck()</span><br><span class="line">   &#123;</span><br><span class="line">       System.out.println(&quot;Within mailCheck of Salary class &quot;);</span><br><span class="line">       System.out.println(&quot;Mailing check to &quot; + getName()</span><br><span class="line">       + &quot; with salary &quot; + salary);</span><br><span class="line">   &#125;</span><br><span class="line">   public double getSalary()</span><br><span class="line">   &#123;</span><br><span class="line">       return salary;</span><br><span class="line">   &#125;</span><br><span class="line">   public void setSalary(double newSalary)</span><br><span class="line">   &#123;</span><br><span class="line">       if(newSalary &gt;= 0.0)</span><br><span class="line">       &#123;</span><br><span class="line">          salary = newSalary;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   public double computePay()</span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(&quot;Computing salary pay for &quot; + getName());</span><br><span class="line">      return salary/52;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尽管我们不能实例化一个 Employee 类的对象，但是如果我们实例化一个 Salary 类对象，该对象将从 Employee 类继承 7 个成员方法，且通过该方法可以设置或获取三个成员变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : AbstractDemo.java */</span><br><span class="line">public class AbstractDemo</span><br><span class="line">&#123;</span><br><span class="line">   public static void main(String [] args)</span><br><span class="line">   &#123;</span><br><span class="line">      Salary s = new Salary(&quot;Mohd Mohtashim&quot;, &quot;Ambehta, UP&quot;, 3, 3600.00);</span><br><span class="line">      Employee e = new Salary(&quot;John Adams&quot;, &quot;Boston, MA&quot;, 2, 2400.00);</span><br><span class="line"> </span><br><span class="line">      System.out.println(&quot;Call mailCheck using Salary reference --&quot;);</span><br><span class="line">      s.mailCheck();</span><br><span class="line"> </span><br><span class="line">      System.out.println(&quot;\n Call mailCheck using Employee reference--&quot;);</span><br><span class="line">      e.mailCheck();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Constructing an Employee</span><br><span class="line">Constructing an Employee</span><br><span class="line">Call mailCheck using  Salary reference --</span><br><span class="line">Within mailCheck of Salary class</span><br><span class="line">Mailing check to Mohd Mohtashim with salary 3600.0</span><br><span class="line"></span><br><span class="line">Call mailCheck using Employee reference--</span><br><span class="line">Within mailCheck of Salary class</span><br><span class="line">Mailing check to John Adams with salary 2400.</span><br></pre></td></tr></table></figure>
-<h3><span id="4抽象方法">4）抽象方法：</span></h3><p>如果你想设计这样一个类，该类包含一个特别的成员方法，该方法的具体实现由它的子类确定，那么你可以在父类中声明该方法为抽象方法。</p>
-<p>Abstract 关键字同样可以用来声明抽象方法，抽象方法只包含一个方法名，而没有方法体。</p>
-<p>抽象方法没有定义，方法名后面直接跟一个分号，而不是花括号。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Employee</span><br><span class="line">&#123;</span><br><span class="line">   private String name;</span><br><span class="line">   private String address;</span><br><span class="line">   private int number;</span><br><span class="line">   </span><br><span class="line">   public abstract double computePay();</span><br><span class="line">   </span><br><span class="line">   //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>声明抽象方法会造成以下两个结果：</p>
-<ul>
-<li>如果一个类包含抽象方法，那么该类必须是抽象类。</li>
-<li>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。</li>
-</ul>
-<p>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。</p>
-<p>如果Salary类继承了Employee类，那么它必须实现computePay()方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : Salary.java */</span><br><span class="line">public class Salary extends Employee</span><br><span class="line">&#123;</span><br><span class="line">   private double salary; // Annual salary</span><br><span class="line">  </span><br><span class="line">   public double computePay()</span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(&quot;Computing salary pay for &quot; + getName());</span><br><span class="line">      return salary/52;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="5总结">5）总结：</span></h3><ul>
-<li>抽象类不能被实例化(初学者很容易犯的错)，如果被实例化，就会报错，编译无法通过。只有抽象类的非抽象子类可以创建对象。</li>
-<li>抽象类中不一定包含抽象方法，但是有抽象方法的类必定是抽象类。</li>
-<li>抽象类中的抽象方法只是声明，不包含方法体，就是不给出方法的具体实现也就是方法的具体功能。</li>
-<li>构造方法，类方法（用 static 修饰的方法）不能声明为抽象方法。</li>
-<li>抽象类的子类必须给出抽象类中的抽象方法的具体实现，除非该子类也是抽象类。</li>
-</ul>
-<h2><span id="5封装">5.封装：</span></h2><h3><span id="1概念">1）概念：</span></h3><p>封装可以被认为是一个保护屏障，防止该类的代码和数据被外部类定义的代码随机访问。</p>
-<p>要访问该类的代码和数据，必须通过严格的接口控制。</p>
-<p>封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。</p>
-<h3><span id="2优点">2）优点：</span></h3><ul>
-<li>良好的封装能够减少耦合。</li>
-<li>类内部的结构可以自由修改。</li>
-<li>可以对成员变量进行更精确的控制。</li>
-<li>隐藏信息，实现细节。</li>
-</ul>
-<h3><span id="3实现步骤">3）实现步骤：</span></h3><p>修改属性的可见性来限制属性的访问（一般限制为private），例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码中，将 <strong>name</strong> 和 <strong>age</strong> 属性设置为私有的，只能本类才能访问，其他类都访问不了，如此就对信息进行了隐藏。</p>
-<p> 对每个值属性提供对外的公共方法访问，也就是创建一对赋取值方法，用于对私有属性的访问，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Person&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">​</span><br><span class="line">    public int getAge()&#123;</span><br><span class="line">      return age;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    public String getName()&#123;</span><br><span class="line">      return name;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    public void setAge(int age)&#123;</span><br><span class="line">      this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    public void setName(String name)&#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>之所以采用this关键字是为了解决实例变量和局部变量之间发生的同名冲突。</p>
-<h3><span id="4实例">4）实例：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名: EncapTest.java */</span><br><span class="line">public class EncapTest&#123;</span><br><span class="line"> </span><br><span class="line">   private String name;</span><br><span class="line">   private String idNum;</span><br><span class="line">   private int age;</span><br><span class="line"> </span><br><span class="line">   public int getAge()&#123;</span><br><span class="line">      return age;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public String getName()&#123;</span><br><span class="line">      return name;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public String getIdNum()&#123;</span><br><span class="line">      return idNum;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public void setAge( int newAge)&#123;</span><br><span class="line">      age = newAge;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public void setName(String newName)&#123;</span><br><span class="line">      name = newName;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public void setIdNum( String newId)&#123;</span><br><span class="line">      idNum = newId;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上实例中public方法是外部类访问该类成员变量的入口。</p>
-<p>通常情况下，这些方法被称为getter和setter方法。</p>
-<p>因此，任何要访问类中私有成员变量的类都要通过这些getter和setter方法。</p>
-<p>通过如下的例子说明EncapTest类的变量怎样被访问：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/* F文件名 : RunEncap.java */</span><br><span class="line">public class RunEncap&#123;</span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">      EncapTest encap = new EncapTest();</span><br><span class="line">      encap.setName(&quot;James&quot;);</span><br><span class="line">      encap.setAge(20);</span><br><span class="line">      encap.setIdNum(&quot;12343ms&quot;);</span><br><span class="line"> </span><br><span class="line">      System.out.print(&quot;Name : &quot; + encap.getName()+ </span><br><span class="line">                             &quot; Age : &quot;+ encap.getAge());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Name : James Age : 20</span><br></pre></td></tr></table></figure>
-<h2><span id="6接口">6.接口：</span></h2><h3><span id="1概念">1）概念：</span></h3><p>接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。</p>
-<p>接口并不是类，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
-<p>除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。</p>
-<p>接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则就必须声明为抽象类。另外，在 Java 中，接口类型可用来声明一个变量，他们可以成为一个空指针，或是被绑定在一个以此接口实现的对象。</p>
-<h3><span id="2接口与类的相似点">2）接口与类的相似点：</span></h3><ul>
-<li>一个接口可以有多个方法。</li>
-<li>接口文件保存在 .java 结尾的文件中，文件名使用接口名。</li>
-<li>接口的字节码文件保存在 .class 结尾的文件中。</li>
-<li>接口相应的字节码文件必须在与包名称相匹配的目录结构中。</li>
-</ul>
-<h3><span id="3接口与类的区别">3）接口与类的区别：</span></h3><ul>
-<li>接口不能用于实例化对象。</li>
-<li>接口没有构造方法。</li>
-<li>接口中所有的方法必须是抽象方法。</li>
-<li>接口不能包含成员变量，除了 static 和 final 变量。</li>
-<li>接口不是被类继承了，而是要被类实现。</li>
-<li>接口支持多继承。</li>
-</ul>
-<h3><span id="4接口特性">4）接口特性：</span></h3><ul>
-<li>接口中每一个方法也是隐式抽象的,接口中的方法会被隐式的指定为 <strong>public abstract</strong>（只能是 public abstract，其他修饰符都会报错）。</li>
-<li>接口中可以含有变量，但是接口中的变量会被隐式的指定为 <strong>public static final</strong> 变量（并且只能是 public，用 private 修饰会报编译错误）。</li>
-<li>接口中的方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。</li>
-</ul>
-<h3><span id="5抽象类与接口的区别">5）抽象类与接口的区别：</span></h3><ul>
-<li>抽象类中的方法可以有方法体，就是能实现方法的具体功能，但是接口中的方法不行。</li>
-<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 <strong>public static final</strong> 类型的。</li>
-<li>接口中不能含有静态代码块以及静态方法(用 static 修饰的方法)，而抽象类是可以有静态代码块和静态方法。</li>
-<li>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</li>
-</ul>
-<h3><span id="6接口的声明">6）接口的声明：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[可见度] interface 接口名称 [extends 其他的接口名名] &#123;</span><br><span class="line">        // 声明变量</span><br><span class="line">        // 抽象方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>interface关键字用来声明一个接口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : NameOfInterface.java */</span><br><span class="line">import java.lang.*;</span><br><span class="line">//引入包</span><br><span class="line"> </span><br><span class="line">public interface NameOfInterface</span><br><span class="line">&#123;</span><br><span class="line">   //任何类型 final, static 字段</span><br><span class="line">   //抽象方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接口有如下特性：</p>
-<ul>
-<li>接口是隐式抽象的，当声明一个接口的时候，不必使用<strong>abstract</strong>关键字。</li>
-<li>接口中每一个方法也是隐式抽象的，声明时同样不需要<strong>abstract</strong>关键字。</li>
-<li>接口中的方法都是公有的。</li>
-</ul>
-<p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : Animal.java */</span><br><span class="line">interface Animal &#123;</span><br><span class="line">   public void eat();</span><br><span class="line">   public void travel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="7接口的实现">7）接口的实现：</span></h3><p>当类实现接口的时候，类要实现接口中所有的方法。否则，类必须声明为抽象的类。</p>
-<p>类使用implements关键字实现接口。在类声明中，Implements关键字放在class声明后面。</p>
-<p>实现一个接口的语法，可以使用这个公式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...implements 接口名称[, 其他接口名称, 其他接口名称..., ...] ...</span><br></pre></td></tr></table></figure>
-<p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名 : MammalInt.java */</span><br><span class="line">public class MammalInt implements Animal&#123;</span><br><span class="line"> </span><br><span class="line">   public void eat()&#123;</span><br><span class="line">      System.out.println(&quot;Mammal eats&quot;);</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public void travel()&#123;</span><br><span class="line">      System.out.println(&quot;Mammal travels&quot;);</span><br><span class="line">   &#125; </span><br><span class="line"> </span><br><span class="line">   public int noOfLegs()&#123;</span><br><span class="line">      return 0;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">      MammalInt m = new MammalInt();</span><br><span class="line">      m.eat();</span><br><span class="line">      m.travel();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mammal eats</span><br><span class="line">Mammal travels</span><br></pre></td></tr></table></figure>
-<p>重写接口中声明的方法时，需要注意以下规则：</p>
-<ul>
-<li>类在实现接口的方法时，不能抛出强制性异常，只能在接口中，或者继承接口的抽象类中抛出该强制性异常。</li>
-<li>类在重写方法时要保持一致的方法名，并且应该保持相同或者相兼容的返回值类型。</li>
-<li>如果实现接口的类是抽象类，那么就没必要实现该接口的方法。</li>
-</ul>
-<p>在实现接口的时候，也要注意一些规则：</p>
-<ul>
-<li>一个类可以同时实现多个接口。</li>
-<li>一个类只能继承一个类，但是能实现多个接口。</li>
-<li>一个接口能继承另一个接口，这和类之间的继承比较相似。</li>
-</ul>
-<h3><span id="8接口的继承">8）接口的继承：</span></h3><p>一个接口能继承另一个接口，和类之间的继承方式比较相似。接口的继承使用extends关键字，子接口继承父接口的方法。</p>
-<p>下面的Sports接口被Hockey和Football接口继承：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 文件名: Sports.java</span><br><span class="line">public interface Sports</span><br><span class="line">&#123;</span><br><span class="line">   public void setHomeTeam(String name);</span><br><span class="line">   public void setVisitingTeam(String name);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// 文件名: Football.java</span><br><span class="line">public interface Football extends Sports</span><br><span class="line">&#123;</span><br><span class="line">   public void homeTeamScored(int points);</span><br><span class="line">   public void visitingTeamScored(int points);</span><br><span class="line">   public void endOfQuarter(int quarter);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// 文件名: Hockey.java</span><br><span class="line">public interface Hockey extends Sports</span><br><span class="line">&#123;</span><br><span class="line">   public void homeGoalScored();</span><br><span class="line">   public void visitingGoalScored();</span><br><span class="line">   public void endOfPeriod(int period);</span><br><span class="line">   public void overtimePeriod(int ot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Hockey接口自己声明了四个方法，从Sports接口继承了两个方法，这样，实现Hockey接口的类需要实现六个方法。</p>
-<p>相似的，实现Football接口的类需要实现五个方法，其中两个来自于Sports接口。</p>
-<h3><span id="9接口的多继承">9）接口的多继承：</span></h3><p>在Java中，类的多继承是不合法，但接口允许多继承。</p>
-<p>在接口的多继承中extends关键字只需要使用一次，在其后跟着继承接口。 如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public interface Hockey extends Sports, Event</span><br></pre></td></tr></table></figure>
-<p>以上的程序片段是合法定义的子接口，与类不同的是，接口允许多继承，而 Sports及 Event 可能定义或是继承相同的方法。</p>
-<h3><span id="10标记接口">10）标记接口：</span></h3><p>最常用的继承接口是没有包含任何方法的接口。</p>
-<p>标记接口是没有任何方法和属性的接口.它仅仅表明它的类属于一个特定的类型,供其他代码来测试允许做一些事情。</p>
-<p>标记接口作用：简单形象的说就是给某个对象打个标（盖个戳），使对象拥有某个或某些特权。</p>
-<p>例如：java.awt.event 包中的 MouseListener 接口继承的 java.util.EventListener 接口定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line">public interface EventListener</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>没有任何方法的接口被称为标记接口。标记接口主要用于以下两种目的：</p>
-<ul>
-<li><p>建立一个公共的父接口：</p>
-<p>正如EventListener接口，这是由几十个其他接口扩展的Java API，你可以使用一个标记接口来建立一组接口的父接口。例如：当一个接口继承了EventListener接口，Java虚拟机(JVM)就知道该接口将要被用于一个事件的代理方案。</p>
-</li>
-<li><p>向一个类添加数据类型：</p>
-<p>这种情况是标记接口最初的目的，实现标记接口的类不需要定义任何接口方法(因为标记接口根本就没有方法)，但是该类通过多态性变成一个接口类型。</p>
-</li>
-</ul>
-<h2><span id="7包">7.包：</span></h2><p>为了更好的组织类，包就产生了，主要是用来区别类名的命名空间。</p>
-<h3><span id="1作用">1）作用：</span></h3><ul>
-<li>1、把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。</li>
-<li>2、如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突。</li>
-<li>3、包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。</li>
-</ul>
-<p>Java 使用包（package）这种机制是为了防止命名冲突，访问控制，提供搜索和定位类（class）、接口、枚举（enumerations）和注释（annotation）等。</p>
-<p>包语句的语法格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package pkg1[．pkg2[．pkg3…]];</span><br></pre></td></tr></table></figure>
-<p>例如,一个Something.java 文件它的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">package net.java.util;</span><br><span class="line">public class Something&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那么它的路径应该是 <strong>net/java/util/Something.java</strong> 这样保存的。 package(包) 的作用是把不同的 java 程序分类保存，更方便的被其他 java 程序调用。</p>
-<p>一个包（package）可以定义为一组相互联系的类型（类、接口、枚举和注释），为这些类型提供访问保护和命名空间管理的功能。</p>
-<p>以下是一些 Java 中的包：</p>
-<ul>
-<li><strong>java.lang</strong>-打包基础的类</li>
-<li><strong>java.io</strong>-包含输入输出功能的函数</li>
-</ul>
-<p>开发者可以自己把一组类和接口等打包，并定义自己的包。而且在实际开发中这样做是值得提倡的，当你自己完成类的实现之后，将相关的类分组，可以让其他的编程者更容易地确定哪些类、接口、枚举和注释等是相关的。</p>
-<p>由于包创建了新的命名空间（namespace），所以不会跟其他包中的任何名字产生命名冲突。使用包这种机制，更容易实现访问控制，并且让定位相关类更加简单。</p>
-<h3><span id="2创建包">2）创建包：</span></h3><p>创建包的时候，你需要为这个包取一个合适的名字。之后，如果其他的一个源文件包含了这个包提供的类、接口、枚举或者注释类型的时候，都必须将这个包的声明放在这个源文件的开头。</p>
-<p>包声明应该在源文件的第一行，每个源文件只能有一个包声明，这个文件中的每个类型都应用于它。</p>
-<p>如果一个源文件中没有使用包声明，那么其中的类，函数，枚举，注释等将被放在一个无名的包（unnamed package）中。</p>
-<p>例子：</p>
-<p>让我们来看一个例子，这个例子创建了一个叫做animals的包。通常使用小写的字母来命名避免与类、接口名字的冲突。</p>
-<p>在 animals 包中加入一个接口（interface）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 文件名: Animal.java */</span><br><span class="line">package animals;</span><br><span class="line"> </span><br><span class="line">interface Animal &#123;</span><br><span class="line">   public void eat();</span><br><span class="line">   public void travel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来，在同一个包中加入该接口的实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package animals;</span><br><span class="line"> </span><br><span class="line">/* 文件名 : MammalInt.java */</span><br><span class="line">public class MammalInt implements Animal&#123;</span><br><span class="line"> </span><br><span class="line">   public void eat()&#123;</span><br><span class="line">      System.out.println(&quot;Mammal eats&quot;);</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public void travel()&#123;</span><br><span class="line">      System.out.println(&quot;Mammal travels&quot;);</span><br><span class="line">   &#125; </span><br><span class="line"> </span><br><span class="line">   public int noOfLegs()&#123;</span><br><span class="line">      return 0;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   public static void main(String args[])&#123;</span><br><span class="line">      MammalInt m = new MammalInt();</span><br><span class="line">      m.eat();</span><br><span class="line">      m.travel();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后，编译这两个文件，并把他们放在一个叫做animals的子目录中。 用下面的命令来运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir animals</span><br><span class="line">$ cp Animal.class  MammalInt.class animals</span><br><span class="line">$ java animals/MammalInt</span><br><span class="line">Mammal eats</span><br><span class="line">Mammal travel</span><br></pre></td></tr></table></figure>
-<h3><span id="3import关键字">3）import关键字：</span></h3><p>为了能够使用某一个包的成员，我们需要在 Java 程序中明确导入该包。使用 “import” 语句可完成此功能。</p>
-<p>在 java 源文件中 import 语句应位于 package 语句之后，所有类的定义之前，可以没有，也可以有多条，其语法格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import package1[.package2…].(classname|*);</span><br></pre></td></tr></table></figure>
-<p>如果在一个包中，一个类想要使用本包中的另一个类，那么该包名可以省略。</p>
-<p>例子：</p>
-<p>下面的 payroll 包已经包含了 Employee 类，接下来向 payroll 包中添加一个 Boss 类。Boss 类引用 Employee 类的时候可以不用使用 payroll 前缀，Boss类的实例如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package payroll;</span><br><span class="line"> </span><br><span class="line">public class Boss</span><br><span class="line">&#123;</span><br><span class="line">   public void payEmployee(Employee e)</span><br><span class="line">   &#123;</span><br><span class="line">      e.mailCheck();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果 Boss 类不在 payroll 包中又会怎样？Boss 类必须使用下面几种方法之一来引用其他包中的类。</p>
-<p>使用类全名描述，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payroll.Employee</span><br></pre></td></tr></table></figure>
-<p>用 <strong>import</strong> 关键字引入，使用通配符 “*”：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import payroll.*;</span><br></pre></td></tr></table></figure>
-<p>使用 <strong>import</strong> 关键字引入 Employee 类:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import payroll.Employee;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p>类文件中可以包含任意数量的 import 声明。import 声明必须在包声明之后，类声明之前。</p>
-<h3><span id="4package目录结构">4）package目录结构：</span></h3><p>类放在包中会有两种主要的结果：</p>
-<ul>
-<li>包名成为类名的一部分，正如我们前面讨论的一样。</li>
-<li>包名必须与相应的字节码所在的目录结构相吻合。</li>
-</ul>
-<p>下面是管理你自己 java 中文件的一种简单方式：</p>
-<p>将类、接口等类型的源码放在一个文本中，这个文件的名字就是这个类型的名字，并以.java作为扩展名。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 文件名 :  Car.java</span><br><span class="line"> </span><br><span class="line">package vehicle;</span><br><span class="line"> </span><br><span class="line">public class Car &#123;</span><br><span class="line">   // 类实现  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来，把源文件放在一个目录中，这个目录要对应类所在包的名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">....\vehicle\Car.java</span><br></pre></td></tr></table></figure>
-<p>现在，正确的类名和路径将会是如下样子：</p>
-<ul>
-<li>类名 -&gt; vehicle.Car</li>
-<li>路径名 -&gt; vehicle\Car.java (在 windows 系统中)</li>
-</ul>
-<p>通常，一个公司使用它互联网域名的颠倒形式来作为它的包名.例如：互联网域名是 runoob.com，所有的包名都以 com.runoob 开头。包名中的每一个部分对应一个子目录。</p>
-<p>例如：有一个 <strong>com.runoob.test</strong> 的包，这个包包含一个叫做 Runoob.java 的源文件，那么相应的，应该有如下面的一连串子目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">....\com\runoob\test\Runoob.java</span><br></pre></td></tr></table></figure>
-<p>编译的时候，编译器为包中定义的每个类、接口等类型各创建一个不同的输出文件，输出文件的名字就是这个类型的名字，并加上 .class 作为扩展后缀。 例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 文件名: Runoob.java</span><br><span class="line"> </span><br><span class="line">package com.runoob.test;</span><br><span class="line">public class Runoob &#123;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br><span class="line">class Google &#123;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在，我们用-d选项来编译这个文件，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$javac -d . Runoob.java</span><br></pre></td></tr></table></figure>
-<p>这样会像下面这样放置编译了的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.\com\runoob\test\Runoob.class</span><br><span class="line">.\com\runoob\test\Google.class</span><br></pre></td></tr></table></figure>
-<p>你可以像下面这样来导入所有 <strong>\com\runoob\test\</strong> 中定义的类、接口等：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import com.runoob.test.*;</span><br></pre></td></tr></table></figure>
-<p>编译之后的 .class 文件应该和 .java 源文件一样，它们放置的目录应该跟包的名字对应起来。但是，并不要求 .class 文件的路径跟相应的 .java 的路径一样。你可以分开来安排源码和类的目录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;path-one&gt;\sources\com\runoob\test\Runoob.java</span><br><span class="line">&lt;path-two&gt;\classes\com\runoob\test\Google.class</span><br></pre></td></tr></table></figure>
-<p>这样，你可以将你的类目录分享给其他的编程人员，而不用透露自己的源码。用这种方法管理源码和类文件可以让编译器和java 虚拟机（JVM）可以找到你程序中使用的所有类型。</p>
-<p>类目录的绝对路径叫做 <strong>class path</strong>。设置在系统变量 <strong>CLASSPATH</strong> 中。编译器和 java 虚拟机通过将 package 名字加到 class path 后来构造 .class 文件的路径。</p>
-<p>一个 class path 可能会包含好几个路径，多路径应该用分隔符分开。默认情况下，编译器和 JVM 查找当前目录。JAR 文件按包含 Java 平台相关的类，所以他们的目录默认放在了 class path 中。</p>
-<h3><span id="5设置classpath系统变量">5）设置CLASSPATH系统变量：</span></h3><p>用下面的命令显示当前的CLASSPATH变量：</p>
-<ul>
-<li>Windows 平台（DOS 命令行下）：C:> set CLASSPATH</li>
-<li>UNIX 平台（Bourne shell 下）：# echo $CLASSPATH</li>
-</ul>
-<p>删除当前CLASSPATH变量内容：</p>
-<ul>
-<li>Windows 平台（DOS 命令行下）：C:> set CLASSPATH=</li>
-<li>UNIX 平台（Bourne shell 下）：# unset CLASSPATH; export CLASSPATH</li>
-</ul>
-<p>设置CLASSPATH变量:</p>
-<ul>
-<li>Windows 平台（DOS 命令行下）： C:> set CLASSPATH=C:\users\jack\java\classes</li>
-<li>UNIX 平台（Bourne shell 下）：# CLASSPATH=/home/jack/java/classes; export CLASSPATH</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3498,7 +3131,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3592,7 +3225,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共90.4k字</span>
+  <span class="post-count">博客全站共92.3k字</span>
 </div>
         
 
