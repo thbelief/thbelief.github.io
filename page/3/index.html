@@ -294,6 +294,244 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/13/Android-Lottie动画库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/13/Android-Lottie动画库/" itemprop="url">Android-Lottie动画库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-13T21:03:46+08:00">
+                2019-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  340
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#lottie效果展示">Lottie效果展示</a></li>
+<li><a href="#lottie简单介绍">Lottie简单介绍</a></li>
+<li><a href="#lottie优势">Lottie优势</a></li>
+<li><a href="#lottie劣势">Lottie劣势</a></li>
+<li><a href="#lottie简单示例">Lottie简单示例</a><ul>
+<li><a href="#依赖">依赖</a></li>
+<li><a href="#通过ae的插件导出的json文件">通过AE的插件导出的json文件</a></li>
+<li><a href="#布局">布局</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#lottie相关网址">Lottie相关网址</a><ul>
+<li><a href="#lottie在线json文件动画预览">Lottie在线json文件动画预览</a></li>
+</ul>
+</li>
+<li><a href="#lottiefiles">LottieFiles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>这两天在写一个自己的小东西，然后碰巧在github上看到一个动画库，感觉挺有意思的，就通过今天的博客记录下来。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="lottie效果展示">Lottie效果展示</span></h3><p><img src="/2019/04/13/Android-Lottie动画库/图片1.gif" alt=""></p>
+<p><img src="/2019/04/13/Android-Lottie动画库/图片2.gif" alt=""></p>
+<h3><span id="lottie简单介绍">Lottie简单介绍</span></h3><p>Lottie是一个用于 Android和 iOS 的代码库，可以解析用Adobe After Effects 制作动画后通过<br>Bodymovin 插件导出的 JSON 数据文件并在移动端原生渲染!</p>
+<h3><span id="lottie优势">Lottie优势</span></h3><ol>
+<li><p>开发无需编写动画,只需加载。</p>
+</li>
+<li><p>Android, iOS, 和React Native多平台支持。</p>
+</li>
+<li>Path,flat等风格动画实现完美。</li>
+<li>可手动设置进度,绑定手势,事件等。</li>
+<li>可网络加载,动态控制播放速度等。</li>
+<li>性能好,显示效果完。</li>
+<li>不需要进行屏幕的适配，完全原生。</li>
+</ol>
+<p>…</p>
+<h3><span id="lottie劣势">Lottie劣势</span></h3><ol>
+<li><p>能在AE中实现的效果非常有限。</p>
+</li>
+<li><p>对AE使用要求高一点, 动画更加依赖设计师。</p>
+</li>
+<li><p>使用位图后,资源消耗大。</p>
+<p>……</p>
+</li>
+</ol>
+<h3><span id="lottie简单示例">Lottie简单示例</span></h3><h4><span id="依赖">依赖</span></h4><p><img src="/2019/04/13/Android-Lottie动画库/依赖.png" alt=""></p>
+<h4><span id="通过ae的插件导出的json文件">通过AE的插件导出的json文件</span></h4><p><img src="/2019/04/13/Android-Lottie动画库/json.png" alt=""></p>
+<h4><span id="布局">布局</span></h4><p><img src="/2019/04/13/Android-Lottie动画库/布局.png" alt=""></p>
+<h4><span id="代码">代码</span></h4><p><img src="/2019/04/13/Android-Lottie动画库/代码.png" alt=""></p>
+<h4><span id="lottie相关网址">Lottie相关网址</span></h4><h5><span id="lottie在线json文件动画预览">Lottie在线json文件动画预览</span></h5><p><a href="https://svgsprite.com/tools/lottie-player/?render=canvas" target="_blank" rel="noopener">这个网址</a></p>
+<h4><span id="lottiefiles">LottieFiles</span></h4><p><a href="https://lottiefiles.com/featured" target="_blank" rel="noopener">这个网址</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/12/Auto-js-Script开发-七/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2256,206 +2494,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/04/Auto-js-Script开发-四/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/Auto-js-Script开发-四/" itemprop="url">Auto.js Script开发(四)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T13:25:41+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Auto.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  554
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a></li>
-<li><a href="#总结">总结</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天早上八点就起来改代码，现在终于把更新这个功能修改完了。等会儿还有事儿，唉，想睡午觉都不行了。</p>
-<h2><span id="正文">正文</span></h2><p>今天一天就更新了这么多版本，也是没谁了，主要是为了测试APP更新的功能。</p>
-<p><img src="/2019/04/04/Auto-js-Script开发-四/版本更新.jpg" alt=""></p>
-<p>下面是代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//2019.4.4 开屏进入检查是否有更新，有就提示，没有就不提示</span><br><span class="line">function checkHaveUpdate()&#123;</span><br><span class="line">    threads.start(function()&#123;</span><br><span class="line">        //网络请求必须更改线程，不能在主线程</span><br><span class="line">        //通过fir.im的API来进行版本查询</span><br><span class="line">        var url=&quot;http://api.fir.im/apps/latest/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6&amp;type=android&quot;;</span><br><span class="line">        var res =http.get(url);</span><br><span class="line">        //下面必须用app.versionCode获取本地APP版本号，3.00是测试用的</span><br><span class="line">        if(res.statusCode == 200)&#123;</span><br><span class="line">            //toast(&quot;请求成功&quot;);</span><br><span class="line">            //先检测是否有版本号存储本地</span><br><span class="line">                var versionShortFromWeb=JSON.parse(res.body.string()).versionShort;</span><br><span class="line">                if(storage.get(&quot;versionShort&quot;)==versionShortFromWeb)&#123;</span><br><span class="line">                    //如果版本短号一样则不更新</span><br><span class="line">                    toast(&quot;欢迎回来，亲~~~&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    //有更新</span><br><span class="line">                    //或许这里可以给一个alert框显示一些更新内容  </span><br><span class="line">                    var allUpdateMessageUrl=&quot;http://api.fir.im/apps/5ca40357548b7a65912fc02b?api_token=b44bd08868ab6ad1b1c02ca260c389b6 &quot;;</span><br><span class="line">                    var allUpdateMessage =JSON.parse(http.get(allUpdateMessageUrl).body.string());</span><br><span class="line">                    var showallUpdateMessage=&quot;更新内容： &quot;+&quot;\n&quot;+allUpdateMessage.desc;</span><br><span class="line">                    dialogs.build(&#123;</span><br><span class="line">                        title: &quot;发现新版本&quot;,</span><br><span class="line">                        content:showallUpdateMessage,</span><br><span class="line">                        positive: &quot;知道了&quot;</span><br><span class="line">                    &#125;).on(&quot;positive&quot;,()=&gt;&#123;</span><br><span class="line">                        toast(&quot;有更新，请前往菜单页面更新哦，~亲~&quot;);</span><br><span class="line">                    &#125;).show(); </span><br><span class="line">                    log(versionShortFromWeb+app.versionName);  </span><br><span class="line">                &#125;           </span><br><span class="line">        &#125;else&#123;//网络请求失败</span><br><span class="line">            toast(&quot;找不到网络呢，亲！&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line">    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>主要是增添了开屏检查更新的功能：</p>
-<p><img src="/2019/04/04/Auto-js-Script开发-四/开屏检查更新.png" alt=""></p>
-<h2><span id="总结">总结</span></h2><p>遇到了很多的问题，总归还是很有收获，个人开发APP遇到这么多问题是我始料不及的，但是也很庆幸，因为学到了很多。</p>
-<p>现在还有些问题没有解决，包括本地存储的versionShort版本号还是没有完善，只是默认点击了浏览器下载或者直接下载就会更改本地的versionShort为最新版本号，还有就是下载的问题，貌似302？测试不够多现在还不是很明确。</p>
-<p>还有就是需要考虑一下在线数据存储器问题。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2508,7 +2546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2602,7 +2640,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共92.4k字</span>
+  <span class="post-count">博客全站共93k字</span>
 </div>
         
 
