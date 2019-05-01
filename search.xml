@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Win10常用快捷键]]></title>
+    <url>%2F2019%2F05%2F01%2FWin10%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 Alt+Tab Alt+F4 Win+L Win+D F2 F5 Alt + Enter Ctrl + Alt + Tab Ctrl+箭头键 Ctrl + Esc Ctrl + Shift + Esc Shift + Delete PrtScn Win+PrtScn Win+M Win+S Win+Shift+S Win+空格键 Win+‘+’ Win+Shift+左/右键 Alt + D Ctrl + E Ctrl+F Ctrl + N Ctrl + W F11 Win+W 前言今天是五一长假的第一天，一如往常，还是没有回家。 今天使用电脑的时候突然忘记了以前经常使用的一个win10的快捷键，于是灵感就来了，收集一些常用的win10的快捷键，方便自己使用。 正文首先，win10官方快捷键合集——这个网站是微软自己提供的快捷键的合集。（这些快捷键有些时候不一定会起作用，因为有些第三方软件会占用这个快捷键，请检查是否快捷键冲突） Alt+Tab在打开的应用之间来回的切换。 Alt+F4关闭当前的应用。 Win+L锁定电脑。 Win+D显示或者隐藏电脑桌面。 F2重命名所选项。 F5刷新活动窗口。（一般都是用于网页刷新） Alt + Enter直接打开所选项的属性窗口。 Ctrl + Alt + Tab使用鼠标在打开应用之间切换。 Ctrl+箭头键打开开始菜单使用这组快捷键可以调整开始菜单的大小。 Ctrl + Esc打开开始菜单。 Ctrl + Shift + Esc直接打开任务管理器。 Shift + Delete直接删除（不经过回收站）。 PrtScn捕获整个屏幕的屏幕截图并将其复制到剪贴板。 Win+PrtScn截取当前屏幕，放到图片文件夹下的屏幕截图文件夹中。 Win+M最小化所有的窗口。 Win+S打开搜索。 Win+Shift+S获取当前屏幕的部分截图。 Win+空格键切换输入语言以及键盘布局。 Win+‘+’打开放大镜。 Win+Shift+左/右键将桌面应用从一个显示器转移到另外一个显示器。 Alt + D选择地址栏。 Ctrl + E搜索框。（搜索其他网址之类的） Ctrl+F当前页面检索。（文字之类的） Ctrl + N打开新窗口。 Ctrl + W关闭当前的活动窗口。 F11最大化或者最小化当前的活动窗口。 Win+W打开自定义便签等等窗口。]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Win10</tag>
+        <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[汇编实验（二）]]></title>
     <url>%2F2019%2F04%2F30%2F%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 寄存器 指令 变量 前言关于汇编的部分其实已经耽搁很久了，今天实验课上抽时间记录一下，方便最后答辩。 正文寄存器这里只介绍实验用到的寄存器。同时将在实验中具体的描述如何使用这些寄存器。 1234567891011121314AX 累加器BX 基址寄存器 常用来存放存储器地址CX 计数器 DX 数据寄存器 一般用来存放数据SS 存放栈的段地址SP 堆栈寄存器 存放栈的偏移地址BP 基数指针寄存器 和SP联动，作为SP校准使用的，只有寻找堆栈中的数据和使用个别寻址方式的时候才可以使用到。DS 数据段寄存器 指出当前程序使用的 数据所存放段的最低地址，即存放数据段段地址。ES 附加段寄存器 存放当前执行程序中一个辅助数据段的段地址。CS 代码段寄存器 存放代码段的首地址。IP 指令指针寄存器 存放偏移地址。SI 源变址寄存器DI 目的变址寄存器PSW 标志寄存器 反映了CPU运算的状态特征并且存放某些控制标志。 指令12345678910111213ADD 加法SUB 减法MUL 无符号乘法DIV 无符号除法JA 无符号大于则转移到目标指令执行JB 无符号小于则转移到目标指令执行JG 有符号大于则跳转JL 有符号小于则跳转LOOP 主要实现循环功能INC 加1的指令DEC 减1的指令PUSH 压栈POP 弹栈 变量1234567DB 字节型变量，一个字节数据占1个字节单元，读完一个，偏移量加1。DW 字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2。DD 双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4。BUF 即BUFFER，缓冲区，意思是内存中的一段存放数据的区域。]]></content>
@@ -569,10 +581,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -674,9 +686,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
