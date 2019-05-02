@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/05/02/Python学习笔记（二）/
 http://thbelief.coding.me/2019/05/01/Win10常用快捷键/
 http://thbelief.coding.me/2019/04/30/汇编实验（二）/
 http://thbelief.coding.me/2019/04/29/Lua学习笔记-五/
