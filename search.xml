@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Lua学习笔记(六)]]></title>
+    <url>%2F2019%2F05%2F03%2FLua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 推荐网站 面向对象 四大特征 封装 继承 多态 抽象 如何使用 创建对象 访问属性 访问成员函数 完整实例 继承 重写 数据库 前言Lua的基础教程其实感觉都已经快接近尾声了，这次就直接把面向对象的这个部分以及一些其他的东西讲清楚，然后就结尾吧，其实大部分编程语言的内涵都是共通的，最主要的还是应用的问题。（只有实践才是检验真理的唯一标准！） 正文推荐网站Lua在线手册 Lua程序设计 这两个网站都是关于Lua语言的chm文档，可以参考学习，特别是第二个网站，十分的丰富。 面向对象这里的“对象”不是那个“对象”，学过C++或者Java这种面向对象语言的人肯定知道，Lua也是面向对象的，其实之前就说过Lua中其实都是对象。 四大特征封装指能够把一个实体的信息、功能、响应都装入一个单独的对象中的特性。 继承继承的方法允许在不改动原程序的基础上对其进行扩充，这样使得原功能得以保存，而新功能也得以扩展。这有利于减少重复编码，提高软件的开发效率。 多态同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果。在运行时，可以通过指向基类的指针，来调用实现派生类中的方法。 抽象抽象(Abstraction)是简化复杂的现实问题的途径，它可以为具体问题找到最恰当的类定义，并且可以在最恰当的继承级别解释问题。 如何使用对象包括两个内容：属性+方法。前者使用Lua中的table表示，后者使用function表示。（继承可以通过metetable来模拟，事实上，模拟基本的对象大多时候都已经足够使用了） 另外，由于Lua中所有都是对象，是以，table其实也是对象，也有状态（成员变量以及成员函数）。 实例如下： 123456789101112--这里直接定义一个表table，其中包含了它的成员变量numtest=&#123;num=0&#125;--下面直接定义test对应的成员函数function test.addNum(count) test.num=test.num+countendprint(&quot;第一个：&quot;..test.num)test.addNum(10)print(&quot;第二个：&quot;..test.num) 结果: 创建对象这个过程其实就是为类的实例分配内存。 12--如果该类需要传入初始参数就通过小括号内传入test1=test:new(); 访问属性直接使用.来访问。 1test1.num; 访问成员函数1test1:addNum(1); 完整实例12345678910111213141516171819202122-- Meta classShape = &#123;area = 0&#125;-- 基础类方法 newfunction Shape:new (o,side) o = o or &#123;&#125; setmetatable(o, self) self.__index = self side = side or 0 self.area = side*side; return oend-- 基础类方法 printAreafunction Shape:printArea () print(&quot;面积为 &quot;,self.area)end-- 创建对象myshape = Shape:new(nil,10)myshape:printArea() 输出： 1面积为 100 继承继承的含义是——一个对象直接使用另外一个对象的属性方法之类。一般的作用就是扩展基类的属性与方法。使用场景举例：Person类下面或许就可以被继承一个Student类。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556-- Meta classShape = &#123;area = 0&#125;-- 基础类方法 newfunction Shape:new (o,side) o = o or &#123;&#125; setmetatable(o, self) self.__index = self side = side or 0 self.area = side*side; return oend-- 基础类方法 printAreafunction Shape:printArea () print(&quot;面积为 &quot;,self.area)end-- 创建对象myshape = Shape:new(nil,10)myshape:printArea()Square = Shape:new()-- 派生类方法 newfunction Square:new (o,side) o = o or Shape:new(o,side) setmetatable(o, self) self.__index = self return oend-- 派生类方法 printAreafunction Square:printArea () print(&quot;正方形面积为 &quot;,self.area)end-- 创建对象mysquare = Square:new(nil,10)mysquare:printArea()Rectangle = Shape:new()-- 派生类方法 newfunction Rectangle:new (o,length,breadth) o = o or Shape:new(o) setmetatable(o, self) self.__index = self self.area = length * breadth return oend-- 派生类方法 printAreafunction Rectangle:printArea () print(&quot;矩形面积为 &quot;,self.area)end-- 创建对象myrectangle = Rectangle:new(nil,10,20)myrectangle:printArea() 输出结果： 123面积为 100正方形面积为 100矩形面积为 200 重写Lua中支持直接重写基础类的函数，在派生类中定义自己的实现方式。 实例其实就是上面一个例子中的。 数据库Lua支持的数据库：LuaSQL，支持的类型包括ODBC, ADO, Oracle, MySQL, SQLite 和 PostgreSQL。 LuaSQL可使用LuaRocks来安装需要的数据库驱动。 WIndows安装LuaRocks的方法教程 简单实例： 123456789101112131415161718192021222324252627282930313233require &quot;luasql.mysql&quot;--创建环境对象env = luasql.mysql()--连接数据库conn = env:connect(&quot;数据库名&quot;,&quot;用户名&quot;,&quot;密码&quot;,&quot;IP地址&quot;,端口)--设置数据库的编码格式conn:execute&quot;SET NAMES UTF8&quot;--执行数据库操作cur = conn:execute(&quot;select * from role&quot;)row = cur:fetch(&#123;&#125;,&quot;a&quot;)--文件对象的创建file = io.open(&quot;role.txt&quot;,&quot;w+&quot;);while row do var = string.format(&quot;%d %s\n&quot;, row.id, row.name) print(var) file:write(var) row = cur:fetch(row,&quot;a&quot;)endfile:close() --关闭文件对象conn:close() --关闭数据库连接env:close() --关闭数据库环境]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Lua</category>
+      </categories>
+      <tags>
+        <tag>Lua</tag>
+        <tag>脚本语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（二）]]></title>
     <url>%2F2019%2F05%2F02%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 字符串 两个转换方法 字节bytes encode() len() 格式化 注意 List 特性 方法 tuple 相对不能修改性 单元素元组 条件判断 input()与int() 循环 for…in while break与continue dict 初始化 是否存在 in get() 删除 特性 set 初始化 方法 特性 前言貌似最近欠的博客蛮多的…但是做人还是要有始有终，努力填完自己挖的坑！ 正文字符串最新的Python3版本字符串是以Unicode编码的，意味着…Python的字符串支持多语言，例如可以包含中文在内。 两个转换方法ord()用于获取字符的整数表示。 chr()用于获取编码对应的字符。 123print(ord(&quot;A&quot;))print(ord(&quot;中&quot;))print(chr(25990)) 输出结果： 甚至可以使用十六进制作为字符串：（两者完全等同） 12&gt;&gt;&gt; &apos;\u4e2d\u6587&apos;&apos;中文&apos; 字节bytesPython中的字符串是Unicode编码，一个字符对应若干字节。如果需要上传到网络的话，需要转换为单个字节（bytes）。 在Python中在数据前面加上b前缀即表示单个字节。例如： 表示的是thbelief这8个字节。（单引号双引号都可以，其实就是正常的字符串使用方法，只是表示的意思不同而已） 1b&apos;thbelief&apos; encode()这个方法可以将Unicode表示的字符串编码为指定的bytes，反之亦然。（可以相互转换） len()计算字符串的字符数。 计算字节的字节数。 123print(len(&quot;A&quot;))print(len(&quot;你好&quot;)) 输出： 12312 格式化第一种： 和C语言一致，使用%来实现。参数如下： 占位符 替换内容 %d 整数 %f 浮点数 %s 字符串 %x 十六进制整数 简单实例： 1print(&apos;%2d-%02d&apos; % (3, 1)) 输出： 13-01 第二种format：（较麻烦，不推荐） 将传入的参数依次替换字符串内的占位符： 1print(&apos;Hello, &#123;0&#125;,&#123;1&#125;&apos;.format(&apos;thbelief&apos;, &quot;你好&quot;)) 输出： 1Hello, thbelief,你好 注意Python源代码其实就是一个文本文件，当源代码包含中文的时候，保存时必须指定保存为UTF-8编码，当Python解释器读取到源代码的时候，必须按UTF-8读取，所以一般在文件开头写上： 12#!/usr/bin/env python3# -*- coding: utf-8 -*- 第一行是对于非windows系统的操作，告诉其这是一个Python可执行程序。 第二行就是说明本程序由UTF-8编码。（这里只是这么给他说，实际上究竟是什么编码还是自己编写的时候确定的，不是说你给他说你是UTF-8编码你就是了） Listlist即列表，是一种有序的集合，可以随时添加删除元素。 特性1.len()可以获取列表list里面的元素数量。 2.可以通过索引来访问列表中的元素。 1listTest[0] 3.如果列表越界的话，会报一个IndexError的错误。 1234listTest=[&apos;hello&apos;,&apos;thbelief&apos;]print(listTest[0])print(listTest[1])print(listTest[2]) 输出结果： 123hellothbeliefIndexError: list index out of range 4.访问最后一个元素的话，除了len-1索引之外，可以直接用-1下标来访问,以此类推，倒数第二个用-2…： 当然，如果反向访问越界的话，也会报错的。 1listTest[-1] 5.替换某个下标位置的元素： 直接访问赋值即可。 1listTest[i]=&apos;thbelief&apos; 6.列表中的元素的类型可以不一致。 方法1234append() 向列表的末尾增加元素insert(index，) index为下标，后一个为插入元素pop() 删除末尾元素pop(i) 删除指定下标的元素 tuple元组，和列表类似，但是初始化之后不能修改。使用()而不是list的[]. 相对不能修改性表面上来看，元组不能修改，但是，真的是这样麽？ 1234test=(&apos;a&apos;,&apos;b&apos;,[&apos;A&apos;,&apos;B&apos;])test[2][0]=&quot;hello&quot;test[2][1]=&quot;thbelief&quot;print(test) 猜猜结果是什么？ 不是说好不变的麽？为什么变了呢？ 答案是——元组并没有变，变的是元组内部的列表。指向的list并没有改变，只是其中的内容改变了！ 单元素元组单元素的元组只能这么定义： “,”是用来消除歧义的，因为如果是test=(1)，在解释器看来，就只是一个数学计算中的小括号，不会被当做元组。 1test=(1,) 条件判断由于大部分内容和C++重合，这里用一个实例来简单概括。 1234567nb=520if nb&gt;520: print(&quot;大于&quot;)elif nb&lt;520: print(&quot;小于&quot;)else: print(&quot;等于&quot;) 输出： 1等于 input()与int()输入，返回的数据类型是字符串。 1test=input(&quot;shuru:&quot;) 循环for…in依次迭代每个元素。 123test=[&quot;hello&quot;,&quot;world&quot;,&quot;thbelief&quot;]for i in test: print(i) 输出： 123helloworldthbelief 另外，Python提供一个range()函数可以生成一个整数序列，通过list就可以生成一个整数列表。（从0开始） while123456sum = 0n = 99while n &gt; 0: sum = sum + n n = n - 2print(sum) break与continue用法和其他编译语言一模一样，这里就不过多赘述了。 dict全称是dictionary，也叫map，使用键值对存储，速度很快。 初始化1test=&#123;&apos;thbelief&apos;:18,&apos;nihao&apos;:20&#125; 或者： 1test[&apos;thbelief&apos;]=18 是否存在in查询该dict是否存在此key，如果存在的话返回true，否则false。 1&apos;thbelief&apos; in test 输出： 1true get()如果没获取到的话就返回第二个参数。 1test.get(&apos;thbelief&apos;, -1) 删除pop(key)即可。注意：dict内部存放的顺序和key放入的顺序是没有关系的。 特性1.key为不可变的对象，初始化之后不变。 2.可变对象不可以作为key。 set也是一组key的集合，不存在重复的key。 初始化创建的时候必须提供一个list作为输入集合：(重复元素自动过滤，同时内部非有序) 1test=set([1,2,3]) 方法add(key) 添加元素。 1test.add(1) remove(key)删除元素。 1test.remove(1) 特性1.无序和无重复元素的集合。 2.不可以放入可变对象。（如list之于元组的相对不可变性）]]></content>
@@ -60,11 +73,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -417,9 +430,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
