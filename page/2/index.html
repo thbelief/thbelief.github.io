@@ -294,6 +294,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/24/java基础-登堂入室/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/24/java基础-登堂入室/" itemprop="url">java基础-登堂入室</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T19:03:05+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  789
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#java异常处理机制">Java异常处理机制</a></li>
+<li><a href="#java-io">Java I/O</a></li>
+<li><a href="#泛型">泛型</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#泛型方法">泛型方法</a></li>
+</ul>
+</li>
+<li><a href="#反射">反射</a><ul>
+<li><a href="#简介-1">简介</a></li>
+<li><a href="#作用">作用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>前面拖了蛮久的Java学习的最后一篇博客就现在开始吧，不是说完全的学完了，只能说大致了解了，毕竟也不是什么专业的java工程师，对于Android来说，懂一点就行了，但是如果以后遇到猜到的坑或者值得记录的知识还是会写博客的。</p>
+<p>这篇博客准备写简略一点，毕竟都开始涉及一些深入的东西了，很多大佬写的也很不错的。<strong>泛型反射</strong>需要也别注意，在安卓中很重要。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="java异常处理机制">Java异常处理机制</span></h3><p>这里我就不嫌丑了，后面这个链接的大佬写的十分的精妙，直接移步即可。</p>
+<p><a href="https://blog.csdn.net/hguisu/article/details/6155636" target="_blank" rel="noopener">深入理解java异常处理机制</a></p>
+<h3><span id="java-io">Java I/O</span></h3><p>Java 流在处理上分为<strong>字符流和字节流</strong>。字符流处理的单元为 <strong>2 个字节的 Unicode 字符</strong>，分别<strong>操作字符、字符数组或字符串</strong>，而字节流处理单元为 <strong>1 个字节</strong>，<strong>操作字节和字节数组。</strong></p>
+<p>字符流一次处理一个缓冲区，字节流一次处理一个字节，明显字符流的效率要高。</p>
+<p><img src="/2019/04/24/java基础-登堂入室/javaIO.jpg" alt=""></p>
+<p><a href="https://blog.csdn.net/yczz/article/details/38761237" target="_blank" rel="noopener">参考链接</a></p>
+<h3><span id="泛型">泛型</span></h3><h4><span id="简介">简介</span></h4><p><strong>泛型，即“参数化类型”。</strong>其实就是<strong>将类型由原来的具体的类型参数化，类似于方法中的变量参数</strong>，此时类型也定义成参数形式（可以称之为类型形参），然后<strong>在使用/调用时传入具体的类型（类型实参）</strong>。</p>
+<h4><span id="泛型方法">泛型方法</span></h4><p>1.所有泛型方法声明都有一个<strong>类型参数声明部分（由尖括号分隔）</strong>，该类型参数声明部分在方法返回类型之前。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;A&gt;</span><br></pre></td></tr></table></figure>
+<p>2.每一个类型参数声明部分<strong>包含一个或多个类型参数</strong>，参数间用<strong>逗号</strong>隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。</p>
+<p>3.<strong>类型参数能被用来声明返回值类型</strong>，并且能作为泛型方法得到的实际参数类型的<strong>占位符</strong>。</p>
+<p>4.泛型方法体的声明和其他方法一样。</p>
+<p>注意:<strong>类型参数只能代表引用型类型，不能是原始类型（像int,double,char的等）。</strong></p>
+<h3><span id="反射">反射</span></h3><h4><span id="简介">简介</span></h4><p>反射机制是在运行状态中，<strong>对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性</strong>；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</p>
+<h4><span id="作用">作用</span></h4><p>1.运行时能判断任意一个对象所属的类。</p>
+<p>2.在运行时构造任意一个类的对象。</p>
+<p>3.运行时能判断任意一个类所具有的成员变量和方法。</p>
+<p>4.运行时调用任意一个对象的方法。</p>
+<p>5.动态代理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/23/AndroidStudio优秀插件合集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2813,207 +3037,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/16/Auto-js-Script开发-九/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/Auto-js-Script开发-九/" itemprop="url">Auto.js Script开发(九)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T16:25:48+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Auto.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天早上没课，然后就随手修复了THBELIEFScript的一些BUG，然后增添了一个登陆的界面。</p>
-<h2><span id="正文">正文</span></h2><p>用的是免费的API。<a href="http://www.apiopen.top/api.html#1353cada190b48a095fe10c40d5dd529" target="_blank" rel="noopener">免费API集合</a>。</p>
-<p>用到的包括开发者注册拿到apikey，然后就是运用了用户的注册与登陆。</p>
-<p>具体的情况如下：</p>
-<p><img src="/2019/04/16/Auto-js-Script开发-九/开发者注册.jpg" alt=""></p>
-<p><img src="/2019/04/16/Auto-js-Script开发-九/用户注册登录.jpg" alt=""></p>
-<p>然后就是写了一个登陆的界面，然后加上了逻辑。</p>
-<p><img src="/2019/04/16/Auto-js-Script开发-九/登录界面.png" alt=""></p>
-<p>关键代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><span class="line">//界面</span><br><span class="line">function jiemian()&#123;</span><br><span class="line">    ui.run(()=&gt;&#123;</span><br><span class="line">        mainUI();</span><br><span class="line">    &#125;);</span><br><span class="line">    checkHaveUpdate();</span><br><span class="line">&#125;</span><br><span class="line">//登录界面</span><br><span class="line">function LoginPageFunction()&#123;</span><br><span class="line">    ui.statusBarColor(&quot;#000000&quot;)</span><br><span class="line">    var kg, kg2, u = 1,op = 0;</span><br><span class="line">    var stg = storages.create(&quot;user&quot;);</span><br><span class="line">    var zh = stg.get(&quot;list&quot;, &#123;see: &quot;&quot;,name: &quot;&quot;,pass: &quot;&quot;&#125;);</span><br><span class="line">    main();</span><br><span class="line">    function main()&#123;</span><br><span class="line">        if (zh.see == &quot;1&quot;) &#123;</span><br><span class="line">            denru(true,zh.name,zh.pass);</span><br><span class="line">        &#125;else if (zh.see == &quot;2&quot;) &#123;</span><br><span class="line">            jiemian();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            denru();</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    function denru(t,n,p)&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">        &lt;vertical bg=&quot;#708090&quot;&gt;</span><br><span class="line">            &lt;vertical h=&quot;auto&quot; align=&quot;center&quot; marginTop=&quot;100&quot;&gt;</span><br><span class="line">                &lt;img layout_gravity=&quot;center&quot; src=&quot;https://img.icons8.com/color/48/000000/joe-pineapples.png&quot; w=&quot;70&quot; h=&quot;70&quot; circle=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;/vertical&gt;</span><br><span class="line">            &lt;card w=&quot;*&quot; h=&quot;250&quot; margin=&quot;20&quot; cardCornerRadius=&quot;15dp&quot; cardBackgroundColor=&quot;#b0c4de&quot;</span><br><span class="line">            cardElevation=&quot;15dp&quot; gravity=&quot;bottom&quot; foreground=&quot;?selectableItemBackground&quot;&gt;</span><br><span class="line">            &lt;vertical&gt;</span><br><span class="line">                &lt;linear margin=&quot;0 40 0 0&quot;&gt;</span><br><span class="line">                    &lt;img w=&quot;30&quot; h=&quot;30&quot; src=&quot;@drawable/ic_person_black_48dp&quot;/&gt;</span><br><span class="line">                    &lt;input id=&quot;name&quot; w=&quot;*&quot; h=&quot;40&quot; hint=&quot;用户名&quot;/&gt;</span><br><span class="line">                &lt;/linear&gt;</span><br><span class="line">                &lt;linear&gt;</span><br><span class="line">                    &lt;img w=&quot;30&quot; h=&quot;30&quot; src=&quot;@drawable/ic_https_black_48dp&quot;/&gt;</span><br><span class="line">                    &lt;input id=&quot;password&quot; hint=&quot;密码&quot; w=&quot;*&quot; h=&quot;40&quot; inputType=&quot;textPassword&quot;/&gt;</span><br><span class="line">                &lt;/linear&gt;</span><br><span class="line">                &lt;linear gravity=&quot;center&quot;&gt;</span><br><span class="line">                    &lt;checkbox id=&quot;cb1&quot; text=&quot;记住密码&quot;/&gt;</span><br><span class="line">                    &lt;checkbox id=&quot;cb2&quot; text=&quot;自动登入&quot;/&gt;</span><br><span class="line">                &lt;/linear&gt;</span><br><span class="line">                &lt;linear gravity=&quot;center&quot;&gt;</span><br><span class="line">                    &lt;horizontal&gt;</span><br><span class="line">                        &lt;button id=&quot;login&quot; w=&quot;250&quot; h=&quot;*&quot; text=&quot;登录&quot; size=&quot;16&quot; style=&quot;Widget.AppCompat.Button.Colored&quot;/&gt;</span><br><span class="line">                    &lt;/horizontal&gt;</span><br><span class="line">                &lt;/linear&gt;</span><br><span class="line">                &lt;linear gravity=&quot;center&quot;&gt;</span><br><span class="line">                    &lt;text w=&quot;106&quot; gravity=&quot;center&quot; color=&quot;#111111&quot; size=&quot;16&quot;&gt;还没有账号？&lt;/text&gt;</span><br><span class="line">                    &lt;text id=&quot;register&quot; w=&quot;auto&quot; h=&quot;auto&quot; size=&quot;16&quot; text=&quot;注册&quot; paddingRight=&quot;15&quot;/&gt;</span><br><span class="line">                    &lt;text id=&quot;reg&quot; w=&quot;auto&quot; h=&quot;auto&quot; size=&quot;16&quot; paddingLeft=&quot;10&quot; text=&quot;忘记密码&quot;/&gt;</span><br><span class="line">                &lt;/linear&gt;</span><br><span class="line">            &lt;/vertical&gt;</span><br><span class="line">        &lt;/card&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    if (t) &#123;ui.name.setText(n);ui.password.setText(p);ui.cb1.setChecked(t);&#125;</span><br><span class="line"></span><br><span class="line">    ui.login.on(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        threads.start(function() &#123;</span><br><span class="line">            if (!ui.name.text()) &#123;</span><br><span class="line">                toast(&quot;您还没有输入用户名!&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if (!ui.password.text()) &#123;</span><br><span class="line">                toast(&quot;还没有输入密码呢&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            var str = JSON.parse(http.get(&quot;https://api.apiopen.top/loginUser?apikey=d1cef6f3e25ab08f623bbb147f32bb5d&amp;name=&quot; + ui.name.text() + &quot;&amp;passwd=&quot; + ui.password.text()).body.string());</span><br><span class="line">            if (str.code !== 200) &#123;</span><br><span class="line">                toast(str.message);</span><br><span class="line">                return;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                if (op == 1) &#123;</span><br><span class="line">                    stg.put(&quot;list&quot;, &#123;see: &quot;1&quot;,name: ui.name.text(),pass: ui.password.text()&#125;);</span><br><span class="line">                    toast(&quot;登入&quot; + str.message);</span><br><span class="line">                    jiemian();</span><br><span class="line">                &#125; else if (op == 2) &#123;</span><br><span class="line">                    stg.put(&quot;list&quot;, &#123;see: &quot;2&quot;,name: ui.name.text(),pass: ui.password.text()&#125;);</span><br><span class="line">                    toast(&quot;登入&quot; + str.message);</span><br><span class="line">                    jiemian();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    storages.remove(&quot;user&quot;);</span><br><span class="line">                    toast(&quot;登入&quot; + str.message);</span><br><span class="line">                    jiemian();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ui.emitter.on(&quot;back_pressed&quot;, e =&gt; &#123;</span><br><span class="line">        if (!kg) &#123;</span><br><span class="line">            kg = true;</span><br><span class="line">            toast(&quot;再按一次退出&quot;);</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">                kg = false;</span><br><span class="line">            &#125;, 250);</span><br><span class="line">            e.consumed = true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            e.consumed = false;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ui.register.on(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        zhuce();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ui.reg.on(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        dialogs.confirm(null, &quot;抱歉，暂时没有找回密码功能，是否重新注册一个新账号?&quot;, (a) =&gt; &#123;</span><br><span class="line">            if (a) &#123;</span><br><span class="line">                zhuce();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ui.cb1.on(&quot;check&quot;, (checked) =&gt; &#123;</span><br><span class="line">        if (checked) &#123;</span><br><span class="line">            op = 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            op = 0;</span><br><span class="line">            u = 0;</span><br><span class="line">            ui.cb2.setChecked(false);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ui.cb2.on(&quot;check&quot;, (checked) =&gt; &#123;</span><br><span class="line">        if (checked) &#123;</span><br><span class="line">            ui.cb1.setChecked(true);</span><br><span class="line">            op = 2;</span><br><span class="line">            u = 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (u) &#123;</span><br><span class="line">                op = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function zhuce()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">        &lt;vertical bg=&quot;#708090&quot;&gt;</span><br><span class="line">            &lt;card w=&quot;*&quot; h=&quot;250&quot; margin=&quot;20 180 20 20&quot; cardCornerRadius=&quot;15dp&quot; cardBackgroundColor=&quot;#b0c4de&quot;</span><br><span class="line">            cardElevation=&quot;15dp&quot; gravity=&quot;bottom&quot; foreground=&quot;?selectableItemBackground&quot;&gt;</span><br><span class="line">            &lt;vertical&gt;</span><br><span class="line">                &lt;vertical h=&quot;auto&quot; align=&quot;center&quot; margin=&quot;5 30 5 5&quot;&gt;</span><br><span class="line">                    &lt;linear&gt;</span><br><span class="line">                        &lt;img w=&quot;30&quot; h=&quot;30&quot; src=&quot;@drawable/ic_person_black_48dp&quot;/&gt;</span><br><span class="line">                        &lt;input id=&quot;name&quot; w=&quot;*&quot; h=&quot;40&quot; hint=&quot;输入用户名&quot;  /&gt;</span><br><span class="line">                    &lt;/linear&gt;</span><br><span class="line">                    &lt;linear&gt;</span><br><span class="line">                        &lt;img w=&quot;30&quot; h=&quot;30&quot; src=&quot;@drawable/ic_https_black_48dp&quot;/&gt;</span><br><span class="line">                        &lt;input id=&quot;password&quot; hint=&quot;输入密码&quot; w=&quot;*&quot; h=&quot;40&quot; inputType=&quot;textPassword&quot;/&gt;</span><br><span class="line">                    &lt;/linear&gt;</span><br><span class="line">                    &lt;linear&gt;</span><br><span class="line">                        &lt;img w=&quot;30&quot; h=&quot;30&quot; src=&quot;@drawable/ic_https_black_48dp&quot;/&gt;</span><br><span class="line">                        &lt;input id=&quot;password2&quot; hint=&quot;再次输入密码&quot; w=&quot;*&quot; h=&quot;40&quot; inputType=&quot;textPassword&quot;/&gt;</span><br><span class="line">                    &lt;/linear&gt;</span><br><span class="line">                    &lt;linear gravity=&quot;center&quot;&gt;</span><br><span class="line">                        &lt;horizontal&gt;</span><br><span class="line">                            &lt;button id=&quot;login&quot; w=&quot;250&quot; h=&quot;*&quot; text=&quot;立即注册&quot; size=&quot;16&quot; style=&quot;Widget.AppCompat.Button.Colored&quot;/&gt;</span><br><span class="line">                        &lt;/horizontal&gt;</span><br><span class="line">                    &lt;/linear&gt;</span><br><span class="line">                &lt;/vertical&gt;</span><br><span class="line">            &lt;/vertical&gt;</span><br><span class="line">        &lt;/card&gt;</span><br><span class="line">        &lt;/vertical&gt;</span><br><span class="line">    );</span><br><span class="line">    ui.emitter.on(&quot;back_pressed&quot;, e =&gt; &#123;</span><br><span class="line">        if (!kg2) &#123;</span><br><span class="line">            kg2 = true;</span><br><span class="line">            denru();</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">                kg2 = false;</span><br><span class="line">            &#125;, 1000);</span><br><span class="line">            e.consumed = true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            e.consumed = false;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">    ui.login.on(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        threads.start(function() &#123;</span><br><span class="line">            if (!ui.name.text()) &#123;</span><br><span class="line">                toast(&quot;您还没有输入用户名!&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if (!ui.password.text() &amp;&amp; !ui.password2.text()) &#123;</span><br><span class="line">                toast(&quot;还没有输入密码呢&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if (ui.password.text() !== ui.password2.text()) &#123;</span><br><span class="line">                toast(&quot;您输入的两次密码不一样&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                var str = JSON.parse(http.get(&quot;https://api.apiopen.top/registerUser?apikey=d1cef6f3e25ab08f623bbb147f32bb5d&amp;name=&quot; + ui.name.text() + &quot;&amp;passwd=&quot; + ui.password.text()).body.string());</span><br><span class="line">                if (str.code !== 200) &#123;</span><br><span class="line">                    toast(str.message);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    dialogs.confirm(&quot;注册&quot; + str.message, &quot;您已经注册成为至尊会员！\n您的户名为：&quot; + ui.name.text() + &quot;\n密码为：&quot; + ui.password.text() + &quot;\n是否马上去登入?&quot;, (a) =&gt; &#123;</span><br><span class="line">                        if (a) &#123;</span><br><span class="line">                            denru();</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            ui.finish();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>备注：</p>
-<p>准备抽个时间重构一下底层的代码，主js文件实在是写的太臃肿了。很不喜欢现在，都写了一千多行了main.js…</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3066,7 +3089,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3088,7 +3111,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3160,7 +3183,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共96.4k字</span>
+  <span class="post-count">博客全站共97.9k字</span>
 </div>
         
 
