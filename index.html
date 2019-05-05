@@ -294,6 +294,248 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/05/JavaScript学习笔记-四/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/05/JavaScript学习笔记-四/" itemprop="url">JavaScript学习笔记(四)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-05T12:57:31+08:00">
+                2019-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#面向对象">面向对象</a><ul>
+<li><a href="#原型prototype">原型（prototype）</a></li>
+<li><a href="#创建对象">创建对象</a></li>
+<li><a href="#构造函数">构造函数</a></li>
+<li><a href="#原型继承">原型继承</a></li>
+<li><a href="#class继承">class继承</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="面向对象">面向对象</span></h2><h3><span id="原型prototype">原型（prototype）</span></h3><p>和Java之类的面向对象语言不同，JS中不区分类与实例的概念，而是通过<strong>原型（prototype）来实现面向对象的编程。</strong></p>
+<p>所谓的<strong>原型</strong>其实就是想<strong>要使用某个类型的时候如果没有这个类型直接在后面写出一个现成的对象。</strong></p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name: &quot;thbelief&quot;,</span><br><span class="line">    age: &quot;18&quot;,</span><br><span class="line">    run: function()&#123;</span><br><span class="line">        console.log(this.name,&quot;is running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里其实也看不出什么，后面再改变一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name: &quot;thbelief&quot;,</span><br><span class="line">    age: &quot;18&quot;,</span><br><span class="line">    run: function()&#123;</span><br><span class="line">        console.log(this.name,&quot;is running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var xiaohua=&#123;</span><br><span class="line">    name: &quot;小花&quot;</span><br><span class="line">&#125;;</span><br><span class="line">//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的</span><br><span class="line">//这里只是演示使用这条语句，实际中不能这么使用</span><br><span class="line">xiaohua.__proto__=person;</span><br></pre></td></tr></table></figure>
+<p>这里的xiaohua就可以直接使用person对象的run方法了。</p>
+<p>正确使用方法：</p>
+<p>使用<strong>Object.create</strong>方法来传入一个<strong>原型对象</strong>，然后创建一个基于该原型的新对象（<strong>需要初始化</strong>，因为直接出来的对象是没有任何的属性的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name: &quot;thbelief&quot;,</span><br><span class="line">    age: &quot;18&quot;,</span><br><span class="line">    run: function()&#123;</span><br><span class="line">        console.log(this.name,&quot;is running...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">/*</span><br><span class="line">var xiaohua=&#123;</span><br><span class="line">    name: &quot;小花&quot;</span><br><span class="line">&#125;;</span><br><span class="line">//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的</span><br><span class="line">xiaohua.__proto__=person;</span><br><span class="line">*/</span><br><span class="line">function createPerson(name)&#123;</span><br><span class="line">    //基于person对象原型创建一个新对象</span><br><span class="line">    var t=Object.create(person);</span><br><span class="line">    //初始化</span><br><span class="line">    t.name=name;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var xiaohua=createPerson(&quot;小花&quot;);</span><br><span class="line">xiaohua.run();</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Running] node &quot;d:\脚本\tempCodeRunnerFile.javascript&quot;</span><br><span class="line">小花 is running...</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/05/JavaScript学习笔记-四/1.jpg" alt=""></p>
+<h3><span id="创建对象">创建对象</span></h3><p>这里其实涉及到了上面的一点儿知识——原型。</p>
+<p><strong>JS每个创建的对象都会设置一个原型，指向的就是它的原型对象。</strong></p>
+<p>例如：</p>
+<p>先创建一个test函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于JS中万物都是对象，所以其实这也是一个对象。</p>
+<p>它的原型链就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test ----&gt; Function.prototype ----&gt; Object.prototype ----&gt; null</span><br></pre></td></tr></table></figure>
+<p>如果Function.prototype 中定义了某个方法，那么理所当然的，test函数当然也是可以使用的。（类似于继承）</p>
+<p>具体的<strong>原型链指向方法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用obj.xxx访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到Object.prototype对象，最后，如果还没有找到，就只能返回undefined。</span><br></pre></td></tr></table></figure>
+<h3><span id="构造函数">构造函数</span></h3><p>其实JS中的构造函数貌似和普通函数没多大的区别？</p>
+<p>构造函数实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Student(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.hello = function () &#123;</span><br><span class="line">        alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<p>这里使用关键字<strong>new</strong>来返回一个对象。</p>
+<p><strong>如果不写new，这就是一个普通函数，它返回undefined。但是，如果写了new，它就变成了一个构造函数，它绑定的this指向新创建的对象，并默认返回this，也就是说，不需要在最后写return this;。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var xiaoming = new Student(&apos;小明&apos;);</span><br><span class="line">xiaoming.name; // &apos;小明&apos;</span><br><span class="line">xiaoming.hello(); // Hello, 小明!</span><br></pre></td></tr></table></figure>
+<p>这里还涉及到一个在其它语言十分平常的问题——如果同一类对象都有相同的函数需求该怎么办呢？比如说都需要计算出工资之类的，这里就可以直接在这些对象共同的原型上增加一个类似的函数，这样这下面的这些对象都可以使用这些函数了。</p>
+<p>有些时候可能会<strong>忘记使用new，</strong>那怎么办呢？</p>
+<p>在strict模式下，this.name = name将报错，因为this绑定为undefined，在非strict模式下，this.name = name不报错，因为this绑定为window，于是<strong>无意间创建了全局变量name，并且返回undefined，这个结果更糟糕。</strong></p>
+<p>所以，<strong>调用构造函数千万不要忘记写new。</strong>为了区分普通函数和构造函数，按照约定，<strong>构造函数首字母应当大写，而普通函数首字母应当小写</strong>，这样，一些语法检查工具如jslint将可以帮你检测到漏写的new。</p>
+<p>最后，其实还可以编写一个createStudent()函数，在内部封装所有的new操作。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Student(props) &#123;</span><br><span class="line">    this.name = props.name || &apos;匿名&apos;; // 默认值为&apos;匿名&apos;</span><br><span class="line">    this.grade = props.grade || 1; // 默认值为1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student.prototype.hello = function () &#123;</span><br><span class="line">    alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function createStudent(props) &#123;</span><br><span class="line">    return new Student(props || &#123;&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个createStudent()函数有几个巨大的优点：一是不需要new来调用，二是参数非常灵活，可以不传，也可以这么传：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var xiaoming = createStudent(&#123;</span><br><span class="line">    name: &apos;小明&apos;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">xiaoming.grade; // 1</span><br></pre></td></tr></table></figure>
+<h3><span id="原型继承">原型继承</span></h3><p>JS之前不支持CLASS区分类与实例，使用的是<strong>原型继承。</strong></p>
+<p>详情参考：<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023021997355072" target="_blank" rel="noopener">JS原型继承教程</a></p>
+<h3><span id="class继承">class继承</span></h3><p>关键字class从<strong>ES6</strong>开始正式被引入到JavaScript中。class的目的就是让定义类更简单。</p>
+<p>如果浏览器之类的不支持ES6的话是不能使用的。</p>
+<p>之前：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Student(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student.prototype.hello = function () &#123;</span><br><span class="line">    alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>class继承：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Student &#123;</span><br><span class="line">    constructor(name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hello() &#123;</span><br><span class="line">        alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/04/Python学习笔记（三）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2833,254 +3075,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/25/Android-书籍（进阶）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/25/Android-书籍（进阶）/" itemprop="url">Android-书籍（进阶）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T18:58:38+08:00">
-                2019-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#java核心技术">《Java核心技术》</a></li>
-<li><a href="#java解惑">《Java解惑》</a></li>
-<li><a href="#java并发编程实战">《Java并发编程实战》</a></li>
-<li><a href="#深入理解java虚拟机">《深入理解Java虚拟机》</a></li>
-<li><a href="#thinking-in-java">《Thinking in java》</a></li>
-<li><a href="#effective-java">《Effective Java》</a></li>
-<li><a href="#数据结构与算法分析">《数据结构与算法分析》</a></li>
-<li><a href="#图解http">《图解HTTP》</a></li>
-<li><a href="#图解tcpip">《图解TCP/IP》</a></li>
-<li><a href="#tcpip详解">《TCP/IP详解》</a></li>
-<li><a href="#git使用手册">Git使用手册</a></li>
-<li><a href="#android官方文档中文版">Android官方文档（中文版）</a></li>
-<li><a href="#第一行代码">《第一行代码》</a></li>
-<li><a href="#app研发录">《APP研发录》</a></li>
-<li><a href="#android群英传">《Android群英传》</a></li>
-<li><a href="#深入理解android">《深入理解Android》</a></li>
-<li><a href="#android开发艺术探索">《Android开发艺术探索》</a></li>
-<li><a href="#android系统源代码情景分析">《Android系统源代码情景分析》</a></li>
-<li><a href="#代码整洁之道">《代码整洁之道》</a></li>
-<li><a href="#编写可读代码的艺术">《编写可读代码的艺术》</a></li>
-<li><a href="#headfirst设计模式">《HeadFirst设计模式》</a></li>
-<li><a href="#重构改善既有代码的设计">《重构：改善既有代码的设计》</a></li>
-<li><a href="#敏捷软件开发-原则-模式与实践">《敏捷软件开发-原则、模式与实践》</a></li>
-<li><a href="#android源码设计模式">《Android源码设计模式》</a></li>
-<li><a href="#android框架揭秘">《Android框架揭秘》</a></li>
-<li><a href="#linux内核设计与实现">《Linux内核设计与实现》</a></li>
-<li><a href="#深入理解linux内核">《深入理解Linux内核》</a></li>
-<li><a href="#活着">《活着》</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>学Android也快一年多了，大大小小的博客教程也看了蛮多的了，实用性的编程也只是停留在很肤浅的地方，为了充实一下自己，加强自己对Android开发的了解以及打发不在电脑前面时的无聊时间。这里做一个Android学习书籍的总结，都是长久以来收集的，只看了几本书，实际上大部分时候是在看博客那些。准备接下来尽全力看完所有的书籍。</p>
-<h2><span id="正文">正文</span></h2><h3><span id="java核心技术">《Java核心技术》</span></h3><p>这个适用于Java的入门。（两本）</p>
-<h3><span id="java解惑">《Java解惑》</span></h3><p>这是一本介绍java烂代码的书…</p>
-<h3><span id="java并发编程实战">《Java并发编程实战》</span></h3><p>全面介绍了Java的并发，以及如何设计并支持并发的数据结构。</p>
-<h3><span id="深入理解java虚拟机">《深入理解Java虚拟机》</span></h3><p>不难，但是很有必要。</p>
-<h3><span id="thinking-in-java">《Thinking in java》</span></h3><p>这个适用于java进阶。</p>
-<h3><span id="effective-java">《Effective Java》</span></h3><p>实用至上！</p>
-<h3><span id="数据结构与算法分析">《数据结构与算法分析》</span></h3><p>算法与数据结构也很有学习的必要，如果没学过或者之前没学好的，可以多看看。</p>
-<h3><span id="图解http">《图解HTTP》</span></h3><p>网络入门。</p>
-<h3><span id="图解tcpip">《图解TCP/IP》</span></h3><p>也是入门，通俗易懂。</p>
-<h3><span id="tcpip详解">《TCP/IP详解》</span></h3><p>网络的进阶。</p>
-<h3><span id="git使用手册">Git使用手册</span></h3><p><a href="http://iissnan.com/progit/" target="_blank" rel="noopener">Pro Git</a>其实Android开发中Git也是必不可少的工具。好好的利用可以极大的提升效率。</p>
-<h3><span id="android官方文档中文版">Android官方文档（中文版）</span></h3><p><a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="noopener">中文版官方文档</a>虽然上面的很多东西都很基础，但是如果一开始就跟着官方的步骤来学的话，无疑后期接收会快很多。</p>
-<h3><span id="第一行代码">《第一行代码》</span></h3><p>非常好的一本通俗易懂Android入门的书籍。基础入门的书籍只要一本就足以，这里推荐这一本，大致粗略的了解一番即可，给自己心中留下印象。当然大部分的代码手敲之后会更有效果。</p>
-<h3><span id="app研发录">《APP研发录》</span></h3><p>Android进阶。</p>
-<h3><span id="android群英传">《Android群英传》</span></h3><p>Android进阶。</p>
-<h3><span id="深入理解android">《深入理解Android》</span></h3><p>Android进阶。</p>
-<h3><span id="android开发艺术探索">《Android开发艺术探索》</span></h3><p>Android进阶。</p>
-<h3><span id="android系统源代码情景分析">《Android系统源代码情景分析》</span></h3><p>Android进阶。</p>
-<h3><span id="代码整洁之道">《代码整洁之道》</span></h3><p>久闻大名，代码写多了之后必看书籍之一！</p>
-<h3><span id="编写可读代码的艺术">《编写可读代码的艺术》</span></h3><p>这个也是代码整洁之道一类的书籍。</p>
-<h3><span id="headfirst设计模式">《HeadFirst设计模式》</span></h3><p>只有对设计模式的深入理解才能对既有框架进行优化，才能设计更加优秀的城西！</p>
-<h3><span id="重构改善既有代码的设计">《重构：改善既有代码的设计》</span></h3><p>重构有些时候也是一种本事，这是毫无疑问的。</p>
-<h3><span id="敏捷软件开发-原则-模式与实践">《敏捷软件开发-原则、模式与实践》</span></h3><p>没看过，别人推荐的。</p>
-<h3><span id="android源码设计模式">《Android源码设计模式》</span></h3><p>底层书籍不必深入，但是了解也是必不可少的东西。</p>
-<h3><span id="android框架揭秘">《Android框架揭秘》</span></h3><p>框架啊框架，必经之路。</p>
-<h3><span id="linux内核设计与实现">《Linux内核设计与实现》</span></h3><p>这个的话如果不是Android全栈工程师不是非常有必要看，如果要看的话大抵能了解即可，不必深究。</p>
-<h3><span id="深入理解linux内核">《深入理解Linux内核》</span></h3><p>和上一本书的理由一样，这里给两本做参考，其实没必要看，但是看了会更加了解与深入这也是必然的。</p>
-<h3><span id="活着">《活着》</span></h3><p>没错，你没猜错，这本书就是<strong>字面意思</strong>，啊哈哈。从入门到入坟是不可取的，一定要好好活着！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3133,7 +3127,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3155,7 +3149,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3227,7 +3221,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共97.9k字</span>
+  <span class="post-count">博客全站共99.2k字</span>
 </div>
         
 

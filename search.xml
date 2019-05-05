@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(四)]]></title>
+    <url>%2F2019%2F05%2F05%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B%2F</url>
+    <content type="text"><![CDATA[目录： 面向对象 原型（prototype） 创建对象 构造函数 原型继承 class继承 面向对象原型（prototype）和Java之类的面向对象语言不同，JS中不区分类与实例的概念，而是通过原型（prototype）来实现面向对象的编程。 所谓的原型其实就是想要使用某个类型的时候如果没有这个类型直接在后面写出一个现成的对象。 简单实例： 1234567var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;; 这里其实也看不出什么，后面再改变一下： 1234567891011121314var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;;var xiaohua=&#123; name: &quot;小花&quot;&#125;;//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的//这里只是演示使用这条语句，实际中不能这么使用xiaohua.__proto__=person; 这里的xiaohua就可以直接使用person对象的run方法了。 正确使用方法： 使用Object.create方法来传入一个原型对象，然后创建一个基于该原型的新对象（需要初始化，因为直接出来的对象是没有任何的属性的） 123456789101112131415161718192021222324var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;;/*var xiaohua=&#123; name: &quot;小花&quot;&#125;;//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的xiaohua.__proto__=person;*/function createPerson(name)&#123; //基于person对象原型创建一个新对象 var t=Object.create(person); //初始化 t.name=name; return t;&#125;var xiaohua=createPerson(&quot;小花&quot;);xiaohua.run(); 输出： 12[Running] node &quot;d:\脚本\tempCodeRunnerFile.javascript&quot;小花 is running... 创建对象这里其实涉及到了上面的一点儿知识——原型。 JS每个创建的对象都会设置一个原型，指向的就是它的原型对象。 例如： 先创建一个test函数。 123function test()&#123; return 0;&#125; 由于JS中万物都是对象，所以其实这也是一个对象。 它的原型链就是： 1test ----&gt; Function.prototype ----&gt; Object.prototype ----&gt; null 如果Function.prototype 中定义了某个方法，那么理所当然的，test函数当然也是可以使用的。（类似于继承） 具体的原型链指向方法： 1用obj.xxx访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到Object.prototype对象，最后，如果还没有找到，就只能返回undefined。 构造函数其实JS中的构造函数貌似和普通函数没多大的区别？ 构造函数实例： 123456function Student(name) &#123; this.name = name; this.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;); &#125;&#125; 使用： 这里使用关键字new来返回一个对象。 如果不写new，这就是一个普通函数，它返回undefined。但是，如果写了new，它就变成了一个构造函数，它绑定的this指向新创建的对象，并默认返回this，也就是说，不需要在最后写return this;。 123var xiaoming = new Student(&apos;小明&apos;);xiaoming.name; // &apos;小明&apos;xiaoming.hello(); // Hello, 小明! 这里还涉及到一个在其它语言十分平常的问题——如果同一类对象都有相同的函数需求该怎么办呢？比如说都需要计算出工资之类的，这里就可以直接在这些对象共同的原型上增加一个类似的函数，这样这下面的这些对象都可以使用这些函数了。 有些时候可能会忘记使用new，那怎么办呢？ 在strict模式下，this.name = name将报错，因为this绑定为undefined，在非strict模式下，this.name = name不报错，因为this绑定为window，于是无意间创建了全局变量name，并且返回undefined，这个结果更糟糕。 所以，调用构造函数千万不要忘记写new。为了区分普通函数和构造函数，按照约定，构造函数首字母应当大写，而普通函数首字母应当小写，这样，一些语法检查工具如jslint将可以帮你检测到漏写的new。 最后，其实还可以编写一个createStudent()函数，在内部封装所有的new操作。如下： 123456789101112function Student(props) &#123; this.name = props.name || &apos;匿名&apos;; // 默认值为&apos;匿名&apos; this.grade = props.grade || 1; // 默认值为1&#125;Student.prototype.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);&#125;;function createStudent(props) &#123; return new Student(props || &#123;&#125;)&#125; 这个createStudent()函数有几个巨大的优点：一是不需要new来调用，二是参数非常灵活，可以不传，也可以这么传： 12345var xiaoming = createStudent(&#123; name: &apos;小明&apos;&#125;);xiaoming.grade; // 1 原型继承JS之前不支持CLASS区分类与实例，使用的是原型继承。 详情参考：JS原型继承教程 class继承关键字class从ES6开始正式被引入到JavaScript中。class的目的就是让定义类更简单。 如果浏览器之类的不支持ES6的话是不能使用的。 之前： 1234567function Student(name) &#123; this.name = name;&#125;Student.prototype.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);&#125; class继承： 123456789class Student &#123; constructor(name) &#123; this.name = name; &#125; hello() &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;); &#125;&#125;]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>函数</tag>
+        <tag>原型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（三）]]></title>
     <url>%2F2019%2F05%2F04%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 函数 内置函数 函数对象引用 定义函数 导入自定义函数 空函数 参数检查 返回多值 默认参数 可变参数 关键字参数 命名关键字参数 参数组合 前言颓废了一天，想想每日任务还没有完成，实在是有点儿颓废不下去了，好吧，立马开始。 正文函数内置函数详情可以参考Python内置函数官方手册。这个手册里面全部都是Python内置的函数，可以直接通过函数名以及对应的参数直接调用。 具体包括下面这些： abs() delattr() hash() memoryview() set() all() dict() help() min() setattr() any() dir() hex() next() slice() ascii() divmod() id() object() sorted() bin() enumerate() input() oct() staticmethod() bool() eval() int() open() str() breakpoint() exec() isinstance() ord() sum() bytearray() filter() issubclass() pow() super() bytes() float() iter() print() tuple() callable() format() len() property() type() chr() frozenset() list() range() vars() classmethod() getattr() locals() repr() zip() compile() globals() map() reversed() __import__() complex() hasattr() max() round() 当然，还可以主动的查询某个内置函数（需要提前了解函数名）： abs这里只是举例，泛指所有的内置函数名。 1help(abs) 结果：（使用VSCode编译） 123456Help on built-in function abs in module builtins:abs(x, /) Return the absolute value of the argument.None 函数对象引用函数名其实也是函数对象的一个引用，可以直接把函数名赋给一个变量，然后就相当于此函数多了一个别名，实例如下： 123test=max #将内置的最大值函数赋给testprint(test(1,2,3))print(max(1,2,3)) 结果： 1233 定义函数1.def语句+函数名+函数参数+”:”。 2.函数体，若有返回值则return返回。 注意：就算没有return返回值其实函数执行完成之后还是会返回值None。（简写：return None==return） 简单实例： 1234567def maxTwo(a,b): if a&gt;b: return a else: return bprint(maxTwo(1,2)) 输出： 12 导入自定义函数加入之前的maxTwo函数保存在了maxTwoPY.py文件中的话，可以直接在该文件的当前目录启动Python解释器，直接用下列代码导入： 1from maxTwoPY import maxTwo #前者是文件名，后者是函数名 空函数定义空函数的话有些时候还是需要的，可以直接使用pass语句。（不能为空函数体，如果为空的话其实会报错，这里其实pass只是起一个占位的作用以便调试） 12def test(): pass 参数检查Python中调用函数的话，如果参数的个数错误是会自动检测出来并且提示的，但是无法精确的反馈函数的参数类型是否正确（一般是我们自定义的函数才会出现这种情况，事实上内置函数都是另外有方法）。 一般的使用格式是： 12if not isinstance(参数名,(参数类型1,参数类型2)): raise TypeError(自定义报错信息) 简单实例： 123456789def maxTwo(a,b): if not isinstance(a,(int,float)): raise TypeError(&quot;bad type&quot;) if a&gt;b: return a else: return bprint(maxTwo(&quot;hello&quot;,2)) 输出结果： 返回多值其实Python中的返回多值就是一个tuple。 简单实例： 1234def test(a,b): test1=a+b test2=a-b return test1,test2 默认参数很多时候多参数的函数我们并不想同时输入多个参数进去，想少一点儿，这个时候默认参数的作用就体现出来了。 使用方法： 函数定义的时候就直接在形式参数位置给出默认值。（必选参数在前，默认参数在后） 当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数。 12345678def maxTwo(a,b=1): if not isinstance(a,(int,float)): raise TypeError(&quot;bad type&quot;) if a&gt;b: return a else: return bprint(maxTwo(1)) 输出： 11 另外，默认参数必须指向不变的对象。 可变参数很多时候由于实际问题的不确定性，其实很多时候都需要用到可变的参数。 定义一个函数： 12345def calc(numbers): sum = 0 for n in numbers: sum = sum + n * n return sum 调用的时候需要先组装一个list或者tuple： 12calc([1, 2, 3])calc((1, 3, 5, 7)) 如果利用可变参数，会简化： 12calc(1, 2, 3)calc(1, 3, 5, 7) 替换为可变参数： 其实要做的就是在参数前面加上一个“*”，这样在函数内部默认接收到的就是一个tuple了，函数代码不用改变，调用的时候就可以变成可变参数了（0个参数也支持）： 12345def calc(*numbers): sum = 0 for n in numbers: sum = sum + n * n return sum 那么问题来了，如果我们定义好的list或者tuple想传入可变参数函数怎么办呢？ “*”+list名即可。 12nums = [1, 2, 3]calc(*nums) 关键字参数可变参数允许传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。 而关键字参数允许传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。 命名关键字参数对于关键字参数，函数的调用者可以传入任意不受限制的关键字参数。至于到底传入了哪些，就需要在函数内部通过kw检查。 参数组合在Python中定义函数，可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用。 但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。]]></content>
@@ -85,11 +100,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -443,9 +458,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -619,10 +634,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -724,9 +739,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
