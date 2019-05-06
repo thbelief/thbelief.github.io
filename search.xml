@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[小米五root教程]]></title>
+    <url>%2F2019%2F05%2F06%2F%E5%B0%8F%E7%B1%B3%E4%BA%94root%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 magisk包下载 具体步骤 前言为了使用某个东西，尝试将已经刷机的小米五备用机刷成了root之后写下这篇教程。方便自己记录以及使用~ 正文关于root的危害以及使用注意事项这里就不多嘴，懂的都懂~ 这里使用的是第三方recovery——TWRP来进行刷机。这个在小米五刷机简述中有提到过。具体下载安装可以参考这篇博客上面的东西！ magisk包下载这个包就是用来刷超级权限的。 直接前往下载地址然后下载最新的稳定版就可以了。 具体步骤1，准备一个u盘，把zip包复制到u盘，将u盘连接到手机。 2，进入TWRP中……进入“安装”，点击左下角的“选择存储”，选择“USB-OTG”，找到刚刚下载的magisk压缩包。 3，确认刷入，自动重启手机。（重启的时候注意选择不安装TWRP的应用，那个没什么用处）]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>小米五</tag>
+        <tag>root</tag>
+        <tag>卡刷</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(四)]]></title>
     <url>%2F2019%2F05%2F05%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B%2F</url>
     <content type="text"><![CDATA[目录： 面向对象 原型（prototype） 创建对象 构造函数 原型继承 class继承 面向对象原型（prototype）和Java之类的面向对象语言不同，JS中不区分类与实例的概念，而是通过原型（prototype）来实现面向对象的编程。 所谓的原型其实就是想要使用某个类型的时候如果没有这个类型直接在后面写出一个现成的对象。 简单实例： 1234567var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;; 这里其实也看不出什么，后面再改变一下： 1234567891011121314var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;;var xiaohua=&#123; name: &quot;小花&quot;&#125;;//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的//这里只是演示使用这条语句，实际中不能这么使用xiaohua.__proto__=person; 这里的xiaohua就可以直接使用person对象的run方法了。 正确使用方法： 使用Object.create方法来传入一个原型对象，然后创建一个基于该原型的新对象（需要初始化，因为直接出来的对象是没有任何的属性的） 123456789101112131415161718192021222324var person=&#123; name: &quot;thbelief&quot;, age: &quot;18&quot;, run: function()&#123; console.log(this.name,&quot;is running...&quot;); &#125;&#125;;/*var xiaohua=&#123; name: &quot;小花&quot;&#125;;//这里就是把xiaohua的原型指向了对象person，其实也可以看成是继承下来的xiaohua.__proto__=person;*/function createPerson(name)&#123; //基于person对象原型创建一个新对象 var t=Object.create(person); //初始化 t.name=name; return t;&#125;var xiaohua=createPerson(&quot;小花&quot;);xiaohua.run(); 输出： 12[Running] node &quot;d:\脚本\tempCodeRunnerFile.javascript&quot;小花 is running... 创建对象这里其实涉及到了上面的一点儿知识——原型。 JS每个创建的对象都会设置一个原型，指向的就是它的原型对象。 例如： 先创建一个test函数。 123function test()&#123; return 0;&#125; 由于JS中万物都是对象，所以其实这也是一个对象。 它的原型链就是： 1test ----&gt; Function.prototype ----&gt; Object.prototype ----&gt; null 如果Function.prototype 中定义了某个方法，那么理所当然的，test函数当然也是可以使用的。（类似于继承） 具体的原型链指向方法： 1用obj.xxx访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到Object.prototype对象，最后，如果还没有找到，就只能返回undefined。 构造函数其实JS中的构造函数貌似和普通函数没多大的区别？ 构造函数实例： 123456function Student(name) &#123; this.name = name; this.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;); &#125;&#125; 使用： 这里使用关键字new来返回一个对象。 如果不写new，这就是一个普通函数，它返回undefined。但是，如果写了new，它就变成了一个构造函数，它绑定的this指向新创建的对象，并默认返回this，也就是说，不需要在最后写return this;。 123var xiaoming = new Student(&apos;小明&apos;);xiaoming.name; // &apos;小明&apos;xiaoming.hello(); // Hello, 小明! 这里还涉及到一个在其它语言十分平常的问题——如果同一类对象都有相同的函数需求该怎么办呢？比如说都需要计算出工资之类的，这里就可以直接在这些对象共同的原型上增加一个类似的函数，这样这下面的这些对象都可以使用这些函数了。 有些时候可能会忘记使用new，那怎么办呢？ 在strict模式下，this.name = name将报错，因为this绑定为undefined，在非strict模式下，this.name = name不报错，因为this绑定为window，于是无意间创建了全局变量name，并且返回undefined，这个结果更糟糕。 所以，调用构造函数千万不要忘记写new。为了区分普通函数和构造函数，按照约定，构造函数首字母应当大写，而普通函数首字母应当小写，这样，一些语法检查工具如jslint将可以帮你检测到漏写的new。 最后，其实还可以编写一个createStudent()函数，在内部封装所有的new操作。如下： 123456789101112function Student(props) &#123; this.name = props.name || &apos;匿名&apos;; // 默认值为&apos;匿名&apos; this.grade = props.grade || 1; // 默认值为1&#125;Student.prototype.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);&#125;;function createStudent(props) &#123; return new Student(props || &#123;&#125;)&#125; 这个createStudent()函数有几个巨大的优点：一是不需要new来调用，二是参数非常灵活，可以不传，也可以这么传： 12345var xiaoming = createStudent(&#123; name: &apos;小明&apos;&#125;);xiaoming.grade; // 1 原型继承JS之前不支持CLASS区分类与实例，使用的是原型继承。 详情参考：JS原型继承教程 class继承关键字class从ES6开始正式被引入到JavaScript中。class的目的就是让定义类更简单。 如果浏览器之类的不支持ES6的话是不能使用的。 之前： 1234567function Student(name) &#123; this.name = name;&#125;Student.prototype.hello = function () &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);&#125; class继承： 123456789class Student &#123; constructor(name) &#123; this.name = name; &#125; hello() &#123; alert(&apos;Hello, &apos; + this.name + &apos;!&apos;); &#125;&#125;]]></content>
@@ -326,6 +339,7 @@
       </categories>
       <tags>
         <tag>小米五</tag>
+        <tag>卡刷</tag>
         <tag>刷机</tag>
       </tags>
   </entry>
@@ -634,10 +648,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -739,9 +753,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
