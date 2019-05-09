@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo博客美化简述]]></title>
+    <url>%2F2019%2F05%2F09%2Fhexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E7%AE%80%E8%BF%B0%2F</url>
+    <content type="text"><![CDATA[目录： 前言 RSS 博客图标 侧边栏社交链接 背景动画 访问量 统计 搜索功能 顶部加载条 浏览进度 内链样式 前言之前搭建博客的时候实在是没有心思搞这些花里胡哨的，但是最近突然又有点儿兴趣了，就总结一下一些比较感兴趣的主题美化操作吧。（个人向）这里使用的是范例——next（貌似是最受欢迎的主题，网上的教程也很多），其他的主题的话还是需要自己配置的。 2019.5.9 目前的只是一部分，后面有更多的美化操作会直接在本博客下面续写，敬请期待。 RSS 所谓的RSS订阅是站点用来和其他站点之间共享内容的一种简易方式,即Really Simple Syndication(简易信息聚合)。其实作用就是用来将博客进行分享的功能。 首先就是安装插件（git bash的hexo目录下）： 1npm install --save hexo-generator-feed 然后在主题配置文件中修改rss即可： 1rss: /atom.xml 最后在侧边栏中会有显示，我嫌弃影响美观，给取消了。 博客图标所谓的博客图标其实就是当你将博客收藏为书签的时候看到的小图标。默认是next图标，这个可以直接修改。 直接在images目录（对应的主题比如说next目录下的images）下放置图片即可。然后修改主题配置文件的favicon即可，注意图片的格式，必须是ico。 12favicon: small: /images/favicon-16x16.ico 侧边栏社交链接这个很简单，直接在主题配置文件中找到social后面的内容找到，然后根据自己的需要选择就好。 123456789101112social: GitHub: https://github.com/thbelief || github E-Mail: mailto:2465749045@qq.com || envelope CSDN: https://blog.csdn.net/thbelief #Google: https://plus.google.com/yourname || google #Twitter: https://twitter.com/yourname || twitter #FB Page: https://www.facebook.com/yourname || facebook #VK Group: https://vk.com/yourname || vk #StackOverflow: https://stackoverflow.com/yourname || stack-overflow #YouTube: https://youtube.com/yourname || youtube #Instagram: https://instagram.com/yourname || instagram #Skype: skype:yourname?call|chat || skype 这个可以自定义，只要自己写上去就可以了。（CSDN就是我自定义的，下面还可以设置对应的图标。） 1234567social_icons: enable: true icons_only: false transition: false E-Mail: envelope-square Github: github CSDN: crosshairs 背景动画在主题配置文件中找到canvas即可。我使用的是canvas_nest。 12345678910111213pace_theme: pace-theme-minimal# Canvas-nestcanvas_nest: true# three_wavesthree_waves: false# canvas_linescanvas_lines: false# canvas_spherecanvas_sphere: false 访问量这个是可以在网站的底部加上访问量。 在\themes\next\layout_partials\footer.swig文件中添加下面的代码： 12345678910&lt;div class=&quot;powered-by&quot;&gt; &lt;i class=&quot;fa fa-user-md&quot;&gt;&lt;/i&gt; &lt;span id=&quot;busuanzi_container_site_uv&quot;&gt; 本站访客数:&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt; &lt;span id=&quot;busuanzi_container_site_pv&quot;&gt; 本站访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; &lt;/span&gt;&lt;/div&gt; 统计这个可以给博客添加字数统计，阅读时长之类的功能。 首先是下载插件： 1npm install hexo-wordcount --save 然后是打开主题配置文件，然后找到post_wordcount，修改想要的功能即可： 下面是我的配置，可以根据自己的需求修改。 123456post_wordcount: item_text: true wordcount: true min2read: true totalcount: false separated_meta: true 搜索功能顾名思义，就是给博客增加一个搜索功能。 先安装插件： 1npm install hexo-generator-searchdb --save 站点配置文件配置如下代码： 12345search: path: search.xml field: post format: html limit: 10000 主题配置文件修改： 先修改local_search，再修改pace_theme即可。 123# Local searchlocal_search: enable: true 顶部加载条修改主题配置文件，找到pace修改为true然后在选择一个pace_theme即可： 12345678910111213141516171819# Progress bar in the top during page loading.pace: true# Themes list:#pace-theme-big-counter#pace-theme-bounce#pace-theme-barber-shop#pace-theme-center-atom#pace-theme-center-circle#pace-theme-center-radar#pace-theme-center-simple#pace-theme-corner-indicator#pace-theme-fill-left#pace-theme-flash#pace-theme-loading-bar#pace-theme-mac-osx#pace-theme-minimal# For example# pace_theme: pace-theme-center-simplepace_theme: pace-theme-minimal 浏览进度主题配置文件找到scrollpercent修改为true即可： 12# Scroll percent label in b2t button.scrollpercent: true 内链样式文章里的链接样式默认是只加一条下划线，颜色和普通文字一样，为了方便区分，在themes/next/source/css/_custom/custom.styl文件加以下代码，自行添加的样式都可以写在这个文件里： 12345678910.post-body p a&#123; color: #0593d3; border-bottom: none; border-bottom: 1px solid #0593d3; &amp;:hover &#123; color: #fc6423; border-bottom: none; border-bottom: 1px solid #fc6423; &#125; &#125;]]></content>
+      <categories>
+        <category>前端</category>
+        <category>搭建博客</category>
+      </categories>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>前端</tag>
+        <tag>Next</tag>
+        <tag>Hexo</tag>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Win10家庭版远程连接腾讯云服务器（Linux）]]></title>
     <url>%2F2019%2F05%2F08%2FWin10%E5%AE%B6%E5%BA%AD%E7%89%88%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88Linux%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 登录 可视化界面 步骤 win10远程连接 Win10家庭版远程连接问题（可忽略） 远程连接 输入服务器IP 远程桌面登录 前言最近写APP的时候想着弄个服务器，以便写后台，然后就去腾讯云弄了一个云服务器（Linux系统——Ubuntu64位）。然后配置云服务器之类的弄的有点儿麻烦，这里就直接写一篇博客记录一下这个过程。 登录购买云服务器之类的我就不说了，其实很简单的，就是简单的傻瓜式操作。这里直接进来找到实例。 点击登录。 这里我使用的是简单的密钥登录（密钥在登录旁边的更多里面去手动生成） 这里可以看到默认的端口和默认的用户名，关于后面会使用到的账号名与密码在哪里看呢？ 直接在腾讯云的消息里面就可以找到。（暂时用不到，但是后面远程连接之类的需要用到的） 登录之后的界面： 可视化界面没错，正式登录之后的云服务器网页端就是这样。是不是很难看？是不是很不方便？ 我也觉得，所以我使用了Linux上的可视化界面。 步骤​ 1、安装xrdp 1sudo apt-get install xrdp ​ 2、安装vnc4server 1sudo apt-get install vnc4server ​ 3、安装xubuntu-desktop 1 sudo apt-get install xubuntu-desktop ​ 4、向xsession中写入xfce4-session 1 echo “xfce4-session” &gt;~/.xsession ​ 5、开启xrdp服务 1 sudo service xrdp restart 这些步骤其实就是在云服务器中安装了可视化界面了。 win10远程连接Win10家庭版远程连接问题（可忽略）其实普通的win10远程连接也没什么，但是由于是家庭版遇到很多问题，所幸是解决了。 启用win10家庭版远程桌面服务端这个网址就是解决的地方。（这个步骤弄完之后需要重启才会生效） 远程连接输入服务器IP直接在win10搜索栏搜索远程桌面连接双击即可，打码的部分是输入云服务器的外网IP的位置。 远程桌面登录 输入前面说到的用户名和密码再点击OK即可。 这样就可以直接通过Win10远程连接Linux云服务器了！]]></content>
@@ -501,9 +517,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
