@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android-设备兼容]]></title>
+    <url>%2F2019%2F05%2F12%2FAndroid-%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%2F</url>
+    <content type="text"><![CDATA[目录： 不同设备兼容问题 语言适配 使用字符资源 屏幕适配 创建不同的layout 创建不同的bitmap 系统版本适配 最小和目标API级别 运行时检测系统版本 平台风格和主题 不同设备兼容问题众所周知，这个世界上到目前为止出现的Android设备是各式各样的。语言，屏幕尺寸，Android的系统版本等重要的变量因素是制约一个APP的关键。如何适配不同的Android设备也是一个很重要的问题。 语言适配把UI中的字符串存储在外部文件，通过代码提取，这就是一种解决方法。 为支持多国语言，在res/中创建一个额外的values目录以连字符和ISO国家代码结尾命名，比如values-es/ 是为语言代码为”es”的区域设置的简单的资源文件的目录。Android会在运行时根据设备的区域设置，加载相应的资源。 如果已经确定支持某种语言，那么就需要创建资源的子目录以及字符串资源文件： 12345678MyProject/ res/ values/ strings.xml values-es/ strings.xml values-fr/ strings.xml 使用字符资源在源代码和其他XML文件中通过string元素的name属性来引用字符串资源。 123456// Get a string resource from your app&apos;s ResourcesString hello = getResources().getString(R.string.hello_world);// Or supply a string resource to a method that requires a stringTextView textView = new TextView(this);textView.setText(R.string.hello_world); 在XML文件中，每当XML属性要接受一个字符串值时，可以通过@string/&lt;string_name&gt;语法来引用字符串资源。 1234&lt;TextView android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:text=&quot;@string/hello_world&quot; /&gt; 屏幕适配app中应该包含一些可选资源，针对不同的屏幕尺寸和分辨率，来优化其外观。 4种普遍尺寸：小(small)，普通(normal)，大(large)，超大(xlarge) 4种普遍分辨率：低精度(ldpi), 中精度(mdpi), 高精度(hdpi), 超高精度(xhdpi) 同时不同的屏幕方向其实也是需要适配的一部分。 创建不同的layout和语言适配类似，为了针对不同的屏幕去优化用户体验，需要为每一种将要支持的屏幕尺寸创建唯一的XML文件。每一种layout需要保存在相应的资源目录中，目录以-&lt;screen_size&gt;为后缀命名。例如，对大尺寸屏幕(large screens)，一个唯一的layout文件应该保存在res/layout-large/中。 创建不同的bitmap应该为4种普遍分辨率:低，中，高，超高精度，都提供相适配的bitmap资源。这能使app在所有屏幕分辨率中都能有良好的画质和效果。能够有效的提升用户的体验。 这些图像，应该从原始的矢量图像资源着手，根据下列尺寸比例，生成各种密度下的图像。 1234xhdpi: 2.0hdpi: 1.5mdpi: 1.0 (基准)ldpi: 0.75 生成的图像和前面的类似，都是放入drawable资源目录中： 12345678910MyProject/ res/ drawable-xhdpi/ awesomeimage.png drawable-hdpi/ awesomeimage.png drawable-mdpi/ awesomeimage.png drawable-ldpi/ awesomeimage.png 这样做之后系统会在不同的设备上自动的调整选择适合的bitmap。 系统版本适配Android的系统版本是在一直更新的，如何保持老版本的支持就是一个问题。 最小和目标API级别AndroidManifest.xml文件中描述了我们的app的细节及app支持哪些Android版本。具体来说，uses-sdk元素中的minSdkVersion和targetSdkVersion 属性，标明在设计和测试app时，最低兼容API的级别和最高适用的API级别(这个最高的级别是需要通过测试的)。 应该将targetSdkVersion的值尽量的设置与最新可用的Android版本匹配。 1234&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; ... &gt; &lt;uses-sdk android:minSdkVersion=&quot;4&quot; android:targetSdkVersion=&quot;15&quot; /&gt; ...&lt;/manifest&gt; 运行时检测系统版本Android在Build常量类中提供了对每一个版本的唯一代号，在我们的app中使用这些代号可以建立条件，保证依赖于高级别的API的代码，只会在这些API在当前系统中可用时，才会执行。 1234567private void setUpActionBar() &#123; // Make sure we&apos;re running on Honeycomb or higher to use ActionBar APIs if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) &#123; ActionBar actionBar = getActionBar(); actionBar.setDisplayHomeAsUpEnabled(true); &#125;&#125; 平台风格和主题Android提供了用户体验主题，为app提供基础操作系统的外观和体验。这些主题可以在manifest文件中被应用于app中。使用内置的风格和主题，app会自然地随着Android新版本而自动适配最新的外观和体验。]]></content>
+      <categories>
+        <category>移动端开发</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>兼容</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(六)]]></title>
     <url>%2F2019%2F05%2F11%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD%2F</url>
     <content type="text"><![CDATA[目录： 前言 Dom操作 获取Dom节点 常用方法 Dom更新 Dom插入 Dom删除 前言这一部分关于浏览器部分的知识其实是比较抽象的，建议直接在浏览器上面一边操作一边学习，这样作用更大。 Dom操作HTML文档被浏览器解析后就是一棵DOM树，要改变HTML的结构，就需要通过JavaScript来操作DOM。 1234567更新：更新该DOM节点的内容，相当于更新了该DOM节点表示的HTML的内容；遍历：遍历该DOM节点下的子节点，以便进行进一步操作；添加：在该DOM节点下新增一个子节点，相当于动态增加了一个HTML节点；删除：将该节点从HTML中删除，相当于删掉了该DOM节点的内容以及它包含的所有子节点。 获取Dom节点理所当然的，在操作一个Dom的时候应该先获取到Dom节点再进行相应的操作。 常用方法第一种 123document.getElementById() //直接定位唯一的一个DOM节点。document.getElementsByTagName() //返回一组DOM节点。要精确地选择DOM，可以先定位父节点，再从父节点开始选择，以缩小范围。document.getElementsByClassName() // 返回一组DOM节点。要精确地选择DOM，可以先定位父节点，再从父节点开始选择，以缩小范围。 第二种 这种方式低版本的IE8不支持。 使用querySelector()和querySelectorAll()，了解selector语法，然后使用条件来获取节点。 12345// 通过querySelector获取ID为thbelief的节点：var q1 = document.querySelector(&apos;#thbelief&apos;);// 通过querySelectorAll获取q1节点内的符合条件的所有节点：var ps = q1.querySelectorAll(&apos;div.highlighted &gt; p&apos;); 事实上，这里的DOM节点是指Element，但是DOM节点实际上是Node，在HTML中，Node包括Element、Comment、CDATA_SECTION等很多种，以及根节点Document类型，但是，绝大多数时候只关心Element，也就是实际控制页面结构的Node，其他类型的Node忽略即可。 根节点Document自动绑定为全局变量document。 Dom更新拿到Dom节点之后可以进行更新，可以直接修改节点的文本。 第一种方法 修改innerHTML属性，可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树。 注意：是否需要写入HTML。如果写入的字符串是通过网络拿到了，要注意对字符编码来避免XSS攻击。 1234567// 获取&lt;p id=&quot;p-id&quot;&gt;...&lt;/p&gt;var p = document.getElementById(&apos;p-id&apos;);// 设置文本为abc:p.innerHTML = &apos;ABC&apos;; // &lt;p id=&quot;p-id&quot;&gt;ABC&lt;/p&gt;// 设置HTML:p.innerHTML = &apos;ABC &lt;span style=&quot;color:red&quot;&gt;RED&lt;/span&gt; XYZ&apos;;// &lt;p&gt;...&lt;/p&gt;的内部结构已修改 第二种方法 修改innerText或textContent属性，这样可以自动对字符串进行HTML编码，保证无法设置任何HTML标签。 123456// 获取&lt;p id=&quot;p-id&quot;&gt;...&lt;/p&gt;var p = document.getElementById(&apos;p-id&apos;);// 设置文本:p.innerText = &apos;&lt;script&gt;alert(&quot;Hi&quot;)&lt;/script&gt;&apos;;// HTML被自动编码，无法设置一个&lt;script&gt;节点:// &lt;p id=&quot;p-id&quot;&gt;&amp;lt;script&amp;gt;alert(&quot;Hi&quot;)&amp;lt;/script&amp;gt;&lt;/p&gt; 区别： 读取属性时，innerText不返回隐藏元素的文本，而textContent返回所有文本。另外注意IE&lt;9不支持textContent。 修改CSS也是经常需要的操作。 DOM节点的style属性对应所有的CSS，可以直接获取或设置。因为CSS允许font-size这样的名称，但它并非JavaScript有效的属性名，所以需要在JavaScript中改写为驼峰式命名fontSize。 Dom插入如果当前的Dom节点是空的，那么，直接使用innerHTML = ‘child‘就可以修改DOM节点的内容，这就相当于插入了。 如果当前的Dom节点不为空的话，不能通过那种方式，因为这样会替换掉原来的所有的子节点。 不为空有两种方法可以插入新的节点。 一个是使用appendChild，把一个子节点添加到父节点的最后一个子节点。 原始的结构： 1234567&lt;!-- HTML结构 --&gt;&lt;p id=&quot;js&quot;&gt;JavaScript&lt;/p&gt;&lt;div id=&quot;list&quot;&gt; &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt; &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt; &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt;&lt;/div&gt; 插入一项： 1234var js = document.getElementById(&apos;js&apos;), list = document.getElementById(&apos;list&apos;);list.appendChild(js); 之后的结构： 1234567&lt;!-- HTML结构 --&gt;&lt;div id=&quot;list&quot;&gt; &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt; &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt; &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt; &lt;p id=&quot;js&quot;&gt;JavaScript&lt;/p&gt;&lt;/div&gt; 再就是可以使用parentElement.insertBefore(newElement, referenceElement);，子节点会插入到referenceElement之前。 假设把Haskell插入到python前面： 原始结构： 123456&lt;!-- HTML结构 --&gt;&lt;div id=&quot;list&quot;&gt; &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt; &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt; &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt;&lt;/div&gt; 插入： 1234567var list = document.getElementById(&apos;list&apos;), ref = document.getElementById(&apos;python&apos;), haskell = document.createElement(&apos;p&apos;);haskell.id = &apos;haskell&apos;;haskell.innerText = &apos;Haskell&apos;;list.insertBefore(haskell, ref); 之后的结构： 1234567&lt;!-- HTML结构 --&gt;&lt;div id=&quot;list&quot;&gt; &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt; &lt;p id=&quot;haskell&quot;&gt;Haskell&lt;/p&gt; &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt; &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt;&lt;/div&gt; Dom删除删除明显比插入操作简单很多，先获得当前节点以及其父节点，调用父节点的removeChild方法把自己删除掉即可。 1234567// 拿到待删除节点:var self = document.getElementById(&apos;thbelief&apos;);// 拿到父节点:var parent = self.parentElement;// 删除:var removed = parent.removeChild(self);removed === self; // true 注意：虽然该节点表面上是被删除了，但是实际上还在内存中。 还有一个问题，那就是，当你同时删除多个节点的时候，是否会出现问题呢？ 答案是肯定的，因为children的属性一直都是在实时的变化，原因如下： 另外，遍历一个父节点的子节点并进行删除操作时，要注意，children属性是一个只读属性，并且它在子节点变化时会实时更新。所以，删除多个节点时，要注意children属性时刻都在变化。]]></content>
@@ -188,11 +201,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -547,9 +560,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
