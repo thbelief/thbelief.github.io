@@ -313,6 +313,252 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/03/Lua学习笔记-六/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/03/Lua学习笔记-六/" itemprop="url">Lua学习笔记(六)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T16:28:01+08:00">
+                2019-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Lua/" itemprop="url" rel="index">
+                    <span itemprop="name">Lua</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#推荐网站">推荐网站</a></li>
+<li><a href="#面向对象">面向对象</a><ul>
+<li><a href="#四大特征">四大特征</a><ul>
+<li><a href="#封装">封装</a></li>
+<li><a href="#继承">继承</a></li>
+<li><a href="#多态">多态</a></li>
+<li><a href="#抽象">抽象</a></li>
+</ul>
+</li>
+<li><a href="#如何使用">如何使用</a><ul>
+<li><a href="#创建对象">创建对象</a></li>
+<li><a href="#访问属性">访问属性</a></li>
+<li><a href="#访问成员函数">访问成员函数</a></li>
+<li><a href="#完整实例">完整实例</a></li>
+<li><a href="#继承-1">继承</a></li>
+<li><a href="#重写">重写</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#数据库">数据库</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>Lua的基础教程其实感觉都已经快接近尾声了，这次就直接把面向对象的这个部分以及一些其他的东西讲清楚，然后就结尾吧，其实大部分编程语言的内涵都是共通的，最主要的还是应用的问题。（只有实践才是检验真理的唯一标准！）</p>
+<h2><span id="正文">正文</span></h2><h3><span id="推荐网站">推荐网站</span></h3><p><a href="http://manual.luaer.cn/" target="_blank" rel="noopener">Lua在线手册</a></p>
+<p><a href="http://book.luaer.cn/" target="_blank" rel="noopener">Lua程序设计</a></p>
+<p>这两个网站都是关于Lua语言的chm文档，可以参考学习，特别是第二个网站，十分的丰富。</p>
+<h3><span id="面向对象">面向对象</span></h3><p>这里的“对象”不是那个“对象”，学过C++或者Java这种面向对象语言的人肯定知道，Lua也是面向对象的，其实之前就说过Lua中其实都是对象。</p>
+<h4><span id="四大特征">四大特征</span></h4><h5><span id="封装">封装</span></h5><p>指能够把一个实体的信息、功能、响应都装入一个单独的对象中的特性。</p>
+<h5><span id="继承">继承</span></h5><p>继承的方法允许在不改动原程序的基础上对其进行扩充，这样使得原功能得以保存，而新功能也得以扩展。这有利于减少重复编码，提高软件的开发效率。</p>
+<h5><span id="多态">多态</span></h5><p>同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果。在运行时，可以通过指向基类的指针，来调用实现派生类中的方法。</p>
+<h5><span id="抽象">抽象</span></h5><p>抽象(Abstraction)是简化复杂的现实问题的途径，它可以为具体问题找到最恰当的类定义，并且可以在最恰当的继承级别解释问题。</p>
+<h4><span id="如何使用">如何使用</span></h4><p>对象包括两个内容：<strong>属性+方法。</strong>前者使用Lua中的table表示，后者使用function表示。（继承可以通过metetable来模拟，事实上，模拟基本的对象大多时候都已经足够使用了）</p>
+<p>另外，由于Lua中所有都是对象，是以，<strong>table其实也是对象，也有状态（成员变量以及成员函数）</strong>。</p>
+<p>实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">--这里直接定义一个表table，其中包含了它的成员变量num</span><br><span class="line">test=&#123;num=0&#125;</span><br><span class="line">--下面直接定义test对应的成员函数</span><br><span class="line">function test.addNum(count)</span><br><span class="line">    test.num=test.num+count</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">print(&quot;第一个：&quot;..test.num)</span><br><span class="line"></span><br><span class="line">test.addNum(10)</span><br><span class="line"></span><br><span class="line">print(&quot;第二个：&quot;..test.num)</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<p><img src="/2019/05/03/Lua学习笔记-六/1.jpg" alt=""></p>
+<h5><span id="创建对象">创建对象</span></h5><p>这个过程其实就是<strong>为类的实例分配内存。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--如果该类需要传入初始参数就通过小括号内传入</span><br><span class="line">test1=test:new();</span><br></pre></td></tr></table></figure>
+<h5><span id="访问属性">访问属性</span></h5><p>直接使用<strong>.</strong>来访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test1.num;</span><br></pre></td></tr></table></figure>
+<h5><span id="访问成员函数">访问成员函数</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test1:addNum(1);</span><br></pre></td></tr></table></figure>
+<h5><span id="完整实例">完整实例</span></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-- Meta class</span><br><span class="line">Shape = &#123;area = 0&#125;</span><br><span class="line"></span><br><span class="line">-- 基础类方法 new</span><br><span class="line">function Shape:new (o,side)</span><br><span class="line">  o = o or &#123;&#125;</span><br><span class="line">  setmetatable(o, self)</span><br><span class="line">  self.__index = self</span><br><span class="line">  side = side or 0</span><br><span class="line">  self.area = side*side;</span><br><span class="line">  return o</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 基础类方法 printArea</span><br><span class="line">function Shape:printArea ()</span><br><span class="line">  print(&quot;面积为 &quot;,self.area)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 创建对象</span><br><span class="line">myshape = Shape:new(nil,10)</span><br><span class="line"></span><br><span class="line">myshape:printArea()</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">面积为 	100</span><br></pre></td></tr></table></figure>
+<h5><span id="继承">继承</span></h5><p>继承的含义是——<strong>一个对象直接使用另外一个对象的属性方法之类。</strong>一般的作用就是扩展基类的属性与方法。使用场景举例：Person类下面或许就可以被继承一个Student类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">-- Meta class</span><br><span class="line">Shape = &#123;area = 0&#125;</span><br><span class="line">-- 基础类方法 new</span><br><span class="line">function Shape:new (o,side)</span><br><span class="line">  o = o or &#123;&#125;</span><br><span class="line">  setmetatable(o, self)</span><br><span class="line">  self.__index = self</span><br><span class="line">  side = side or 0</span><br><span class="line">  self.area = side*side;</span><br><span class="line">  return o</span><br><span class="line">end</span><br><span class="line">-- 基础类方法 printArea</span><br><span class="line">function Shape:printArea ()</span><br><span class="line">  print(&quot;面积为 &quot;,self.area)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 创建对象</span><br><span class="line">myshape = Shape:new(nil,10)</span><br><span class="line">myshape:printArea()</span><br><span class="line"></span><br><span class="line">Square = Shape:new()</span><br><span class="line">-- 派生类方法 new</span><br><span class="line">function Square:new (o,side)</span><br><span class="line">  o = o or Shape:new(o,side)</span><br><span class="line">  setmetatable(o, self)</span><br><span class="line">  self.__index = self</span><br><span class="line">  return o</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 派生类方法 printArea</span><br><span class="line">function Square:printArea ()</span><br><span class="line">  print(&quot;正方形面积为 &quot;,self.area)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 创建对象</span><br><span class="line">mysquare = Square:new(nil,10)</span><br><span class="line">mysquare:printArea()</span><br><span class="line"></span><br><span class="line">Rectangle = Shape:new()</span><br><span class="line">-- 派生类方法 new</span><br><span class="line">function Rectangle:new (o,length,breadth)</span><br><span class="line">  o = o or Shape:new(o)</span><br><span class="line">  setmetatable(o, self)</span><br><span class="line">  self.__index = self</span><br><span class="line">  self.area = length * breadth</span><br><span class="line">  return o</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 派生类方法 printArea</span><br><span class="line">function Rectangle:printArea ()</span><br><span class="line">  print(&quot;矩形面积为 &quot;,self.area)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">-- 创建对象</span><br><span class="line">myrectangle = Rectangle:new(nil,10,20)</span><br><span class="line">myrectangle:printArea()</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">面积为     100</span><br><span class="line">正方形面积为     100</span><br><span class="line">矩形面积为     200</span><br></pre></td></tr></table></figure>
+<h5><span id="重写">重写</span></h5><p><strong>Lua中支持直接重写基础类的函数，在派生类中定义自己的实现方式。</strong></p>
+<p>实例其实就是上面一个例子中的。</p>
+<h3><span id="数据库">数据库</span></h3><p>Lua支持的数据库：<a href="http://luaforge.net/projects/luasql/" target="_blank" rel="noopener">LuaSQL</a>，支持的类型包括ODBC, ADO, Oracle, MySQL, SQLite 和 PostgreSQL。</p>
+<p>LuaSQL可使用<a href="https://luarocks.org/" target="_blank" rel="noopener">LuaRocks</a>来<strong>安装需要的数据库驱动。</strong></p>
+<p><a href="https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Windows" target="_blank" rel="noopener">WIndows安装LuaRocks的方法教程</a></p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">require &quot;luasql.mysql&quot;</span><br><span class="line"></span><br><span class="line">--创建环境对象</span><br><span class="line">env = luasql.mysql()</span><br><span class="line"></span><br><span class="line">--连接数据库</span><br><span class="line">conn = env:connect(&quot;数据库名&quot;,&quot;用户名&quot;,&quot;密码&quot;,&quot;IP地址&quot;,端口)</span><br><span class="line"></span><br><span class="line">--设置数据库的编码格式</span><br><span class="line">conn:execute&quot;SET NAMES UTF8&quot;</span><br><span class="line"></span><br><span class="line">--执行数据库操作</span><br><span class="line">cur = conn:execute(&quot;select * from role&quot;)</span><br><span class="line"></span><br><span class="line">row = cur:fetch(&#123;&#125;,&quot;a&quot;)</span><br><span class="line"></span><br><span class="line">--文件对象的创建</span><br><span class="line">file = io.open(&quot;role.txt&quot;,&quot;w+&quot;);</span><br><span class="line"></span><br><span class="line">while row do</span><br><span class="line">    var = string.format(&quot;%d %s\n&quot;, row.id, row.name)</span><br><span class="line"></span><br><span class="line">    print(var)</span><br><span class="line"></span><br><span class="line">    file:write(var)</span><br><span class="line"></span><br><span class="line">    row = cur:fetch(row,&quot;a&quot;)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file:close()  --关闭文件对象</span><br><span class="line">conn:close()  --关闭数据库连接</span><br><span class="line">env:close()   --关闭数据库环境</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/02/Python学习笔记（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2710,245 +2956,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/23/AndroidStudio优秀插件合集/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/23/AndroidStudio优秀插件合集/" itemprop="url">AndroidStudio优秀插件合集</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-23T15:56:47+08:00">
-                2019-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  710
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#as插件官方下载地址">AS插件官方下载地址</a></li>
-<li><a href="#插件详解">插件详解</a><ul>
-<li><a href="#adb-wifi-connect">ADB WiFi Connect</a></li>
-<li><a href="#android-butterknife-zelezny">Android ButterKnife Zelezny</a></li>
-<li><a href="#checkstyle-idea">CheckStyle-IDEA</a></li>
-<li><a href="#codeglance">CodeGlance</a></li>
-<li><a href="#dart">Dart</a></li>
-<li><a href="#firim-upload">fir.im upload</a></li>
-<li><a href="#flutter">Flutter</a></li>
-<li><a href="#genymotion">Genymotion</a></li>
-<li><a href="#gitee">Gitee</a></li>
-<li><a href="#github">Github</a></li>
-<li><a href="#grep-console">Grep Console</a></li>
-<li><a href="#gsonformat">GsonFormat</a></li>
-<li><a href="#layoutformatter">LayoutFormatter</a></li>
-<li><a href="#lifecycle-sorter">Lifecycle Sorter</a></li>
-<li><a href="#mvphelper">MVPHelper</a></li>
-<li><a href="#nyan-progress-bar">Nyan Progress Bar</a></li>
-<li><a href="#rainbow-brackets">Rainbow Brackets</a></li>
-<li><a href="#translation">Translation</a></li>
-<li><a href="#wakatime">WakaTime</a></li>
-<li><a href="#ectranslation">ECTranslation</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>从开始学习Android开始都是使用的AndroidStudio，也积累下很多的AndroidStudio上面的插件，这里就集合的注释一下，方便自己回忆。</p>
-<h2><span id="as插件官方下载地址">AS插件官方下载地址</span></h2><p><a href="https://plugins.jetbrains.com/androidstudio" target="_blank" rel="noopener">插件下载官方地址</a></p>
-<p><img src="/2019/04/23/AndroidStudio优秀插件合集/插件下载官方地址.jpg" alt=""></p>
-<h2><span id="插件详解">插件详解</span></h2><h3><span id="adb-wifi-connect">ADB WiFi Connect</span></h3><p>这个插件的作用是通过同一局域网下的WIFI连接Android设备，无线运行调试APP。（初始化连接还是需要USB线的）</p>
-<h3><span id="android-butterknife-zelezny">Android ButterKnife Zelezny</span></h3><p>官方注解：Simple plug-in for Android Studio/IDEA that allows one-click creation of <a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">Butterknife</a> view injections.</p>
-<p>其实简单的说，它的作用就是一键从布局文件中生成对应的View 声明和 ButterKnife 注解。这个插件十分的方便，方便什么呢？方便偷懒…</p>
-<h3><span id="checkstyle-idea">CheckStyle-IDEA</span></h3><p>Checkstyle是一种开发工具，可帮助程序员编写符合编码标准的Java代码。它使检查Java代码的过程自动化，从而使人类免于这项无聊（但重要）的任务。这使其成为希望实施编码标准的项目的理想选择。</p>
-<p>Checkstyle可以检查源代码的许多方面。它可以找到<strong>类设计问题，方法设计问题。它还能够检查代码布局和格式问题。</strong></p>
-<h3><span id="codeglance">CodeGlance</span></h3><p>这个插件的主要功能就是在代码编辑页面的右方提供一个代码小地图。</p>
-<p><img src="/2019/04/23/AndroidStudio优秀插件合集/代码小地图.jpg" alt=""></p>
-<h3><span id="dart">Dart</span></h3><p>这个是AS支持Dart语言的包，主要就是为了开发Flutter安装的插件。</p>
-<h3><span id="firim-upload">fir.im upload</span></h3><p>这个插件是用于向fir.im平台推送应用新版本的插件。</p>
-<h3><span id="flutter">Flutter</span></h3><p>这个就是一个新的Android框架的插件。</p>
-<h3><span id="genymotion">Genymotion</span></h3><p>这个是一个Android设备模拟器，比AS自带的好很多。</p>
-<h3><span id="gitee">Gitee</span></h3><p>这个是向码云上传新代码的时候用到的。</p>
-<h3><span id="github">Github</span></h3><p>向github推送的插件。</p>
-<h3><span id="grep-console">Grep Console</span></h3><p>Grep，tail，filter，highlight …控制台所需的一切。也可以突出显示编辑器 - 非常适合分析日志… </p>
-<h3><span id="gsonformat">GsonFormat</span></h3><p>快速将JSON字符串转换为InnerClassEntity类.. </p>
-<h3><span id="layoutformatter">LayoutFormatter</span></h3><p>作用于XML文件，主要的功能是规范化的调整XML里面的布局，使代码更加的规范，美化。</p>
-<h3><span id="lifecycle-sorter">Lifecycle Sorter</span></h3><p>按照应用程序中调用它们的顺序对Activity或Fragment的生命周期方法进行排序。 </p>
-<h3><span id="mvphelper">MVPHelper</span></h3><p>一个快捷生成MVP框架即各个接口的插件。</p>
-<h3><span id="nyan-progress-bar">Nyan Progress Bar</span></h3><p>这是一个不实用的插件，就是漂亮的进度条。</p>
-<h3><span id="rainbow-brackets">Rainbow Brackets</span></h3><p>彩虹括号，使代码显得更加的<strong>花里胡哨。</strong></p>
-<h3><span id="translation">Translation</span></h3><p>在AS中翻译的插件。（Google）</p>
-<h3><span id="wakatime">WakaTime</span></h3><p>自动检测AS的使用时间等等，主要就是做一个用户的使用情况可视化分析。</p>
-<h3><span id="ectranslation">ECTranslation</span></h3><p>将选择的英文翻译成中文。</p>
-<p>快捷键：<strong>Command+I快捷键。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3001,7 +3008,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3012,7 +3019,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3023,7 +3030,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3108,7 +3115,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共106.8k字</span>
+  <span class="post-count">博客全站共107.7k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
