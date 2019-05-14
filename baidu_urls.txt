@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/05/14/Auto-js-Script开发-十三/
 http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/
 http://thbelief.coding.me/2019/05/12/Android-设备兼容/
 http://thbelief.coding.me/2019/05/11/JavaScript学习笔记-六/

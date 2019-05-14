@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入博客密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="移动端开发,Auto.js,JS,JavaScript,脚本,Script,THBELIEFScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录：  前言 正文 题外话 思路 完整代码 总结     前言之前开发的THBELIEFScript已经很久没有维护了，关键的原因还是没有可以需求的地方，最近刚好有了需求，所以就把这个项目重新提起来一下。这次开发的是chaoXing全自动的脚本，作用就是遇到题目做完然后跳过，看完这个视频自动寻找下一个视频。（不涉及任何作弊手动，仅仅是自动化），目前5.2.0的版本的chaoXIng有些手机不适配">
+<meta name="keywords" content="移动端开发,Auto.js,JS,JavaScript,脚本,Script,THBELIEFScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Auto.js Script开发(十三)">
+<meta property="og:url" content="http://thbelief.coding.me/2019/05/14/Auto-js-Script开发-十三/index.html">
+<meta property="og:site_name" content="THBELIEF">
+<meta property="og:description" content="目录：  前言 正文 题外话 思路 完整代码 总结     前言之前开发的THBELIEFScript已经很久没有维护了，关键的原因还是没有可以需求的地方，最近刚好有了需求，所以就把这个项目重新提起来一下。这次开发的是chaoXing全自动的脚本，作用就是遇到题目做完然后跳过，看完这个视频自动寻找下一个视频。（不涉及任何作弊手动，仅仅是自动化），目前5.2.0的版本的chaoXIng有些手机不适配">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-14T00:32:06.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Auto.js Script开发(十三)">
+<meta name="twitter:description" content="目录：  前言 正文 题外话 思路 完整代码 总结     前言之前开发的THBELIEFScript已经很久没有维护了，关键的原因还是没有可以需求的地方，最近刚好有了需求，所以就把这个项目重新提起来一下。这次开发的是chaoXing全自动的脚本，作用就是遇到题目做完然后跳过，看完这个视频自动寻找下一个视频。（不涉及任何作弊手动，仅仅是自动化），目前5.2.0的版本的chaoXIng有些手机不适配">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://thbelief.coding.me/2019/05/14/Auto-js-Script开发-十三/">
+
+
+
+
+
+  <title>Auto.js Script开发(十三) | THBELIEF</title>
+  
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">THBELIEF</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Thbelief's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/14/Auto-js-Script开发-十三/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Auto.js Script开发(十三)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-14T08:31:18+08:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#题外话">题外话</a></li>
+<li><a href="#思路">思路</a></li>
+<li><a href="#完整代码">完整代码</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>之前开发的THBELIEFScript已经很久没有维护了，关键的原因还是没有可以需求的地方，最近刚好有了需求，所以就把这个项目重新提起来一下。这次开发的是chaoXing全自动的脚本，作用就是遇到题目做完然后跳过，看完这个视频自动寻找下一个视频。（不涉及任何作弊手动，仅仅是自动化），目前5.2.0的版本的chaoXIng有些手机不适配。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="题外话">题外话</span></h3><p><a href="https://greasyfork.org/zh-CN/scripts/369625-%E8%B6%85%E6%98%9F%E7%BD%91%E8%AF%BE%E5%8A%A9%E6%89%8B" target="_blank" rel="noopener">传送门</a>这个网址是一个JS脚本，也是和今天说的这个一样的作用只是大佬的比较完善，但是仅做参考，我只是拿来学习对于浏览器的操作的。</p>
+<p><strong>注意：4.30号开始chaoXing的更新导致浏览器脚本的查出概率很大。</strong></p>
+<h3><span id="思路">思路</span></h3><p>首先肯定需要无障碍权限：</p>
+<p>这里其实有点儿问题，相比传统的<strong>auto():</strong>来说，貌似有BUG。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(!floaty.checkPermission())&#123;</span><br><span class="line">    toast(&quot;未打开无障碍权限！请打开无障碍权限。&quot;);</span><br><span class="line">    floaty.requestPermission();</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">    toast(&quot;无障碍权限已打开！&quot;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我是想着需不需要直接跳转过去打开APP，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(currentPackage()!=&quot;com.chaoxing.mobile&quot;)&#123;</span><br><span class="line">    toast(&quot;即将打开超星！&quot;);</span><br><span class="line">    //直接打开学习通</span><br><span class="line">    app.launchApp(&quot;学习通&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    toast(&quot;已经在学习通中，即将开始进行下一步操作！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是最后决定取消，由手动去前往打开。</p>
+<p>定义了一个数组变量用来存储完成情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//这个是存完成情况的</span><br><span class="line">var completionDeploy=[];</span><br></pre></td></tr></table></figure>
+<p>设置一个音量下键停止脚本并弹出完成情况的东西：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//监听音量下键是否按下，退出脚本</span><br><span class="line">threads.start(function()&#123;</span><br><span class="line">    events.setKeyInterceptionEnabled(&quot;volume_down&quot;,true);</span><br><span class="line">    //监听按键</span><br><span class="line">    events.observeKey();</span><br><span class="line">    events.onKeyDown(&quot;volume_down&quot;, function(event)&#123;</span><br><span class="line">        toast(&quot;即将关闭当前脚本！&quot;);</span><br><span class="line">        alert(completionDeploy);//展示信息</span><br><span class="line">        sleep(5000);</span><br><span class="line">        //engines.myEngine().forceStop();</span><br><span class="line">        engines.myEngine().forceStop();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>每隔一分钟检测是否有题是否已经看完当前视频：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//开始定时器，每隔一分钟自动检索是否存在答题的可能性，如果需要答题的话就直接答题即可</span><br><span class="line">setInterval(function()&#123;</span><br><span class="line">    //如果检测到有题目的话直接答题</span><br><span class="line">    answerProblem();</span><br><span class="line">    //如果已经看完了现在的之后</span><br><span class="line">    if(currentActivity()==&quot;com.chaoxing.fanya.aphone.ui.chapter.KnowledgePagerActivity&quot;)&#123;</span><br><span class="line">        toast(&quot;当前的视频已经看完了，即将开始寻找下一个视频自动播放~&quot;);</span><br><span class="line">        log(&quot;视频已看完，即将开始下一个视频~&quot;);</span><br><span class="line">        //寻找下一个视频自动打开并且播放，以此类推</span><br><span class="line">        findNextVideo();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        toast(&quot;当前视频尚未看完！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 1000*60);//一分钟检测一次</span><br></pre></td></tr></table></figure>
+<p>最后写好各个函数就可以了。</p>
+<h3><span id="完整代码">完整代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br></pre></td><td class="code"><pre><span class="line">//auto();</span><br><span class="line">//直接打开无障碍权限</span><br><span class="line">//检测是否打开了无障碍权限</span><br><span class="line"></span><br><span class="line">if(!floaty.checkPermission())&#123;</span><br><span class="line">    toast(&quot;未打开无障碍权限！请打开无障碍权限。&quot;);</span><br><span class="line">    floaty.requestPermission();</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line">    toast(&quot;无障碍权限已打开！&quot;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">toast(&quot;请确保超星已经在后台打开并且已经打开即将开始播放的页面！&quot;);</span><br><span class="line">sleep(2000);//延迟两秒吧</span><br><span class="line">/*</span><br><span class="line">if(currentPackage()!=&quot;com.chaoxing.mobile&quot;)&#123;</span><br><span class="line">    toast(&quot;即将打开超星！&quot;);</span><br><span class="line">    //直接打开学习通</span><br><span class="line">    app.launchApp(&quot;学习通&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    toast(&quot;已经在学习通中，即将开始进行下一步操作！&quot;);</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">/*</span><br><span class="line">//这个地方是检测是否在即将开始的页面</span><br><span class="line">if(currentActivity()==&quot;com.chaoxing.fanya.aphone.ui.chapter.KnowledgePagerActivity&quot;)&#123;</span><br><span class="line">    //如果是在当前页面的话就直接play即可</span><br><span class="line">    //点击播放按钮</span><br><span class="line">    className(&quot;android.widget.Image&quot;).text(&quot;play&quot;).clickable().findOnce().click();</span><br><span class="line">    sleep(2000);</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">/*</span><br><span class="line">var countDownTime=60;//这是倒计时的秒数</span><br><span class="line">setInterval(function()&#123;</span><br><span class="line">    toast(&quot;当前距离下一次检测还有&quot;+countDownTime+&quot;s！&quot;);</span><br><span class="line">    countDownTime--;</span><br><span class="line">    if(countDownTime==0)&#123;</span><br><span class="line">        countDownTime=60;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 1000);</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">//这个是存完成情况的</span><br><span class="line">var completionDeploy=[];</span><br><span class="line">//监听音量下键是否按下，退出脚本</span><br><span class="line">threads.start(function()&#123;</span><br><span class="line">    events.setKeyInterceptionEnabled(&quot;volume_down&quot;,true);</span><br><span class="line">    //监听按键</span><br><span class="line">    events.observeKey();</span><br><span class="line">    events.onKeyDown(&quot;volume_down&quot;, function(event)&#123;</span><br><span class="line">        toast(&quot;即将关闭当前脚本！&quot;);</span><br><span class="line">        alert(completionDeploy);//展示信息</span><br><span class="line">        sleep(5000);</span><br><span class="line">        //engines.myEngine().forceStop();</span><br><span class="line">        engines.myEngine().forceStop();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//开始定时器，每隔一分钟自动检索是否存在答题的可能性，如果需要答题的话就直接答题即可</span><br><span class="line">setInterval(function()&#123;</span><br><span class="line">    //如果检测到有题目的话直接答题</span><br><span class="line">    answerProblem();</span><br><span class="line">    //如果已经看完了现在的之后</span><br><span class="line">    if(currentActivity()==&quot;com.chaoxing.fanya.aphone.ui.chapter.KnowledgePagerActivity&quot;)&#123;</span><br><span class="line">        toast(&quot;当前的视频已经看完了，即将开始寻找下一个视频自动播放~&quot;);</span><br><span class="line">        log(&quot;视频已看完，即将开始下一个视频~&quot;);</span><br><span class="line">        //寻找下一个视频自动打开并且播放，以此类推</span><br><span class="line">        findNextVideo();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        toast(&quot;当前视频尚未看完！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 1000*60);//一分钟检测一次</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">//这个是测试用的</span><br><span class="line">setInterval(function()&#123;</span><br><span class="line">    findNextVideo();</span><br><span class="line">&#125;,2000);</span><br><span class="line">*/</span><br><span class="line">//具体的执行方法</span><br><span class="line">function answerProblem()&#123;</span><br><span class="line">    //检测是否出现了弹窗的问题</span><br><span class="line">    sleep(1000);</span><br><span class="line">    var isExistProblem=0;</span><br><span class="line">    if(textContains(&quot;单选题&quot;).exists()||textContains(&quot;判断题&quot;).exists())&#123;</span><br><span class="line">        isExistProblem=1;</span><br><span class="line">    &#125;else if(textContains(&quot;多选题&quot;).exists())</span><br><span class="line">        isExistProblem=2;</span><br><span class="line">    sleep(1000);</span><br><span class="line">    log(&quot;是否存在:&quot;+isExistProblem);</span><br><span class="line">    completionDeploy.push(&quot;是否存在：&quot;+isExistProblem+&quot;\n&quot;);</span><br><span class="line">    if(isExistProblem==1)&#123;</span><br><span class="line">        toast(&quot;当前存在单选题/判断题，即将开始答题！&quot;);</span><br><span class="line">        log(&quot;当前存在单选题/判断题，即将开始答题！&quot;);</span><br><span class="line">        completionDeploy.push(&quot;当前存在单选题/判断题，即将开始答题！&quot;+&quot;\n&quot;);</span><br><span class="line">        //如果存在问题的话讲ABCD答案的空间全部找出来</span><br><span class="line">        var answerA=textContains(&quot;A&quot;).findOnce();</span><br><span class="line">        var answerB=textContains(&quot;B&quot;).findOnce();</span><br><span class="line">        var answerC=textContains(&quot;C&quot;).findOnce();</span><br><span class="line">        var answerD=textContains(&quot;D&quot;).findOnce();</span><br><span class="line">        var answerList=[answerA,answerB,answerC,answerD];</span><br><span class="line">        for(var i=0;i&lt;4;i++)&#123;</span><br><span class="line">            answerList[i].parent().click();</span><br><span class="line">            if(isRight())&#123;</span><br><span class="line">                //如果答题正确了，然后退出~</span><br><span class="line">                toast(&quot;答题完成！&quot;);</span><br><span class="line">                log(&quot;答题完成！&quot;);</span><br><span class="line">                completionDeploy.push(&quot;答题完成&quot;+&quot;\n&quot;);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else if(isExistProblem==2)&#123;</span><br><span class="line">        //多选题</span><br><span class="line">        //toast(&quot;当前存在多选题题，即将开始答题！&quot;);</span><br><span class="line">        log(&quot;当前存在多选题题，暂时不支持多选题，请手动答题！&quot;);</span><br><span class="line">        completionDeploy.push(&quot;当前存在多选题题，暂时不支持多选题，请手动答题！&quot;+&quot;\n&quot;);</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        toast(&quot;当前的页面未检索到题目！&quot;);</span><br><span class="line">        log(&quot;当前的页面未检索到题目！&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//寻找 下一个视频</span><br><span class="line">function findNextVideo()&#123;</span><br><span class="line">    //下面是返回标题集页面的以便进行下一次开始答题</span><br><span class="line">    var titleNow=null;</span><br><span class="line">    var titleNext=null;</span><br><span class="line">    //currentActivity()==&quot;com.chaoxing.fanya.aphone.ui.chapter.KnowledgePagerActivity&quot;</span><br><span class="line">        //这里是把当前已经看完的视频的标题记录下来，方便寻找下一个标题然后进行播放</span><br><span class="line">        titleNow=id(&quot;tv_chapter_name&quot;).findOnce().text();</span><br><span class="line">        toast(&quot;当前标题：&quot;+titleNow);</span><br><span class="line">        //如果看完了返回外面的界面的话直接跳出去</span><br><span class="line">        id(&quot;btnBack&quot;).clickable().findOnce().click();</span><br><span class="line">        log(&quot;当前的界面名称：&quot;+titleNow);</span><br><span class="line">        //完成情况添加</span><br><span class="line">        completionDeploy.push(titleNow+&quot;已完成！&quot;+&quot;\n&quot;);</span><br><span class="line">        sleep(2000);</span><br><span class="line">        //这是一个list，存放了所有</span><br><span class="line">        var titleList=id(&quot;tv_title&quot;).untilFind();</span><br><span class="line">        var titleListIndex=id(&quot;tv_sub_index&quot;).untilFind();</span><br><span class="line">        //log(titleList);</span><br><span class="line">        //log(titleListIndex);</span><br><span class="line">        for(var i=0;i&lt;titleList.length;i++)&#123;</span><br><span class="line">            //log(titleList[i].text());</span><br><span class="line">            if((titleListIndex[i].text()+&quot; &quot;+titleList[i].text())==titleNow)&#123;</span><br><span class="line">                //如果找到的话</span><br><span class="line">                //先滑动</span><br><span class="line">                swipe(device.width/2,device.width/2,device.width/2,device.height-titleList[i].bounds().centerY(),1000);</span><br><span class="line"></span><br><span class="line">                titleNext=titleList[i+1].text();</span><br><span class="line">                toast(&quot;下一个标题的名字：&quot;+titleNext);</span><br><span class="line">                log(&quot;下一个标题的名字：&quot;+titleNext);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(!titleNext)&#123;</span><br><span class="line">            toast(&quot;未找到&quot;+titleNext+&quot;标题！&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            alert(completionDeploy);//展示信息</span><br><span class="line">            sleep(5000);</span><br><span class="line">            engines.myEngine().forceStop();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //找到控件位置然后点击进去</span><br><span class="line">            text(titleNext).findOnce().parent().click();</span><br><span class="line">            toast(&quot;已经进入 &quot;+titleNext+&quot; 标题&quot;);</span><br><span class="line">            completionDeploy.push(&quot;已经进入 &quot;+titleNext+&quot; 标题&quot;+&quot;\n&quot;);</span><br><span class="line">            sleep(4000);</span><br><span class="line">            </span><br><span class="line">            //点击播放按钮</span><br><span class="line">            className(&quot;android.widget.Image&quot;).text(&quot;play&quot;).clickable().findOnce().click();</span><br><span class="line">            sleep(2000);</span><br><span class="line">            toast(&quot;开始播放...&quot;);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    //&#125;   </span><br><span class="line">&#125;</span><br><span class="line">//判断当前的答题是否正确并且返回是否正确的值</span><br><span class="line">function isRight(answerX)&#123;</span><br><span class="line">    //提交</span><br><span class="line">    if(text(&quot;提交&quot;).exists())&#123;</span><br><span class="line">        text(&quot;提交&quot;).clickable().findOnce().click();</span><br><span class="line">    &#125;</span><br><span class="line">    if(textContains(&quot;回答正确&quot;).exists())&#123;</span><br><span class="line">        //再点击一次就重新进入看视频的状态</span><br><span class="line">        text(&quot;继续&quot;).clickable().findOnce().click();</span><br><span class="line">        toast(&quot;回答正确！&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;else if(textContains(&quot;回答错误&quot;).exists())&#123;</span><br><span class="line">        toast(&quot;回答错误！&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        toast(&quot;出现未知错误！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="总结">总结</span></h3><p>其实是很简单的，但是自己的<strong>粗心大意</strong>导致开发周期无限期拉长，很难受！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动端开发/" rel="tag"><i class="fa fa-tag"></i>
+
+ 移动端开发</a>
+          
+            <a href="/tags/Auto-js/" rel="tag"><i class="fa fa-tag"></i>
+
+ Auto.js</a>
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i>
+
+ JS</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i>
+
+ JavaScript</a>
+          
+            <a href="/tags/脚本/" rel="tag"><i class="fa fa-tag"></i>
+
+ 脚本</a>
+          
+            <a href="/tags/Script/" rel="tag"><i class="fa fa-tag"></i>
+
+ Script</a>
+          
+            <a href="/tags/THBELIEFScript/" rel="tag"><i class="fa fa-tag"></i>
+
+ THBELIEFScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/13/机器学习实验-SVM模型分类/" rel="next" title="机器学习实验-SVM模型分类">
+                <i class="fa fa-chevron-left"></i> 机器学习实验-SVM模型分类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/zhangguoron.jpg" alt="THBELIEF">
+            
+              <p class="site-author-name" itemprop="name">THBELIEF</p>
+              <p class="site-description motion-element" itemprop="description">我这个人只是英俊 潇洒了些许~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thbelief" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2465749045@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/thbelief" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.3.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">THBELIEF</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共109.9k字</span>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":125,"height":150},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+</html>
