@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[算法分析-实验一]]></title>
+    <url>%2F2019%2F05%2F16%2F%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-%E5%AE%9E%E9%AA%8C%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[目录： 前言 Euclid’s Game 题目简介 输入 输出 样例输入 样例输出 题目大意 题目分析 代码 Locker doors 题目简介 输入 输出 样例输入 样例输出 题目大意 题目分析 代码 俄式乘法 题目简介 输入 输出 样例输入 样例输出 题目分析 代码 约瑟夫问题的实现 题目简介 输入 输出 样例输入 样例输出 题目分析 代码 前言这周六就要算法分析半期考试了，正好要复习，就顺便写下博客加深一下理解。 Euclid’s Game题目简介Euclid’s Game 1000(ms) 65535(kb) 812 / 3173 Starts with two unequal positive numbers (M,N and M&gt;N) on the board. Two players move in turn. On each move, a player has to write on the board a positive number equal to the difference of two numbers already on the board; this number must be new, i.e., different from all the numbers already on the board. The player who cannot move loses the game. Should you choose to move first or second in this game? According to the above rules, there are two players play tihs game. Assumptions A write a number on the board at first, then B write it. Your task is write a program to judge the winner is A or B. 输入1Two unequal positive numbers M and N , M&gt;N (M&lt;1000000) 输出1A or B 样例输入13 1 样例输出1A 题目大意从两个不等的正数开始，将两个数写在板子上，M&gt;N，每个人只能在板子上写出板子上已有数的差值的绝对值，这个值必须是在板子上面没有出现过的，谁先不能写出谁就输了，所以该是先手还是后手才能赢下比赛？ 假设是A首先写，B后写，我们的任务就是写一个程序来判断谁会赢。 题目分析由数据规律可以得出。 每次写的数字，只能是最开始两个数的最大公约数的k倍，即k最大为M/（M与N的最大公约数）倍，判断M/（M与N的最大公约数）的奇偶性即可。 这里使用辗转相除法来实现求最大公约数。然后判断k的奇偶性即可。奇数则是A胜，否则就是B胜。 代码123456789101112131415161718192021222324252627#include&lt;iostream&gt;using namespace std;int main()&#123; //x，y分别赋值后x&gt;y，c作为余数（这里为后面的辗转相除法做准备） int m,n,x,y,c; cin&gt;&gt;m&gt;&gt;n; //由于题目表示m&gt;n,所以赋值之后x&gt;y x=m; y=n; //这里是辗转相除法 while(y)&#123; //余数c为零即y为零的时候自动退出循环 c=x%y; x=y; y=c; &#125; //这里的m就是输入的m，n中的较大值 m=m/x; if(m%2)&#123; //如果是奇数的话 cout&lt;&lt;&quot;A&quot;&lt;&lt;endl; &#125;else&#123; //如果是偶数的话 cout&lt;&lt;&quot;B&quot;&lt;&lt;endl; &#125; return 0;&#125; Locker doors题目简介Locker doors 1000(ms) 65535(kb) 812 / 3173 There are n lockers in a hallway numbered sequentially from 1 to n. Initially, all the locker doors are closed. You make n passes by the lockers, each time starting with locker #1. On the ith pass, i = 1, 2, …, n, you toggle the door of every ith locker: if the door is closed, you open it, if it is open, you close it. For example, after the first pass every door is open; on the second pass you only toggle the even-numbered lockers (#2, #4, …) so that after the second pass the even doors are closed and the odd ones are opened; the third time through you close the door of locker #3 (opened from the first pass), open the door of locker #6 (closed from the second pass), and so on. After the last pass, which locker doors are open and which are closed? How many of them are open? Your task is write a program to output How many doors are open after the last pass? Assumptions all doors are closed at first. 输入1a positive numbers n, total doors. n&lt;=100000 输出1a positive numbers ，the total of doors opened after the last pass. 样例输入110 样例输出13 题目大意走廊上有n个储物柜，从1到n依次编号。最初，所有的储物柜门都关闭了。每次从储物柜＃1开始，您都会通过储物柜进行n次通行。在第i次通过的时候，i = 1,2，…，n，切换每个第i个储物柜的门：如果门关闭，你打开它，如果它是打开的，你关闭它。例如，在第一次通过后，每扇门都打开; 在第二次通过时，您只需切换偶数编号的储物柜（＃2，＃4，……），以便在第二次通过后，偶数门关闭，奇数门打开; 第三次通过你关闭储物柜＃3的门（从第一次通过打开），打开储物柜＃6的门（从第二次通过关闭），依此类推。在最后一次行走过之后 哪些储物柜门是打开的，哪些是关闭的？有多少是开放的？我们的任务是写一个程序来输出最后一次通过后打开了多少扇门？假设所有门首先关闭。 题目分析首先，大家想到的最简单的应该是直接模拟，但是这里有个问题，像这么大的数据规模的话，是很容易超时的，这就不可取了。 测试多组数据之后会发现，其实这道题可以找到规律——最后开着的门其实编号都是平方数（也就是开根号得出整数的数）。比如18个门的话，最后1、4、9、16都是开着的。 代码12345678910#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;int main()&#123; int n; cin&gt;&gt;n; //从规律中发现其实强制转换之后也就是n开方的值 cout&lt;&lt;(int)sqrt(n)&lt;&lt;endl; return 0;&#125; 或者 123456789101112131415#include&lt;iostream&gt;#include&lt;cmath&gt; using namespace std;int main()&#123; int n; int num = 0; cin&gt;&gt;n; for (int i = 1; i &lt;= n; i++) &#123; //这里的floor是向下取整，返回的是不大于参数的最大整数，要用判断i开方之后是否是整数 if(sqrt(i)==floor(sqrt(i))) num++; &#125; cout&lt;&lt;num&lt;&lt;endl; return 0;&#125; 俄式乘法题目简介俄式乘法 1000(ms) 65535(kb) 2220 / 6369 俄式乘法，又被称为俄国农夫法，它是对两个正整数相乘的非主流算法。假设m和n是两个正整数，我们要计算它们的积。它的主要原理如下： if n is 偶数 n m=n/2 2m else n m=(n-1)/2 2m + m 该算法只包括折半，加倍，相加等几个简单操作，因此实现速度非常快。 输入1两个正整数 n,m。 输出12n和m的乘积。输出整个求和表达式，运算符与数字之间用一个空格隔开。 样例输入150 65 样例输出1130 + 1040 + 2080 = 3250 题目分析这个题太简单了，没啥好分析的，直接按照题目要求写即可。 推荐减常因子的减治法。 代码123456789101112131415161718192021222324252627282930#include&lt;stdio.h&gt;int main()&#123; int n,m,c=0; int k=0,i; scanf(&quot;%d %d&quot;,&amp;n,&amp;m); for(i=0;n!=0;i++) &#123; if(n%2==1&amp;&amp;n!=1) &#123; c+=m; printf(&quot;%d + &quot;,m); &#125; if(n==1) &#123; c+=m; printf(&quot;%d = %d\n&quot;,m,c); &#125; m*=2; if(n%2==1) &#123; n=(n-1)/2; &#125; else if(n%2==0) &#123; n=n/2; &#125; &#125; return 0;&#125; 或者 12345678910111213141516171819202122232425262728#include&lt;iostream&gt;using namespace std; int main()&#123; int n,m; cin&gt;&gt;n&gt;&gt;m; while(n!=0) &#123; int num=0; while(n!=0) &#123; if(n%2==0) &#123;//如果是偶数的话，将两个数一个乘2一个除2 n=n/2; m=m*2; &#125; if(n%2!=0) &#123;//如果是奇数的话 num+=m;//总和上先加上m n=(n-1)/2; if(n!=0) cout&lt;&lt;m&lt;&lt;&quot; + &quot;;//并没有结束 else cout&lt;&lt;m&lt;&lt;&quot; = &quot;&lt;&lt;num&lt;&lt;endl;//结束条件n=0 m=m*2; &#125; &#125; &#125; return 0;&#125; 约瑟夫问题的实现题目简介约瑟夫问题的实现 2000(ms) 65535(kb) 3524 / 11784 n个人围成一个圈，每个人分别标注为1、2、…、n，要求从1号从1开始报数，报到k的人出圈，接着下一个人又从1开始报数，如此循环，直到只剩最后一个人时，该人即为胜利者。例如当n=10,k=4时，依次出列的人分别为4、8、2、7、3、10，9、1、6、5，则5号位置的人为胜利者。给定n个人，请你编程计算出最后胜利者标号数。（要求用单循环链表完成。） 输入12第一行为人数n;第二行为报数k。 输出1输出最后胜利者的标号数。 样例输入1210 4 样例输出15 题目分析如题目，直接使用尾插法建立单循环链表，然后模拟就可以了。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;iostream&gt;#include&lt;cstdlib&gt;using namespace std;typedef struct List&#123; int data; struct List *next;&#125;LinkList; int main()&#123; LinkList *L,*r,*s; L = (LinkList *)malloc(sizeof(LinkList)); r =L; int n,i; int k; cin&gt;&gt;n&gt;&gt;k; for(i = 1;i&lt;=n;i++) ///尾插法建立循环链表 &#123; s = (LinkList *)malloc(sizeof(LinkList)); s-&gt;data = i; r-&gt;next = s; r= s; &#125; r-&gt;next =L-&gt;next; //让最后一个链表的下一个节点指向开头 LinkList *p; p = L-&gt;next; while(p-&gt;next != p) //开始模拟（判断条件要注意：因为最后肯定剩下一个人， 所以最后一个数据的next还是他本身） &#123; for(i = 1;i&lt;k-1;i++) &#123; p = p-&gt;next; //每k个数死一个人 &#125; p-&gt;next = p-&gt;next-&gt;next; //将该节点从链表上删除。 p = p-&gt;next; &#125; //OJ上要求不带回车，所以直接输出即可 cout&lt;&lt;p-&gt;data; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Euclid&#39;s Game</tag>
+        <tag>Locker doors</tag>
+        <tag>俄式乘法</tag>
+        <tag>约瑟夫问题的实现</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(七)]]></title>
     <url>%2F2019%2F05%2F15%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%83%2F</url>
     <content type="text"><![CDATA[目录： 前言 表单 简介 输入控件 获取值 填充值 HTML5控件 提交 前言前面一个博客中其实提到了一个网页脚本这种东西，不得不说，好不好用先不说，但是绝对对学习JS来说是一个很棒的想法。 GreasyFork这个网站就是一个脚本网站，大部分都是JS，可以参考学习。当然，如果要好好的使用的话建议还是下载一个Chrome的脚本插件。 表单简介表单其实也是一个DOM树。表单的操作对于脚本来说还是非常重要的，比如说输入框下拉框之类的，都可以通过JS来操作。 表单在网页中主要负责数据采集功能。一个表单有三个基本组成部分： 表单标签：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。 表单域：包含了文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等。 表单按钮：包括提交按钮、复位按钮和一般按钮；用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作。 输入控件1234567891011文本框，对应的&lt;input type=&quot;text&quot;&gt;，用于输入文本；口令框，对应的&lt;input type=&quot;password&quot;&gt;，用于输入口令；单选框，对应的&lt;input type=&quot;radio&quot;&gt;，用于选择一项；复选框，对应的&lt;input type=&quot;checkbox&quot;&gt;，用于选择多项；下拉框，对应的&lt;select&gt;，用于选择一项；隐藏文本，对应的&lt;input type=&quot;hidden&quot;&gt;，用户不可见，但表单提交时会把隐藏文本发送到服务器。 获取值例如获得一个input节点的引用的话，可以直接通过value来获得对应的输入值。 12var input = document.getElementById(&apos;test&apos;);input.value; // &apos;用户输入的值&apos; 这种方法可以类推到test、password等等属性，但是需要注意的是value属性对于单选框/复选框返回的永远是HTML预设的值，如果需要判断用户选择的是哪些的话，需要用到checked判断。 实例如下： 123456var mon = document.getElementById(&apos;monday&apos;);var tue = document.getElementById(&apos;tuesday&apos;);mon.value; // &apos;1&apos;tue.value; // &apos;2&apos;mon.checked; // true或者falsetue.checked; // true或者false 填充值对于单选框/复选框，设置checked的值即可。 对于另外的输入控件的话，直接设置value值即可。 12var input = document.getElementById(&apos;QQ&apos;);input.value = &apos;123456789&apos;; // 文本框的内容已更新 HTML5控件HTML5新增大量标准控件，常用的包括date、datetime、datetime-local、color等，它们都使用input标签： 1&lt;input type=&quot;date&quot; value=&quot;2019-05-15&quot;&gt; 实例： 注意：这些属性只是对于支持HTML5的浏览器起作用，如果不支持的话就只是简单的文本格式test来显示。 提交JS支持两种方法来提交表单。（AJAX暂且不算） 方法一 通过form元素的submit()方法提交一个表单。 缺点：扰乱了浏览器对form的正常提交。浏览器默认点击button type=”submit”时提交表单，或者用户在最后一个输入框按回车键。 方法二 响应form本身的onsubmit事件，在提交form时作修改。 简单实例： 1234567891011121314&lt;!-- HTML --&gt;&lt;form id=&quot;test-form&quot; onsubmit=&quot;return checkForm()&quot;&gt; &lt;input type=&quot;text&quot; name=&quot;test&quot;&gt; &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;&lt;/form&gt;&lt;script&gt;function checkForm() &#123; var form = document.getElementById(&apos;test-form&apos;); // 可以在此修改form的input... // 继续下一步: return true;&#125;&lt;/script&gt; 注意return true来告诉浏览器继续提交，如果return false，浏览器将不会继续提交form，这种情况通常对应用户输入有误，提示用户错误信息后终止提交form。 另外，在检查和修改input时，要充分利用input type=”hidden”来传递数据。]]></content>
@@ -41,8 +56,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>实验</tag>
+        <tag>机器学习</tag>
         <tag>libsvm</tag>
         <tag>SVM</tag>
       </tags>
@@ -607,9 +622,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -783,10 +798,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -888,9 +903,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

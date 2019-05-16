@@ -313,6 +313,300 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/26/Lua学习笔记-三/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/26/Lua学习笔记-三/" itemprop="url">Lua学习笔记(三)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T21:27:16+08:00">
+                2019-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Lua/" itemprop="url" rel="index">
+                    <span itemprop="name">Lua</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#模块与包">模块与包</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#创建">创建</a></li>
+<li><a href="#实例">实例</a></li>
+</ul>
+</li>
+<li><a href="#require函数">require函数</a></li>
+<li><a href="#加载机制">加载机制</a></li>
+<li><a href="#c包">C包</a></li>
+<li><a href="#metatable元表">Metatable元表</a><ul>
+<li><a href="#两个重要方法">两个重要方法</a></li>
+<li><a href="#_index元方法">_index元方法</a><ul>
+<li><a href="#总结">总结</a></li>
+</ul>
+</li>
+<li><a href="#_newindex元方法">_newindex元方法</a></li>
+<li><a href="#操作符">操作符</a></li>
+<li><a href="#_call元方法">_call元方法</a></li>
+<li><a href="#_tostring元方法">_tostring元方法</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="模块与包">模块与包</span></h2><h3><span id="简介">简介</span></h3><p>模块其实就是<strong>封装库。</strong></p>
+<p>Lua中的模块<strong>由变量、函数等已知元素组成的table</strong>构成。</p>
+<h3><span id="创建">创建</span></h3><p>创建一个table然后把需要导出的常量与函数放入其中，最后在返回这个table。</p>
+<p>注：可以操作模块像操作table中的元素一样，事实上他们本质上并没有什么不同的地方。</p>
+<h3><span id="实例">实例</span></h3><p>注意：文件名和模块名需要一一对应…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-- 文件名为test.lua</span><br><span class="line">-- 定义一个名字叫test的模块</span><br><span class="line">test=&#123;&#125;</span><br><span class="line">-- 定义一个常量</span><br><span class="line">test.changliang=&quot;常量&quot;</span><br><span class="line">--定义一个函数</span><br><span class="line">function test.functionOne()</span><br><span class="line">    print(&quot;公有函数&quot;)</span><br><span class="line">end</span><br><span class="line">--下面这个私有函数只有通过公有函数才可以调用</span><br><span class="line">local function test.functionTwo()</span><br><span class="line">    print(&quot;私有函数&quot;)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">return test</span><br></pre></td></tr></table></figure>
+<h2><span id="require函数">require函数</span></h2><p>这个函数是用来加载模块的。如果要加载模块，只需要简单的调用即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 第一种</span><br><span class="line">require(&quot;&lt;模块名&gt;&quot;)</span><br><span class="line">-- 第二种</span><br><span class="line">require &quot;&lt;模块名&gt;&quot;</span><br></pre></td></tr></table></figure>
+<p>执行之后会返回一个<strong>模块常量或函数组成的table。</strong>同时还会<strong>定义一个包含该table的全局变量。</strong></p>
+<p>用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- test.lua 文件</span><br><span class="line">-- test 模块为上文提到到 test.lua</span><br><span class="line">require(&quot;test&quot;)</span><br><span class="line">print(module.changliang)</span><br><span class="line">test.functionOne()</span><br></pre></td></tr></table></figure>
+<p>其实也可以另外定义一个名字，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local name=require(&quot;test&quot;)</span><br></pre></td></tr></table></figure>
+<h2><span id="加载机制">加载机制</span></h2><p><strong>自定义模块不是放在所有位置都可以起作用，函数require有自己的加载策略。</strong></p>
+<p>require 用于搜索 Lua 文件的路径是存放在全局变量 package.path 中，当 Lua 启动后，会以环境变量 LUA_PATH 的值来初始这个环境变量。如果没有找到该环境变量，则使用一个编译时定义的默认路径来初始化。</p>
+<p>这里有点儿小复杂，后面有时间专门写一篇博客详细解释。</p>
+<h2><span id="c包">C包</span></h2><p>这里有点儿小复杂，后面有时间专门写一篇博客详细解释。</p>
+<h2><span id="metatable元表">Metatable元表</span></h2><p>在Lua中的table中可以根据对应的键key来获取value值，但是<strong>没办法对两个table同时进行操作。</strong></p>
+<p><strong>元表</strong>则允许改变table的行为，每个行为都<strong>关联了对应的方法。</strong></p>
+<h3><span id="两个重要方法">两个重要方法</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setmetatable(table,metatable): 对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。</span><br><span class="line"></span><br><span class="line">getmetatable(table): 返回对象的元表(metatable)。</span><br></pre></td></tr></table></figure>
+<p>对指定表设置元表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mytable = &#123;&#125;                          -- 普通表 </span><br><span class="line">mymetatable = &#123;&#125;                      -- 元表</span><br><span class="line">setmetatable(mytable,mymetatable)     -- 把 mymetatable 设为 mytable 的元表</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mytable = setmetatable(&#123;&#125;,&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>返回对象的元表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getmetatable(mytable)                 -- 返回mymetatable</span><br></pre></td></tr></table></figure>
+<h3><span id="_index元方法">_index元方法</span></h3><p>通过键来访问table的时候，如果这个键没有对应的值，就会寻找该table的元表中的<strong>_index</strong>键，如果<strong>_index</strong>包含一个表格，系统就会在表格中查找对应的键。</p>
+<p>如果__index包含一个函数的话，Lua就会调用那个函数，table和键会作为参数传递给函数。</p>
+<h4><span id="总结">总结</span></h4><p>Lua查找一个表元素时候的规则如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.在表中查找，如果找到，返回该元素，找不到则继续。</span><br><span class="line">2.判断该表是否有元表，如果没有元表，返回 nil，有元表则继续。</span><br><span class="line">3.判断元表有没有 __index 方法，如果 __index 方法为 nil，则返回 nil；如果 __index 方法是一个表，则重复 1、2、3；如果 __index 方法是一个函数，则返回该函数的返回值。</span><br></pre></td></tr></table></figure>
+<h3><span id="_newindex元方法">_newindex元方法</span></h3><p>这个元方法用来对表做<strong>更新。</strong></p>
+<p>_index方法则用来对表做<strong>访问。</strong></p>
+<p>当给表的一个缺少的索引赋值，解释器就会查找<strong>__newindex 元方法</strong>，如果存在则调用这个函数而不进行赋值操作。</p>
+<h3><span id="操作符">操作符</span></h3><p>在表可以做到某些的操作。具体操作符号参见下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">__add</td>
+<td style="text-align:left">对应的运算符 ‘+’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__sub</td>
+<td style="text-align:left">对应的运算符 ‘-‘.</td>
+</tr>
+<tr>
+<td style="text-align:left">__mul</td>
+<td style="text-align:left">对应的运算符 ‘*’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__div</td>
+<td style="text-align:left">对应的运算符 ‘/‘.</td>
+</tr>
+<tr>
+<td style="text-align:left">__mod</td>
+<td style="text-align:left">对应的运算符 ‘%’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__unm</td>
+<td style="text-align:left">对应的运算符 ‘-‘.</td>
+</tr>
+<tr>
+<td style="text-align:left">__concat</td>
+<td style="text-align:left">对应的运算符 ‘..’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__eq</td>
+<td style="text-align:left">对应的运算符 ‘==’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__lt</td>
+<td style="text-align:left">对应的运算符 ‘&lt;’.</td>
+</tr>
+<tr>
+<td style="text-align:left">__le</td>
+<td style="text-align:left">对应的运算符 ‘&lt;=’.</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="_call元方法">_call元方法</span></h3><p>这个方法在Lua调用一个值的时候调用。</p>
+<h3><span id="_tostring元方法">_tostring元方法</span></h3><p>这个方法以前也遇到过类似的，顾名思义，其实就是更改表的输出行为。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/25/Android-书籍（进阶）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2907,202 +3201,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/18/Auto-js-Script开发-十一/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/18/Auto-js-Script开发-十一/" itemprop="url">Auto.js Script开发(十一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T16:26:45+08:00">
-                2019-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Auto.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  313
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天就是更新了4.9.0的版本，新增了一个二维码生成的功能，准备下一次重构底层代码了，现在写起来有点儿小难受。</p>
-<h2><span id="正文">正文</span></h2><p>二维码生成功能页面：</p>
-<p><img src="/2019/04/18/Auto-js-Script开发-十一/二维码生成.png" alt=""></p>
-<p>目前有的规划：</p>
-<p><img src="/2019/04/18/Auto-js-Script开发-十一/规划.jpg" alt=""></p>
-<p>二维码生成的关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//网络请求图片然后保存到本地</span><br><span class="line">            //这里用的是type1，返回的是base64encode编码的字符串,type2返回的就是图片png格式</span><br><span class="line">            threads.start(function()&#123;</span><br><span class="line">                var url=&quot;http://apis.juhe.cn/qrcode/api?key=684e3d257f6034ebdfd80a2bbeddeb18&amp;type=2&amp;fgcolor=&quot;+ui.backgroundColor.text()+&quot;&amp;w=&quot;+ui.size.text()+&quot;&amp;m=&quot;+ui.marginSize.text()+&quot;&amp;text=&quot;+ui.textContent.text();</span><br><span class="line">                var img=images.load(url);</span><br><span class="line">                if(img!=null)&#123;</span><br><span class="line">                    toast(&quot;网络请求成功&quot;);</span><br><span class="line">                    //提示一下是不是要生成？</span><br><span class="line">                    //在根目录下创建一个文件夹“THBELIEFScript二维码”</span><br><span class="line">                    files.create(&quot;/sdcard/THBELIEFScript二维码/&quot;);</span><br><span class="line">                    images.save(img,&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;,&quot;png&quot;,100);</span><br><span class="line">                    toast(&quot;该二维码图片保存在&quot;+&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;);</span><br><span class="line">                    log(&quot;该二维码图片保存在&quot;+&quot;/sdcard/THBELIEFScript二维码/&quot;+ui.textContent.text()+&quot;.png&quot;);    </span><br><span class="line">                &#125;else&#123;//网络请求失败</span><br><span class="line">                    toast(&quot;网络请求失败!&quot;);</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3155,7 +3253,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3177,7 +3275,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3262,7 +3360,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共110.9k字</span>
+  <span class="post-count">博客全站共113.3k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

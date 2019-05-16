@@ -313,6 +313,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/26/hexo常用指令（个人向）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/26/hexo常用指令（个人向）/" itemprop="url">hexo常用指令（个人向）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T09:54:55+08:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/搭建博客/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  779
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#hexo的常用指令">Hexo的常用指令：</a><ul>
+<li><a href="#1新建文章">1.新建文章：</a></li>
+<li><a href="#2新建页面">2.新建页面：</a></li>
+<li><a href="#3生成静态页面">3.生成静态页面：</a></li>
+<li><a href="#4开启本地服务器的端口">4.开启本地服务器的端口：</a></li>
+<li><a href="#5部署到网页上">5.部署到网页上：</a></li>
+<li><a href="#6清除文件">6.清除文件：</a></li>
+<li><a href="#7查看hexo版本">7.查看hexo版本：</a></li>
+<li><a href="#8复合指令">8.复合指令：</a></li>
+<li><a href="#9卸载hexo">9.卸载hexo：</a></li>
+<li><a href="#10如何安装旧版本hexo">10.如何安装旧版本hexo：</a></li>
+<li><a href="#11特殊操作hexo支持目录">11.特殊操作：Hexo支持目录：</a></li>
+<li><a href="#12博客加密个人向">12.博客加密（个人向）</a></li>
+<li><a href="#13萌宠添加个人向">13.萌宠添加（个人向）</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="hexo的常用指令">Hexo的常用指令：</span></h2><h3><span id="1新建文章">1.新建文章：</span></h3><p>如果文章名包含空格必须加双引号，如果没有则可以不加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;articleName&quot;</span><br></pre></td></tr></table></figure>
+<h3><span id="2新建页面">2.新建页面：</span></h3><p>新建一个题为“pageName”的页面，此时会在/source/目录下生成一个名为pageName的文件夹，其中包含一份 index 的md文件；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page &quot;pageName&quot;</span><br></pre></td></tr></table></figure>
+<h3><span id="3生成静态页面">3.生成静态页面：</span></h3><p>主要是为了方便调试自己的博客，在未发布之前检查是否有问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<h3><span id="4开启本地服务器的端口">4.开启本地服务器的端口：</span></h3><p>开启预览访问的端口，默认端口为4000。<br>关闭server使用 ctrl + c。</p>
+<p>本地网址如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost：4000</span><br></pre></td></tr></table></figure>
+<p>命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>在使用hexo server 可能会遇到端口被占用的情况，不妨使用以下指令来更改端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p 4001</span><br></pre></td></tr></table></figure>
+<h3><span id="5部署到网页上">5.部署到网页上：</span></h3><p>将目录下的 .deploy_git 文件夹部署到Github。<br>部署前需要预先 hexo generate 生成静态文件。</p>
+<p>关闭server使用 ctrl + c。</p>
+<p>“INFO Deploy done: git”时即表示部署已经完成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<h3><span id="6清除文件">6.清除文件：</span></h3><p>清除目录下的缓存文件（db.json）和已经生成的静态文件（public）文件。<br>网页正常情况下可以忽略此条命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<h3><span id="7查看hexo版本">7.查看hexo版本：</span></h3><p>查看当前使用的hexo的版本号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+<h3><span id="8复合指令">8.复合指令：</span></h3><p>hexo g -d # 等价于 hexo generate –deploy ：生成静态文件并部署。<br>hexo s -d # 等价于 hexo deploy –generate ：开启预览并部署到Github。</p>
+<p>简写形式<br>hexo n #等价于 hexo new<br>hexo g #等价于 hexo generate<br>hexo s #等价于 hexo server<br>hexo d #等价于 hexo deploy<br>hexo v #等价于 hexo version</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br><span class="line">$ hexo s -d</span><br></pre></td></tr></table></figure>
+<h3><span id="9卸载hexo">9.卸载hexo：</span></h3><p>3.0.0版本执行npm uninstall hexo-cli -g，之前版本执行npm uninstall hexo -g.</p>
+<h3><span id="10如何安装旧版本hexo">10.如何安装旧版本hexo：</span></h3><p>先卸载当前版本，以2.8.3为例，执行npm install <a href="mailto:hexo@2.8.3" target="_blank" rel="noopener">hexo@2.8.3</a> -g，再初始化并安装依赖和插件。</p>
+<h3><span id="11特殊操作hexo支持目录">11.特殊操作：Hexo支持目录：</span></h3><p>1.安装hexo-toc插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-toc --save</span><br></pre></td></tr></table></figure>
+<p>2.配置站点配置文件_config.yml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  maxdepth: 5</span><br></pre></td></tr></table></figure>
+<p>3.使用：</p>
+<p>在markdown文章中加入TOC占位符即可自动生成目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- toc --&gt;</span><br></pre></td></tr></table></figure>
+<p>4.效果：</p>
+<p><img src="/2019/02/26/hexo常用指令（个人向）/效果.jpg" alt=""></p>
+<h3><span id="12博客加密个人向">12.博客加密（个人向）</span></h3><p>使用：（已配置好）</p>
+<p>在博客的开头加上这一段文字即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password: 123456 //自定义密码</span><br></pre></td></tr></table></figure>
+<h3><span id="13萌宠添加个人向">13.萌宠添加（个人向）</span></h3><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-helper-live2d --save</span><br></pre></td></tr></table></figure>
+<p>添加配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  model:</span><br><span class="line">    # 这是白猫的模型</span><br><span class="line">    use: live2d-widget-model-tororo</span><br><span class="line">  display:</span><br><span class="line">    # 设置模型的位置</span><br><span class="line">    position: right</span><br><span class="line">    width: 120</span><br><span class="line">    height: 240</span><br><span class="line">  mobile:</span><br><span class="line">    show: false</span><br><span class="line">  react:</span><br><span class="line">    opacityDefault: 1</span><br><span class="line">    opacityOnHover: 1</span><br></pre></td></tr></table></figure>
+<p>下载模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install &#123;your model&apos;s package name&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/26/android学习路线总结plus/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2100,7 +2347,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2122,7 +2369,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2207,7 +2454,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共110.9k字</span>
+  <span class="post-count">博客全站共113.3k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
