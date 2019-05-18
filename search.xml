@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(八)]]></title>
+    <url>%2F2019%2F05%2F18%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AB%2F</url>
+    <content type="text"><![CDATA[目录： 操作文件 上传文件 File API 回调 操作文件上传文件在HTML表单中，可以上传文件的唯一控件就是： 1&lt;input type=&quot;file&quot;&gt; 当一个表单包含input type=”file”时，表单的enctype必须指定为multipart/form-data，method必须指定为post，浏览器才可以正确编码并以multipart/form-data格式发送表单的数据。 另外，由于安全方面的考虑，不可能使用JS对input type=”file”的value进行赋值，上传文件之后也不能获取该文件的真实路径。 注意，一般上传文件都是由后台的服务器做处理，JS可以做的就是在上传的时候检测文件的扩展名，防止上传无效的格式。 123456var f = document.getElementById(&apos;test-file-upload&apos;);var filename = f.value; // &apos;C:\fakepath\test.png&apos;if (!filename || !(filename.endsWith(&apos;.jpg&apos;) || filename.endsWith(&apos;.png&apos;) || filename.endsWith(&apos;.gif&apos;))) &#123; alert(&apos;Can only upload image file.&apos;); return false;&#125; File APIJS对用户上传文件的操作非常有限，例如无法读取文件内容，很多需要操作文件的网页不得不用Flash来实现。 HTML5的File API提供了File和FileReader两个主要对象，可以获得文件信息并读取文件。 具体操作这里不做演示，可以自行百度。 回调JS是单线程执行模式。 在JS中执行多任务其实都是用的异步调用。例如： 1reader.readAsDataURL(file); 上面的代码会发起一个异步的操作来读取文件的内容，由于是异步操作，JS中不知道什么时候会结束，所以之前需要设置一个回调函数。 123reader.onload = function(e) &#123; // 当文件读取完成后，自动调用此函数:&#125;; 文件读取完成之后JS会自动的调用自己设置的回调函数。执行回调函数的时候其实文件已经读取完毕了，所以可以安全地在回调函数内部获得文件的内容。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>操作文件</tag>
+        <tag>File API</tag>
+        <tag>回调</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VSCode搭建C++/C调试编译环境（使用DevC++）]]></title>
     <url>%2F2019%2F05%2F17%2FVSCode%E6%90%AD%E5%BB%BAC-C%E8%B0%83%E8%AF%95%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%EF%BC%88%E4%BD%BF%E7%94%A8DevC-%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 前言 配置Dev下MinGW64的路径 安装VSCode插件 新建工作区 新建一个VSCode-C文件夹 配置 launch.json tasks.json c_cpp_properties.json 测试 前言关于VSCode使用Dev C++的MinGW64来调试C++/C网上的教程试了很多，大部分都已经过时了或者说是不适配了，最后就选择使用Dev原有的东西来实现，不建议自己下载MinGW64，里面安装的时候有些选项不知道选什么的话很容易出现问题。 配置Dev下MinGW64的路径假设Dev已经安装好了，然后现在要做的就是将Dev目录下的MinGW添加到环境变量的path里面去。 我的路径配置是： 注意这里必须是直接到bin目录 1D:\c.code\Dev\Dev-Cpp\MinGW64\bin 关于如何配置环境变量这部分就不说了，电脑-&gt;右键属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量-&gt;Path-&gt;编辑-&gt;添加。添加完成之后一路确定退出保存即可。 安装VSCode插件直接搜索C++安装第一个就可以了，下面的那些可以看自己的情况安装。 还可以安装一个Code Runner插件，这个插件是用来运行代码的。（非调试，调试环境需要自己配置） 新建工作区由于VSCode本身不支持C++/C的调试环境，所以这些都需要自己配置。新建一个专门的C的工作区是最便利的方法。 新建一个VSCode-C文件夹新建一个文件夹，记住位置，然后在VSCode里面讲该文件夹添加为一个新的工作区。（以后写的C++/C代码都要放到这个文件夹下面才可以进行调试） 然后点击左下角的设置按钮，然后点击工作区，进入工作区的设置环境。（默认是用户设置，我们需要修改工作区的设置），然后在上面的搜索框输入Files.Encoding，将设置修改为gb2312。 配置在工作区下面的.vscode里面添加三个文件。 下面的配置文件必须修改为自己Dev目录下的MinGW路径。 launch.json1234567891011121314151617181920212223242526272829&#123; // 使用 IntelliSense 了解相关属性。 // 悬停以查看现有属性的描述。 // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387 &quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ &#123; &quot;name&quot;: &quot;(gdb) Launch&quot;, &quot;type&quot;: &quot;cppdbg&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;program&quot;: &quot; $&#123;file&#125;.exe&quot;, &quot;args&quot;: [], &quot;stopAtEntry&quot;: false, &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, &quot;environment&quot;: [], &quot;externalConsole&quot;: true, &quot;preLaunchTask&quot;: &quot;build&quot;, &quot;MIMode&quot;: &quot;gdb&quot;, &quot;miDebuggerPath&quot;: &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\bin\\gdb.exe&quot;, &quot;setupCommands&quot;: [ &#123; &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;, &quot;text&quot;: &quot;-enable-pretty-printing&quot;, &quot;ignoreFailures&quot;: true &#125; ] &#125; ]&#125; tasks.json12345678910111213141516171819&#123; // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &quot;version&quot;: &quot;2.0.0&quot;, &quot;tasks&quot;: [ &#123; &quot;label&quot;: &quot;build&quot;, &quot;type&quot;: &quot;shell&quot;, &quot;command&quot;: &quot;g++&quot;, &quot;args&quot;: [ &quot;-g&quot;, &quot;$&#123;file&#125;&quot;, &quot;-o&quot;, &quot;$&#123;file&#125;.exe&quot; ], &#125; ]&#125; c_cpp_properties.json1234567891011121314151617181920212223&#123; &quot;configurations&quot;: [ &#123; &quot;name&quot;: &quot;Win32&quot;, &quot;includePath&quot;: [ &quot;$&#123;workspaceFolder&#125;/**&quot;, &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\4.9.2\\include\\c++&quot;, &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\4.9.2\\include\\c++\tr1&quot;, &quot;D:/c.code/Dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/x86_64-w64-mingw32&quot; ], &quot;defines&quot;: [ &quot;_DEBUG&quot;, &quot;UNICODE&quot;, &quot;_UNICODE&quot; ], &quot;compilerPath&quot;: &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\bin\\gcc.exe&quot;, &quot;cStandard&quot;: &quot;c99&quot;, &quot;cppStandard&quot;: &quot;c++98&quot;, &quot;intelliSenseMode&quot;: &quot;clang-x64&quot; &#125; ], &quot;version&quot;: 4&#125; 测试在VSCode-C下面创建一个新文件Untitled-1.cpp，然后写上代码。（建议加上 system(“pause”);，这样控制台不会一闪而过）。 最后运行结果如下：]]></content>
@@ -636,9 +652,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
