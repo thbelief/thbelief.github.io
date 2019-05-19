@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习实验-VSM计算相似度]]></title>
+    <url>%2F2019%2F05%2F19%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C-VSM%E8%AE%A1%E7%AE%97%E7%9B%B8%E4%BC%BC%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[目录： 实验目的 通过VSM模型来计算文档之间的相似度。 实验内容 熟练掌握term的选择。 计算每篇文章中每个term的权重。（TF-IDF） 计算文档的相似度。 实验过程1.首先要做的就是读取文档，然后就是去除停用词。关键代码如下:原理就是一行一行的读取，然后逐词匹配，如果是的话就去除该停用词。 2.计算TF-IDF TF计算因子代表了词频，即一个单词在文档中出现的次数，一般来说，在某个文档中反复出现的单词，往往能够表征文档的主题信息，即Tf值越大，越能代表文档所反映的内容，那么应该给于这个单词更大的权值。 Tf=1+log(Tf) IDF反映了一个特征词在整个文档集合中的分布情况，特征词出现在其中的文档数目越多，IDF值越低，这个词区分不同文档差异的能力越差，所以IDF衡量了单词对不同文档内容差异的区分能力。 IDF=log(N/nk) 3.计算权重： 权重=TF*IDF 4.相似度计算：这里使用的是Cosine算法。公式如下： 实验结果]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>实验</tag>
+        <tag>VSM</tag>
+        <tag>相似度</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(八)]]></title>
     <url>%2F2019%2F05%2F18%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AB%2F</url>
     <content type="text"><![CDATA[目录： 操作文件 上传文件 File API 回调 操作文件上传文件在HTML表单中，可以上传文件的唯一控件就是： 1&lt;input type=&quot;file&quot;&gt; 当一个表单包含input type=”file”时，表单的enctype必须指定为multipart/form-data，method必须指定为post，浏览器才可以正确编码并以multipart/form-data格式发送表单的数据。 另外，由于安全方面的考虑，不可能使用JS对input type=”file”的value进行赋值，上传文件之后也不能获取该文件的真实路径。 注意，一般上传文件都是由后台的服务器做处理，JS可以做的就是在上传的时候检测文件的扩展名，防止上传无效的格式。 123456var f = document.getElementById(&apos;test-file-upload&apos;);var filename = f.value; // &apos;C:\fakepath\test.png&apos;if (!filename || !(filename.endsWith(&apos;.jpg&apos;) || filename.endsWith(&apos;.png&apos;) || filename.endsWith(&apos;.gif&apos;))) &#123; alert(&apos;Can only upload image file.&apos;); return false;&#125; File APIJS对用户上传文件的操作非常有限，例如无法读取文件内容，很多需要操作文件的网页不得不用Flash来实现。 HTML5的File API提供了File和FileReader两个主要对象，可以获得文件信息并读取文件。 具体操作这里不做演示，可以自行百度。 回调JS是单线程执行模式。 在JS中执行多任务其实都是用的异步调用。例如： 1reader.readAsDataURL(file); 上面的代码会发起一个异步的操作来读取文件的内容，由于是异步操作，JS中不知道什么时候会结束，所以之前需要设置一个回调函数。 123reader.onload = function(e) &#123; // 当文件读取完成后，自动调用此函数:&#125;; 文件读取完成之后JS会自动的调用自己设置的回调函数。执行回调函数的时候其实文件已经读取完毕了，所以可以安全地在回调函数内部获得文件的内容。]]></content>

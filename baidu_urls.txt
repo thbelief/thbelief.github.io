@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/05/19/机器学习实验-VSM计算相似度/
 http://thbelief.coding.me/2019/05/18/JavaScript学习笔记-八/
 http://thbelief.coding.me/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/
 http://thbelief.coding.me/2019/05/16/算法分析-实验一/
