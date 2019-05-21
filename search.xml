@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Chrome主页被劫持解决方案]]></title>
+    <url>%2F2019%2F05%2F21%2FChrome%E4%B8%BB%E9%A1%B5%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[目录： 前言今天安装软件的时候不小心被强制劫持了主页，被恶心够了，好在最终解决了，用博客记录一下这次的解决过程。 正文这次我使用的是Chrome浏览器。直接使用这个浏览器做示范。 检查劫持网页在地址栏输入： 1chrome://version/ 找到命令行这一栏，观察里面是否出现劫持页面的网址。 确定被劫持位置有很多种劫持的方式，所以需要确定被劫持的是哪个位置。 快捷方式（任务栏或者非任务栏）、软件名.exe。大概就这三个地方，每个检查一下就可以了，一般都是快捷方式被属性被修改。 我这里示范一下检查任务栏固定的时候如何查看，如果在如图步骤之后在目标那一栏的后半部分看到了之前看到的网址。直接删除即可，这样打开浏览器就可以看到恢复啦！]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Chrome</tag>
+        <tag>主页劫持</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[简单背包问题]]></title>
     <url>%2F2019%2F05%2F20%2F%E7%AE%80%E5%8D%95%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[目录： 简单背包问题 题目介绍 输入 输出 样例输入 样例输出 题目分析 题目代码 题目结果 动态规划思想 含义 设计 自顶向下 自底向上 重点 总结 简单背包问题这道题是一道关于动态规划以及搜索的题目，这里就附上这道题的解法与代码。 题目介绍简单背包问题 1000(ms) 65535(kb) 1593 / 7745 Tags: 搜索 设有一个背包可以放入的物品重量为S，现有n件物品，重量分别是w1，w2，w3，…wn。 问能否从这n件物品中选择若干件放入背包中，使得放入的重量之和正好为S。 如果有满足条件的选择，则此背包有解，否则此背包问题无解。 输入12输入数据有多行，包括放入的物品重量为s，物品的件数n，以及每件物品的重量（输入数据均为正整数）多组测试数据。 输出1对于每个测试实例，若满足条件则输出“YES”，若不满足则输出“NO“ 样例输入12320 51 3 5 7 9 样例输出1YES 题目分析其实这只是一道很简单的动态规划题目。由于下面要仔仔细细的讲一下动态规划相关问题，这里不做详细描述，只贴代码。 题目代码123456789101112131415161718192021222324252627282930#include &lt;iostream&gt;using namespace std;int weightArray[100]=&#123;0&#125;;//这个全局数组用来存放物品的重量,目前只是申请了100的空间，如果不够的话可以继续增大int solve(int weight,int n) &#123; if (weight==0) &#123; //取空了的话就可以直接返回1了 return 1; &#125; if (n==0&amp;&amp;weight!=0) &#123; //所有东西都取出来了，但是还是不为0重量，说明出现了数据的问题返回0 return 0; &#125; if (solve(weight, n-1)==1) &#123; //假定第n个物品还没有被取出来，直接取第n－1号物品，成功了就返回1 return 1; &#125; return solve(weight-weightArray[n], n-1);//此时第n个物品已经取出来了，然后取第n－1号物品，以此类推即可&#125; int main() &#123; int weight,num; while (cin&gt;&gt;weight&gt;&gt;num) &#123;//多组输入 for (int i=1; i&lt;=num; i++) &#123; cin&gt;&gt;weightArray[i]; &#125; if(solve(weight,num)==1) //成功返回1 cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl; else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl; &#125; return 0;&#125; 题目结果结果如下，已经达到了目的。 如果OJ上提交不过的话建议直接调大数组的大小，很多时候其实就是测试用例的范围问题。 动态规划思想含义所谓的动态规划（dynamic programming）思想其实就是通过组合子问题而解决整个问题的解。 设计自顶向下相当于递归函数，从大范围开始计算，然后不断保存中间结果，这是为了防止重复计算。 自底向上从小范围递推计算到大范围。 重点递归+边界。 总结其实这次只是简单的说一下这个动态规划的思想，这个也不是一句两句就可以解释清楚的，我以后准备专门抽时间通过实例来详细的写一篇关于动态规划的博客，敬请期待吧。]]></content>
@@ -216,8 +228,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>root</tag>
         <tag>卡刷</tag>
+        <tag>root</tag>
       </tags>
   </entry>
   <entry>
@@ -546,8 +558,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>刷机</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -855,10 +867,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -960,9 +972,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
