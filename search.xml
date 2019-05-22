@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(九)]]></title>
+    <url>%2F2019%2F05%2F22%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B9%9D%2F</url>
+    <content type="text"><![CDATA[目录： AJAX含义全称是Asynchronous JavaScript and XML，即用JavaScript执行异步网络请求。 所谓的异步网络请求，其实就是需要回调函数。 另外，AJAX并不是JavaScript的规范。 Web的运作原理其实就是：一次HTTP请求对应一个界面。当用户在浏览器中提交一个表单的时候其实浏览器就会刷新一下，然后在新页面返回到底请求是成功了还是失败了。如果失败了一般都是会返回一个404的界面。 如果要让用户留在当前页面中，同时发出新的HTTP请求，就必须用JavaScript发送这个新请求，接收到数据后，再用JavaScript更新页面，这样一来，用户就感觉自己仍然停留在当前页面，但是数据却可以不断地更新。 使用在如今的最新浏览器（低版本的貌似需要ActiveXObject对象）上使用AJAX需要用到XMLHttpRequest对象： 在创建了XMLHttpRequest对象后，要先设置onreadystatechange的回调函数。 在回调函数中，通过readyState === 4来判断请求是否完成，如果已完成，再根据status === 200来判断是否是成功的响应。 XMLHttpRequest对象的open()方法有3个参数，第一个参数指定是GET还是POST，第二个参数指定URL地址，第三个参数指定是否使用异步，默认是true，不用写。 千万不能把第三个参数指定为false，否则浏览器将停止响应，直到AJAX请求完成。 调用send()方法的时候其实才真正发送请求。 GET请求不需要参数，POST请求需要把body部分以字符串或者FormData对象传进去。 1234567891011121314151617181920212223242526272829303132function success(text) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = text;&#125;function fail(code) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = 'Error code: ' + code;&#125;var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象request.onreadystatechange = function () &#123; // 状态发生变化时，函数被回调 if (request.readyState === 4) &#123; // 成功完成 // 判断响应结果: if (request.status === 200) &#123; // 成功，通过responseText拿到响应的文本: return success(request.responseText); &#125; else &#123; // 失败，根据响应码判断失败原因: return fail(request.status); &#125; &#125; else &#123; // HTTP请求还在继续... &#125;&#125;// 发送请求:request.open('GET', '/categories/');request.send();alert('请求已发送，请等待响应...'); 安全限制问题默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致。 但是也不是说不能请求其他网站的URL，还是有其他的办法的，常用方法如下： 使用JSONP，但是限制了只能使用GET请求，并且要求返回JS。（原理其实就是浏览器一般是运行跨域引用JS资源的。） 1234&lt;head&gt; &lt;script src=&quot;https://thbelief.coding.me//abc.js&quot;&gt;&lt;/script&gt; ...&lt;/head&gt; JSONP的返回格式一般是函数调用形式。例如： 在当前的页面先准备好foo函数，然后给页面动态的添加一个script节点，这就相当于动态的读取外域的JS资源了，然后等着回调函数的返回即可。 1foo(’data‘); CORS含义新的跨域方式。（浏览器需要支持HTML5） CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。 Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。 假设本域是one.com，外域是two.com，只要响应头Access-Control-Allow-Origin为对应的网址，或者是*，本次请求就可以成功。 值得注意的是，跨域能否成功，取决于对方服务器是否愿意给你设置一个正确的Access-Control-Allow-Origin，决定权始终在对方手中。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>AJAX</tag>
+        <tag>CORS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Chrome主页被劫持解决方案]]></title>
     <url>%2F2019%2F05%2F21%2FChrome%E4%B8%BB%E9%A1%B5%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
     <content type="text"><![CDATA[目录： 前言今天安装软件的时候不小心被强制劫持了主页，被恶心够了，好在最终解决了，用博客记录一下这次的解决过程。 正文这次我使用的是Chrome浏览器。直接使用这个浏览器做示范。 检查劫持网页在地址栏输入： 1chrome://version/ 找到命令行这一栏，观察里面是否出现劫持页面的网址。 确定被劫持位置有很多种劫持的方式，所以需要确定被劫持的是哪个位置。 快捷方式（任务栏或者非任务栏）、软件名.exe。大概就这三个地方，每个检查一下就可以了，一般都是快捷方式被属性被修改。 我这里示范一下检查任务栏固定的时候如何查看，如果在如图步骤之后在目标那一栏的后半部分看到了之前看到的网址。直接删除即可，这样打开浏览器就可以看到恢复啦！]]></content>
@@ -33,8 +48,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>实验</tag>
+        <tag>机器学习</tag>
         <tag>VSM</tag>
         <tag>相似度</tag>
       </tags>
@@ -125,8 +140,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>实验</tag>
+        <tag>机器学习</tag>
         <tag>libsvm</tag>
         <tag>SVM</tag>
       </tags>
@@ -228,8 +243,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>root</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -558,8 +573,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>刷机</tag>
         <tag>卡刷</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
   <entry>
