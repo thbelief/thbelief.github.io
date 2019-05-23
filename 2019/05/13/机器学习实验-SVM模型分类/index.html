@@ -86,7 +86,7 @@
 
 
 
-  <meta name="keywords" content="实验,机器学习,libsvm,SVM,">
+  <meta name="keywords" content="机器学习,实验,libsvm,SVM,">
 
 
 
@@ -97,21 +97,21 @@
 
 
 
-<meta name="description" content="目录： 前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification with SVM model，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在">
-<meta name="keywords" content="实验,机器学习,libsvm,SVM">
+<meta name="description" content="目录：  前言 实验目的和内容 简介 步骤 使用工具   实验过程 实验结果 实验总结   前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification w">
+<meta name="keywords" content="机器学习,实验,libsvm,SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习实验-SVM模型分类">
 <meta property="og:url" content="http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/index.html">
 <meta property="og:site_name" content="THBELIEF">
-<meta property="og:description" content="目录： 前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification with SVM model，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在">
+<meta property="og:description" content="目录：  前言 实验目的和内容 简介 步骤 使用工具   实验过程 实验结果 实验总结   前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification w">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/预处理.png">
 <meta property="og:image" content="http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/命令行.png">
 <meta property="og:image" content="http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/结果.png">
-<meta property="og:updated_time" content="2019-05-13T02:25:48.794Z">
+<meta property="og:updated_time" content="2019-05-23T01:19:05.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实验-SVM模型分类">
-<meta name="twitter:description" content="目录： 前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification with SVM model，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在">
+<meta name="twitter:description" content="目录：  前言 实验目的和内容 简介 步骤 使用工具   实验过程 实验结果 实验总结   前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification w">
 <meta name="twitter:image" content="http://thbelief.coding.me/2019/05/13/机器学习实验-SVM模型分类/预处理.png">
 
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  871
+                  900
                 </span>
               
 
@@ -438,7 +438,20 @@
       
 
       
-        <h1><span id="目录">目录：</span></h1><!--toc-->
+        <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#实验目的和内容">实验目的和内容</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#步骤">步骤</a></li>
+<li><a href="#使用工具">使用工具</a></li>
+</ul>
+</li>
+<li><a href="#实验过程">实验过程</a></li>
+<li><a href="#实验结果">实验结果</a></li>
+<li><a href="#实验总结">实验总结</a></li>
+</ul>
+<!-- tocstop -->
 <h2><span id="前言">前言</span></h2><p>这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。</p>
 <p><a href="http://www.cnblogs.com/yangyangcv/archive/2012/05/04/2483000.html" target="_blank" rel="noopener">libSVM简易使用手册</a>这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。</p>
 <h2><span id="实验目的和内容">实验目的和内容</span></h2><h3><span id="简介">简介</span></h3><p>这次的实验名称是<strong>Classification with SVM model</strong>，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在本实验中其实就是先用train.data数据集对libsvm进行训练，再将已经训练好的模型对test.data数据集进行测试，得出本实验的结果。</p>
@@ -474,13 +487,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/实验/" rel="tag"><i class="fa fa-tag"></i>
-
- 实验</a>
-          
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i>
 
  机器学习</a>
+          
+            <a href="/tags/实验/" rel="tag"><i class="fa fa-tag"></i>
+
+ 实验</a>
           
             <a href="/tags/libsvm/" rel="tag"><i class="fa fa-tag"></i>
 
@@ -592,7 +605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -614,7 +627,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">138</span>
+                  <span class="site-state-item-count">139</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -715,7 +728,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共117.2k字</span>
+  <span class="post-count">博客全站共117.9k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

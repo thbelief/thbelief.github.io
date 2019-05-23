@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十)]]></title>
+    <url>%2F2019%2F05%2F23%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%2F</url>
+    <content type="text"><![CDATA[目录： Promise 简单介绍 是否支持Promise 简单实例 用法 Promise().then().then….catch() 多任务串行执行 Promise.all([p1,p2,…]) 多任务并行执行 Promise.race([p1,p2,…]) 多任务赛跑 Promise在JS中，所有的代码其实都是单线程执行的。 这也就导致了前面提到过的，所有的网络请求之类的操作都需要异步执行。（回调函数） 例如: 123456function callback() &#123; console.log('test');&#125;console.log('before');setTimeout(callback, 1000); // 1秒钟后调用callback函数console.log('after'); 1s之后出现了test： 一般AJAX的操作写法如下： 好处是统一执行逻辑，不关心是否结果正常，后面再加上判断即可。 123var ajax = ajaxGet('http://...');ajax.ifSuccess(success) .ifFail(fail); 简单介绍所谓的Promise，其实就是承诺的意思。 意思是——承诺将来会执行。 Promise在ES6中统一规范，是浏览器直接支持的，有些浏览器不支持。。。 是否支持Promise可以通过以下代码测试是否支持Promise： 1234'use strict';new Promise(function () &#123;&#125;);// 直接运行测试:console.log('Promise!'); 如果支持的话，会返回Promise这个字符串： 简单实例123456789101112131415161718192021222324252627282930313233'use strict';// 清除log:var logging = document.getElementById('test-promise-log');while (logging.children.length &gt; 1) &#123; logging.removeChild(logging.children[logging.children.length - 1]);&#125;// 输出log到页面:function log(s) &#123; var p = document.createElement('p'); p.innerHTML = s; logging.appendChild(p);&#125;new Promise(function (resolve, reject) &#123; log('start new Promise...'); var timeOut = Math.random() * 2; log('set timeout to: ' + timeOut + ' seconds.'); setTimeout(function () &#123; if (timeOut &lt; 1) &#123; log('call resolve()...'); resolve('200 OK'); &#125; else &#123; log('call reject()...'); reject('timeout in ' + timeOut + ' seconds.'); &#125; &#125;, timeOut * 1000);&#125;).then(function (r) &#123; log('Done: ' + r);&#125;).catch(function (reason) &#123; log('Failed: ' + reason);&#125;); 可以清晰的看到，执行的代码和处理结果的代码进行了分离。 用法Promise().then().then….catch() 多任务串行执行情景化记忆:在一个任务链中,比如我要向上级部门一层层的往上提交申请,if(某种条件)承诺帮你resolve解决问题,else承诺reject你的请求. 他给出的resolve问题的办法只是个空头Promise,then到总经理那实现具体承诺,如果总经理还是给一个空头承诺(返回Promise实例),还得then到董事长那里…. 任一一步做出的是reject的承诺,还有什么好说的,被拒绝了,后面的就不会再往上走了呀. 准备catch 拒绝通知吧blablabla. Promise.all([p1,p2,…]) 多任务并行执行都要成功才进入then,返回结果数组. Promise.race([p1,p2,…]) 多任务赛跑then()和catch(),谁先调用算谁的,其它任务中断.]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>Promise</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(九)]]></title>
     <url>%2F2019%2F05%2F22%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B9%9D%2F</url>
-    <content type="text"><![CDATA[目录： AJAX含义全称是Asynchronous JavaScript and XML，即用JavaScript执行异步网络请求。 所谓的异步网络请求，其实就是需要回调函数。 另外，AJAX并不是JavaScript的规范。 Web的运作原理其实就是：一次HTTP请求对应一个界面。当用户在浏览器中提交一个表单的时候其实浏览器就会刷新一下，然后在新页面返回到底请求是成功了还是失败了。如果失败了一般都是会返回一个404的界面。 如果要让用户留在当前页面中，同时发出新的HTTP请求，就必须用JavaScript发送这个新请求，接收到数据后，再用JavaScript更新页面，这样一来，用户就感觉自己仍然停留在当前页面，但是数据却可以不断地更新。 使用在如今的最新浏览器（低版本的貌似需要ActiveXObject对象）上使用AJAX需要用到XMLHttpRequest对象： 在创建了XMLHttpRequest对象后，要先设置onreadystatechange的回调函数。 在回调函数中，通过readyState === 4来判断请求是否完成，如果已完成，再根据status === 200来判断是否是成功的响应。 XMLHttpRequest对象的open()方法有3个参数，第一个参数指定是GET还是POST，第二个参数指定URL地址，第三个参数指定是否使用异步，默认是true，不用写。 千万不能把第三个参数指定为false，否则浏览器将停止响应，直到AJAX请求完成。 调用send()方法的时候其实才真正发送请求。 GET请求不需要参数，POST请求需要把body部分以字符串或者FormData对象传进去。 1234567891011121314151617181920212223242526272829303132function success(text) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = text;&#125;function fail(code) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = 'Error code: ' + code;&#125;var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象request.onreadystatechange = function () &#123; // 状态发生变化时，函数被回调 if (request.readyState === 4) &#123; // 成功完成 // 判断响应结果: if (request.status === 200) &#123; // 成功，通过responseText拿到响应的文本: return success(request.responseText); &#125; else &#123; // 失败，根据响应码判断失败原因: return fail(request.status); &#125; &#125; else &#123; // HTTP请求还在继续... &#125;&#125;// 发送请求:request.open('GET', '/categories/');request.send();alert('请求已发送，请等待响应...'); 安全限制问题默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致。 但是也不是说不能请求其他网站的URL，还是有其他的办法的，常用方法如下： 使用JSONP，但是限制了只能使用GET请求，并且要求返回JS。（原理其实就是浏览器一般是运行跨域引用JS资源的。） 1234&lt;head&gt; &lt;script src=&quot;https://thbelief.coding.me//abc.js&quot;&gt;&lt;/script&gt; ...&lt;/head&gt; JSONP的返回格式一般是函数调用形式。例如： 在当前的页面先准备好foo函数，然后给页面动态的添加一个script节点，这就相当于动态的读取外域的JS资源了，然后等着回调函数的返回即可。 1foo(’data‘); CORS含义新的跨域方式。（浏览器需要支持HTML5） CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。 Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。 假设本域是one.com，外域是two.com，只要响应头Access-Control-Allow-Origin为对应的网址，或者是*，本次请求就可以成功。 值得注意的是，跨域能否成功，取决于对方服务器是否愿意给你设置一个正确的Access-Control-Allow-Origin，决定权始终在对方手中。]]></content>
+    <content type="text"><![CDATA[目录： AJAX 含义 使用 安全限制问题 CORS 含义 AJAX含义全称是Asynchronous JavaScript and XML，即用JavaScript执行异步网络请求。 所谓的异步网络请求，其实就是需要回调函数。 另外，AJAX并不是JavaScript的规范。 Web的运作原理其实就是：一次HTTP请求对应一个界面。当用户在浏览器中提交一个表单的时候其实浏览器就会刷新一下，然后在新页面返回到底请求是成功了还是失败了。如果失败了一般都是会返回一个404的界面。 如果要让用户留在当前页面中，同时发出新的HTTP请求，就必须用JavaScript发送这个新请求，接收到数据后，再用JavaScript更新页面，这样一来，用户就感觉自己仍然停留在当前页面，但是数据却可以不断地更新。 使用在如今的最新浏览器（低版本的貌似需要ActiveXObject对象）上使用AJAX需要用到XMLHttpRequest对象： 在创建了XMLHttpRequest对象后，要先设置onreadystatechange的回调函数。 在回调函数中，通过readyState === 4来判断请求是否完成，如果已完成，再根据status === 200来判断是否是成功的响应。 XMLHttpRequest对象的open()方法有3个参数，第一个参数指定是GET还是POST，第二个参数指定URL地址，第三个参数指定是否使用异步，默认是true，不用写。 千万不能把第三个参数指定为false，否则浏览器将停止响应，直到AJAX请求完成。 调用send()方法的时候其实才真正发送请求。 GET请求不需要参数，POST请求需要把body部分以字符串或者FormData对象传进去。 1234567891011121314151617181920212223242526272829303132function success(text) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = text;&#125;function fail(code) &#123; var textarea = document.getElementById('test-response-text'); textarea.value = 'Error code: ' + code;&#125;var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象request.onreadystatechange = function () &#123; // 状态发生变化时，函数被回调 if (request.readyState === 4) &#123; // 成功完成 // 判断响应结果: if (request.status === 200) &#123; // 成功，通过responseText拿到响应的文本: return success(request.responseText); &#125; else &#123; // 失败，根据响应码判断失败原因: return fail(request.status); &#125; &#125; else &#123; // HTTP请求还在继续... &#125;&#125;// 发送请求:request.open('GET', '/categories/');request.send();alert('请求已发送，请等待响应...'); 安全限制问题默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致。 但是也不是说不能请求其他网站的URL，还是有其他的办法的，常用方法如下： 使用JSONP，但是限制了只能使用GET请求，并且要求返回JS。（原理其实就是浏览器一般是运行跨域引用JS资源的。） 1234&lt;head&gt; &lt;script src=&quot;https://thbelief.coding.me//abc.js&quot;&gt;&lt;/script&gt; ...&lt;/head&gt; JSONP的返回格式一般是函数调用形式。例如： 在当前的页面先准备好foo函数，然后给页面动态的添加一个script节点，这就相当于动态的读取外域的JS资源了，然后等着回调函数的返回即可。 1foo(’data‘); CORS含义新的跨域方式。（浏览器需要支持HTML5） CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。 Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。 假设本域是one.com，外域是two.com，只要响应头Access-Control-Allow-Origin为对应的网址，或者是*，本次请求就可以成功。 值得注意的是，跨域能否成功，取决于对方服务器是否愿意给你设置一个正确的Access-Control-Allow-Origin，决定权始终在对方手中。]]></content>
       <categories>
         <category>后端</category>
         <category>JavaScript</category>
@@ -18,7 +32,7 @@
   <entry>
     <title><![CDATA[Chrome主页被劫持解决方案]]></title>
     <url>%2F2019%2F05%2F21%2FChrome%E4%B8%BB%E9%A1%B5%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
-    <content type="text"><![CDATA[目录： 前言今天安装软件的时候不小心被强制劫持了主页，被恶心够了，好在最终解决了，用博客记录一下这次的解决过程。 正文这次我使用的是Chrome浏览器。直接使用这个浏览器做示范。 检查劫持网页在地址栏输入： 1chrome://version/ 找到命令行这一栏，观察里面是否出现劫持页面的网址。 确定被劫持位置有很多种劫持的方式，所以需要确定被劫持的是哪个位置。 快捷方式（任务栏或者非任务栏）、软件名.exe。大概就这三个地方，每个检查一下就可以了，一般都是快捷方式被属性被修改。 我这里示范一下检查任务栏固定的时候如何查看，如果在如图步骤之后在目标那一栏的后半部分看到了之前看到的网址。直接删除即可，这样打开浏览器就可以看到恢复啦！]]></content>
+    <content type="text"><![CDATA[目录： 前言 正文 检查劫持网页 确定被劫持位置 前言今天安装软件的时候不小心被强制劫持了主页，被恶心够了，好在最终解决了，用博客记录一下这次的解决过程。 正文这次我使用的是Chrome浏览器。直接使用这个浏览器做示范。 检查劫持网页在地址栏输入： 1chrome://version/ 找到命令行这一栏，观察里面是否出现劫持页面的网址。 确定被劫持位置有很多种劫持的方式，所以需要确定被劫持的是哪个位置。 快捷方式（任务栏或者非任务栏）、软件名.exe。大概就这三个地方，每个检查一下就可以了，一般都是快捷方式被属性被修改。 我这里示范一下检查任务栏固定的时候如何查看，如果在如图步骤之后在目标那一栏的后半部分看到了之前看到的网址。直接删除即可，这样打开浏览器就可以看到恢复啦！]]></content>
       <categories>
         <category>其它</category>
       </categories>
@@ -48,8 +62,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>实验</tag>
         <tag>机器学习</tag>
+        <tag>实验</tag>
         <tag>VSM</tag>
         <tag>相似度</tag>
       </tags>
@@ -135,13 +149,13 @@
   <entry>
     <title><![CDATA[机器学习实验-SVM模型分类]]></title>
     <url>%2F2019%2F05%2F13%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C-SVM%E6%A8%A1%E5%9E%8B%E5%88%86%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[目录： 前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification with SVM model，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在本实验中其实就是先用train.data数据集对libsvm进行训练，再将已经训练好的模型对test.data数据集进行测试，得出本实验的结果。 步骤 首先第一步就是检查数据集是否是libsvm要求的标准输入格式，如果不是的话，还需要自行转换格式。 然后就是用train.data数据集对libsvm模型进行训练。 最后将训练好的模型对test.data进行测试得出结论然后记录即可。 使用工具这里使用的SVM软件包是台湾大学林智仁(Chih-Jen Lin)博士等开发设计的libsvm通用SVM软件包。 这里使用的编译语言是python。 通过gnuplot交互式绘图工具可视化编程。 实验过程1.由于原始数据集train.data和test.data不是libsvm的标准输入格式，这里就涉及到一个数据集预处理问题。解决方案如下： 这里我使用的是FormatDataLibsvm.xls通过Excel的宏定义来直接改变格式。 现在的数据集经过预处理之后已经变成了LIBSVM的标准输入格式了，然后将其存入两个TXT文档-TRAIN.TXT和TEST.TXT。（这里强调.TXT是为了后面的输入格式考虑） 直接通过TRAIN.TXT训练之后用模型去对TEST.TXT测试：通过命令行跳转到LIBSVM下的TOOLS目录中执行命令： 然后在gnuplot中就生成了相关的实验数据结果。 实验结果实验结果如下： 最优参数c=0.5，gamma=0.0078125 通过训练之后在test.txt数据集上的测试结果准确率accuracy=94.3754% 实验总结这次实验总的来说是很有意义的，通过libsvm这个通用SVM软件包进行了一次用SVM模型（支持向量机）进行分类的实际实验，对进一步了解SVM很有帮助。 实验中出现的问题不少，但是所幸都是解决了。具体问题如下： 首先就是对于老师专门点到的libsvm标准输入格式的问题，思考了很久，自己尝试写过C++程序来对原始数据集进行转化，想直接转化出libsvm的标准输入格式，但是失败了，所幸是通过博客了解到FormatDataLibsvm.xls这个Excel的宏，通过这个宏定义直接转换出了libsvm的标准输入格式。 然后就是关于数据集格式的问题，由于处理之后的数据集存在的是txt文本中，如果按照之前的省略后缀是不行的，必须加上具体的后缀格式才可以，之前并没有注意到这个问题，一直弄不出来。 通过实验结果的准确率可以明确的看出，其实SVM模型的作用是十分大的，也是我第一次实践中明确机器学习中这些模型的强大，获益颇多。]]></content>
+    <content type="text"><![CDATA[目录： 前言 实验目的和内容 简介 步骤 使用工具 实验过程 实验结果 实验总结 前言这次的博客记录一下第一次机器学习的实验Classification with SVM model的内容，感觉还是蛮有趣的，有点儿意思。 libSVM简易使用手册这个博客就是很详细的libsvm的介绍，如果有疑问的话直接点击进去查看即可。 实验目的和内容简介这次的实验名称是Classification with SVM model，顾名思义，其实就是用SVM模型（支持向量机）进行分类。在本实验中其实就是先用train.data数据集对libsvm进行训练，再将已经训练好的模型对test.data数据集进行测试，得出本实验的结果。 步骤 首先第一步就是检查数据集是否是libsvm要求的标准输入格式，如果不是的话，还需要自行转换格式。 然后就是用train.data数据集对libsvm模型进行训练。 最后将训练好的模型对test.data进行测试得出结论然后记录即可。 使用工具这里使用的SVM软件包是台湾大学林智仁(Chih-Jen Lin)博士等开发设计的libsvm通用SVM软件包。 这里使用的编译语言是python。 通过gnuplot交互式绘图工具可视化编程。 实验过程1.由于原始数据集train.data和test.data不是libsvm的标准输入格式，这里就涉及到一个数据集预处理问题。解决方案如下： 这里我使用的是FormatDataLibsvm.xls通过Excel的宏定义来直接改变格式。 现在的数据集经过预处理之后已经变成了LIBSVM的标准输入格式了，然后将其存入两个TXT文档-TRAIN.TXT和TEST.TXT。（这里强调.TXT是为了后面的输入格式考虑） 直接通过TRAIN.TXT训练之后用模型去对TEST.TXT测试：通过命令行跳转到LIBSVM下的TOOLS目录中执行命令： 然后在gnuplot中就生成了相关的实验数据结果。 实验结果实验结果如下： 最优参数c=0.5，gamma=0.0078125 通过训练之后在test.txt数据集上的测试结果准确率accuracy=94.3754% 实验总结这次实验总的来说是很有意义的，通过libsvm这个通用SVM软件包进行了一次用SVM模型（支持向量机）进行分类的实际实验，对进一步了解SVM很有帮助。 实验中出现的问题不少，但是所幸都是解决了。具体问题如下： 首先就是对于老师专门点到的libsvm标准输入格式的问题，思考了很久，自己尝试写过C++程序来对原始数据集进行转化，想直接转化出libsvm的标准输入格式，但是失败了，所幸是通过博客了解到FormatDataLibsvm.xls这个Excel的宏，通过这个宏定义直接转换出了libsvm的标准输入格式。 然后就是关于数据集格式的问题，由于处理之后的数据集存在的是txt文本中，如果按照之前的省略后缀是不行的，必须加上具体的后缀格式才可以，之前并没有注意到这个问题，一直弄不出来。 通过实验结果的准确率可以明确的看出，其实SVM模型的作用是十分大的，也是我第一次实践中明确机器学习中这些模型的强大，获益颇多。]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>实验</tag>
         <tag>机器学习</tag>
+        <tag>实验</tag>
         <tag>libsvm</tag>
         <tag>SVM</tag>
       </tags>
@@ -706,9 +720,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -882,10 +896,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -987,9 +1001,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
