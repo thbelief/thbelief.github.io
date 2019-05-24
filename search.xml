@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习实验-K-Means模型聚类]]></title>
+    <url>%2F2019%2F05%2F24%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C-K-Means%E6%A8%A1%E5%9E%8B%E8%81%9A%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[目录： 实验目的 实验内容 实验过程 实验结果 实验总结 问题 总结 实验目的利用K-Means模型对上个实验得到的数据集进行聚类。 实验内容 1） 选取数据空间中的K个对象作为初始中心，每个对象代表一个聚类中心。 2） 对于样本中的数据对象，根据它们与这些聚类中心的欧氏距离，按距离最近的准则将它们分到距离它们最近的聚类中心（最相似）所对应的类。 3） 更新聚类中心：将每个类别中所有对象所对应的均值作为该类别的聚类中心，计算目标函数的值。 4） 判断聚类中心和目标函数的值是否发生改变，若不变，则输出结果，若改变，则返回2）。 实验过程1.确定聚类中心。 2.计算欧式距离。 3.根据聚类中心的位置来分配样本中的数据对象. 4.更新当前的聚类中心。 5.输出结果到指定的KMeansOutPut.txt。 实验结果 实验总结问题 K的选择问题。 相似度定义问题。 初始化K个质心的选择。（这里还包含了一个局部最小的问题） 总结 本次实验中的kmeans算法首先选择K个初始质心，其中K是用户指定的参数，即所期望的簇的个数。 然后就是选择适当的初始质心，这也是kmeans算法的关键步骤。 由于随机的选取初始质心，这样生成簇的质量常常很差。有些会出现局部最小问题。 这里采取的是网上有人使用过的方法：选取具有最小SSE（误差的平方和）的簇集。即多次运行，每次使用一组不同的随机初始质心。 本次实验中使用的距离度量方法是欧式距离。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>实验</tag>
+        <tag>KMeans</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十)]]></title>
     <url>%2F2019%2F05%2F23%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%2F</url>
     <content type="text"><![CDATA[目录： Promise 简单介绍 是否支持Promise 简单实例 用法 Promise().then().then….catch() 多任务串行执行 Promise.all([p1,p2,…]) 多任务并行执行 Promise.race([p1,p2,…]) 多任务赛跑 Promise在JS中，所有的代码其实都是单线程执行的。 这也就导致了前面提到过的，所有的网络请求之类的操作都需要异步执行。（回调函数） 例如: 123456function callback() &#123; console.log('test');&#125;console.log('before');setTimeout(callback, 1000); // 1秒钟后调用callback函数console.log('after'); 1s之后出现了test： 一般AJAX的操作写法如下： 好处是统一执行逻辑，不关心是否结果正常，后面再加上判断即可。 123var ajax = ajaxGet('http://...');ajax.ifSuccess(success) .ifFail(fail); 简单介绍所谓的Promise，其实就是承诺的意思。 意思是——承诺将来会执行。 Promise在ES6中统一规范，是浏览器直接支持的，有些浏览器不支持。。。 是否支持Promise可以通过以下代码测试是否支持Promise： 1234'use strict';new Promise(function () &#123;&#125;);// 直接运行测试:console.log('Promise!'); 如果支持的话，会返回Promise这个字符串： 简单实例123456789101112131415161718192021222324252627282930313233'use strict';// 清除log:var logging = document.getElementById('test-promise-log');while (logging.children.length &gt; 1) &#123; logging.removeChild(logging.children[logging.children.length - 1]);&#125;// 输出log到页面:function log(s) &#123; var p = document.createElement('p'); p.innerHTML = s; logging.appendChild(p);&#125;new Promise(function (resolve, reject) &#123; log('start new Promise...'); var timeOut = Math.random() * 2; log('set timeout to: ' + timeOut + ' seconds.'); setTimeout(function () &#123; if (timeOut &lt; 1) &#123; log('call resolve()...'); resolve('200 OK'); &#125; else &#123; log('call reject()...'); reject('timeout in ' + timeOut + ' seconds.'); &#125; &#125;, timeOut * 1000);&#125;).then(function (r) &#123; log('Done: ' + r);&#125;).catch(function (reason) &#123; log('Failed: ' + reason);&#125;); 可以清晰的看到，执行的代码和处理结果的代码进行了分离。 用法Promise().then().then….catch() 多任务串行执行情景化记忆:在一个任务链中,比如我要向上级部门一层层的往上提交申请,if(某种条件)承诺帮你resolve解决问题,else承诺reject你的请求. 他给出的resolve问题的办法只是个空头Promise,then到总经理那实现具体承诺,如果总经理还是给一个空头承诺(返回Promise实例),还得then到董事长那里…. 任一一步做出的是reject的承诺,还有什么好说的,被拒绝了,后面的就不会再往上走了呀. 准备catch 拒绝通知吧blablabla. Promise.all([p1,p2,…]) 多任务并行执行都要成功才进入then,返回结果数组. Promise.race([p1,p2,…]) 多任务赛跑then()和catch(),谁先调用算谁的,其它任务中断.]]></content>
@@ -199,8 +212,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>浏览器对象</tag>
         <tag>浏览器</tag>
+        <tag>浏览器对象</tag>
       </tags>
   </entry>
   <entry>
