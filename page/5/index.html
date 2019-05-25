@@ -313,6 +313,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/17/Auto-js-Script开发-十/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/Auto-js-Script开发-十/" itemprop="url">Auto.js Script开发(十)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T20:10:20+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>乘着今天没事就更新一下THBELIEFScript。</p>
+<p>4.8.0的更新内容：</p>
+<p><img src="/2019/04/17/Auto-js-Script开发-十/更新内容.jpg" alt=""></p>
+<p>具体的更新状态：</p>
+<p>个人信息：</p>
+<p><img src="/2019/04/17/Auto-js-Script开发-十/个人信息.png" alt=""></p>
+<p>设备信息:</p>
+<p><img src="/2019/04/17/Auto-js-Script开发-十/设备信息.png" alt=""></p>
+<h2><span id="正文">正文</span></h2><p>个人信息主要代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//个人信息的展示页面</span><br><span class="line">function personalInformationUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">        &lt;frame&gt;</span><br><span class="line">            &lt;vertical&gt;</span><br><span class="line">                &lt;horizontal&gt;</span><br><span class="line">                    &lt;button id=&quot;backMainUIBypersonalUI&quot; text=&quot;返回&quot; w=&quot;auto&quot; style=&quot;Widget.AppCompat.Button.Colored&quot; /&gt;        </span><br><span class="line">                &lt;/horizontal&gt; </span><br><span class="line">                &lt;vertical gravity=&quot;center&quot;&gt;</span><br><span class="line">                    &lt;img src=&quot;https://img.icons8.com/color/48/000000/joe-pineapples.png&quot;</span><br><span class="line">                    w=&quot;100&quot; h=&quot;100&quot; circle=&quot;true&quot; borderWidth=&quot;2dp&quot; borderColor=&quot;#202020&quot; gravity=&quot;center&quot; marginTop=&quot;100dp&quot;/&gt;</span><br><span class="line">                    &lt;text id=&quot;level&quot; text=&quot;等级: 至尊会员(MAX)&quot; gravity=&quot;center&quot; marginTop=&quot;20dp&quot; textSize=&quot;20sp&quot; textColor=&quot;#000000&quot;/&gt;</span><br><span class="line">                    &lt;text id=&quot;username&quot; text=&quot;&quot; gravity=&quot;center&quot; marginTop=&quot;20dp&quot; textSize=&quot;20sp&quot; textColor=&quot;#000000&quot;/&gt;</span><br><span class="line">                    &lt;text id=&quot;userpassword&quot; text=&quot;&quot; gravity=&quot;center&quot; marginTop=&quot;10dp&quot; textSize=&quot;20sp&quot; textColor=&quot;#000000&quot;/&gt;</span><br><span class="line">                &lt;/vertical&gt;</span><br><span class="line">            &lt;/vertical&gt;</span><br><span class="line">        &lt;/frame&gt;</span><br><span class="line">      );</span><br><span class="line">      ui.username.setText(&quot;用户名: &quot;+storage.get(&quot;username&quot;));</span><br><span class="line">      ui.userpassword.setText(&quot;密码: &quot;+storage.get(&quot;userpassword&quot;));</span><br><span class="line">      ui.backMainUIBypersonalUI.click(()=&gt;&#123;</span><br><span class="line">          mainUI();</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设备信息的主要代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">function mainUI()&#123;</span><br><span class="line">    ui.layout(</span><br><span class="line">        &lt;frame&gt;</span><br><span class="line">            &lt;vertical gravity=&quot;center&quot;&gt;</span><br><span class="line">                &lt;text gravity=&quot;center&quot;  text=&quot;设备信息&quot; textSize=&quot;30sp&quot; textColor=&quot;#000000&quot;/&gt;      </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Width&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;      </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Height&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;  </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;BuildId&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;   </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Broad&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;  </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Brand&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Device&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;    </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Model&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Product&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;</span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Bootloader&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Hardware&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;     </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Fingerprint&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Serial&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;SdkInt&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Incremental&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;</span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Release&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt;  </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;BaseOS&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;SecurityPatch&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;Codename&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;GetAndroidId&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;GetMacAddress&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;GetTotalMem&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">                &lt;text gravity=&quot;center&quot; id=&quot;GetAvailMem&quot; text=&quot;&quot; textSize=&quot;15sp&quot; textColor=&quot;#000000&quot;/&gt; </span><br><span class="line">            &lt;/vertical&gt;</span><br><span class="line">        &lt;/frame&gt;</span><br><span class="line">    );</span><br><span class="line">    ui.Width.setText(&quot;设备宽度： &quot;+device.width);</span><br><span class="line">    ui.Height.setText(&quot;设备高度： &quot;+device.height);</span><br><span class="line">    ui.BuildId.setText(&quot;修订版本号： &quot;+device.buildId);</span><br><span class="line">    ui.Broad.setText(&quot;主板型号： &quot;+device.broad);</span><br><span class="line">    ui.Brand.setText(&quot;厂商品牌： &quot;+device.brand);</span><br><span class="line">    ui.Device.setText(&quot;工业设计名称： &quot;+device.device);</span><br><span class="line">    ui.Model.setText(&quot;设备型号： &quot;+device.model);</span><br><span class="line">    ui.Product.setText(&quot;整个产品名称： &quot;+device.product);</span><br><span class="line">    ui.Bootloader.setText(&quot;Bootloader版本： &quot;+device.bootloader);</span><br><span class="line">    ui.Hardware.setText(&quot;硬件名称： &quot;+device.hardware);</span><br><span class="line">    ui.Fingerprint.setText(&quot;唯一标识码： &quot;+device.fingerprint);</span><br><span class="line">    ui.Serial.setText(&quot;硬件序列号： &quot;+device.serial);</span><br><span class="line">    ui.SdkInt.setText(&quot;AndroidAPI版本： &quot;+device.sdkInt);</span><br><span class="line">    ui.Incremental.setText(&quot;Incremental： &quot;+device.incremental);</span><br><span class="line">    ui.Release.setText(&quot;Android系统版本号： &quot;+device.release);</span><br><span class="line">    ui.BaseOS.setText(&quot;BaseOS： &quot;+device.baseOS);</span><br><span class="line">    ui.SecurityPatch.setText(&quot;安全补丁程序级别： &quot;+device.securityPatch);</span><br><span class="line">    ui.Codename.setText(&quot;开发代号： &quot;+device.codename);</span><br><span class="line">    ui.GetAndroidId.setText(&quot;AndroidId： &quot;+device.getAndroidId());</span><br><span class="line">    ui.GetMacAddress.setText(&quot;Mac地址： &quot;+device.getMacAddress());</span><br><span class="line">    ui.GetTotalMem.setText(&quot;内存总量： &quot;+device.getTotalMem());</span><br><span class="line">    ui.GetAvailMem.setText(&quot;当前可用内存： &quot;+device.getAvailMem());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/16/Auto-js-Script开发-九/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2209,273 +2410,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/09/Android-ListView与RecyclerView简述/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/09/Android-ListView与RecyclerView简述/" itemprop="url">Android-ListView与RecyclerView简述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T09:05:16+08:00">
-                2019-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#listview">ListView</a><ul>
-<li><a href="#简单使用">简单使用</a><ul>
-<li><a href="#xml布局">xml布局</a></li>
-<li><a href="#mainactivity代码">mainActivity代码</a></li>
-</ul>
-</li>
-<li><a href="#定制界面">定制界面</a><ul>
-<li><a href="#实体类fruit">实体类Fruit</a></li>
-<li><a href="#子项的布局">子项的布局</a></li>
-<li><a href="#自定义适配器">自定义适配器</a></li>
-<li><a href="#mainactivity代码">MainActivity代码</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#recyclerview">RecyclerView</a><ul>
-<li><a href="#特性">特性</a></li>
-<li><a href="#添加依赖">添加依赖</a></li>
-<li><a href="#xml布局-1">xml布局</a></li>
-<li><a href="#自定义适配器-1">自定义适配器</a></li>
-<li><a href="#子项布局">子项布局</a></li>
-<li><a href="#mainactivity">MainActivity</a></li>
-<li><a href="#分割线-itemdecoration">分割线 - ItemDecoration</a></li>
-<li><a href="#布局-layoutmanager">布局 - LayoutManager</a></li>
-<li><a href="#动画-itemanimator">动画 - ItemAnimator</a></li>
-<li><a href="#点击事件">点击事件</a></li>
-<li><a href="#下拉刷新">下拉刷新</a></li>
-<li><a href="#上拉加载更多">上拉加载更多</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="listview">ListView</span></h2><h3><span id="简单使用">简单使用</span></h3><h4><span id="xml布局">xml布局</span></h4><p>在布局中加入ListView控件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ListView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:id=&quot;@+id/list_view&quot;</span><br><span class="line">        &gt;</span><br><span class="line">    &lt;/ListView&gt;</span><br></pre></td></tr></table></figure>
-<h4><span id="mainactivity代码">mainActivity代码</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends Activity &#123;  </span><br><span class="line">private String[] data = &#123; &quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;, &quot;Watermelon&quot;,  </span><br><span class="line">&quot;Pear&quot;, &quot;Grape&quot;, &quot;Pineapple&quot;, &quot;Strawberry&quot;, &quot;Cherry&quot;, &quot;Mango&quot; &#125;;  </span><br><span class="line">@Override  </span><br><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;  </span><br><span class="line">super.onCreate(savedInstanceState);  </span><br><span class="line">setContentView(R.layout.activity_main);  </span><br><span class="line">ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(  </span><br><span class="line">MainActivity.this, android.R.layout.simple_list_item_1, data);  //android.R.layout.simple_list_item_1是Android内置的布局文件，很简单，为了方便使用</span><br><span class="line">ListView listView = (ListView) findViewById(R.id.list_view);  </span><br><span class="line">listView.setAdapter(adapter);  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayAdapter<string> adapter = new ArrayAdapter<string>(  MainActivity.this, android.R.layout.simple_list_item_1, data);  的意思是：创建一个数组适配器的代码，里面有三个参数，第一个参数是上下文，就是当前的Activity, 第二个参数是android sdk中自己内置的一个布局，它里面只有一个TextView，这个参数是表明我们数组中每一条数据的布局是这个view，就是将每一条数据都显示在这个 view上面；第三个参数就是我们要显示的数据。listView会根据这三个参数，遍历data里面的每一条数据，读出一条，显示到第二 个参数对应的布局中，这样就形成了我们看到的listView.</string></string></p>
-<h3><span id="定制界面">定制界面</span></h3><p>步骤如下：</p>
-<p>1.ListView使用。</p>
-<p>2.自定义Adapter适配器使用。</p>
-<p>3.定义实体类作为泛型传给适配器。</p>
-<p>4.为ListView的子项指定一个自定义的布局。（比如一段文字或者说再加上一张图片）</p>
-<p>5.创建一个自定义的适配器，用来传数据，一般都是继承自ArrayAdapter，因为这个适配器能够传入泛型，比较方便，然后重写构造方法与GetView方法。</p>
-<p>6.在MainActivity中修改相应的代码。</p>
-<h4><span id="实体类fruit">实体类Fruit</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Fruit &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int imageId;</span><br><span class="line"> </span><br><span class="line">    public Fruit(String name, int imageId) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.imageId = imageId;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public int getImageId() &#123;</span><br><span class="line">        return imageId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="子项的布局">子项的布局</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=&quot;@+id/fruit_image&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/fruit_name&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_gravity=&quot;center&quot;</span><br><span class="line">        android:layout_marginLeft=&quot;10dip&quot; /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
-<h4><span id="自定义适配器">自定义适配器</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class FruitAdapter extends ArrayAdapter&#123;</span><br><span class="line">    private final int resourceId;</span><br><span class="line"> </span><br><span class="line">    public FruitAdapter(Context context, int textViewResourceId, List&lt;Fruit&gt; objects) &#123;</span><br><span class="line">        super(context, textViewResourceId, objects);</span><br><span class="line">        resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public View getView(int position, View convertView, ViewGroup parent) &#123;</span><br><span class="line">        Fruit fruit = (Fruit) getItem(position); // 获取当前项的Fruit实例</span><br><span class="line">        View view = LayoutInflater.from(getContext()).inflate(resourceId, null);//实例化一个对象</span><br><span class="line">        ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);//获取该布局内的图片视图</span><br><span class="line">        TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);//获取该布局内的文本视图</span><br><span class="line">        fruitImage.setImageResource(fruit.getImageId());//为图片视图设置图片资源</span><br><span class="line">        fruitName.setText(fruit.getName());//为文本视图设置文本内容</span><br><span class="line">        return view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="mainactivity代码">MainActivity代码</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends Activity &#123;</span><br><span class="line">    private List&lt;Fruit&gt; fruitList = new ArrayList&lt;Fruit&gt;();</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        initFruits(); // 初始化水果数据</span><br><span class="line">        FruitAdapter adapter = new FruitAdapter(MainActivity.this, R.layout.fruit_item, fruitList);</span><br><span class="line">        ListView listView = (ListView) findViewById(R.id.list_view);</span><br><span class="line">        listView.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void initFruits() &#123;</span><br><span class="line">        Fruit apple = new Fruit(&quot;Apple&quot;, R.drawable.apple_pic);</span><br><span class="line">        fruitList.add(apple);</span><br><span class="line">        Fruit banana = new Fruit(&quot;Banana&quot;, R.drawable.banana_pic);</span><br><span class="line">        fruitList.add(banana);</span><br><span class="line">        Fruit orange = new Fruit(&quot;Orange&quot;, R.drawable.orange_pic);</span><br><span class="line">        fruitList.add(orange);</span><br><span class="line">        Fruit watermelon = new Fruit(&quot;Watermelon&quot;, R.drawable.watermelon_pic);</span><br><span class="line">        fruitList.add(watermelon);</span><br><span class="line">        Fruit pear = new Fruit(&quot;Pear&quot;, R.drawable.pear_pic);</span><br><span class="line">        fruitList.add(pear);</span><br><span class="line">        Fruit grape = new Fruit(&quot;Grape&quot;, R.drawable.grape_pic);</span><br><span class="line">        fruitList.add(grape);</span><br><span class="line">        Fruit pineapple = new Fruit(&quot;Pineapple&quot;, R.drawable.pineapple_pic);</span><br><span class="line">        fruitList.add(pineapple);</span><br><span class="line">        Fruit strawberry = new Fruit(&quot;Strawberry&quot;, R.drawable.strawberry_pic);</span><br><span class="line">        fruitList.add(strawberry);</span><br><span class="line">        Fruit cherry = new Fruit(&quot;Cherry&quot;, R.drawable.cherry_pic);</span><br><span class="line">        fruitList.add(cherry);</span><br><span class="line">        Fruit mango = new Fruit(&quot;Mango&quot;, R.drawable.mango_pic);</span><br><span class="line">        fruitList.add(mango);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="recyclerview">RecyclerView</span></h2><p>在开发中，ListView是用的最多的控件之一，但是还是有很多不足的地方，比如说运行效率有些时候会显得非常的差劲，而且只能实现数据的<strong>纵向滚动</strong>的效果。这里就应运而生RecyclerView了。</p>
-<h3><span id="特性">特性</span></h3><p><strong>插拔式体验，高度解耦合。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">布局（显示方式）：可通过LayoutManager（LinearLayoutManager，GridLayoutManager，StaggeredGridLayoutManager ）设置；</span><br><span class="line">分割线：通过 ItemDecoration 实现</span><br><span class="line">Item 增删动画：通过 ItemAnimator</span><br><span class="line">ViewHolder 的创建和绑定：通过实现 Adapter</span><br></pre></td></tr></table></figure>
-<p>补充：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LayoutManager：RecyclerView 会根据 Layout Manager 提供的视图来填充自身，常用的布局管理器有LinearLayoutManager（线性布局管理器）、GridLayoutManager（网格布局管理器）、StaggeredGridLayoutManager （瀑布流布局管理器）等。</span><br><span class="line"></span><br><span class="line">ViewHolder：列表中的视图由 ViewHolder 实例展示。 ViewHolder 用于对控件的实例进行缓存，负责显示子项。例如，如果列表显示了音乐集合，那么每个 ViewHolder 可能代表一个专辑。</span><br><span class="line"></span><br><span class="line">Adapter：ViewHolder 对象由 Adapter 管理。Adapter 按需创建 ViewHolder，并为其绑定数据。绑定意味着根据 Adapter 中的位置为子视图填充对应的数据。</span><br></pre></td></tr></table></figure>
-<h3><span id="添加依赖">添加依赖</span></h3><p>由于和百分比布局一样都是新增的控件，所以需要添加support库的依赖。</p>
-<p>项目的build.gradle中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation &apos;com.android.support:recyclerview-v7:27.1.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="xml布局">xml布局</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.RecyclerView</span><br><span class="line">       android:id=&quot;@+id/recycler_view&quot;</span><br><span class="line">       android:divider=&quot;#FFFF0000&quot;</span><br><span class="line">       android:dividerHeight=&quot;10dp&quot;</span><br><span class="line">       android:layout_width=&quot;match_parent&quot;</span><br><span class="line">       android:layout_height=&quot;match_parent&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<h3><span id="自定义适配器">自定义适配器</span></h3><p>由于FruitAdapter是继承自<strong>RecyclerView.Adapter</strong> 的，那么就必须重写<strong>onCreateViewHolde r ()、onBindViewHolder()和getitemCount()</strong>这3个方法。</p>
-<p>onCreateViewHolder()方法是用于创建ViewHolder实例的，在这个方法中将fruit_item 布局加载进来， 然后创建一个ViewHolder 实例， 并把加载出来的布局传入到构造函数当中， 最后将ViewHolder的实例返回。</p>
-<p>onBindViewHolder()方法是用于对RecyclerView子项的数据进行赋值的，会在每个子项被滚动到屏幕内的时候执行，这里我们通过position参数得到当前项的类实例，然后再将数据设置到ViewHolder的ImageView和TextView当中即可。</p>
-<p>getitemCount()方法就非常简单了，它用于告诉RecyclerView 一共有多少子项，直接返回数据源的长度就可以了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class MyAdapter extends RecyclerView.Adapter&lt;MyAdapter.ViewHolder&gt; &#123;</span><br><span class="line"></span><br><span class="line">    //数据源</span><br><span class="line">    private List&lt;String&gt; mList;</span><br><span class="line"></span><br><span class="line">    public MyAdapter(List&lt;String&gt; list) &#123;</span><br><span class="line">        mList = list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //返回item个数</span><br><span class="line">    @Override</span><br><span class="line">    public int getItemCount() &#123;</span><br><span class="line">        return mList.size() ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //创建ViewHolder实例</span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) &#123;</span><br><span class="line">    return new NormalHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //填充视图</span><br><span class="line">    @Override</span><br><span class="line">    public void onBindViewHolder(@NonNull final MyAdapter.ViewHolder holder, final int position) &#123;</span><br><span class="line">        holder.mView.setText(mList.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class ViewHolder extends RecyclerView.ViewHolder &#123;</span><br><span class="line">        public TextView mView;</span><br><span class="line"></span><br><span class="line">        public ViewHolder(View itemView) &#123;</span><br><span class="line">            super(itemView);</span><br><span class="line">            mView = itemView.findViewById(R.id.text_view);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="子项布局">子项布局</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/text_view&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;120dp&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:background=&quot;#c0c7c759&quot;</span><br><span class="line">        android:textSize=&quot;20sp&quot;</span><br><span class="line">        android:text=&quot;1&quot; /&gt;</span><br><span class="line">&lt;/FrameLayout&gt;</span><br></pre></td></tr></table></figure>
-<h3><span id="mainactivity">MainActivity</span></h3><p><strong>LayoutManager用于指定RecyclerView的布局方式，这里使用的LinearLayoutManager是线性布局的意思， 可以实现 和ListView类似的效果。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private RecyclerView mRecyclerView;</span><br><span class="line">    private MyAdapter mMyAdapter;</span><br><span class="line">    private LinearLayoutManager mLayoutManager;</span><br><span class="line">    private List&lt;String&gt; list;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(final Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        initData();</span><br><span class="line"></span><br><span class="line">        mRecyclerView = findViewById(R.id.recycler_view);</span><br><span class="line">        mMyAdapter = new MyAdapter(list);</span><br><span class="line">        mLayoutManager = new LinearLayoutManager(this);</span><br><span class="line">        mRecyclerView.setLayoutManager(mLayoutManager);</span><br><span class="line">        mRecyclerView.setAdapter(mMyAdapter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initData() &#123;</span><br><span class="line">        list = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt;= 20; i++) &#123;</span><br><span class="line">            list.add(&quot;Item &quot; + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="/2019/04/09/Android-ListView与RecyclerView简述/RecyclerView.jpg" alt=""></p>
-<h3><span id="分割线-itemdecoration">分割线 - ItemDecoration</span></h3><p>可以通过RecyclerView.addItemDecoration()来实现。</p>
-<p>略…</p>
-<h3><span id="布局-layoutmanager">布局 - LayoutManager</span></h3><p>LayoutManager 负责<strong>在 RecyclerView 中度量和定位 Item 视图，并确定何时回收用户不再可见的 Item 的策略。</strong>通过更改 LayoutManager，可以使用 RecyclerView 实现标准的垂直滚动列表、统一的网格、交错网格、水平滚动集合等。</p>
-<p>几个实现类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LinearLayoutManager：LayoutManager 的子类，线性布局管理器，支持横向、纵向</span><br><span class="line">GridLayoutManager：LinearLayoutManager 的子类，网格布局管理器</span><br><span class="line">StaggeredGridLayoutManager：LayoutManager 的子类，瀑布流布局管理器</span><br></pre></td></tr></table></figure>
-<h3><span id="动画-itemanimator">动画 - ItemAnimator</span></h3><p>动画也是 RecyclerView 很强大的一点，用户可以通过实现 <strong>ItemAnimator</strong> 这个抽象类来定制我们想要的动画。</p>
-<p>官方为我们提供了一种默认的实现 DefaultItemAnimator ，借助这个类，我们就可以加入 Item 的添加和删除动画，实现起来很简单，只需要加入下面这一行代码即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mRecyclerView.setItemAnimator(new DefaultItemAnimator());</span><br></pre></td></tr></table></figure>
-<p>然后再具体更改自己的代码就行了，这里只是简单的介绍了一下关于动画的一点儿东西，还有很多好看的动画，<a href="https://github.com/gabrielemariotti/RecyclerViewItemAnimators" target="_blank" rel="noopener">可以参考一下这个链接</a>。</p>
-<h3><span id="点击事件">点击事件</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ListView 中点击事件只能针对子项，无法监听内部控件</span><br><span class="line">RecyclerView 按需对任意 View 设置点击监听，不存在点击不到的控件。</span><br></pre></td></tr></table></figure>
-<p>通过接口回调实现。</p>
-<p>具体使用方法请面向百度编程。</p>
-<h3><span id="下拉刷新">下拉刷新</span></h3><p><strong>SwipeRefreshLayout。</strong></p>
-<p>具体使用方法请面向百度编程。</p>
-<h3><span id="上拉加载更多">上拉加载更多</span></h3><p><strong>footerview。</strong></p>
-<p>具体使用方法请面向百度编程。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2528,7 +2462,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2550,7 +2484,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2635,7 +2569,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共118.4k字</span>
+  <span class="post-count">博客全站共119.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十一)]]></title>
+    <url>%2F2019%2F05%2F25%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[目录： Canvas 简单介绍 创建画布 浏览器支持 使用 绘制 注意事项 Canvas简单介绍Canvas是HTML5之后新增的组件，其实就是相当于画布，本身这个元素是没有绘制能力的，但是可以通过JS在这个画布上面进行图形与表格的绘制之类的。 创建画布一个Canvas其实就是定义了一个指定尺寸的矩形框，在这个范围里面可以随意的绘制自己想要绘制的图形。 1&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;&lt;/canvas&gt; 浏览器支持由于不同的浏览器对于HTML5的支持标准不同，所以，使用这个画布之前必须加以判断，比如如果不支持的话返回提示。 实例如下： 123&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt; &lt;p&gt;Does not support！&lt;/p&gt;&lt;/canvas&gt; 如果浏览器支持Canvas的话会直接忽略内部的HTML，如果不支持的话就会显示画布里面的内容。 检测方法如下： 1234567&apos;use strict&apos;;var canvas = document.getElementById(&apos;testCanvas&apos;);if (canvas.getContext) &#123; console.log(&apos;浏览器支持Canvas!&apos;);&#125; else &#123; console.log(&apos;浏览器不支持Canvas!&apos;);&#125; 使用这里以2D作为示例。 要对一个画布对象进行绘制的话，首先需要获取到一个2D对象。方法是getContext(‘2d’)： 1var ctx = canvas.getContext(&apos;2d&apos;); 绘制3D的话需要使用WebGL规范： 1test = canvas.getContext(&quot;webgl&quot;); 绘制Canvas的坐标以左上角为原点，水平向右为X轴，垂直向下为Y轴，以像素为单位，所以每个点都是非负整数。 基本形状绘制： 123456789101112131415161718'use strict';var canvas = document.getElementById('test-shape-canvas'),ctx = canvas.getContext('2d');ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明ctx.fillStyle = '#dddddd'; // 设置颜色ctx.fillRect(10, 10, 130, 130); // 把(10,10)位置大小为130x130的矩形涂色// 利用Path绘制复杂路径:var path=new Path2D();path.arc(75, 75, 50, 0, Math.PI*2, true);path.moveTo(110,75);path.arc(75, 75, 35, 0, Math.PI, false);path.moveTo(65, 65);path.arc(60, 65, 5, 0, Math.PI*2, true);path.moveTo(95, 65);path.arc(90, 65, 5, 0, Math.PI*2, true);ctx.strokeStyle = '#0000ff';ctx.stroke(path); 效果如下： 基本文本绘制： 123456789101112'use strict';var canvas = document.getElementById('test-text-canvas'),ctx = canvas.getContext('2d');ctx.clearRect(0, 0, canvas.width, canvas.height);ctx.shadowOffsetX = 2;ctx.shadowOffsetY = 2;ctx.shadowBlur = 2;ctx.shadowColor = '#666666';ctx.font = '24px Arial';ctx.fillStyle = '#333333';ctx.fillText('带阴影的文字', 20, 40); 效果如下： 注意事项1.尽量使用整数坐标而不是浮点数。 2.如果要实现很复杂的效果的话，可以使用多个重叠的画布而不是在一个画布上面进行复杂的绘制。 3.背景图片如果不变可以直接用img标签并放到最底层。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[机器学习实验-K-Means模型聚类]]></title>
     <url>%2F2019%2F05%2F24%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C-K-Means%E6%A8%A1%E5%9E%8B%E8%81%9A%E7%B1%BB%2F</url>
     <content type="text"><![CDATA[目录： 实验目的 实验内容 实验过程 实验结果 实验总结 问题 总结 实验目的利用K-Means模型对上个实验得到的数据集进行聚类。 实验内容 1） 选取数据空间中的K个对象作为初始中心，每个对象代表一个聚类中心。 2） 对于样本中的数据对象，根据它们与这些聚类中心的欧氏距离，按距离最近的准则将它们分到距离它们最近的聚类中心（最相似）所对应的类。 3） 更新聚类中心：将每个类别中所有对象所对应的均值作为该类别的聚类中心，计算目标函数的值。 4） 判断聚类中心和目标函数的值是否发生改变，若不变，则输出结果，若改变，则返回2）。 实验过程1.确定聚类中心。 2.计算欧式距离。 3.根据聚类中心的位置来分配样本中的数据对象. 4.更新当前的聚类中心。 5.输出结果到指定的KMeansOutPut.txt。 实验结果 实验总结问题 K的选择问题。 相似度定义问题。 初始化K个质心的选择。（这里还包含了一个局部最小的问题） 总结 本次实验中的kmeans算法首先选择K个初始质心，其中K是用户指定的参数，即所期望的簇的个数。 然后就是选择适当的初始质心，这也是kmeans算法的关键步骤。 由于随机的选取初始质心，这样生成簇的质量常常很差。有些会出现局部最小问题。 这里采取的是网上有人使用过的方法：选取具有最小SSE（误差的平方和）的簇集。即多次运行，每次使用一组不同的随机初始质心。 本次实验中使用的距离度量方法是欧式距离。]]></content>
@@ -212,8 +226,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>浏览器</tag>
         <tag>浏览器对象</tag>
+        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
@@ -733,9 +747,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>

@@ -313,6 +313,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/21/Dart学习笔记-一/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/21/Dart学习笔记-一/" itemprop="url">Dart学习笔记(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T13:29:36+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Dart/" itemprop="url" rel="index">
+                    <span itemprop="name">Dart</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  980
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#简单实例">简单实例</a></li>
+<li><a href="#重要概念">重要概念</a></li>
+<li><a href="#关键字">关键字</a></li>
+<li><a href="#变量">变量</a><ul>
+<li><a href="#未初始化">未初始化</a></li>
+<li><a href="#final与const关键字">Final与const关键字</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>由于最近写的一个东西需要到Flutter，所以Dart语言也必须学好，不多说，现在立马就开始吧。由于是个人向的学习笔记，所以，默认是已经学过其他编程语言了，然后很多和其他类似的语法就不过多赘述，只是表达目前新的东西。</p>
+<h2><span id="简单实例">简单实例</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 定义一个函数</span><br><span class="line">printInteger(int aNumber) &#123;</span><br><span class="line">  print(&apos;The number is $aNumber.&apos;); // Print to console.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 程序执行入口</span><br><span class="line">main() &#123;</span><br><span class="line">  var number = 42; // Declare and initialize a variable.</span><br><span class="line">  printInteger(number); // Call a function.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>dart内置的类型包括int，string，list，bool。</strong></p>
+<p>print()用于<strong>显示输出</strong>。</p>
+<p>main()是一种特殊的，必须的顶级函数，应用程序就从这里<strong>开始执行</strong>。</p>
+<h2><span id="重要概念">重要概念</span></h2><p>在变量中可以放置的所有东西都是<strong>对象</strong>，而每个对象都是类的实例。无论数字、函数和null都是对象。<strong>所有对象都继承自[Object]类。</strong><br>    尽管Dart是<strong>强类型的</strong>，但类型声明是可选的，因为Dart可以推断类型。 在上面的代码中，数字被推断为int类型。 <strong>如果要明确说明不需要任何类型，请使用[特殊类型dynamic]。</strong><br>    Dart支持<strong>通用类型</strong>，如List<int>(整数列表)或List<dynamic>(任何类型的对象列表)。<br>    Dart支持<strong>顶级函数</strong>(如main())，以及绑定到类或对象(分别是静态方法（static）和实例（instance）方法)的函数。您还可以在函数(嵌套或局部函数)中创建函数。<br>    Dart支持<strong>顶级变量</strong>，以及绑定到类或对象(静态和实例变量)的变量。<strong>实例变量有时被称为字段或属性</strong>。<br>    与Java不同，<strong>Dart没有公开、保护和私有的关键字</strong>。如果标识符以下划线(<em>)开头，则该标识符对其库是<strong>私有的</strong>。<br>    标识符可以以字母或下划线(</em>)开头，然后是这些字符加上数字的<strong>任何组合</strong>。<br>    有时候，某事物是<strong>一个表达（expression ）还是一个语句（statement）</strong>是很重要的，所以这两个词要准确。</dynamic></int></p>
+<h2><span id="关键字">关键字</span></h2><p>这就是Dart里面所有的关键字：</p>
+<p>(1)带有上标1的单词是<strong>内置标识符</strong>。避免使用内置标识符作为标识符。如果尝试为类或类型名使用内置标识符，则会发生编译时错误。<br>    (2)使用上标2的单词是在Dart的1.0版本之后添加的与异步支持相关的<strong>更新的、有限的保留字</strong>。在以async, async<em>, 或者 sync</em> 标记的任何函数体中，不能使用async, await, 或者 yield作为标识符。</p>
+<p>关键字表中的所有其他词都是<strong>保留词</strong>。<strong>不能使用保留词作为标识符。</strong></p>
+<p><img src="/2019/03/21/Dart学习笔记-一/关键字.jpg" alt=""></p>
+<h2><span id="变量">变量</span></h2><h3><span id="未初始化">未初始化</span></h3><p><strong>未初始化的变量的初始值为null。</strong>甚至具有数字类型的变量最初也是null，因为数字——就像dart中的其他东西一样——是<strong>对象</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int lineCount;</span><br><span class="line">assert(lineCount == null);</span><br></pre></td></tr></table></figure>
+<h3><span id="final与const关键字">Final与const关键字</span></h3><p><strong>最终变量只能设置一次</strong>，const变量是一个编译时常数。(Const变量是<strong>隐式最终变量</strong>。)最终的顶级或类变量在第一次使用时被初始化。</p>
+<p>注意:<strong>实例变量可以是final，但不能是const。</strong>[实例变量定义在对象一级，它可以被类中的任何方法或者其他类中的方法访问，但是不能被<strong>静态方法</strong>访问。]</p>
+<p>对于想要<strong>在编译时确定并且不再变</strong>的变量，使用const。如果const变量位于<strong>类级别</strong>，则将其标记为<strong>静态const</strong>。</p>
+<p>const关键字<strong>不只是声明常量变量</strong>。还可以使用它来创建常量值，以及声明创建常量值的构造函数。<strong>任何变量都可以赋一个常量值。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/21/java基础-渐入佳境/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -3318,266 +3530,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/26/android学习路线总结plus/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/26/android学习路线总结plus/" itemprop="url">android学习路线总结plus</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T09:35:42+08:00">
-                2019-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#1java-se基础">1.java se基础：</a></li>
-<li><a href="#2android-ui编程">2.android UI编程：</a><ul>
-<li><a href="#1android初级控件的使用">1）android初级控件的使用：</a></li>
-<li><a href="#2android高级控件的使用">2）android高级控件的使用：</a></li>
-<li><a href="#3对话框与菜单的使用">3）对话框与菜单的使用：</a></li>
-<li><a href="#4控件的布局方法">4）控件的布局方法：</a></li>
-<li><a href="#5多activity的管理">5）多activity的管理：</a></li>
-<li><a href="#6自定义控件的实现方法">6）自定义控件的实现方法：</a></li>
-</ul>
-</li>
-<li><a href="#3android网络编程以及数据储存">3.android网络编程以及数据储存：</a><ul>
-<li><a href="#1基于android平台的http通讯">1）基于android平台的http通讯：</a></li>
-<li><a href="#2android数据储存技术">2）android数据储存技术：</a></li>
-</ul>
-</li>
-<li><a href="#4进阶之路">4.进阶之路：</a><ul>
-<li><a href="#初级工程师">初级工程师：</a></li>
-<li><a href="#中级工程师">中级工程师：</a></li>
-<li><a href="#高级工程师">高级工程师：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="1java-se基础">1.java se基础：</span></h2><p>1).Java基本数据类型与表达式，分支循环。<br>2).String和StringBuffer的使用、正则表达式。<br>3).面向对象的抽象，封装，继承，多态，类与对象，对象初始化和回收；构造函数、this关键字、方法和方法的参数传递过程、static关键字、内部类。<br>4).对象实例化过程、方法的覆盖、final关键字、抽象类、接口、继承的优点和缺点剖析；对象的多态性：子类和父类之间的转换、抽象类和接口在多态中的应用、多态带来的好处。<br>5).Java异常处理，异常的机制原理。<br>6).常用的设计模式：Singleton、Template、Strategy模式。<br>7).JavaAPI介绍：种基本数据类型包装类，System和Runtime类，Date和DateFomat类等。<br>8).Java集合介绍：Collection、Set、List、ArrayList、LinkedList、Hashset、Map、HashMap、Iterator等常用集合类API。<br>9).JavaI/O输入输出流：File和FileRandomAccess类，字节流InputStream和OutputStream，字符流Reader和Writer，以及相应实现类，IO性能分析，字节和字符的转化流，包装流的概念，以及常用包装类，计算机编码。<br>10).Java高级特性：反射和泛型。<br>11).多线程原理：如何在程序中创建多线程(Thread、Runnable)，线程安全问题，线程的同步，线程之间的通讯、死锁。</p>
-<h2><span id="2android-ui编程">2.android UI编程：</span></h2><h3><span id="1android初级控件的使用">1）android初级控件的使用：</span></h3><p>TextView控件的使用<br>Button控件的使用方法<br>EditText控件的使用方法<br>ImageView的使用方法<br>RadioButton的使用方法<br>Checkbox的使用方法<br>Menu的使用方法</p>
-<h3><span id="2android高级控件的使用">2）android高级控件的使用：</span></h3><p>ListView的使用方法<br>GridView的使用方法<br>Adapter的使用方法<br>Spinner的使用方法<br>Gallary的使用方法<br>ScrollView的使用方法<br>RecyclerView</p>
-<h3><span id="3对话框与菜单的使用">3）对话框与菜单的使用：</span></h3><p>Dialog的基本概念<br>BlockquoteAlertDialog的使用方法<br>DatePickerDialog的使用方法<br>Menu的使用方法<br>自定义Menu的实现方法</p>
-<h3><span id="4控件的布局方法">4）控件的布局方法：</span></h3><p>线性布局的使用方法<br>相对布局的使用方法</p>
-<h3><span id="5多activity的管理">5）多activity的管理：</span></h3><p>AndroidManifest.xml文件的作用<br>Intent的使用方法<br>使用Intent传递数据的方法<br>启动Activity的方法<br>IntentFilter的使用方法<br>Activity Group的使用方法</p>
-<h3><span id="6自定义控件的实现方法">6）自定义控件的实现方法：</span></h3><p>自定义ListView的实现方法<br>可折叠ListView的使用方法<br>自定义Adapter的实现方法<br>自定义View的实现方法<br>动态控件布局的上实现方法<br>上拉刷新下拉加载更多</p>
-<h2><span id="3android网络编程以及数据储存">3.android网络编程以及数据储存：</span></h2><h3><span id="1基于android平台的http通讯">1）基于android平台的http通讯：</span></h3><p>Http协议回顾<br>使用Get方法向服务器提交数据的方法<br>使用POST方法向服务器提交数据的实现方法<br>使用Http协议实现多线程下载<br>使用Http协议实现断点续传</p>
-<h3><span id="2android数据储存技术">2）android数据储存技术：</span></h3><p>SQLite3数据库简介<br>SQL语句回顾<br>SQLite3编程接口介绍<br>SQLite3事务管理<br>SQLite3游标使用方法<br>SQLite3性能分析<br>访问SDCard的方法<br>访问SharedPreferences的方法</p>
-<h2><span id="4进阶之路">4.进阶之路：</span></h2><h3><span id="初级工程师">初级工程师：</span></h3><ul>
-<li>基本知识点<br>比如四大组件如何使用、如何创建Service、如何进行布局、简单的自定义View、动画等常见技术</li>
-<li>书籍推荐<br>《第一行代码 Android》、《疯狂Android》</li>
-</ul>
-<h3><span id="中级工程师">中级工程师：</span></h3><ul>
-<li>AIDL：熟悉AIDL，理解其工作原理，懂transact和onTransact的区别；</li>
-<li>Binder：从Java层大概理解Binder的工作原理，懂Parcel对象的使用；</li>
-<li>多进程：熟练掌握多进程的运行机制，懂Messenger、Socket等；</li>
-<li>事件分发：弹性滑动、滑动冲突等；</li>
-<li>玩转View：View的绘制原理、各种自定义View；</li>
-<li>动画系列：熟悉View动画和属性动画的不同点，懂属性动画的工作原理；</li>
-<li>懂性能优化、熟悉mat等工具</li>
-<li>懂点常见的设计模式</li>
-<li>书籍推荐<br>《Android开发艺术探索》、《Android群英传》</li>
-</ul>
-<h3><span id="高级工程师">高级工程师：</span></h3><ul>
-<li>继续加深理解”稍微深入的知识点“中所定义的内容</li>
-<li>了解系统核心机制：</li>
-</ul>
-<ol>
-<li>了解SystemServer的启动过程</li>
-<li>了解主线程的消息循环模型</li>
-<li>了解AMS和PMS的工作原理</li>
-<li>能够回答问题”一个应用存在多少个Window？“</li>
-<li>了解四大组件的大概工作流程</li>
-<li>…</li>
-</ol>
-<ul>
-<li>基本知识点的细节</li>
-</ul>
-<ol>
-<li>Activity的启动模式以及异常情况下不同Activity的表现</li>
-<li>Service的onBind和onReBind的关联</li>
-<li>onServiceDisconnected(ComponentName className)和binderDied()的区别</li>
-<li>AsyncTask在不同版本上的表现细节</li>
-<li>线程池的细节和参数配置</li>
-<li>…</li>
-</ol>
-<ul>
-<li>熟悉设计模式，有架构意识学习方法</li>
-<li>书籍推荐<br>《Android开发艺术探索》、《Android 源码设计模式解析与实战》、《Android内核剖析》</li>
-</ul>
-<p><a href="https://www.cnblogs.com/yishaochu/p/5436094.html" target="_blank" rel="noopener">参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3630,7 +3582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3652,7 +3604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3737,7 +3689,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共118.4k字</span>
+  <span class="post-count">博客全站共119.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
