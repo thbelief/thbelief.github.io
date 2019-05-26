@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习实验-线性回归预测]]></title>
+    <url>%2F2019%2F05%2F26%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E9%A2%84%E6%B5%8B%2F</url>
+    <content type="text"><![CDATA[目录： 实验目的对给定的数据集进行线性回归预测。 实验内容 先创建csv 文件。 利用WEKA 的TOOLS 讲csv 转换为arff 工具。 利用WEKA 学习线性回归模型。 实验过程(1)首先讲数据集在EXCEL 中进行处理，转变为CSV 文件格式，注意这里需要把原数据集中的属性名称改变为英文。 另存为data.csv 在桌面即可。等会儿还需要使用到。 (2)利用WEKA 的TOOLS 将CSV 格式转换为ARFF 格式。 也是另存为桌面为data.arff。 （3）将data.arff 导入进WEKA 进行线性回归预测即可。 （4）先使用Use training set 来测试。 （5）采用10 折交叉验证（ 10-fold cross validation） 来选择和评估模型。 (6)由于Weka 在处理丢失数据的时候已经做了均值处理。所以这里不对缺失值进行操作。 实验结果 实验总结问题 首先就是实验中遇到的问题— —缺失值的处理，最开始的想法是使用均值来替代，但是得出的结果和之前不处理是一样的，所以从这里我猜测WEKA 已经做了相关的处理，是以就不用进行另外的处理了。 最开始不知道如何将CSV 转换为ARFF 格式， 还好是找到了相关的方案。解决了这个问题。 总结值得注意的是， 数据缺失的话在WEKA 中需要使用? 来替代表示是一个缺失值， 不能使用-或者0 这种东西来替代。 在统计学中， 线性回归(Linear Regression)是利用称为线性回归方程的最小平方函数对一个或多个自变量和因变量之间关系进行建模的一种回归分析。 本次实验就是利用Weka 在生育率、老龄人口占比、老龄人口死亡占比、人口流动比率、女性育龄人口占比这6 个自变量和实际人口数之间进行建模分析。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>实验</tag>
+        <tag>WEKA</tag>
+        <tag>线性回归预测</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十一)]]></title>
     <url>%2F2019%2F05%2F25%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%B8%80%2F</url>
     <content type="text"><![CDATA[目录： Canvas 简单介绍 创建画布 浏览器支持 使用 绘制 注意事项 Canvas简单介绍Canvas是HTML5之后新增的组件，其实就是相当于画布，本身这个元素是没有绘制能力的，但是可以通过JS在这个画布上面进行图形与表格的绘制之类的。 创建画布一个Canvas其实就是定义了一个指定尺寸的矩形框，在这个范围里面可以随意的绘制自己想要绘制的图形。 1&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;&lt;/canvas&gt; 浏览器支持由于不同的浏览器对于HTML5的支持标准不同，所以，使用这个画布之前必须加以判断，比如如果不支持的话返回提示。 实例如下： 123&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt; &lt;p&gt;Does not support！&lt;/p&gt;&lt;/canvas&gt; 如果浏览器支持Canvas的话会直接忽略内部的HTML，如果不支持的话就会显示画布里面的内容。 检测方法如下： 1234567&apos;use strict&apos;;var canvas = document.getElementById(&apos;testCanvas&apos;);if (canvas.getContext) &#123; console.log(&apos;浏览器支持Canvas!&apos;);&#125; else &#123; console.log(&apos;浏览器不支持Canvas!&apos;);&#125; 使用这里以2D作为示例。 要对一个画布对象进行绘制的话，首先需要获取到一个2D对象。方法是getContext(‘2d’)： 1var ctx = canvas.getContext(&apos;2d&apos;); 绘制3D的话需要使用WebGL规范： 1test = canvas.getContext(&quot;webgl&quot;); 绘制Canvas的坐标以左上角为原点，水平向右为X轴，垂直向下为Y轴，以像素为单位，所以每个点都是非负整数。 基本形状绘制： 123456789101112131415161718'use strict';var canvas = document.getElementById('test-shape-canvas'),ctx = canvas.getContext('2d');ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明ctx.fillStyle = '#dddddd'; // 设置颜色ctx.fillRect(10, 10, 130, 130); // 把(10,10)位置大小为130x130的矩形涂色// 利用Path绘制复杂路径:var path=new Path2D();path.arc(75, 75, 50, 0, Math.PI*2, true);path.moveTo(110,75);path.arc(75, 75, 35, 0, Math.PI, false);path.moveTo(65, 65);path.arc(60, 65, 5, 0, Math.PI*2, true);path.moveTo(95, 65);path.arc(90, 65, 5, 0, Math.PI*2, true);ctx.strokeStyle = '#0000ff';ctx.stroke(path); 效果如下： 基本文本绘制： 123456789101112'use strict';var canvas = document.getElementById('test-text-canvas'),ctx = canvas.getContext('2d');ctx.clearRect(0, 0, canvas.width, canvas.height);ctx.shadowOffsetX = 2;ctx.shadowOffsetY = 2;ctx.shadowBlur = 2;ctx.shadowColor = '#666666';ctx.font = '24px Arial';ctx.fillStyle = '#333333';ctx.fillText('带阴影的文字', 20, 40); 效果如下： 注意事项1.尽量使用整数坐标而不是浮点数。 2.如果要实现很复杂的效果的话，可以使用多个重叠的画布而不是在一个画布上面进行复杂的绘制。 3.背景图片如果不变可以直接用img标签并放到最底层。]]></content>
@@ -284,8 +298,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>root</tag>
         <tag>卡刷</tag>
+        <tag>root</tag>
       </tags>
   </entry>
   <entry>
@@ -614,8 +628,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>刷机</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -747,9 +761,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
