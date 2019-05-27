@@ -313,6 +313,426 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/22/java基础-略有小成/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/22/java基础-略有小成/" itemprop="url">java基础-略有小成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T22:00:24+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#基本数据类型">基本数据类型</a><ul>
+<li><a href="#种类">种类</a></li>
+<li><a href="#占用空间">占用空间</a></li>
+<li><a href="#类型转换">类型转换</a></li>
+</ul>
+</li>
+<li><a href="#包装类">包装类</a><ul>
+<li><a href="#类型转换方法">类型转换方法</a></li>
+<li><a href="#引用问题">引用问题</a></li>
+</ul>
+</li>
+<li><a href="#system类">System类</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#成员变量">成员变量</a></li>
+<li><a href="#成员方法">成员方法</a></li>
+</ul>
+</li>
+<li><a href="#runtime类">RunTime类</a></li>
+<li><a href="#date与dateformat">Date与DateFormat</a><ul>
+<li><a href="#构造函数">构造函数</a></li>
+<li><a href="#方法">方法</a></li>
+<li><a href="#日期比较">日期比较</a></li>
+<li><a href="#simpledateformat格式化日期">SimpleDateFormat格式化日期</a></li>
+<li><a href="#格式化编码">格式化编码</a></li>
+<li><a href="#printf格式化日期">printf格式化日期</a></li>
+<li><a href="#解析字符串">解析字符串</a></li>
+<li><a href="#sleep">sleep</a></li>
+</ul>
+</li>
+<li><a href="#calendar类与gregoriancalendar类">Calendar类与GregorianCalendar类</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="基本数据类型">基本数据类型</span></h2><h3><span id="种类">种类</span></h3><p><img src="/2019/03/22/java基础-略有小成/基本数据类型.jpg" alt=""></p>
+<p>讲到基本类型的话，不可避免的就是<strong>字面量值</strong>，其实它的意思就是<strong>表面上的值。</strong></p>
+<p>byte、short、int、long类型变量都可以赋予整型字面量值，譬如byte a = 10、short b = 0x45都是合法的赋值操作。Java编译器在编译是会检查字面量值所表示的数字大小是否处于变量类型的合法范围内，如果不在，则无法通过编译。如果多种数值类型的数据进行数学运算时，计算结果的类型是其中这些数值中<strong>最高等级或者其更高等级类型。</strong></p>
+<h3><span id="占用空间">占用空间</span></h3><p>byte（字节）用<strong>无符号的8位</strong>表示，它的取值范围是[-2^7, 2^7-1]。它是最小的整型类型，默认值是0。<br>    short（短整型）用<strong>有符号的16位</strong>表示，它的取值范围是[-2^15, 2^15-1]。默认值是0。<br>    int（整型）用有符号的32位表示，它的取值范围是[-2^31, 2^31-1]，计算机中用存放的是整型数值的<strong>二进制补码</strong>。默认值是0。<br>    long（长整型）用<strong>有符号的64位</strong>表示，它的取值范围是[-2^63, 2^63-1]。它的字面量表示以l或者L结束，如 long a = 45454L。默认值是0L。<br>    float（单精度浮点型）用<strong>32位</strong>表示，float类型字面量值通常以f或者F结束。由于整型可以自动转换为float类型，所以，也可以将整型字面量值直接赋予float类型变量。默认值是<strong>0F</strong>。<br>    double（双精度浮点型）用<strong>64位</strong>表示，遵循IEEE 754规范。它能表示比float更高精度的数值。double是Java基本类型中能达到的最高精度，如果还不能满足要求，可以使用Java中的<strong>BigDecimal</strong>类。默认值是0.0。<br>    char（字符）用<strong>无符号的16位</strong>表示，它的取值范围是[0, 2^16-1]。Java中使用<strong>Unicode字符集</strong>来表示字符，Unicode将人类语言的所有已知字符映射成16位数字，所以Java中的char是16位的。默认值是\u00000。</p>
+<p>boolean（ 布尔型）只要<strong>true和false</strong>两个字面量值，可用于逻辑判断。boolean只能表示1位的信息量，但是它的大小并没有精确地定义。</p>
+<h3><span id="类型转换">类型转换</span></h3><p>在JAVA里面除了boolean类型之外，其他7中类型相互之间可以<strong>进行转换</strong>。转换分为<strong>自动转换</strong>和<strong>强制转换</strong>。对于自动转换（隐式），无需任何操作，而强制类型转换需要<strong>显式转换</strong>，即使用转换操作符（type）。</p>
+<p>占用空间大小进行排序：<strong>byte &lt;（short=char）&lt; int &lt; long &lt; float &lt; double</strong></p>
+<p>类型转换的总则是：<strong>小可直接转大、大转小会失去精度</strong>。小转大是Java帮我们自动进行转换的，与正常的赋值操作完全一样；大转小需要进行强制转换操作，其语法是<strong>target-type var =（target-type） value</strong>。</p>
+<p><strong>特别注意：大转小有可能在某些情况下产生不可预估的问题。</strong></p>
+<h2><span id="包装类">包装类</span></h2><p>Java里面的每一种<strong>基本类型</strong>都会对应一个<strong>唯一的</strong>包装类，基本类型与其包装类都可以通过包装类中的<strong>静态</strong>或者<strong>成员方法</strong>进行转换。所有的包装类都是<strong>final</strong>修饰的，也就是它们都是<strong>无法被继承和重写</strong>的。</p>
+<p><img src="/2019/03/22/java基础-略有小成/包装类.jpg" alt=""></p>
+<p><strong>基础类型和包装类型都可以通过赋值语法赋值给对立的变量类型。</strong></p>
+<h3><span id="类型转换方法">类型转换方法</span></h3><p><img src="/2019/03/22/java基础-略有小成/类型转换方法.jpg" alt=""></p>
+<h3><span id="引用问题">引用问题</span></h3><p>在Java中，“==”符号判断的<strong>内存地址</strong>所对应的值的<strong>相等性</strong>，具体来说，<strong>基本类型判断值是否相等</strong>，<strong>引用类型判断其指向的地址是否相等。</strong></p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer a1 = 1;</span><br><span class="line">Integer a2 = 1;</span><br><span class="line">System.out.println(a1 == a2); // true</span><br><span class="line"></span><br><span class="line">Integer b1 = 222;</span><br><span class="line">Integer b2 = 222;</span><br><span class="line">System.out.println(b1 == b2); // false</span><br></pre></td></tr></table></figure>
+<p>这是为什么呢？</p>
+<p>如果打开Integer类中的valueOf()方法会发现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static Integer valueOf(int i) &#123;</span><br><span class="line">    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) // 判断实参是否在可缓存范围内，默认为[-128, 127]</span><br><span class="line">        return IntegerCache.cache[i + (-IntegerCache.low)]; // 如果在，则取出初始化的Integer对象</span><br><span class="line">    return new Integer(i); // 如果不在，则创建一个新的Integer对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于1属于[-128, 127]集合范围内，所以valueOf()每次都会取出<strong>同一个Integer对象</strong>，故第一个“==”判断结果为true；</p>
+<p>而222不属于[-128, 127]集合范围内，所以valueOf()每次都会创建一个<strong>新的Integer对象</strong>，由于两个新创建的对象的地址不一样，故第一个“==”判断结果为false。</p>
+<p><a href="https://blog.csdn.net/xialei199023/article/details/63251295" target="_blank" rel="noopener">参考链接</a></p>
+<h2><span id="system类">System类</span></h2><h3><span id="简介">简介</span></h3><p>system类在java中的作用其实就是类似于<strong>系统</strong>的作用，它的内部包含了很多系统级别的<strong>属性以及控制方法</strong>。</p>
+<h3><span id="成员变量">成员变量</span></h3><p>主要就是包含了<strong>in（标准输入流，键盘输入），out（标准输出流，显示器）以及err（标准错误输出流）。</strong></p>
+<p><strong>out与err的差别</strong></p>
+<p>System.out在JVM和操作系统都具有缓存功能，其实就是输出的数据<strong>不一定实时输出</strong>，有时候会积攒到一定数量才会输出；System.err会<strong>实时输出</strong>。</p>
+<h3><span id="成员方法">成员方法</span></h3><p>1.static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</p>
+<p>该方法的作用是<strong>数组拷贝</strong>，src为被拷贝的数组，srcPos为src要拷贝的初始位置，dest为目的数组，目的数组dest放置拷贝数据的初始位置，length为从src拷贝到的数据长度。</p>
+<p>2.static long currentTimeMillis()<br>    该方法的作用是<strong>返回当前的计算机时间</strong>，时间的表达格式为当前计算机时间和GMT时间(格林威治时间)1970年1月1号0时0分0秒所差的毫秒数。</p>
+<p>3.static void exit(int status)<br>    该方法的作用是<strong>退出程序</strong>。其中status的值为0代表正常退出，非零代表异常退出。使用该方法可以在图形界面编程中实现程序的退出功能等。</p>
+<p>4.static void gc()<br>    请求系统进行<strong>垃圾回收</strong>。至于系统是否立刻回收，则取决于系统中垃圾回收算法的实现以及系统执行时的情况。</p>
+<p>5.static Properties getProperties()<br>    <strong>获取系统的属性信息</strong>，并存储到Properties集合中。Properties集合中存储的都是String类型的键值对。</p>
+<p>6.static String getProperty(String key)</p>
+<p><strong>获得系统中属性名为key的属性对应的值</strong>。系统中常见的属性名以及属性的作用如下表所示：</p>
+<p><img src="/2019/03/22/java基础-略有小成/属性.jpg" alt=""></p>
+<p>7.static String setProperty(String key, String value)<br>    给系统<strong>设置一些属性信息</strong>，这些信息是全局的，其他程序都可以使用。</p>
+<h2><span id="runtime类">RunTime类</span></h2><p>Runtime类<strong>封装了运行时的环境</strong>。每个 Java 应用程序都有一个 Runtime 类实例，使应用程序能够与其运行的环境相连接。该类<strong>无法创建对象</strong>。</p>
+<p><strong>常用方法</strong><br>    <strong>static Runtime getRuntime() 返回一个Runtime实例</strong>。<br>    <strong>Process exec(String command) 指定某个exe文件并返回该程序进程，参数command为本地exe文件路径。</strong></p>
+<p><strong>long freeMemory() 返回Java虚拟机中的空闲内存量，以字节为单位</strong><br>    <strong>long maxMemory() 返回Java虚拟机试图使用的最大内存量</strong></p>
+<p><strong>long totalMemory() 返回Java虚拟机中的内存总量</strong></p>
+<h2><span id="date与dateformat">Date与DateFormat</span></h2><p>Date是Java中提供来<strong>封装当前的日期与时间</strong>的类。</p>
+<h3><span id="构造函数">构造函数</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date( );//使用当前日期和时间来初始化对象。</span><br><span class="line">Date(long millisec);//接收一个参数，该参数是从1970年1月1日起的毫秒数。</span><br></pre></td></tr></table></figure>
+<h3><span id="方法">方法</span></h3><p><img src="/2019/03/22/java基础-略有小成/方法.jpg" alt=""></p>
+<h3><span id="日期比较">日期比较</span></h3><p> 使用 <strong>getTime()</strong> 方法获取两个日期（自1970年1月1日经历的毫秒数值），然后比较这两个值。<br>    使用方法 <strong>before()，after() 和 equals()</strong>。例如，一个月的12号比18号早，则 new Date(99, 2, 12).before(new Date (99, 2, 18)) 返回true。<br>    使用 <strong>compareTo()</strong> 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。</p>
+<h3><span id="simpledateformat格式化日期">SimpleDateFormat格式化日期</span></h3><p>SimpleDateFormat 允许用户选择<strong>任何自定义日期时间格式</strong>来运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import  java.util.*;</span><br><span class="line">import java.text.*;</span><br><span class="line"> </span><br><span class="line">public class DateDemo &#123;</span><br><span class="line">   public static void main(String args[]) &#123;</span><br><span class="line"> </span><br><span class="line">      Date dNow = new Date( );</span><br><span class="line">      /*这一行代码确立了转换的格式，其中 yyyy 是完整的公元年，MM 是月份，dd 是日期，HH:mm:ss 是时、分、秒。注意:有的格式大写，有的格式小写，例如 MM 是月份，mm 是分；HH 是 24 小时制，而 hh 是 12 小时制。*/</span><br><span class="line">      SimpleDateFormat ft = new SimpleDateFormat (&quot;yyyy-MM-dd hh:mm:ss&quot;);</span><br><span class="line">      System.out.println(&quot;当前时间为: &quot; + ft.format(dNow));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="格式化编码">格式化编码</span></h3><table>
+<thead>
+<tr>
+<th><strong>字母</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G</td>
+<td>纪元标记</td>
+<td>AD</td>
+</tr>
+<tr>
+<td>y</td>
+<td>四位年份</td>
+<td>2001</td>
+</tr>
+<tr>
+<td>M</td>
+<td>月份</td>
+<td>July or 07</td>
+</tr>
+<tr>
+<td>d</td>
+<td>一个月的日期</td>
+<td>10</td>
+</tr>
+<tr>
+<td>h</td>
+<td>A.M./P.M. (1~12)格式小时</td>
+<td>12</td>
+</tr>
+<tr>
+<td>H</td>
+<td>一天中的小时 (0~23)</td>
+<td>22</td>
+</tr>
+<tr>
+<td>m</td>
+<td>分钟数</td>
+<td>30</td>
+</tr>
+<tr>
+<td>s</td>
+<td>秒数</td>
+<td>55</td>
+</tr>
+<tr>
+<td>S</td>
+<td>毫秒数</td>
+<td>234</td>
+</tr>
+<tr>
+<td>E</td>
+<td>星期几</td>
+<td>Tuesday</td>
+</tr>
+<tr>
+<td>D</td>
+<td>一年中的日子</td>
+<td>360</td>
+</tr>
+<tr>
+<td>F</td>
+<td>一个月中第几周的周几</td>
+<td>2 (second Wed. in July)</td>
+</tr>
+<tr>
+<td>w</td>
+<td>一年中第几周</td>
+<td>40</td>
+</tr>
+<tr>
+<td>W</td>
+<td>一个月中第几周</td>
+<td>1</td>
+</tr>
+<tr>
+<td>a</td>
+<td>A.M./P.M. 标记</td>
+<td>PM</td>
+</tr>
+<tr>
+<td>k</td>
+<td>一天中的小时(1~24)</td>
+<td>24</td>
+</tr>
+<tr>
+<td>K</td>
+<td>A.M./P.M. (0~11)格式小时</td>
+<td>10</td>
+</tr>
+<tr>
+<td>z</td>
+<td>时区</td>
+<td>Eastern Standard Time</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>文字定界符</td>
+<td>Delimiter</td>
+</tr>
+<tr>
+<td>“</td>
+<td>单引号</td>
+<td>`</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="printf格式化日期">printf格式化日期</span></h3><p>printf 方法可以很轻松地格式化时间和日期。使用<strong>两个字母</strong>格式，它以 <strong>%t</strong> 开头并且以下面表格中的一个字母结尾。</p>
+<table>
+<thead>
+<tr>
+<th>转  换  符</th>
+<th>说    明</th>
+<th>示    例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>包括全部日期和时间信息</td>
+<td>星期六 十月 27 14:21:20 CST 2007</td>
+</tr>
+<tr>
+<td>F</td>
+<td>“年-月-日”格式</td>
+<td>2007-10-27</td>
+</tr>
+<tr>
+<td>D</td>
+<td>“月/日/年”格式</td>
+<td>10/27/07</td>
+</tr>
+<tr>
+<td>r</td>
+<td>“HH:MM:SS PM”格式（12时制）</td>
+<td>02:25:51 下午</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“HH:MM:SS”格式（24时制）</td>
+<td>14:28:16</td>
+</tr>
+<tr>
+<td>R</td>
+<td>“HH:MM”格式（24时制）</td>
+<td>14:28</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="解析字符串">解析字符串</span></h3><p><strong>SimpleDateFormat 类的parse()方法来按照对应的格式化存储来解析字符串。</strong></p>
+<h3><span id="sleep">sleep</span></h3><p>sleep()使当前线程进入停滞状态（阻塞当前线程），让出CPU的使用、目的是不让当前线程独自霸占该进程所获的CPU资源，以留一定时间给其他线程执行的机会。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(1000);   // 休眠1秒</span><br></pre></td></tr></table></figure>
+<h2><span id="calendar类与gregoriancalendar类">Calendar类与GregorianCalendar类</span></h2><p>略…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/21/分拆素数和/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2949,535 +3369,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/02/27/Java基础-初窥门径/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/27/Java基础-初窥门径/" itemprop="url">Java基础 初窥门径</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T19:26:55+08:00">
-                2019-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  5.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  22
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#1java的基本数据类型">1.Java的基本数据类型：</a><ul>
-<li><a href="#对应的包装类">对应的包装类：</a></li>
-<li><a href="#基本数据类型的默认值">基本数据类型的默认值：</a></li>
-</ul>
-</li>
-<li><a href="#2java分支循环">2.Java分支循环：</a><ul>
-<li><a href="#分支语句">分支语句：</a><ul>
-<li><a href="#if语句">if语句：</a></li>
-<li><a href="#switch语句">switch语句：</a></li>
-<li><a href="#三目运算符">三目运算符：</a></li>
-<li><a href="#转义符">转义符：</a></li>
-</ul>
-</li>
-<li><a href="#循环语句">循环语句：</a><ul>
-<li><a href="#for循环">for循环：</a></li>
-<li><a href="#while语句">while语句：</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#3string-stringbuffer-stringbuilder">3.String、StringBuffer、StringBuilder：</a><ul>
-<li><a href="#区别">区别：</a></li>
-<li><a href="#string对象">String对象：</a><ul>
-<li><a href="#string本质">String本质：</a></li>
-<li><a href="#常量池">常量池：</a></li>
-<li><a href="#实例">实例：</a></li>
-</ul>
-</li>
-<li><a href="#stringbuffer字符串变量线程安全是一个容器最终会通过tostring方法变成字符串">StringBuffer字符串变量（线程安全）是一个容器，最终会通过toString方法变成字符串：</a></li>
-<li><a href="#stringbuilder-字符串变量非线程安全">StringBuilder 字符串变量（非线程安全）：</a></li>
-<li><a href="#string与stringbuffer区别">String与StringBuffer区别：</a><ul>
-<li><a href="#在修改的时候对象自身是否改变">在修改的时候对象自身是否改变：</a></li>
-<li><a href="#是否可变测试">是否可变测试：</a></li>
-<li><a href="#初始化区别">初始化区别：</a></li>
-<li><a href="#stringbuffer对象和string对象之间的互转">StringBuffer对象和String对象之间的互转:</a></li>
-<li><a href="#偏重">偏重：</a></li>
-<li><a href="#总结">总结：</a></li>
-</ul>
-</li>
-<li><a href="#stringbuffer与stringbuilder区别">StringBuffer与StringBuilder区别：</a></li>
-</ul>
-</li>
-<li><a href="#4正则表达式">4.正则表达式：</a><ul>
-<li><a href="#11正则表达式的含义">1.1正则表达式的含义：</a></li>
-<li><a href="#12具体实例">1.2具体实例：</a></li>
-<li><a href="#13常见的匹配符号">1.3常见的匹配符号：</a></li>
-<li><a href="#14元字符">1.4元字符：</a></li>
-<li><a href="#15限定符">1.5限定符：</a></li>
-<li><a href="#16分组和反向引用">1.6分组和反向引用：</a></li>
-<li><a href="#17仅分组却无反向引用">1.7仅分组却无反向引用：</a></li>
-<li><a href="#18分组的反向引用副本">1.8分组的反向引用副本：</a></li>
-<li><a href="#19否定先行断言">1.9否定先行断言：</a></li>
-<li><a href="#110指定正则表达式的模式">1.10指定正则表达式的模式：</a></li>
-<li><a href="#111java中的反斜杠">1.11java中的反斜杠：</a></li>
-<li><a href="#112易错">1.12易错：</a></li>
-<li><a href="#113内置的字符串正则处理方法">1.13内置的字符串正则处理方法：</a></li>
-<li><a href="#114模式和匹配">1.14：模式和匹配：</a></li>
-<li><a href="#115几个常用的例子">1.15：几个常用的例子：</a><ul>
-<li><a href="#1中文的匹配">1）中文的匹配：</a></li>
-<li><a href="#2数字范围的匹配">2）数字范围的匹配：</a></li>
-<li><a href="#3img标签的匹配">3）img标签的匹配：</a></li>
-<li><a href="#4贪婪与非贪婪模式的匹配">4）贪婪与非贪婪模式的匹配：</a></li>
-</ul>
-</li>
-<li><a href="#116在线正则工具">1.16：在线正则工具：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="1java的基本数据类型">1.Java的基本数据类型：</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">整型 byte（字节型） short（短整型） int long（长整型）</span><br><span class="line"></span><br><span class="line">浮点型 float（单精度浮点型） double（双精度浮点型）</span><br><span class="line"></span><br><span class="line">逻辑型 boolean(它只有两个值可取 true false)</span><br><span class="line"></span><br><span class="line">字符型 char</span><br></pre></td></tr></table></figure>
-<h3><span id="对应的包装类">对应的包装类：</span></h3><p>java.lang.Byte、java.lang.Short、java.lang.Integer、java.lang.Long、java.lang.Float、java.lang.Double、java.lang.Boolean、java.lang.Character.</p>
-<h3><span id="基本数据类型的默认值">基本数据类型的默认值：</span></h3><p><img src="/2019/02/27/Java基础-初窥门径/基本数据类型默认值.jpg" alt=""></p>
-<h2><span id="2java分支循环">2.Java分支循环：</span></h2><h3><span id="分支语句">分支语句：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">顺序语句</span><br><span class="line">分支语句</span><br><span class="line">循环语句</span><br></pre></td></tr></table></figure>
-<h4><span id="if语句">if语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(boolean类型表达式)&#123;</span><br><span class="line"></span><br><span class="line">         语句1</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">         语句2</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="switch语句">switch语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">switch(变量)&#123;</span><br><span class="line"></span><br><span class="line">         case常量1:语句1;break;</span><br><span class="line"></span><br><span class="line">         case常量2:语句2;break;</span><br><span class="line"></span><br><span class="line">         case常量3:</span><br><span class="line"></span><br><span class="line">                   语句3;</span><br><span class="line"></span><br><span class="line">                   break;</span><br><span class="line"></span><br><span class="line">         default:</span><br><span class="line"></span><br><span class="line">                   语句0;</span><br><span class="line"></span><br><span class="line">                   break;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">注：default可以忽略掉~</span><br></pre></td></tr></table></figure>
-<h4><span id="三目运算符">三目运算符：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">表达式1?表达式2:表达式3</span><br><span class="line"></span><br><span class="line">表达式1是布尔类型的，右边的问号表示判断它是true还是false，如果是true，整个表达式返回表达式2，如果是false整个表达式返回表达式3</span><br></pre></td></tr></table></figure>
-<h4><span id="转义符">转义符：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">回车(return)  &apos;\r&apos;    13</span><br><span class="line"></span><br><span class="line">换行(nextLine)  &apos;\n&apos;  10</span><br><span class="line"></span><br><span class="line">(在windows中执行换行动作用\r\n；在linux中执行换行动作用\n)</span><br><span class="line"></span><br><span class="line">制表(tab)     &apos;\t&apos; (可以用来对齐打印的文字)</span><br><span class="line"></span><br><span class="line">双引号        &apos;\&quot;&apos; (反斜杠+双引号表示双引号字符)</span><br><span class="line"></span><br><span class="line">单引号        &apos;\&apos;&apos; (反斜杠+单引号表示单引号字符)</span><br><span class="line"></span><br><span class="line">反斜杠        &apos;\\&apos; (两个反斜杠表示一个反斜杠)</span><br></pre></td></tr></table></figure>
-<h3><span id="循环语句">循环语句：</span></h3><h4><span id="for循环">for循环：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for(表达式1;表达式2;表达式3)&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">表达式1  在循环开始前执行一次，一般用于初始化</span><br><span class="line"></span><br><span class="line">表达式2  循环条件，一般为boolean类型，为true则循环继续，为false则循环终止(不写则表示一直为true)</span><br><span class="line"></span><br><span class="line">表达式3  每次循环在语句执行完后执行，一般用于对循环条件进行变更</span><br></pre></td></tr></table></figure>
-<h4><span id="while语句">while语句：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">while(条件)&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当条件为true时，不停地执行语句</span><br><span class="line"></span><br><span class="line">do...while语句</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">         语句</span><br><span class="line"></span><br><span class="line">&#125;while(条件);</span><br><span class="line"></span><br><span class="line">和while逻辑一样，但是会先执行语句，再判断。</span><br><span class="line"></span><br><span class="line">do...while在任何情况下至少执行一次语句。</span><br></pre></td></tr></table></figure>
-<h2><span id="3string-stringbuffer-stringbuilder">3.String、StringBuffer、StringBuilder：</span></h2><h3><span id="区别">区别：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String对象是常量，它的值不能被创建后改变，StringBuffer和StringBuilder可以可变；</span><br><span class="line">StringBuilder非线程安全（单线程使用），String与StringBuffer线程安全（多线程使用）；</span><br><span class="line">如果程序不是多线程的，那么使用StringBuilder效率高于StringBuffer。</span><br></pre></td></tr></table></figure>
-<h3><span id="string对象">String对象：</span></h3><h4><span id="string本质">String本质：</span></h4><p>String是<strong>值不可变的常量</strong>，是<strong>线程安全</strong>的。</p>
-<p>String类使用了final修饰符，String类是<strong>不可继承的</strong>。</p>
-<h4><span id="常量池">常量池：</span></h4><p>常量池是一个内存空间，不同于使用new关键字创建的对象所在的堆空间。</p>
-<p> 常量池是为了避免频繁的创建和销毁对象而影响系统性能，其实现了对象的共享。当需要一个对象时，就可以从池中取一个出来（如果池中没有则创建一个），则在需要重复创建相等变量时节省了很多时间。</p>
-<p>在编译期被确定，并被保存在已编译的.class文件中的一些数据，包括类、方法、接口等中的常量和字符串常量。常量池还具备动态性，运行期间可以将新的常量放入池中。java中基本类型的包装类的大部分都实现了常量池技术， 即Byte,Short,Integer,Long,Character,Boolean；</p>
-<h4><span id="实例">实例：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = new String(&quot;s1&quot;) ; </span><br><span class="line">String s2 = new String(&quot;s1&quot;) ;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 3个，编译期在常量池中创建1个，即“s1”常量对象；运行期堆中创建2个，即s1和s2对象。</span><br><span class="line">String s1 = &quot;s1&quot;;  </span><br><span class="line">String s2 = s1;  </span><br><span class="line">s2 = &quot;s2&quot;;</span><br></pre></td></tr></table></figure>
-<h3><span id="stringbuffer字符串变量线程安全是一个容器最终会通过tostring方法变成字符串">StringBuffer字符串变量（线程安全）是一个容器，最终会通过toString方法变成字符串：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuffer extends AbstractStringBuilder implements Serializable, Appendable, CharSequence &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Constructs a string buffer with no characters in it and an initial capacity of 16 characters.</span><br><span class="line">     */</span><br><span class="line">    public StringBuffer() &#123;</span><br><span class="line">        super(16);</span><br><span class="line">    &#125;</span><br><span class="line">    public synchronized StringBuffer append(int i) &#123;</span><br><span class="line">        super.append(i);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    public synchronized StringBuffer delete(int start, int end) &#123;</span><br><span class="line">        super.delete(start, end);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="stringbuilder-字符串变量非线程安全">StringBuilder 字符串变量（非线程安全）：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuilder extends AbstractStringBuilder implements java.io.Serializable, Appendable, CharSequence &#123;</span><br><span class="line">   public StringBuilder() &#123;</span><br><span class="line">        super(16);</span><br><span class="line">   &#125;</span><br><span class="line">   public StringBuilder append(String str) &#123;</span><br><span class="line">        super.append(str);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">	public StringBuilder delete(int start, int end) &#123;</span><br><span class="line">        super.delete(start, end);</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="string与stringbuffer区别">String与StringBuffer区别：</span></h3><h4><span id="在修改的时候对象自身是否改变">在修改的时候对象自身是否改变：</span></h4><p>（1） String在修改时不会改变对象自身<br>　　在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;abc&quot;;//地址str1</span><br><span class="line">str = &quot;def&quot;;//地址str2</span><br></pre></td></tr></table></figure>
-<p>（2） StringBuffer在修改时会改变对象自身<br>　　每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。StringBuffer 上的主要操作是 append 和 insert 方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer strBuffer = new StringBuffer(&quot;abc&quot;);//地址strBuffer,值是abc</span><br><span class="line">strBuffer.append(&quot;def&quot;);//地址strBuffer,值是abcdef</span><br></pre></td></tr></table></figure>
-<h4><span id="是否可变测试">是否可变测试：</span></h4><p>String的地址已改变，对象已经改变为另一个；StringBuffer地址不变，还是同样的对象。</p>
-<h4><span id="初始化区别">初始化区别：</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String：</span><br><span class="line">StringBuffer s = null;   </span><br><span class="line">StringBuffer s = “abc”;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer：</span><br><span class="line">StringBuffer s = null; //结果警告：Null pointer access: The variable result can only be null at this location</span><br><span class="line">StringBuffer s = new StringBuffer();//StringBuffer对象是一个空的对象</span><br><span class="line">StringBuffer s = new StringBuffer(“abc”);//创建带有内容的StringBuffer对象,对象的内容就是字符串”abc”</span><br></pre></td></tr></table></figure>
-<h4><span id="stringbuffer对象和string对象之间的互转">StringBuffer对象和String对象之间的互转:</span></h4><p>他们属于不同的类型，不能直接进行强制类型转换。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = “abc”;</span><br><span class="line">StringBuffer sb1 = new StringBuffer(“123”);</span><br><span class="line">StringBuffer sb2 = new StringBuffer(s);   //String转换为StringBuffer</span><br><span class="line">String s1 = sb1.toString();              //StringBuffer转换为String</span><br></pre></td></tr></table></figure>
-<h4><span id="偏重">偏重：</span></h4><p>StringBuffer类中的方法主要偏重于对于字符串的变化，例如追加、插入和删除等，常用方法有：append方法、insert方法、deleteCharAt方法、reverse方法等。</p>
-<h4><span id="总结">总结：</span></h4><p>（1）如果要操作少量的数据用 String；<br>       （2）（多线程下）经常需要对一个字符串进行修改，例如追加、插入和删除等操作，使用StringBuffer要更加适合一些。</p>
-<h3><span id="stringbuffer与stringbuilder区别">StringBuffer与StringBuilder区别：</span></h3><p>1.StringBuilder是一个可变的对象，是5.0新增的，提供一个与StringBuffer兼容的API，但不保证同步，主要是用在字符串缓冲区被单个线程使用的时候。</p>
-<p>2.线程安全性：</p>
-<p>​    StringBuffer：线程安全。</p>
-<p>​    StringBuilder：线程非安全。</p>
-<p>3.大部分情况下：StringBuffer&gt;String</p>
-<p>同时由于String对象不可变，重复新建对象：StringBuffer对象可变。</p>
-<p>4.StringBuilder&gt;StringBuffer</p>
-<p>当我们在字符串缓冲去被多个线程使用是，JVM不能保证StringBuilder的操作是安全的，虽然他的速度最快，但是可以保证StringBuffer是可以正确操作的。当然大多数情况下就是我们是在单线程下进行的操作，所以大多数情况下是建议用StringBuilder而不用StringBuffer的。</p>
-<p>5.特殊情况下，String&gt;StringBuffer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//String效率是远要比StringBuffer快的：</span><br><span class="line">String S1 = “This is only a” + “ simple” + “ test”;</span><br><span class="line">StringBuffer Sb = new StringBuilder(“This is only a”).append(“simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//String速度是非常慢的：</span><br><span class="line">String S2 = “This is only a”;</span><br><span class="line">String S3 = “ simple”;</span><br><span class="line">String S4 = “ test”;</span><br><span class="line">String S1 = S2 +S3 + S4;</span><br></pre></td></tr></table></figure>
-<p>6.总结：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）如果要操作少量的数据用 String；</span><br><span class="line">（2）多线程操作字符串缓冲区下操作大量数据 StringBuffer；</span><br><span class="line">（3）单线程操作字符串缓冲区下操作大量数据 StringBuilder。</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/chenliguan/article/details/51911906" target="_blank" rel="noopener">参考链接</a></p>
-<h2><span id="4正则表达式">4.正则表达式：</span></h2><h3><span id="11正则表达式的含义">1.1正则表达式的含义：</span></h3><p>定义一个搜索模式的字符串。</p>
-<p>正则表达式可以用于搜索、编辑和操作文本。</p>
-<p>分析过程：首先正则表达式应用的是文本字符串（text/string），它会以定义的模式从左到右匹配文本，每个源字符只匹配一次。</p>
-<h3><span id="12具体实例">1.2具体实例：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this is text	精确匹配字符串 &quot;this is text&quot;</span><br><span class="line">this\s+is\s+text	匹配单词 &quot;this&quot; 后跟一个或多个空格字符，后跟词 &quot;is&quot; 后跟一个或多个空格字符，后跟词 &quot;text&quot;</span><br><span class="line">^\d+(\.\d+)?	^ 定义模式必须匹配字符串的开始，d+ 匹配一个或多个数字，? 表明小括号内的语句是可选的，\. 匹配 &quot;.&quot;，小括号表示分组。例如匹配：&quot;5&quot;、&quot;1.5&quot; 和 &quot;2.21&quot;</span><br></pre></td></tr></table></figure>
-<h3><span id="13常见的匹配符号">1.3常见的匹配符号：</span></h3><table>
-<thead>
-<tr>
-<th>正则表达式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.</code></td>
-<td>匹配所有单个字符，除了换行符（Linux 中换行是 <code>\n</code>，Windows 中换行是 <code>\r\n</code>）</td>
-</tr>
-<tr>
-<td><code>^regex</code></td>
-<td>正则必须匹配字符串开头</td>
-</tr>
-<tr>
-<td><code>regex$</code></td>
-<td>正则必须匹配字符串结尾</td>
-</tr>
-<tr>
-<td><code>[abc]</code></td>
-<td>复选集定义，匹配字母 a 或 b 或 c</td>
-</tr>
-<tr>
-<td><code>[abc][vz]</code></td>
-<td>复选集定义，匹配字母 a 或 b 或 c，后面跟着 v 或 z</td>
-</tr>
-<tr>
-<td><code>[^abc]</code></td>
-<td>当插入符 <code>^</code> 在中括号中以第一个字符开始显示，则表示否定模式。此模式匹配所有字符，除了 a 或 b 或 c</td>
-</tr>
-<tr>
-<td><code>[a-d1-7]</code></td>
-<td>范围匹配，匹配字母 a 到 d 和数字从 1 到 7 之间，但不匹配 d1</td>
-</tr>
-<tr>
-<td><code>XZ</code></td>
-<td>匹配 X 后直接跟着 Z</td>
-</tr>
-<tr>
-<td>X\</td>
-<td>Z</td>
-<td>匹配 X 或 Z</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="14元字符">1.4元字符：</span></h3><table>
-<thead>
-<tr>
-<th>正则表达式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>\d</code></td>
-<td>匹配一个数字，是 <code>[0-9]</code> 的简写</td>
-</tr>
-<tr>
-<td><code>\D</code></td>
-<td>匹配一个非数字，是 <code>[^0-9]</code> 的简写</td>
-</tr>
-<tr>
-<td><code>\s</code></td>
-<td>匹配一个空格，是 <code>[ \t\n\x0b\r\f]</code> 的简写</td>
-</tr>
-<tr>
-<td><code>\S</code></td>
-<td>匹配一个非空格</td>
-</tr>
-<tr>
-<td><code>\w</code></td>
-<td>匹配一个单词字符（大小写字母、数字、下划线），是 <code>[a-zA-Z_0-9]</code> 的简写</td>
-</tr>
-<tr>
-<td><code>\W</code></td>
-<td>匹配一个非单词字符（除了大小写字母、数字、下划线之外的字符），等同于 <code>[^\w]</code></td>
-</tr>
-</tbody>
-</table>
-<h3><span id="15限定符">1.5限定符：</span></h3><p>限定符定义了一个元素可以发生的频率。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>正则表达式</td>
-<td>描述</td>
-<td>举例</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td>匹配 &gt;=0 个，是 <code>{0,}</code> 的简写</td>
-<td><code>X*</code> 表示匹配零个或多个字母 X，<code>.*</code>表示匹配任何字符串</td>
-</tr>
-<tr>
-<td><code>+</code></td>
-<td>匹配 &gt;=1 个，是 <code>{1,}</code> 的简写</td>
-<td><code>X+</code> 表示匹配一个或多个字母 X</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>匹配 1 个或 0 个，是 <code>{0,1}</code> 的简写</td>
-<td><code>X?</code> 表示匹配 0 个或 1 个字母 X</td>
-</tr>
-<tr>
-<td><code>{X}</code></td>
-<td>只匹配 X 个字符</td>
-<td><code>\d{3}</code> 表示匹配 3 个数字，<code>.{10}</code>表示匹配任何长度是 10 的字符串</td>
-</tr>
-<tr>
-<td><code>{X,Y}</code></td>
-<td>匹配 &gt;=X 且 &lt;=Y 个</td>
-<td><code>\d{1,4}</code> 表示匹配至少 1 个最多 4 个数字</td>
-</tr>
-<tr>
-<td><code>*?</code></td>
-<td>如果 <code>?</code> 是限定符 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>{}</code> 后面的第一个字符，那么表示<strong>非贪婪模式</strong>（尽可能少的匹配字符），而不是默认的<strong>贪婪模式</strong></td>
-</tr>
-</tbody>
-</table>
-<h3><span id="16分组和反向引用">1.6分组和反向引用：</span></h3><p>小括号 <code>()</code> 可以达到对正则表达式进行分组的效果。</p>
-<p>模式分组后会在正则表达式中创建<strong>反向引用</strong>。反向引用会保存匹配模式分组的字符串片断，这使得我们可以获取并使用这个字符串片断。</p>
-<p>在以正则表达式替换字符串的语法中，是通过 <code>$</code> 来引用分组的反向引用，<code>$0</code> 是匹配完整模式的字符串（注意在 JavaScript 中是用 <code>$&amp;</code> 表示）；<code>$1</code> 是第一个分组的反向引用；<code>$2</code> 是第二个分组的反向引用，以此类推。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.demo.regex;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 去除单词与 , 和 . 之间的空格</span><br><span class="line">        String Str = &quot;Hello , World .&quot;;</span><br><span class="line">        String pattern = &quot;(\\w)(\\s+)([.,])&quot;;</span><br><span class="line">        // $0 匹配 `(\w)(\s+)([.,])` 结果为 `o空格,` 和 `d空格.`</span><br><span class="line">        // $1 匹配 `(\w)` 结果为 `o` 和 `d`</span><br><span class="line">        // $2 匹配 `(\s+)` 结果为 `空格` 和 `空格`</span><br><span class="line">        // $3 匹配 `([.,])` 结果为 `,` 和 `.`</span><br><span class="line">        System.out.println(Str.replaceAll(pattern, &quot;$1$3&quot;)); // Hello, World.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的例子中，我们使用了 <code>[.]</code> 来匹配普通字符 <code>.</code> 而不需要使用 <code>[\\.]</code>。因为正则对于 <code>[]</code> 中的 <code>.</code>，会自动处理为 <code>[\.]</code>，即普通字符 <code>.</code> 进行匹配。</p>
-<h3><span id="17仅分组却无反向引用">1.7仅分组却无反向引用：</span></h3><p>当我们在小括号 <code>()</code> 内的模式开头加入 <code>?:</code>，那么表示这个模式仅分组，但不创建反向引用。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;img.jpg&quot;;</span><br><span class="line">        // 分组且创建反向引用</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;(jpg|png)&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">            System.out.println(matcher.group(1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jpg</span><br><span class="line">jpg</span><br></pre></td></tr></table></figure>
-<p>若源码改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;img.jpg&quot;;</span><br><span class="line">        // 分组但不创建反向引用</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;(?:jpg|png)&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">            System.out.println(matcher.group(1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jpg</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.IndexOutOfBoundsException: No group 1</span><br><span class="line">    at java.util.regex.Matcher.group(Matcher.java:538)</span><br><span class="line">    at com.wuxianjiezh.regex.RegexTest.main(RegexTest.java:15)</span><br></pre></td></tr></table></figure>
-<h3><span id="18分组的反向引用副本">1.8分组的反向引用副本：</span></h3><p>Java 中可以在小括号中使用 <code>?&lt;name&gt;</code> 将小括号中匹配的内容保存为一个名字为 name 的副本。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;@wxj 你好啊&quot;;</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;@(?&lt;first&gt;\\w+\\s)&quot;); // 保存一个副本</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">            System.out.println(matcher.group(1));</span><br><span class="line">            System.out.println(matcher.group(&quot;first&quot;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@wxj </span><br><span class="line">wxj </span><br><span class="line">wxj</span><br></pre></td></tr></table></figure>
-<h3><span id="19否定先行断言">1.9否定先行断言：</span></h3><p>我们可以创建否定先行断言模式的匹配，即某个字符串后面不包含另一个字符串的匹配模式。</p>
-<p>否定先行断言模式通过 <code>(?!pattern)</code> 定义。比如，我们匹配后面不是跟着 “b” 的 “a”：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a(?!b)</span><br></pre></td></tr></table></figure>
-<h3><span id="110指定正则表达式的模式">1.10指定正则表达式的模式：</span></h3><p>可以在正则的<strong>开头</strong>指定模式修饰符。</p>
-<ul>
-<li><code>(?i)</code> 使正则忽略大小写。</li>
-<li><code>(?s)</code> 表示<em>单行模式</em>（”single line mode”）使正则的 <code>.</code> 匹配所有字符，包括换行符。</li>
-<li><code>(?m)</code> 表示<em>多行模式</em>（”multi-line mode”），使正则的 <code>^</code> 和 <code>$</code> 匹配字符串中每行的开始和结束。</li>
-</ul>
-<h3><span id="111java中的反斜杠">1.11java中的反斜杠：</span></h3><p>反斜杠 <code>\</code> 在 Java 中表示转义字符，这意味着 <code>\</code> 在 Java 拥有预定义的含义。</p>
-<p>这里例举两个特别重要的用法：</p>
-<ul>
-<li>在匹配 <code>.</code> 或 <code>{</code> 或 <code>[</code> 或 <code>(</code> 或 <code>?</code> 或 <code>$</code> 或 <code>^</code> 或 <code>*</code> 这些特殊字符时，需要在前面加上 <code>\\</code>，比如匹配 <code>.</code> 时，Java 中要写为 <code>\\.</code>，但对于正则表达式来说就是 <code>\.</code>。</li>
-<li>在匹配 <code>\</code> 时，Java 中要写为 <code>\\\\</code>，但对于正则表达式来说就是 <code>\\</code>。</li>
-</ul>
-<p><strong>注意</strong>：Java 中的正则表达式字符串有两层含义，首先 Java 字符串转义出符合正则表达式语法的字符串，然后再由转义后的正则表达式进行模式匹配。</p>
-<h3><span id="112易错">1.12易错：</span></h3><ul>
-<li><code>[jpg|png]</code> 代表匹配 <code>j</code> 或 <code>p</code> 或 <code>g</code> 或 <code>p</code> 或 <code>n</code> 或 <code>g</code> 中的任意一个字符。</li>
-<li><code>(jpg|png)</code> 代表匹配 <code>jpg</code> 或 <code>png</code>。</li>
-</ul>
-<h3><span id="113内置的字符串正则处理方法">1.13内置的字符串正则处理方法：</span></h3><p>在 Java 中有四个内置的运行正则表达式的方法，分别是 <code>matches()</code>、<code>split())</code>、<code>replaceFirst()</code>、<code>replaceAll()</code>。注意 <code>replace()</code> 方法不支持正则表达式。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>s.matches(&quot;regex&quot;)</code></td>
-<td>当仅且当正则匹配整个字符串时返回 <code>true</code></td>
-</tr>
-<tr>
-<td><code>s.split(&quot;regex&quot;)</code></td>
-<td>按匹配的正则表达式切片字符串</td>
-</tr>
-<tr>
-<td><code>s.replaceFirst(&quot;regex&quot;, &quot;replacement&quot;)</code></td>
-<td>替换首次匹配的字符串片段</td>
-</tr>
-<tr>
-<td><code>s.replaceAll(&quot;regex&quot;, &quot;replacement&quot;)</code></td>
-<td>替换所有匹配的字符</td>
-</tr>
-</tbody>
-</table>
-<p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;wxj&quot;.matches(&quot;wxj&quot;));</span><br><span class="line">        System.out.println(&quot;----------&quot;);</span><br><span class="line"></span><br><span class="line">        String[] array = &quot;w x j&quot;.split(&quot;\\s&quot;);</span><br><span class="line">        for (String item : array) &#123;</span><br><span class="line">            System.out.println(item);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;----------&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;w x j&quot;.replaceFirst(&quot;\\s&quot;, &quot;-&quot;));</span><br><span class="line">        System.out.println(&quot;----------&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;w x j&quot;.replaceAll(&quot;\\s&quot;, &quot;-&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">true</span><br><span class="line">----------</span><br><span class="line">w</span><br><span class="line">x</span><br><span class="line">j</span><br><span class="line">----------</span><br><span class="line">w-x j</span><br><span class="line">----------</span><br><span class="line">w-x-j</span><br></pre></td></tr></table></figure>
-<h3><span id="114模式和匹配">1.14：模式和匹配：</span></h3><p>Java 中使用正则表达式需要用到两个类，分别为 <code>java.util.regex.Pattern</code> 和 <code>java.util.regex.Matcher</code>。</p>
-<p>第一步，通过正则表达式创建模式对象 <code>Pattern</code>。</p>
-<p>第二步，通过模式对象 <code>Pattern</code>，根据指定字符串创建匹配对象 <code>Matcher</code>。</p>
-<p>第三步，通过匹配对象 <code>Matcher</code>，根据正则表达式操作字符串。</p>
-<p>来个例子，加深理解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String text = &quot;Hello Regex!&quot;;</span><br><span class="line"></span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;\\w+&quot;);</span><br><span class="line">        // Java 中忽略大小写，有两种写法：</span><br><span class="line">        // Pattern pattern = Pattern.compile(&quot;\\w+&quot;, Pattern.CASE_INSENSITIVE);</span><br><span class="line">        // Pattern pattern = Pattern.compile(&quot;(?i)\\w+&quot;); // 推荐写法</span><br><span class="line">        Matcher matcher = pattern.matcher(text);</span><br><span class="line">        // 遍例所有匹配的序列</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.print(&quot;Start index: &quot; + matcher.start());</span><br><span class="line">            System.out.print(&quot; End index: &quot; + matcher.end() + &quot; &quot;);</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">        &#125;</span><br><span class="line">        // 创建第两个模式，将空格替换为 tab</span><br><span class="line">        Pattern replace = Pattern.compile(&quot;\\s+&quot;);</span><br><span class="line">        Matcher matcher2 = replace.matcher(text);</span><br><span class="line">        System.out.println(matcher2.replaceAll(&quot;\t&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Start index: 0 End index: 5 Hello</span><br><span class="line">Start index: 6 End index: 11 Regex</span><br><span class="line">Hello    Regex!</span><br></pre></td></tr></table></figure>
-<h3><span id="115几个常用的例子">1.15：几个常用的例子：</span></h3><h4><span id="1中文的匹配">1）中文的匹配：</span></h4><p><code>[\u4e00-\u9fa5]+</code> 代表匹配中文字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;閑人到人间&quot;;</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;[\\u4e00-\\u9fa5]+&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">閑人到人间</span><br></pre></td></tr></table></figure>
-<h4><span id="2数字范围的匹配">2）数字范围的匹配：</span></h4><p>比如，匹配 1990 到 2017。</p>
-<p><strong>注意：</strong>这里有个新手易范的错误，就是正则 <code>[1990-2017]</code>，实际这个正则只匹配 <code>0</code> 或 <code>1</code> 或 <code>2</code> 或 <code>7</code> 或 <code>9</code> 中的任一个字符。</p>
-<p>正则表达式匹配数字范围时，首先要确定最大值与最小值，最后写中间值。</p>
-<p>正确的匹配方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;1990\n2010\n2017&quot;;</span><br><span class="line">        // 这里应用了 (?m) 的多行匹配模式，只为方便我们测试输出</span><br><span class="line">        // &quot;^1990$|^199[1-9]$|^20[0-1][0-6]$|^2017$&quot; 为判断 1990-2017 正确的正则表达式</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;(?m)^1990$|^199[1-9]$|^20[0-1][0-6]$|^2017$&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1990</span><br><span class="line">2010</span><br><span class="line">2017</span><br></pre></td></tr></table></figure>
-<h4><span id="3img标签的匹配">3）img标签的匹配：</span></h4><p>比如，获取图片文件内容，这里我们考虑了一些不规范的 img 标签写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;&lt;img  src=&apos;aaa.jpg&apos; /&gt;&lt;img src=bbb.png/&gt;&lt;img src=\&quot;ccc.png\&quot;/&gt;&quot; +</span><br><span class="line">                &quot;&lt;img src=&apos;ddd.exe&apos;/&gt;&lt;img src=&apos;eee.jpn&apos;/&gt;&quot;;</span><br><span class="line">        // 这里我们考虑了一些不规范的 img 标签写法，比如：空格、引号</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;&lt;img\\s+src=(?:[&apos;\&quot;])?(?&lt;src&gt;\\w+.(jpg|png))(?:[&apos;\&quot;])?\\s*/&gt;&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group(&quot;src&quot;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aaa.jpg</span><br><span class="line">bbb.png</span><br><span class="line">ccc.png</span><br></pre></td></tr></table></figure>
-<h4><span id="4贪婪与非贪婪模式的匹配">4）贪婪与非贪婪模式的匹配：</span></h4><p>比如，获取 div 标签中的文本内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.wuxianjiezh.regex;</span><br><span class="line"></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class RegexTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;&lt;div&gt;文章标题&lt;/div&gt;&lt;div&gt;发布时间&lt;/div&gt;&quot;;</span><br><span class="line">        // 贪婪模式</span><br><span class="line">        Pattern pattern = Pattern.compile(&quot;&lt;div&gt;(?&lt;title&gt;.+)&lt;/div&gt;&quot;);</span><br><span class="line">        Matcher matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group(&quot;title&quot;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;--------------&quot;);</span><br><span class="line"></span><br><span class="line">        // 非贪婪模式</span><br><span class="line">        pattern = Pattern.compile(&quot;&lt;div&gt;(?&lt;title&gt;.+?)&lt;/div&gt;&quot;);</span><br><span class="line">        matcher = pattern.matcher(str);</span><br><span class="line">        while (matcher.find()) &#123;</span><br><span class="line">            System.out.println(matcher.group(&quot;title&quot;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">文章标题&lt;/div&gt;&lt;div&gt;发布时间</span><br><span class="line">--------------</span><br><span class="line">文章标题</span><br><span class="line">发布时间</span><br></pre></td></tr></table></figure>
-<h3><span id="116在线正则工具">1.16：在线正则工具：</span></h3><p><a href="https://regex101.com/" target="_blank" rel="noopener">JavaScript、Python在线表达工具</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3530,7 +3421,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3552,7 +3443,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">143</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3637,7 +3528,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共119.6k字</span>
+  <span class="post-count">博客全站共121.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
