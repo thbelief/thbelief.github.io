@@ -313,6 +313,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/28/JavaScript学习笔记-十三/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/28/JavaScript学习笔记-十三/" itemprop="url">JavaScript学习笔记(十三)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T14:19:14+08:00">
+                2019-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  816
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2><span id="j-query">j-Query</span></h2><p>上一篇博客其实关于j-Query的基本含义以及如何获得j-Query对象说的很清楚了，现在要说的就是关于拿到对象之后的使用方法了——<strong>操作Dom节点</strong>。</p>
+<h3><span id="操作dom">操作Dom</span></h3><h4><span id="修改text和html">修改Text和HTML</span></h4><p>j-Query对象的<strong>text()和html()方法</strong>分别获取节点的文本和原始HTML文本。</p>
+<p>原本的HTML结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML结构 --&gt;</span><br><span class="line">&lt;ul id=&quot;test-ul&quot;&gt;</span><br><span class="line">    &lt;li class=&quot;js&quot;&gt;JavaScript&lt;/li&gt;</span><br><span class="line">    &lt;li name=&quot;book&quot;&gt;Java &amp;amp; JavaScript&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>获取相应的文本和HTML：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#test-ul li[name=book]&apos;).text(); // &apos;Java &amp; JavaScript&apos;</span><br><span class="line">$(&apos;#test-ul li[name=book]&apos;).html(); // &apos;Java &amp;amp; JavaScript&apos;</span><br></pre></td></tr></table></figure>
+<p>如何设置文本或者HTML呢？</p>
+<p>其实这个很简单，<strong>在j-Query中无参数调用text()是获取文本，传入参数就变成设置文本，HTML也是类似操作。</strong></p>
+<p>一个j-Query对象可以包含0个或任意个DOM对象，它的方法实际上会作用在对应的DOM节点上。意思其实就是，如果对一个j-Query对象进行了操作的话，它包含的所有的Dom对象都会被修改。</p>
+<p>j-Query对象有一个好处是用户可以执行一个操作，作用在对应的一组DOM节点上。即使<strong>选择器没有返回任何DOM节点</strong>，调用j-Query对象的方法仍然不会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 如果不存在id为thbelief的节点：</span><br><span class="line">$(&apos;#thbelief&apos;).text(&apos;Hello&apos;); // 代码不报错，没有节点被设置为&apos;Hello&apos;</span><br></pre></td></tr></table></figure>
+<p>这个操作其实是很有必要的，因为可以省去很多的if语句。</p>
+<h3><span id="修改css">修改CSS</span></h3><p>从上面的修改Dom节点就可以看出，其实j-Query其实是有批量操作的特性的。</p>
+<p>j-Query对象的所有方法都返回一个j-Query对象（可能是新的也可能是自身），这样可以进行<strong>链式调用。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var div = $(&apos;#test-div&apos;);</span><br><span class="line">div.css(&apos;color&apos;); // &apos;#000033&apos;, 获取CSS属性</span><br><span class="line">div.css(&apos;color&apos;, &apos;#336699&apos;); // 设置CSS属性</span><br><span class="line">div.css(&apos;color&apos;, &apos;&apos;); // 清除CSS属性</span><br></pre></td></tr></table></figure>
+<p>css()方法将作用于DOM节点的<strong>style属性</strong>，具有<strong>最高优先级</strong>。</p>
+<p>如果要修改class属性，可以用j-Query提供的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var div = $(&apos;#test-div&apos;);</span><br><span class="line">div.hasClass(&apos;highlight&apos;); // false， class是否包含highlight</span><br><span class="line">div.addClass(&apos;highlight&apos;); // 添加highlight这个class</span><br><span class="line">div.removeClass(&apos;highlight&apos;); // 删除highlight这个class</span><br></pre></td></tr></table></figure>
+<h3><span id="显示和隐藏dom">显示和隐藏DOM</span></h3><p>隐藏DOM节点<strong>并未改变DOM树的结构</strong>，它只影响DOM节点的显示。这和删除DOM节点是不同的。</p>
+<p>这里j-Query提供了hide()和show()两个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = $(&apos;a[target=_blank]&apos;);</span><br><span class="line">a.hide(); // 隐藏</span><br><span class="line">a.show(); // 显示</span><br></pre></td></tr></table></figure>
+<h3><span id="获取dom信息">获取DOM信息</span></h3><p>利用j-Query提供的方法可以直接获取Dom的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 浏览器可视窗口大小:</span><br><span class="line">$(window).width(); // 800</span><br><span class="line">$(window).height(); // 600</span><br><span class="line"></span><br><span class="line">// HTML文档大小:</span><br><span class="line">$(document).width(); // 800</span><br><span class="line">$(document).height(); // 3500</span><br><span class="line"></span><br><span class="line">// 某个div的大小:</span><br><span class="line">var div = $(&apos;#test-div&apos;);</span><br><span class="line">div.width(); // 600</span><br><span class="line">div.height(); // 300</span><br><span class="line">div.width(400); // 设置CSS属性 width: 400px，是否生效要看CSS是否有效</span><br><span class="line">div.height(&apos;200px&apos;); // 设置CSS属性 height: 200px，是否生效要看CSS是否有效</span><br></pre></td></tr></table></figure>
+<p>另外还有attr()、removeAttr()、prop()等等方法。</p>
+<h3><span id="操作表单">操作表单</span></h3><p>对于表单元素，j-Query对象统一提供val()方法获取和设置对应的value属性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/27/JavaScript学习笔记-十二/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2200,216 +2408,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/18/JavaScript学习笔记-八/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/18/JavaScript学习笔记-八/" itemprop="url">JavaScript学习笔记(八)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T12:21:36+08:00">
-                2019-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  506
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#操作文件">操作文件</a><ul>
-<li><a href="#上传文件">上传文件</a></li>
-<li><a href="#file-api">File API</a></li>
-<li><a href="#回调">回调</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="操作文件">操作文件</span></h2><h3><span id="上传文件">上传文件</span></h3><p>在<strong>HTML表单</strong>中，可以上传文件的唯一控件就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>当一个表单包含input type=”file”时，<strong>表单的enctype必须指定为multipart/form-data，method必须指定为post</strong>，浏览器才可以正确编码并以<strong>multipart/form-data格式</strong>发送表单的数据。</p>
-<p>另外，由于安全方面的考虑，不可能使用JS对input type=”file”的value进行赋值，上传文件之后也<strong>不能获取该文件的真实路径。</strong></p>
-<input type="file">
-
-<p>注意，一般上传文件都是由后台的服务器做处理，JS可以做的就是在上传的时候检测文件的扩展名，<strong>防止上传无效的格式。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var f = document.getElementById(&apos;test-file-upload&apos;);</span><br><span class="line">var filename = f.value; // &apos;C:\fakepath\test.png&apos;</span><br><span class="line">if (!filename || !(filename.endsWith(&apos;.jpg&apos;) || filename.endsWith(&apos;.png&apos;) || filename.endsWith(&apos;.gif&apos;))) &#123;</span><br><span class="line">    alert(&apos;Can only upload image file.&apos;);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="file-api">File API</span></h3><p>JS对用户上传文件的操作非常有限，例如无法读取文件内容，很多需要操作文件的网页不得不用<strong>Flash</strong>来实现。</p>
-<p>HTML5的File API提供了<strong>File</strong>和<strong>FileReader</strong>两个主要对象，可以<strong>获得文件信息并读取文件。</strong></p>
-<p>具体操作这里不做演示，可以自行百度。</p>
-<h3><span id="回调">回调</span></h3><p>JS是<strong>单线程执行模式。</strong></p>
-<p>在JS中执行多任务其实都是用的<strong>异步调用。</strong>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader.readAsDataURL(file);</span><br></pre></td></tr></table></figure>
-<p>上面的代码会发起一个异步的操作来读取文件的内容，<strong>由于是异步操作，JS中不知道什么时候会结束，所以之前需要设置一个回调函数。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reader.onload = function(e) &#123;</span><br><span class="line">    // 当文件读取完成后，自动调用此函数:</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>文件读取完成之后JS会自动的调用自己设置的回调函数。</strong>执行回调函数的时候其实文件已经读取完毕了，所以可以安全地在回调函数内部获得文件的内容。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2462,7 +2460,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2484,7 +2482,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2569,7 +2567,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共121.1k字</span>
+  <span class="post-count">博客全站共121.9k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
