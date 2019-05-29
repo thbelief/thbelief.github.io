@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十四)]]></title>
+    <url>%2F2019%2F05%2F29%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E5%9B%9B%2F</url>
+    <content type="text"><![CDATA[目录: j-Query 事件 简单介绍 简单实例 事件种类 鼠标事件 键盘事件 其它事件 事件参数 取消绑定 事件触发条件 浏览器安全限制 j-Query事件简单介绍JavaScript在浏览器中以单线程模式运行，页面加载后，一旦页面上所有的JavaScript代码被执行完后，就只能依赖触发事件来执行JavaScript代码。 浏览器在接收到用户的鼠标或键盘输入后，会自动在对应的DOM节点上触发相应的事件。如果该节点已经绑定了对应的JavaScript处理函数，该函数就会自动调用。 在j-Query没有出现之前，因为浏览器的差异导致的结果就是如果浏览器不同的话，想要实现一样的效果，需要实现不同的代码，但是现在只需要写统一的代码即可。 简单实例 点击这里！ 上面只是一个html中的定义，下面这个代码是上面这个绑定的事件。可以自行测试。 1234var a = $('#test-link');a.on('click', function () &#123; alert('Hello!');&#125;); 当然，上面的写法on是用来绑定事件的，需要传入事件的名称以及对应的处理函数。 还有一种写法是之前Auto.js之中提到过的click方法。 123a.click(function () &#123; alert(&apos;Hello!&apos;);&#125;); on方法和click方法是完全等价的。 事件种类鼠标事件123456click: 鼠标单击时触发； dblclick：鼠标双击时触发； mouseenter：鼠标进入时触发； mouseleave：鼠标移出时触发； mousemove：鼠标在DOM内部移动时触发； hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。 键盘事件12345键盘事件仅作用在当前焦点的DOM上，通常是&lt;input&gt;和&lt;textarea&gt;。keydown：键盘按下时触发； keyup：键盘松开时触发； keypress：按一次键后触发。 其它事件12345focus：当DOM获得焦点时触发； blur：当DOM失去焦点时触发； change：当&lt;input&gt;、&lt;select&gt;或&lt;textarea&gt;的内容改变时触发； submit：当&lt;form&gt;提交时触发； ready：当页面被载入并且DOM树完成初始化后触发。 注意，ready仅作用于document对象。由于ready事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码。 事件参数有些事件，如mousemove和keypress，必须获取鼠标位置和按键的值，所有事件都会传入Event对象作为参数。 取消绑定一个已被绑定的事件可以解除绑定，通过off(‘click’, function)实现。 无参数调用off()一次性移除已绑定的所有类型的事件处理函数。 事件触发条件事件的触发总是由用户操作引发的。 当用户在文本框中输入时，就会触发change事件。但是，如果用JavaScript代码去改动文本框的值，将不会触发change事件。这就很蛋疼了，有些时候我们希望使用JS代码去触发（脚本原理）。 用代码触发change事件，可以直接调用无参数的change()方法来触发该事件： 123var input = $(&apos;#test-input&apos;);input.val(&apos;change it!&apos;);input.change(); // 触发change事件 浏览器安全限制在浏览器中，有些JavaScript代码只有在用户触发下才能执行。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>j-Query</tag>
+        <tag>事件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十三)]]></title>
     <url>%2F2019%2F05%2F28%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%B8%89%2F</url>
     <content type="text"><![CDATA[j-Query上一篇博客其实关于j-Query的基本含义以及如何获得j-Query对象说的很清楚了，现在要说的就是关于拿到对象之后的使用方法了——操作Dom节点。 操作Dom修改Text和HTMLj-Query对象的text()和html()方法分别获取节点的文本和原始HTML文本。 原本的HTML结构如下： 12345&lt;!-- HTML结构 --&gt;&lt;ul id=&quot;test-ul&quot;&gt; &lt;li class=&quot;js&quot;&gt;JavaScript&lt;/li&gt; &lt;li name=&quot;book&quot;&gt;Java &amp;amp; JavaScript&lt;/li&gt;&lt;/ul&gt; 获取相应的文本和HTML： 12$(&apos;#test-ul li[name=book]&apos;).text(); // &apos;Java &amp; JavaScript&apos;$(&apos;#test-ul li[name=book]&apos;).html(); // &apos;Java &amp;amp; JavaScript&apos; 如何设置文本或者HTML呢？ 其实这个很简单，在j-Query中无参数调用text()是获取文本，传入参数就变成设置文本，HTML也是类似操作。 一个j-Query对象可以包含0个或任意个DOM对象，它的方法实际上会作用在对应的DOM节点上。意思其实就是，如果对一个j-Query对象进行了操作的话，它包含的所有的Dom对象都会被修改。 j-Query对象有一个好处是用户可以执行一个操作，作用在对应的一组DOM节点上。即使选择器没有返回任何DOM节点，调用j-Query对象的方法仍然不会报错： 12// 如果不存在id为thbelief的节点：$(&apos;#thbelief&apos;).text(&apos;Hello&apos;); // 代码不报错，没有节点被设置为&apos;Hello&apos; 这个操作其实是很有必要的，因为可以省去很多的if语句。 修改CSS从上面的修改Dom节点就可以看出，其实j-Query其实是有批量操作的特性的。 j-Query对象的所有方法都返回一个j-Query对象（可能是新的也可能是自身），这样可以进行链式调用。 1234var div = $(&apos;#test-div&apos;);div.css(&apos;color&apos;); // &apos;#000033&apos;, 获取CSS属性div.css(&apos;color&apos;, &apos;#336699&apos;); // 设置CSS属性div.css(&apos;color&apos;, &apos;&apos;); // 清除CSS属性 css()方法将作用于DOM节点的style属性，具有最高优先级。 如果要修改class属性，可以用j-Query提供的方法： 1234var div = $(&apos;#test-div&apos;);div.hasClass(&apos;highlight&apos;); // false， class是否包含highlightdiv.addClass(&apos;highlight&apos;); // 添加highlight这个classdiv.removeClass(&apos;highlight&apos;); // 删除highlight这个class 显示和隐藏DOM隐藏DOM节点并未改变DOM树的结构，它只影响DOM节点的显示。这和删除DOM节点是不同的。 这里j-Query提供了hide()和show()两个方法。 123var a = $(&apos;a[target=_blank]&apos;);a.hide(); // 隐藏a.show(); // 显示 获取DOM信息利用j-Query提供的方法可以直接获取Dom的信息： 1234567891011121314// 浏览器可视窗口大小:$(window).width(); // 800$(window).height(); // 600// HTML文档大小:$(document).width(); // 800$(document).height(); // 3500// 某个div的大小:var div = $(&apos;#test-div&apos;);div.width(); // 600div.height(); // 300div.width(400); // 设置CSS属性 width: 400px，是否生效要看CSS是否有效div.height(&apos;200px&apos;); // 设置CSS属性 height: 200px，是否生效要看CSS是否有效 另外还有attr()、removeAttr()、prop()等等方法。 操作表单对于表单元素，j-Query对象统一提供val()方法获取和设置对应的value属性。]]></content>
@@ -789,9 +804,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
