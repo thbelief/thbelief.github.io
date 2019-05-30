@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十五)]]></title>
+    <url>%2F2019%2F05%2F30%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%BA%94%2F</url>
+    <content type="text"><![CDATA[目录: j-Query 动画 show / hide slideUp / slideDown fadeIn / fadeOut 自定义 串行动画 j-Query动画用JS实现动画的代码其实写起来还是非常麻烦的。 使用j-Query实现动画效果的原理：以固定的时间间隔每次修改Dom元素的CSS样式，看起来也就是动画了。 show / hide前面的博客里面已经提到过，如果无参数调用这两个方法的话，其实就是显示和隐藏Dom元素，但是这里可以直接传入一个时间参数（可以是毫秒也可以是slow/fast这种字符串），这就变成了动画~~~ 12var div = $(&apos;#testShowHide&apos;);div.hide(3000); // 在3秒钟内这个Dom元素会逐渐消失 toggle()方法根据当前的状态选择是show还是hide~ 实例如下： hide(‘slow’) show(‘slow’) slideUp / slideDown上面的实例中可以清晰的看到show和hide是从左上角逐渐展开或者收缩的，而slideUp / slideDown是从垂直方向进行展开或者收缩的。 其实就相当于拉窗帘？ slideToggle()根据元素是否可见来决定下一步的操作。 12var div = $(&apos;#testSlide&apos;);div.slideUp(3000); // 在3秒钟内逐渐向上消失 slideUp(‘slow’) slideDown(‘slow’) fadeIn / fadeOutfadeIn / fadeOut的动画效果是淡入淡出，原理其实就是不断的设置Dom元素的opacity属性。 fadeToggle()则根据元素是否可见来决定下一步操作。 12var div = $(&apos;#testFade&apos;);div.fadeOut(&apos;slow&apos;); // 在0.6秒内淡出 简单实例： fadeOut(‘slow’) fadeIn(‘slow’) 自定义上面的效果其实都是很简单很基础的效果，其实真正好看的动画大部分都是自定义的。 animate()方法可以实现任意动画效果，需要传入的参数是DOM元素最终的CSS状态和时间，j-Query将在时间段内不断调整CSS直到达到预设的值。 123456var div = $(&apos;#testAnimate&apos;);div.animate(&#123; opacity: 0.25, width: &apos;256px&apos;, height: &apos;256px&apos;&#125;, 3000); // 在3秒钟内CSS过渡到设定值（注意这里是过渡~） 这个方法还可以传入一个函数，动画结束的时候将调用此函数。 其实可以看做是回调函数。 12345678910var div = $(&apos;#testAnimate&apos;);div.animate(&#123; opacity: 0.25, width: &apos;256px&apos;, height: &apos;256px&apos;&#125;, 3000, function () &#123; console.log(&apos;动画结束！&apos;); // 恢复至初始化状态: $(this).css(&apos;opacity&apos;, &apos;1.0&apos;).css(&apos;width&apos;, &apos;128px&apos;).css(&apos;height&apos;, &apos;128px&apos;);&#125;); 串行动画j-Query动画可以实现串行动画，其实就是有暂停（通过delay方法实现）。 注意，由于动画需要执行的时间，所以j-Query必须不断的返回Promise对象才能进行后续操作。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>j-Query</tag>
+        <tag>动画</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十四)]]></title>
     <url>%2F2019%2F05%2F29%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E5%9B%9B%2F</url>
     <content type="text"><![CDATA[目录: j-Query 事件 简单介绍 简单实例 事件种类 鼠标事件 键盘事件 其它事件 事件参数 取消绑定 事件触发条件 浏览器安全限制 j-Query事件简单介绍JavaScript在浏览器中以单线程模式运行，页面加载后，一旦页面上所有的JavaScript代码被执行完后，就只能依赖触发事件来执行JavaScript代码。 浏览器在接收到用户的鼠标或键盘输入后，会自动在对应的DOM节点上触发相应的事件。如果该节点已经绑定了对应的JavaScript处理函数，该函数就会自动调用。 在j-Query没有出现之前，因为浏览器的差异导致的结果就是如果浏览器不同的话，想要实现一样的效果，需要实现不同的代码，但是现在只需要写统一的代码即可。 简单实例 点击这里！ 上面只是一个html中的定义，下面这个代码是上面这个绑定的事件。可以自行测试。 1234var a = $('#test-link');a.on('click', function () &#123; alert('Hello!');&#125;); 当然，上面的写法on是用来绑定事件的，需要传入事件的名称以及对应的处理函数。 还有一种写法是之前Auto.js之中提到过的click方法。 123a.click(function () &#123; alert(&apos;Hello!&apos;);&#125;); on方法和click方法是完全等价的。 事件种类鼠标事件123456click: 鼠标单击时触发； dblclick：鼠标双击时触发； mouseenter：鼠标进入时触发； mouseleave：鼠标移出时触发； mousemove：鼠标在DOM内部移动时触发； hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。 键盘事件12345键盘事件仅作用在当前焦点的DOM上，通常是&lt;input&gt;和&lt;textarea&gt;。keydown：键盘按下时触发； keyup：键盘松开时触发； keypress：按一次键后触发。 其它事件12345focus：当DOM获得焦点时触发； blur：当DOM失去焦点时触发； change：当&lt;input&gt;、&lt;select&gt;或&lt;textarea&gt;的内容改变时触发； submit：当&lt;form&gt;提交时触发； ready：当页面被载入并且DOM树完成初始化后触发。 注意，ready仅作用于document对象。由于ready事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码。 事件参数有些事件，如mousemove和keypress，必须获取鼠标位置和按键的值，所有事件都会传入Event对象作为参数。 取消绑定一个已被绑定的事件可以解除绑定，通过off(‘click’, function)实现。 无参数调用off()一次性移除已绑定的所有类型的事件处理函数。 事件触发条件事件的触发总是由用户操作引发的。 当用户在文本框中输入时，就会触发change事件。但是，如果用JavaScript代码去改动文本框的值，将不会触发change事件。这就很蛋疼了，有些时候我们希望使用JS代码去触发（脚本原理）。 用代码触发change事件，可以直接调用无参数的change()方法来触发该事件： 123var input = $(&apos;#test-input&apos;);input.val(&apos;change it!&apos;);input.change(); // 触发change事件 浏览器安全限制在浏览器中，有些JavaScript代码只有在用户触发下才能执行。]]></content>
@@ -804,9 +819,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
