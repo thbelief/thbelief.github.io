@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十六)]]></title>
+    <url>%2F2019%2F05%2F31%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E5%85%AD%2F</url>
+    <content type="text"><![CDATA[目录： j-Query AJAX 简单介绍 get post getJSON 安全限制 j-QueryAJAX和前面博客提到的原因差不多，由于不同浏览器之间存在的差异，写出的代码其实也是千奇百怪。 j-Query其实也可以写AJAX，也很方便。 简单介绍j-Query在全局对象j-Query（$）绑定了ajax()函数，可以处理AJAX请求。 ajax(url, settings)函数需要接收一个URL和一个可选的settings对象。 常用选项： 1234567891011async：是否异步执行AJAX请求，默认为true，千万不要指定为false；method：发送的Method，缺省为&apos;GET&apos;，可指定为&apos;POST&apos;、&apos;PUT&apos;等；contentType：发送POST请求的格式，默认值为&apos;application/x-www-form-urlencoded; charset=UTF-8&apos;，也可以指定为text/plain、application/json；data：发送的数据，可以是字符串、数组或object。如果是GET请求，data将被转换成query附加到URL上，如果是POST请求，根据contentType把data序列化成合适的格式；headers：发送的额外的HTTP头，必须是一个object；dataType：接收的数据格式，可以指定为&apos;html&apos;、&apos;xml&apos;、&apos;json&apos;、&apos;text&apos;等，缺省情况下根据响应的Content-Type猜测。 如何使用回调函数处理返回的数据和出错时候的响应呢？——j-Query的jqXHR对象类似于之前提到过的Promise对象，可以通过各种链式的写法来处理各种回调。 get常用的AJAX在j-Query中都提供了相应的辅助方法。 1234var jqxhr = $.get(&apos;/path/to/resource&apos;, &#123; name: &apos;Bob Lee&apos;, check: 1&#125;); post和get是类似的，但是需要注意的就是传入的第二个参数被序列化为application/x-www-form-urlencoded： 1234var jqxhr = $.post(&apos;/path/to/resource&apos;, &#123; name: &apos;Bob Lee&apos;, check: 1&#125;); getJSON123456var jqxhr = $.getJSON(&apos;/path/to/resource&apos;, &#123; name: &apos;Bob Lee&apos;, check: 1&#125;).done(function (data) &#123; // data已经被解析为JSON对象了&#125;); 安全限制由于j-Query中AJAX完全是封装的JS中的AJAX操作，所以安全限制和前面学习过的是一模一样的。 值得注意的是，如果需要使用JSONP的话，可以在ajax()中设置jsonp:’callback’,让j-Query实现JSONP的跨域加载数据。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>AJAX</tag>
+        <tag>j-Query</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十五)]]></title>
     <url>%2F2019%2F05%2F30%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%BA%94%2F</url>
     <content type="text"><![CDATA[目录: j-Query 动画 show / hide slideUp / slideDown fadeIn / fadeOut 自定义 串行动画 j-Query动画用JS实现动画的代码其实写起来还是非常麻烦的。 使用j-Query实现动画效果的原理：以固定的时间间隔每次修改Dom元素的CSS样式，看起来也就是动画了。 show / hide前面的博客里面已经提到过，如果无参数调用这两个方法的话，其实就是显示和隐藏Dom元素，但是这里可以直接传入一个时间参数（可以是毫秒也可以是slow/fast这种字符串），这就变成了动画~~~ 12var div = $(&apos;#testShowHide&apos;);div.hide(3000); // 在3秒钟内这个Dom元素会逐渐消失 toggle()方法根据当前的状态选择是show还是hide~ 实例如下： hide(‘slow’) show(‘slow’) slideUp / slideDown上面的实例中可以清晰的看到show和hide是从左上角逐渐展开或者收缩的，而slideUp / slideDown是从垂直方向进行展开或者收缩的。 其实就相当于拉窗帘？ slideToggle()根据元素是否可见来决定下一步的操作。 12var div = $(&apos;#testSlide&apos;);div.slideUp(3000); // 在3秒钟内逐渐向上消失 slideUp(‘slow’) slideDown(‘slow’) fadeIn / fadeOutfadeIn / fadeOut的动画效果是淡入淡出，原理其实就是不断的设置Dom元素的opacity属性。 fadeToggle()则根据元素是否可见来决定下一步操作。 12var div = $(&apos;#testFade&apos;);div.fadeOut(&apos;slow&apos;); // 在0.6秒内淡出 简单实例： fadeOut(‘slow’) fadeIn(‘slow’) 自定义上面的效果其实都是很简单很基础的效果，其实真正好看的动画大部分都是自定义的。 animate()方法可以实现任意动画效果，需要传入的参数是DOM元素最终的CSS状态和时间，j-Query将在时间段内不断调整CSS直到达到预设的值。 123456var div = $(&apos;#testAnimate&apos;);div.animate(&#123; opacity: 0.25, width: &apos;256px&apos;, height: &apos;256px&apos;&#125;, 3000); // 在3秒钟内CSS过渡到设定值（注意这里是过渡~） 这个方法还可以传入一个函数，动画结束的时候将调用此函数。 其实可以看做是回调函数。 12345678910var div = $(&apos;#testAnimate&apos;);div.animate(&#123; opacity: 0.25, width: &apos;256px&apos;, height: &apos;256px&apos;&#125;, 3000, function () &#123; console.log(&apos;动画结束！&apos;); // 恢复至初始化状态: $(this).css(&apos;opacity&apos;, &apos;1.0&apos;).css(&apos;width&apos;, &apos;128px&apos;).css(&apos;height&apos;, &apos;128px&apos;);&#125;); 串行动画j-Query动画可以实现串行动画，其实就是有暂停（通过delay方法实现）。 注意，由于动画需要执行的时间，所以j-Query必须不断的返回Promise对象才能进行后续操作。]]></content>
@@ -460,11 +475,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -819,9 +834,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -995,10 +1010,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1100,9 +1115,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

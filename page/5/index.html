@@ -313,6 +313,241 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/21/Python学习笔记（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/21/Python学习笔记（一）/" itemprop="url">Python学习笔记（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T16:46:49+08:00">
+                2019-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  556
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#输入输出">输入输出</a><ul>
+<li><a href="#print">print()</a></li>
+<li><a href="#input">input()</a></li>
+</ul>
+</li>
+<li><a href="#基础">基础</a><ul>
+<li><a href="#字符串">字符串</a></li>
+<li><a href="#空值">空值</a></li>
+<li><a href="#变量">变量</a></li>
+<li><a href="#常量">常量</a></li>
+<li><a href="#除法">除法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>其实之前已经学过一部分了，但是很久没用了，就重新学习一下。本学习笔记只记录一些自己觉得蛮重要的东西，不是详细的入门博客。</p>
+<p>学习过程中就不用Python Shell编译了，直接使用<strong>VSCode</strong>来编程。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="输入输出">输入输出</span></h3><h4><span id="print">print()</span></h4><p>在括号中加入字符串，可以直接打印出来。（单个或者多个字符串），多个字符串的话，遇到逗号就会输出一个空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello&quot;)</span><br><span class="line">print(&quot;hello&quot;,&quot;world&quot;)</span><br><span class="line">print(&quot;100+200=&quot;,100+200)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Running] python -u &quot;c:\Users\40941\Desktop\tempCodeRunnerFile.python&quot;</span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line">100+200= 300</span><br></pre></td></tr></table></figure>
+<h4><span id="input">input()</span></h4><p>输入字符串，并存放到一个变量里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=input()//不会有任何的意思，直接就跳过去执行下一条命令了</span><br></pre></td></tr></table></figure>
+<h3><span id="基础">基础</span></h3><h4><span id="字符串">字符串</span></h4><p>在Python里面””与’’的作用是一样的，单引号与双引号都是表示的是字符串。</p>
+<p>注意：<strong>转义字符</strong>的使用！</p>
+<p>编码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;I\&apos;m \&quot;OK\&quot;!&apos;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I&apos;m &quot;OK&quot;!</span><br></pre></td></tr></table></figure>
+<p>用r’’可以表示’’内部的字符串默认不转义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(r&apos;\\\t\\&apos;)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Running] python -u &quot;c:\Users\40941\Desktop\tempCodeRunnerFile.python&quot;</span><br><span class="line">\\\t\\</span><br></pre></td></tr></table></figure>
+<p>Python支持用’’’…’’’这种格式表示多行的内容，写法如下：（…是提示符，不是代码的一部分）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;&apos;&apos;line1</span><br><span class="line">... line2</span><br><span class="line">... line3&apos;&apos;&apos;)</span><br></pre></td></tr></table></figure>
+<h4><span id="空值">空值</span></h4><p><strong>None。</strong>和0不一样，0是有意义的，None则是一种<strong>特殊的空值</strong>。</p>
+<h4><span id="变量">变量</span></h4><p><strong>变量名必须是大小写英文、数字和_下划线的组合，且不能用数字开头。</strong></p>
+<h4><span id="常量">常量</span></h4><p>习惯上一般用全部大写的变量表示常量。（实际上PY中没有真正意义上的常量，都是可以改变的）</p>
+<h4><span id="除法">除法</span></h4><p>和C++里面的“整除”不同，Python提供了两种不同的除法。</p>
+<p>第一种：精确除法’/‘:</p>
+<p><strong>结果显示为浮点数，即使整除也是浮点数，如3.0</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10/3</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
+<p>第二种： 地板除’//‘：</p>
+<p>两个整数的地板除还是整数，结果<strong>只取结果的整数部分</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/20/Lua学习笔记-二/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2778,200 +3013,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/14/Auto-js-Script开发-八/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/Auto-js-Script开发-八/" itemprop="url">Auto.js Script开发(八)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T22:00:53+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Auto.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  753
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#关键代码">关键代码</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天的话主要就是修复了一下易班签到的BUG吧，然后就是下面贴一下代码，太累了，就不仔细的解释了，好了，下面开始~~~</p>
-<h2><span id="正文">正文</span></h2><h3><span id="关键代码">关键代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">function SignIn(signInAccount,signInPassword)&#123;</span><br><span class="line">    var t=threads.start(function()&#123; </span><br><span class="line">        //输入账号密码</span><br><span class="line">        id(&quot;login_account_et&quot;).findOne().setText(signInAccount);</span><br><span class="line">        id(&quot;login_password_et&quot;).findOne().setText(signInPassword);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //登录按钮</span><br><span class="line">        id(&quot;login_btn&quot;).findOne().click();</span><br><span class="line">        //等待前往主页面活动</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //去签到的页面</span><br><span class="line">        id(&quot;page_home_discover_tab_btn&quot;).findOne().click()</span><br><span class="line">        id(&quot;page_explore_chenckin_layout&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //判断是否有签到，签到了直接退出，没有签到就签到</span><br><span class="line">        if(text(&quot;奖励已经拿过咯~&quot;).exists())&#123;</span><br><span class="line">            //已经签过到的页面</span><br><span class="line">            toast(signInAccount+&quot;已经签到过了!&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;已经签到过了!&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;else if(text(&quot;下一步&quot;).exists())&#123;</span><br><span class="line">            //检测是否打开自动同步开关</span><br><span class="line">            if(isShareButton)&#123;</span><br><span class="line">                //如果打开了就直接勾选</span><br><span class="line">                    id(&quot;sync_to_feed_check&quot;).clickable().find().click();</span><br><span class="line">                    accountSignInMessage.push(signInAccount+&quot;签到已经同步至动态!&quot;);</span><br><span class="line">                    toast(&quot;已经勾选同步动态按钮，正在同步中...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            //没有签过到的页面</span><br><span class="line">            sleep(1000);</span><br><span class="line">            var t=className(&quot;android.widget.LinearLayout&quot;).clickable().find();</span><br><span class="line">            //默认选择第二个答案</span><br><span class="line">            t[2].click();</span><br><span class="line">            toast(signInAccount+&quot;签到完成了哦！&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;签到完成了哦!&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            text(&quot;下一步&quot;).findOne().click();</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;签到失败，未检索到&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;签到失败，未检索到&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(isSendMessage)&#123;</span><br><span class="line">            //如果打开了群聊冒泡的开关</span><br><span class="line">            toast(&quot;正在准备群聊冒泡...&quot;);</span><br><span class="line">            id(&quot;page_home_contacts_tab_btn&quot;).clickable().find().click();</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;l_groupchat&quot;).clickable().find().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.GroupMergeActivity&quot;);</span><br><span class="line">            sleep(1000)</span><br><span class="line">            if(text(sendName).exists())&#123;</span><br><span class="line">                toast(&quot;发现群聊:&quot;+sendName+&quot;!&quot;);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                //本身返回的不是集合，还要找子控件集合</span><br><span class="line">                var t=className(&quot;android.widget.TextView&quot;).text(sendName).findOne().bounds();</span><br><span class="line">                click(t.centerX(),t.centerY());</span><br><span class="line">                waitForActivity(&quot;com.yiban.app.activity.ChatActivity&quot;);</span><br><span class="line">                toast(&quot;已经打开群聊，准备冒泡...&quot;);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                id(&quot;page_chat_message_et&quot;).findOne().setText(sendContent);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                id(&quot;page_chat_message_send_btn&quot;).findOne().click();</span><br><span class="line">                toast(&quot;账号&quot;+signInAccount+&quot;发送&quot;+sendContent+&quot;在&quot;+sendName);</span><br><span class="line">                accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;发送&quot;+sendContent+&quot;在&quot;+sendName);</span><br><span class="line">                id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">                waitForActivity(&quot;com.yiban.app.activity.GroupMergeActivity&quot;);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                toast(&quot;未检索到群聊！&quot;);</span><br><span class="line">                accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;未检索到&quot;+sendName);</span><br><span class="line">            &#125;</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //退出当前账号</span><br><span class="line">        id(&quot;widget_custom_head&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.UserInfoPageActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        id(&quot;r_setting&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.SettingMainActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        text(&quot;退出账号&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.LoginNew2Activity&quot;);</span><br><span class="line">        toast(signInAccount+&quot;正常退出并正在销毁线程...&quot;);</span><br><span class="line">        accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;正常销毁线程！&quot;);</span><br><span class="line">        t.interrupt();</span><br><span class="line">       </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3024,7 +3065,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3131,7 +3172,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共123.5k字</span>
+  <span class="post-count">博客全站共124k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
