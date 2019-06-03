@@ -313,6 +313,295 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/29/c-中的vector与set/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/c-中的vector与set/" itemprop="url">c++中的vector与set</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T19:06:14+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#c合法标识符">C合法标识符</a></li>
+<li><a href="#vector">vector</a><ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#声明和初始化">声明和初始化</a><ul>
+<li><a href="#输入访问">输入访问</a></li>
+<li><a href="#基本操作">基本操作</a></li>
+<li><a href="#二维">二维</a></li>
+<li><a href="#析构函数">析构函数</a><ul>
+<li><a href="#c~vector">c.~vector ()</a></li>
+</ul>
+</li>
+<li><a href="#成员函数">成员函数</a><ul>
+<li><a href="#cassignab">c.assign(a，b)</a></li>
+<li><a href="#catidx">c.at(idx)</a></li>
+<li><a href="#cback">c.back()</a></li>
+<li><a href="#cbegin">c.begin()</a></li>
+<li><a href="#ccapacity">c.capacity()</a></li>
+<li><a href="#cclear">c.clear()</a></li>
+<li><a href="#cempty">c.empty()</a></li>
+<li><a href="#cend">c.end()</a></li>
+<li><a href="#cerasepos">c.erase(pos)</a></li>
+<li><a href="#cfront">c.front()</a></li>
+<li><a href="#get_allocator">get_allocator</a></li>
+<li><a href="#cinsertposelem">c.insert(pos,elem)</a></li>
+<li><a href="#cinsertposnelem">c.insert(pos,n,elem)</a></li>
+<li><a href="#cinsertposbegend">c.insert(pos,beg,end)</a></li>
+<li><a href="#cmax_size">c.max_size()</a></li>
+<li><a href="#cpop_back">c.pop_back()</a></li>
+<li><a href="#cpush_backelem">c.push_back(elem)</a></li>
+<li><a href="#crbegin">c.rbegin()</a></li>
+<li><a href="#crend">c.rend()</a></li>
+<li><a href="#cresizenum">c.resize(num)</a></li>
+<li><a href="#creserve">c.reserve()</a></li>
+<li><a href="#csize">c.size()</a></li>
+<li><a href="#c1swapc2-swapc1c2">c1.swap(c2)、swap(c1,c2)</a></li>
+<li><a href="#operator">operator[]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#set">Set</a><ul>
+<li><a href="#特性">特性</a></li>
+<li><a href="#成员函数-1">成员函数</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="c合法标识符">C合法标识符</span></h2><p>C语言的标识符是<strong>字母或下划线(‘<em>‘)开头的，字母、下划线(‘</em>‘)和数字的字符串。</strong></p>
+<p>判断合法标识符的时候需要注意一下，很多时候需要用gets输入而不是scanf来输入，因为有可能输入的字符串含有空格。</p>
+<h2><span id="vector">vector</span></h2><h3><span id="简介">简介</span></h3><p><strong>向量 vector 是一种对象实体, 能够容纳许多其他类型相同的元素,</strong> 因此又被称为<strong>容器</strong>。</p>
+<p>vector的优势就是在于可以随时调整自己的容量大小以便容纳数据。</p>
+<p>使用的时候要加上头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;vector&gt;</span><br></pre></td></tr></table></figure>
+<h3><span id="声明和初始化">声明和初始化</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; a ;                                //声明一个int型向量a</span><br><span class="line">    vector&lt;int&gt; a(10) ;                            //声明一个初始大小为10的向量</span><br><span class="line">    vector&lt;int&gt; a(10, 1) ;                         //声明一个初始大小为10且初始值都为1的向量</span><br><span class="line">    vector&lt;int&gt; b(a) ;                             //声明并用向量a初始化向量b</span><br><span class="line">    vector&lt;int&gt; b(a.begin(), a.begin()+3) ;        //将a向量中从第0个到第2个(共3个)作为向量b的初始值</span><br><span class="line">    int n[] = &#123;1, 2, 3, 4, 5&#125; ;</span><br><span class="line">    vector&lt;int&gt; a(n, n+5) ;              //将数组n的前5个元素作为向量a的初值</span><br><span class="line">    vector&lt;int&gt; a(&amp;n[1], &amp;n[4]) ;        //将n[1] - n[4]范围内的元素作为向量a的初值</span><br></pre></td></tr></table></figure>
+<h4><span id="输入访问">输入访问</span></h4><p>可以用普通的<strong>cin</strong>与<strong>cout</strong>进行输入与输出。</p>
+<p>输出的时候还可以使用<strong>迭代器</strong>进行输出控制。</p>
+<h4><span id="基本操作">基本操作</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a.size()获取元素个数</span><br><span class="line">a.empty()判断是否为空</span><br><span class="line">a.clear()清空元素</span><br><span class="line">a.insert(a.begin(), 1000)将1000插入到向量a的起始位置前 </span><br><span class="line">a.insert(a.begin(), 3, 1000)将1000分别插入到向量元素位置的0-2处(共3个元素)</span><br><span class="line">b.erase(b.begin())将起始位置的元素删除 </span><br><span class="line">b.erase(b.begin(), b.begin()+3)将(b.begin(), b.begin()+3)之间的元素删除</span><br><span class="line">a.swap(b)将向量a，b交换</span><br></pre></td></tr></table></figure>
+<h4><span id="二维">二维</span></h4><p>其它操作与一维操作差不多。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt; vector&lt;int&gt; &gt; b(10, vector&lt;int&gt;(5));        //创建一个10*5的int型二维向量</span><br></pre></td></tr></table></figure>
+<h4><span id="析构函数">析构函数</span></h4><h5><span id="c~vector">c.~vector ()</span></h5><p><strong>销毁所有数据，释放内存</strong>。</p>
+<h4><span id="成员函数">成员函数</span></h4><h5><span id="cassignab">c.assign(a，b)</span></h5><p>将a到b区间（前闭区间后开区间）中的数据赋值给c。</p>
+<h5><span id="catidx">c.at(idx)</span></h5><p>传回idx所指向的数据，如果越界的话就抛出越界异常。</p>
+<h5><span id="cback">c.back()</span></h5><p>传回最后一个数据并且不检查是否存在这个数据。</p>
+<h5><span id="cbegin">c.begin()</span></h5><p>传回迭代器里面的第一个数据地址。</p>
+<h5><span id="ccapacity">c.capacity()</span></h5><p>返回容器中的数据个数。</p>
+<h5><span id="cclear">c.clear()</span></h5><p>清除容器中的所有数据。</p>
+<h5><span id="cempty">c.empty()</span></h5><p>判断是否容器为空。</p>
+<h5><span id="cend">c.end()</span></h5><p>指向迭代器末端元素的下一个，也就是指向一个不存在的元素。</p>
+<h5><span id="cerasepos">c.erase(pos)</span></h5><p>删除pos位置的数据，然后返回下一个数据的位置。</p>
+<h5><span id="cfront">c.front()</span></h5><p>传回第一个数据。</p>
+<h5><span id="get_allocator">get_allocator</span></h5><p>使用构造函数返回一个拷贝。</p>
+<h5><span id="cinsertposelem">c.insert(pos,elem)</span></h5><p>在pos位置插入一个elem拷贝，传回新数据位置。</p>
+<h5><span id="cinsertposnelem">c.insert(pos,n,elem)</span></h5><p>在pos位置插入n个elem数据。无返回值。</p>
+<h5><span id="cinsertposbegend">c.insert(pos,beg,end)</span></h5><p>在pos位置插入在[beg,end)区间的数据。无返回值。
+　　</p>
+<h5><span id="cmax_size">c.max_size()</span></h5><p>返回容器中最大数据的数量。</p>
+<h5><span id="cpop_back">c.pop_back()</span></h5><p>删除最后一个数据。</p>
+<h5><span id="cpush_backelem">c.push_back(elem)</span></h5><p>在尾部加入一个数据。</p>
+<h5><span id="crbegin">c.rbegin()</span></h5><p>传回一个逆向队列的第一个数据。</p>
+<h5><span id="crend">c.rend()</span></h5><p>传回一个逆向队列的最后一个数据的下一个位置。</p>
+<h5><span id="cresizenum">c.resize(num)</span></h5><p>重新指定队列的长度。</p>
+<h5><span id="creserve">c.reserve()</span></h5><p>保留适当的容量。</p>
+<h5><span id="csize">c.size()</span></h5><p>返回容器中实际数据的个数。</p>
+<h5><span id="c1swapc2-swapc1c2">c1.swap(c2)、swap(c1,c2)</span></h5><p>将c1和c2元素互换。同上操作。</p>
+<h5><span id="operator">operator[]</span></h5><p>返回容器中指定位置的一个引用。</p>
+<h2><span id="set">Set</span></h2><p>set（）是一种包含<strong>已排序对象</strong>的关联容器。 set集合容器实现了红黑树（Red-Black Tree）的<strong>平衡二叉检索树</strong>的数据结构，在插入元素时，它会自动调整二叉树的排列，把元素放到适当的位置，它<strong>不会插入相同键值</strong>的元素，而采取忽略处理。</p>
+<p>平衡二叉树的检索使用<strong>中序遍历</strong>算法，<strong>检索效率高于vector、deque和list等容器。</strong></p>
+<p>对于set容器中的键值，不可直接去修改！应该<strong>先删除该键值，再插入新的键值。</strong></p>
+<h4><span id="特性">特性</span></h4><p>1) 不能直接改变元素值，因为那样会打乱原本正确的顺序，要改变元素值必须先删除旧元素，则插入新元素。</p>
+<p>2) 不提供直接存取元素的任何操作函数，只能通过迭代器进行间接存取，而且从迭代器角度来看，元素值是常数。</p>
+<p>3) 元素比较动作只能用于型别相同的容器(即元素和排序准则必须相同)。</p>
+<h4><span id="成员函数">成员函数</span></h4><ol>
+<li>begin()–返回指向第一个元素的迭代器。</li>
+<li>clear()–清除所有元素。</li>
+<li>count()–返回某个值元素的个数。</li>
+<li>empty()–如果集合为空，返回true。</li>
+<li>end()–返回指向最后一个元素的迭代器。</li>
+<li>equal_range()–返回集合中与给定值相等的上下限的两个迭代器。</li>
+<li>erase()–删除集合中的元素。</li>
+<li>find()–返回一个指向被查找到元素的迭代器。</li>
+<li>get_allocator()–返回集合的分配器。</li>
+<li>insert()–在集合中插入元素。</li>
+<li>lower_bound()–返回指向大于（或等于）某值的第一个元素的迭代器。</li>
+<li>key_comp()–返回一个用于元素间值比较的函数。</li>
+<li>max_size()–返回集合能容纳的元素的最大限值。</li>
+<li>rbegin()–返回指向集合中最后一个元素的反向迭代器。</li>
+<li>rend()–返回指向集合中第一个元素的反向迭代器。</li>
+<li>size()–集合中元素的数目。</li>
+<li>swap()–交换两个集合变量。</li>
+<li>upper_bound()–返回大于某个值元素的迭代器。</li>
+<li>value_comp()–返回一个用于比较元素间的值的函数。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/omelet/p/6627667.html" target="_blank" rel="noopener">set参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/28/素性测试/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2850,236 +3139,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/21/java基础-渐入佳境/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/21/java基础-渐入佳境/" itemprop="url">java基础-渐入佳境</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T12:35:17+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#对象实例化过程">对象实例化过程</a></li>
-<li><a href="#方法的覆盖">方法的覆盖</a><ul>
-<li><a href="#定义">定义</a></li>
-<li><a href="#特点">特点</a></li>
-</ul>
-</li>
-<li><a href="#final关键字">final关键字</a><ul>
-<li><a href="#数据">数据</a></li>
-<li><a href="#类">类</a></li>
-<li><a href="#方法">方法</a></li>
-<li><a href="#空final">空final</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>关于Java基础系列的学习路线，我已经在<a href="https://thbelief.coding.me/2019/02/26/android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E7%BB%93plus/">安卓学习路线总结plus</a>里面写到了，我是按照那个上面的路线来学习的，如果有不明白的地方的话，可以移步前往作为 参考，也可以当成是目录。</p>
-<h2><span id="对象实例化过程">对象实例化过程</span></h2><p>1.检查类<strong>是否已经加载</strong>，如果没有加载的话就加载这个类，需要加载所有的父类。</p>
-<p>2.在内存堆中分配对象空间，递归分配所有父类和子类属性空间.先父类型再子类型,属性<strong>默认自动初始化</strong>.自动初始化为”0”值。</p>
-<p>3.进行属性的赋值。</p>
-<p>4.递归调用父类的构造器（默认的是调用父类的无参数构造器）。</p>
-<p>5.调用本类的构造器。</p>
-<p><strong>注意：</strong></p>
-<p>1）静态初始化是指执行静态初始化块儿里面的内容。</p>
-<p>2）实例初始化是指执行实例初始化块儿里面的内容。</p>
-<p>3）构造方法：一个名称跟类的名称一样的方法，特殊在于不带返回值。</p>
-<p><strong>实例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class TestInstanceInit &#123;</span><br><span class="line"></span><br><span class="line">public static int n = 0;// 静态变量</span><br><span class="line"></span><br><span class="line">static &#123;// 这是静态初始化块</span><br><span class="line">print();</span><br><span class="line">System.out.println(&quot;this is static block&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;// 实例初始化块</span><br><span class="line">System.out.println(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TestInstanceInit() &#123;// 构造方法</span><br><span class="line">System.out.println(&quot;this is TestInstanceInit&apos;s constructor~&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void print() &#123;// 静态方法</span><br><span class="line">System.out.println(&quot;this is static method~&quot;);</span><br><span class="line">System.out.println(n);</span><br><span class="line">n += 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">new TestInstanceInit();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果是:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this is static method~</span><br><span class="line">0</span><br><span class="line">this is static block</span><br><span class="line">1</span><br><span class="line">this is TestInstanceInit&apos;s constructor~</span><br></pre></td></tr></table></figure>
-<p><strong>执行顺序：</strong></p>
-<p><strong>(静态变量、静态初始化块)&gt;(变量、初始化快)&gt;构造器</strong>。</p>
-<p>静态变量和静态初始化快/变量和初始化快的先后顺序取决于它们在类中出现的<strong>先后顺序</strong>。</p>
-<p><a href="https://blog.csdn.net/avinegar/article/details/7749431" target="_blank" rel="noopener">参考链接</a></p>
-<h2><span id="方法的覆盖">方法的覆盖</span></h2><h3><span id="定义">定义</span></h3><p>如果在子类中定义一个方法，其名称、返回类型及参数签名正好与父类中某个方法的名称、返回类型及参数签名相<strong>匹配</strong>，那么可以说，子类的方法覆盖了父类的方法。</p>
-<h3><span id="特点">特点</span></h3><p> 子类的方法名称返回类型及参数签名 必须与父类的一致。<br>    子类方法不能缩小父类方法的访问权限。<br>    子类方法不能抛出比父类方法更多的异常。<br>    方法覆盖只存在于子类和父类之间，同一个类中只能重载。<br>    父类的静态方法不能被子类覆盖为非静态方法。<br>    子类可以定义于父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法（满足覆盖约束）， 而且Java虚拟机把静态方法和所属的类绑定，而把实例方法和所属的实例绑定。<br>    父类的非静态方法不能被子类覆盖为静态方法。<br>    父类的私有方法不能被子类覆盖。<br>    父类的抽象方法可以被子类通过两种途径覆盖（即实现和覆盖）。</p>
-<p>父类的非抽象方法可以被覆盖为抽象方法。</p>
-<h2><span id="final关键字">final关键字</span></h2><p>在Java中final关键字可以用来修饰数据，方法，参数以及类。</p>
-<h3><span id="数据">数据</span></h3><p>final修饰的基本类型，在初始化之后就不能在赋值了，同理，修饰的对象一旦引用被初始化指向一个对象的话，就无法把它改指向另外一个对象。</p>
-<p>但是要注意，被final修饰的对象引用，只是对象的应用不能修改，但是<strong>其自身却是可以修改的</strong>。</p>
-<h3><span id="类">类</span></h3><p>当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。</p>
-<p>final类中的成员变量可以根据需要设为final，但是要注意final类中的所有<strong>成员方法</strong>都会被隐式地指定为<strong>final方法</strong>。</p>
-<h3><span id="方法">方法</span></h3><p>使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用。</p>
-<p><strong>注意:类的private方法会被隐式的指定为final方法。</strong></p>
-<h3><span id="空final">空final</span></h3><p>谓的”空白final”是指被声明的为final但又为给定初值的对象引用或者基本数据。无论在什么情况下，编译器都会去确保final在使用前必须被初始化。若不进行初始化，会提示错误，这就意味着，必须在域的定义处或者每个构造器中使用表达式对final进行赋值，这正是final域在使用前被初始化的原因所在。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3132,7 +3191,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3154,7 +3213,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">149</span>
+                  <span class="site-state-item-count">150</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3239,7 +3298,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共125.5k字</span>
+  <span class="post-count">博客全站共125.7k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

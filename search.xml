@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android-安装Gradle报错解决]]></title>
+    <url>%2F2019%2F06%2F03%2FAndroid-%E5%AE%89%E8%A3%85Gradle%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%2F</url>
+    <content type="text"><![CDATA[目录： 前言 原因 解决方案 前言今天升级了AndroidStudio之后提示需要重新安装Gradle相关的东西，由于国内的不知名原因导致速度很慢很慢。设置了国内的HTTP代理之后报错： 1Could not GET &apos;https://dl.google.com/dl/android/maven2/com/android/support/appcompat-v7/28.0.0/appcompat-v7-28.0.0.pom&apos;. Received status code 400 from server: Bad Request Enable Gradle &apos;offline mode&apos; and sync project 原因设置代理的地方如下： 如下图可知，由于使用的是国内的镜像代理，这里涉及到一个https与http的差异，这里涉及到的就是这个问题。 解决方案直接在Android目录下找到gradle.properties这个文件打开，会发现图中两个https的，注释掉之后重新编译之后就可以发现项目不会出现问题了。]]></content>
+      <categories>
+        <category>移动端开发</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>报错</tag>
+        <tag>Android</tag>
+        <tag>Gradle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android-APK反编译]]></title>
     <url>%2F2019%2F06%2F02%2FAndroid-APK%E5%8F%8D%E7%BC%96%E8%AF%91%2F</url>
     <content type="text"><![CDATA[目录： 前言 准备 apktool dex2jar jd-gui/jadx-gui 使用 反编译apk获得资源文件 反编译apk获得java源码 前言反编译不是拿来做歪门邪道的，只是拿来学习。 准备首先是下载好下面三个工具： apktool这个是获取资源的，可以提取出图片文件以及布局文件进行查看。 apktool官网 需要注意一点——下载的时候不只是下载jar，还需要下载apktool.bat。具体的就看官网的安装说明即可。 下载完成之后将两个文件保存到自己找到的的位置，我是放在D盘下面的apktool文件夹。 之后就根据自己放的位置配置环境变量。 dex2jar下载网址 它的作用是将apk反编译为java源码（classes.dex转化成jar文件）。 下载之后同样配置好环境变量。 jd-gui/jadx-gui上面两个图形化界面随便选一个都可以。 jd-gui下载网址 它的作用是查看APK中classes.dex转化成出的jar文件，即源码文件。 下载之后放到自己知道的位置，方便之后使用。 使用测试是在WIn10的环境下面进行的。 反编译apk获得资源文件打开cmd，定位到apktool文件夹下面，把要反编译的apk放到这个文件夹下面，这里的命令格式如下： 1apktool d THBELIEFScript.apk_5.2.0.apk //这里的apk名字是我自己开发的apk名字 效果如下： 生成的同名文件夹即资源文件存放的位置。 反编译apk获得java源码首先是将apk后缀的安装包改后缀为.zip或者.rar然后解压。找到其中的classes.dex文件。（这个文件是后面要用的，必须找到），然后将该文件放到D:\dex2\dex2jar-2.0（这个是我自己解压之后dex2放的文件夹）下面。 通过命令行定位过去，输入以下命令： 1d2j-dex2jar.bat classed.dex //这里的d2j-dex2jar.bat是我这个版本的，其他版本的换一下就行了 输入之后回车会在该目录下面生成一个classes_dex2jar.jar文件。然后通过jd-gui打开就可以直接看到源码了。]]></content>
@@ -399,8 +413,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>root</tag>
         <tag>卡刷</tag>
+        <tag>root</tag>
       </tags>
   </entry>
   <entry>
@@ -729,8 +743,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>刷机</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>

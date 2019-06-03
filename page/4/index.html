@@ -313,6 +313,374 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/04/Python学习笔记（三）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/04/Python学习笔记（三）/" itemprop="url">Python学习笔记（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T22:36:03+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#函数">函数</a><ul>
+<li><a href="#内置函数">内置函数</a></li>
+<li><a href="#函数对象引用">函数对象引用</a></li>
+<li><a href="#定义函数">定义函数</a></li>
+<li><a href="#导入自定义函数">导入自定义函数</a></li>
+<li><a href="#空函数">空函数</a></li>
+<li><a href="#参数检查">参数检查</a></li>
+<li><a href="#返回多值">返回多值</a></li>
+<li><a href="#默认参数">默认参数</a></li>
+<li><a href="#可变参数">可变参数</a></li>
+<li><a href="#关键字参数">关键字参数</a></li>
+<li><a href="#命名关键字参数">命名关键字参数</a></li>
+<li><a href="#参数组合">参数组合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>颓废了一天，想想每日任务还没有完成，实在是有点儿颓废不下去了，好吧，立马开始。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="函数">函数</span></h3><h4><span id="内置函数">内置函数</span></h4><p>详情可以参考<a href="https://docs.python.org/3/library/functions.html#abs" target="_blank" rel="noopener">Python内置函数官方手册</a>。这个手册里面全部都是Python内置的函数，可以直接通过函数名以及对应的参数直接调用。</p>
+<p>具体包括下面这些：</p>
+<table>
+<thead>
+<tr>
+<th><a href="https://docs.python.org/3/library/functions.html#abs" target="_blank" rel="noopener"><code>abs()</code></a></th>
+<th><a href="https://docs.python.org/3/library/functions.html#delattr" target="_blank" rel="noopener"><code>delattr()</code></a></th>
+<th><a href="https://docs.python.org/3/library/functions.html#hash" target="_blank" rel="noopener"><code>hash()</code></a></th>
+<th><a href="https://docs.python.org/3/library/functions.html#func-memoryview" target="_blank" rel="noopener"><code>memoryview()</code></a></th>
+<th><a href="https://docs.python.org/3/library/functions.html#func-set" target="_blank" rel="noopener"><code>set()</code></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#all" target="_blank" rel="noopener"><code>all()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-dict" target="_blank" rel="noopener"><code>dict()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#help" target="_blank" rel="noopener"><code>help()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#min" target="_blank" rel="noopener"><code>min()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#setattr" target="_blank" rel="noopener"><code>setattr()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#any" target="_blank" rel="noopener"><code>any()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#dir" target="_blank" rel="noopener"><code>dir()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#hex" target="_blank" rel="noopener"><code>hex()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#next" target="_blank" rel="noopener"><code>next()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#slice" target="_blank" rel="noopener"><code>slice()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#ascii" target="_blank" rel="noopener"><code>ascii()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#divmod" target="_blank" rel="noopener"><code>divmod()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#id" target="_blank" rel="noopener"><code>id()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#object" target="_blank" rel="noopener"><code>object()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#sorted" target="_blank" rel="noopener"><code>sorted()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#bin" target="_blank" rel="noopener"><code>bin()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#enumerate" target="_blank" rel="noopener"><code>enumerate()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#input" target="_blank" rel="noopener"><code>input()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#oct" target="_blank" rel="noopener"><code>oct()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank" rel="noopener"><code>staticmethod()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#bool" target="_blank" rel="noopener"><code>bool()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#eval" target="_blank" rel="noopener"><code>eval()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener"><code>int()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#open" target="_blank" rel="noopener"><code>open()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-str" target="_blank" rel="noopener"><code>str()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#breakpoint" target="_blank" rel="noopener"><code>breakpoint()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#exec" target="_blank" rel="noopener"><code>exec()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#isinstance" target="_blank" rel="noopener"><code>isinstance()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#ord" target="_blank" rel="noopener"><code>ord()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#sum" target="_blank" rel="noopener"><code>sum()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#func-bytearray" target="_blank" rel="noopener"><code>bytearray()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#filter" target="_blank" rel="noopener"><code>filter()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#issubclass" target="_blank" rel="noopener"><code>issubclass()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#pow" target="_blank" rel="noopener"><code>pow()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#super" target="_blank" rel="noopener"><code>super()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#func-bytes" target="_blank" rel="noopener"><code>bytes()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#float" target="_blank" rel="noopener"><code>float()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#iter" target="_blank" rel="noopener"><code>iter()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#print" target="_blank" rel="noopener"><code>print()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-tuple" target="_blank" rel="noopener"><code>tuple()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#callable" target="_blank" rel="noopener"><code>callable()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#format" target="_blank" rel="noopener"><code>format()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#len" target="_blank" rel="noopener"><code>len()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#property" target="_blank" rel="noopener"><code>property()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#type" target="_blank" rel="noopener"><code>type()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#chr" target="_blank" rel="noopener"><code>chr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-frozenset" target="_blank" rel="noopener"><code>frozenset()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-list" target="_blank" rel="noopener"><code>list()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-range" target="_blank" rel="noopener"><code>range()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#vars" target="_blank" rel="noopener"><code>vars()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#classmethod" target="_blank" rel="noopener"><code>classmethod()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#getattr" target="_blank" rel="noopener"><code>getattr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#locals" target="_blank" rel="noopener"><code>locals()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#repr" target="_blank" rel="noopener"><code>repr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#zip" target="_blank" rel="noopener"><code>zip()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#compile" target="_blank" rel="noopener"><code>compile()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#globals" target="_blank" rel="noopener"><code>globals()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#map" target="_blank" rel="noopener"><code>map()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#reversed" target="_blank" rel="noopener"><code>reversed()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#__import__" target="_blank" rel="noopener"><code>__import__()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#complex" target="_blank" rel="noopener"><code>complex()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#hasattr" target="_blank" rel="noopener"><code>hasattr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#max" target="_blank" rel="noopener"><code>max()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#round" target="_blank" rel="noopener"><code>round()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>当然，还可以主动的查询某个内置函数（需要提前了解函数名）：</p>
+<p><strong>abs这里只是举例，泛指所有的内置函数名。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help(abs)</span><br></pre></td></tr></table></figure>
+<p>结果：（使用VSCode编译）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Help on built-in function abs in module builtins:</span><br><span class="line"></span><br><span class="line">abs(x, /)</span><br><span class="line">    Return the absolute value of the argument.</span><br><span class="line"></span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<h4><span id="函数对象引用">函数对象引用</span></h4><p><strong>函数名其实也是函数对象的一个引用，可以直接把函数名赋给一个变量，然后就相当于此函数多了一个别名，</strong>实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test=max #将内置的最大值函数赋给test</span><br><span class="line">print(test(1,2,3))</span><br><span class="line">print(max(1,2,3))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4><span id="定义函数">定义函数</span></h4><p><strong>1.def语句+函数名+函数参数+”:”。</strong></p>
+<p><strong>2.函数体，若有返回值则return返回。</strong></p>
+<p>注意：就算没有return返回值其实函数执行完成之后还是会<strong>返回值None。</strong>（简写：return None==return）</p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def maxTwo(a,b):</span><br><span class="line">    if a&gt;b:</span><br><span class="line">        return a</span><br><span class="line">    else:</span><br><span class="line">        return b</span><br><span class="line"></span><br><span class="line">print(maxTwo(1,2))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4><span id="导入自定义函数">导入自定义函数</span></h4><p>加入之前的maxTwo函数保存在了maxTwoPY.py文件中的话，可以直接在该文件的当前目录启动Python解释器，直接用下列代码导入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from maxTwoPY import maxTwo #前者是文件名，后者是函数名</span><br></pre></td></tr></table></figure>
+<h4><span id="空函数">空函数</span></h4><p>定义空函数的话有些时候还是需要的，可以直接使用<strong>pass语句。</strong>（不能为空函数体，如果为空的话其实会报错，这里其实pass只是起一个占位的作用以便调试）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def test():</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+<h4><span id="参数检查">参数检查</span></h4><p>Python中调用函数的话，如果参数的个数错误是会自动检测出来并且提示的，但是<strong>无法精确的反馈函数的参数类型是否正确（一般是我们自定义的函数才会出现这种情况，事实上内置函数都是另外有方法）。</strong></p>
+<p>一般的使用格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not isinstance(参数名,(参数类型1,参数类型2)):</span><br><span class="line">        raise TypeError(自定义报错信息)</span><br></pre></td></tr></table></figure>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def maxTwo(a,b):</span><br><span class="line">    if not isinstance(a,(int,float)):</span><br><span class="line">        raise TypeError(&quot;bad type&quot;)</span><br><span class="line">    if a&gt;b:</span><br><span class="line">        return a</span><br><span class="line">    else:</span><br><span class="line">        return b</span><br><span class="line"></span><br><span class="line">print(maxTwo(&quot;hello&quot;,2))</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="/2019/05/04/Python学习笔记（三）/1.jpg" alt=""></p>
+<h4><span id="返回多值">返回多值</span></h4><p><strong>其实Python中的返回多值就是一个tuple。</strong></p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def test(a,b):</span><br><span class="line">  test1=a+b</span><br><span class="line">  test2=a-b</span><br><span class="line">  return test1,test2</span><br></pre></td></tr></table></figure>
+<h4><span id="默认参数">默认参数</span></h4><p>很多时候多参数的函数我们并不想同时输入多个参数进去，想少一点儿，这个时候默认参数的作用就体现出来了。</p>
+<p>使用方法：</p>
+<p><strong>函数定义的时候就直接在形式参数位置给出默认值。（必选参数在前，默认参数在后）</strong></p>
+<p><strong>当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def maxTwo(a,b=1):</span><br><span class="line">    if not isinstance(a,(int,float)):</span><br><span class="line">        raise TypeError(&quot;bad type&quot;)</span><br><span class="line">    if a&gt;b:</span><br><span class="line">        return a</span><br><span class="line">    else:</span><br><span class="line">        return b</span><br><span class="line">print(maxTwo(1))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<p><strong>另外，默认参数必须指向不变的对象。</strong></p>
+<h4><span id="可变参数">可变参数</span></h4><p>很多时候由于实际问题的不确定性，其实很多时候都需要用到<strong>可变的参数</strong>。</p>
+<p>定义一个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def calc(numbers):</span><br><span class="line">    sum = 0</span><br><span class="line">    for n in numbers:</span><br><span class="line">        sum = sum + n * n</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+<p>调用的时候需要先组装一个list或者tuple：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calc([1, 2, 3])</span><br><span class="line">calc((1, 3, 5, 7))</span><br></pre></td></tr></table></figure>
+<p>如果利用可变参数，会简化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calc(1, 2, 3)</span><br><span class="line">calc(1, 3, 5, 7)</span><br></pre></td></tr></table></figure>
+<p>替换为可变参数：</p>
+<p>其实要做的就是在参数前面加上一个<strong>“*”</strong>，这样在函数内部默认接收到的就是一个<strong>tuple</strong>了，函数代码不用改变，调用的时候就可以变成可变参数了（0个参数也支持）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def calc(*numbers):</span><br><span class="line">    sum = 0</span><br><span class="line">    for n in numbers:</span><br><span class="line">        sum = sum + n * n</span><br><span class="line">    return sum</span><br></pre></td></tr></table></figure>
+<p>那么问题来了，如果我们定义好的list或者tuple想传入可变参数函数怎么办呢？</p>
+<p><strong>“*”+list</strong>名即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums = [1, 2, 3]</span><br><span class="line">calc(*nums)</span><br></pre></td></tr></table></figure>
+<h4><span id="关键字参数">关键字参数</span></h4><p><strong>可变参数</strong>允许传入<strong>0个或任意个参数</strong>，这些可变参数在函数调用时<strong>自动组装为一个tuple</strong>。</p>
+<p>而<strong>关键字参数</strong>允许传入<strong>0个或任意个含参数名的参数，</strong>这些关键字参数在函数内部<strong>自动组装为一个dict。</strong></p>
+<h4><span id="命名关键字参数">命名关键字参数</span></h4><p>对于关键字参数，函数的调用者可以传入<strong>任意不受限制的关键字参数。</strong>至于到底传入了哪些，就需要在函数内部通过<strong>kw</strong>检查。</p>
+<h4><span id="参数组合">参数组合</span></h4><p>在Python中定义函数，可以用<strong>必选参数、默认参数、可变参数、关键字参数和命名关键字参数</strong>，这5种参数都可以组合使用。</p>
+<p>但是请<strong>注意</strong>，<strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/03/Lua学习笔记-六/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2732,230 +3100,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/24/java基础-登堂入室/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/24/java基础-登堂入室/" itemprop="url">java基础-登堂入室</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T19:03:05+08:00">
-                2019-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  789
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#java异常处理机制">Java异常处理机制</a></li>
-<li><a href="#java-io">Java I/O</a></li>
-<li><a href="#泛型">泛型</a><ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#泛型方法">泛型方法</a></li>
-</ul>
-</li>
-<li><a href="#反射">反射</a><ul>
-<li><a href="#简介-1">简介</a></li>
-<li><a href="#作用">作用</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>前面拖了蛮久的Java学习的最后一篇博客就现在开始吧，不是说完全的学完了，只能说大致了解了，毕竟也不是什么专业的java工程师，对于Android来说，懂一点就行了，但是如果以后遇到猜到的坑或者值得记录的知识还是会写博客的。</p>
-<p>这篇博客准备写简略一点，毕竟都开始涉及一些深入的东西了，很多大佬写的也很不错的。<strong>泛型反射</strong>需要也别注意，在安卓中很重要。</p>
-<h2><span id="正文">正文</span></h2><h3><span id="java异常处理机制">Java异常处理机制</span></h3><p>这里我就不嫌丑了，后面这个链接的大佬写的十分的精妙，直接移步即可。</p>
-<p><a href="https://blog.csdn.net/hguisu/article/details/6155636" target="_blank" rel="noopener">深入理解java异常处理机制</a></p>
-<h3><span id="java-io">Java I/O</span></h3><p>Java 流在处理上分为<strong>字符流和字节流</strong>。字符流处理的单元为 <strong>2 个字节的 Unicode 字符</strong>，分别<strong>操作字符、字符数组或字符串</strong>，而字节流处理单元为 <strong>1 个字节</strong>，<strong>操作字节和字节数组。</strong></p>
-<p>字符流一次处理一个缓冲区，字节流一次处理一个字节，明显字符流的效率要高。</p>
-<p><img src="/2019/04/24/java基础-登堂入室/javaIO.jpg" alt=""></p>
-<p><a href="https://blog.csdn.net/yczz/article/details/38761237" target="_blank" rel="noopener">参考链接</a></p>
-<h3><span id="泛型">泛型</span></h3><h4><span id="简介">简介</span></h4><p><strong>泛型，即“参数化类型”。</strong>其实就是<strong>将类型由原来的具体的类型参数化，类似于方法中的变量参数</strong>，此时类型也定义成参数形式（可以称之为类型形参），然后<strong>在使用/调用时传入具体的类型（类型实参）</strong>。</p>
-<h4><span id="泛型方法">泛型方法</span></h4><p>1.所有泛型方法声明都有一个<strong>类型参数声明部分（由尖括号分隔）</strong>，该类型参数声明部分在方法返回类型之前。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;A&gt;</span><br></pre></td></tr></table></figure>
-<p>2.每一个类型参数声明部分<strong>包含一个或多个类型参数</strong>，参数间用<strong>逗号</strong>隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。</p>
-<p>3.<strong>类型参数能被用来声明返回值类型</strong>，并且能作为泛型方法得到的实际参数类型的<strong>占位符</strong>。</p>
-<p>4.泛型方法体的声明和其他方法一样。</p>
-<p>注意:<strong>类型参数只能代表引用型类型，不能是原始类型（像int,double,char的等）。</strong></p>
-<h3><span id="反射">反射</span></h3><h4><span id="简介">简介</span></h4><p>反射机制是在运行状态中，<strong>对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性</strong>；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</p>
-<h4><span id="作用">作用</span></h4><p>1.运行时能判断任意一个对象所属的类。</p>
-<p>2.在运行时构造任意一个类的对象。</p>
-<p>3.运行时能判断任意一个类所具有的成员变量和方法。</p>
-<p>4.运行时调用任意一个对象的方法。</p>
-<p>5.动态代理。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3008,7 +3152,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3030,7 +3174,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">149</span>
+                  <span class="site-state-item-count">150</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3115,7 +3259,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共125.5k字</span>
+  <span class="post-count">博客全站共125.7k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
