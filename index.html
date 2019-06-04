@@ -313,6 +313,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/04/Android-USBPrompt开发/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/04/Android-USBPrompt开发/" itemprop="url">Android-USBPrompt开发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-04T11:55:24+08:00">
+                2019-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#usbprompt">USBPrompt</a><ul>
+<li><a href="#下载网址">下载网址</a></li>
+<li><a href="#开源项目">开源项目</a></li>
+<li><a href="#简单介绍">简单介绍</a></li>
+<li><a href="#关键代码">关键代码</a></li>
+<li><a href="#效果">效果</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="usbprompt">USBPrompt</span></h2><p>今天花费几个小时写的一个小东西，主要就是娱乐用的，还是蛮开心的啊哈哈~</p>
+<h3><span id="下载网址">下载网址</span></h3><p><a href="https://fir.im/1tf6" target="_blank" rel="noopener">传送门</a></p>
+<h3><span id="开源项目">开源项目</span></h3><p><a href="https://github.com/thbelief/USBPrompt" target="_blank" rel="noopener">传送门</a></p>
+<p>欢迎fork或者star~</p>
+<h3><span id="简单介绍">简单介绍</span></h3><p>这个软件其实是个不怎么正经的软件，当然灵感来源就不说了，只是单纯的充电宝插拔的时候启发了我。</p>
+<p>实现起来很简单——<strong>检测电源插拔，加载相应的mp3文件</strong>就可以了，别问我哪里来的资源文件，咳咳。</p>
+<h3><span id="关键代码">关键代码</span></h3><p>这个类用于检测电源情况，主要是为了扩展写这么多。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @ProjectName: USBPrompt</span><br><span class="line"> * @Package: com.example.usbprompt</span><br><span class="line"> * @ClassName: BatteryListener</span><br><span class="line"> * @Description: 电源监测</span><br><span class="line"> * @Author: thbelief</span><br><span class="line"> * @CreateDate: 2019/6/3 12:30</span><br><span class="line"> */</span><br><span class="line">public class BatteryListener &#123;</span><br><span class="line"></span><br><span class="line">    private Context mContext;</span><br><span class="line"></span><br><span class="line">    private BatteryBroadcastReceiver receiver;</span><br><span class="line"></span><br><span class="line">    private BatteryStateListener mBatteryStateListener;</span><br><span class="line"></span><br><span class="line">    public BatteryListener(Context context) &#123;</span><br><span class="line">        mContext = context;</span><br><span class="line">        receiver = new BatteryBroadcastReceiver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void register(BatteryStateListener listener) &#123;</span><br><span class="line">        mBatteryStateListener = listener;</span><br><span class="line">        if (receiver != null) &#123;</span><br><span class="line">            IntentFilter filter = new IntentFilter();</span><br><span class="line">            filter.addAction(Intent.ACTION_BATTERY_CHANGED);</span><br><span class="line">            filter.addAction(Intent.ACTION_BATTERY_LOW);</span><br><span class="line">            filter.addAction(Intent.ACTION_BATTERY_OKAY);</span><br><span class="line">            filter.addAction(Intent.ACTION_POWER_CONNECTED);</span><br><span class="line">            filter.addAction(Intent.ACTION_POWER_DISCONNECTED);</span><br><span class="line">            mContext.registerReceiver(receiver, filter);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void unregister() &#123;</span><br><span class="line">        if (receiver != null) &#123;</span><br><span class="line">            mContext.unregisterReceiver(receiver);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private class BatteryBroadcastReceiver extends BroadcastReceiver &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">            if (intent != null) &#123;</span><br><span class="line">                String acyion = intent.getAction();</span><br><span class="line">                switch (acyion) &#123;</span><br><span class="line">                    case Intent.ACTION_BATTERY_CHANGED://电量发生改变</span><br><span class="line">                        if (mBatteryStateListener != null) &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_CHANGED&quot;);</span><br><span class="line">                            mBatteryStateListener.onStateChanged();</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                    case Intent.ACTION_BATTERY_LOW://电量低</span><br><span class="line">                        if (mBatteryStateListener != null) &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_LOW&quot;);</span><br><span class="line">                            mBatteryStateListener.onStateLow();</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                    case Intent.ACTION_BATTERY_OKAY://电量充满</span><br><span class="line">                        if (mBatteryStateListener != null) &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_OKAY&quot;);</span><br><span class="line">                            mBatteryStateListener.onStateOkay();</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                    case Intent.ACTION_POWER_CONNECTED://接通电源</span><br><span class="line">                        if (mBatteryStateListener != null) &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_POWER_CONNECTED&quot;);</span><br><span class="line">                            mBatteryStateListener.onStatePowerConnected();</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                    case Intent.ACTION_POWER_DISCONNECTED://拔出电源</span><br><span class="line">                        if (mBatteryStateListener != null) &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_POWER_DISCONNECTED&quot;);</span><br><span class="line">                            mBatteryStateListener.onStatePowerDisconnected();</span><br><span class="line">                        &#125;</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface BatteryStateListener &#123;</span><br><span class="line">        public void onStateChanged();</span><br><span class="line"></span><br><span class="line">        public void onStateLow();</span><br><span class="line"></span><br><span class="line">        public void onStateOkay();</span><br><span class="line"></span><br><span class="line">        public void onStatePowerConnected();</span><br><span class="line"></span><br><span class="line">        public void onStatePowerDisconnected();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这个就是主活动：</p>
+<p>由于是简单的一个APP，这里就没有用什么框架了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private MediaPlayer mediaPlayerInput,mediaPlayerOutput;</span><br><span class="line">    private BatteryListener listener;</span><br><span class="line">    private Button button;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        //隐藏标题栏Actionbar</span><br><span class="line">        if (getSupportActionBar() != null)&#123;</span><br><span class="line">            getSupportActionBar().hide();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //提示信息dialog</span><br><span class="line">        final NiftyDialogBuilder dialogBuilder=NiftyDialogBuilder.getInstance(this);</span><br><span class="line">        dialogBuilder</span><br><span class="line">                .withTitle(&quot;警告!&quot;)</span><br><span class="line">                .withMessage(&quot;本软件请勿在公共场合打开，如有差错导致悲惨的后果，本人概不负责！&quot;)</span><br><span class="line">                .withDialogColor(&quot;#FFB6C1&quot;)</span><br><span class="line">                .withMessageColor(&quot;#ffffff&quot;)</span><br><span class="line">                .withButton1Text(&quot;知道了&quot;)</span><br><span class="line">                .withEffect(Newspager)</span><br><span class="line">                .setButton1Click(new View.OnClickListener() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onClick(View v) &#123;</span><br><span class="line">                        dialogBuilder.cancel();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .show();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //监听媒体音量方便判断是否手机静音</span><br><span class="line">        AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);</span><br><span class="line">        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);</span><br><span class="line">        if(currentVolume==0)  Toast.makeText(MainActivity.this, &quot;手机静音，不能正常提示，请调大音量！&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">        //电源插拔</span><br><span class="line">        listener = new BatteryListener(this);</span><br><span class="line">        //播放MP3</span><br><span class="line">        mediaPlayerInput=MediaPlayer.create(this,R.raw.jiaochuan1);</span><br><span class="line">        mediaPlayerOutput=MediaPlayer.create(this,R.raw.jiaochuan2);</span><br><span class="line"></span><br><span class="line">        button=findViewById(R.id.btn);</span><br><span class="line"></span><br><span class="line">        button.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                Toast.makeText(MainActivity.this,button.getText(), Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">                if(button.getText().toString().equals(&quot;CLOSE&quot;))&#123;</span><br><span class="line">                    button.setText(&quot;OPEN&quot;);</span><br><span class="line">                    Toast.makeText(MainActivity.this, &quot;超级电源插拔提示已部署！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    listener.register(new BatteryListener.BatteryStateListener() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void onStateChanged() &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateChanged--&gt; &quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onStateLow() &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateLow--&gt; &quot;);</span><br><span class="line">                            Toast.makeText(MainActivity.this, &quot;电源降低！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onStateOkay() &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateOkay--&gt; &quot;);</span><br><span class="line">                            Toast.makeText(MainActivity.this, &quot;电源充满！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onStatePowerConnected() &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStatePowerConnected--&gt; &quot;);</span><br><span class="line">                            Toast.makeText(MainActivity.this, &quot;电源插入！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                            if(mediaPlayerOutput.isPlaying()) &#123;</span><br><span class="line">                                mediaPlayerOutput.stop();</span><br><span class="line">                                mediaPlayerInput.start();</span><br><span class="line">                            &#125;else&#123;</span><br><span class="line">                                mediaPlayerInput.start();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        public void onStatePowerDisconnected() &#123;</span><br><span class="line">                            Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStatePowerDisconnected--&gt; &quot;);</span><br><span class="line">                            Toast.makeText(MainActivity.this, &quot;电源拔出！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                            if(mediaPlayerInput.isPlaying()) &#123;</span><br><span class="line">                                mediaPlayerInput.stop();</span><br><span class="line">                                mediaPlayerOutput.start();</span><br><span class="line">                            &#125;else&#123;</span><br><span class="line">                                mediaPlayerOutput.start();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if (button.getText().toString().equals(&quot;OPEN&quot;))&#123;</span><br><span class="line">                    button.setText(&quot;CLOSE&quot;);</span><br><span class="line">                    Toast.makeText(MainActivity.this, &quot;超级电源插拔提示已取消！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    if (listener != null) &#123;</span><br><span class="line">                        listener.unregister();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        if (listener != null) &#123;</span><br><span class="line">            listener.unregister();</span><br><span class="line">        &#125;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="效果">效果</span></h3><p><img src="/2019/06/04/Android-USBPrompt开发/1.jpg" alt=""></p>
+<p><img src="/2019/06/04/Android-USBPrompt开发/2.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/03/Android-安装Gradle报错解决/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2257,230 +2465,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/25/JavaScript学习笔记-十一/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/25/JavaScript学习笔记-十一/" itemprop="url">JavaScript学习笔记(十一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T19:55:31+08:00">
-                2019-05-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  728
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#canvas">Canvas</a><ul>
-<li><a href="#简单介绍">简单介绍</a></li>
-<li><a href="#创建画布">创建画布</a></li>
-<li><a href="#浏览器支持">浏览器支持</a></li>
-<li><a href="#使用">使用</a></li>
-<li><a href="#绘制">绘制</a></li>
-<li><a href="#注意事项">注意事项</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="canvas">Canvas</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p>Canvas是HTML5之后新增的组件，其实就是相当于<strong>画布</strong>，本身这个元素是没有绘制能力的，但是可以通过JS在这个画布上面进行图形与表格的绘制之类的。</p>
-<h3><span id="创建画布">创建画布</span></h3><p>一个Canvas其实就是定义了一个<strong>指定尺寸的矩形框</strong>，在这个范围里面可以随意的绘制自己想要绘制的图形。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
-<canvas id="testCanvas" width="250" height="250"></canvas>
-
-<h3><span id="浏览器支持">浏览器支持</span></h3><p>由于不同的浏览器对于HTML5的支持标准不同，所以，<strong>使用这个画布之前必须加以判断</strong>，比如如果不支持的话返回提示。</p>
-<p>实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;</span><br><span class="line">	 &lt;p&gt;Does not support！&lt;/p&gt;</span><br><span class="line">&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
-<p>如果浏览器支持Canvas的话会直接忽略内部的HTML，如果不支持的话就会显示画布里面的内容。</p>
-<p>检测方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var canvas = document.getElementById(&apos;testCanvas&apos;);</span><br><span class="line">if (canvas.getContext) &#123;</span><br><span class="line">    console.log(&apos;浏览器支持Canvas!&apos;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    console.log(&apos;浏览器不支持Canvas!&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="使用">使用</span></h3><p>这里以2D作为示例。</p>
-<p>要对一个画布对象进行绘制的话，首先需要<strong>获取到一个2D对象。</strong>方法是<strong>getContext(‘2d’)</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);</span><br></pre></td></tr></table></figure>
-<p>绘制3D的话需要使用WebGL规范：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test = canvas.getContext(&quot;webgl&quot;);</span><br></pre></td></tr></table></figure>
-<h3><span id="绘制">绘制</span></h3><p>Canvas的坐标以左上角为原点，水平向右为X轴，垂直向下为Y轴，以像素为单位，所以每个点都是<strong>非负整数。</strong></p>
-<p>基本形状绘制：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'test-shape-canvas'</span>),</span><br><span class="line">ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明</span></span><br><span class="line">ctx.fillStyle = <span class="string">'#dddddd'</span>; <span class="comment">// 设置颜色</span></span><br><span class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">130</span>, <span class="number">130</span>); <span class="comment">// 把(10,10)位置大小为130x130的矩形涂色</span></span><br><span class="line"><span class="comment">// 利用Path绘制复杂路径:</span></span><br><span class="line"><span class="keyword">var</span> path=<span class="keyword">new</span> Path2D();</span><br><span class="line">path.arc(<span class="number">75</span>, <span class="number">75</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">path.moveTo(<span class="number">110</span>,<span class="number">75</span>);</span><br><span class="line">path.arc(<span class="number">75</span>, <span class="number">75</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</span><br><span class="line">path.moveTo(<span class="number">65</span>, <span class="number">65</span>);</span><br><span class="line">path.arc(<span class="number">60</span>, <span class="number">65</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">path.moveTo(<span class="number">95</span>, <span class="number">65</span>);</span><br><span class="line">path.arc(<span class="number">90</span>, <span class="number">65</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">ctx.strokeStyle = <span class="string">'#0000ff'</span>;</span><br><span class="line">ctx.stroke(path);</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="/2019/05/25/JavaScript学习笔记-十一/1.jpg" alt=""></p>
-<p>基本文本绘制：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'test-text-canvas'</span>),</span><br><span class="line">ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.shadowOffsetX = <span class="number">2</span>;</span><br><span class="line">ctx.shadowOffsetY = <span class="number">2</span>;</span><br><span class="line">ctx.shadowBlur = <span class="number">2</span>;</span><br><span class="line">ctx.shadowColor = <span class="string">'#666666'</span>;</span><br><span class="line">ctx.font = <span class="string">'24px Arial'</span>;</span><br><span class="line">ctx.fillStyle = <span class="string">'#333333'</span>;</span><br><span class="line">ctx.fillText(<span class="string">'带阴影的文字'</span>, <span class="number">20</span>, <span class="number">40</span>);</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="/2019/05/25/JavaScript学习笔记-十一/2.jpg" alt=""></p>
-<h3><span id="注意事项">注意事项</span></h3><p>1.尽量使用整数坐标而不是浮点数。</p>
-<p>2.如果要实现很复杂的效果的话，可以使用多个重叠的画布而不是在一个画布上面进行复杂的绘制。</p>
-<p>3.背景图片如果不变可以直接用img标签并放到最底层。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2533,7 +2517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2555,7 +2539,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">150</span>
+                  <span class="site-state-item-count">152</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2640,7 +2624,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共125.7k字</span>
+  <span class="post-count">博客全站共126.7k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

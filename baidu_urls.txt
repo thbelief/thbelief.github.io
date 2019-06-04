@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/06/04/Android-USBPrompt开发/
 http://thbelief.coding.me/2019/06/03/Android-安装Gradle报错解决/
 http://thbelief.coding.me/2019/06/02/Android-APK反编译/
 http://thbelief.coding.me/2019/06/01/JavaScript学习笔记-十七/
