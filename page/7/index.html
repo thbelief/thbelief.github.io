@@ -313,6 +313,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/10/Bomb使用（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/10/Bomb使用（一）/" itemprop="url">Bomb使用（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T19:36:33+08:00">
+                2019-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  790
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#创建应用">创建应用</a></li>
+<li><a href="#sdk自动导入androidstudio">SDK自动导入（AndroidStudio）</a></li>
+<li><a href="#配置androidmanifestxml">配置AndroidManifest.xml</a></li>
+<li><a href="#基本使用">基本使用</a><ul>
+<li><a href="#初始化">初始化</a></li>
+<li><a href="#添加一行数据">添加一行数据</a></li>
+<li><a href="#添加数据">添加数据</a></li>
+<li><a href="#获取一行数据">获取一行数据</a></li>
+<li><a href="#修改一行数据">修改一行数据</a></li>
+<li><a href="#删除一行数据">删除一行数据</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="创建应用">创建应用</span></h2><p><img src="/2019/04/10/Bomb使用（一）/创建应用.jpg" alt=""></p>
+<h2><span id="sdk自动导入androidstudio">SDK自动导入（AndroidStudio）</span></h2><p>1.在project的build.gradle文件下添加Bomb的maven仓库地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">      repositories &#123;</span><br><span class="line">          jcenter()</span><br><span class="line">          //Bmob的maven仓库地址--必填</span><br><span class="line">          maven &#123; url &quot;https://raw.github.com/bmob/bmob-android-sdk/master&quot; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>2.在app的build.gradle中添加下列依赖项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">        implementation &apos;cn.bmob.android:bmob-sdk:3.7.2&apos;</span><br><span class="line">        implementation &quot;io.reactivex.rxjava2:rxjava:2.2.2&quot;</span><br><span class="line">        implementation &apos;io.reactivex.rxjava2:rxandroid:2.1.0&apos;</span><br><span class="line">        implementation &apos;com.squareup.okio:okio:2.1.0&apos;</span><br><span class="line">        implementation &apos;com.google.code.gson:gson:2.8.5&apos;</span><br><span class="line">        implementation &apos;com.squareup.okhttp3:okhttp:3.12.0&apos;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="配置androidmanifestxml">配置AndroidManifest.xml</span></h2><p>权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--允许联网 --&gt; </span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt; </span><br><span class="line">&lt;!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  --&gt; </span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt; </span><br><span class="line">&lt;!--获取wifi网络状态的信息 --&gt; </span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt; </span><br><span class="line">&lt;!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt; </span><br><span class="line">&lt;!--获取sd卡写的权限，用于文件上传和下载--&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</span><br><span class="line">&lt;!--允许读取手机状态 用于创建BmobInstallation--&gt; </span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>配置contentprovider：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;provider</span><br><span class="line">    android:name=&quot;cn.bmob.v3.util.BmobContentProvider&quot;</span><br><span class="line">    android:authorities=&quot;应用包名.BmobContentProvider&quot;&gt;</span><br><span class="line">&lt;/provider&gt;</span><br></pre></td></tr></table></figure>
+<p>如下：</p>
+<p><img src="/2019/04/10/Bomb使用（一）/contentprovider.jpg" alt=""></p>
+<h2><span id="基本使用">基本使用</span></h2><h3><span id="初始化">初始化</span></h3><p>在MainActivity的oncreate方法中添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//第一：默认初始化</span><br><span class="line">Bmob.initialize(this, &quot;Your Application ID&quot;);</span><br></pre></td></tr></table></figure>
+<h3><span id="添加一行数据">添加一行数据</span></h3><p>首先创建的JavaBean（对应为Bmob后台的数据表，详细更解释的请<a href="http://docs.bmob.cn/data/Android/b_developdoc/doc/index.html" target="_blank" rel="noopener">查看的Android开发文档</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Person extends BmobObject &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String address;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getAddress() &#123;</span><br><span class="line">        return address;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAddress(String address) &#123;</span><br><span class="line">        this.address = address;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="添加数据">添加数据</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person p2 = new Person();</span><br><span class="line">p2.setName(&quot;lucky&quot;);</span><br><span class="line">p2.setAddress(&quot;北京海淀&quot;);</span><br><span class="line">p2.save(new SaveListener&lt;String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void done(String objectId,BmobException e) &#123;</span><br><span class="line">        if(e==null)&#123;</span><br><span class="line">            toast(&quot;添加数据成功，返回objectId为：&quot;+objectId);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;创建数据失败：&quot; + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="/2019/04/10/Bomb使用（一）/person1.jpg" alt=""></p>
+<h3><span id="获取一行数据">获取一行数据</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//查找Person表里面id为6b6c11c537的数据</span><br><span class="line">BmobQuery&lt;Person&gt; bmobQuery = new BmobQuery&lt;Person&gt;();</span><br><span class="line">bmobQuery.getObject(&quot;6b6c11c537&quot;, new &gt;QueryListener&lt;Person&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void done(Person object,BmobException e) &#123;</span><br><span class="line">        if(e==null)&#123;</span><br><span class="line">            toast(&quot;查询成功&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;查询失败：&quot; + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3><span id="修改一行数据">修改一行数据</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//更新Person表里面id为6b6c11c537的数据，address内容更新为“北京朝阳”</span><br><span class="line">Person p2 = new Person();</span><br><span class="line">p2.setAddress(&quot;北京朝阳&quot;);</span><br><span class="line">p2.update(&quot;6b6c11c537&quot;, new UpdateListener() &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void done(BmobException e) &#123;</span><br><span class="line">        if(e==null)&#123;</span><br><span class="line">            toast(&quot;更新成功:&quot;+p2.getUpdatedAt());</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;更新失败：&quot; + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3><span id="删除一行数据">删除一行数据</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Person p2 = new Person();</span><br><span class="line">p2.setObjectId(&quot;6b6c11c537&quot;);</span><br><span class="line">p2.delete(new UpdateListener() &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void done(BmobException e) &#123;</span><br><span class="line">        if(e==null)&#123;</span><br><span class="line">            toast(&quot;删除成功:&quot;+p2.getUpdatedAt());</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;删除失败：&quot; + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/09/Android-ListView与RecyclerView简述/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2288,260 +2508,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/31/Android-Intent详解/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/Android-Intent详解/" itemprop="url">Android-Intent详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T15:55:32+08:00">
-                2019-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#用途">用途</a><ul>
-<li><a href="#启动activity">启动Activity</a></li>
-<li><a href="#启动service">启动Service</a></li>
-<li><a href="#发送广播">发送广播</a></li>
-</ul>
-</li>
-<li><a href="#主要属性">主要属性</a><ul>
-<li><a href="#acticon">Acticon</a></li>
-<li><a href="#data">Data</a></li>
-</ul>
-</li>
-<li><a href="#次要属性">次要属性</a><ul>
-<li><a href="#category">category</a></li>
-<li><a href="#type">Type</a></li>
-<li><a href="#component">component</a></li>
-<li><a href="#extras">extras</a></li>
-<li><a href="#flag">Flag</a></li>
-</ul>
-</li>
-<li><a href="#构造方法">构造方法</a></li>
-<li><a href="#常用方法">常用方法</a></li>
-<li><a href="#显示意图">显示意图</a></li>
-<li><a href="#隐示意图">隐示意图</a></li>
-<li><a href="#番外">番外</a><ul>
-<li><a href="#向下一个活动传递数据">向下一个活动传递数据</a></li>
-<li><a href="#返回数据给上一个活动">返回数据给上一个活动</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="简介">简介</span></h2><p>Intent在Android中是一个非常重要并且常用的类，可以用来<strong>在一个组件中启动App中的另一个组件或者是启动另一个App的组件</strong>，这里所说的组件指的是<strong>Activity、Service以及Broadcast</strong>。</p>
-<h2><span id="用途">用途</span></h2><h3><span id="启动activity">启动Activity</span></h3><p>可以将Intent对象传递给startActivity()方法或startActivityForResult()方法以启动一个Activity，该Intent对象包含了<strong>要启动的Activity的信息及其他必要的数据。</strong> </p>
-<h3><span id="启动service">启动Service</span></h3><p>可以将Intent对象传递给startService()方法或bindService()方法以启动一个Service，该Intent对象包含了<strong>要启动的Service的信息及其他必要的数据。</strong></p>
-<h3><span id="发送广播">发送广播</span></h3><p><strong>广播是一种所有App都可以接收的信息</strong>。Android系统会发布各种类型的广播，比如发布开机广播或手机充电广播等。我们也可以给其他的App发送广播，可以将Intent对象传递给sendBroadcast()方法或sendOrderedBroadcast()方法或sendStickyBroadcast()方法以发送<strong>自定义广播</strong>。</p>
-<h2><span id="主要属性">主要属性</span></h2><h3><span id="acticon">Acticon</span></h3><p>执行的动作类型。如果是自定义的Action的话，定义的时候需要包含app的包名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static final String ACTION_TIMEREVEL = &quot;com.exmple.action.TIMERAVEL&quot;</span><br></pre></td></tr></table></figure>
-<p>Activity Actions：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ACTION_MAIN	表示程序入口</span><br><span class="line">ACTION_VIEW	自动以最合适的方式显示Data</span><br><span class="line">ACTION_EDIT	提供可以编辑的</span><br><span class="line">ACTION_PICK	选择一个一条Data，并且返回它</span><br><span class="line">ACTION_DAIL	显示Data指向的号码在拨号界面Dailer上</span><br><span class="line">ACTION_CALL	拨打Data指向的号码</span><br><span class="line">ACTION_SEND	发送Data到指定的地方</span><br><span class="line">ACTION_SENDTO	发送多组Data到指定的地方</span><br><span class="line">ACTION_RUN	运行Data，不管Data是什么</span><br><span class="line">ACTION_SEARCH	执行搜索</span><br><span class="line">ACTION_WEB_SEARCH	执行网上搜索</span><br><span class="line">ACRION_SYNC	执同步一个Data</span><br><span class="line">ACTION_INSERT	添加一个空的项到容器中</span><br></pre></td></tr></table></figure>
-<p>Broadcast Actions：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ACTION_TIME_TICK	当前时间改变，并即时发送时间，只能通过系统发送。调用格式&quot;android.intent.action.TIME_TICK&quot;</span><br><span class="line">ACTION_TIME_CHENGED	设置时间。调用格式&quot;android.intent.action.TIME_SET&quot;</span><br></pre></td></tr></table></figure>
-<h3><span id="data">Data</span></h3><p>操作数据，包括了URL数据类型和MIME Type类型数据，<strong>数据域需要与action相匹配。</strong></p>
-<h2><span id="次要属性">次要属性</span></h2><h3><span id="category">category</span></h3><p><strong>类别，是Action的附加信息，</strong>它主要的用途就是可以更明确一个Intent。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CATEGORY_DEFAULT	把一个组件Component设为可被implicit启动的。</span><br><span class="line">CATEGORY_LAUNCHER	把一个action设置为在顶级执行。并且包含这个属性的Activity所定义的icon将取代application中定义的icon。</span><br><span class="line">CATEGORY_BROWSABLE	当Intent指向网络相关时，必须要添加这个类别</span><br><span class="line">CATEGORY_HOME	使Intent指向Home界面</span><br><span class="line">CATEGORY_PREFERENCE	定义的Activity是一个偏好面板Preference Panel。</span><br></pre></td></tr></table></figure>
-<h3><span id="type">Type</span></h3><p>这个是数据类型，显示指定的Intent的数据类型，跳过了通过URL进行判断的步骤。</p>
-<h3><span id="component">component</span></h3><p>这个是组件，指定Intent的目标组件名称，当指定了这个属性之后，系统将跳过匹配其他的属性，而直接匹配这个属性来启动对应的组件。</p>
-<h3><span id="extras">extras</span></h3><p>附加信息，可以附加一些信息在Intent中。</p>
-<h3><span id="flag">Flag</span></h3><p>通过<strong>setFlags（int）</strong>或者<strong>addFlags（int）</strong>可以把标签flags用在Intent中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FLAG_ACTIVITY_CLEAR_TOP	相当于Single_Task</span><br><span class="line">FLAGE_ACTIVITY_SINGLE_TOP	相当于Single_Top</span><br><span class="line">FLAG_ACTIVITY_NEW_TASK	类似于Single_Instance</span><br><span class="line">FLAG_ACTIVITY_NO_HISTORY	当离开该Activity后，该Activity将被从任务栈中移除</span><br></pre></td></tr></table></figure>
-<h2><span id="构造方法">构造方法</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent(Intent intent);  //通过复制一个Intent来创建一个新的Intent</span><br><span class="line">Intent(String action);  //构造一个指定action的Intent对象</span><br><span class="line">Intent(String action，Uri uri); //构造一个指定action，并且有指向数据的uri的Intent对象</span><br><span class="line">Intent(Context packageContext，Clsaa&lt;?&gt;class); //构造一个有指定Component属性的Intent</span><br></pre></td></tr></table></figure>
-<h2><span id="常用方法">常用方法</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">addCategory(String Category); //添加一条Category属性</span><br><span class="line">addFlags(int Flags); //添加一条Flag标签</span><br><span class="line">clone（）;  //复制一个Object类型的对象</span><br><span class="line">getExtras（）; //获得一个Bundle对象</span><br><span class="line">getSourceBounds（）; //获得发送Intent的组件的边界坐标</span><br><span class="line">makeMainActivity（ComponentName mainActivity）; //创建一个Category属性为luancher的Intent去启动mainActivity</span><br><span class="line">parseUri（String uri，int flags） //通过解析一个uri获得一个Intent对象</span><br><span class="line">setComponent（）;  //添加component属性</span><br><span class="line">setClass（）;  //相当于添加component属性</span><br><span class="line">setClassName（）;  //相当于添加component属性</span><br><span class="line">resolveActivity（PackageManager）;  //解析Intent启动的Activity，返回ComponentName对象</span><br><span class="line">createChooser（Intent target，CharSequence title）;//  创建一个有选择对话框的Intent</span><br><span class="line">getData（）;setType（）;</span><br><span class="line">getData（）;getType（）;</span><br><span class="line">设置/获得Data/Type类型的数据</span><br></pre></td></tr></table></figure>
-<h2><span id="显示意图">显示意图</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent(this, ActivityB.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h2><span id="隐示意图">隐示意图</span></h2><p>下面构建了一个<strong>Intent对象</strong>，并没有给其设置component name，所以该Intent是一个隐式的Intent对象。首先给intent设置了action的值为<strong>Intent.ACTION_SEND</strong>，action对隐式Intent来说是非常重要的。然后我们将intent的数据的MIME类型设置为<strong>纯文本类型(“text/plain”)</strong>，告知Android我们的Intent持有的是文本类型的数据。最后我们将实际的文本数据通过<strong>putExtra()</strong>方法作为额外数据设置进去。 </p>
-<p>另外，在构建好了Intent对象之后，<strong>没有立即执行startActivity(sendIntent)方法</strong>，而是将sendIntent作为参数传递给了PackageManager的resolveActivity()方法中，该方法会让Android根据该sendIntent找到潜在的适合启动的组件的信息，并以ResolveInfo类的对象的形式返回结果，如果返回null，表示当前系统中没有任何组件可以接收并处理该sendIntent。如果返回不是null，就表明系统中至少存在一个组件可以接收并处理该sendIntent，只有在这种情况下，我们才会执行代码startActivity(sendIntent)，<strong>在通过intent启动组件之前先判断要启动的组件存不存在</strong>是个良好的编程习惯，因为如果系统中不存在支持你的intent的组件，那么当你调用startActivity()、startService()、bindService()等方法的时候，Android就会抛出异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Intent sendIntent = new Intent();</span><br><span class="line">// 设置action, action对隐式Intent来说是非常重要的</span><br><span class="line">sendIntent.setAction(Intent.ACTION_SEND);</span><br><span class="line">// 设置数据的MIME类型为纯文本类型</span><br><span class="line">sendIntent.setType(&quot;text/plain&quot;);</span><br><span class="line">// 设置额外的数据</span><br><span class="line">sendIntent.putExtra(Intent.EXTRA_TEXT, textMessage);</span><br><span class="line"></span><br><span class="line">// 获取包管理器</span><br><span class="line">PackageManager pm = getPackageManager();</span><br><span class="line">// 先判断系统中有没有潜在的App的Activity支持对该sendIntent的接收与处理</span><br><span class="line">if (pm.resolveActivity(sendIntent, 0) != null) &#123;</span><br><span class="line">    startActivity(sendIntent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/iispring/article/details/48417779" target="_blank" rel="noopener">参考链接</a></p>
-<h2><span id="番外">番外</span></h2><h3><span id="向下一个活动传递数据">向下一个活动传递数据</span></h3><p>众所周知，Intent不只是可以拿来<strong>启动</strong>，还可以拿来<strong>传递数据</strong>。</p>
-<p>大致思路是，<strong>通过Intent提供的putExtra（）方法将数据暂存在Intent中，启动另外一个活动之后再取出来就达到了目的了。</strong></p>
-<p>实例：(显示)</p>
-<p>暂存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String data=&quot;Hello World&quot;;</span><br><span class="line">Intent intent=new Intent(FirstActivity.this,SecondActivity.class);</span><br><span class="line">intent.putExtra(&quot;extra_data&quot;,data);//所谓的键值对，配合使用</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<p>取出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=getIntent();</span><br><span class="line">String data=intent.getStringExtra(&quot;extra_data&quot;);</span><br></pre></td></tr></table></figure>
-<h3><span id="返回数据给上一个活动">返回数据给上一个活动</span></h3><p>上一个活动先发出请求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startActivityForResult(intent, 1);   //请求码</span><br></pre></td></tr></table></figure>
-<p>下一个活动返回数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent();</span><br><span class="line">intent.putExtra(&quot;data_return&quot;, &quot;Hello MainActivity&quot;);</span><br><span class="line">setResult(RESULT_OK, intent);</span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
-<p>上一个活动接收信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/重写onActiviResult方法</span><br><span class="line">@Override</span><br><span class="line">protected void onActivityResult(int requstCode, int resultCode, Intent data)&#123;</span><br><span class="line">    switch (requstCode)&#123;   //请求码</span><br><span class="line">        case 1:</span><br><span class="line">            if(RESULT_OK == requstCode)&#123;  //处理结果码 RESULT_CANCELED</span><br><span class="line">                String returnResult = data.getStringExtra(&quot;data_return&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2594,7 +2560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2616,7 +2582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-count">153</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2701,7 +2667,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共126.7k字</span>
+  <span class="post-count">博客全站共127.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

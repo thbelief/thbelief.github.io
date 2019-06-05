@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JavaScript学习笔记(十八)]]></title>
+    <url>%2F2019%2F06%2F05%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E5%85%AB%2F</url>
+    <content type="text"><![CDATA[目录： underscore库 简单介绍 Collections map/filter every/some max/min groupBy shuffle / sample Arrays first/last flatten zip/unzip object range Functions Objects Chaining underscore库简单介绍JS是函数式的编程语言，支持高阶函数以及闭包，为了更方便的使用函数式的编程以及尽量减少浏览器之间的差异，这里就应运而生了这个库。 还有就是，这个库绑定之后是可以直接通过object使用的，而原生的array的方法不能直接给object使用，这也是它的优势所在。 underscore会把自身绑定到唯一的全局变量_上，这也是它名字的来源（下划线）。 Collectionscollections是集合类（Array+Object），underscore为集合类提供了对应的接口。 map/filter和原本的Array的map/filter是类似的，但是underscore的是支持object的，当作用给object的时候，传入的函数是： (第一个参数是value，第二个参数是key) 1function (value, key) 简单实例如下： 1234567891011&apos;use strict&apos;;var obj = &#123; name: &apos;thbelief&apos;, school: &apos;test school&apos;, address: &apos;XI road&apos;&#125;;var upper = _.map(obj, function (value, key) &#123; return ???;&#125;); every/some当集合的所有元素都满足条件时，.every()函数返回true，当集合的至少一个元素满足条件时，.some()函数返回true. max/min这两个函数就是返回当前集合中的最大/最小数。 groupBygroupBy()把集合的元素按照key归类。（key由传入的函数返回） shuffle / sampleshuffle()用洗牌算法随机打乱一个集合，sample()则是随机选择一个或多个元素。 Arraysunderscore为Array专门的提供了许多的工具类方法，很方便实用。 first/last取第一个和最后一个元素。 flatten这个函数会接收一个Array，无论这个Array里面嵌套多少的Array，最后都会被这个函数给变成一个一维数组。 zip/unzipzip()会把两个或多个数组的所有元素按索引对齐，然后按索引合并成新数组。 unzip()的作用和zip刚好相反。 object这个只是和JS中的对象object同名，但是是个函数。 将元素一一对应成object。 简单实例： 12345&apos;use strict&apos;;var names = [&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;];var scores = [85, 92, 59];_.object(names, scores); range快速生成一个序列。（神奇，取代for循环） Functions12345bind 修复当使用一个变量指向一个对象的方法时，出现的无法直接调用该方法的问题。(丢失this对象引用)partial 一个函数创建偏函数。memoize 自动缓存函数计算结果。once 保证某个函数执行且仅执行一次。delay 让一个函数延时执行。（和setTimeout差不多） Objects123456789keys 返回一个object自身所有的key，但不包含从原型链继承下来的.allKeys 返回除了object自身的key，还包含从原型链继承下来的，即所有的。values 返回object自身但不包含原型链继承的所有值。mapObject 针对object的map版本。invert 把object的每个key-value来个交换，key变成value，value变成key。extend 把多个object的key-value合并到第一个object并返回。extendOwn 把多个object的key-value合并到第一个object并返回。（忽略获取属性时忽略从原型链继承下来的属性）clone 把原有对象的所有属性都复制到新的对象。isEqual 对两个object进行深度比较，如果内容完全相同，则返回true。（Array其实也可以使用） Chainingunderscore其实也是支持链式调用的。使用的方法是——chain()。 简单实例： 1234var r = _.chain([1, 4, 9, 16, 25]) .map(Math.sqrt) .filter(x =&gt; x % 2 === 1) .value(); 值得注意的是——由于每一步返回的都是对象，所以最后一步的结果必须通过value方法来获得最终的结果。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>underscore</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android-USBPrompt开发]]></title>
     <url>%2F2019%2F06%2F04%2FAndroid-USBPrompt%E5%BC%80%E5%8F%91%2F</url>
     <content type="text"><![CDATA[目录： USBPrompt 下载网址 开源项目 简单介绍 关键代码 效果 USBPrompt今天花费几个小时写的一个小东西，主要就是娱乐用的，还是蛮开心的啊哈哈~ 下载网址传送门 开源项目传送门 欢迎fork或者star~ 简单介绍这个软件其实是个不怎么正经的软件，当然灵感来源就不说了，只是单纯的充电宝插拔的时候启发了我。 实现起来很简单——检测电源插拔，加载相应的mp3文件就可以了，别问我哪里来的资源文件，咳咳。 关键代码这个类用于检测电源情况，主要是为了扩展写这么多。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495/** * @ProjectName: USBPrompt * @Package: com.example.usbprompt * @ClassName: BatteryListener * @Description: 电源监测 * @Author: thbelief * @CreateDate: 2019/6/3 12:30 */public class BatteryListener &#123; private Context mContext; private BatteryBroadcastReceiver receiver; private BatteryStateListener mBatteryStateListener; public BatteryListener(Context context) &#123; mContext = context; receiver = new BatteryBroadcastReceiver(); &#125; public void register(BatteryStateListener listener) &#123; mBatteryStateListener = listener; if (receiver != null) &#123; IntentFilter filter = new IntentFilter(); filter.addAction(Intent.ACTION_BATTERY_CHANGED); filter.addAction(Intent.ACTION_BATTERY_LOW); filter.addAction(Intent.ACTION_BATTERY_OKAY); filter.addAction(Intent.ACTION_POWER_CONNECTED); filter.addAction(Intent.ACTION_POWER_DISCONNECTED); mContext.registerReceiver(receiver, filter); &#125; &#125; public void unregister() &#123; if (receiver != null) &#123; mContext.unregisterReceiver(receiver); &#125; &#125; private class BatteryBroadcastReceiver extends BroadcastReceiver &#123; @Override public void onReceive(Context context, Intent intent) &#123; if (intent != null) &#123; String acyion = intent.getAction(); switch (acyion) &#123; case Intent.ACTION_BATTERY_CHANGED://电量发生改变 if (mBatteryStateListener != null) &#123; Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_CHANGED&quot;); mBatteryStateListener.onStateChanged(); &#125; break; case Intent.ACTION_BATTERY_LOW://电量低 if (mBatteryStateListener != null) &#123; Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_LOW&quot;); mBatteryStateListener.onStateLow(); &#125; break; case Intent.ACTION_BATTERY_OKAY://电量充满 if (mBatteryStateListener != null) &#123; Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_BATTERY_OKAY&quot;); mBatteryStateListener.onStateOkay(); &#125; break; case Intent.ACTION_POWER_CONNECTED://接通电源 if (mBatteryStateListener != null) &#123; Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_POWER_CONNECTED&quot;); mBatteryStateListener.onStatePowerConnected(); &#125; break; case Intent.ACTION_POWER_DISCONNECTED://拔出电源 if (mBatteryStateListener != null) &#123; Log.e(&quot;thbelief&quot;, &quot;BatteryBroadcastReceiver --&gt; onReceive--&gt; ACTION_POWER_DISCONNECTED&quot;); mBatteryStateListener.onStatePowerDisconnected(); &#125; break; &#125; &#125; &#125; &#125; public interface BatteryStateListener &#123; public void onStateChanged(); public void onStateLow(); public void onStateOkay(); public void onStatePowerConnected(); public void onStatePowerDisconnected(); &#125;&#125; 下面这个就是主活动： 由于是简单的一个APP，这里就没有用什么框架了。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120public class MainActivity extends AppCompatActivity &#123; private MediaPlayer mediaPlayerInput,mediaPlayerOutput; private BatteryListener listener; private Button button; @Override protected void onCreate(Bundle savedInstanceState) &#123; super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); //隐藏标题栏Actionbar if (getSupportActionBar() != null)&#123; getSupportActionBar().hide(); &#125; //提示信息dialog final NiftyDialogBuilder dialogBuilder=NiftyDialogBuilder.getInstance(this); dialogBuilder .withTitle(&quot;警告!&quot;) .withMessage(&quot;本软件请勿在公共场合打开，如有差错导致悲惨的后果，本人概不负责！&quot;) .withDialogColor(&quot;#FFB6C1&quot;) .withMessageColor(&quot;#ffffff&quot;) .withButton1Text(&quot;知道了&quot;) .withEffect(Newspager) .setButton1Click(new View.OnClickListener() &#123; @Override public void onClick(View v) &#123; dialogBuilder.cancel(); &#125; &#125;) .show(); //监听媒体音量方便判断是否手机静音 AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE); int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC); if(currentVolume==0) Toast.makeText(MainActivity.this, &quot;手机静音，不能正常提示，请调大音量！&quot;, Toast.LENGTH_LONG).show(); //电源插拔 listener = new BatteryListener(this); //播放MP3 mediaPlayerInput=MediaPlayer.create(this,R.raw.jiaochuan1); mediaPlayerOutput=MediaPlayer.create(this,R.raw.jiaochuan2); button=findViewById(R.id.btn); button.setOnClickListener(new View.OnClickListener() &#123; @Override public void onClick(View v) &#123; Toast.makeText(MainActivity.this,button.getText(), Toast.LENGTH_SHORT).show(); if(button.getText().toString().equals(&quot;CLOSE&quot;))&#123; button.setText(&quot;OPEN&quot;); Toast.makeText(MainActivity.this, &quot;超级电源插拔提示已部署！&quot;, Toast.LENGTH_SHORT).show(); listener.register(new BatteryListener.BatteryStateListener() &#123; @Override public void onStateChanged() &#123; Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateChanged--&gt; &quot;); &#125; @Override public void onStateLow() &#123; Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateLow--&gt; &quot;); Toast.makeText(MainActivity.this, &quot;电源降低！&quot;, Toast.LENGTH_SHORT).show(); &#125; @Override public void onStateOkay() &#123; Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStateOkay--&gt; &quot;); Toast.makeText(MainActivity.this, &quot;电源充满！&quot;, Toast.LENGTH_SHORT).show(); &#125; @Override public void onStatePowerConnected() &#123; Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStatePowerConnected--&gt; &quot;); Toast.makeText(MainActivity.this, &quot;电源插入！&quot;, Toast.LENGTH_SHORT).show(); if(mediaPlayerOutput.isPlaying()) &#123; mediaPlayerOutput.stop(); mediaPlayerInput.start(); &#125;else&#123; mediaPlayerInput.start(); &#125; &#125; @Override public void onStatePowerDisconnected() &#123; Log.e(&quot;thbelief&quot;, &quot;MainActivity --&gt; onStatePowerDisconnected--&gt; &quot;); Toast.makeText(MainActivity.this, &quot;电源拔出！&quot;, Toast.LENGTH_SHORT).show(); if(mediaPlayerInput.isPlaying()) &#123; mediaPlayerInput.stop(); mediaPlayerOutput.start(); &#125;else&#123; mediaPlayerOutput.start(); &#125; &#125; &#125;); &#125;else if (button.getText().toString().equals(&quot;OPEN&quot;))&#123; button.setText(&quot;CLOSE&quot;); Toast.makeText(MainActivity.this, &quot;超级电源插拔提示已取消！&quot;, Toast.LENGTH_SHORT).show(); if (listener != null) &#123; listener.unregister(); &#125; &#125; &#125; &#125;); &#125; @Override protected void onDestroy() &#123; if (listener != null) &#123; listener.unregister(); &#125; super.onDestroy(); &#125;&#125; 效果]]></content>
@@ -427,8 +441,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>root</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -531,11 +545,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -757,8 +771,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>刷机</tag>
         <tag>卡刷</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
   <entry>
@@ -1066,10 +1080,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1171,9 +1185,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

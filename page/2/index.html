@@ -313,6 +313,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/26/机器学习实验-线性回归预测/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/26/机器学习实验-线性回归预测/" itemprop="url">机器学习实验-线性回归预测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T10:20:57+08:00">
+                2019-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  520
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!--toc-->
+<h2><span id="实验目的">实验目的</span></h2><p><strong>对给定的数据集进行线性回归预测。</strong></p>
+<h2><span id="实验内容">实验内容</span></h2><ol>
+<li>先创建csv 文件。</li>
+<li>利用WEKA 的TOOLS 讲csv 转换为arff 工具。</li>
+<li>利用WEKA 学习线性回归模型。</li>
+</ol>
+<h2><span id="实验过程">实验过程</span></h2><p>(1)首先讲数据集在EXCEL 中进行处理，转变为CSV 文件格式，注意这里<br>需要把原数据集中的属性名称改变为英文。<br>        另存为data.csv 在桌面即可。等会儿还需要使用到。</p>
+<p><img src="/2019/05/26/机器学习实验-线性回归预测/1.jpg" alt=""></p>
+<p>(2)利用WEKA 的TOOLS 将CSV 格式转换为ARFF 格式。<br>        也是另存为桌面为data.arff。</p>
+<p><img src="/2019/05/26/机器学习实验-线性回归预测/2.jpg" alt=""></p>
+<p>（3）将data.arff 导入进WEKA 进行线性回归预测即可。</p>
+<p>（4）先使用Use training set 来测试。</p>
+<p><img src="/2019/05/26/机器学习实验-线性回归预测/3.jpg" alt=""></p>
+<p>（5）采用10 折交叉验证（ 10-fold cross validation） 来选择和评估模型。</p>
+<p><img src="/2019/05/26/机器学习实验-线性回归预测/4.jpg" alt=""></p>
+<p>(6)由于Weka 在<strong>处理丢失数据的时候已经做了均值处理</strong>。所以这里不对缺失值进行操作。</p>
+<h2><span id="实验结果">实验结果</span></h2><p><img src="/2019/05/26/机器学习实验-线性回归预测/结果.jpg" alt=""></p>
+<h2><span id="实验总结">实验总结</span></h2><h3><span id="问题">问题</span></h3><ol>
+<li>首先就是实验中遇到的问题— —缺失值的处理，最开始的想法是<br>使用均值来替代，但是得出的结果和之前不处理是一样的，所以从这<br>里我猜测WEKA 已经做了相关的处理，是以就不用进行另外的处理了。</li>
+<li>最开始不知道如何将CSV 转换为ARFF 格式， 还好是找到了相关<br>的方案。解决了这个问题。</li>
+</ol>
+<h3><span id="总结">总结</span></h3><p>值得注意的是， 数据缺失的话在WEKA 中需要使用? 来替代表示是<br>一个缺失值， 不能使用-或者0 这种东西来替代。<br>        在统计学中， 线性回归(Linear Regression)是利用称为线性回归<br>方程的最小平方函数对一个或多个自变量和因变量之间关系进行建模<br>的一种回归分析。<br>        本次实验就是利用Weka 在生育率、老龄人口占比、老龄人口死亡<br>占比、人口流动比率、女性育龄人口占比这6 个自变量和实际人口数之<br>间进行建模分析。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/25/JavaScript学习笔记-十一/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2190,291 +2385,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/16/算法分析-实验一/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/16/算法分析-实验一/" itemprop="url">算法分析-实验一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T17:47:09+08:00">
-                2019-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#euclids-game">Euclid’s Game</a><ul>
-<li><a href="#题目简介">题目简介</a><ul>
-<li><a href="#输入">输入</a></li>
-<li><a href="#输出">输出</a></li>
-<li><a href="#样例输入">样例输入</a></li>
-<li><a href="#样例输出">样例输出</a></li>
-</ul>
-</li>
-<li><a href="#题目大意">题目大意</a></li>
-<li><a href="#题目分析">题目分析</a></li>
-<li><a href="#代码">代码</a></li>
-</ul>
-</li>
-<li><a href="#locker-doors">Locker doors</a><ul>
-<li><a href="#题目简介-1">题目简介</a><ul>
-<li><a href="#输入-1">输入</a></li>
-<li><a href="#输出-1">输出</a></li>
-<li><a href="#样例输入-1">样例输入</a></li>
-<li><a href="#样例输出-1">样例输出</a></li>
-</ul>
-</li>
-<li><a href="#题目大意-1">题目大意</a></li>
-<li><a href="#题目分析-1">题目分析</a></li>
-<li><a href="#代码-1">代码</a></li>
-</ul>
-</li>
-<li><a href="#俄式乘法">俄式乘法</a><ul>
-<li><a href="#题目简介-2">题目简介</a><ul>
-<li><a href="#输入-2">输入</a></li>
-<li><a href="#输出-2">输出</a></li>
-<li><a href="#样例输入-2">样例输入</a></li>
-<li><a href="#样例输出-2">样例输出</a></li>
-</ul>
-</li>
-<li><a href="#题目分析-2">题目分析</a></li>
-<li><a href="#代码-2">代码</a></li>
-</ul>
-</li>
-<li><a href="#约瑟夫问题的实现">约瑟夫问题的实现</a><ul>
-<li><a href="#题目简介-3">题目简介</a><ul>
-<li><a href="#输入-3">输入</a></li>
-<li><a href="#输出-3">输出</a></li>
-<li><a href="#样例输入-3">样例输入</a></li>
-<li><a href="#样例输出-3">样例输出</a></li>
-</ul>
-</li>
-<li><a href="#题目分析-3">题目分析</a></li>
-<li><a href="#代码-3">代码</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>这周六就要算法分析半期考试了，正好要复习，就顺便写下博客加深一下理解。</p>
-<h2><span id="euclids-game">Euclid’s Game</span></h2><h3><span id="题目简介">题目简介</span></h3><p>Euclid’s Game</p>
-<p> 1000(ms)</p>
-<p> 65535(kb)</p>
-<p> 812 / 3173</p>
-<p>Starts with two unequal positive numbers (M,N and M&gt;N) on the board. Two players move in turn. On each move, a player has to write on the board a positive number equal to the difference of two numbers already on the board; this number must be new, i.e., different from all the numbers already on the board. The player who cannot move loses the game. Should you choose to move first or second in this game? </p>
-<p>According to the above rules, there are two players play tihs game. Assumptions A write a number on the board at first, then B write it. </p>
-<p>Your task is write a program to judge the winner is A or B.</p>
-<h4><span id="输入">输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Two unequal positive numbers M and N , M&gt;N (M&lt;1000000)</span><br></pre></td></tr></table></figure>
-<h4><span id="输出">输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A or B</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输入">样例输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 1</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输出">样例输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A</span><br></pre></td></tr></table></figure>
-<h3><span id="题目大意">题目大意</span></h3><p>从两个<strong>不等的正数</strong>开始，将两个数写在板子上，M&gt;N，每个人只能在板子上写出板子上<strong>已有数的差值的绝对值</strong>，这个值必须是在板子上面<strong>没有出现过的</strong>，谁先不能写出谁就输了，所以该是先手还是后手才能赢下比赛？</p>
-<p><strong>假设是A首先写，B后写，我们的任务就是写一个程序来判断谁会赢。</strong></p>
-<h3><span id="题目分析">题目分析</span></h3><p>由<strong>数据规律</strong>可以得出。</p>
-<p>每次写的数字，只能是<strong>最开始两个数</strong>的<strong>最大公约数</strong>的<strong>k倍</strong>，即<strong>k最大为M/（M与N的最大公约数）倍</strong>，判断M/（M与N的最大公约数）的<strong>奇偶性</strong>即可。</p>
-<p>这里使用<strong>辗转相除法</strong>来实现<strong>求最大公约数</strong>。然后判断k的奇偶性即可。奇数则是A胜，否则就是B胜。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	//x，y分别赋值后x&gt;y，c作为余数（这里为后面的辗转相除法做准备） </span><br><span class="line">	int m,n,x,y,c;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	//由于题目表示m&gt;n,所以赋值之后x&gt;y </span><br><span class="line">	x=m;</span><br><span class="line">	y=n;</span><br><span class="line">	//这里是辗转相除法 </span><br><span class="line">	while(y)&#123;</span><br><span class="line">		//余数c为零即y为零的时候自动退出循环 </span><br><span class="line">		c=x%y;</span><br><span class="line">		x=y;</span><br><span class="line">		y=c;</span><br><span class="line">	&#125; </span><br><span class="line">	//这里的m就是输入的m，n中的较大值</span><br><span class="line">	m=m/x;</span><br><span class="line">	if(m%2)&#123;</span><br><span class="line">		//如果是奇数的话</span><br><span class="line">		cout&lt;&lt;&quot;A&quot;&lt;&lt;endl; </span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		//如果是偶数的话 </span><br><span class="line">		cout&lt;&lt;&quot;B&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="locker-doors">Locker doors</span></h2><h3><span id="题目简介">题目简介</span></h3><p>Locker doors</p>
-<p> 1000(ms)</p>
-<p> 65535(kb)</p>
-<p> 812 / 3173</p>
-<p>There are n lockers in a hallway numbered sequentially from 1 to n. Initially, all the locker doors are closed. You make n passes by the lockers, each time starting with locker #1. On the ith pass, i = 1, 2, …, n, you toggle the door of every ith locker: if the door is closed, you open it, if it is open, you close it. For example, after the first pass every door is open; on the second pass you only toggle the even-numbered lockers (#2, #4, …) so that after the second pass the even doors are closed and the odd ones are opened; the third time through you close the door of locker #3 (opened from the first pass), open the door of locker #6 (closed from the second pass), and so on. After the last pass, which locker doors are open and which are closed? How many of them are open? Your task is write a program to output How many doors are open after the last pass? Assumptions all doors are closed at first.</p>
-<h4><span id="输入">输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a positive numbers n, total doors. n&lt;=100000</span><br></pre></td></tr></table></figure>
-<h4><span id="输出">输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a positive numbers ，the total of doors opened after the last pass.</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输入">样例输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输出">样例输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<h3><span id="题目大意">题目大意</span></h3><p>走廊上有n个储物柜，<strong>从1到n依次编号</strong>。最初，所有的储物柜门都关闭了。<strong>每次从储物柜＃1开始</strong>，您都会通过储物柜进行n次通行。在第i次通过的时候，i = 1,2，…，n，<strong>切换每个第i个储物柜的门</strong>：<strong>如果门关闭，你打开它，如果它是打开的，你关闭它。</strong>例如，在第一次通过后，每扇门都打开; 在第二次通过时，您只需切换偶数编号的储物柜（＃2，＃4，……），以便在第二次通过后，偶数门关闭，奇数门打开; 第三次通过你关闭储物柜＃3的门（从第一次通过打开），打开储物柜＃6的门（从第二次通过关闭），依此类推。在最后一次行走过之后 哪些储物柜门是打开的，哪些是关闭的？有多少是开放的？我们的任务是<strong>写一个程序来输出最后一次通过后打开了多少扇门？假设所有门首先关闭。</strong></p>
-<h3><span id="题目分析">题目分析</span></h3><p>首先，大家想到的最简单的应该是直接模拟，但是这里有个问题，像这么大的数据规模的话，是很容易超时的，这就不可取了。</p>
-<p>测试多组数据之后会发现，其实这道题可以找到规律——<strong>最后开着的门其实编号都是平方数</strong>（也就是开根号得出整数的数）。比如18个门的话，最后1、4、9、16都是开着的。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	//从规律中发现其实强制转换之后也就是n开方的值</span><br><span class="line">	cout&lt;&lt;(int)sqrt(n)&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">    int num = 0;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">    //这里的floor是向下取整，返回的是不大于参数的最大整数，要用判断i开方之后是否是整数</span><br><span class="line">    	if(sqrt(i)==floor(sqrt(i))) num++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;num&lt;&lt;endl; </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="俄式乘法">俄式乘法</span></h2><h3><span id="题目简介">题目简介</span></h3><p>俄式乘法</p>
-<p> 1000(ms)</p>
-<p> 65535(kb)</p>
-<p> 2220 / 6369</p>
-<p>俄式乘法，又被称为俄国农夫法，它是对两个正整数相乘的非主流算法。假设m和n是两个正整数，我们要计算它们的积。它的主要原理如下： if n is 偶数 n <em> m=n/2 </em> 2m else n <em> m=(n-1)/2 </em> 2m + m 该算法只包括<strong>折半，加倍，相加</strong>等几个简单操作，因此实现速度非常快。</p>
-<h4><span id="输入">输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">两个正整数 n,m。</span><br></pre></td></tr></table></figure>
-<h4><span id="输出">输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n和m的乘积。</span><br><span class="line">输出整个求和表达式，运算符与数字之间用一个空格隔开。</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输入">样例输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">50 65</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输出">样例输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">130 + 1040 + 2080 = 3250</span><br></pre></td></tr></table></figure>
-<h3><span id="题目分析">题目分析</span></h3><p>这个题太简单了，没啥好分析的，直接按照题目要求写即可。</p>
-<p>推荐<strong>减常因子</strong>的减治法。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n,m,c=0;</span><br><span class="line">	int k=0,i;</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</span><br><span class="line">	for(i=0;n!=0;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(n%2==1&amp;&amp;n!=1)</span><br><span class="line">		&#123;</span><br><span class="line">			c+=m;</span><br><span class="line">			printf(&quot;%d + &quot;,m);</span><br><span class="line">		&#125;</span><br><span class="line">		if(n==1)</span><br><span class="line">		&#123;</span><br><span class="line">			c+=m;</span><br><span class="line">			printf(&quot;%d = %d\n&quot;,m,c);</span><br><span class="line">		&#125;</span><br><span class="line">		m*=2;</span><br><span class="line">		if(n%2==1)</span><br><span class="line">		&#123;</span><br><span class="line">			n=(n-1)/2;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(n%2==0)</span><br><span class="line">		&#123;</span><br><span class="line">			n=n/2;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std; </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">   	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    while(n!=0)</span><br><span class="line">    &#123;</span><br><span class="line">        int num=0;</span><br><span class="line">        while(n!=0)</span><br><span class="line">        &#123;</span><br><span class="line">            if(n%2==0)</span><br><span class="line">            &#123;//如果是偶数的话，将两个数一个乘2一个除2 </span><br><span class="line">                n=n/2;</span><br><span class="line">                m=m*2;</span><br><span class="line">            &#125;</span><br><span class="line">            if(n%2!=0)</span><br><span class="line">            &#123;//如果是奇数的话 </span><br><span class="line">                num+=m;//总和上先加上m </span><br><span class="line">                n=(n-1)/2; </span><br><span class="line">                if(n!=0) cout&lt;&lt;m&lt;&lt;&quot; + &quot;;//并没有结束 </span><br><span class="line">                else cout&lt;&lt;m&lt;&lt;&quot; = &quot;&lt;&lt;num&lt;&lt;endl;//结束条件n=0</span><br><span class="line">                m=m*2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="约瑟夫问题的实现">约瑟夫问题的实现</span></h2><h3><span id="题目简介">题目简介</span></h3><p>约瑟夫问题的实现</p>
-<p> 2000(ms)</p>
-<p> 65535(kb)</p>
-<p> 3524 / 11784</p>
-<p>n个人围成一个圈，每个人分别标注为1、2、…、n，要求从1号从1开始报数，报到k的人出圈，接着下一个人又从1开始报数，如此循环，直到只剩最后一个人时，该人即为胜利者。例如当n=10,k=4时，依次出列的人分别为4、8、2、7、3、10，9、1、6、5，则5号位置的人为胜利者。给定n个人，请你编程计算出最后胜利者标号数。（要求用<strong>单循环链表完成。</strong>）</p>
-<h4><span id="输入">输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一行为人数n;</span><br><span class="line">第二行为报数k。</span><br></pre></td></tr></table></figure>
-<h4><span id="输出">输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出最后胜利者的标号数。</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输入">样例输入</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 </span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<h4><span id="样例输出">样例输出</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
-<h3><span id="题目分析">题目分析</span></h3><p>如题目，直接使用尾插法建立单循环链表，然后模拟就可以了。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct List</span><br><span class="line">&#123;</span><br><span class="line">    int  data;</span><br><span class="line">    struct List *next;</span><br><span class="line">&#125;LinkList;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    LinkList *L,*r,*s;</span><br><span class="line">    L = (LinkList *)malloc(sizeof(LinkList));</span><br><span class="line">    r =L;</span><br><span class="line">    int n,i;</span><br><span class="line">    int k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    for(i = 1;i&lt;=n;i++)               ///尾插法建立循环链表</span><br><span class="line">    &#123;</span><br><span class="line">        s = (LinkList *)malloc(sizeof(LinkList));</span><br><span class="line">        s-&gt;data = i;</span><br><span class="line">        r-&gt;next = s;</span><br><span class="line">        r= s;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    r-&gt;next =L-&gt;next;                  //让最后一个链表的下一个节点指向开头</span><br><span class="line">    LinkList *p;</span><br><span class="line">    p = L-&gt;next;                    </span><br><span class="line">     </span><br><span class="line">    while(p-&gt;next != p)                            //开始模拟（判断条件要注意：因为最后肯定剩下一个人， 所以最后一个数据的next还是他本身）</span><br><span class="line">    &#123;</span><br><span class="line">        for(i = 1;i&lt;k-1;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p-&gt;next;                         //每k个数死一个人</span><br><span class="line">        &#125;</span><br><span class="line">        p-&gt;next = p-&gt;next-&gt;next;                   //将该节点从链表上删除。</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    //OJ上要求不带回车，所以直接输出即可</span><br><span class="line">    cout&lt;&lt;p-&gt;data;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2527,7 +2437,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2549,7 +2459,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">152</span>
+                  <span class="site-state-item-count">153</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2634,7 +2544,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共126.7k字</span>
+  <span class="post-count">博客全站共127.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
