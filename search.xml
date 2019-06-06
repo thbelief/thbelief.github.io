@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BiliBili全屏弹幕发送(回车)]]></title>
+    <url>%2F2019%2F06%2F06%2FBiliBili%E5%85%A8%E5%B1%8F%E5%BC%B9%E5%B9%95%E5%8F%91%E9%80%81-%E5%9B%9E%E8%BD%A6%2F</url>
+    <content type="text"><![CDATA[目录： 前言 正文 简单介绍 功能介绍 使用方法 源码地址 源码 前言今天闲得无聊，为了娱乐一下，写了一个脚本。 正文简单介绍 脚本链接：传送门 功能介绍在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~ 使用方法在全屏状态下回车即可弹出弹幕发送框。直接输入想发送的句子，再回车即可发送出去并且默认关闭此弹幕发送框。 源码地址​ https://github.com/thbelief/BiliBili-Full-screen-barrage 欢迎去fork或者star~ 源码可能后面还会更新，看情况吧~ 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788// ==UserScript==// @name BiliBili全屏弹幕发送(回车)// @namespace https://github.com/thbelief/BiliBili-Full-screen-barrage// @version 1.0.0// @description 在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~// @author thbelief// @match *://www.bilibili.com/bangumi/play/ep*// @match *://www.bilibili.com/bangumi/play/ss*// @match *://www.bilibili.com/video/av*// @match *://www.bilibili.com/watchlater/*// @grant GM_setValue// @grant GM_getValue// ==/UserScript==(function() &#123; 'use strict'; //选择 const q = function (selector) &#123; let nodes = []; if (typeof selector === 'string') &#123; Object.assign(nodes, document.querySelectorAll(selector)); nodes.selectorStr = selector; &#125; else if (selector instanceof NodeList) &#123; Object.assign(nodes, selector); &#125; else if (selector instanceof Node) &#123; nodes = [selector]; &#125; nodes.click = function (index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].click(); return this; &#125; nodes.addClass = function (classes, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].classList.add(classes); return this; &#125; nodes.removeClass = function (classes, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].classList.remove(classes); return this; &#125; nodes.css = function (name, value, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].style.setProperty(name, value); return this; &#125; nodes.getCss = function (name, index = 0) &#123; return nodes.length &gt; index &amp;&amp; nodes[index].ownerDocument.defaultView.getComputedStyle(nodes[index], null).getPropertyValue(name); &#125; return nodes; &#125; let isSendBarExist=false; function doIt()&#123; //监控是否按下回车键 document.onkeydown = function (eTest) &#123; if (!eTest) eTest = window.event; if ((eTest.keyCode || eTest.which) == 13) &#123; // 判断是否是全屏 let isFullScreen = document.isFullScreen || document.mozIsFullScreen || document.webkitIsFullScreen; console.log("是否全屏状态："+isFullScreen); function fun()&#123; console.log("提示：在全屏状态下按了回车键！"); if(isSendBarExist)&#123; isSendBarExist=false; console.log("提示：已隐藏发送弹幕按钮！"); q('.bilibili-player-video-sendbar').css('opacity', 0).css('display', 'none')[0]; &#125;else&#123; isSendBarExist=true; console.log("提示：已显示发送弹幕按钮！"); //老版 q('.bilibili-player-video-sendbar').css('opacity', 1).css('display', 'flex'); //使输入框自动获得焦点 $('input').focus(); &#125; &#125;; if(isFullScreen)&#123; //如果是全屏状态的话，就进行回车键弹出发送弹幕的效果 fun(); &#125;else&#123; console.log("提示：未进入全屏状态！"); &#125; &#125; &#125; &#125; doIt(); &#125;)();]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>脚本</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JavaScript学习笔记(十八)]]></title>
     <url>%2F2019%2F06%2F05%2FJavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%8D%81%E5%85%AB%2F</url>
     <content type="text"><![CDATA[目录： underscore库 简单介绍 Collections map/filter every/some max/min groupBy shuffle / sample Arrays first/last flatten zip/unzip object range Functions Objects Chaining underscore库简单介绍JS是函数式的编程语言，支持高阶函数以及闭包，为了更方便的使用函数式的编程以及尽量减少浏览器之间的差异，这里就应运而生了这个库。 还有就是，这个库绑定之后是可以直接通过object使用的，而原生的array的方法不能直接给object使用，这也是它的优势所在。 underscore会把自身绑定到唯一的全局变量_上，这也是它名字的来源（下划线）。 Collectionscollections是集合类（Array+Object），underscore为集合类提供了对应的接口。 map/filter和原本的Array的map/filter是类似的，但是underscore的是支持object的，当作用给object的时候，传入的函数是： (第一个参数是value，第二个参数是key) 1function (value, key) 简单实例如下： 1234567891011&apos;use strict&apos;;var obj = &#123; name: &apos;thbelief&apos;, school: &apos;test school&apos;, address: &apos;XI road&apos;&#125;;var upper = _.map(obj, function (value, key) &#123; return ???;&#125;); every/some当集合的所有元素都满足条件时，.every()函数返回true，当集合的至少一个元素满足条件时，.some()函数返回true. max/min这两个函数就是返回当前集合中的最大/最小数。 groupBygroupBy()把集合的元素按照key归类。（key由传入的函数返回） shuffle / sampleshuffle()用洗牌算法随机打乱一个集合，sample()则是随机选择一个或多个元素。 Arraysunderscore为Array专门的提供了许多的工具类方法，很方便实用。 first/last取第一个和最后一个元素。 flatten这个函数会接收一个Array，无论这个Array里面嵌套多少的Array，最后都会被这个函数给变成一个一维数组。 zip/unzipzip()会把两个或多个数组的所有元素按索引对齐，然后按索引合并成新数组。 unzip()的作用和zip刚好相反。 object这个只是和JS中的对象object同名，但是是个函数。 将元素一一对应成object。 简单实例： 12345&apos;use strict&apos;;var names = [&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;];var scores = [85, 92, 59];_.object(names, scores); range快速生成一个序列。（神奇，取代for循环） Functions12345bind 修复当使用一个变量指向一个对象的方法时，出现的无法直接调用该方法的问题。(丢失this对象引用)partial 一个函数创建偏函数。memoize 自动缓存函数计算结果。once 保证某个函数执行且仅执行一次。delay 让一个函数延时执行。（和setTimeout差不多） Objects123456789keys 返回一个object自身所有的key，但不包含从原型链继承下来的.allKeys 返回除了object自身的key，还包含从原型链继承下来的，即所有的。values 返回object自身但不包含原型链继承的所有值。mapObject 针对object的map版本。invert 把object的每个key-value来个交换，key变成value，value变成key。extend 把多个object的key-value合并到第一个object并返回。extendOwn 把多个object的key-value合并到第一个object并返回。（忽略获取属性时忽略从原型链继承下来的属性）clone 把原有对象的所有属性都复制到新的对象。isEqual 对两个object进行深度比较，如果内容完全相同，则返回true。（Array其实也可以使用） Chainingunderscore其实也是支持链式调用的。使用的方法是——chain()。 简单实例： 1234var r = _.chain([1, 4, 9, 16, 25]) .map(Math.sqrt) .filter(x =&gt; x % 2 === 1) .value(); 值得注意的是——由于每一步返回的都是对象，所以最后一步的结果必须通过value方法来获得最终的结果。]]></content>
@@ -37,8 +51,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -81,8 +95,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>AJAX</tag>
         <tag>j-Query</tag>
+        <tag>AJAX</tag>
       </tags>
   </entry>
   <entry>
@@ -441,8 +455,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>root</tag>
         <tag>卡刷</tag>
+        <tag>root</tag>
       </tags>
   </entry>
   <entry>
@@ -545,11 +559,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -771,8 +785,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>刷机</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,10 +1094,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -1185,9 +1199,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

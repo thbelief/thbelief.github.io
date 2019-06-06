@@ -313,6 +313,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/" itemprop="url">VSCode搭建C++/C调试编译环境（使用DevC++）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T16:38:32+08:00">
+                2019-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  968
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#配置dev下mingw64的路径">配置Dev下MinGW64的路径</a></li>
+<li><a href="#安装vscode插件">安装VSCode插件</a></li>
+<li><a href="#新建工作区">新建工作区</a><ul>
+<li><a href="#新建一个vscode-c文件夹">新建一个VSCode-C文件夹</a></li>
+</ul>
+</li>
+<li><a href="#配置">配置</a><ul>
+<li><a href="#launchjson">launch.json</a></li>
+<li><a href="#tasksjson">tasks.json</a></li>
+<li><a href="#c_cpp_propertiesjson">c_cpp_properties.json</a></li>
+</ul>
+</li>
+<li><a href="#测试">测试</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>关于VSCode使用Dev C++的MinGW64来调试C++/C网上的教程试了很多，大部分都已经过时了或者说是不适配了，最后就选择使用Dev原有的东西来实现，不建议自己下载MinGW64，里面安装的时候有些选项不知道选什么的话很容易出现问题。</p>
+<h2><span id="配置dev下mingw64的路径">配置Dev下MinGW64的路径</span></h2><p>假设Dev已经安装好了，然后现在要做的就是将Dev目录下的MinGW添加到环境变量的path里面去。</p>
+<p>我的路径配置是：</p>
+<p><strong>注意这里必须是直接到bin目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\c.code\Dev\Dev-Cpp\MinGW64\bin</span><br></pre></td></tr></table></figure>
+<p>关于如何配置环境变量这部分就不说了，<strong>电脑-&gt;右键属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量-&gt;Path-&gt;编辑-&gt;添加。</strong>添加完成之后一路确定退出保存即可。</p>
+<h2><span id="安装vscode插件">安装VSCode插件</span></h2><p>直接搜索C++安装第一个就可以了，下面的那些可以看自己的情况安装。</p>
+<p>还可以安装一个Code Runner插件，这个插件是用来运行代码的。（非调试，调试环境需要自己配置）</p>
+<p><img src="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/2.jpg" alt=""></p>
+<h2><span id="新建工作区">新建工作区</span></h2><p>由于VSCode本身不支持C++/C的调试环境，所以这些都需要自己配置。新建一个专门的C的工作区是最便利的方法。</p>
+<h3><span id="新建一个vscode-c文件夹">新建一个VSCode-C文件夹</span></h3><p>新建一个文件夹，记住位置，然后在VSCode里面讲该文件夹添加为一个<strong>新的工作区</strong>。（以后写的C++/C代码都要放到这个文件夹下面才可以进行调试）</p>
+<p><img src="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/1.jpg" alt=""></p>
+<p>然后点击左下角的设置按钮，然后点击工作区，进入工作区的设置环境。（默认是用户设置，我们需要修改工作区的设置），然后在上面的搜索框输入<strong>Files.Encoding</strong>，将设置修改为<strong>gb2312</strong>。</p>
+<p><img src="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/3.jpg" alt=""></p>
+<h2><span id="配置">配置</span></h2><p>在工作区下面的.vscode里面添加三个文件。</p>
+<p><img src="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/4.jpg" alt=""></p>
+<p>下面的配置文件必须修改为<strong>自己Dev目录下的MinGW路径。</strong></p>
+<h3><span id="launchjson">launch.json</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) Launch&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot; $&#123;file&#125;.exe&quot;,</span><br><span class="line">            &quot;args&quot;: [],</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: true,</span><br><span class="line">            &quot;preLaunchTask&quot;: &quot;build&quot;,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\bin\\gdb.exe&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="tasksjson">tasks.json</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;build&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">            &quot;command&quot;: &quot;g++&quot;,</span><br><span class="line"></span><br><span class="line">            &quot;args&quot;: [</span><br><span class="line">                &quot;-g&quot;,</span><br><span class="line">                &quot;$&#123;file&#125;&quot;,</span><br><span class="line">                &quot;-o&quot;,</span><br><span class="line">                &quot;$&#123;file&#125;.exe&quot;</span><br><span class="line">            ],</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="c_cpp_propertiesjson">c_cpp_properties.json</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Win32&quot;,</span><br><span class="line">            &quot;includePath&quot;: [</span><br><span class="line">                &quot;$&#123;workspaceFolder&#125;/**&quot;,</span><br><span class="line">                &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\4.9.2\\include\\c++&quot;,</span><br><span class="line">                &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\4.9.2\\include\\c++\tr1&quot;,</span><br><span class="line">                &quot;D:/c.code/Dev/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/x86_64-w64-mingw32&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;defines&quot;: [</span><br><span class="line">                &quot;_DEBUG&quot;,</span><br><span class="line">                &quot;UNICODE&quot;,</span><br><span class="line">                &quot;_UNICODE&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;compilerPath&quot;: &quot;D:\\c.code\\Dev\\Dev-Cpp\\MinGW64\\bin\\gcc.exe&quot;,</span><br><span class="line">            &quot;cStandard&quot;: &quot;c99&quot;,</span><br><span class="line">            &quot;cppStandard&quot;: &quot;c++98&quot;,</span><br><span class="line">            &quot;intelliSenseMode&quot;: &quot;clang-x64&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;version&quot;: 4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="测试">测试</span></h2><p>在VSCode-C下面创建一个新文件<strong>Untitled-1.cpp</strong>，然后写上代码。（建议加上 <strong>system(“pause”);</strong>，这样控制台不会一闪而过）。</p>
+<p>最后运行结果如下：</p>
+<p><img src="/2019/05/17/VSCode搭建C-C调试编译环境（使用DevC-）/5.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/16/算法分析-实验一/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2421,206 +2634,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/07/nostalgia开发日记（一）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/07/nostalgia开发日记（一）/" itemprop="url">nostalgia开发日记（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T18:00:49+08:00">
-                2019-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#登陆界面">登陆界面</a><ul>
-<li><a href="#代码">代码</a></li>
-<li><a href="#效果演示">效果演示</a></li>
-<li><a href="#activity关键代码未完善">Activity关键代码（未完善）</a></li>
-<li><a href="#效果演示-1">效果演示</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>最近在学习基础的编程语言的时候有点儿无聊，想起很久没写Android程序了，决定开发一个新的APP。大概的定义就是一个类似于记忆日记之类的东西。目前还是没有多大的准备策划关于这个，就直接开始写了，准备后面抽个时间写好策划，目前就是写好一个登陆界面。还有最近准备开始仔仔细细的研究一下目前github上比较有趣的APP。</p>
-<h2><span id="登陆界面">登陆界面</span></h2><h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;de.hdodenhof.circleimageview.CircleImageView</span><br><span class="line">        xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">        android:id=&quot;@+id/iv_login&quot;</span><br><span class="line">        android:layout_width=&quot;96dp&quot;</span><br><span class="line">        android:layout_height=&quot;96dp&quot;</span><br><span class="line">        android:src=&quot;@drawable/login_logo&quot;</span><br><span class="line">        app:civ_border_width=&quot;2dp&quot;</span><br><span class="line">        app:civ_border_color=&quot;#FF000000&quot;</span><br><span class="line">        android:layout_centerHorizontal=&quot;true&quot;</span><br><span class="line">        android:layout_marginTop=&quot;60dp&quot;/&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;Nostalgia&quot;</span><br><span class="line">        android:textSize=&quot;23sp&quot;</span><br><span class="line">        android:layout_centerHorizontal=&quot;true&quot;</span><br><span class="line">        android:layout_marginTop=&quot;160dp&quot;</span><br><span class="line">        android:typeface=&quot;monospace&quot;</span><br><span class="line">        android:id=&quot;@+id/tv_title&quot;/&gt;</span><br><span class="line">    &lt;RelativeLayout</span><br><span class="line">        android:id=&quot;@+id/rl_userName&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_below=&quot;@id/tv_title&quot;</span><br><span class="line">        android:layout_marginTop=&quot;40dp&quot;</span><br><span class="line">        android:background=&quot;@drawable/rectangle_edittext&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/iv_userIconName&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:paddingBottom=&quot;15dp&quot;</span><br><span class="line">            android:paddingLeft=&quot;30dp&quot;</span><br><span class="line">            android:paddingTop=&quot;15dp&quot;</span><br><span class="line">            android:src=&quot;@mipmap/ic_userimg&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;View</span><br><span class="line">            android:id=&quot;@+id/viewName&quot;</span><br><span class="line">            android:layout_width=&quot;1dip&quot;</span><br><span class="line">            android:layout_height=&quot;20dp&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_toRightOf=&quot;@id/iv_userIconName&quot;</span><br><span class="line">            android:background=&quot;@color/colorCursor&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/et_userName&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;30dp&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_toRightOf=&quot;@id/viewName&quot;</span><br><span class="line">            android:background=&quot;@null&quot;</span><br><span class="line">            android:ems=&quot;19&quot;</span><br><span class="line">            android:hint=&quot;用户名&quot;</span><br><span class="line">            android:textColorHint=&quot;@color/colorCursor&quot;</span><br><span class="line">            android:textCursorDrawable=&quot;@drawable/color_cursor&quot;</span><br><span class="line">            android:textSize=&quot;15sp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/RelativeLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;RelativeLayout</span><br><span class="line">        android:id=&quot;@+id/rl_userPassword&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_below=&quot;@id/rl_userName&quot;</span><br><span class="line">        android:layout_marginTop=&quot;1dp&quot;</span><br><span class="line">        android:background=&quot;@drawable/rectangle_edittext&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/iv_userIconPwd&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:paddingBottom=&quot;15dp&quot;</span><br><span class="line">            android:paddingLeft=&quot;30dp&quot;</span><br><span class="line">            android:paddingTop=&quot;15dp&quot;</span><br><span class="line">            android:src=&quot;@mipmap/ic_edittextupwd&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;View</span><br><span class="line">            android:id=&quot;@+id/viewPwd&quot;</span><br><span class="line">            android:layout_width=&quot;1dip&quot;</span><br><span class="line">            android:layout_height=&quot;20dp&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_toRightOf=&quot;@id/iv_userIconPwd&quot;</span><br><span class="line">            android:background=&quot;@color/colorCursor&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/et_password&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;30dp&quot;</span><br><span class="line">            android:layout_centerVertical=&quot;true&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_toRightOf=&quot;@id/viewPwd&quot;</span><br><span class="line">            android:background=&quot;@null&quot;</span><br><span class="line">            android:drawablePadding=&quot;5dp&quot;</span><br><span class="line">            android:ems=&quot;19&quot;</span><br><span class="line">            android:hint=&quot; 密码&quot;</span><br><span class="line">            android:inputType=&quot;textPassword&quot;</span><br><span class="line">            android:textColorHint=&quot;@color/colorCursor&quot;</span><br><span class="line">            android:textCursorDrawable=&quot;@drawable/color_cursor&quot;</span><br><span class="line">            android:textSize=&quot;15sp&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/RelativeLayout&gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_below=&quot;@+id/rl_userPassword&quot;</span><br><span class="line">        android:id=&quot;@+id/lr_relate&quot;</span><br><span class="line">        android:layout_centerHorizontal=&quot;true&quot;&gt;</span><br><span class="line">        &lt;CheckBox</span><br><span class="line">            android:id=&quot;@+id/cb_checkbox&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_below=&quot;@id/rl_userPassword&quot;</span><br><span class="line"></span><br><span class="line">            android:layout_marginTop=&quot;20dp&quot;</span><br><span class="line">            android:background=&quot;@null&quot;</span><br><span class="line">            android:checked=&quot;false&quot;</span><br><span class="line">            android:duplicateParentState=&quot;false&quot;</span><br><span class="line">            android:text=&quot;记住密码&quot;</span><br><span class="line">            android:textColor=&quot;#666666&quot;</span><br><span class="line">            android:textSize=&quot;15sp&quot;</span><br><span class="line">            android:buttonTint=&quot;@color/colorLoginButton&quot; /&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_marginTop=&quot;20dp&quot;</span><br><span class="line">            android:id=&quot;@+id/tv_signIn&quot;</span><br><span class="line">            android:text=&quot;注册账号&quot;</span><br><span class="line">            android:background=&quot;@null&quot;</span><br><span class="line">            android:textColor=&quot;#666666&quot;</span><br><span class="line">            android:textSize=&quot;15sp&quot;</span><br><span class="line">            android:layout_toRightOf=&quot;@id/cb_checkbox&quot;</span><br><span class="line">            android:paddingLeft=&quot;20dp&quot;/&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line">    &lt;!--材料波纹效果--&gt;</span><br><span class="line">    &lt;com.balysv.materialripple.MaterialRippleLayout</span><br><span class="line">        android:id=&quot;@+id/ripple&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_below=&quot;@id/lr_relate&quot;</span><br><span class="line">        android:padding=&quot;10dp&quot;</span><br><span class="line">        android:layout_marginTop=&quot;20dp&quot;&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn_login&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_centerHorizontal=&quot;true&quot;</span><br><span class="line"></span><br><span class="line">            android:background=&quot;@drawable/round_corner_bg&quot;</span><br><span class="line">            android:gravity=&quot;center&quot;</span><br><span class="line">            android:padding=&quot;10dp&quot;</span><br><span class="line">            android:text=&quot;登录&quot;</span><br><span class="line">            android:textColor=&quot;#fff&quot;</span><br><span class="line">            android:textSize=&quot;18sp&quot; /&gt;</span><br><span class="line">    &lt;/com.balysv.materialripple.MaterialRippleLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
-<h3><span id="效果演示">效果演示</span></h3><p><img src="/2019/05/07/nostalgia开发日记（一）/1.png" alt=""></p>
-<h3><span id="activity关键代码未完善">Activity关键代码（未完善）</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">package com.example.thbelief.nostalgia;</span><br><span class="line"></span><br><span class="line">import android.Manifest;</span><br><span class="line">import android.content.pm.PackageManager;</span><br><span class="line">import android.graphics.Color;</span><br><span class="line">import android.os.Build;</span><br><span class="line">import android.support.design.widget.Snackbar;</span><br><span class="line">import android.support.v4.app.ActivityCompat;</span><br><span class="line">import android.support.v4.content.ContextCompat;</span><br><span class="line">import android.support.v7.app.AppCompatActivity;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.util.Log;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.Button;</span><br><span class="line">import android.widget.CheckBox;</span><br><span class="line">import android.widget.EditText;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line"></span><br><span class="line">import cn.bmob.v3.Bmob;</span><br><span class="line">import cn.bmob.v3.BmobObject;</span><br><span class="line">import cn.bmob.v3.BmobQuery;</span><br><span class="line">import cn.bmob.v3.BmobUser;</span><br><span class="line">import cn.bmob.v3.exception.BmobException;</span><br><span class="line">import cn.bmob.v3.listener.FindListener;</span><br><span class="line">import cn.bmob.v3.listener.SaveListener;</span><br><span class="line">import android.os.Handler;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line"></span><br><span class="line">import com.roger.catloadinglibrary.CatLoadingView;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class LoginActivity extends AppCompatActivity &#123;</span><br><span class="line">    //CatLoadingView</span><br><span class="line">    CatLoadingView mView;</span><br><span class="line">    //各个数据</span><br><span class="line">    EditText editTextUserName;</span><br><span class="line">    EditText editTextPassword;</span><br><span class="line">    CheckBox checkBoxRememberPassword;</span><br><span class="line">    TextView textViewSignIn;</span><br><span class="line">    Button buttonLogin;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_login);</span><br><span class="line">        //隐藏状态栏</span><br><span class="line">        if (getSupportActionBar() != null)&#123;</span><br><span class="line">            getSupportActionBar().hide();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //初始化BombSDK</span><br><span class="line">        Bmob.initialize(this, &quot;62151fd88930f462fb035cf7206a115d&quot;);</span><br><span class="line">        //CatLoadingView</span><br><span class="line">        mView=new CatLoadingView();</span><br><span class="line">        mView.setText(&quot;正在查询中...&quot;);</span><br><span class="line">        //mView.setBackgroundColor(Color.parseColor(&quot;#000000&quot;));</span><br><span class="line">        //找id</span><br><span class="line">        editTextUserName=findViewById(R.id.et_userName);</span><br><span class="line">        editTextPassword=findViewById(R.id.et_password);</span><br><span class="line">        checkBoxRememberPassword=findViewById(R.id.cb_checkbox);</span><br><span class="line">        textViewSignIn=findViewById(R.id.tv_signIn);</span><br><span class="line">        textViewSignIn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                //注册的时候服务器会自己查询是否已经存在一样的账号，这里就不用先查询了</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        buttonLogin=findViewById(R.id.btn_login);</span><br><span class="line">        //登录的点击事件</span><br><span class="line">        buttonLogin.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                mView.show(getSupportFragmentManager(),&quot;&quot;);</span><br><span class="line">                Handler handler = new Handler();</span><br><span class="line">                handler.postDelayed(new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        mView.onStop();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 2000);//2秒后执行Runnable中的run方法</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="效果演示">效果演示</span></h3><p><img src="/2019/05/07/nostalgia开发日记（一）/2.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2673,7 +2686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2780,7 +2793,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共127.6k字</span>
+  <span class="post-count">博客全站共128.3k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
