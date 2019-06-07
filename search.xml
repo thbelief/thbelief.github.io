@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[最长公共子串动态规划解法]]></title>
+    <url>%2F2019%2F06%2F07%2F%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[目录： 定义 效果 代码 定义所谓的最大子序列即：只要前i项的和还没有小于0那么子序列就一直向后扩展，否则丢弃之前的子序列开始新的子序列，同时我们要记下各个子序列的和，最后找到和最大的子序列。 效果 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;iostream&gt;#include&lt;string&gt;#include&lt;cstring&gt;using namespace std;int main() &#123; string str1,str2; //字符串AB的输入（其实也可以自己改进为从文本读入） cout&lt;&lt;&quot;字符串A：&quot;; cin&gt;&gt;str1; cout&lt;&lt;&quot;字符串B：&quot;; cin&gt;&gt;str2; int row = 0; int col = str2.size(); int end_index=0;//最后一个的下标 int max_len = 0;//最长子串长度 while(row &lt; str1.size()) &#123; int i = row; int j = col; int pre = 0; while(i&lt;str1.size()&amp;&amp; j &lt;str2.size()) &#123; if(str1[i]==str2[j]) &#123; pre+=1; if(pre&gt;max_len) &#123; max_len = pre; end_index = i; &#125; &#125; else &#123; pre =0; &#125; i++; j++; &#125; if(col &gt;0) &#123; col --; &#125; else &#123; row ++; &#125; &#125; cout&lt;&lt;&quot;字符串AB的最长公共子串：&quot;&lt;&lt;endl; for(int i =end_index -max_len+1; i&lt;=end_index; i++) cout&lt;&lt;str1[i]; cout&lt;&lt;endl; return 0;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>最长公共子串</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[BiliBili全屏弹幕发送(回车)]]></title>
     <url>%2F2019%2F06%2F06%2FBiliBili%E5%85%A8%E5%B1%8F%E5%BC%B9%E5%B9%95%E5%8F%91%E9%80%81-%E5%9B%9E%E8%BD%A6%2F</url>
     <content type="text"><![CDATA[目录： 前言 正文 简单介绍 功能介绍 使用方法 源码地址 源码 前言今天闲得无聊，为了娱乐一下，写了一个脚本。 正文简单介绍 脚本链接：传送门 功能介绍在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~ 使用方法在全屏状态下回车即可弹出弹幕发送框。直接输入想发送的句子，再回车即可发送出去并且默认关闭此弹幕发送框。 源码地址​ https://github.com/thbelief/BiliBili-Full-screen-barrage 欢迎去fork或者star~ 源码可能后面还会更新，看情况吧~ 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788// ==UserScript==// @name BiliBili全屏弹幕发送(回车)// @namespace https://github.com/thbelief/BiliBili-Full-screen-barrage// @version 1.0.0// @description 在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~// @author thbelief// @match *://www.bilibili.com/bangumi/play/ep*// @match *://www.bilibili.com/bangumi/play/ss*// @match *://www.bilibili.com/video/av*// @match *://www.bilibili.com/watchlater/*// @grant GM_setValue// @grant GM_getValue// ==/UserScript==(function() &#123; 'use strict'; //选择 const q = function (selector) &#123; let nodes = []; if (typeof selector === 'string') &#123; Object.assign(nodes, document.querySelectorAll(selector)); nodes.selectorStr = selector; &#125; else if (selector instanceof NodeList) &#123; Object.assign(nodes, selector); &#125; else if (selector instanceof Node) &#123; nodes = [selector]; &#125; nodes.click = function (index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].click(); return this; &#125; nodes.addClass = function (classes, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].classList.add(classes); return this; &#125; nodes.removeClass = function (classes, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].classList.remove(classes); return this; &#125; nodes.css = function (name, value, index = 0) &#123; nodes.length &gt; index &amp;&amp; nodes[index].style.setProperty(name, value); return this; &#125; nodes.getCss = function (name, index = 0) &#123; return nodes.length &gt; index &amp;&amp; nodes[index].ownerDocument.defaultView.getComputedStyle(nodes[index], null).getPropertyValue(name); &#125; return nodes; &#125; let isSendBarExist=false; function doIt()&#123; //监控是否按下回车键 document.onkeydown = function (eTest) &#123; if (!eTest) eTest = window.event; if ((eTest.keyCode || eTest.which) == 13) &#123; // 判断是否是全屏 let isFullScreen = document.isFullScreen || document.mozIsFullScreen || document.webkitIsFullScreen; console.log("是否全屏状态："+isFullScreen); function fun()&#123; console.log("提示：在全屏状态下按了回车键！"); if(isSendBarExist)&#123; isSendBarExist=false; console.log("提示：已隐藏发送弹幕按钮！"); q('.bilibili-player-video-sendbar').css('opacity', 0).css('display', 'none')[0]; &#125;else&#123; isSendBarExist=true; console.log("提示：已显示发送弹幕按钮！"); //老版 q('.bilibili-player-video-sendbar').css('opacity', 1).css('display', 'flex'); //使输入框自动获得焦点 $('input').focus(); &#125; &#125;; if(isFullScreen)&#123; //如果是全屏状态的话，就进行回车键弹出发送弹幕的效果 fun(); &#125;else&#123; console.log("提示：未进入全屏状态！"); &#125; &#125; &#125; &#125; doIt(); &#125;)();]]></content>
@@ -95,8 +108,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>j-Query</tag>
         <tag>AJAX</tag>
+        <tag>j-Query</tag>
       </tags>
   </entry>
   <entry>
@@ -248,8 +261,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>简单背包问题</tag>
         <tag>动态规划</tag>
+        <tag>简单背包问题</tag>
       </tags>
   </entry>
   <entry>
@@ -455,8 +468,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>root</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -785,8 +798,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>刷机</tag>
         <tag>卡刷</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
   <entry>
@@ -918,9 +931,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -1094,10 +1107,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1199,9 +1212,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
