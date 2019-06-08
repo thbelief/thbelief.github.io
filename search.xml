@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python学习笔记（四）]]></title>
+    <url>%2F2019%2F06%2F08%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 高级特性 切片 迭代 列表生成器 生成器 迭代器 高级特性之前已经提到过关于Python的一部分特性了，众所周知，Python不是说代码越多越复杂越好，需要的是更方便的解决问题以最少的代码最优的解法是最好的，这也是高级特性的来源。 切片在其它编译语言中如果要获得一个集合中的一部分元素我们通常的操作都是直接循环然后取，但是Python中有更方便的方式——切片——取指定索引范围的操作。 简单实例： 简单解释： Test[0:2]代表的是从索引0开始然后直到索引2为止（不包括索引2），在图中的实例中可以看到刚好两个元素。 特性： 既然正序可以，那么逆序（从后向前）也是可以的，但是注意，倒序（逆序）的时候——倒数第一个元素的索引是-1。 list与tuple都可以切片操作，但是tuple切片出来还是tuple。 对于字符串来说，切片也是可以使用的，某些地方可以使用切片来模拟Python本身提供的有些字符串函数，只是字符串切片出来之后也还是字符串。 迭代迭代这个词语其实也不陌生，平时熟悉的for循环遍历数组其实就是迭代。 但是在for循环中我们还有下标来执行迭代，在Python中有些可迭代对象却无法有下标，所以这就产生了Python特有的迭代。 判断是否可迭代： 通过collections模块的Iterable类型判断。 1234from collections.abc import Iterableprint(isinstance(&apos;thbelief&apos;,Iterable))print(isinstance([&apos;a&apos;,&apos;v&apos;],Iterable))print(isinstance(520,Iterable)) 输出： 123456D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Advanced features - iteration.py&quot;TrueTrueFalseProcess finished with exit code 0 当然，也不是不可以通过下标类似的方法来访问： Python内置的enumerate函数可以把一个list变成索引-元素对，这样就可以在for循环中同时迭代索引和元素本身： 12for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]): print(i, value) 结果： 列表生成器一个快捷生成list的生成式。 123456789#Code# 简单的生成式test=list(range(1,10))print(test)# 自定义生成式test=list(x*x for x in range(1,10))print(test)test=list(x*x for x in range(1,10) if x%3==0)print(test) 自定义生成式其实可以套多重循环来筛选等等，这里只是简单的介绍一下。 生成器Python中提供的一边循环一边计算的机制。 来源：通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。如果一边循环一边计算就很方便了。 生成器的元素是不可以直接打印每一个元素的。 123456#正常列表生成式test=[x * x for x in range(10)]print(test)#创建生成器test=(x * x for x in range(10))print(test) 结果： 12345D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Advanced features - generator.py&quot;[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]&lt;generator object &lt;genexpr&gt; at 0x00000297D47BAA98&gt;Process finished with exit code 0 为什么会出现这种情况呢？前面说过生成器是边循环边计算。 使用： 123456789101112#创建生成器test=(x * x for x in range(10))print(test)#第一种就是单纯的next下去print(&quot;next:&quot;)print(next(test))print(next(test))print(next(test))#第二种是循环print(&quot;循环&quot;)for i in test: print(i) 结果： 迭代器可以直接作用于for循环的对象统称为可迭代对象：Iterable。 可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。 判断是否是一个迭代器对象： 1234from collections.abc import Iteratorprint(isinstance((x for x in range(10)), Iterator))print(isinstance(&apos;abc&apos;, Iterator)) 12TrueFalse Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>高级特性</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[最长公共子串动态规划解法]]></title>
     <url>%2F2019%2F06%2F07%2F%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E6%B3%95%2F</url>
     <content type="text"><![CDATA[目录： 定义 效果 代码 定义所谓的最大子序列即：只要前i项的和还没有小于0那么子序列就一直向后扩展，否则丢弃之前的子序列开始新的子序列，同时我们要记下各个子序列的和，最后找到和最大的子序列。 效果 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;iostream&gt;#include&lt;string&gt;#include&lt;cstring&gt;using namespace std;int main() &#123; string str1,str2; //字符串AB的输入（其实也可以自己改进为从文本读入） cout&lt;&lt;&quot;字符串A：&quot;; cin&gt;&gt;str1; cout&lt;&lt;&quot;字符串B：&quot;; cin&gt;&gt;str2; int row = 0; int col = str2.size(); int end_index=0;//最后一个的下标 int max_len = 0;//最长子串长度 while(row &lt; str1.size()) &#123; int i = row; int j = col; int pre = 0; while(i&lt;str1.size()&amp;&amp; j &lt;str2.size()) &#123; if(str1[i]==str2[j]) &#123; pre+=1; if(pre&gt;max_len) &#123; max_len = pre; end_index = i; &#125; &#125; else &#123; pre =0; &#125; i++; j++; &#125; if(col &gt;0) &#123; col --; &#125; else &#123; row ++; &#125; &#125; cout&lt;&lt;&quot;字符串AB的最长公共子串：&quot;&lt;&lt;endl; for(int i =end_index -max_len+1; i&lt;=end_index; i++) cout&lt;&lt;str1[i]; cout&lt;&lt;endl; return 0;&#125;]]></content>
@@ -64,8 +77,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>报错</tag>
+        <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -572,11 +585,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
