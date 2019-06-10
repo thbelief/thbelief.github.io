@@ -102,8 +102,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>报错</tag>
+        <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -610,11 +610,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -969,9 +969,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -1145,10 +1145,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -1250,9 +1250,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
