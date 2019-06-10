@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Boyer–Moore–Horspool algorithm]]></title>
+    <url>%2F2019%2F06%2F10%2FBoyer%E2%80%93Moore%E2%80%93Horspool-algorithm%2F</url>
+    <content type="text"><![CDATA[目录： Boyer–Moore–Horspool algorithm 题目介绍 输入 输出 样例输入 样例输出 代码 结果 参考资料 Boyer–Moore–Horspool algorithm题目介绍The Boyer–Moore string search algorithm is a particularly efficient string searching algorithm. It was developed by Bob Boyer and J Strother Moore in 1977. The algorithm preprocesses the target string (key) that is being searched for, but not the string being searched (unlike some algorithms which preprocess the string to be searched, and can then amortize the expense of the preprocessing by searching repeatedly). The execution time of the Boyer-Moore algorithm can actually be sub-linear: it doesn’t need to actually check every character of the string to be searched but rather skips over some of them. Generally the algorithm gets faster as the key being searched for becomes longer. Its efficiency derives from the fact that, with each unsuccessful attempt to find a match between the search string and the text it’s searching in, it uses the information gained from that attempt to rule out as many positions of the text as possible where the string could not match. How the algorithm works What people frequently find surprising about the Boyer-Moore algorithm when they first encounter it is that its verifications – its attempts to check whether a match exists at a particular position – work backwards. If it starts a search at the beginning of a text for the word “ANPANMAN”, for instance, it checks the eighth position of the text to see if it contains an “N”. If it finds the “N”, it moves to the seventh position to see if that contains the last “A” of the word, and so on until it checks the first position of the text for a “A”. Why Boyer-Moore takes this backward approach is clearer when we consider what happens if the verification fails – for instance, if instead of an “N” in the eighth position, we find an “X”. The “X” doesn’t appear anywhere in “ANPANMAN”, and this means there is no match for the search string at the very start of the text – or at the next seven positions following it, since those would all fall across the “X” as well. After checking just one character, we’re able to skip ahead and start looking for a match starting at the ninth position of the text, just after the “X”. This explains why the best-case performance of the algorithm, for a text of length N and a fixed pattern of length M, is N/M: in the best case, only one in M characters needs to be checked. This also explains the somewhat counter-intuitive result that the longer the pattern we are looking for, the faster the algorithm will be usually able to find it. The algorithm precomputes two tables to process the information it obtains in each failed verification: one table calculates how many positions ahead to start the next search based on the identity of the character that caused the match attempt to fail; the other makes a similar calculation based on how many characters were matched successfully before the match attempt failed. (Because these two tables return results indicating how far ahead in the text to “jump”, they are sometimes called “jump tables”, which should not be confused with the more common meaning of jump tables in computer science.) the first table The first table is easy to calculate: Start at the last character of the sought string and move towards the first character. Each time you move left, if the character you are on is not in the table already, add it; its Shift value is its distance from the rightmost character. All other characters receive a count equal to the length of the search string. Example: For the string ANPANMAN, the first table would be as shown (for clarity, entries are shown in the order they would be added to the table): The amount of shift calculated by the first table is sometimes called the “bad character shift”[1]. the second table The second table is slightly more difficult to calculate: for each value of i less than the length of the search string, we must first calculate the pattern consisting of the last i characters of the search string, preceded by a mis-match for the character before it; then we initially line it up with the search pattern and determine the least number of characters the partial pattern must be shifted left before the two patterns match. For instance, for the search string ANPANMAN, the table would be as follows: (N signifies any character that is not N) The amount of shift calculated by the second table is sometimes called the “good suffix shift”[2] or “(strong) good suffix rule”. The original published Boyer-Moor algorithm [1] uses a simpler, weaker, version of the good suffix rule in which each entry in the above table did not require a mis-match for the left-most character. This is sometimes called the “weak good suffix rule” and is not sufficient for proving that Boyer-Moore runs in linear worst-case time. Performance of the Boyer-Moore string search algorithm The worst-case to find all occurrences in a text needs approximately 3N comparisons, hence the complexity is O(n), regardless whether the text contains a match or not. The proof is due to Richard Cole, see R. COLE, Tight bounds on the complexity of the Boyer-Moore algorithm, Proceedings of the 2nd Annual ACM-SIAM Symposium on Discrete Algorithms, (1991) for details. This proof took some years to determine. In the year the algorithm was devised, 1977, the maximum number of comparisons was shown to be no more than 6N; in 1980 it was shown to be no more than 4*N, until Cole’s result in 1991. References 1. ^ R. S. Boyer; J. S. Moore (1977). “A fast string searching algorithm”. Comm. ACM 20: 762-772. 输入123two lines and only characters “ACGT” in the string.the first line is string (&lt; = 102000)the second line is text(&lt; = 700000) 输出12position of the string in textelse -1 样例输入12GGCCTCATATCTCTCTCCCATTGGCCTCATATCTCTCTCCCTCCCTCCCCTGCCCAGGCTGCTTGGCATGG 样例输出16 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include &lt;iostream&gt;#include &lt;cstring&gt;using namespace std;//全局变量 int table[26];void shiftTable(char str[]) &#123; //将字符串的长度赋值给lens int lens = strlen(str); table[str[lens - 1] - &apos;A&apos;] = lens; for (int i = 0; i &lt; lens - 1; i++) &#123; table[str[i] - &apos;A&apos;] = lens - i - 1; &#125;&#125;int horspoolMatch(char str[], char text[]) &#123; int i, k; int strlens = strlen(str); int textlens = strlen(text); i = strlens - 1; shiftTable(str); while(i &lt;= textlens - 1) &#123; //用来寻找text是否匹配好了 k = 0; while(str[strlens - 1 - k] == text[i - k] &amp;&amp; k &lt;= strlens - 1 ) &#123; k++; &#125; if (k == strlens) &#123; //直接返回下标 return i - strlens + 1; &#125; else &#123; //通过i自增控制匹配的位置 i += table[text[i] - &apos;A&apos;]; &#125; &#125; return -1;&#125;int main() &#123; int pos; //这里是题目的限制 char str[102001], text[700001]; cin&gt;&gt;str&gt;&gt;text; // Boyer–Moore–Horspool algorithm pos = horspoolMatch(str, text); cout&lt;&lt;pos&lt;&lt;endl; return 0;&#125; 结果 参考资料【模式匹配】更快的Boyer-Moore算法]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Boyer–Moore–Horspool</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（五）]]></title>
     <url>%2F2019%2F06%2F09%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 高阶函数 特性 map/reduce filter sorted 高阶函数特性变量可以指向函数。 函数名其实也是变量名。 函数可以接受另一个函数作为参数。 map/reducemap()函数接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。 简单用法如下： 代码： 12test=list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))print(test) 输出： 1234D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Higher-order function.py&quot;[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;]Process finished with exit code 0 reduce把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算。 reduce更多的是和其他的高阶函数配合使用，效果极佳。 简单实例： 12345678from functools import reducedef add(x, y): return x + ytest1=reduce(add, [1, 3, 5, 7, 9])print(test1) 输出： 125 filter作用是过滤。 filter()也是接受两个参数——一个函数一个序列，把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。 值得注意的是——由于filter()使用了惰性计算，所以只有在取filter()结果的时候，才会真正筛选并每次返回下一个筛出的元素。 sortedsort是一个高阶函数，可以接收一个key函数来实现自定义的排序。 简单实例： 123#排序test=sorted([&apos;bob&apos;, &apos;about&apos;, &apos;Zoo&apos;, &apos;Credit&apos;], key=str.lower)print(test)]]></content>
@@ -90,8 +102,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -598,11 +610,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -957,9 +969,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>

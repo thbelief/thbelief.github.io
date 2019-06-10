@@ -313,6 +313,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/31/JavaScript学习笔记-十六/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/31/JavaScript学习笔记-十六/" itemprop="url">JavaScript学习笔记(十六)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-31T08:30:21+08:00">
+                2019-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  551
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#j-query">j-Query</a><ul>
+<li><a href="#ajax">AJAX</a><ul>
+<li><a href="#简单介绍">简单介绍</a></li>
+<li><a href="#get">get</a></li>
+<li><a href="#post">post</a></li>
+<li><a href="#getjson">getJSON</a></li>
+<li><a href="#安全限制">安全限制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="j-query">j-Query</span></h2><h3><span id="ajax">AJAX</span></h3><p>和前面博客提到的原因差不多，由于不同浏览器之间存在的差异，写出的代码其实也是千奇百怪。</p>
+<p>j-Query其实也可以写AJAX，也很方便。</p>
+<h4><span id="简单介绍">简单介绍</span></h4><p><strong>j-Query在全局对象j-Query（$）绑定了ajax()函数，可以处理AJAX请求。</strong></p>
+<p>ajax(url, settings)函数需要接收一个URL和一个可选的settings对象。</p>
+<p>常用选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">async：是否异步执行AJAX请求，默认为true，千万不要指定为false；</span><br><span class="line"></span><br><span class="line">method：发送的Method，缺省为&apos;GET&apos;，可指定为&apos;POST&apos;、&apos;PUT&apos;等；</span><br><span class="line"></span><br><span class="line">contentType：发送POST请求的格式，默认值为&apos;application/x-www-form-urlencoded; charset=UTF-8&apos;，也可以指定为text/plain、application/json；</span><br><span class="line"></span><br><span class="line">data：发送的数据，可以是字符串、数组或object。如果是GET请求，data将被转换成query附加到URL上，如果是POST请求，根据contentType把data序列化成合适的格式；</span><br><span class="line"></span><br><span class="line">headers：发送的额外的HTTP头，必须是一个object；</span><br><span class="line"></span><br><span class="line">dataType：接收的数据格式，可以指定为&apos;html&apos;、&apos;xml&apos;、&apos;json&apos;、&apos;text&apos;等，缺省情况下根据响应的Content-Type猜测。</span><br></pre></td></tr></table></figure>
+<p>如何使用回调函数处理返回的数据和出错时候的响应呢？——j-Query的jqXHR对象类似于之前提到过的Promise对象，可以通过各种链式的写法来处理各种回调。</p>
+<h4><span id="get">get</span></h4><p>常用的AJAX在j-Query中都提供了相应的辅助方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var jqxhr = $.get(&apos;/path/to/resource&apos;, &#123;</span><br><span class="line">    name: &apos;Bob Lee&apos;,</span><br><span class="line">    check: 1</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4><span id="post">post</span></h4><p>和get是类似的，但是需要注意的就是传入的第二个参数被序列化为<strong>application/x-www-form-urlencoded</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var jqxhr = $.post(&apos;/path/to/resource&apos;, &#123;</span><br><span class="line">    name: &apos;Bob Lee&apos;,</span><br><span class="line">    check: 1</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4><span id="getjson">getJSON</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var jqxhr = $.getJSON(&apos;/path/to/resource&apos;, &#123;</span><br><span class="line">    name: &apos;Bob Lee&apos;,</span><br><span class="line">    check: 1</span><br><span class="line">&#125;).done(function (data) &#123;</span><br><span class="line">    // data已经被解析为JSON对象了</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4><span id="安全限制">安全限制</span></h4><p>由于j-Query中AJAX完全是封装的JS中的AJAX操作，所以安全限制和前面学习过的是一模一样的。</p>
+<p>值得注意的是，如果需要使用JSONP的话，可以在ajax()中设置jsonp:’callback’,让j-Query实现JSONP的跨域加载数据。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/30/JavaScript学习笔记-十五/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2263,199 +2475,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/21/Chrome主页被劫持解决方案/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/21/Chrome主页被劫持解决方案/" itemprop="url">Chrome主页被劫持解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T10:22:31+08:00">
-                2019-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/其它/" itemprop="url" rel="index">
-                    <span itemprop="name">其它</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  281
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#检查劫持网页">检查劫持网页</a></li>
-<li><a href="#确定被劫持位置">确定被劫持位置</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天安装软件的时候不小心被强制劫持了主页，被恶心够了，好在最终解决了，用博客记录一下这次的解决过程。</p>
-<h2><span id="正文">正文</span></h2><p>这次我使用的是<strong>Chrome浏览器</strong>。直接使用这个浏览器做示范。</p>
-<h3><span id="检查劫持网页">检查劫持网页</span></h3><p>在地址栏输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://version/</span><br></pre></td></tr></table></figure>
-<p>找到<strong>命令行</strong>这一栏，观察里面是否出现劫持页面的网址。</p>
-<p><img src="/2019/05/21/Chrome主页被劫持解决方案/version.jpg" alt=""></p>
-<h3><span id="确定被劫持位置">确定被劫持位置</span></h3><p>有很多种劫持的方式，所以需要<strong>确定被劫持的是哪个位置。</strong></p>
-<p><strong>快捷方式（任务栏或者非任务栏）、软件名.exe。</strong>大概就这三个地方，每个检查一下就可以了，一般都是快捷方式被属性被修改。</p>
-<p>我这里示范一下检查任务栏固定的时候如何查看，如果在如图步骤之后在<strong>目标</strong>那一栏的后半部分看到了之前看到的网址。直接删除即可，这样打开浏览器就可以看到恢复啦！</p>
-<p><img src="/2019/05/21/Chrome主页被劫持解决方案/1.jpg" alt=""></p>
-<p><img src="/2019/05/21/Chrome主页被劫持解决方案/2.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2508,7 +2527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2530,7 +2549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">157</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2615,7 +2634,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共130.1k字</span>
+  <span class="post-count">博客全站共131.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

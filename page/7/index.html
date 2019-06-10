@@ -313,6 +313,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/14/Auto-js-Script开发-八/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/14/Auto-js-Script开发-八/" itemprop="url">Auto.js Script开发(八)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T22:00:53+08:00">
+                2019-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Auto-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Auto.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  753
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#关键代码">关键代码</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>今天的话主要就是修复了一下易班签到的BUG吧，然后就是下面贴一下代码，太累了，就不仔细的解释了，好了，下面开始~~~</p>
+<h2><span id="正文">正文</span></h2><h3><span id="关键代码">关键代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">function SignIn(signInAccount,signInPassword)&#123;</span><br><span class="line">    var t=threads.start(function()&#123; </span><br><span class="line">        //输入账号密码</span><br><span class="line">        id(&quot;login_account_et&quot;).findOne().setText(signInAccount);</span><br><span class="line">        id(&quot;login_password_et&quot;).findOne().setText(signInPassword);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //登录按钮</span><br><span class="line">        id(&quot;login_btn&quot;).findOne().click();</span><br><span class="line">        //等待前往主页面活动</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //去签到的页面</span><br><span class="line">        id(&quot;page_home_discover_tab_btn&quot;).findOne().click()</span><br><span class="line">        id(&quot;page_explore_chenckin_layout&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        //判断是否有签到，签到了直接退出，没有签到就签到</span><br><span class="line">        if(text(&quot;奖励已经拿过咯~&quot;).exists())&#123;</span><br><span class="line">            //已经签过到的页面</span><br><span class="line">            toast(signInAccount+&quot;已经签到过了!&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;已经签到过了!&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;else if(text(&quot;下一步&quot;).exists())&#123;</span><br><span class="line">            //检测是否打开自动同步开关</span><br><span class="line">            if(isShareButton)&#123;</span><br><span class="line">                //如果打开了就直接勾选</span><br><span class="line">                    id(&quot;sync_to_feed_check&quot;).clickable().find().click();</span><br><span class="line">                    accountSignInMessage.push(signInAccount+&quot;签到已经同步至动态!&quot;);</span><br><span class="line">                    toast(&quot;已经勾选同步动态按钮，正在同步中...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            //没有签过到的页面</span><br><span class="line">            sleep(1000);</span><br><span class="line">            var t=className(&quot;android.widget.LinearLayout&quot;).clickable().find();</span><br><span class="line">            //默认选择第二个答案</span><br><span class="line">            t[2].click();</span><br><span class="line">            toast(signInAccount+&quot;签到完成了哦！&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;签到完成了哦!&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            text(&quot;下一步&quot;).findOne().click();</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            toast(&quot;签到失败，未检索到&quot;);</span><br><span class="line">            accountSignInMessage.push(signInAccount+&quot;签到失败，未检索到&quot;);</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(isSendMessage)&#123;</span><br><span class="line">            //如果打开了群聊冒泡的开关</span><br><span class="line">            toast(&quot;正在准备群聊冒泡...&quot;);</span><br><span class="line">            id(&quot;page_home_contacts_tab_btn&quot;).clickable().find().click();</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;l_groupchat&quot;).clickable().find().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.GroupMergeActivity&quot;);</span><br><span class="line">            sleep(1000)</span><br><span class="line">            if(text(sendName).exists())&#123;</span><br><span class="line">                toast(&quot;发现群聊:&quot;+sendName+&quot;!&quot;);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                //本身返回的不是集合，还要找子控件集合</span><br><span class="line">                var t=className(&quot;android.widget.TextView&quot;).text(sendName).findOne().bounds();</span><br><span class="line">                click(t.centerX(),t.centerY());</span><br><span class="line">                waitForActivity(&quot;com.yiban.app.activity.ChatActivity&quot;);</span><br><span class="line">                toast(&quot;已经打开群聊，准备冒泡...&quot;);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                id(&quot;page_chat_message_et&quot;).findOne().setText(sendContent);</span><br><span class="line">                sleep(1000);</span><br><span class="line">                id(&quot;page_chat_message_send_btn&quot;).findOne().click();</span><br><span class="line">                toast(&quot;账号&quot;+signInAccount+&quot;发送&quot;+sendContent+&quot;在&quot;+sendName);</span><br><span class="line">                accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;发送&quot;+sendContent+&quot;在&quot;+sendName);</span><br><span class="line">                id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">                waitForActivity(&quot;com.yiban.app.activity.GroupMergeActivity&quot;);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                toast(&quot;未检索到群聊！&quot;);</span><br><span class="line">                accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;未检索到&quot;+sendName);</span><br><span class="line">            &#125;</span><br><span class="line">            sleep(1000);</span><br><span class="line">            id(&quot;widget_custom_titlebar_back_btn&quot;).findOne().click();</span><br><span class="line">            waitForActivity(&quot;com.yiban.app.activity.HomeActivity&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //退出当前账号</span><br><span class="line">        id(&quot;widget_custom_head&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.UserInfoPageActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        id(&quot;r_setting&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.SettingMainActivity&quot;);</span><br><span class="line">        sleep(1000);</span><br><span class="line">        text(&quot;退出账号&quot;).findOne().click();</span><br><span class="line">        sleep(1000);</span><br><span class="line">        id(&quot;positiveButton&quot;).findOne().click();</span><br><span class="line">        waitForActivity(&quot;com.yiban.app.activity.LoginNew2Activity&quot;);</span><br><span class="line">        toast(signInAccount+&quot;正常退出并正在销毁线程...&quot;);</span><br><span class="line">        accountSignInMessage.push(&quot;账号&quot;+signInAccount+&quot;正常销毁线程！&quot;);</span><br><span class="line">        t.interrupt();</span><br><span class="line">       </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/13/Android-Lottie动画库/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2307,212 +2501,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/05/java基础-线程停止的三种方式/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/05/java基础-线程停止的三种方式/" itemprop="url">java基础-线程停止的三种方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T20:55:22+08:00">
-                2019-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  567
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前提">前提</a></li>
-<li><a href="#方式一">方式一</a></li>
-<li><a href="#方式二">方式二</a></li>
-<li><a href="#方式三">方式三</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前提">前提</span></h2><p>停止线程在多线程开发中很有必要，掌握线程的停止可以对线程的停止进行有效的处理。</p>
-<h2><span id="方式一">方式一</span></h2><p>使用<strong>退出标志</strong>，使得线程正常的退出，也就是run方法之后进程终止。用flag来作为进程是否继续进行的条件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void run() &#123;</span><br><span class="line">    while(flag)&#123;</span><br><span class="line">        //do something</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="方式二">方式二</span></h2><p>使用<strong>stop</strong>强行中断线程，<strong>不推荐使用</strong>，暴力终止，可能使一些清理性的工作得不到完成。还可能对锁定的内容进行解锁，容易造成数据不同步的问题。</p>
-<h2><span id="方式三">方式三</span></h2><p><strong>使用interrupt方法中断线程。</strong></p>
-<p>java中有以下两个方法：</p>
-<p><strong>this.interrupted():</strong>测试当前线程是否已经中断（静态方法）。如果连续调用该方法，则第二次调用将返回false。在api文档中说明interrupted()方法具有<strong>清除状态</strong>的功能。执行后具有<strong>将状态标识清除为false</strong>的功能。</p>
-<p><strong>this.isInterrupted():</strong>测试线程是否已经中断，但是<strong>不能清除状态标识</strong>。</p>
-<p>抛异常法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread4 extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        try &#123;</span><br><span class="line">            for (int i = 0; i &lt; 50000; i++) &#123;</span><br><span class="line">                if (this.isInterrupted()) &#123;</span><br><span class="line">                    System.out.println( &quot;线程已经结束，我要退出&quot; );</span><br><span class="line">//                    return;</span><br><span class="line">                    throw new InterruptedException();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println( &quot;i=&quot; + (i + 1) );</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println( &quot;我是for下面的语句，我被执行说明线程没有真正结束&quot; );</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            System.out.println( &quot;进入MyThread.java类中run方法的catch异常了&quot; );</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>沉睡停止法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line">   public void run() &#123;</span><br><span class="line">       super.run();</span><br><span class="line">       try &#123;</span><br><span class="line">           System.out.println( &quot;begin run&quot; );</span><br><span class="line">           Thread.sleep( 500 );</span><br><span class="line">           System.out.println( &quot;begin end&quot; );</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println(&quot;在沉睡中终止&quot;);</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           MyThread5 thread5 = new MyThread5();</span><br><span class="line">           thread5.start();</span><br><span class="line">           Thread.sleep( 20 );</span><br><span class="line">           thread5.interrupt();</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println( &quot;main catch&quot; );</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> try &#123;</span><br><span class="line">           for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">               System.out.println( &quot;i=&quot;  +(i + 1) );</span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println( &quot;run begin&quot; );</span><br><span class="line">           Thread.sleep( 200 );</span><br><span class="line">           System.out.println( &quot;run end&quot; );</span><br><span class="line">       &#125; catch (InterruptedException e) &#123;</span><br><span class="line">           System.out.println( &quot;先停止，后sleep&quot; );</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">           MyThread5 thread5 = new MyThread5();</span><br><span class="line">           thread5.start();</span><br><span class="line">           thread5.interrupt();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/jiadajing267/article/details/80137006" target="_blank" rel="noopener">参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2565,7 +2553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2587,7 +2575,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">157</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2672,7 +2660,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共130.1k字</span>
+  <span class="post-count">博客全站共131.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
