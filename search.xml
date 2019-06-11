@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Chrome插插件-Vimium]]></title>
-    <url>%2F2019%2F06%2F11%2FChrome%E6%8F%92%E6%8F%92%E4%BB%B6-Vimium%2F</url>
+    <title><![CDATA[Chrome插件-Vimium]]></title>
+    <url>%2F2019%2F06%2F11%2FChrome%E6%8F%92%E4%BB%B6-Vimium%2F</url>
     <content type="text"><![CDATA[目录： 下载链接 快捷键 官网 下载链接传送门 快捷键 官网Vimium官网]]></content>
       <categories>
         <category>其它</category>
@@ -116,8 +116,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -624,11 +624,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -983,9 +983,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
