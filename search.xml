@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Renting Boats]]></title>
+    <url>%2F2019%2F06%2F12%2FRenting-Boats%2F</url>
+    <content type="text"><![CDATA[目录： Renting Boats 题目 输入 输出 样例输入复制 样例输出 思路 代码 结果 Renting Boats题目长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&lt; =i&lt; j &lt; =n。试设计一个算法，计算出从游艇出租站1 到游艇出租站n 所需的最少租金。 输入1第1 行中有1 个正整数n（n&lt;=200），表示有n个游艇出租站。接下来的n-1 行是r(i,j),1&lt; =i&lt; j &lt; =n。 输出1从游艇出租站1 到游艇出租站n所需的最少租金 样例输入复制12335 157 样例输出112 思路这是一道动态规划的题目，但是也可以使用蛮力法来做。 我们可以使用数组去存具体的租金，然后算每一段距离的租金之和，如果便宜的话就保存下来下次去比较，知道最后比较完肯定是最少租金的一种方法。 代码注意这里是多组输入！ 123456789101112131415161718192021#include&lt;iostream&gt;using namespace std;int main()&#123; //首先是定义一个数组用来存放出租站的坐标，初始化为0 int coordinates[201][201]=&#123;0&#125;; int n;//出租站的总数 while(cin&gt;&gt;n)&#123; for(int i=1;i&lt;n;i++)&#123; for(int j=i+1;j&lt;=n;j++)&#123; cin&gt;&gt;coordinates[i][j]; //每一次判断之后都将最短距离放到1的位置，然后到最后输出这个值即可。 if(coordinates[1][j]&gt;coordinates[1][i]+coordinates[i][j])&#123; coordinates[1][j]=coordinates[1][i]+coordinates[i][j]; &#125; &#125; &#125; cout&lt;&lt;coordinates[1][n]&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Renting Boats</tag>
+        <tag>SWUST OJ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Chrome插件-Vimium]]></title>
     <url>%2F2019%2F06%2F11%2FChrome%E6%8F%92%E4%BB%B6-Vimium%2F</url>
     <content type="text"><![CDATA[目录： 下载链接 快捷键 官网 下载链接传送门 快捷键 官网Vimium官网]]></content>
@@ -116,8 +128,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>报错</tag>
+        <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -624,11 +636,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -1159,10 +1171,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -1264,9 +1276,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

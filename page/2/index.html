@@ -313,6 +313,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/02/Android-APK反编译/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/Android-APK反编译/" itemprop="url">Android-APK反编译</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T15:23:42+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  565
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#准备">准备</a><ul>
+<li><a href="#apktool">apktool</a></li>
+<li><a href="#dex2jar">dex2jar</a></li>
+<li><a href="#jd-guijadx-gui">jd-gui/jadx-gui</a></li>
+</ul>
+</li>
+<li><a href="#使用">使用</a><ul>
+<li><a href="#反编译apk获得资源文件">反编译apk获得资源文件</a></li>
+<li><a href="#反编译apk获得java源码">反编译apk获得java源码</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>反编译不是拿来做歪门邪道的，只是拿来学习。</p>
+<h2><span id="准备">准备</span></h2><p>首先是下载好下面三个工具：</p>
+<h3><span id="apktool">apktool</span></h3><p>这个是<strong>获取资源</strong>的，可以提取出图片文件以及布局文件进行查看。</p>
+<p><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">apktool官网</a></p>
+<p>需要注意一点——下载的时候不只是下载jar，还需要下载<strong>apktool.bat</strong>。具体的就看官网的安装说明即可。</p>
+<p><img src="/2019/06/02/Android-APK反编译/1.jpg" alt=""></p>
+<p>下载完成之后将两个文件保存到自己找到的的位置，我是放在D盘下面的apktool文件夹。</p>
+<p>之后就根据自己放的位置<strong>配置环境变量。</strong></p>
+<p><img src="/2019/06/02/Android-APK反编译/2.jpg" alt=""></p>
+<h3><span id="dex2jar">dex2jar</span></h3><p><a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">下载网址</a></p>
+<p>它的作用是<strong>将apk反编译为java源码</strong>（classes.dex转化成jar文件）。</p>
+<p>下载之后同样<strong>配置好环境变量。</strong></p>
+<h3><span id="jd-guijadx-gui">jd-gui/jadx-gui</span></h3><p>上面两个图形化界面随便选一个都可以。</p>
+<p><a href="https://code.google.com/archive/p/innlab/downloads" target="_blank" rel="noopener">jd-gui下载网址</a></p>
+<p>它的作用是<strong>查看APK中classes.dex转化成出的jar文件，即源码文件。</strong></p>
+<p>下载之后放到自己知道的位置，方便之后使用。</p>
+<h2><span id="使用">使用</span></h2><p>测试是在<strong>WIn10的环境</strong>下面进行的。</p>
+<h3><span id="反编译apk获得资源文件">反编译apk获得资源文件</span></h3><p>打开cmd，定位到apktool文件夹下面，把要反编译的apk放到这个文件夹下面，这里的命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apktool d THBELIEFScript.apk_5.2.0.apk //这里的apk名字是我自己开发的apk名字</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="/2019/06/02/Android-APK反编译/3.jpg" alt=""></p>
+<p><strong>生成的同名文件夹即资源文件存放的位置。</strong></p>
+<h3><span id="反编译apk获得java源码">反编译apk获得java源码</span></h3><p>首先是将apk后缀的安装包改后缀为.zip或者.rar然后解压。找到其中的<strong>classes.dex文件</strong>。（这个文件是后面要用的，必须找到），然后将该文件放到D:\dex2\dex2jar-2.0（这个是我自己解压之后<strong>dex2放的文件夹</strong>）下面。</p>
+<p>通过命令行定位过去，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2j-dex2jar.bat classed.dex //这里的d2j-dex2jar.bat是我这个版本的，其他版本的换一下就行了</span><br></pre></td></tr></table></figure>
+<p>输入之后回车会在该目录下面生成一个<strong>classes_dex2jar.jar</strong>文件。然后通过jd-gui打开就可以直接看到源码了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/01/JavaScript学习笔记-十七/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2258,227 +2483,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/23/JavaScript学习笔记-十/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/JavaScript学习笔记-十/" itemprop="url">JavaScript学习笔记(十)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T09:12:05+08:00">
-                2019-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  642
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#promise">Promise</a><ul>
-<li><a href="#简单介绍">简单介绍</a></li>
-<li><a href="#是否支持promise">是否支持Promise</a></li>
-<li><a href="#简单实例">简单实例</a></li>
-<li><a href="#用法">用法</a><ul>
-<li><a href="#promisethenthencatch-多任务串行执行">Promise().then().then….catch() 多任务串行执行</a></li>
-<li><a href="#promiseallp1p2-多任务并行执行">Promise.all([p1,p2,…]) 多任务并行执行</a></li>
-<li><a href="#promiseracep1p2-多任务赛跑">Promise.race([p1,p2,…]) 多任务赛跑</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="promise">Promise</span></h2><p>在JS中，所有的代码其实都是<strong>单线程</strong>执行的。</p>
-<p>这也就导致了前面提到过的，所有的网络请求之类的操作都需要<strong>异步执行。（回调函数）</strong></p>
-<p>例如:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'test'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line">setTimeout(callback, <span class="number">1000</span>); <span class="comment">// 1秒钟后调用callback函数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br></pre></td></tr></table></figure>
-<p>1s之后出现了test：</p>
-<p><img src="/2019/05/23/JavaScript学习笔记-十/1.jpg" alt=""></p>
-<p>一般AJAX的操作写法如下：</p>
-<p>好处是统一执行逻辑，不关心是否结果正常，后面再加上判断即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ajax = ajaxGet(<span class="string">'http://...'</span>);</span><br><span class="line">ajax.ifSuccess(success)</span><br><span class="line">    .ifFail(fail);</span><br></pre></td></tr></table></figure>
-<h3><span id="简单介绍">简单介绍</span></h3><p>所谓的Promise，其实就是承诺的意思。</p>
-<p>意思是——<strong>承诺将来会执行。</strong></p>
-<p>Promise在ES6中统一规范，是浏览器直接支持的，<strong>有些浏览器不支持。。。</strong></p>
-<h3><span id="是否支持promise">是否支持Promise</span></h3><p>可以通过以下代码测试是否支持Promise：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;);<span class="comment">// 直接运行测试:</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Promise!'</span>);</span><br></pre></td></tr></table></figure>
-<p>如果支持的话，会返回Promise这个字符串：</p>
-<p><img src="/2019/05/23/JavaScript学习笔记-十/2.jpg" alt=""></p>
-<h3><span id="简单实例">简单实例</span></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清除log:</span></span><br><span class="line"><span class="keyword">var</span> logging = <span class="built_in">document</span>.getElementById(<span class="string">'test-promise-log'</span>);</span><br><span class="line"><span class="keyword">while</span> (logging.children.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    logging.removeChild(logging.children[logging.children.length - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出log到页面:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">    p.innerHTML = s;</span><br><span class="line">    logging.appendChild(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    log(<span class="string">'start new Promise...'</span>);</span><br><span class="line">    <span class="keyword">var</span> timeOut = <span class="built_in">Math</span>.random() * <span class="number">2</span>;</span><br><span class="line">    log(<span class="string">'set timeout to: '</span> + timeOut + <span class="string">' seconds.'</span>);</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timeOut &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            log(<span class="string">'call resolve()...'</span>);</span><br><span class="line">            resolve(<span class="string">'200 OK'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            log(<span class="string">'call reject()...'</span>);</span><br><span class="line">            reject(<span class="string">'timeout in '</span> + timeOut + <span class="string">' seconds.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, timeOut * <span class="number">1000</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">r</span>) </span>&#123;</span><br><span class="line">    log(<span class="string">'Done: '</span> + r);</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">reason</span>) </span>&#123;</span><br><span class="line">    log(<span class="string">'Failed: '</span> + reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/23/JavaScript学习笔记-十/3.jpg" alt=""></p>
-<p>可以清晰的看到，执行的代码和处理结果的代码进行了分离。</p>
-<h3><span id="用法">用法</span></h3><h4><span id="promisethenthencatch-多任务串行执行">Promise().then().then….catch() 多任务串行执行</span></h4><p>情景化记忆:在一个任务链中,比如我要向上级部门一层层的往上提交申请,if(某种条件)承诺帮你resolve解决问题,else承诺reject你的请求. 他给出的resolve问题的办法只是个空头Promise,then到总经理那实现具体承诺,如果总经理还是给一个空头承诺(返回Promise实例),还得then到董事长那里…. 任一一步做出的是reject的承诺,还有什么好说的,被拒绝了,后面的就不会再往上走了呀. 准备catch 拒绝通知吧blablabla.</p>
-<h4><span id="promiseallp1p2-多任务并行执行">Promise.all([p1,p2,…]) 多任务并行执行</span></h4><p>都要成功才进入then,返回结果数组.</p>
-<h4><span id="promiseracep1p2-多任务赛跑">Promise.race([p1,p2,…]) 多任务赛跑</span></h4><p>then()和catch(),谁先调用算谁的,其它任务中断.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2531,7 +2535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-count">105</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2553,7 +2557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">161</span>
+                  <span class="site-state-item-count">163</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2638,7 +2642,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共131.4k字</span>
+  <span class="post-count">博客全站共131.9k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
