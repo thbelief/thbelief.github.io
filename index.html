@@ -313,6 +313,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/13/QQ空间批量删除说说（JS）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/13/QQ空间批量删除说说（JS）/" itemprop="url">QQ空间批量删除说说（JS）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T09:12:11+08:00">
+                2019-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  311
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#下载">下载</a></li>
+<li><a href="#截图">截图</a></li>
+<li><a href="#代码">代码</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>为了使用写的一个小东西，QQ空间网页版说说栏目下可以进行全自动化批量删除说说。</p>
+<h2><span id="下载">下载</span></h2><p><a href="https://greasyfork.org/zh-CN/scripts/385701-qq%E7%A9%BA%E9%97%B4%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E8%AF%B4%E8%AF%B4" target="_blank" rel="noopener">传送门</a></p>
+<h2><span id="截图">截图</span></h2><p><img src="/2019/06/13/QQ空间批量删除说说（JS）/1.jpg" alt=""></p>
+<p><img src="/2019/06/13/QQ空间批量删除说说（JS）/2.jpg" alt=""></p>
+<h2><span id="代码">代码</span></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ==UserScript==</span></span><br><span class="line"><span class="comment">// @name         QQ空间批量删除说说</span></span><br><span class="line"><span class="comment">// @namespace    none</span></span><br><span class="line"><span class="comment">// @version      1.0.0</span></span><br><span class="line"><span class="comment">// @description  主要用于在QQ空间网页版的说说栏目下进行批量删除说说</span></span><br><span class="line"><span class="comment">// @author       thbelief</span></span><br><span class="line"><span class="comment">// @include      *://user.qzone.qq.com/*</span></span><br><span class="line"><span class="comment">// ==/UserScript==</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="comment">//延迟时间定义1s</span></span><br><span class="line">    <span class="keyword">let</span> delayTime = <span class="number">1000</span>; </span><br><span class="line">    <span class="keyword">let</span> isStart=<span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//这个用来存setTimeout对象</span></span><br><span class="line">    <span class="keyword">var</span> timeoutTmp;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">deleteShuoShuo</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">       </span><br><span class="line">            <span class="comment">//执行删除的方法</span></span><br><span class="line">            <span class="built_in">document</span>.querySelector(<span class="string">'.app_canvas_frame'</span>).contentDocument.querySelector(<span class="string">'.del_btn'</span>).click(); </span><br><span class="line">            setTimeout(toSureDelete, delayTime); </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"删除说说+1"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">toSureDelete</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span>(isStart)&#123;</span><br><span class="line">            <span class="comment">//确定删除的方法</span></span><br><span class="line">            <span class="built_in">document</span>.querySelector(<span class="string">'.qz_dialog_layer_btn'</span>).click(); </span><br><span class="line">            timeoutTmp=setTimeout(deleteShuoShuo, delayTime); </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"停止确定！"</span>);</span><br><span class="line">            alert(<span class="string">"已停止删除说说功能！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">//调用此函数即可</span></span><br><span class="line">    <span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!e) e = <span class="built_in">window</span>.event;</span><br><span class="line">        <span class="comment">//如果是空格的话就执行</span></span><br><span class="line">        <span class="keyword">if</span> ((e.keyCode || e.which) == <span class="number">32</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"检测到 按下了空格键"</span>);</span><br><span class="line">            <span class="keyword">if</span>(isStart)&#123;</span><br><span class="line">                isStart=<span class="literal">false</span>;</span><br><span class="line">                <span class="comment">// clearTimeout(timeoutTmp);</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"停止删除说说！"</span>);</span><br><span class="line">                </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> r = confirm(<span class="string">"是否批量删除说说？"</span>);</span><br><span class="line">                <span class="keyword">if</span> (r == <span class="literal">true</span>) &#123;</span><br><span class="line">                    isStart=<span class="literal">true</span>;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"开始删除说说！"</span>);</span><br><span class="line">                    deleteShuoShuo();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"取消删除说说！"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/12/Renting-Boats/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2165,203 +2361,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/03/Android-安装Gradle报错解决/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/03/Android-安装Gradle报错解决/" itemprop="url">Android-安装Gradle报错解决</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-03T11:54:30+08:00">
-                2019-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  214
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#原因">原因</a></li>
-<li><a href="#解决方案">解决方案</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天升级了AndroidStudio之后提示需要重新安装Gradle相关的东西，由于国内的<strong>不知名原因</strong>导致速度很慢很慢。设置了国内的HTTP代理之后报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not GET &apos;https://dl.google.com/dl/android/maven2/com/android/support/appcompat-v7/28.0.0/appcompat-v7-28.0.0.pom&apos;. Received status code 400 from server: Bad Request Enable Gradle &apos;offline mode&apos; and sync project</span><br></pre></td></tr></table></figure>
-<h2><span id="原因">原因</span></h2><p>设置代理的地方如下：</p>
-<p>如下图可知，由于使用的是国内的镜像代理，这里涉及到一个<strong>https与http的差异</strong>，这里涉及到的就是这个问题。</p>
-<p><img src="/2019/06/03/Android-安装Gradle报错解决/1.jpg" alt=""></p>
-<h2><span id="解决方案">解决方案</span></h2><p>直接在Android目录下找到<strong>gradle.properties</strong>这个文件打开，会发现图中两个https的，注释掉之后重新编译之后就可以发现项目不会出现问题了。</p>
-<p><img src="/2019/06/03/Android-安装Gradle报错解决/2.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2414,7 +2413,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2436,7 +2435,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">163</span>
+                  <span class="site-state-item-count">164</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2521,7 +2520,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共131.9k字</span>
+  <span class="post-count">博客全站共132.2k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

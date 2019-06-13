@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[QQ空间批量删除说说（JS）]]></title>
+    <url>%2F2019%2F06%2F13%2FQQ%E7%A9%BA%E9%97%B4%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E8%AF%B4%E8%AF%B4%EF%BC%88JS%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 前言 下载 截图 代码 前言为了使用写的一个小东西，QQ空间网页版说说栏目下可以进行全自动化批量删除说说。 下载传送门 截图 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960// ==UserScript==// @name QQ空间批量删除说说// @namespace none// @version 1.0.0// @description 主要用于在QQ空间网页版的说说栏目下进行批量删除说说// @author thbelief// @include *://user.qzone.qq.com/*// ==/UserScript==(function() &#123; 'use strict'; //延迟时间定义1s let delayTime = 1000; let isStart=false; //这个用来存setTimeout对象 var timeoutTmp; function deleteShuoShuo() &#123; //执行删除的方法 document.querySelector('.app_canvas_frame').contentDocument.querySelector('.del_btn').click(); setTimeout(toSureDelete, delayTime); console.log("删除说说+1"); &#125; function toSureDelete() &#123; if(isStart)&#123; //确定删除的方法 document.querySelector('.qz_dialog_layer_btn').click(); timeoutTmp=setTimeout(deleteShuoShuo, delayTime); &#125;else&#123; console.log("停止确定！"); alert("已停止删除说说功能！"); &#125; &#125; //调用此函数即可 document.onkeydown = function (e) &#123; if (!e) e = window.event; //如果是空格的话就执行 if ((e.keyCode || e.which) == 32) &#123; console.log("检测到 按下了空格键"); if(isStart)&#123; isStart=false; // clearTimeout(timeoutTmp); console.log("停止删除说说！"); &#125;else&#123; var r = confirm("是否批量删除说说？"); if (r == true) &#123; isStart=true; console.log("开始删除说说！"); deleteShuoShuo(); &#125; else &#123; console.log("取消删除说说！"); &#125; &#125; &#125; &#125;&#125;)();]]></content>
+      <categories>
+        <category>后端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>JavaScript</tag>
+        <tag>脚本</tag>
+        <tag>QQ空间</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Renting Boats]]></title>
     <url>%2F2019%2F06%2F12%2FRenting-Boats%2F</url>
     <content type="text"><![CDATA[目录： Renting Boats 题目 输入 输出 样例输入复制 样例输出 思路 代码 结果 Renting Boats题目长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&lt; =i&lt; j &lt; =n。试设计一个算法，计算出从游艇出租站1 到游艇出租站n 所需的最少租金。 输入1第1 行中有1 个正整数n（n&lt;=200），表示有n个游艇出租站。接下来的n-1 行是r(i,j),1&lt; =i&lt; j &lt; =n。 输出1从游艇出租站1 到游艇出租站n所需的最少租金 样例输入复制12335 157 样例输出112 思路这是一道动态规划的题目，但是也可以使用蛮力法来做。 我们可以使用数组去存具体的租金，然后算每一段距离的租金之和，如果便宜的话就保存下来下次去比较，知道最后比较完肯定是最少租金的一种方法。 代码注意这里是多组输入！ 123456789101112131415161718192021#include&lt;iostream&gt;using namespace std;int main()&#123; //首先是定义一个数组用来存放出租站的坐标，初始化为0 int coordinates[201][201]=&#123;0&#125;; int n;//出租站的总数 while(cin&gt;&gt;n)&#123; for(int i=1;i&lt;n;i++)&#123; for(int j=i+1;j&lt;=n;j++)&#123; cin&gt;&gt;coordinates[i][j]; //每一次判断之后都将最短距离放到1的位置，然后到最后输出这个值即可。 if(coordinates[1][j]&gt;coordinates[1][i]+coordinates[i][j])&#123; coordinates[1][j]=coordinates[1][i]+coordinates[i][j]; &#125; &#125; &#125; cout&lt;&lt;coordinates[1][n]&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
@@ -995,9 +1010,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
