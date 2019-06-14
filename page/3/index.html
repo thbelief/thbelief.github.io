@@ -313,6 +313,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/25/JavaScript学习笔记-十一/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/25/JavaScript学习笔记-十一/" itemprop="url">JavaScript学习笔记(十一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T19:55:31+08:00">
+                2019-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  728
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#canvas">Canvas</a><ul>
+<li><a href="#简单介绍">简单介绍</a></li>
+<li><a href="#创建画布">创建画布</a></li>
+<li><a href="#浏览器支持">浏览器支持</a></li>
+<li><a href="#使用">使用</a></li>
+<li><a href="#绘制">绘制</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="canvas">Canvas</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p>Canvas是HTML5之后新增的组件，其实就是相当于<strong>画布</strong>，本身这个元素是没有绘制能力的，但是可以通过JS在这个画布上面进行图形与表格的绘制之类的。</p>
+<h3><span id="创建画布">创建画布</span></h3><p>一个Canvas其实就是定义了一个<strong>指定尺寸的矩形框</strong>，在这个范围里面可以随意的绘制自己想要绘制的图形。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<canvas id="testCanvas" width="250" height="250"></canvas>
+
+<h3><span id="浏览器支持">浏览器支持</span></h3><p>由于不同的浏览器对于HTML5的支持标准不同，所以，<strong>使用这个画布之前必须加以判断</strong>，比如如果不支持的话返回提示。</p>
+<p>实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;testCanvas&quot; width=&quot;250&quot; height=&quot;250&quot;&gt;</span><br><span class="line">	 &lt;p&gt;Does not support！&lt;/p&gt;</span><br><span class="line">&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<p>如果浏览器支持Canvas的话会直接忽略内部的HTML，如果不支持的话就会显示画布里面的内容。</p>
+<p>检测方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var canvas = document.getElementById(&apos;testCanvas&apos;);</span><br><span class="line">if (canvas.getContext) &#123;</span><br><span class="line">    console.log(&apos;浏览器支持Canvas!&apos;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    console.log(&apos;浏览器不支持Canvas!&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="使用">使用</span></h3><p>这里以2D作为示例。</p>
+<p>要对一个画布对象进行绘制的话，首先需要<strong>获取到一个2D对象。</strong>方法是<strong>getContext(‘2d’)</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ctx = canvas.getContext(&apos;2d&apos;);</span><br></pre></td></tr></table></figure>
+<p>绘制3D的话需要使用WebGL规范：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test = canvas.getContext(&quot;webgl&quot;);</span><br></pre></td></tr></table></figure>
+<h3><span id="绘制">绘制</span></h3><p>Canvas的坐标以左上角为原点，水平向右为X轴，垂直向下为Y轴，以像素为单位，所以每个点都是<strong>非负整数。</strong></p>
+<p>基本形状绘制：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'test-shape-canvas'</span>),</span><br><span class="line">ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明</span></span><br><span class="line">ctx.fillStyle = <span class="string">'#dddddd'</span>; <span class="comment">// 设置颜色</span></span><br><span class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">130</span>, <span class="number">130</span>); <span class="comment">// 把(10,10)位置大小为130x130的矩形涂色</span></span><br><span class="line"><span class="comment">// 利用Path绘制复杂路径:</span></span><br><span class="line"><span class="keyword">var</span> path=<span class="keyword">new</span> Path2D();</span><br><span class="line">path.arc(<span class="number">75</span>, <span class="number">75</span>, <span class="number">50</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">path.moveTo(<span class="number">110</span>,<span class="number">75</span>);</span><br><span class="line">path.arc(<span class="number">75</span>, <span class="number">75</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</span><br><span class="line">path.moveTo(<span class="number">65</span>, <span class="number">65</span>);</span><br><span class="line">path.arc(<span class="number">60</span>, <span class="number">65</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">path.moveTo(<span class="number">95</span>, <span class="number">65</span>);</span><br><span class="line">path.arc(<span class="number">90</span>, <span class="number">65</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI*<span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">ctx.strokeStyle = <span class="string">'#0000ff'</span>;</span><br><span class="line">ctx.stroke(path);</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="/2019/05/25/JavaScript学习笔记-十一/1.jpg" alt=""></p>
+<p>基本文本绘制：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'test-text-canvas'</span>),</span><br><span class="line">ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.shadowOffsetX = <span class="number">2</span>;</span><br><span class="line">ctx.shadowOffsetY = <span class="number">2</span>;</span><br><span class="line">ctx.shadowBlur = <span class="number">2</span>;</span><br><span class="line">ctx.shadowColor = <span class="string">'#666666'</span>;</span><br><span class="line">ctx.font = <span class="string">'24px Arial'</span>;</span><br><span class="line">ctx.fillStyle = <span class="string">'#333333'</span>;</span><br><span class="line">ctx.fillText(<span class="string">'带阴影的文字'</span>, <span class="number">20</span>, <span class="number">40</span>);</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="/2019/05/25/JavaScript学习笔记-十一/2.jpg" alt=""></p>
+<h3><span id="注意事项">注意事项</span></h3><p>1.尽量使用整数坐标而不是浮点数。</p>
+<p>2.如果要实现很复杂的效果的话，可以使用多个重叠的画布而不是在一个画布上面进行复杂的绘制。</p>
+<p>3.背景图片如果不变可以直接用img标签并放到最底层。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/24/机器学习实验-K-Means模型聚类/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2251,236 +2475,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/15/JavaScript学习笔记-七/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/15/JavaScript学习笔记-七/" itemprop="url">JavaScript学习笔记(七)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-15T20:40:58+08:00">
-                2019-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#表单">表单</a><ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#输入控件">输入控件</a></li>
-<li><a href="#获取值">获取值</a></li>
-<li><a href="#填充值">填充值</a></li>
-<li><a href="#html5控件">HTML5控件</a></li>
-<li><a href="#提交">提交</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>前面一个博客中其实提到了一个网页脚本这种东西，不得不说，好不好用先不说，但是绝对对学习JS来说是一个很棒的想法。</p>
-<p><a href="https://greasyfork.org/zh-CN" target="_blank" rel="noopener">GreasyFork</a>这个网站就是一个脚本网站，大部分都是JS，可以参考学习。当然，如果要好好的使用的话建议还是下载一个Chrome的脚本插件。</p>
-<p><img src="/2019/05/15/JavaScript学习笔记-七/网站.jpg" alt=""></p>
-<h2><span id="表单">表单</span></h2><h3><span id="简介">简介</span></h3><p>表单其实也是一个<strong>DOM树</strong>。表单的操作对于脚本来说还是非常重要的，比如说输入框下拉框之类的，都可以通过JS来操作。</p>
-<p>表单在网页中主要负责<strong>数据采集</strong>功能。一个表单有三个基本组成部分： </p>
-<p><strong>表单标签</strong>：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。 </p>
-<p><strong>表单域</strong>：包含了文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等。 </p>
-<p><strong>表单按钮</strong>：包括提交按钮、复位按钮和一般按钮；用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作。</p>
-<h3><span id="输入控件">输入控件</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">文本框，对应的&lt;input type=&quot;text&quot;&gt;，用于输入文本；</span><br><span class="line"></span><br><span class="line">口令框，对应的&lt;input type=&quot;password&quot;&gt;，用于输入口令；</span><br><span class="line"></span><br><span class="line">单选框，对应的&lt;input type=&quot;radio&quot;&gt;，用于选择一项；</span><br><span class="line"></span><br><span class="line">复选框，对应的&lt;input type=&quot;checkbox&quot;&gt;，用于选择多项；</span><br><span class="line"></span><br><span class="line">下拉框，对应的&lt;select&gt;，用于选择一项；</span><br><span class="line"></span><br><span class="line">隐藏文本，对应的&lt;input type=&quot;hidden&quot;&gt;，用户不可见，但表单提交时会把隐藏文本发送到服务器。</span><br></pre></td></tr></table></figure>
-<h3><span id="获取值">获取值</span></h3><p>例如获得一个input节点的引用的话，可以直接通过<strong>value</strong>来获得对应的输入值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var input = document.getElementById(&apos;test&apos;);</span><br><span class="line">input.value; // &apos;用户输入的值&apos;</span><br></pre></td></tr></table></figure>
-<p>这种方法可以类推到test、password等等属性，但是需要注意的是value属性对于<strong>单选框/复选框</strong>返回的永远是HTML预设的值，如果需要判断用户选择的是哪些的话，需要用到<strong>checked</strong>判断。</p>
-<p>实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var mon = document.getElementById(&apos;monday&apos;);</span><br><span class="line">var tue = document.getElementById(&apos;tuesday&apos;);</span><br><span class="line">mon.value; // &apos;1&apos;</span><br><span class="line">tue.value; // &apos;2&apos;</span><br><span class="line">mon.checked; // true或者false</span><br><span class="line">tue.checked; // true或者false</span><br></pre></td></tr></table></figure>
-<h3><span id="填充值">填充值</span></h3><p><strong>对于单选框/复选框，设置checked的值即可。</strong></p>
-<p><strong>对于另外的输入控件的话，直接设置value值即可。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var input = document.getElementById(&apos;QQ&apos;);</span><br><span class="line">input.value = &apos;123456789&apos;; // 文本框的内容已更新</span><br></pre></td></tr></table></figure>
-<h3><span id="html5控件">HTML5控件</span></h3><p>HTML5新增大量标准控件，常用的包括<strong>date、datetime、datetime-local、color</strong>等，它们都使用input标签：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;date&quot; value=&quot;2019-05-15&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>实例：</p>
-<input type="date" value="2019-05-15">
-
-<input type="color" value="#ff0000">
-
-<p>注意：这些属性只是对于支持HTML5的浏览器起作用，如果不支持的话就只是简单的<strong>文本格式test</strong>来显示。</p>
-<h3><span id="提交">提交</span></h3><p>JS支持两种方法来提交表单。（AJAX暂且不算）</p>
-<p>方法一 通过<strong>form元素</strong>的<strong>submit()方法</strong>提交一个表单。</p>
-<p>缺点：<strong>扰乱了浏览器对form的正常提交。</strong>浏览器默认点击button type=”submit”时提交表单，或者用户在最后一个输入框按回车键。</p>
-<p>方法二 响应<strong>form</strong>本身的<strong>onsubmit事件</strong>，在提交form时作修改。</p>
-<p>简单实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML --&gt;</span><br><span class="line">&lt;form id=&quot;test-form&quot; onsubmit=&quot;return checkForm()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;test&quot;&gt;</span><br><span class="line">    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">function checkForm() &#123;</span><br><span class="line">    var form = document.getElementById(&apos;test-form&apos;);</span><br><span class="line">    // 可以在此修改form的input...</span><br><span class="line">    // 继续下一步:</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>注意<strong>return true来告诉浏览器继续提交，如果return false，浏览器将不会继续提交form，</strong>这种情况通常对应用户输入有误，提示用户错误信息后终止提交form。</p>
-<p><strong>另外，在检查和修改input时，要充分利用input type=”hidden”来传递数据。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2533,7 +2527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2555,7 +2549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">165</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2640,7 +2634,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共132.2k字</span>
+  <span class="post-count">博客全站共133k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
