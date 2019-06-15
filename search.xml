@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python学习笔记（七）]]></title>
+    <url>%2F2019%2F06%2F15%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 模块（Module） 简单介绍 使用 简单实例 作用域 安装第三方模块 如何安装 Python第三方模块网址 模块（Module）简单介绍Python中的模块——一个.py文件也就是一个模块。 使用模块可以避免函数名和变量名冲突。但是使用的时候还是要注意避免与内置函数名字出现冲突。 内置函数如下： Built-in Function abs() delattr() hash() memoryview() set() all() dict() help() min() setattr() any() dir() hex() next() slice() ascii() divmod() id() object() sorted() bin() enumerate() input() oct() staticmethod() bool() eval() int() open() str() breakpoint() exec() isinstance() ord() sum() bytearray() filter() issubclass() pow() super() bytes() float() iter() print() tuple() callable() format() len() property() type() chr() frozenset() list() range() vars() classmethod() getattr() locals() repr() zip() compile() globals() map() reversed() __import__() complex() hasattr() max() round() 包的出现——是为了防止出现模块儿名冲突，引入的按目录来组织模块的方法。 每一个包目录下面都会有一个init.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。init.py可以是空文件，也可以有Python代码，因为init.py本身就是一个模块，而它的模块名就是包名。 使用简单实例以sys模块为工具写一个hello的模块。 123456789101112131415161718192021222324252627#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/14 8:23# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Module.py# @function: 模块部分的代码——以sys模块为工具写一个hello的模块#任何模块代码的第一个字符串都被视为模块的文档注释&apos; a test module for Module&apos;#使用__author__变量把作者写进去__author__ = &apos;thbelief&apos;#使用其它模块儿的第一步就是导入模块import sysdef test(): #sys模块有一个argv变量，用list存储了命令行的所有参数。argv至少有一个元素，因为第一个参数永远是该.py文件的名称. args = sys.argv if len(args)==1: print(&apos;Hello, world!&apos;) elif len(args)==2: print(&apos;Hello, %s!&apos; % args[1]) else: print(&apos;So many arguments!&apos;)if __name__==&apos;__main__&apos;: test() 运行结果： 注意下面这段代码： 12if __name__==&apos;__main__&apos;: test() 它的作用就是——当我们在命令行运行上面写的这个模块文件时，Python解释器把一个特殊变量name置为main，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。 作用域Python中变量是否给别人使用或者说只在模块内部使用是通过_前缀实现的。 正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等。 类似”_xxx”这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，_abc等。 一般来说——外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。 安装第三方模块如何安装首先是在Windows的命令提示符中输入pip，如果提示未安装或者报错的话，安装好再进行下面的操作。 正常情况如下： 安装命令就是： 1pip install 第三方模块名 Python第三方模块网址PyPI 在这个网址里面可以自由搜索想要的第三方模块，因为要安装一个第三方库，必须先知道该库的名称。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>模块</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（六）]]></title>
     <url>%2F2019%2F06%2F14%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 返回函数 闭包 代码 输出 匿名函数 代码 输出 装饰器 代码 输出 偏函数 代码 输出 返回函数高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。 如果返回的是函数的话，必须还要执行一下。 闭包所谓的闭包就是——当一个函数返回了一个函数后，其内部的局部变量还被新函数引用。 返回的函数并没有立刻执行，而是直到调用了才执行。 代码123456789101112131415161718192021222324252627#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/11 22:03# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Returns the function.py# @function: 返回函数的实例#code#函数作为返回值#简单定义一个返回原值的函数def test(tmp): return tmpprint(test("hello！"))#做一个闭包def test1(tmp): def test(): return tmp return testt=test1("hello，world！")#请注意下面两个的输出print(t);print(t());#返回函数不要引用任何循环变量，或者后续会发生变化的变量。他都会以最后一个为准。#返回的既可以是计算结果也可以是函数，如果返回的是函数的话，是未执行的函数。 输出 匿名函数关键字lambda表示匿名函数，冒号前面的x表示函数参数。 匿名函数有个限制，就是只能有一个表达式，不用写return，返回值就是该表达式的结果。 实例： 1list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])) 输出： 1[1, 4, 9, 16, 25, 36, 49, 64, 81] 代码123456789101112131415#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/12 20:12# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Anonymous functions.py# @function: 匿名函数的实例#codedef build(x, y): return lambda: x * x + y * yprint(build(1,2));#这里需要注意返回出来的匿名函数是函数test=build(1,2);print(test()); 输出 装饰器在代码运行期间动态增加功能方式——装饰器。 代码1234567891011121314151617181920212223242526#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/12 20:27# @Author : thbelief# @Email : thbelief520@gmail.com# @File : decorator.py# @function: 装饰器#code#装饰器 在代码运行期间动态增加功能方式——装饰器#先定义一个简单的函数def log(func): def wrapper(*args, **kw): print('call %s():' % func.__name__) return func(*args, **kw) return wrapper#这里的@相当于now = log(now)@logdef printFunction(): print("2019.6.12");# printFunction();#现在在上述的功能上添加一个打印日志的功能printFunction(); 输出 偏函数当函数的参数个数太多，需要简化时，使用functools.partial可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。 代码12345678910111213141516171819202122#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/12 20:41# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Partial function.py# @function: 偏函数#codeprint(int('123456'));#默认参数是base，作为进制转换print(int('123456',base=8));print(int('123456',8));#进制转换函数，这里是2进制def int2(x,base=2): return int(x,base);print(int2('101111'));#functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数。import functoolsint2 = functools.partial(int, base=2);print(int2('1011111')); 输出]]></content>
@@ -1023,9 +1036,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
