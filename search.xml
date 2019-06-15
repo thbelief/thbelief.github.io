@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++运算符重载]]></title>
+    <url>%2F2019%2F06%2F16%2FC-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[目录： C++ Operator运算符重载 前言 类成员函数的操作符重载 非类成员函数（全局函数）操作数重载 注意事项 使用范围 限制 C++ Operator运算符重载前言一般来说，对于C++本身提供的运算符比如+，-，==等等运算符来说，能比较的只能是基本数据类型或者标准库中的Class，对于我们自己定义的Class的基本运算操作来说，就显得很无力，是以引出了——运算符重载这种东西。 比如说，如果假定一个Class——Person（自定义）,ta存在==这种运算符的比较，当我们想判断两个人是否==的时候，是用原生的==？显然不可能，我们需要重载一下实现自己独立的运算符规则。 类成员函数的操作符重载重载的操作符在类体中被声明，声明方式如同普通成员函数一样，只不过ta的名字包含关键字operator，后面加上一个C++预定义的操作符。 比如： 类的声明： 12345678910class person&#123;private: int gender;public: person(int a) &#123; this-&gt;gender=a; &#125; inline bool operator == (const person &amp;ps) const;//==运算符重载&#125;; 类成员函数： 1234567inline bool person::operator==(const person &amp;ps) const&#123; if (this-&gt;gender==ps.gender) return true; return false;&#125; 调用： 1234person p1('boy');person p2('gril');if(p1==p2)//注意这里的==已经是上面重载过的类成员函数cout&lt;&lt;”the age is equal!”&lt;&lt;endl; 非类成员函数（全局函数）操作数重载全局函数必须注意——操作数的参数必须被显式指定。因为如果是类成员函数，明显知道类就是它的类型参数，但是全局函数ta不知道，所以必须显示指定。 如： 12345678bool operator==(person&amp; p1, person const &amp; p2) //指定参数类型&#123; if (p1.gender == p2.gender) &#123; return true; //满足要求 &#125; return false;&#125; 注意事项1.是否定义为全局函数还是类成员函数是根据具体情况判断的。 2.C++要求——赋值=，下标[]，调用()， 和成员指向-&gt; 操作符必须被定义为类成员操作符。否则会编译错误。 3.当返回值不是本函数内定义的局部变量时就可以返回一个引用。 4.在增量运算符中，放上一个整数形参，就是后增量运行符，它是值返回，对于前增量没有形参，而且是引用返回。 使用范围可以重载的操作符： 限制1、只有C++预定义的操作符才可以被重载。 2、重载操作符不能改变他们的操作符优先级。 3、除了对（）操作符外，对其他重载操作符提供缺省实参都是非法的。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>结构体</tag>
+        <tag>运算符重载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（七）]]></title>
     <url>%2F2019%2F06%2F15%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 模块（Module） 简单介绍 使用 简单实例 作用域 安装第三方模块 如何安装 Python第三方模块网址 模块（Module）简单介绍Python中的模块——一个.py文件也就是一个模块。 使用模块可以避免函数名和变量名冲突。但是使用的时候还是要注意避免与内置函数名字出现冲突。 内置函数如下： Built-in Function abs() delattr() hash() memoryview() set() all() dict() help() min() setattr() any() dir() hex() next() slice() ascii() divmod() id() object() sorted() bin() enumerate() input() oct() staticmethod() bool() eval() int() open() str() breakpoint() exec() isinstance() ord() sum() bytearray() filter() issubclass() pow() super() bytes() float() iter() print() tuple() callable() format() len() property() type() chr() frozenset() list() range() vars() classmethod() getattr() locals() repr() zip() compile() globals() map() reversed() __import__() complex() hasattr() max() round() 包的出现——是为了防止出现模块儿名冲突，引入的按目录来组织模块的方法。 每一个包目录下面都会有一个init.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。init.py可以是空文件，也可以有Python代码，因为init.py本身就是一个模块，而它的模块名就是包名。 使用简单实例以sys模块为工具写一个hello的模块。 123456789101112131415161718192021222324252627#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/14 8:23# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Module.py# @function: 模块部分的代码——以sys模块为工具写一个hello的模块#任何模块代码的第一个字符串都被视为模块的文档注释&apos; a test module for Module&apos;#使用__author__变量把作者写进去__author__ = &apos;thbelief&apos;#使用其它模块儿的第一步就是导入模块import sysdef test(): #sys模块有一个argv变量，用list存储了命令行的所有参数。argv至少有一个元素，因为第一个参数永远是该.py文件的名称. args = sys.argv if len(args)==1: print(&apos;Hello, world!&apos;) elif len(args)==2: print(&apos;Hello, %s!&apos; % args[1]) else: print(&apos;So many arguments!&apos;)if __name__==&apos;__main__&apos;: test() 运行结果： 注意下面这段代码： 12if __name__==&apos;__main__&apos;: test() 它的作用就是——当我们在命令行运行上面写的这个模块文件时，Python解释器把一个特殊变量name置为main，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。 作用域Python中变量是否给别人使用或者说只在模块内部使用是通过_前缀实现的。 正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等。 类似”_xxx”这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，_abc等。 一般来说——外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。 安装第三方模块如何安装首先是在Windows的命令提示符中输入pip，如果提示未安装或者报错的话，安装好再进行下面的操作。 正常情况如下： 安装命令就是： 1pip install 第三方模块名 Python第三方模块网址PyPI 在这个网址里面可以自由搜索想要的第三方模块，因为要安装一个第三方库，必须先知道该库的名称。]]></content>
@@ -169,8 +183,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -1036,9 +1050,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>

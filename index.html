@@ -313,6 +313,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/16/C-运算符重载/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/16/C-运算符重载/" itemprop="url">C++运算符重载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-16T07:00:53+08:00">
+                2019-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  704
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#c-operator运算符重载">C++ Operator运算符重载</a><ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#类成员函数的操作符重载">类成员函数的操作符重载</a></li>
+<li><a href="#非类成员函数全局函数操作数重载">非类成员函数（全局函数）操作数重载</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#使用范围">使用范围</a></li>
+<li><a href="#限制">限制</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="c-operator运算符重载">C++ Operator运算符重载</span></h2><h3><span id="前言">前言</span></h3><p>一般来说，对于C++本身提供的运算符比如+，-，==等等运算符来说，能比较的只能是基本数据类型或者标准库中的Class，对于我们自己定义的Class的基本运算操作来说，就显得很无力，是以引出了——<strong>运算符重载</strong>这种东西。</p>
+<p>比如说，如果假定一个Class——Person（自定义）,ta存在==这种运算符的比较，当我们想判断两个人是否==的时候，是用原生的==？显然不可能，我们需要重载一下<strong>实现自己独立的运算符规则。</strong></p>
+<h3><span id="类成员函数的操作符重载">类成员函数的操作符重载</span></h3><p>重载的操作符在类体中被声明，声明方式如同普通成员函数一样，只不过<strong>ta的名字包含关键字operator，后面加上一个C++预定义的操作符。</strong></p>
+<p>比如：</p>
+<p>类的声明：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> gender;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    person(<span class="keyword">int</span> a)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">this</span>-&gt;gender=a;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> person &amp;ps) <span class="keyword">const</span>;<span class="comment">//==运算符重载</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>类成员函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">bool</span> person::<span class="keyword">operator</span>==(<span class="keyword">const</span> person &amp;ps) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">     <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;gender==ps.gender)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">person p1('boy');</span><br><span class="line">person p2('gril');</span><br><span class="line"><span class="keyword">if</span>(p1==p2)<span class="comment">//注意这里的==已经是上面重载过的类成员函数</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;”the age is equal!”&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h3><span id="非类成员函数全局函数操作数重载">非类成员函数（全局函数）操作数重载</span></h3><p>全局函数必须注意——<strong>操作数的参数必须被显式指定。</strong>因为如果是类成员函数，明显知道类就是它的类型参数，但是全局函数ta不知道，所以必须显示指定。</p>
+<p>如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(person&amp; p1, person <span class="keyword">const</span> &amp; p2)   <span class="comment">//指定参数类型</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (p1.gender == p2.gender)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>; 	 <span class="comment">//满足要求</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="注意事项">注意事项</span></h3><p>1.是否定义为全局函数还是类成员函数是<strong>根据具体情况判断的。</strong></p>
+<p>2.C++要求——<strong>赋值=，下标[]，调用()， 和成员指向-&gt; 操作符</strong>必须被定义为<strong>类成员操作符。</strong>否则会编译错误。</p>
+<p>3.当返回值<strong>不是本函数内定义的局部变量</strong>时就可以返回一个<strong>引用</strong>。</p>
+<p>4.在增量运算符中，放上一个<strong>整数形参</strong>，就是<strong>后增量运行符</strong>，它是值返回，对于前增量没有形参，而且是<strong>引用返回</strong>。</p>
+<h3><span id="使用范围">使用范围</span></h3><p><strong>可以重载的操作符：</strong></p>
+<p><img src="/2019/06/16/C-运算符重载/1.jpg" alt=""></p>
+<h3><span id="限制">限制</span></h3><p>1、只有<strong>C++预定义的操作符</strong>才可以被重载。</p>
+<p>2、重载操作符<strong>不能改变他们的操作符优先级。</strong></p>
+<p>3、除了对（）操作符外，对其他重载操作符提供<strong>缺省实参</strong>都是非法的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/15/Python学习笔记（七）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2269,213 +2487,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/06/BiliBili全屏弹幕发送-回车/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/06/BiliBili全屏弹幕发送-回车/" itemprop="url">BiliBili全屏弹幕发送(回车)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T13:18:09+08:00">
-                2019-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  659
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#正文">正文</a><ul>
-<li><a href="#简单介绍">简单介绍</a><ul>
-<li><a href="#功能介绍">功能介绍</a></li>
-<li><a href="#使用方法">使用方法</a></li>
-<li><a href="#源码地址">源码地址</a></li>
-</ul>
-</li>
-<li><a href="#源码">源码</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>今天闲得无聊，为了娱乐一下，写了一个脚本。</p>
-<h2><span id="正文">正文</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p><img src="/2019/06/06/BiliBili全屏弹幕发送-回车/1.jpg" alt=""></p>
-<p>脚本链接：<a href="https://greasyfork.org/zh-CN/scripts/384604-bilibili%E5%85%A8%E5%B1%8F%E5%BC%B9%E5%B9%95%E5%8F%91%E9%80%81-%E5%9B%9E%E8%BD%A6" target="_blank" rel="noopener">传送门</a></p>
-<h5><span id="功能介绍">功能介绍</span></h5><p>在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~</p>
-<h5><span id="使用方法">使用方法</span></h5><p>在全屏状态下回车即可弹出弹幕发送框。<br>直接输入想发送的句子，再回车即可发送出去并且默认关闭此弹幕发送框。</p>
-<h5><span id="源码地址">源码地址</span></h5><p>​        <a href="https://github.com/thbelief/BiliBili-Full-screen-barrage" target="_blank" rel="noopener">https://github.com/thbelief/BiliBili-Full-screen-barrage</a></p>
-<p>欢迎去fork或者star~</p>
-<h3><span id="源码">源码</span></h3><p>可能后面还会更新，看情况吧~</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ==UserScript==</span></span><br><span class="line"><span class="comment">// @name         BiliBili全屏弹幕发送(回车)</span></span><br><span class="line"><span class="comment">// @namespace    https://github.com/thbelief/BiliBili-Full-screen-barrage</span></span><br><span class="line"><span class="comment">// @version      1.0.0</span></span><br><span class="line"><span class="comment">// @description  在B站看视频的时候全屏状态下默认是不能发送弹幕的，这个脚本的功能就是在全屏状态下回车键弹出发送弹幕的sendbar~</span></span><br><span class="line"><span class="comment">// @author       thbelief</span></span><br><span class="line"><span class="comment">// @match        *://www.bilibili.com/bangumi/play/ep*</span></span><br><span class="line"><span class="comment">// @match        *://www.bilibili.com/bangumi/play/ss*</span></span><br><span class="line"><span class="comment">// @match        *://www.bilibili.com/video/av*</span></span><br><span class="line"><span class="comment">// @match        *://www.bilibili.com/watchlater/*</span></span><br><span class="line"><span class="comment">// @grant        GM_setValue</span></span><br><span class="line"><span class="comment">// @grant        GM_getValue</span></span><br><span class="line"><span class="comment">// ==/UserScript==</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="comment">//选择</span></span><br><span class="line">    <span class="keyword">const</span> q = <span class="function"><span class="keyword">function</span> (<span class="params">selector</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> nodes = [];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> selector === <span class="string">'string'</span>) &#123;</span><br><span class="line">            <span class="built_in">Object</span>.assign(nodes, <span class="built_in">document</span>.querySelectorAll(selector));</span><br><span class="line">            nodes.selectorStr = selector;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector <span class="keyword">instanceof</span> NodeList) &#123;</span><br><span class="line">            <span class="built_in">Object</span>.assign(nodes, selector);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selector <span class="keyword">instanceof</span> Node) &#123;</span><br><span class="line">            nodes = [selector];</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.click = <span class="function"><span class="keyword">function</span> (<span class="params">index = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">            nodes.length &gt; index &amp;&amp; nodes[index].click();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.addClass = <span class="function"><span class="keyword">function</span> (<span class="params">classes, index = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">            nodes.length &gt; index &amp;&amp; nodes[index].classList.add(classes);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.removeClass = <span class="function"><span class="keyword">function</span> (<span class="params">classes, index = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">            nodes.length &gt; index &amp;&amp; nodes[index].classList.remove(classes);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.css = <span class="function"><span class="keyword">function</span> (<span class="params">name, value, index = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">            nodes.length &gt; index &amp;&amp; nodes[index].style.setProperty(name, value);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.getCss = <span class="function"><span class="keyword">function</span> (<span class="params">name, index = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> nodes.length &gt; index &amp;&amp; nodes[index].ownerDocument.defaultView.getComputedStyle(nodes[index], <span class="literal">null</span>).getPropertyValue(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nodes;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> isSendBarExist=<span class="literal">false</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//监控是否按下回车键</span></span><br><span class="line">        <span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span> (<span class="params">eTest</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!eTest) eTest = <span class="built_in">window</span>.event;</span><br><span class="line">            <span class="keyword">if</span> ((eTest.keyCode || eTest.which) == <span class="number">13</span>) &#123;</span><br><span class="line">                <span class="comment">// 判断是否是全屏</span></span><br><span class="line">                <span class="keyword">let</span> isFullScreen = <span class="built_in">document</span>.isFullScreen || <span class="built_in">document</span>.mozIsFullScreen || <span class="built_in">document</span>.webkitIsFullScreen;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"是否全屏状态："</span>+isFullScreen);</span><br><span class="line">               </span><br><span class="line">                <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"提示：在全屏状态下按了回车键！"</span>);</span><br><span class="line">                    <span class="keyword">if</span>(isSendBarExist)&#123;</span><br><span class="line">                        isSendBarExist=<span class="literal">false</span>;</span><br><span class="line">                        <span class="built_in">console</span>.log(<span class="string">"提示：已隐藏发送弹幕按钮！"</span>);</span><br><span class="line">                        q(<span class="string">'.bilibili-player-video-sendbar'</span>).css(<span class="string">'opacity'</span>, <span class="number">0</span>).css(<span class="string">'display'</span>, <span class="string">'none'</span>)[<span class="number">0</span>];</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        isSendBarExist=<span class="literal">true</span>;</span><br><span class="line">                        <span class="built_in">console</span>.log(<span class="string">"提示：已显示发送弹幕按钮！"</span>);</span><br><span class="line">                        <span class="comment">//老版</span></span><br><span class="line">                        q(<span class="string">'.bilibili-player-video-sendbar'</span>).css(<span class="string">'opacity'</span>, <span class="number">1</span>).css(<span class="string">'display'</span>, <span class="string">'flex'</span>);</span><br><span class="line">                        </span><br><span class="line">                        <span class="comment">//使输入框自动获得焦点</span></span><br><span class="line">                        $(<span class="string">'input'</span>).focus();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                <span class="keyword">if</span>(isFullScreen)&#123;</span><br><span class="line">                    <span class="comment">//如果是全屏状态的话，就进行回车键弹出发送弹幕的效果</span></span><br><span class="line">                    fun();</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"提示：未进入全屏状态！"</span>);</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">   doIt();</span><br><span class="line">    </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2528,7 +2539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2550,7 +2561,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">166</span>
+                  <span class="site-state-item-count">169</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2635,7 +2646,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共133.9k字</span>
+  <span class="post-count">博客全站共134.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
