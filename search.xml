@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[汇编实验（三）]]></title>
+    <url>%2F2019%2F06%2F17%2F%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C%EF%BC%88%E4%B8%89%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 指令系统（常用） 简介 MOV PUSH POP XCHG LEA ADD，ADC SUB，SBB INC，DEC NEG MUL，IMUL DIV，IDIV CBW，CWD AND,OR,XOR,NOT,TEST SHR,SHL,SAR,SAL CMP JMP JXX LOOP NOP 寻址方式 简介 立即寻址方式 寄存器寻址方式 直接寻址方式 寄存器间接寻址方式 寄存器相对寻址方式 基址变址寻址方式 相对基址变址寻址方式 MASM汇编代码简单框架 指令系统（常用）简介只是收集一些实验过程中经常用到的，并不全面。 MOV把源操作数送给目的操作数 。 PUSH把操作数压栈。 POP把操作数弹栈。 XCHG交换两个操作数的数据。 LEA有效地址送到寄存器。 ADD，ADC加法与进位加法。 SUB，SBB减法与带借位减法。 INC，DECINC OP即将OP的值加一，DEC OP相反。 NEG求补（取二进制补码）。 MUL，IMUL无符号和带符号乘法。 字节/字操作数结果保存在AX。 DIV，IDIV无符号和带符号除法。 CBW，CWD有符号数的扩展。 AND,OR,XOR,NOT,TEST前面四个都是普通的逻辑指令，Test则是相与结果不保存，根据特征置条件码。 SHR,SHL,SAR,SAL分别是逻辑右移，逻辑左移，算术右移，算术左移。 CMP比较值大小。 JMP跳到后面指定的地址。 JXX 当特定条件成立则跳往指定地址执行 。 参数： 1234567891011121314A: ABOVE,当C=0,Z=0时成立，大于转移B: BELOW,当C=1时成立，小于转移C: CARRY,当CF=1时成立 CXZ: CX寄存器的值为0(ZERO)时成立 E: EQUAL,当Z=1时成立 G: GREATER(大于),当Z=0且S=0时成立 L: LESS(小于),当S不为零时成立 N: NOT(相反条件),需和其它符号配合使用 O: OVERFLOW,O=1时成立 P: PARITY,P=1时成立 PE: PARITY EVEN,P=1时成立 PO: PARITY ODD,P=0时成立 S: SIGN,S=1时成立 Z: ZERO,Z=1时成立 LOOP循环控制。（CX） NOP不执行任何操作，但是花费CPU一个机器周期。 参考文章 寻址方式简介这里只是简单的举例，具体的详细情况可以参考——传送门。 立即寻址方式1MOV AX,1234H 寄存器寻址方式AX，AL等等。 直接寻址方式1MOV BX, [1234H] 寄存器间接寻址方式1MOV AX, [DI] 寄存器相对寻址方式1MOV AX,[DI+1223H] 基址变址寻址方式1MOV AX,[BX][DI] 相对基址变址寻址方式1MOV AX,[BX+DI-2] MASM汇编代码简单框架123456789101112131415161718DATA SEGMENT DATA ENDSSTACK SEGMENT PARA STACK ;DB 20H DUP (0)STACK ENDSCODE SEGMENTASSUME CS:CODE,DS:DATA,SS:STACKSTART: MOV AX,DATA MOV DS,AX MOV AX,STACK MOV SS,AX ;MOV SP,20H CODE ENDSEND START]]></content>
+      <categories>
+        <category>汇编</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
+        <tag>实验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C++运算符重载]]></title>
     <url>%2F2019%2F06%2F16%2FC-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%2F</url>
     <content type="text"><![CDATA[目录： C++ Operator运算符重载 前言 类成员函数的操作符重载 非类成员函数（全局函数）操作数重载 注意事项 使用范围 限制 C++ Operator运算符重载前言一般来说，对于C++本身提供的运算符比如+，-，==等等运算符来说，能比较的只能是基本数据类型或者标准库中的Class，对于我们自己定义的Class的基本运算操作来说，就显得很无力，是以引出了——运算符重载这种东西。 比如说，如果假定一个Class——Person（自定义）,ta存在==这种运算符的比较，当我们想判断两个人是否==的时候，是用原生的==？显然不可能，我们需要重载一下实现自己独立的运算符规则。 类成员函数的操作符重载重载的操作符在类体中被声明，声明方式如同普通成员函数一样，只不过ta的名字包含关键字operator，后面加上一个C++预定义的操作符。 比如： 类的声明： 12345678910class person&#123;private: int gender;public: person(int a) &#123; this-&gt;gender=a; &#125; inline bool operator == (const person &amp;ps) const;//==运算符重载&#125;; 类成员函数： 1234567inline bool person::operator==(const person &amp;ps) const&#123; if (this-&gt;gender==ps.gender) return true; return false;&#125; 调用： 1234person p1('boy');person p2('gril');if(p1==p2)//注意这里的==已经是上面重载过的类成员函数cout&lt;&lt;”the age is equal!”&lt;&lt;endl; 非类成员函数（全局函数）操作数重载全局函数必须注意——操作数的参数必须被显式指定。因为如果是类成员函数，明显知道类就是它的类型参数，但是全局函数ta不知道，所以必须显示指定。 如： 12345678bool operator==(person&amp; p1, person const &amp; p2) //指定参数类型&#123; if (p1.gender == p2.gender) &#123; return true; //满足要求 &#125; return false;&#125; 注意事项1.是否定义为全局函数还是类成员函数是根据具体情况判断的。 2.C++要求——赋值=，下标[]，调用()， 和成员指向-&gt; 操作符必须被定义为类成员操作符。否则会编译错误。 3.当返回值不是本函数内定义的局部变量时就可以返回一个引用。 4.在增量运算符中，放上一个整数形参，就是后增量运行符，它是值返回，对于前增量没有形参，而且是引用返回。 使用范围可以重载的操作符： 限制1、只有C++预定义的操作符才可以被重载。 2、重载操作符不能改变他们的操作符优先级。 3、除了对（）操作符外，对其他重载操作符提供缺省实参都是非法的。]]></content>
@@ -587,8 +599,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>root</tag>
         <tag>卡刷</tag>
+        <tag>root</tag>
       </tags>
   </entry>
   <entry>
@@ -691,11 +703,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -917,8 +929,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>刷机</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
