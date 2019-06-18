@@ -313,6 +313,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/19/机器学习实验-VSM计算相似度/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/19/机器学习实验-VSM计算相似度/" itemprop="url">机器学习实验-VSM计算相似度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T17:34:53+08:00">
+                2019-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  327
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!--toc-->
+<h2><span id="实验目的">实验目的</span></h2><p>  通过VSM模型来计算文档之间的相似度。</p>
+<h2><span id="实验内容">实验内容</span></h2><ol>
+<li>熟练掌握term的选择。</li>
+<li>计算每篇文章中每个term的权重。（TF-IDF）</li>
+<li>计算文档的相似度。</li>
+</ol>
+<h2><span id="实验过程">实验过程</span></h2><p>1.首先要做的就是读取文档，然后就是去除停用词。<br>关键代码如下:<br>原理就是一行一行的读取，然后逐词匹配，如果是的话就去除该停用词。</p>
+<p><img src="/2019/05/19/机器学习实验-VSM计算相似度/去除停用词.png" alt=""></p>
+<p>2.计算TF-IDF<br>      TF计算因子代表了词频，即一个单词在文档中出现的次数，一般来说，在某个文档中反复出现的单词，往往能够表征文档的主题信息，即Tf值越大，越能代表文档所反映的内容，那么应该给于这个单词更大的权值。<br>        <strong>Tf=1+log(Tf)</strong><br>     IDF反映了一个特征词在整个文档集合中的分布情况，特征词出现在其中的文档数目越多，IDF值越低，这个词区分不同文档差异的能力越差，所以IDF衡量了单词对不同文档内容差异的区分能力。<br>        <strong>IDF=log(N/nk)</strong><br>     3.计算权重：<br>        <strong>权重=TF*IDF</strong><br>     4.相似度计算：<br>这里使用的是<strong>Cosine算法</strong>。公式如下：</p>
+<p><img src="/2019/05/19/机器学习实验-VSM计算相似度/Cosine.png" alt=""></p>
+<h2><span id="实验结果">实验结果</span></h2><p><img src="/2019/05/19/机器学习实验-VSM计算相似度/结果.png" alt=""></p>
+<p><img src="/2019/05/19/机器学习实验-VSM计算相似度/相似度.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/18/JavaScript学习笔记-八/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2383,249 +2568,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/09/hexo博客美化简述/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/09/hexo博客美化简述/" itemprop="url">hexo博客美化简述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T20:48:23+08:00">
-                2019-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#rss">RSS</a></li>
-<li><a href="#博客图标">博客图标</a></li>
-<li><a href="#侧边栏社交链接">侧边栏社交链接</a></li>
-<li><a href="#背景动画">背景动画</a></li>
-<li><a href="#访问量">访问量</a></li>
-<li><a href="#统计">统计</a></li>
-<li><a href="#搜索功能">搜索功能</a></li>
-<li><a href="#顶部加载条">顶部加载条</a></li>
-<li><a href="#浏览进度">浏览进度</a></li>
-<li><a href="#内链样式">内链样式</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p>之前搭建博客的时候实在是没有心思搞这些花里胡哨的，但是最近突然又有点儿兴趣了，就总结一下一些比较感兴趣的主题美化操作吧。（个人向）这里使用的是范例——next（貌似是最受欢迎的主题，网上的教程也很多），其他的主题的话还是需要自己配置的。</p>
-<p>2019.5.9 目前的只是一部分，后面有更多的美化操作会直接在本博客下面续写，敬请期待。</p>
-<h2><span id="rss">RSS</span></h2><p> 所谓的<strong>RSS</strong>订阅是站点用来和其他站点之间共享内容的一种简易方式,即<strong>Really Simple Syndication(简易信息聚合)。</strong>其实作用就是用来将博客进行分享的功能。</p>
-<p>首先就是安装插件（git bash的hexo目录下）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>然后在<strong>主题配置文件</strong>中修改rss即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rss: /atom.xml</span><br></pre></td></tr></table></figure>
-<p>最后在侧边栏中会有显示，我嫌弃影响美观，给取消了。</p>
-<h2><span id="博客图标">博客图标</span></h2><p>所谓的博客图标其实就是当你将博客收藏为书签的时候看到的小图标。默认是next图标，这个可以直接修改。</p>
-<p>直接在images目录（对应的主题比如说next目录下的images）下放置图片即可。然后修改<strong>主题配置文件</strong>的<strong>favicon</strong>即可，注意图片的格式，必须是ico。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">favicon: </span><br><span class="line">  small: /images/favicon-16x16.ico</span><br></pre></td></tr></table></figure>
-<h2><span id="侧边栏社交链接">侧边栏社交链接</span></h2><p>这个很简单，直接在<strong>主题配置文件</strong>中找到<strong>social</strong>后面的内容找到，然后根据自己的需要选择就好。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/thbelief || github</span><br><span class="line">  E-Mail: mailto:2465749045@qq.com || envelope</span><br><span class="line">  CSDN: https://blog.csdn.net/thbelief</span><br><span class="line">  #Google: https://plus.google.com/yourname || google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || facebook</span><br><span class="line">  #VK Group: https://vk.com/yourname || vk</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || skype</span><br></pre></td></tr></table></figure>
-<p>这个可以自定义，只要自己写上去就可以了。（CSDN就是我自定义的，下面还可以设置对应的图标。）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">social_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  icons_only: false</span><br><span class="line">  transition: false</span><br><span class="line">  E-Mail: envelope-square</span><br><span class="line">  Github: github</span><br><span class="line">  CSDN: crosshairs</span><br></pre></td></tr></table></figure>
-<h2><span id="背景动画">背景动画</span></h2><p>在<strong>主题配置文件</strong>中找到<strong>canvas</strong>即可。我使用的是<strong>canvas_nest</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pace_theme: pace-theme-minimal</span><br><span class="line"></span><br><span class="line"># Canvas-nest</span><br><span class="line">canvas_nest: true</span><br><span class="line"></span><br><span class="line"># three_waves</span><br><span class="line">three_waves: false</span><br><span class="line"></span><br><span class="line"># canvas_lines</span><br><span class="line">canvas_lines: false</span><br><span class="line"></span><br><span class="line"># canvas_sphere</span><br><span class="line">canvas_sphere: false</span><br></pre></td></tr></table></figure>
-<h2><span id="访问量">访问量</span></h2><p>这个是可以在网站的底部加上访问量。</p>
-<p>在<strong>\themes\next\layout_partials\footer.swig</strong>文件中添加下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;powered-by&quot;&gt;</span><br><span class="line">	&lt;i class=&quot;fa fa-user-md&quot;&gt;&lt;/i&gt;</span><br><span class="line">	&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;</span><br><span class="line">		本站访客数:&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;</span><br><span class="line">	&lt;/span&gt;</span><br><span class="line">	&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">	&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;</span><br><span class="line">		本站访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;</span><br><span class="line">	&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h2><span id="统计">统计</span></h2><p>这个可以给博客添加字数统计，阅读时长之类的功能。</p>
-<p>首先是下载插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br></pre></td></tr></table></figure>
-<p>然后是打开<strong>主题配置文件</strong>，然后找到<strong>post_wordcount</strong>，修改想要的功能即可：</p>
-<p>下面是我的配置，可以根据自己的需求修改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: false</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
-<h2><span id="搜索功能">搜索功能</span></h2><p>顾名思义，就是给博客增加一个搜索功能。</p>
-<p>先安装插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p><strong>站点配置文件配置</strong>如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
-<p><strong>主题配置文件</strong>修改：</p>
-<p><strong>先修改local_search，再修改pace_theme即可。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-<h2><span id="顶部加载条">顶部加载条</span></h2><p>修改<strong>主题配置文件</strong>，<strong>找到pace修改为true然后在选择一个pace_theme即可：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Progress bar in the top during page loading.</span><br><span class="line">pace: true</span><br><span class="line"># Themes list:</span><br><span class="line">#pace-theme-big-counter</span><br><span class="line">#pace-theme-bounce</span><br><span class="line">#pace-theme-barber-shop</span><br><span class="line">#pace-theme-center-atom</span><br><span class="line">#pace-theme-center-circle</span><br><span class="line">#pace-theme-center-radar</span><br><span class="line">#pace-theme-center-simple</span><br><span class="line">#pace-theme-corner-indicator</span><br><span class="line">#pace-theme-fill-left</span><br><span class="line">#pace-theme-flash</span><br><span class="line">#pace-theme-loading-bar</span><br><span class="line">#pace-theme-mac-osx</span><br><span class="line">#pace-theme-minimal</span><br><span class="line"># For example</span><br><span class="line"># pace_theme: pace-theme-center-simple</span><br><span class="line">pace_theme: pace-theme-minimal</span><br></pre></td></tr></table></figure>
-<h2><span id="浏览进度">浏览进度</span></h2><p>主题配置文件找到<strong>scrollpercent</strong>修改为true即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Scroll percent label in b2t button.</span><br><span class="line">scrollpercent: true</span><br></pre></td></tr></table></figure>
-<h2><span id="内链样式">内链样式</span></h2><p>文章里的链接样式默认是只加一条下划线，颜色和普通文字一样，为了方便区分，在<strong>themes/next/source/css/_custom/custom.styl</strong>文件加以下代码，自行添加的样式都可以写在这个文件里：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.post-body p a&#123;</span><br><span class="line">    color: #0593d3;</span><br><span class="line">    border-bottom: none;</span><br><span class="line">    border-bottom: 1px solid #0593d3;</span><br><span class="line">    &amp;:hover &#123;</span><br><span class="line">      color: #fc6423;</span><br><span class="line">      border-bottom: none;</span><br><span class="line">      border-bottom: 1px solid #fc6423;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2673,7 +2620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2780,7 +2727,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共135.3k字</span>
+  <span class="post-count">博客全站共136k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

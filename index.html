@@ -313,6 +313,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/18/Coin-Changing/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/18/Coin-Changing/" itemprop="url">Coin Changing</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T10:07:41+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  751
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#coin-changing">Coin Changing</a><ul>
+<li><a href="#题目描述">题目描述</a></li>
+<li><a href="#输入">输入</a></li>
+<li><a href="#输出">输出</a></li>
+<li><a href="#样例输入">样例输入</a></li>
+<li><a href="#样例输出">样例输出</a></li>
+<li><a href="#解法">解法</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#结果">结果</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="coin-changing">Coin Changing</span></h2><h3><span id="题目描述">题目描述</span></h3><p>设有n 种不同面值的硬币，各硬币的面值存于数组T［1:n］中。现要用这些面值的硬币来找钱。可以使用的各种面值的硬币个数存于数组Coins［1:n］中。 对于给定的1≤n≤10，硬币面值数组T和可以使用的各种面值的硬币个数数组Coins，以及钱数m，0≤m≤20001，编程计算找钱m的最少硬币数。</p>
+<h3><span id="输入">输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一行中只有1 个整数给出n的值,第2 行起每行2 个数，分别是T[j]和Coins[j]。最后1 行是要找的钱数m。</span><br></pre></td></tr></table></figure>
+<h3><span id="输出">输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最少硬币数,无解时输出-1</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">5 3</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<h3><span id="解法">解法</span></h3><p>这是一道<strong>动态规划</strong>的题目。</p>
+<p>运用动态规划的思想——<strong>将一个问题分裂成n个子问题，求出子问题的解并用子问题的解出问题的答案。</strong></p>
+<p>可知，可以将对m找零分解为对1、2、3、4、5…m找零。所以我们可以定义长度为m的数组dp[1~m]来存放对应子问题的求解，即dp[i]为要凑i块钱所需最少硬币数，那么dp[m]就是要求的答案。</p>
+<p>假设当前<strong>要找零的钱</strong>是i（1&lt;i&lt;m）,当前所试探的<strong>硬币面值</strong>为k：<br>    （1）当i和k相等时，结果为1，即dp[i] = 1，说明可以直接通过一枚硬币就是最小硬币数了。<br>    （2）当<strong>i大于k</strong>时，若dp[i]为0(<strong>未赋过值</strong>），且dp[i-k]不为0(<strong>从i元中减去k元后剩下的钱可以找开</strong>)<br>                   则dp[i] = dp[i-k]+1，即将子问题划分，然后加上本次的一枚硬币即可。<br>                   若dp[i]不为0(即<strong>已赋值</strong>)，则dp[i] = min( dp[i-k]+1, dp[i] ) 即<strong>dp[i]为dp[i-k]和dp[i]中的较小者</strong>。<br>    （3）所以dp[i]的<strong>动态转移方程</strong>就是:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = min( dp[k], dp[k-t[i]]+<span class="number">1</span> )  <span class="comment">//t[i]&lt;=k&lt;=m</span></span><br></pre></td></tr></table></figure>
+<h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Max 999999</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//硬币种类数n，找零钱数m </span></span><br><span class="line">	<span class="keyword">int</span> n,m,T[<span class="number">11</span>],Coins[<span class="number">11</span>];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;T[i]&gt;&gt;Coins[i];<span class="comment">//面值与对应的个数 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">20002</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20002</span>;i++)&#123;</span><br><span class="line">		<span class="comment">//因为0时找零为0，后面的都初始化为最大值（寻找最少硬币数） </span></span><br><span class="line">		dp[i]=Max;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123; <span class="comment">//一共n种硬币 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=Coins[i];j++)&#123;<span class="comment">//各面值硬币个数 </span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=m;k&gt;=T[i];k--)&#123;<span class="comment">//各面值</span></span><br><span class="line">				<span class="comment">//动态规划思想求解 </span></span><br><span class="line">				dp[k] = min(dp[k], dp[k-T[i]]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dp[m]&lt;=m)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="结果">结果</span></h3><p><img src="/2019/06/18/Coin-Changing/1.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/17/汇编实验（三）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2311,249 +2510,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/08/Python学习笔记（四）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/08/Python学习笔记（四）/" itemprop="url">Python学习笔记（四）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-08T15:42:24+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#高级特性">高级特性</a><ul>
-<li><a href="#切片">切片</a></li>
-<li><a href="#迭代">迭代</a></li>
-<li><a href="#列表生成器">列表生成器</a></li>
-<li><a href="#生成器">生成器</a></li>
-<li><a href="#迭代器">迭代器</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="高级特性">高级特性</span></h2><p>之前已经提到过关于Python的一部分特性了，众所周知，Python不是说代码越多越复杂越好，需要的是更方便的解决问题以最少的代码最优的解法是最好的，这也是高级特性的来源。</p>
-<h3><span id="切片">切片</span></h3><p>在其它编译语言中如果要获得一个集合中的一部分元素我们通常的操作都是直接循环然后取，但是Python中有更方便的方式——切片——<strong>取指定索引范围的操作。</strong></p>
-<p>简单实例：</p>
-<p><img src="/2019/06/08/Python学习笔记（四）/1.jpg" alt=""></p>
-<p>简单解释：</p>
-<p><strong>Test[0:2]</strong>代表的是从索引0开始然后直到索引2为止（<strong>不包括索引2</strong>），在图中的实例中可以看到刚好两个元素。</p>
-<p>特性：</p>
-<p>既然正序可以，那么逆序（从后向前）也是可以的，但是注意，倒序（逆序）的时候——<strong>倒数第一个元素的索引是-1。</strong></p>
-<p>list与tuple都可以切片操作，但是<strong>tuple切片出来还是tuple。</strong></p>
-<p>对于字符串来说，切片也是可以使用的，某些地方可以使用切片来模拟Python本身提供的有些字符串函数，只是字符串切片出来之后也还是字符串。</p>
-<h3><span id="迭代">迭代</span></h3><p>迭代这个词语其实也不陌生，平时熟悉的for循环遍历数组其实就是迭代。</p>
-<p>但是在for循环中我们还有下标来执行迭代，在Python中有些可迭代对象却无法有下标，所以这就产生了Python特有的迭代。</p>
-<p>判断是否可迭代：</p>
-<p><strong>通过collections模块的Iterable类型判断。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from collections.abc import Iterable</span><br><span class="line">print(isinstance(&apos;thbelief&apos;,Iterable))</span><br><span class="line">print(isinstance([&apos;a&apos;,&apos;v&apos;],Iterable))</span><br><span class="line">print(isinstance(520,Iterable))</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Advanced features - iteration.py&quot;</span><br><span class="line">True</span><br><span class="line">True</span><br><span class="line">False</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
-<p>当然，也不是不可以通过下标类似的方法来访问：</p>
-<p>Python内置的<strong>enumerate函数</strong>可以把一个list变成<strong>索引-元素对</strong>，这样就可以在for循环中同时迭代索引和元素本身：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]):</span><br><span class="line">    print(i, value)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<p><img src="/2019/06/08/Python学习笔记（四）/2.jpg" alt=""></p>
-<h3><span id="列表生成器">列表生成器</span></h3><p>一个<strong>快捷生成list</strong>的生成式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#Code</span><br><span class="line"># 简单的生成式</span><br><span class="line">test=list(range(1,10))</span><br><span class="line">print(test)</span><br><span class="line"># 自定义生成式</span><br><span class="line">test=list(x*x for x in range(1,10))</span><br><span class="line">print(test)</span><br><span class="line">test=list(x*x for x in range(1,10) if x%3==0)</span><br><span class="line">print(test)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/06/08/Python学习笔记（四）/3.jpg" alt=""></p>
-<p>自定义生成式其实可以套多重循环来筛选等等，这里只是简单的介绍一下。</p>
-<h3><span id="生成器">生成器</span></h3><p>Python中提供的<strong>一边循环一边计算</strong>的机制。</p>
-<p>来源：通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。如果一边循环一边计算就很方便了。</p>
-<p>生成器的元素是不可以直接打印每一个元素的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#正常列表生成式</span><br><span class="line">test=[x * x for x in range(10)]</span><br><span class="line">print(test)</span><br><span class="line">#创建生成器</span><br><span class="line">test=(x * x for x in range(10))</span><br><span class="line">print(test)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Advanced features - generator.py&quot;</span><br><span class="line">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x00000297D47BAA98&gt;</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
-<p>为什么会出现这种情况呢？前面说过生成器是<strong>边循环边计算。</strong></p>
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#创建生成器</span><br><span class="line">test=(x * x for x in range(10))</span><br><span class="line">print(test)</span><br><span class="line">#第一种就是单纯的next下去</span><br><span class="line">print(&quot;next:&quot;)</span><br><span class="line">print(next(test))</span><br><span class="line">print(next(test))</span><br><span class="line">print(next(test))</span><br><span class="line">#第二种是循环</span><br><span class="line">print(&quot;循环&quot;)</span><br><span class="line">for i in test:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<p><img src="/2019/06/08/Python学习笔记（四）/4.jpg" alt=""></p>
-<h3><span id="迭代器">迭代器</span></h3><p><strong>可以直接作用于for循环的对象统称为可迭代对象：Iterable。</strong></p>
-<p><strong>可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。</strong></p>
-<p>判断是否是一个迭代器对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from collections.abc import Iterator</span><br><span class="line"></span><br><span class="line">print(isinstance((x for x in range(10)), Iterator))</span><br><span class="line">print(isinstance(&apos;abc&apos;, Iterator))</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-<p>Python的Iterator对象表示的是一个<strong>数据流</strong>，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出<strong>StopIteration错误</strong>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2601,7 +2562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2708,7 +2669,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共135.3k字</span>
+  <span class="post-count">博客全站共136k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
