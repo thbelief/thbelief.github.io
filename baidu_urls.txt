@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/06/19/Python学习笔记（八）/
 http://thbelief.coding.me/2019/06/18/Coin-Changing/
 http://thbelief.coding.me/2019/06/17/汇编实验（三）/
 http://thbelief.coding.me/2019/06/16/C-运算符重载/
@@ -97,4 +98,3 @@ http://thbelief.coding.me/2019/03/21/java基础-渐入佳境/
 http://thbelief.coding.me/2019/03/20/JavaScript学习笔记-二/
 http://thbelief.coding.me/2019/03/19/Auto-js-Script开发-一/
 http://thbelief.coding.me/2019/03/18/JavaScript学习笔记-一/
-http://thbelief.coding.me/2019/03/09/java番外-多线程编程/

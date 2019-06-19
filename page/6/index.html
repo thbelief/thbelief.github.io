@@ -313,6 +313,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/30/汇编实验（二）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/30/汇编实验（二）/" itemprop="url">汇编实验（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-30T22:29:57+08:00">
+                2019-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/汇编/" itemprop="url" rel="index">
+                    <span itemprop="name">汇编</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  535
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#寄存器">寄存器</a></li>
+<li><a href="#指令">指令</a></li>
+<li><a href="#变量">变量</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>关于汇编的部分其实已经耽搁很久了，今天实验课上抽时间记录一下，方便最后答辩。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="寄存器">寄存器</span></h3><p>这里只介绍实验用到的寄存器。同时将在实验中具体的描述如何使用这些寄存器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">AX 累加器</span><br><span class="line">BX 基址寄存器 常用来存放存储器地址</span><br><span class="line">CX 计数器 </span><br><span class="line">DX 数据寄存器 一般用来存放数据</span><br><span class="line">SS 存放栈的段地址</span><br><span class="line">SP 堆栈寄存器 存放栈的偏移地址</span><br><span class="line">BP 基数指针寄存器 和SP联动，作为SP校准使用的，只有寻找堆栈中的数据和使用个别寻址方式的时候才可以使用到。</span><br><span class="line">DS 数据段寄存器 指出当前程序使用的 数据所存放段的最低地址，即存放数据段段地址。</span><br><span class="line">ES 附加段寄存器 存放当前执行程序中一个辅助数据段的段地址。</span><br><span class="line">CS 代码段寄存器 存放代码段的首地址。</span><br><span class="line">IP 指令指针寄存器 存放偏移地址。</span><br><span class="line">SI 源变址寄存器</span><br><span class="line">DI 目的变址寄存器</span><br><span class="line">PSW 标志寄存器 反映了CPU运算的状态特征并且存放某些控制标志。</span><br></pre></td></tr></table></figure>
+<h3><span id="指令">指令</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ADD 加法</span><br><span class="line">SUB 减法</span><br><span class="line">MUL 无符号乘法</span><br><span class="line">DIV 无符号除法</span><br><span class="line">JA 无符号大于则转移到目标指令执行</span><br><span class="line">JB 无符号小于则转移到目标指令执行</span><br><span class="line">JG 有符号大于则跳转</span><br><span class="line">JL 有符号小于则跳转</span><br><span class="line">LOOP 主要实现循环功能</span><br><span class="line">INC 加1的指令</span><br><span class="line">DEC 减1的指令</span><br><span class="line">PUSH 压栈</span><br><span class="line">POP 弹栈</span><br></pre></td></tr></table></figure>
+<h3><span id="变量">变量</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DB 字节型变量，一个字节数据占1个字节单元，读完一个，偏移量加1。</span><br><span class="line"></span><br><span class="line">DW 字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2。</span><br><span class="line"></span><br><span class="line">DD 双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4。</span><br><span class="line"></span><br><span class="line">BUF 即BUFFER，缓冲区，意思是内存中的一段存放数据的区域。</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/29/Lua学习笔记-五/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2611,673 +2799,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/20/Lua学习笔记-二/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/20/Lua学习笔记-二/" itemprop="url">Lua学习笔记(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T10:41:21+08:00">
-                2019-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/Lua/" itemprop="url" rel="index">
-                    <span itemprop="name">Lua</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  17
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#变量">变量</a></li>
-<li><a href="#赋值语句">赋值语句</a><ul>
-<li><a href="#多变量赋值">多变量赋值</a></li>
-</ul>
-</li>
-<li><a href="#索引">索引</a></li>
-<li><a href="#循环">循环</a><ul>
-<li><a href="#控制语句">控制语句</a></li>
-</ul>
-</li>
-<li><a href="#流程控制">流程控制</a></li>
-<li><a href="#函数">函数</a><ul>
-<li><a href="#可变参数">可变参数</a></li>
-</ul>
-</li>
-<li><a href="#运算符">运算符</a><ul>
-<li><a href="#算术运算符">算术运算符</a></li>
-<li><a href="#关系运算符">关系运算符</a></li>
-<li><a href="#逻辑运算符">逻辑运算符</a></li>
-<li><a href="#其它运算符">其它运算符</a></li>
-<li><a href="#优先级">优先级</a></li>
-</ul>
-</li>
-<li><a href="#字符串">字符串</a><ul>
-<li><a href="#转义字符">转义字符</a></li>
-<li><a href="#字符串操作">字符串操作</a></li>
-<li><a href="#字符串格式化">字符串格式化</a></li>
-<li><a href="#匹配模式">匹配模式</a><ul>
-<li><a href="#模式">模式</a></li>
-<li><a href="#捕获">捕获</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#数组">数组</a></li>
-<li><a href="#迭代器">迭代器</a><ul>
-<li><a href="#泛型for迭代器">泛型for迭代器</a></li>
-<li><a href="#无状态迭代器">无状态迭代器</a></li>
-<li><a href="#多状态迭代器">多状态迭代器</a></li>
-</ul>
-</li>
-<li><a href="#table">table</a><ul>
-<li><a href="#操作方法">操作方法</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="变量">变量</span></h2><p>使用前必须<strong>申明</strong>，即创建该变量。</p>
-<p>包括：<strong>全局变量，局部变量，表中的域。</strong></p>
-<p>前文中提到过，Lua中所有的变量默认都是全局变量，有一种情况是例外的，那就是用local显示声明为局部变量的。</p>
-<p>试尝试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a=1;</span><br><span class="line">local b = 2;</span><br><span class="line">function test()</span><br><span class="line">    c=3;</span><br><span class="line">    local d=4;</span><br><span class="line">end</span><br><span class="line">test()</span><br><span class="line">print(&quot;a&quot;..a)</span><br><span class="line">print(&quot;b&quot;..b)</span><br><span class="line">print(&quot;c&quot;..c)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/20/Lua学习笔记-二/local.jpg" alt=""></p>
-<p>这里经过试验可以轻易的得知，local定义的变量的使用范围就是在当前的代码块儿之内的。一旦超出的话就直接归nil！</p>
-<p>这里使用到了Lua中的一些语法，例如function与end，这里就不一一的详细描述了，后面会讲到。</p>
-<h2><span id="赋值语句">赋值语句</span></h2><h3><span id="多变量赋值">多变量赋值</span></h3><p>在Lua中，多个变量可以一同赋值。（两边的数量相同时）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b=&quot;hello&quot;,&quot;world&quot;</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
-<p><strong>当变量的个数不等于赋值个数的时候？</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a. 变量个数 &gt; 值的个数             按变量个数补足nil</span><br><span class="line">b. 变量个数 &lt; 值的个数             多余的值会被忽略</span><br></pre></td></tr></table></figure>
-<p>注意，当函数返回多个值的时候，可以直接使用多变量赋值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a,b=fun()</span><br></pre></td></tr></table></figure>
-<p>这里的话返回的多个值会直接赋值给前面的变量。</p>
-<h2><span id="索引">索引</span></h2><p>对table表的使用索引主要就是包括了两种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">site=&#123;&#125;</span><br><span class="line">site[&quot;key&quot;]=&quot;thbelief&quot;</span><br><span class="line">--第一种方法</span><br><span class="line">print(&quot;第一种&quot;..site[&quot;key&quot;])</span><br><span class="line">--第二种方法</span><br><span class="line">print(&quot;第二种&quot;..site.key)</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一种thbelief</span><br><span class="line">第二种thbelief</span><br></pre></td></tr></table></figure>
-<h2><span id="循环">循环</span></h2><table>
-<thead>
-<tr>
-<th style="text-align:left">循环类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/lua/lua-while-loop.html" target="_blank" rel="noopener">while 循环</a></td>
-<td style="text-align:left">在条件为 true 时，让程序重复地执行某些语句。执行语句前会先检查条件是否为 true。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/lua/lua-for-loop.html" target="_blank" rel="noopener">for 循环</a></td>
-<td style="text-align:left">重复执行指定语句，重复次数可在 for 语句中控制。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/lua/lua-repeat-until-loop.html" target="_blank" rel="noopener">repeat…until</a></td>
-<td style="text-align:left">重复执行循环，直到 指定的条件为真时为止</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/lua/lua-nested-loops.html" target="_blank" rel="noopener">循环嵌套</a></td>
-<td style="text-align:left">可以在循环内嵌套一个或多个循环语句（while do … end;for … do … end;repeat … until;）</td>
-</tr>
-</tbody>
-</table>
-<p><img src="/2019/04/20/Lua学习笔记-二/循环.jpg" alt=""></p>
-<h3><span id="控制语句">控制语句</span></h3><p><strong>Break：退出当前循环或语句。</strong></p>
-<h2><span id="流程控制">流程控制</span></h2><p><strong>需要特别注意，在Lua中0是true。</strong></p>
-<p><strong>在Lua中，只有nil和false为假！</strong></p>
-<p>if语句、if…else语句、if的嵌套语句。</p>
-<h2><span id="函数">函数</span></h2><p>Lua中函数的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">optional_function_scope function function_name( argument1, argument2, argument3..., argumentn)</span><br><span class="line">    function_body</span><br><span class="line">    return result_params_comma_separated</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>optional_function_scope:</strong> 该参数是可选的制定函数是全局函数还是局部函数，未设置该参数默认为全局函数，如果你需要设置函数为局部函数需要使用关键字 <strong>local</strong>。</li>
-<li><strong>function_name:</strong> 指定函数名称。</li>
-<li><strong>argument1, argument2, argument3…, argumentn:</strong> 函数参数，多个参数以逗号隔开，函数也可以不带参数。</li>
-<li><strong>function_body:</strong> 函数体，函数中需要执行的代码语句块。</li>
-<li><strong>result_params_comma_separated:</strong> 函数返回值，Lua语言函数可以返回多个值，每个值以逗号隔开。</li>
-</ul>
-<h3><span id="可变参数">可变参数</span></h3><p>和c语言类似，Lua中用<strong>…</strong>表示函数有可变的参数。</p>
-<ul>
-<li><strong>select(‘#’, …)</strong> 返回可变参数的长度</li>
-<li><strong>select(n, …)</strong> 用于访问 <strong>n</strong> 到 <strong>select(‘#’,…)</strong> 的参数</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(...)--这里使用...表示可变参数</span><br><span class="line">local s=0</span><br><span class="line">for i,v in ipairs&#123;...&#125; do</span><br><span class="line">    s=s+v</span><br><span class="line">end</span><br><span class="line">print(&quot;可变参数数量：&quot;..select(&quot;#&quot;, ...))</span><br><span class="line">return s</span><br><span class="line">end</span><br><span class="line">print(add(1,2,3,4))</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/20/Lua学习笔记-二/可变参数.jpg" alt=""></p>
-<h2><span id="运算符">运算符</span></h2><h3><span id="算术运算符">算术运算符</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">操作符</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">+</td>
-<td style="text-align:left">加法</td>
-<td style="text-align:left">A + B 输出结果 30</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">减法</td>
-<td style="text-align:left">A - B 输出结果 -10</td>
-</tr>
-<tr>
-<td style="text-align:left">*</td>
-<td style="text-align:left">乘法</td>
-<td style="text-align:left">A * B 输出结果 200</td>
-</tr>
-<tr>
-<td style="text-align:left">/</td>
-<td style="text-align:left">除法</td>
-<td style="text-align:left">B / A w输出结果 2</td>
-</tr>
-<tr>
-<td style="text-align:left">%</td>
-<td style="text-align:left">取余</td>
-<td style="text-align:left">B % A 输出结果 0</td>
-</tr>
-<tr>
-<td style="text-align:left">^</td>
-<td style="text-align:left">乘幂</td>
-<td style="text-align:left">A^2 输出结果 100</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">负号</td>
-<td style="text-align:left">-A 输出结果v -10</td>
-</tr>
-</tbody>
-</table>
-<p>由于太简单了，这里就不写例子了。</p>
-<h3><span id="关系运算符">关系运算符</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">操作符</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">==</td>
-<td style="text-align:left">等于，检测两个值是否相等，相等返回 true，否则返回 false</td>
-<td style="text-align:left">(A == B) 为 false。</td>
-</tr>
-<tr>
-<td style="text-align:left">~=</td>
-<td style="text-align:left">不等于，检测两个值是否相等，相等返回 false，否则返回 true</td>
-<td style="text-align:left">(A ~= B) 为 true。</td>
-</tr>
-<tr>
-<td style="text-align:left">&gt;</td>
-<td style="text-align:left">大于，如果左边的值大于右边的值，返回 true，否则返回 false</td>
-<td style="text-align:left">(A &gt; B) 为 false。</td>
-</tr>
-<tr>
-<td style="text-align:left">&lt;</td>
-<td style="text-align:left">小于，如果左边的值大于右边的值，返回 false，否则返回 true</td>
-<td style="text-align:left">(A &lt; B) 为 true。</td>
-</tr>
-<tr>
-<td style="text-align:left">&gt;=</td>
-<td style="text-align:left">大于等于，如果左边的值大于等于右边的值，返回 true，否则返回 false</td>
-<td style="text-align:left">(A &gt;= B) 返回 false。</td>
-</tr>
-<tr>
-<td style="text-align:left">&lt;=</td>
-<td style="text-align:left">小于等于， 如果左边的值小于等于右边的值，返回 true，否则返回 false</td>
-<td style="text-align:left">(A &lt;= B) 返回 true。</td>
-</tr>
-</tbody>
-</table>
-<p>这里需要注意的就是~=，和其它高级语言使用的！=不同，<strong>Lua中用~=表示不等于。</strong></p>
-<h3><span id="逻辑运算符">逻辑运算符</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">操作符</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">and</td>
-<td style="text-align:left">逻辑与操作符。 若 A 为 false，则返回 A，否则返回 B。</td>
-<td style="text-align:left">(A and B) 为 false。</td>
-</tr>
-<tr>
-<td style="text-align:left">or</td>
-<td style="text-align:left">逻辑或操作符。 若 A 为 true，则返回 A，否则返回 B。</td>
-<td style="text-align:left">(A or B) 为 true。</td>
-</tr>
-<tr>
-<td style="text-align:left">not</td>
-<td style="text-align:left">逻辑非操作符。与逻辑运算结果相反，如果条件为 true，逻辑非为 false。</td>
-<td style="text-align:left">not(A and B) 为 true。</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="其它运算符">其它运算符</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">操作符</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">..</td>
-<td style="text-align:left">连接两个字符串</td>
-<td style="text-align:left">a..b ，其中 a 为 “Hello “ ， b 为 “World”, 输出结果为 “Hello World”。</td>
-</tr>
-<tr>
-<td style="text-align:left">#</td>
-<td style="text-align:left">一元运算符，返回字符串或表的长度。</td>
-<td style="text-align:left">#”Hello” 返回 5</td>
-</tr>
-</tbody>
-</table>
-<p>这两个其它运算符之前提过，这里就不详细描述了。</p>
-<h3><span id="优先级">优先级</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">^</span><br><span class="line">not    - (unary)</span><br><span class="line">*      /</span><br><span class="line">+      -</span><br><span class="line">..</span><br><span class="line">&lt;      &gt;      &lt;=     &gt;=     ~=     ==</span><br><span class="line">and</span><br><span class="line">or</span><br></pre></td></tr></table></figure>
-<h2><span id="字符串">字符串</span></h2><h3><span id="转义字符">转义字符</span></h3><table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>意义</th>
-<th>ASCII码值（十进制）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\a</td>
-<td>响铃(BEL)</td>
-<td>007</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>退格(BS) ，将当前位置移到前一列</td>
-<td>008</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>换页(FF)，将当前位置移到下页开头</td>
-<td>012</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行(LF) ，将当前位置移到下一行开头</td>
-<td>010</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车(CR) ，将当前位置移到本行开头</td>
-<td>013</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>水平制表(HT) （跳到下一个TAB位置）</td>
-<td>009</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>垂直制表(VT)</td>
-<td>011</td>
-</tr>
-<tr>
-<td>\</td>
-<td>代表一个反斜线字符’’\’</td>
-<td>092</td>
-</tr>
-<tr>
-<td>\’</td>
-<td>代表一个单引号（撇号）字符</td>
-<td>039</td>
-</tr>
-<tr>
-<td>\”</td>
-<td>代表一个双引号字符</td>
-<td>034</td>
-</tr>
-<tr>
-<td>\0</td>
-<td>空字符(NULL)</td>
-<td>000</td>
-</tr>
-<tr>
-<td>\ddd</td>
-<td>1到3位八进制数所代表的任意字符</td>
-<td>三位八进制</td>
-</tr>
-<tr>
-<td>\xhh</td>
-<td>1到2位十六进制所代表的任意字符</td>
-<td>二位十六进制</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="字符串操作">字符串操作</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">序号</th>
-<th style="text-align:left">方法 &amp; 用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left"><strong>string.upper(argument):</strong> 字符串全部转为大写字母。</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left"><strong>string.lower(argument):</strong> 字符串全部转为小写字母。</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left"><strong>string.gsub(mainString,findString,replaceString,num)</strong> 在字符串中替换,mainString为要替换的字符串， findString 为被替换的字符，replaceString 要替换的字符，num 替换次数（可以忽略，则全部替换）`</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left"><strong>string.find (str, substr, [init, [end]])</strong> 在一个指定的目标字符串中搜索指定的内容(第三个参数为索引),返回其具体位置。不存在则返回 nil。</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left"><strong>string.reverse(arg)</strong> 字符串反转</td>
-</tr>
-<tr>
-<td style="text-align:left">6</td>
-<td style="text-align:left"><strong>string.format(…)</strong> 返回一个类似printf的格式化字符串</td>
-</tr>
-<tr>
-<td style="text-align:left">7</td>
-<td style="text-align:left"><strong>string.char(arg) 和 string.byte(arg[,int])</strong> char 将整型数字转成字符并连接， byte 转换字符为整数值(可以指定某个字符，默认第一个字符)</td>
-</tr>
-<tr>
-<td style="text-align:left">8</td>
-<td style="text-align:left"><strong>string.len(arg)</strong> 计算字符串长度。</td>
-</tr>
-<tr>
-<td style="text-align:left">9</td>
-<td style="text-align:left"><strong>string.rep(string, n)</strong> 返回字符串string的n个拷贝</td>
-</tr>
-<tr>
-<td style="text-align:left">10</td>
-<td style="text-align:left"><strong>..</strong> 链接两个字符串</td>
-</tr>
-<tr>
-<td style="text-align:left">11</td>
-<td style="text-align:left"><strong>string.gmatch(str, pattern)</strong> 回一个迭代器函数，每一次调用这个函数，返回一个在字符串 str 找到的下一个符合 pattern 描述的子串。如果参数 pattern 描述的字符串没有找到，迭代函数返回nil。</td>
-</tr>
-<tr>
-<td style="text-align:left">12</td>
-<td style="text-align:left"><strong>string.match(str, pattern, init)</strong> string.match()只寻找源字串str中的第一个配对. 参数init可选, 指定搜寻过程的起点, 默认为1。  在成功配对时, 函数将返回配对表达式中的所有捕获结果; 如果没有设置捕获标记, 则返回整个配对字符串. 当没有成功的配对时, 返回nil。</td>
-</tr>
-</tbody>
-</table>
-<h3><span id="字符串格式化">字符串格式化</span></h3><p>字符串格式化过程中可能用到的转义码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%c - 接受一个数字, 并将其转化为ASCII码表中对应的字符</span><br><span class="line">%d, %i - 接受一个数字并将其转化为有符号的整数格式</span><br><span class="line">%o - 接受一个数字并将其转化为八进制数格式</span><br><span class="line">%u - 接受一个数字并将其转化为无符号整数格式</span><br><span class="line">%x - 接受一个数字并将其转化为十六进制数格式, 使用小写字母</span><br><span class="line">%X - 接受一个数字并将其转化为十六进制数格式, 使用大写字母</span><br><span class="line">%e - 接受一个数字并将其转化为科学记数法格式, 使用小写字母e</span><br><span class="line">%E - 接受一个数字并将其转化为科学记数法格式, 使用大写字母E</span><br><span class="line">%f - 接受一个数字并将其转化为浮点数格式</span><br><span class="line">%g(%G) - 接受一个数字并将其转化为%e(%E, 对应%G)及%f中较短的一种格式</span><br><span class="line">%q - 接受一个字符串并将其转化为可安全被Lua编译器读入的格式</span><br><span class="line">%s - 接受一个字符串并按照给定的参数格式化该字符串</span><br></pre></td></tr></table></figure>
-<p>将格式细化的时候，可以在%后面添加参数，参数的读入顺序如下：</p>
-<ul>
-<li>(1) 符号: 一个+号表示其后的数字转义符将让正数显示正号. 默认情况下只有负数显示符号.</li>
-<li>(2) 占位符: 一个0, 在后面指定了字串宽度时占位用. 不填时的默认占位符是空格.</li>
-<li>(3) 对齐标识: 在指定了字串宽度时, 默认为右对齐, 增加-号可以改为左对齐.</li>
-<li>(4) 宽度数值</li>
-<li>(5) 小数位数/字串裁切: 在宽度数值后增加的小数部分n, 若后接f(浮点数转义符, 如%6.3f)则设定该浮点数的小数只保留n位, 若后接s(字符串转义符, 如%5.3s)则设定该字符串只显示前n位.</li>
-</ul>
-<h3><span id="匹配模式">匹配模式</span></h3><p>字符类指可以匹配一个特定字符集合内任何字符的模式项。比如，字符类 %d 匹配任意数字。所以可以使用模式串 %d%d/%d%d/%d%d%d%d 搜索 dd/mm/yyyy 格式的日期：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;Deadline is 30/05/1999, firm&quot;</span><br><span class="line">date = &quot;%d%d/%d%d/%d%d%d%d&quot;</span><br><span class="line">print(string.sub(s, string.find(s, date)))</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30/05/1999</span><br></pre></td></tr></table></figure>
-<p>所有的字符类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.(点): 与任何字符配对</span><br><span class="line">%a: 与任何字母配对</span><br><span class="line">%c: 与任何控制符配对(例如\n)</span><br><span class="line">%d: 与任何数字配对</span><br><span class="line">%l: 与任何小写字母配对</span><br><span class="line">%p: 与任何标点(punctuation)配对</span><br><span class="line">%s: 与空白字符配对</span><br><span class="line">%u: 与任何大写字母配对</span><br><span class="line">%w: 与任何字母/数字配对</span><br><span class="line">%x: 与任何十六进制数配对</span><br><span class="line">%z: 与任何代表0的字符配对</span><br><span class="line">%x(此处x是非字母非数字字符): 与字符x配对. 主要用来处理表达式中有功能的字符(^$()%.[]*+-?)的配对问题, 例如%%与%配对</span><br><span class="line">[数个字符类]: 与任何[]中包含的字符类配对. 例如[%w_]与任何字母/数字, 或下划线符号(_)配对</span><br><span class="line">[^数个字符类]: 与任何不包含在[]中的字符类配对. 例如[^%s]与任何非空白字符配对</span><br></pre></td></tr></table></figure>
-<p>特别注意，<strong>当字符类使用大写字母的时候表示的是与非此字符类的所有其他字符配对，如%S表示与任何非空白字符配对。</strong></p>
-<p>特殊字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( ) . % + - * ? [ ^ $</span><br></pre></td></tr></table></figure>
-<p>‘%’ 用作特殊字符的转义字符，因此 ‘%.’ 匹配点；’%%’ 匹配字符 ‘%’。转义字符 ‘%’不仅可以用来转义特殊字符，还可以用于所有的非字母的字符。</p>
-<p><strong>模式条目可以是：</strong></p>
-<ul>
-<li>单个字符类匹配该类别中任意单个字符；</li>
-<li>单个字符类跟一个 ‘<code>*</code>‘， 将匹配零或多个该类的字符。 这个条目总是匹配尽可能长的串；</li>
-<li>单个字符类跟一个 ‘<code>+</code>‘， 将匹配一或更多个该类的字符。 这个条目总是匹配尽可能长的串；</li>
-<li>单个字符类跟一个 ‘<code>-</code>‘， 将匹配零或更多个该类的字符。 和 ‘<code>*</code>‘ 不同， 这个条目总是匹配尽可能短的串；</li>
-<li>单个字符类跟一个 ‘<code>?</code>‘， 将匹配零或一个该类的字符。 只要有可能，它会匹配一个；</li>
-<li><code>%*n*</code>， 这里的 <em>n</em> 可以从 1 到 9； 这个条目匹配一个等于 <em>n</em> 号捕获物（后面有描述）的子串。</li>
-<li><code>%b*xy*</code>， 这里的 <em>x</em> 和 <em>y</em> 是两个明确的字符； 这个条目匹配以 <em>x</em> 开始 <em>y</em> 结束， 且其中 <em>x</em> 和 <em>y</em> 保持 <em>平衡</em> 的字符串。 意思是，如果从左到右读这个字符串，对每次读到一个 <em>x</em> 就 <em>+1</em> ，读到一个 <em>y</em> 就 <em>-1</em>， 最终结束处的那个 <em>y</em> 是第一个记数到 0 的 <em>y</em>。 举个例子，条目 <code>%b()</code> 可以匹配到括号平衡的表达式。</li>
-<li><code>%f[*set*]</code>， 指 <em>边境模式</em>； 这个条目会匹配到一个位于 <em>set</em> 内某个字符之前的一个空串， 且这个位置的前一个字符不属于 <em>set</em> 。 集合 <em>set</em> 的含义如前面所述。 匹配出的那个空串之开始和结束点的计算就看成该处有个字符 ‘<code>\0</code>‘ 一样。</li>
-</ul>
-<h4><span id="模式">模式</span></h4><p><em>模式</em> 指一个<strong>模式条目的序列</strong>。 在模式最前面加上符号 ‘<code>^</code>‘ 将锚定从字符串的开始处做匹配。 在模式最后面加上符号 ‘<code>$</code>‘ 将使匹配过程锚定到字符串的结尾。 如果 ‘<code>^</code>‘ 和 ‘<code>$</code>‘ 出现在其它位置，它们均没有特殊含义，只表示自身。</p>
-<h4><span id="捕获">捕获</span></h4><p>模式可以在内部用小括号括起一个子模式； 这些子模式被称为 <em>捕获物</em>。 当匹配成功时，由 <em>捕获物</em> 匹配到的字符串中的子串被保存起来用于未来的用途。 捕获物以它们左括号的次序来编号。 例如，对于模式 <code>&quot;(a*(.)%w(%s*))&quot;</code> ， 字符串中匹配到 <code>&quot;a*(.)%w(%s*)&quot;</code> 的部分保存在第一个捕获物中 （因此是编号 1 ）； 由 “<code>.</code>“ 匹配到的字符是 2 号捕获物， 匹配到 “<code>%s*</code>“ 的那部分是 3 号。</p>
-<p>作为一个特例，<strong>空的捕获 <code>()</code> 将捕获到当前字符串的位置（它是一个数字）。</strong> 例如，如果将模式 “()aa()”<code>作用到字符串</code>“flaaap”上，将产生两个捕获物： 3 和 5 。</p>
-<h2><span id="数组">数组</span></h2><p>在Lua中，由于只有nil与false是假的，所以可以通过负数作为索引。</p>
-<p><strong>默认情况下，索引是通过1开始访问的。</strong></p>
-<p>一般来说，索引都是自己设置的，主要就是为了防止出现nil引起异常。</p>
-<p>其它的数组特性和C++之类的很类似，这里就不详细描述了，直接跳过。</p>
-<h2><span id="迭代器">迭代器</span></h2><p>在 Lua 中迭代器是一种支持<strong>指针类型</strong>的结构，它可以<strong>遍历集合的每一个元素。</strong></p>
-<h3><span id="泛型for迭代器">泛型for迭代器</span></h3><p>实际上泛型for在自身内部保存了三个值：<strong>迭代函数、状态常量、控制变量。</strong></p>
-<p>泛型for迭代器自身提供的集合的键值对语法格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for k, v in pairs(t) do</span><br><span class="line">    print(k, v)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>k、v为变量列表，paies(t)为表达式列表。</p>
-<p>实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array=&#123;&quot;hello&quot;,&quot;thbelief&quot;&#125;</span><br><span class="line">for key,value in pairs(array)</span><br><span class="line">do</span><br><span class="line">    print(key,value)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1	hello</span><br><span class="line">2	thbelief</span><br></pre></td></tr></table></figure>
-<p>泛型for的执行过程：</p>
-<p>1.初始化，计算in后面表达式的值，表达式应该返回泛型 for 需要的三个值：迭代函数、状态常量、控制变量；与多值赋值一样，如果表达式返回的结果个数不足三个会自动用 nil 补足，多出部分会被忽略。</p>
-<p>2.将状态常量和控制变量作为参数调用迭代函数（注意：对于 for 结构来说，状态常量没有用处，仅仅在初始化时获取他的值并传递给迭代函数）。</p>
-<p>3.将迭代函数的值赋值给参数列表。</p>
-<p>4.判断是否为nil，是的话就结束循环，否则的话执行循环体。</p>
-<p>5.回到第二步再次调用迭代函数。</p>
-<p>其实可以把迭代器看做是一个函数，每次调用就返回集合的下一个元素。</p>
-<h3><span id="无状态迭代器">无状态迭代器</span></h3><p>无状态的迭代器是指<strong>不保留任何状态的迭代器</strong>，因此在循环中我们可以利用无状态迭代器避免创建闭包花费额外的代价。</p>
-<p>每一次迭代，迭代函数都是用两个变量（状态常量和控制变量）的值作为参数被调用，一个无状态的迭代器<strong>只利用这两个值</strong>可以获取下一个元素。</p>
-<p>这种无状态迭代器的典型的简单的例子是 ipairs，它遍历数组的每一个元素。</p>
-<h3><span id="多状态迭代器">多状态迭代器</span></h3><p>很多情况下，迭代器需要保存多个状态信息而不是简单的状态常量和控制变量，最简单的方法是使用<strong>闭包</strong>。</p>
-<p>还有一种方法就是<strong>将所有的状态信息封装到 table 内，将 table 作为迭代器的状态常量</strong>，因为这种情况下可以将所有的信息存放在 table 内，所以迭代函数通常不需要第二个参数。</p>
-<p>实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">array = &#123;&quot;hello&quot;, &quot;thbelief&quot;&#125;</span><br><span class="line"></span><br><span class="line">function elementIterator (collection)</span><br><span class="line">   local index = 0</span><br><span class="line">   local count = #collection</span><br><span class="line">   -- 闭包函数</span><br><span class="line">   return function ()</span><br><span class="line">      index = index + 1</span><br><span class="line">      if index &lt;= count</span><br><span class="line">      then</span><br><span class="line">         --  返回迭代器的当前元素</span><br><span class="line">         return collection[index]</span><br><span class="line">      end</span><br><span class="line">   end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">for element in elementIterator(array)</span><br><span class="line">do</span><br><span class="line">   print(element)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h2><span id="table">table</span></h2><p>Lua中的table使用的是<strong>关联型数组</strong>，可以使用任意的类型来做数组的索引，除了nil。</p>
-<p>给一个变量a赋值为table表类型的时候，其实只是给的地址，指向的是内存，如果将a赋值给b，则两个变量指向的都是一个内存。</p>
-<h3><span id="操作方法">操作方法</span></h3><table>
-<thead>
-<tr>
-<th style="text-align:left">序号</th>
-<th style="text-align:left">方法 &amp; 用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left"><strong>table.concat (table [, sep [, start [, end]]]):</strong>concat是concatenate(连锁, 连接)的缩写. table.concat()函数列出参数中指定table的数组部分从start位置到end位置的所有元素, 元素间以指定的分隔符(sep)隔开。</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left"><strong>table.insert (table, [pos,] value):</strong>在table的数组部分指定位置(pos)插入值为value的一个元素. pos参数可选, 默认为数组部分末尾.</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left"><strong>table.maxn (table)</strong>指定table中所有正数key值中最大的key值. 如果不存在key值为正数的元素, 则返回0。(<strong>Lua5.2之后该方法已经不存在了,本文使用了自定义函数实现</strong>)</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left"><strong>table.remove (table [, pos])</strong>返回table数组部分位于pos位置的元素. 其后的元素会被前移. pos参数可选, 默认为table长度, 即从最后一个元素删起。</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left"><strong>table.sort (table [, comp])</strong>对给定的table进行升序排序。</td>
-</tr>
-</tbody>
-</table>
-<p>部分实例：</p>
-<p><img src="/2019/04/20/Lua学习笔记-二/table操作.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3330,7 +2851,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-count">112</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3352,7 +2873,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">169</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3437,7 +2958,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共136k字</span>
+  <span class="post-count">博客全站共136.7k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

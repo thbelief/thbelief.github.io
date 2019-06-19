@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python学习笔记（八）]]></title>
+    <url>%2F2019%2F06%2F19%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 面向对象编程 简介 类与实例 访问限制 面向对象编程简介定义：把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。 其实也就是类似于CLASS类的概念。同样的——面向对象的三大特点：封装继承多态。 简单实例： 1234567891011121314151617181920#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/14 15:56# @Author : thbelief# @Email : thbelief520@gmail.com# @File : OOP.py# @function: 面向对象编程#简单的类Classclass Student(object): def __init__(self,name,gender): self.name=name self.gender=gender def print_gender(self): print('%s: %s'%(self.name,self.gender))#简单实例test1=Student('thbelief','男')test2=Student('Dragon','女')print(test1.print_gender())print(test2.print_gender()) 结果： 类与实例定义： 通过class关键字+类名（通常大写开头的单词），object则是表示从哪个类继承下来的，一般如果没有的话默认就是object因为这是所有类最终都会继承的类。 12class Student(object): ... 创建实例： 通过类名+()实现。()中必须添加类中要求的参数（如果有要求的话）。 1Student('thbelief','男') 每个object的地址都不一样，而Student本身则是一个类。 绑定属性： 通过定义一个特殊的方法在创建实例的时候传入相关的参数。 123def __init__(self,name,gender): self.name=name self.gender=gender 注意： 这个init方法的第一个参数永远是self，表示创建的实例本身，因此，在init方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。 数据封装： 这个就相当于C++那些类里面的内部变量，只能类内部才能访问，但是也可以专门设置一个函数用来传出参数。 12def print_score(self): print('%s: %s' % (self.name, self.gender)) 特别需要注意的是——由于Python允许对实例变量绑定任何数据，所以对于一个类的不同实例来说，拥有的变量以及名称都可能不一样。 访问限制Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。 12345678class Student(object): def __init__(self, name, gender): self.__name = name self.__gender = gender def print_score(self): print('%s: %s' % (self.__name, self.__gender)) 这样子外面就不能直接访问_变量了,但是仍然可以通过定义函数来获取甚至修改。 在Python中，变量名类似xxx的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以不能用这样的方法来定义变量。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Coin Changing]]></title>
     <url>%2F2019%2F06%2F18%2FCoin-Changing%2F</url>
     <content type="text"><![CDATA[目录： Coin Changing 题目描述 输入 输出 样例输入 样例输出 解法 代码 结果 Coin Changing题目描述设有n 种不同面值的硬币，各硬币的面值存于数组T［1:n］中。现要用这些面值的硬币来找钱。可以使用的各种面值的硬币个数存于数组Coins［1:n］中。 对于给定的1≤n≤10，硬币面值数组T和可以使用的各种面值的硬币个数数组Coins，以及钱数m，0≤m≤20001，编程计算找钱m的最少硬币数。 输入1第一行中只有1 个整数给出n的值,第2 行起每行2 个数，分别是T[j]和Coins[j]。最后1 行是要找的钱数m。 输出1最少硬币数,无解时输出-1 样例输入1234531 32 35 318 样例输出15 解法这是一道动态规划的题目。 运用动态规划的思想——将一个问题分裂成n个子问题，求出子问题的解并用子问题的解出问题的答案。 可知，可以将对m找零分解为对1、2、3、4、5…m找零。所以我们可以定义长度为m的数组dp[1~m]来存放对应子问题的求解，即dp[i]为要凑i块钱所需最少硬币数，那么dp[m]就是要求的答案。 假设当前要找零的钱是i（1&lt;i&lt;m）,当前所试探的硬币面值为k： （1）当i和k相等时，结果为1，即dp[i] = 1，说明可以直接通过一枚硬币就是最小硬币数了。 （2）当i大于k时，若dp[i]为0(未赋过值），且dp[i-k]不为0(从i元中减去k元后剩下的钱可以找开) 则dp[i] = dp[i-k]+1，即将子问题划分，然后加上本次的一枚硬币即可。 若dp[i]不为0(即已赋值)，则dp[i] = min( dp[i-k]+1, dp[i] ) 即dp[i]为dp[i-k]和dp[i]中的较小者。 （3）所以dp[i]的动态转移方程就是: 1dp[i] = min( dp[k], dp[k-t[i]]+1 ) //t[i]&lt;=k&lt;=m 代码123456789101112131415161718192021222324252627282930313233#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;#define Max 999999int main()&#123; //硬币种类数n，找零钱数m int n,m,T[11],Coins[11]; cin&gt;&gt;n; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;T[i]&gt;&gt;Coins[i];//面值与对应的个数 &#125; cin&gt;&gt;m; int dp[20002]=&#123;0&#125;; for(int i=1;i&lt;20002;i++)&#123; //因为0时找零为0，后面的都初始化为最大值（寻找最少硬币数） dp[i]=Max; &#125; for(int i=1;i&lt;=n;i++)&#123; //一共n种硬币 for(int j=1;j&lt;=Coins[i];j++)&#123;//各面值硬币个数 for(int k=m;k&gt;=T[i];k--)&#123;//各面值 //动态规划思想求解 dp[k] = min(dp[k], dp[k-T[i]]+1); &#125; &#125; &#125; if(dp[m]&lt;=m)&#123; cout&lt;&lt;dp[m]&lt;&lt;endl; &#125;else&#123; cout&lt;&lt;"-1"&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
@@ -207,8 +220,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -251,8 +264,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>AJAX</tag>
         <tag>j-Query</tag>
+        <tag>AJAX</tag>
       </tags>
   </entry>
   <entry>
@@ -1074,9 +1087,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
