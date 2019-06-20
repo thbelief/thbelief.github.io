@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python学习笔记（九）]]></title>
+    <url>%2F2019%2F06%2F20%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[目录： 面向对象编程 继承 多态 对象信息 type() isinstance() dir() 实例属性和类属性 面向对象编程继承关于继承与多态的详细的介绍这里就不说了，主要讲讲他们的优势。 继承的好处是——子类自动的获得父类的全部的功能。 简单实例: 1234567891011121314151617#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/18 15:21# @Author : thbelief# @Email : thbelief520@gmail.com# @File : Inheritance and polymorphism.py# @function: 继承多态的部分#codeclass printSomething(object): def printThis(self): print("bug")class test(printSomething): print("这是子类")test1=test()test1.printThis() 结果： 12345D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;这是子类bugProcess finished with exit code 0 通过这个简单的例子就可以简单的了解继承的特性。 多态由上面的部分可以自然的引出多态的使用，所谓的多态其实就是——子类中的与父类同名的方法其实子类的对象时直接调用子类的同名方法的。 简单实例： 12345678910111213141516#多态class printSomething(object): def printThis(self): print("bug")class test1(printSomething): def printThis(self): print("bug1")class test2(printSomething): def printThis(self): print("bug2")tmp1=printSomething()tmp2=test1()tmp3=test2()tmp1.printThis()tmp2.printThis()tmp3.printThis() 输出结果： 123456D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;bugbug1bug2Process finished with exit code 0 注意：在JAVA等语言中要求多态是必须传入对应的子类类型，但是Python中不一定。这也是静态语言与动态语言的差别。 对象信息拿到对象的首先肯定是要知道这个对象是什么类型以及拥有哪些方法。 type()判断对象的类型。 基本变量类型的判断可以直接判断，但是如果要判断对象是不是函数的话还是需要types模块中定义的变量。 types模块变量如下： 12345678910111213141516171819202122232425262728293031323334353637BooleanType BufferType BuiltinFunctionType BuiltinMethodType ClassType CodeType ComplexType DictProxyType DictType DictionaryType EllipsisType FileType FloatType FrameType FunctionType GeneratorType GetSetDescriptorType InstanceType IntType LambdaType ListType LongType MemberDescriptorType MethodType ModuleType NoneType NotImplementedType ObjectType SliceType StringType StringTypes TracebackType TupleType TypeType UnboundMethodType UnicodeType XRangeType 简单实例： 123456789101112131415161718#多态class printSomething(object): def printThis(self): print("bug")class test1(printSomething): def printThis(self): print("bug1")class test2(printSomething): def printThis(self): print("bug2")tmp1=printSomething()tmp2=test1()tmp3=test2()tmp1.printThis()tmp2.printThis()tmp3.printThis()#获取对象类型print(type(tmp1)) 结果： 1234567D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;bugbug1bug2&lt;class &apos;__main__.printSomething&apos;&gt;Process finished with exit code 0 isinstance()判断一个对象是否是某种类型。 12345678910111213141516171819#多态class printSomething(object): def printThis(self): print("bug")class test1(printSomething): def printThis(self): print("bug1")class test2(printSomething): def printThis(self): print("bug2")tmp1=printSomething()tmp2=test1()tmp3=test2()tmp1.printThis()tmp2.printThis()tmp3.printThis()#获取对象类型print(isinstance(tmp1,printSomething))print(isinstance(tmp2,printSomething)) 结果： 这里需要注意——子类继承下来之后判断的时候也会判断包含在父类。 12345678D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;bugbug1bug2TrueTrueProcess finished with exit code 0 dir()获取对象的所有的属性+方法。 通过getattr()、setattr()以及hasattr() 获取，设置，有无 来操作该对象。 简单实例： 123456789101112#dirclass printSomething(object): def printThis(self): print("bug")test=printSomething()#获取对象的所有属性方法print(dir(test))#操作对象状态getattr()、setattr()以及hasattr() 获取，设置，有无print(hasattr(test,"printThis"))print(hasattr(test,"printThis1"))setattr(test,'test','有这个属性了')print(getattr(test,"test")) 结果： 实例属性和类属性动态语言可以给类创建的实例绑定各种各样的属性。同样，类也可以给自己定义一个类属性。 在使用的时候千万不要定义实例属性名字和类属性一样，这样的话，相同名称的实例属性将自动屏蔽掉类属性。]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习笔记（八）]]></title>
     <url>%2F2019%2F06%2F19%2FPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89%2F</url>
     <content type="text"><![CDATA[目录： 面向对象编程 简介 类与实例 访问限制 面向对象编程简介定义：把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。 其实也就是类似于CLASS类的概念。同样的——面向对象的三大特点：封装继承多态。 简单实例： 1234567891011121314151617181920#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : 2019/6/14 15:56# @Author : thbelief# @Email : thbelief520@gmail.com# @File : OOP.py# @function: 面向对象编程#简单的类Classclass Student(object): def __init__(self,name,gender): self.name=name self.gender=gender def print_gender(self): print('%s: %s'%(self.name,self.gender))#简单实例test1=Student('thbelief','男')test2=Student('Dragon','女')print(test1.print_gender())print(test2.print_gender()) 结果： 类与实例定义： 通过class关键字+类名（通常大写开头的单词），object则是表示从哪个类继承下来的，一般如果没有的话默认就是object因为这是所有类最终都会继承的类。 12class Student(object): ... 创建实例： 通过类名+()实现。()中必须添加类中要求的参数（如果有要求的话）。 1Student('thbelief','男') 每个object的地址都不一样，而Student本身则是一个类。 绑定属性： 通过定义一个特殊的方法在创建实例的时候传入相关的参数。 123def __init__(self,name,gender): self.name=name self.gender=gender 注意： 这个init方法的第一个参数永远是self，表示创建的实例本身，因此，在init方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。 数据封装： 这个就相当于C++那些类里面的内部变量，只能类内部才能访问，但是也可以专门设置一个函数用来传出参数。 12def print_score(self): print('%s: %s' % (self.name, self.gender)) 特别需要注意的是——由于Python允许对实例变量绑定任何数据，所以对于一个类的不同实例来说，拥有的变量以及名称都可能不一样。 访问限制Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问。 12345678class Student(object): def __init__(self, name, gender): self.__name = name self.__gender = gender def print_score(self): print('%s: %s' % (self.__name, self.__gender)) 这样子外面就不能直接访问_变量了,但是仍然可以通过定义函数来获取甚至修改。 在Python中，变量名类似xxx的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以不能用这样的方法来定义变量。]]></content>
@@ -264,8 +277,8 @@
       <tags>
         <tag>JS</tag>
         <tag>JavaScript</tag>
-        <tag>j-Query</tag>
         <tag>AJAX</tag>
+        <tag>j-Query</tag>
       </tags>
   </entry>
   <entry>

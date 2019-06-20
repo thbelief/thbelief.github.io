@@ -313,6 +313,549 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/26/C-常用函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/26/C-常用函数/" itemprop="url">C++常用函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T22:00:54+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#c">C++</a><ul>
+<li><a href="#cstdlib">cstdlib</a></li>
+<li><a href="#cctype">cctype</a></li>
+<li><a href="#algorithm">algorithm</a></li>
+<li><a href="#cmath">cmath</a></li>
+<li><a href="#cstdlib-1">cstdlib</a></li>
+</ul>
+</li>
+<li><a href="#c">C</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>目前在备战CCF，算法题刷了蛮多的了，这次就记录一下，常用的C++/C的函数。（只记录<strong>常用且实用</strong>的，不是大全，再次强调）</p>
+<h2><span id="c">C++</span></h2><h3><span id="cstdlib">cstdlib</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">begin       得到指向字符串开头的Iterator（迭代器）</span><br><span class="line">end         得到指向字符串结尾的Iterator</span><br><span class="line">rbegin      得到指向反向字符串开头的Iterator</span><br><span class="line">rend        得到指向反向字符串结尾的Iterator</span><br><span class="line">size        得到字符串的大小</span><br><span class="line">length()    和size函数功能相同</span><br><span class="line">max_size    字符串可能的最大大小</span><br><span class="line">empty       判断是否为空</span><br><span class="line">operator[]  取第几个元素，相当于数组</span><br><span class="line">c_str       取得C风格的const char* 字符串</span><br><span class="line">swap        交换函数</span><br><span class="line">insert      插入字符</span><br><span class="line">append      追加字符</span><br><span class="line">push_back   追加字符</span><br><span class="line">erase       删除字符串</span><br><span class="line">clear       清空字符容器中所有内容</span><br><span class="line">replace     替代</span><br><span class="line">copy        字符串到空间</span><br><span class="line">find        查找,返回基于0的索引号</span><br><span class="line">substr(n1,len)       得到字符串从n1开始的长度为len的子串</span><br><span class="line">compare              比较字符串(支持所有的关系运算符)</span><br><span class="line">getline              从输入流中读入一行</span><br></pre></td></tr></table></figure>
+<h3><span id="cctype">cctype</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using ::isalpha; //是否字母</span><br><span class="line"></span><br><span class="line">using ::isdigit; //是否是数字</span><br><span class="line"></span><br><span class="line">using ::isgraph; //是否字母、数字或标点</span><br><span class="line"></span><br><span class="line">using ::islower; //是否小写</span><br><span class="line"></span><br><span class="line">using ::ispunct; //是否标点</span><br><span class="line"></span><br><span class="line">using ::isspace; //是否空格</span><br><span class="line"></span><br><span class="line">using ::isupper; //是否大写</span><br><span class="line"></span><br><span class="line">using ::isxdigit; //是否十六进制数字</span><br><span class="line"></span><br><span class="line">using ::tolower; //转为小写</span><br><span class="line"></span><br><span class="line">using ::toupper; //转为大写</span><br></pre></td></tr></table></figure>
+<h3><span id="algorithm">algorithm</span></h3><table>
+<thead>
+<tr>
+<th>循环</th>
+<th>对序列中的每个元素执行某项操作</th>
+<th>for_each()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查找</td>
+<td>在序列中找出某个值的第一次出现的位置</td>
+<td>find(a,a+size,n) 返回<em>b,</em>当<em>b=a+size</em>即没找到，<em>a</em>为指针</td>
+</tr>
+<tr>
+<td>在序列中找出符合某谓词的第一个元素</td>
+<td>find_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>在序列中找出一子序列的最后一次出现的位置</td>
+<td>find_end()</td>
+<td></td>
+</tr>
+<tr>
+<td>在序列中找出第一次出现指定值集中之值位置</td>
+<td>find_first_of()</td>
+<td></td>
+</tr>
+<tr>
+<td>在序列中找出相邻的一对值</td>
+<td>adjacent_find()</td>
+<td></td>
+</tr>
+<tr>
+<td>计数</td>
+<td>在序列中统计某个值出现的次数</td>
+<td>count()</td>
+</tr>
+<tr>
+<td>在序列中统计与某谓词匹配的次数</td>
+<td>count_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>比较</td>
+<td>找出两个序列相异的第一个元素</td>
+<td>mismatch()</td>
+</tr>
+<tr>
+<td>两个序列中的对应元素都相同时为真</td>
+<td>equal(a,a+n,b,cmp)</td>
+<td></td>
+</tr>
+<tr>
+<td>在序列中找到等于某值的连续<em>n</em>次出现的位置</td>
+<td>equal_range(a,a+n,x)</td>
+<td></td>
+</tr>
+<tr>
+<td>搜索</td>
+<td>在序列中找出一子序列的第一次出现的位置</td>
+<td>search()</td>
+</tr>
+<tr>
+<td>在序列中找出一值的连续<em>n</em>次出现的位置</td>
+<td>search_n()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制</td>
+<td>从序列的第一个元素起进行复制</td>
+<td>copy()</td>
+</tr>
+<tr>
+<td>从序列的最后一个元素起进行复制</td>
+<td>copy_backward()</td>
+<td></td>
+</tr>
+<tr>
+<td>交换</td>
+<td>交换两个元素</td>
+<td>swap()</td>
+</tr>
+<tr>
+<td>交换指定范围的元素</td>
+<td>swap_ranges()</td>
+<td></td>
+</tr>
+<tr>
+<td>交换由迭代器所指的两个元素</td>
+<td>iter_swap()</td>
+<td></td>
+</tr>
+<tr>
+<td>变换</td>
+<td>将某操作应用于指定范围的每个元素</td>
+<td>transform()</td>
+</tr>
+<tr>
+<td>替换</td>
+<td>用一个给定值替换一些值</td>
+<td>replace()</td>
+</tr>
+<tr>
+<td>替换满足谓词的一些元素</td>
+<td>replace_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制序列时用一给定值替换元素</td>
+<td>replace_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制序列时替换满足谓词的元素</td>
+<td>replace_copy_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>填充</td>
+<td>用一给定值取代所有元素</td>
+<td>fill()</td>
+</tr>
+<tr>
+<td>用一给定值取代前<em>n</em>个元素</td>
+<td>fill_n()</td>
+<td></td>
+</tr>
+<tr>
+<td>生成</td>
+<td>用一操作的结果取代所有元素</td>
+<td>generate()</td>
+</tr>
+<tr>
+<td>用一操作的结果取代前<em>n</em>个元素</td>
+<td>generate_n()</td>
+<td></td>
+</tr>
+<tr>
+<td>删除</td>
+<td>删除具有给定值的元素</td>
+<td>remove()</td>
+</tr>
+<tr>
+<td>删除满足谓词的元素</td>
+<td>remove_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制序列时删除具有给定值的元素</td>
+<td>remove_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制序列时删除满足谓词的元素</td>
+<td>remove_copy_if()</td>
+<td></td>
+</tr>
+<tr>
+<td>唯一</td>
+<td>删除相邻的重复元素</td>
+<td>unique()</td>
+</tr>
+<tr>
+<td>复制序列时删除相邻的重复元素</td>
+<td>unique_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>反转</td>
+<td>反转元素的次序</td>
+<td>reverse(a,a+n)</td>
+</tr>
+<tr>
+<td>复制序列时反转元素的次序</td>
+<td>reverse_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>环移</td>
+<td>循环移动元素</td>
+<td>rotate(a,a+m,a+n)以<em>m</em>位置为界交换前后序列</td>
+</tr>
+<tr>
+<td>复制序列时循环移动元素</td>
+<td>rotate_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>随机</td>
+<td>采用均匀分布来随机移动元素</td>
+<td>random_shuffle()</td>
+</tr>
+<tr>
+<td>划分</td>
+<td>将满足某谓词的元素都放到前面</td>
+<td>partition()</td>
+</tr>
+<tr>
+<td>将满足某谓词的元素都放到前面并维持原顺序</td>
+<td>stable_partition()</td>
+<td></td>
+</tr>
+<tr>
+<td>排序</td>
+<td>以很好的平均效率排序</td>
+<td>sort(a,a+20,cmp)bool cmp( int a, int b ){ return a&gt;b; }在容器中或<em>string</em>用<em>begin</em>（）</td>
+</tr>
+<tr>
+<td>排序，并维持相同元素的原有顺序</td>
+<td>stable_sort()</td>
+<td></td>
+</tr>
+<tr>
+<td>将序列的前一部分排好序</td>
+<td>partial_sort()</td>
+<td></td>
+</tr>
+<tr>
+<td>复制的同时将序列的前一部分排好序</td>
+<td>partial_sort_copy()</td>
+<td></td>
+</tr>
+<tr>
+<td>第<em>n</em>个元素</td>
+<td>将第<em>n</em>各元素放到它的正确位置</td>
+<td>nth_element()</td>
+</tr>
+<tr>
+<td>二分检索</td>
+<td>找到大于等于某值的第一次出现</td>
+<td>lower_bound()</td>
+</tr>
+<tr>
+<td>找到大于某值的第一次出现</td>
+<td>upper_bound()</td>
+<td></td>
+</tr>
+<tr>
+<td>找到（在不破坏顺序的前提下）可插入给定值的最大范围</td>
+<td>equal_range()</td>
+<td></td>
+</tr>
+<tr>
+<td>在有序序列中确定给定元素是否存在</td>
+<td>binary_search()</td>
+<td></td>
+</tr>
+<tr>
+<td>归并</td>
+<td>归并两个有序序列</td>
+<td>merge()</td>
+</tr>
+<tr>
+<td>归并两个接续的有序序列</td>
+<td>inplace_merge()</td>
+<td></td>
+</tr>
+<tr>
+<td>有序结构上的集合操作</td>
+<td>一序列为另一序列的子序列时为真</td>
+<td>includes()</td>
+</tr>
+<tr>
+<td>构造两个集合的有序并集</td>
+<td>set_union()</td>
+<td></td>
+</tr>
+<tr>
+<td>构造两个集合的有序交集</td>
+<td>set_intersection()</td>
+<td></td>
+</tr>
+<tr>
+<td>构造两个集合的有序差集</td>
+<td>set_difference()</td>
+<td></td>
+</tr>
+<tr>
+<td>构造两个集合的有序对称差集（并<em>-</em>交）</td>
+<td>set_symmetric_difference()</td>
+<td></td>
+</tr>
+<tr>
+<td>堆操作</td>
+<td>向堆中加入元素</td>
+<td>push_heap()</td>
+</tr>
+<tr>
+<td>从堆中弹出元素</td>
+<td>pop_heap()</td>
+<td></td>
+</tr>
+<tr>
+<td>从序列构造堆</td>
+<td>make_heap()</td>
+<td></td>
+</tr>
+<tr>
+<td>给堆排序</td>
+<td>sort_heap()</td>
+<td></td>
+</tr>
+<tr>
+<td>最大和最小</td>
+<td>两个值中较小的</td>
+<td>min()</td>
+</tr>
+<tr>
+<td>两个值中较大的</td>
+<td>max()</td>
+<td></td>
+</tr>
+<tr>
+<td>序列中的最小元素</td>
+<td>min_element(a,a+n)</td>
+<td></td>
+</tr>
+<tr>
+<td>序列中的最大元素</td>
+<td>max_element()</td>
+<td></td>
+</tr>
+<tr>
+<td>词典比较</td>
+<td>两个序列按字典序的第一个在前</td>
+<td>lexicographical_compare()</td>
+</tr>
+<tr>
+<td>排列生成器</td>
+<td>按字典序的下一个排列</td>
+<td>next_permutation()</td>
+</tr>
+<tr>
+<td>按字典序的前一个排列</td>
+<td>prev_permutation()</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="cmath">cmath</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">using ::abs; //绝对值</span><br><span class="line"></span><br><span class="line">using ::exp; //指数值</span><br><span class="line"></span><br><span class="line">using ::fabs; //绝对值</span><br><span class="line"></span><br><span class="line">using ::fmod; //求余</span><br><span class="line"></span><br><span class="line">using ::sqrt; //开方</span><br></pre></td></tr></table></figure>
+<h3><span id="cstdlib">cstdlib</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">double atof(const char *str);</span><br><span class="line"></span><br><span class="line">把字符串str转换成double类型。等价于：strtod(str, (char**)NULL)。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">int atoi(const char *str);</span><br><span class="line"></span><br><span class="line">把字符串str转换成int类型。等价于：(int)strtol(str, (char**)NULL, 10)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int rand(void);</span><br><span class="line"></span><br><span class="line">产生一个0到RAND_MAX之间的伪随机整数。RAND_MAX值至少为32767。</span><br><span class="line"></span><br><span class="line">void srand(unsigned int seed);</span><br><span class="line"></span><br><span class="line">设置新的伪随机数序列的种子为seed。种子的初值为1。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void *malloc(size_t size);</span><br><span class="line"></span><br><span class="line">为大小为size的对象分配足够的内存，并返回指向所分配区域的第一个字节的指针；如果内存不足以满足要求，则返回NULL。</span><br><span class="line"></span><br><span class="line">不对分配的内存区域进行初始化。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void free(void *ptr);</span><br><span class="line"></span><br><span class="line">释放ptr指向的内存空间，若ptr为NULL，则什么也不做。ptr必须指向先前用动态分配函数malloc、realloc或calloc分配的空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void exit(int status);</span><br><span class="line"></span><br><span class="line">使程序正常终止。atexit函数以与注册相反的顺序被调用，所有打开的文件被刷新，所有打开的流被关闭。status的值如何被返回依具体的实现而定，但用0表示正常终止，也可用值EXIT_SUCCESS和EXIT_FAILURE。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void qsort(void *base, size_t n, size_t size,</span><br><span class="line"></span><br><span class="line">int (*compare)(const void *, const void *));</span><br><span class="line"></span><br><span class="line">对由n个大小为size的对象构成的数组base进行升序排序。</span><br><span class="line"></span><br><span class="line">比较函数compare的形式如下：</span><br><span class="line"></span><br><span class="line">int func_name(const void *arg1, const voie *arg2);</span><br><span class="line"></span><br><span class="line">其返回值必须如下所示：</span><br><span class="line"></span><br><span class="line">arg1 &lt; arg2，返回值&lt;0；</span><br><span class="line"></span><br><span class="line">arg1 == arg2，返回值==0；</span><br><span class="line"></span><br><span class="line">arg1 &gt; arg2，返回值&gt;0。</span><br></pre></td></tr></table></figure>
+<h2><span id="c">C</span></h2><p>未完待续（貌似也差不多的说…）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/25/Win10-64位Debug安装/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2629,345 +3172,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/18/JavaScript学习笔记-一/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/18/JavaScript学习笔记-一/" itemprop="url">JavaScript学习笔记(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T21:06:35+08:00">
-                2019-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#入门">入门</a><ul>
-<li><a href="#基本语法">基本语法</a></li>
-<li><a href="#数据类型">数据类型</a><ul>
-<li><a href="#number">Number</a></li>
-<li><a href="#字符串">字符串</a></li>
-<li><a href="#布尔值">布尔值</a></li>
-<li><a href="#比较运算符">比较运算符</a></li>
-<li><a href="#null和undefined">null和undefined</a></li>
-<li><a href="#数组">数组</a></li>
-<li><a href="#对象">对象</a></li>
-<li><a href="#变量">变量</a></li>
-<li><a href="#strict模式">strict模式</a></li>
-</ul>
-</li>
-<li><a href="#字符串-1">字符串</a></li>
-<li><a href="#数组-1">数组</a><ul>
-<li><a href="#length">length</a></li>
-<li><a href="#indexof">indexOf</a></li>
-<li><a href="#slice">slice</a></li>
-<li><a href="#push和pop">push和pop</a></li>
-<li><a href="#unshift和shift">unshift和shift</a></li>
-<li><a href="#sort">sort</a></li>
-<li><a href="#reverse">reverse</a></li>
-<li><a href="#splice">splice</a></li>
-<li><a href="#concat">concat</a></li>
-<li><a href="#join">join</a></li>
-<li><a href="#多维数组">多维数组</a></li>
-</ul>
-</li>
-<li><a href="#对象-1">对象</a></li>
-<li><a href="#条件判断">条件判断</a></li>
-<li><a href="#循环">循环</a><ul>
-<li><a href="#forin">for…in</a></li>
-<li><a href="#while">while</a></li>
-<li><a href="#do-while">do while</a></li>
-</ul>
-</li>
-<li><a href="#map和set">Map和Set</a></li>
-<li><a href="#iterable">iterable</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="入门">入门</span></h2><h3><span id="基本语法">基本语法</span></h3><p>每个语句以<code>;</code>结束，语句块用<code>{...}</code>。但是，JavaScript并不强制要求在每个语句的结尾加<code>;</code>，浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上<code>;</code>。</p>
-<h3><span id="数据类型">数据类型</span></h3><h4><span id="number">Number</span></h4><p>JS里面不区分整数和浮点数，都是用Number统一表示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">123; // 整数123</span><br><span class="line">0.456; // 浮点数0.456</span><br><span class="line">1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5</span><br><span class="line">-99; // 负数</span><br><span class="line">NaN; // NaN表示Not a Number，当无法计算结果时用NaN表示</span><br><span class="line">Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，就表示为Infinity</span><br></pre></td></tr></table></figure>
-<h4><span id="字符串">字符串</span></h4><p>字符串是以单引号’或双引号”括起来的任意文本，比如’abc’，”xyz”等等。请注意，’’或””本身只是一种表示方式，不是字符串的一部分。</p>
-<h4><span id="布尔值">布尔值</span></h4><p>只表示true或者false。和C++与Java中完全类似，这里不过多赘述。</p>
-<h4><span id="比较运算符">比较运算符</span></h4><p>注意，JavaScript允许对任意数据类型做比较。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">false == 0; // true</span><br><span class="line">false === 0; // false</span><br></pre></td></tr></table></figure>
-<p>特别要注意上述两种格式。</p>
-<p>第一种是<code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
-<p>第二种是<code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</p>
-<p>这是JS自身设计的缺陷，大佬们都是推荐的是<em>不要</em>使用<code>==</code>比较，始终坚持使用<code>===</code>比较。</p>
-<p>还要注意一点是，NaN这个特殊的Number与所有值都不相等，包括它自己。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN === NaN; // false</span><br></pre></td></tr></table></figure>
-<p>唯一能够判断NaN的方法就是isNaN()函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(NaN); // true</span><br></pre></td></tr></table></figure>
-<p>最后，浮点数在运算过程中会产生误差，因为计算机无法精确表示无限循环小数。要比较两个浮点数是否相等，只能计算它们之差的绝对值，看是否小于某个阈值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.abs(1 / 3 - (1 - 2 / 3)) &lt; 0.0000001; // true</span><br></pre></td></tr></table></figure>
-<h4><span id="null和undefined">null和undefined</span></h4><p>null表示一个“空”的值，它和0以及空字符串’’不同，0是一个数值，’’表示长度为0的字符串，而null表示“空”。</p>
-<p>JavaScript的设计者希望用null表示一个空的值，而undefined表示值未定义。事实证明，这并没有什么卵用，区分两者的意义不大。大多数情况下，我们都应该用<strong>null</strong>。undefined仅仅在判断函数参数是否传递的情况下有用。</p>
-<h4><span id="数组">数组</span></h4><p>数组是一组按<strong>顺序</strong>排列的集合，集合的每个值称为元素。JavaScript的数组可以包括<strong>任意数据类型</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3.14, &apos;HelloWorld&apos;, null, true];</span><br></pre></td></tr></table></figure>
-<p>创建数组的另一个方法是Array()函数来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Array(1, 2, 3); // 创建了数组[1, 2, 3]</span><br></pre></td></tr></table></figure>
-<h4><span id="对象">对象</span></h4><p>JavaScript的对象是一组由键-值组成的无序集合。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;thbeleif&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    tags: [&apos;js&apos;, &apos;web&apos;, &apos;mobile&apos;],</span><br><span class="line">    city: &apos;mianyang&apos;,</span><br><span class="line">    hasCar: false,</span><br><span class="line">    zipcode: null</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>JavaScript对象的键都是字符串类型，值可以是任意数据类型。上述person对象一共定义了6个键值对，其中每个键又称为对象的属性。</p>
-<p>要获取一个对象的属性，需要用对象变量.属性名的方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name; // &apos;thbelief&apos;</span><br><span class="line">person.zipcode; // null</span><br></pre></td></tr></table></figure>
-<h4><span id="变量">变量</span></h4><p>变量在JavaScript中就是用一个变量名表示，变量名是大小写英文、数字、$和_的组合，且<strong>不能用数字开头</strong>。变量名也不能是JavaScript的关键字，如if、while等。</p>
-<p>在Chrome浏览器里面使用JS的时候，可以直接使用<strong>console.log(x)</strong>来打印变量的值。</p>
-<p>相比较于alert()的对话框，前者看起来无疑是更舒心的。</p>
-<h4><span id="strict模式">strict模式</span></h4><p>在JS设计之初，如果一个变量没有通过<code>var</code>申明就被使用，那么该变量就自动被申明为<strong>全局变量</strong>。</p>
-<p>后面有了改良，在<strong>strict模式</strong>下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
-<p>启用strict模式的方法是在JavaScript代码的第一行写上即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br></pre></td></tr></table></figure>
-<h3><span id="字符串">字符串</span></h3><p>如果字符串内部既包含’又包含”可以用转义字符\来标识。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;I\&apos;m \&quot;OK\&quot;!&apos;;</span><br></pre></td></tr></table></figure>
-<p>ASCII字符可以以<code>\x##</code>形式的十六进制表示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;\x41&apos;; // 完全等同于 &apos;A&apos;</span><br></pre></td></tr></table></figure>
-<p>还可以用<code>\u####</code>表示一个Unicode字符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;\u4e2d\u6587&apos;; // 完全等同于 &apos;中文&apos;</span><br></pre></td></tr></table></figure>
-<p>由于多行字符串用<code>\n</code>写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 <em>`</em> … <em>`</em> 也可以表示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`这是一个</span><br><span class="line">多行</span><br><span class="line">字符串`;</span><br></pre></td></tr></table></figure>
-<p>要把多个字符串连接起来，可以用+号连接。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;小明&apos;;</span><br><span class="line">var age = 20;</span><br><span class="line">var message = &apos;你好, &apos; + name + &apos;, 你今年&apos; + age + &apos;岁了!&apos;;</span><br><span class="line">alert(message);</span><br></pre></td></tr></table></figure>
-<p>字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果。JS对于字符串提供了许多的方法，但是调用这些方法只会返回一个新的字符串，而不会改变原有的字符串内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">toUpperCase()把一个字符串全部变为大写。</span><br><span class="line">indexOf()会搜索指定字符串出现的位置。</span><br><span class="line">substring()返回指定索引区间的子串。</span><br></pre></td></tr></table></figure>
-<h3><span id="数组">数组</span></h3><h4><span id="length">length</span></h4><p>JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。</p>
-<p>Array可以通过length属性来取得长度。</p>
-<p>同时，直接给Array的length赋一个新的值会导致Array大小的变化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.length; // 3</span><br><span class="line">arr.length = 6;</span><br><span class="line">arr; // arr变为[1, 2, 3, undefined, undefined, undefined]</span><br><span class="line">arr.length = 2;</span><br><span class="line">arr; // arr变为[1, 2]</span><br></pre></td></tr></table></figure>
-<p>Array可以通过索引把对应的元素修改为新的值，因此，对Array的索引进行赋值会直接修改这个Array。</p>
-<p>如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr[5] = &apos;x&apos;;</span><br><span class="line">arr; // arr变为[1, 2, 3, undefined, undefined, &apos;x&apos;]</span><br></pre></td></tr></table></figure>
-<h4><span id="indexof">indexOf</span></h4><p>Array也可以通过indexOf()来搜索一个指定的元素的位置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [10, 20, &apos;30&apos;, &apos;xyz&apos;];</span><br><span class="line">arr.indexOf(10); // 元素10的索引为0</span><br><span class="line">arr.indexOf(20); // 元素20的索引为1</span><br><span class="line">arr.indexOf(30); // 元素30没有找到，返回-1</span><br><span class="line">arr.indexOf(&apos;30&apos;); // 元素&apos;30&apos;的索引为2</span><br></pre></td></tr></table></figure>
-<h4><span id="slice">slice</span></h4><p>slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;];</span><br><span class="line">arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]</span><br><span class="line">arr.slice(3); // 从索引3开始到结束: [&apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;]</span><br></pre></td></tr></table></figure>
-<p>注意到<code>slice()</code>的起止参数包括开始索引，<strong>不包括结束索引</strong>。</p>
-<p>如果不给<code>slice()</code>传递任何参数，它就会从头到尾截取所有元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;];</span><br><span class="line">var aCopy = arr.slice();</span><br><span class="line">aCopy; // [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;]</span><br><span class="line">aCopy === arr; // false</span><br></pre></td></tr></table></figure>
-<h4><span id="push和pop">push和pop</span></h4><p>push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉。</p>
-<h4><span id="unshift和shift">unshift和shift</span></h4><p>如果要往Array的头部添加若干元素，使用unshift()方法，shift()方法则把Array的第一个元素删掉。</p>
-<h4><span id="sort">sort</span></h4><p>按照默认顺序进行排序，也可以自定义顺序。</p>
-<h4><span id="reverse">reverse</span></h4><p>翻转整个Array，把元素顺序翻转过来。</p>
-<h4><span id="splice">splice</span></h4><p>从指定的索引开始删除若干元素，然后再从该位置添加若干元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Yahoo&apos;, &apos;AOL&apos;, &apos;Excite&apos;, &apos;Oracle&apos;];</span><br><span class="line">// 从索引2开始删除3个元素,然后再添加两个元素:</span><br><span class="line">arr.splice(2, 3, &apos;Google&apos;, &apos;Facebook&apos;); // 返回删除的元素 [&apos;Yahoo&apos;, &apos;AOL&apos;, &apos;Excite&apos;]</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Google&apos;, &apos;Facebook&apos;, &apos;Oracle&apos;]</span><br><span class="line">// 只删除,不添加:</span><br><span class="line">arr.splice(2, 2); // [&apos;Google&apos;, &apos;Facebook&apos;]</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Oracle&apos;]</span><br><span class="line">// 只添加,不删除:</span><br><span class="line">arr.splice(2, 0, &apos;Google&apos;, &apos;Facebook&apos;); // 返回[],因为没有删除任何元素</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Google&apos;, &apos;Facebook&apos;, &apos;Oracle&apos;]</span><br></pre></td></tr></table></figure>
-<h4><span id="concat">concat</span></h4><p>把当前的Array和另一个Array连接起来，并返回一个新的Array。</p>
-<p>值得注意的是，concat()方法并没有修改当前Array，而是返回了一个新的Array。</p>
-<h4><span id="join">join</span></h4><p>把当前Array的每个元素都用指定的字符串连接起来，然后返回连接后的字符串。如果Array的元素不是字符串，将自动转换为字符串后再连接。</p>
-<h4><span id="多维数组">多维数组</span></h4><p>如果数组的某个元素又是一个Array，则可以形成多维数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [[1, 2, 3], [400, 500, 600], &apos;-&apos;];</span><br></pre></td></tr></table></figure>
-<h3><span id="对象">对象</span></h3><p>JS的对象是一种无序的集合数据类型，它由若干键值对组成。</p>
-<p>JS用一个{…}表示一个对象，键值对以xxx: xxx形式申明，用,隔开。注意，最后一个键值对不需要在末尾加,。</p>
-<p>访问属性是通过.操作符完成的，但这要求属性名必须是一个有效的变量名。如果属性名包含特殊字符，就必须用’’括起来。</p>
-<p><strong>JavaScript规定，访问不存在的属性不报错，而是返回undefined。</strong></p>
-<p>由于JavaScript的对象是<strong>动态类型</strong>，可以自由地给一个对象添加或删除属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var thbelief = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;</span><br><span class="line">&#125;;</span><br><span class="line">xiaoming.age; // undefined</span><br><span class="line">xiaoming.age = 18; // 新增一个age属性</span><br><span class="line">xiaoming.age; // 18</span><br><span class="line">delete xiaoming.age; // 删除age属性</span><br><span class="line">xiaoming.age; // undefined</span><br><span class="line">delete xiaoming[&apos;name&apos;]; // 删除name属性</span><br><span class="line">xiaoming.name; // undefined</span><br><span class="line">delete xiaoming.school; // 删除一个不存在的school属性也不会报错</span><br></pre></td></tr></table></figure>
-<p>果我们要检测thbelief是否拥有某一属性，可以用in操作符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;name&apos; in thbelief; // true</span><br></pre></td></tr></table></figure>
-<p>另外，如果in判断一个属性存在，这个属性不一定是thbelief的，它可能是thbelief继承得到的。</p>
-<p>要判断一个属性是否是thbelief自身拥有的，而不是继承得到的，可以用hasOwnProperty()方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var thbelief = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;</span><br><span class="line">&#125;;</span><br><span class="line">thbelief.hasOwnProperty(&apos;name&apos;); // true</span><br><span class="line">thbelief.hasOwnProperty(&apos;toString&apos;); // false</span><br></pre></td></tr></table></figure>
-<h3><span id="条件判断">条件判断</span></h3><p>JavaScript可以使用if () { … } else { … }来进行条件判断。</p>
-<p>同时，也可以像C++中一样进行多重的嵌套。</p>
-<h3><span id="循环">循环</span></h3><p>熟悉的是单独的For循环，但是还包括了其他的不熟悉的循环方式。</p>
-<h4><span id="forin">for…in</span></h4><p>它可以把一个对象的所有属性依次循环出来。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    city: &apos;mianyang&apos;</span><br><span class="line">&#125;;</span><br><span class="line">for (var key in o) &#123;</span><br><span class="line">    console.log(key); // &apos;name&apos;, &apos;age&apos;, &apos;city&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>要过滤掉对象继承的属性，用hasOwnProperty()来实现。（前文对象中曾经提到）</p>
-<p>值得注意的是，for … in对Array的循环得到的是String而不是Number。</p>
-<h4><span id="while">while</span></h4><p>与C++中类似。</p>
-<h4><span id="do-while">do while</span></h4><p>与C++中类似。</p>
-<h3><span id="map和set">Map和Set</span></h3><p>Map是一组键值对的结构，具有极快的查找速度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map([[&apos;Michael&apos;, 95], [&apos;Bob&apos;, 75], [&apos;Tracy&apos;, 85]]);</span><br><span class="line">m.get(&apos;Michael&apos;); // 95</span><br></pre></td></tr></table></figure>
-<p>初始化Map需要一个<strong>二维数组</strong>，或者直接初始化一个<strong>空Map</strong>。Map具有以下方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map(); // 空Map</span><br><span class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</span><br><span class="line">m.set(&apos;Bob&apos;, 59);</span><br><span class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</span><br><span class="line">m.get(&apos;Adam&apos;); // 67</span><br><span class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</span><br><span class="line">m.get(&apos;Adam&apos;); // undefined</span><br></pre></td></tr></table></figure>
-<p>由于一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map();</span><br><span class="line">m.set(&apos;Adam&apos;, 67);</span><br><span class="line">m.set(&apos;Adam&apos;, 88);</span><br><span class="line">m.get(&apos;Adam&apos;); // 88</span><br></pre></td></tr></table></figure>
-<p>Set和Map类似，也是一组key的集合，但<strong>不存储value</strong>。由于key不能重复，所以，在Set中，没有重复的key。</p>
-<p>要创建一个Set，需要提供一个Array作为输入，或者直接创建一个空Set：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s1 = new Set(); // 空Set</span><br><span class="line">var s2 = new Set([1, 2, 3]); // 含1, 2, 3</span><br></pre></td></tr></table></figure>
-<p>通过add(key)方法可以添加元素到Set中，可以重复添加，但不会有效果。</p>
-<p>同样的，通过delete(key)方法可以删除元素。</p>
-<h3><span id="iterable">iterable</span></h3><p>具有iterable类型的集合可以通过新的for … of循环来遍历。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">var s = new Set([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]);</span><br><span class="line">var m = new Map([[1, &apos;x&apos;], [2, &apos;y&apos;], [3, &apos;z&apos;]]);</span><br><span class="line">for (var x of a) &#123; // 遍历Array</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of s) &#123; // 遍历Set</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of m) &#123; // 遍历Map</span><br><span class="line">    console.log(x[0] + &apos;=&apos; + x[1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>for … in循环遍历的实际上是对象的属性名称。一个Array数组实际上也是一个对象，它的每个元素的索引被视为一个属性。如果手动给Array对象添加了额外的属性后，for … in循环将带来意想不到的意外效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">a.name = &apos;Hello&apos;;</span><br><span class="line">for (var x in a) &#123;</span><br><span class="line">    console.log(x); // &apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;name&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>for … in</strong>循环将把name包括在内，但Array的length属性却不包括在内。</p>
-<p><strong>for … of</strong>循环则完全修复了这些问题，它只循环<strong>集合本身的元素</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">a.name = &apos;Hello&apos;;</span><br><span class="line">for (var x of a) &#123;</span><br><span class="line">    console.log(x); // &apos;A&apos;, &apos;B&apos;, &apos;C&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="noopener">参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3020,7 +3224,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3127,7 +3331,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共136.7k字</span>
+  <span class="post-count">博客全站共137.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

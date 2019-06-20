@@ -313,6 +313,240 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/20/Python学习笔记（九）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/Python学习笔记（九）/" itemprop="url">Python学习笔记（九）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T18:07:14+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  893
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#面向对象编程">面向对象编程</a><ul>
+<li><a href="#继承">继承</a></li>
+<li><a href="#多态">多态</a></li>
+<li><a href="#对象信息">对象信息</a><ul>
+<li><a href="#type">type()</a></li>
+<li><a href="#isinstance">isinstance()</a></li>
+<li><a href="#dir">dir()</a></li>
+</ul>
+</li>
+<li><a href="#实例属性和类属性">实例属性和类属性</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="面向对象编程">面向对象编程</span></h2><h3><span id="继承">继承</span></h3><p>关于继承与多态的详细的介绍这里就不说了，主要讲讲他们的优势。</p>
+<p>继承的好处是——子类自动的获得父类的<strong>全部的功能。</strong></p>
+<p>简单实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/6/18 15:21</span></span><br><span class="line"><span class="comment"># @Author  : thbelief</span></span><br><span class="line"><span class="comment"># @Email   : thbelief520@gmail.com</span></span><br><span class="line"><span class="comment"># @File    : Inheritance and polymorphism.py</span></span><br><span class="line"><span class="comment"># @function: 继承多态的部分</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#code</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">printSomething</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    print(<span class="string">"这是子类"</span>)</span><br><span class="line"></span><br><span class="line">test1=test()</span><br><span class="line">test1.printThis()</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;</span><br><span class="line">这是子类</span><br><span class="line">bug</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>通过这个简单的例子就可以简单的了解继承的特性。</p>
+<h3><span id="多态">多态</span></h3><p>由上面的部分可以自然的引出多态的使用，所谓的多态其实就是——<strong>子类中的与父类同名的方法其实子类的对象时直接调用子类的同名方法的。</strong></p>
+<p>简单实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">printSomething</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug1"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test2</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug2"</span>)</span><br><span class="line">tmp1=printSomething()</span><br><span class="line">tmp2=test1()</span><br><span class="line">tmp3=test2()</span><br><span class="line">tmp1.printThis()</span><br><span class="line">tmp2.printThis()</span><br><span class="line">tmp3.printThis()</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;</span><br><span class="line">bug</span><br><span class="line">bug1</span><br><span class="line">bug2</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<p>注意：<strong>在JAVA等语言中要求多态是必须传入对应的子类类型，但是Python中不一定。</strong>这也是静态语言与动态语言的差别。</p>
+<h3><span id="对象信息">对象信息</span></h3><p>拿到对象的首先肯定是要知道这个对象<strong>是什么类型以及拥有哪些方法。</strong></p>
+<h4><span id="type">type()</span></h4><p>判断对象的类型。</p>
+<p>基本变量类型的判断可以直接判断，但是如果要判断对象是不是函数的话还是需要<strong>types模块中定义的变量。</strong></p>
+<p>types模块变量如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">BooleanType </span><br><span class="line">BufferType </span><br><span class="line">BuiltinFunctionType </span><br><span class="line">BuiltinMethodType </span><br><span class="line">ClassType </span><br><span class="line">CodeType </span><br><span class="line">ComplexType </span><br><span class="line">DictProxyType </span><br><span class="line">DictType </span><br><span class="line">DictionaryType </span><br><span class="line">EllipsisType </span><br><span class="line">FileType </span><br><span class="line">FloatType </span><br><span class="line">FrameType </span><br><span class="line">FunctionType </span><br><span class="line">GeneratorType </span><br><span class="line">GetSetDescriptorType </span><br><span class="line">InstanceType </span><br><span class="line">IntType </span><br><span class="line">LambdaType </span><br><span class="line">ListType </span><br><span class="line">LongType </span><br><span class="line">MemberDescriptorType </span><br><span class="line">MethodType </span><br><span class="line">ModuleType </span><br><span class="line">NoneType </span><br><span class="line">NotImplementedType </span><br><span class="line">ObjectType </span><br><span class="line">SliceType </span><br><span class="line">StringType </span><br><span class="line">StringTypes </span><br><span class="line">TracebackType </span><br><span class="line">TupleType </span><br><span class="line">TypeType </span><br><span class="line">UnboundMethodType </span><br><span class="line">UnicodeType </span><br><span class="line">XRangeType</span><br></pre></td></tr></table></figure>
+<p>简单实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">printSomething</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug1"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test2</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug2"</span>)</span><br><span class="line">tmp1=printSomething()</span><br><span class="line">tmp2=test1()</span><br><span class="line">tmp3=test2()</span><br><span class="line">tmp1.printThis()</span><br><span class="line">tmp2.printThis()</span><br><span class="line">tmp3.printThis()</span><br><span class="line"><span class="comment">#获取对象类型</span></span><br><span class="line">print(type(tmp1))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;</span><br><span class="line">bug</span><br><span class="line">bug1</span><br><span class="line">bug2</span><br><span class="line">&lt;class &apos;__main__.printSomething&apos;&gt;</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<h4><span id="isinstance">isinstance()</span></h4><p><strong>判断一个对象是否是某种类型。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">printSomething</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug1"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test2</span><span class="params">(printSomething)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug2"</span>)</span><br><span class="line">tmp1=printSomething()</span><br><span class="line">tmp2=test1()</span><br><span class="line">tmp3=test2()</span><br><span class="line">tmp1.printThis()</span><br><span class="line">tmp2.printThis()</span><br><span class="line">tmp3.printThis()</span><br><span class="line"><span class="comment">#获取对象类型</span></span><br><span class="line">print(isinstance(tmp1,printSomething))</span><br><span class="line">print(isinstance(tmp2,printSomething))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p>这里需要注意——子类继承下来之后判断的时候也会判断包含在父类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">D:\python.code\venv\Scripts\python.exe &quot;D:/python.code/Inheritance and polymorphism.py&quot;</span><br><span class="line">bug</span><br><span class="line">bug1</span><br><span class="line">bug2</span><br><span class="line">True</span><br><span class="line">True</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+<h4><span id="dir">dir()</span></h4><p>获取对象的所有的属性+方法。</p>
+<p>通过<strong>getattr()、setattr()以及hasattr() 获取，设置，有无</strong> 来操作该对象。</p>
+<p>简单实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#dir</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">printSomething</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printThis</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"bug"</span>)</span><br><span class="line">test=printSomething()</span><br><span class="line"><span class="comment">#获取对象的所有属性方法</span></span><br><span class="line">print(dir(test))</span><br><span class="line"><span class="comment">#操作对象状态getattr()、setattr()以及hasattr() 获取，设置，有无</span></span><br><span class="line">print(hasattr(test,<span class="string">"printThis"</span>))</span><br><span class="line">print(hasattr(test,<span class="string">"printThis1"</span>))</span><br><span class="line">setattr(test,<span class="string">'test'</span>,<span class="string">'有这个属性了'</span>)</span><br><span class="line">print(getattr(test,<span class="string">"test"</span>))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="/2019/06/20/Python学习笔记（九）/1.jpg" alt=""></p>
+<h3><span id="实例属性和类属性">实例属性和类属性</span></h3><p>动态语言可以给类创建的实例绑定各种各样的属性。同样，类也可以给自己定义一个类属性。</p>
+<p>在使用的时候千万不要定义实例属性名字和类属性一样，这样的话，<strong>相同名称的实例属性将自动屏蔽掉类属性。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/19/Python学习笔记（八）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2317,201 +2551,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/10/Boyer–Moore–Horspool-algorithm/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/10/Boyer–Moore–Horspool-algorithm/" itemprop="url">Boyer–Moore–Horspool algorithm</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T09:55:39+08:00">
-                2019-06-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#boyermoorehorspool-algorithm">Boyer–Moore–Horspool algorithm</a><ul>
-<li><a href="#题目介绍">题目介绍</a></li>
-<li><a href="#输入">输入</a></li>
-<li><a href="#输出">输出</a></li>
-<li><a href="#样例输入">样例输入</a></li>
-<li><a href="#样例输出">样例输出</a></li>
-<li><a href="#代码">代码</a></li>
-<li><a href="#结果">结果</a></li>
-<li><a href="#参考资料">参考资料</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="boyermoorehorspool-algorithm">Boyer–Moore–Horspool algorithm</span></h2><h3><span id="题目介绍">题目介绍</span></h3><p>The Boyer–Moore string search algorithm is a particularly efficient string searching algorithm. It was developed by Bob Boyer and J Strother Moore in 1977. The algorithm preprocesses the target string (key) that is being searched for, but not the string being searched (unlike some algorithms which preprocess the string to be searched, and can then amortize the expense of the preprocessing by searching repeatedly). The execution time of the Boyer-Moore algorithm can actually be sub-linear: it doesn’t need to actually check every character of the string to be searched but rather skips over some of them. Generally the algorithm gets faster as the key being searched for becomes longer. Its efficiency derives from the fact that, with each unsuccessful attempt to find a match between the search string and the text it’s searching in, it uses the information gained from that attempt to rule out as many positions of the text as possible where the string could not match. How the algorithm works What people frequently find surprising about the Boyer-Moore algorithm when they first encounter it is that its verifications – its attempts to check whether a match exists at a particular position – work backwards. If it starts a search at the beginning of a text for the word “ANPANMAN”, for instance, it checks the eighth position of the text to see if it contains an “N”. If it finds the “N”, it moves to the seventh position to see if that contains the last “A” of the word, and so on until it checks the first position of the text for a “A”. Why Boyer-Moore takes this backward approach is clearer when we consider what happens if the verification fails – for instance, if instead of an “N” in the eighth position, we find an “X”. The “X” doesn’t appear anywhere in “ANPANMAN”, and this means there is no match for the search string at the very start of the text – or at the next seven positions following it, since those would all fall across the “X” as well. After checking just one character, we’re able to skip ahead and start looking for a match starting at the ninth position of the text, just after the “X”. This explains why the best-case performance of the algorithm, for a text of length N and a fixed pattern of length M, is N/M: in the best case, only one in M characters needs to be checked. This also explains the somewhat counter-intuitive result that the longer the pattern we are looking for, the faster the algorithm will be usually able to find it. The algorithm precomputes two tables to process the information it obtains in each failed verification: one table calculates how many positions ahead to start the next search based on the identity of the character that caused the match attempt to fail; the other makes a similar calculation based on how many characters were matched successfully before the match attempt failed. (Because these two tables return results indicating how far ahead in the text to “jump”, they are sometimes called “jump tables”, which should not be confused with the more common meaning of jump tables in computer science.) the first table The first table is easy to calculate: Start at the last character of the sought string and move towards the first character. Each time you move left, if the character you are on is not in the table already, add it; its Shift value is its distance from the rightmost character. All other characters receive a count equal to the length of the search string. Example: For the string ANPANMAN, the first table would be as shown (for clarity, entries are shown in the order they would be added to the table):  The amount of shift calculated by the first table is sometimes called the “bad character shift”[1]. the second table The second table is slightly more difficult to calculate: for each value of i less than the length of the search string, we must first calculate the pattern consisting of the last i characters of the search string, preceded by a mis-match for the character before it; then we initially line it up with the search pattern and determine the least number of characters the partial pattern must be shifted left before the two patterns match. For instance, for the search string ANPANMAN, the table would be as follows: (N signifies any character that is not N)   The amount of shift calculated by the second table is sometimes called the “good suffix shift”[2] or “(strong) good suffix rule”. The original published Boyer-Moor algorithm [1] uses a simpler, weaker, version of the good suffix rule in which each entry in the above table did not require a mis-match for the left-most character. This is sometimes called the “weak good suffix rule” and is not sufficient for proving that Boyer-Moore runs in linear worst-case time. Performance of the Boyer-Moore string search algorithm The worst-case to find all occurrences in a text needs approximately 3<em>N comparisons, hence the complexity is O(n), regardless whether the text contains a match or not. The proof is due to Richard Cole, see R. COLE, Tight bounds on the complexity of the Boyer-Moore algorithm, Proceedings of the 2nd Annual ACM-SIAM Symposium on Discrete Algorithms, (1991) for details. This proof took some years to determine. In the year the algorithm was devised, 1977, the maximum number of comparisons was shown to be no more than 6</em>N; in 1980 it was shown to be no more than 4*N, until Cole’s result in 1991. References 1. ^ R. S. Boyer; J. S. Moore (1977). “A fast string searching algorithm”. Comm. ACM 20: 762-772.</p>
-<h3><span id="输入">输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">two lines and only characters “ACGT” in the string.</span><br><span class="line">the first line is string (&lt; = 102000)</span><br><span class="line">the second line is text(&lt; = 700000)</span><br></pre></td></tr></table></figure>
-<h3><span id="输出">输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">position of the string in text</span><br><span class="line">else -1</span><br></pre></td></tr></table></figure>
-<h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GGCCTCATATCTCTCT</span><br><span class="line">CCCATTGGCCTCATATCTCTCTCCCTCCCTCCCCTGCCCAGGCTGCTTGGCATGG</span><br></pre></td></tr></table></figure>
-<h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
-<h3><span id="代码">代码</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//全局变量 </span><br><span class="line">int table[26];</span><br><span class="line"></span><br><span class="line">void shiftTable(char str[]) &#123;</span><br><span class="line">	//将字符串的长度赋值给lens </span><br><span class="line">	int lens = strlen(str);</span><br><span class="line">	 </span><br><span class="line">	table[str[lens - 1] - &apos;A&apos;] = lens;</span><br><span class="line">	for (int i = 0; i &lt; lens - 1; i++) &#123;</span><br><span class="line">		table[str[i] - &apos;A&apos;] = lens - i - 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int horspoolMatch(char str[], char text[]) &#123;</span><br><span class="line">	int i, k;</span><br><span class="line">	int strlens = strlen(str);</span><br><span class="line">	int textlens = strlen(text);</span><br><span class="line"></span><br><span class="line">	i = strlens - 1;</span><br><span class="line">	shiftTable(str);</span><br><span class="line">	while(i &lt;= textlens - 1) &#123;</span><br><span class="line">		//用来寻找text是否匹配好了 </span><br><span class="line">		k = 0;</span><br><span class="line">		while(str[strlens - 1 - k] == text[i - k] &amp;&amp; k &lt;= strlens - 1 ) &#123;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (k == strlens) &#123;</span><br><span class="line">			//直接返回下标 </span><br><span class="line">			return i - strlens + 1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//通过i自增控制匹配的位置 </span><br><span class="line">			i += table[text[i] - &apos;A&apos;];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	int pos;</span><br><span class="line">	//这里是题目的限制 </span><br><span class="line">	char str[102001], text[700001];</span><br><span class="line">	cin&gt;&gt;str&gt;&gt;text;</span><br><span class="line">	// Boyer–Moore–Horspool algorithm </span><br><span class="line">	pos = horspoolMatch(str, text);</span><br><span class="line">	cout&lt;&lt;pos&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="结果">结果</span></h3><p><img src="/2019/06/10/Boyer–Moore–Horspool-algorithm/1.jpg" alt=""></p>
-<h3><span id="参考资料">参考资料</span></h3><p><a href="https://www.cnblogs.com/en-heng/p/5095542.html" target="_blank" rel="noopener">【模式匹配】更快的Boyer-Moore算法</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2564,7 +2603,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2671,7 +2710,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共136.7k字</span>
+  <span class="post-count">博客全站共137.6k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
