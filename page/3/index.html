@@ -313,6 +313,232 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/01/JavaScript学习笔记-十七/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/01/JavaScript学习笔记-十七/" itemprop="url">JavaScript学习笔记(十七)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T09:23:13+08:00">
+                2019-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  891
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#错误处理">错误处理</a><ul>
+<li><a href="#类型">类型</a><ul>
+<li><a href="#逻辑错误">逻辑错误</a></li>
+<li><a href="#异常错误">异常错误</a></li>
+</ul>
+</li>
+<li><a href="#处理">处理</a><ul>
+<li><a href="#try-catch-finally">try … catch … finally</a><ul>
+<li><a href="#错误类型">错误类型</a></li>
+<li><a href="#抛出错误">抛出错误</a></li>
+<li><a href="#错误传播">错误传播</a></li>
+</ul>
+</li>
+<li><a href="#异步错误处理">异步错误处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="错误处理">错误处理</span></h2><p>和其它的编译语言一样，JS写的过程中难免的也会出现一些错误，这个就涉及到错误的处理部分了，其实这个部分和JAVA有点儿类似，具体的就下面的部分详细说吧。</p>
+<h3><span id="类型">类型</span></h3><h4><span id="逻辑错误">逻辑错误</span></h4><p>写程序的过程中出现了<strong>逻辑的错误</strong>导致的代码异常。</p>
+<p>简单实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = null;</span><br><span class="line">var len = s.length; // TypeError：null变量没有length属性</span><br></pre></td></tr></table></figure>
+<h4><span id="异常错误">异常错误</span></h4><p>这个是执行过程中遇到的<strong>无法预测的异常</strong>出现的错误，比如——网络连接突然中断等等这些意料之外的错误。</p>
+<h3><span id="处理">处理</span></h3><p>一般来说，对于<strong>底层语言</strong>来说，错误是通过<strong>错误码</strong>来返回的。这就涉及到返回的值是否正确的判别了，可以预见，这种使用方法其实是十分的不方便的，所以在一些高级语言中使用的是另外的方法。</p>
+<h4><span id="try-catch-finally">try … catch … finally</span></h4><p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var r1, r2, s = null;</span><br><span class="line">try &#123;</span><br><span class="line">    r1 = s.length; // 此处应产生错误</span><br><span class="line">    r2 = 100; // 该语句不会执行</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">    console.log(&apos;出错了：&apos; + e);</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    console.log(&apos;finally&apos;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(&apos;r1 = &apos; + r1); // r1应为undefined</span><br><span class="line">console.log(&apos;r2 = &apos; + r2); // r2应为undefined</span><br></pre></td></tr></table></figure>
+<p>执行流程如下：</p>
+<p>当代码块被try { … }包裹的时候，就表示这部分代码执行过程中可能会发生错误，一旦发生错误，就不再继续执行后续代码，转而跳到catch块。catch (e) { … }包裹的代码就是错误处理代码，变量e表示捕获到的错误。最后，无论有没有错误，finally一定会被执行。</p>
+<p>所以，有错误发生时，执行流程像这样：</p>
+<p>先执行try { … }的代码；<br>执行到出错的语句时，后续语句不再继续执行，转而执行catch (e) { … }代码；<br>最后执行finally { … }代码。<br>而没有错误发生时，执行流程像这样：</p>
+<p>先执行try { … }的代码；<br>因为没有出错，catch (e) { … }代码不会被执行；<br>最后执行finally { … }代码。</p>
+<h5><span id="错误类型">错误类型</span></h5><p>JavaScript有一个<strong>标准的Error对象</strong>表示错误，还有从Error派生的<strong>TypeError、ReferenceError</strong>等错误对象。</p>
+<h5><span id="抛出错误">抛出错误</span></h5><p><strong>程序也可以主动抛出一个错误，让执行流程直接跳转到catch块。抛出错误使用throw语句。</strong></p>
+<h5><span id="错误传播">错误传播</span></h5><p>如果代码出现了错误，但是又没有被try…catch捕获的话，程序会跳到哪里去呢？</p>
+<p>答案是<strong>会被抛到外层调用函数，如果外层函数也没有捕获，该错误会一直沿着函数调用链向上抛出，直到被JavaScript引擎捕获，代码终止执行。</strong></p>
+<p>所以正确的操作是——<strong>不在每一个函数内部捕获错误，只需要在合适的地方进行统一的捕获</strong>即可，一网打尽！</p>
+<p>具体的地方的话还是需要看具体的情况，不能一概而论。</p>
+<h4><span id="异步错误处理">异步错误处理</span></h4><p>JavaScript引擎是一个<strong>事件驱动</strong>的执行引擎，代码总是以<strong>单线程</strong>执行，而回调函数的执行需要等到下一个满足条件的事件出现后，才会被执行。</p>
+<p>需要注意的就是——<strong>涉及到异步代码，无法在调用时捕获，原因就是在捕获的当时，回调函数并未执行。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/31/JavaScript学习笔记-十六/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2253,228 +2479,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/22/JavaScript学习笔记-九/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/22/JavaScript学习笔记-九/" itemprop="url">JavaScript学习笔记(九)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-22T18:20:21+08:00">
-                2019-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#ajax">AJAX</a><ul>
-<li><a href="#含义">含义</a></li>
-<li><a href="#使用">使用</a></li>
-<li><a href="#安全限制问题">安全限制问题</a></li>
-</ul>
-</li>
-<li><a href="#cors">CORS</a><ul>
-<li><a href="#含义-1">含义</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="ajax">AJAX</span></h2><h3><span id="含义">含义</span></h3><p>全称是<strong>Asynchronous JavaScript and XML</strong>，即用JavaScript执行<strong>异步网络请求。</strong></p>
-<p>所谓的异步网络请求，其实就是需要<strong>回调函数。</strong></p>
-<p>另外，AJAX并不是JavaScript的规范。</p>
-<p>Web的运作原理其实就是：<strong>一次HTTP请求对应一个界面。</strong>当用户在浏览器中提交一个表单的时候其实浏览器就会刷新一下，然后在新页面返回到底请求是成功了还是失败了。如果失败了一般都是会返回一个<strong>404的界面</strong>。</p>
-<p><strong>如果要让用户留在当前页面中，同时发出新的HTTP请求，就必须用JavaScript发送这个新请求，接收到数据后，再用JavaScript更新页面，这样一来，用户就感觉自己仍然停留在当前页面，但是数据却可以不断地更新。</strong></p>
-<h3><span id="使用">使用</span></h3><p>在如今的<strong>最新浏览器</strong>（低版本的貌似需要<strong>ActiveXObject对象</strong>）上使用AJAX需要用到<strong>XMLHttpRequest对象</strong>：</p>
-<p>在创建了<strong>XMLHttpRequest对象</strong>后，要先设置<strong>onreadystatechange的回调函数</strong>。</p>
-<p>在回调函数中，通过<strong>readyState === 4</strong>来判断请求是否完成，如果已完成，再根据<strong>status === 200</strong>来判断是否是成功的响应。</p>
-<p><strong>XMLHttpRequest对象的open()方法有3个参数，第一个参数指定是GET还是POST，第二个参数指定URL地址，第三个参数指定是否使用异步，默认是true，不用写。</strong></p>
-<p>千万不能把第三个参数指定为false，否则浏览器将停止响应，<strong>直到AJAX请求完成。</strong></p>
-<p>调用send()方法的时候其实才真正发送请求。</p>
-<p>GET请求不需要参数，POST请求需要把body部分以<strong>字符串或者FormData对象</strong>传进去。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'test-response-text'</span>);</span><br><span class="line">    textarea.value = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'test-response-text'</span>);</span><br><span class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></span><br><span class="line">        <span class="comment">// 判断响应结果:</span></span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></span><br><span class="line">            <span class="keyword">return</span> success(request.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></span><br><span class="line">            <span class="keyword">return</span> fail(request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP请求还在继续...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求:</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/categories/'</span>);</span><br><span class="line">request.send();</span><br><span class="line"></span><br><span class="line">alert(<span class="string">'请求已发送，请等待响应...'</span>);</span><br></pre></td></tr></table></figure>
-<h3><span id="安全限制问题">安全限制问题</span></h3><p>默认情况下，JavaScript在发送AJAX请求时，<strong>URL的域名必须和当前页面完全一致。</strong></p>
-<p>但是也不是说不能请求其他网站的URL，还是有其他的办法的，常用方法如下：</p>
-<p>使用<strong>JSONP</strong>，但是限制了只能使用GET请求，并且要求返回JS。（<strong>原理其实就是浏览器一般是运行跨域引用JS资源的。</strong>）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;script src=&quot;https://thbelief.coding.me//abc.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<p>JSONP的返回格式一般是<strong>函数调用形式</strong>。例如：</p>
-<p>在当前的页面先准备好foo函数，然后给页面动态的添加一个script节点，这就相当于动态的读取外域的JS资源了，然后等着回调函数的返回即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo(’data‘);</span><br></pre></td></tr></table></figure>
-<h2><span id="cors">CORS</span></h2><h3><span id="含义">含义</span></h3><p>新的跨域方式。（浏览器需要支持HTML5）</p>
-<p><strong>CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。</strong></p>
-<p><strong>Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。</strong></p>
-<p>假设本域是one.com，外域是two.com，只要响应头Access-Control-Allow-Origin为对应的网址，或者是*，本次请求就可以成功。</p>
-<p>值得注意的是，跨域能否成功，<strong>取决于对方服务器是否愿意给你设置一个正确的Access-Control-Allow-Origin，决定权始终在对方手中。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2527,7 +2531,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2549,7 +2553,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">170</span>
+                  <span class="site-state-item-count">171</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2634,7 +2638,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共137.6k字</span>
+  <span class="post-count">博客全站共138.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
