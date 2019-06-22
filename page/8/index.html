@@ -313,6 +313,238 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/15/小米五刷机简述/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/15/小米五刷机简述/" itemprop="url">小米五刷机简述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-15T11:35:32+08:00">
+                2019-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/其它/" itemprop="url" rel="index">
+                    <span itemprop="name">其它</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  880
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#adb工具">ADB工具</a><ul>
+<li><a href="#主要功能">主要功能</a></li>
+<li><a href="#adb下载">ADB下载</a></li>
+</ul>
+</li>
+<li><a href="#os下载">OS下载</a></li>
+<li><a href="#第三方rec的下载">第三方rec的下载</a></li>
+<li><a href="#小米手机解锁小米手机必要">小米手机解锁（小米手机必要）</a></li>
+<li><a href="#安装rec">安装REC</a></li>
+<li><a href="#清理">清理</a></li>
+<li><a href="#安装os">安装OS</a><ul>
+<li><a href="#注意">注意</a></li>
+</ul>
+</li>
+<li><a href="#收尾">收尾</a><ul>
+<li><a href="#adb安装apk到手机">ADB安装APK到手机</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>不久之前刚刚把我退役的小米五刷机刷成了Android原生的<strong>LineageOS</strong>系统，这里就记录一下过程吧。</p>
+<h2><span id="正文">正文</span></h2><h3><span id="adb工具">ADB工具</span></h3><p><strong>adb</strong>（Android Debug Bridge），安卓平台调试桥，是连接Android手机与PC端的桥梁，通过adb可以<strong>管理、操作模拟器和设备，如安装软件、查看设备软硬件参数、系统升级、运行shell命令</strong>等。</p>
+<h4><span id="主要功能">主要功能</span></h4><p> 1.运行设备的shell(命令行) 。<br>    2.管理模拟器或设备的端口映射 。<br>    3.计算机和设备之间上传/下载文件 。<br>    4.将本地apk软件安装至模拟器或android设备。</p>
+<h4><span id="adb下载">ADB下载</span></h4><p>这里就不详细的写如何下载安装配置ADB工具了，百度即可，安装配置很简单，下面直接贴上官网的链接。</p>
+<p><a href="http://adbshell.com/downloads" target="_blank" rel="noopener">官网链接</a></p>
+<h3><span id="os下载">OS下载</span></h3><p>进入<a href="https://download.lineageos.org/gemini" target="_blank" rel="noopener">LineageOS官网</a>找到相对应的小米五的刷机包，直接下载最新的包就可以了。（一定要记住下载后放置的位置，并且不用解压）。</p>
+<p><strong>注意：要求在MIUI版本在8.8.30及以上，这个必须有，因为LineageOS要求固件支持。</strong></p>
+<p><img src="/2019/04/15/小米五刷机简述/LineageOS官网.jpg" alt=""></p>
+<h3><span id="第三方rec的下载">第三方rec的下载</span></h3><p><strong>REC即Recovery模式，也俗称卡刷。</strong></p>
+<p>这里用的是<a href="https://dl.twrp.me/gemini/" target="_blank" rel="noopener">TWRP官网</a>这个工具。</p>
+<p><img src="/2019/04/15/小米五刷机简述/TWRP.jpg" alt=""></p>
+<h3><span id="小米手机解锁小米手机必要">小米手机解锁（小米手机必要）</span></h3><p><strong>注意：只有小米手机才需要！</strong></p>
+<p>如果已经解锁的可以直接跳过。</p>
+<p>如果没有解锁的话直接移步到<a href="http://en.miui.com/unlock/" target="_blank" rel="noopener">小米官方解锁网站</a>。上面有很详细的步骤，一步一步的跟着做就可以了。</p>
+<h3><span id="安装rec">安装REC</span></h3><p>1.<strong>关机状态</strong>按住<strong>音量下键+关机键。</strong></p>
+<p>用数据线连接电脑与手机，在电脑的cmd中输入下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader</span><br></pre></td></tr></table></figure>
+<p>2.输入命令把rec刷进去：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash recovery &quot;*****.img&quot;  //*****是前面下载rec后放置的位置的路径+包的名字</span><br></pre></td></tr></table></figure>
+<p>3.运行rec：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot boot &quot;***.img&quot;  //*****是前面下载rec后放置的位置的路径+包的名字</span><br></pre></td></tr></table></figure>
+<p>成功的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">booting</span><br><span class="line">Finished. Total time: 1.138s</span><br></pre></td></tr></table></figure>
+<h3><span id="清理">清理</span></h3><p>进入界面之后先恢复<strong>出厂设置</strong>，然后<strong>格式化Data</strong>，然后选择<strong>高级选项</strong>，把<strong>cache和data</strong>清除掉，<strong>System不能更改。</strong></p>
+<h3><span id="安装os">安装OS</span></h3><p>把之前下载的OS包移动到sdcard路径下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push &quot;****.zip&quot; /sdcard/</span><br></pre></td></tr></table></figure>
+<p>打开twrp里面的安装选项，找到sdcard目录，点击进去会发现一个zip包，这个就是移动进去的OS，然后点击安装即可。</p>
+<h4><span id="注意">注意</span></h4><p>有些时候如果<strong>提示没有权限或其他错误，</strong>先重启重启不是直接重启手机，是<strong>重新进入rec</strong>。可以在rec的首页面重启，也可以输入adb命令。</p>
+<h3><span id="收尾">收尾</span></h3><p>需要值得注意的是，刷进去之后的浏览器由于某些众所周知的原因不能使用也就是说下载不了软件这些的，必须通过ADB工具将电脑上下载好的apk安装到手机上去。（还需要打开手机的开发者权限，打开ADB调试）。</p>
+<h4><span id="adb安装apk到手机">ADB安装APK到手机</span></h4><p>1.电脑的命令行窗口输入下面的代码：（打开开发者权限的ADB调试之后才找得到设备）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p>2.安装apk：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb install (apk完整路径）</span><br><span class="line">//(安装)例如：</span><br><span class="line">adb install D:/THBELIEFScript.apk</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/db6c8e3e43ab" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/15/汇编实验（一）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2243,231 +2475,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/07/Android-自定义控件简述/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/07/Android-自定义控件简述/" itemprop="url">Android-自定义控件简述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T21:14:52+08:00">
-                2019-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端开发</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端开发/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  713
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#自定义控件要求">自定义控件要求</a></li>
-<li><a href="#制作步骤">制作步骤</a></li>
-<li><a href="#自定义控件两个方式">自定义控件两个方式</a></li>
-<li><a href="#基本原理">基本原理</a><ul>
-<li><a href="#1测量-measure过程是计算视图大小view-measure过程相关方法主要有三个">1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个：</a></li>
-<li><a href="#2布局-layout过程用于设置视图在屏幕中显示的位置view-layout过程相关方法主要要三个">2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个：</a></li>
-<li><a href="#3绘制-draw过程主要用于利用前两步得到的参数将视图显示在屏幕上到这里也就完成了整个的视图绘制工作">3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="自定义控件要求">自定义控件要求</span></h2><p>1.遵循Android标准的<strong>命名，可配置，事件处理。</strong></p>
-<p>2.在XML布局中可配置控件属性。</p>
-<p>3.点击事件之类的交互行为。</p>
-<p>4.兼容性，Android不同版本之间应该具有广泛的适用性。</p>
-<h2><span id="制作步骤">制作步骤</span></h2><p>1.view工作原理。</p>
-<p>2.编写view类。</p>
-<p>3.为view类增添属性。</p>
-<p>4.绘制UI。</p>
-<p>5.与用户进行交互（响应）。</p>
-<p>6.自定义回调函数。</p>
-<h2><span id="自定义控件两个方式">自定义控件两个方式</span></h2><ol>
-<li>继承ViewGroup </li>
-</ol>
-<p>​      例如：ViewGroup、LinearLayout、FrameLayout、RelativeLayout等。</p>
-<ol start="2">
-<li>继承View</li>
-</ol>
-<p>​      例如：View、TextView、ImageView、Button等。</p>
-<h2><span id="基本原理">基本原理</span></h2><p>View的绘制基本上由<strong>measure()、layout()、draw()</strong>这个三个函数完成。</p>
-<h3><span id="1测量-measure过程是计算视图大小view-measure过程相关方法主要有三个">1.）测量-Measure过程是计算视图大小，View measure过程相关方法主要有三个：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public final void measure(int widthMeasureSpec, int heightMeasureSpec)  </span><br><span class="line">protected final void setMeasuredDimension(int measuredWidth, int measuredHeight)  </span><br><span class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</span><br></pre></td></tr></table></figure>
-<p>measure调用onMeasure，onMeasure测量宽度、高度然后调用setMeasureDimension保存测量结果，measure，setMeasureDimension是final类型，view的子类不需要重写，onMeasure在view的子类中重写。</p>
-<p>关于MeasureSpec：</p>
-<p>(1) <strong>UPSPECIFIED</strong> :父容器对于子容器没有任何限制,子容器想要多大就多大.</p>
-<p>(2) <strong>EXACTLY</strong>父容器已经为子容器设置了尺寸,子容器应当服从这些边界,不论子容器想要多大的空间.</p>
-<p>(3) <strong>AT_MOST</strong>子容器可以是声明大小内的任意大小.</p>
-<h3><span id="2布局-layout过程用于设置视图在屏幕中显示的位置view-layout过程相关方法主要要三个">2.）布局-Layout过程用于设置视图在屏幕中显示的位置，View layout过程相关方法主要要三个：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void layout(int l, int t, int r, int b)</span><br><span class="line">protected boolean setFrame(int left, int top, int right, int bottom)</span><br><span class="line">protected void onLayout(boolean changed, int left, int top, int right, int bottom)</span><br></pre></td></tr></table></figure>
-<p>layout通过调用setFrame（l,t,r,b），l,t,r,b即子视图在父视图中的具体位置，onLayout一般只会在自定义ViewGroup中才会使用。</p>
-<h3><span id="3绘制-draw过程主要用于利用前两步得到的参数将视图显示在屏幕上到这里也就完成了整个的视图绘制工作">3.)绘制-draw过程主要用于利用前两步得到的参数，将视图显示在屏幕上，到这里也就完成了整个的视图绘制工作。</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void draw(Canvas canvas)</span><br><span class="line">protected void onDraw(Canvas canvas)</span><br></pre></td></tr></table></figure>
-<p>通过调用draw函数进行视图绘制，在View类中onDraw函数是个空函数，最终的绘制需求需要在自定义的onDraw函数中进行实现，比如ImageView完成图片的绘制，如果自定义ViewGroup这个函数则不需要重载。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2520,7 +2527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2542,7 +2549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">171</span>
+                  <span class="site-state-item-count">172</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2627,7 +2634,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共138.1k字</span>
+  <span class="post-count">博客全站共139.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
