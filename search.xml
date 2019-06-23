@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Coin-collecting by robot]]></title>
+    <url>%2F2019%2F06%2F23%2FCoin-collecting-by-robot%2F</url>
+    <content type="text"><![CDATA[目录： Coin-collecting by robot 题目描述 输入 输出 样例输入 样例输出 题目大意 代码 结果 Coin-collecting by robot题目描述Several coins are placed in cells of an n×m board. A robot, located in the upper left cell of the board, needs to collect as many of the coins as possible and bring them to the bottom right cell. On each step, the robot can move either one cell to the right or one cell down from its current location. 输入12The fist line is n,m, which 1&lt; = n,m &lt;= 1000.Then, have n row and m col, which has a coin in cell, the cell number is 1, otherwise is 0. 输出1The max number Coin-collecting by robot. 样例输入1234565 60 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 1 0 0 1 1 0 0 0 1 0 样例输出15 题目大意一个n行m列的单元区域内，从左上角的单元开始，只能向右/向下移动一个单元格，求出从左上角到右下角途中收集到的1的最大数量。 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt; using namespace std;//下面这个数组用来存放1的存放情况int e[1001][1001]=&#123;0&#125;; void solve(int m,int n)&#123; for(int i=1;i&lt;=m;i++)&#123; for(int j=1;j&lt;=n;j++)&#123; if(e[i-1][j]&gt;e[i][j-1])&#123; e[i][j]+=e[i-1][j]; &#125;else&#123; e[i][j]+=e[i][j-1]; &#125; &#125; &#125; //直接输出右下角的内容即可 cout&lt;&lt;e[m][n]&lt;&lt;endl;&#125;int main()&#123; int m,n; cin&gt;&gt;m&gt;&gt;n; for(int i=1;i&lt;=m;i++)&#123; for(int j=1;j&lt;=n;j++)&#123; cin&gt;&gt;e[i][j]; &#125; &#125; //直接调用函数即可 solve(m,n); return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Coin-collecting by robot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jack Straws]]></title>
     <url>%2F2019%2F06%2F22%2FJack-Straws%2F</url>
     <content type="text"><![CDATA[目录： Jack Straws 题目描述 输入 输出 样例输入 样例输出 题目大意 代码 输出 判定 Jack Straws题目描述n the game of Jack Straws, a number of plastic or wooden “straws” are dumped on the table and players try to remove them one-by-one without disturbing the other straws. Here, we are only concerned with if various pairs of straws are connected by a path of touching straws. You will be given a list of the endpoints for some straws (as if they were dumped on a large piece of graph paper) and then will be asked if various pairs of straws are connected. Note that touching is connecting, but also two straws can be connected indirectly via other connected straws. 输入1A problem consists of multiple lines of input. The first line will be an integer n (1 &lt; n &lt; 13) giving the number of straws on the table. Each of the next n lines contain 4 positive integers, x1 , y1 , x2 and y2 , giving the coordinates, (x1 ; y1 ); (x2 ; y2 ) of the endpoints of a single straw. All coordinates will be less than 100. (Note that the straws will be of varying lengths.) The first straw entered will be known as straw #1, the second as straw #2, and so on. The remaining lines of input (except for the final line) will each contain two positive integers, a and b, both between 1 and n, inclusive. You are to determine if straw a can be connected to straw b. When a = 0 = b, the input is terminated. There will be no illegal input and there are no zero-length straws. 输出1You should generate a line of output for each line containing a pair a and b, except the final line where a = 0 = b. The line should say simply &quot;CONNECTED&quot;, if straw a is connected to straw b, or &quot;NOT CONNECTED&quot;, if straw a is not connected to straw b. For our purposes, a straw is considered connected to itself. 样例输入12345678910111213141571 6 3 3 4 6 4 9 4 5 6 7 1 4 3 5 3 5 5 5 5 2 6 3 5 4 7 2 1 4 1 6 3 3 6 7 2 3 1 3 0 0 样例输出123456CONNECTED NOT CONNECTED CONNECTED CONNECTED NOT CONNECTED CONNECTED 题目大意桌子上放着n根木棍，木棍的两端坐标分别是(Pix, Piy)和(Qix, Qiy)，给定m对木棍(ai, bi)。 判断每对木棍是否相连。当两根木棍之间有公共点时，就认为它们是相连的。通过相连的木棍间接的连在一起的两根木棍也认为是相连的。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;//这里的element用来存储相交情况，14是因为题目要求1-13 int element[14]; struct line&#123; int x1,y1,x2,y2; //内置函数用来快速输入 void inputLine()&#123; cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2; &#125;&#125;l[14];//寻找相交情况 int find(int a)&#123; //寻找到存储a的element并返回，没找到的话就继续递归 if(a==element[a])&#123; return a; &#125;else&#123; return element[a]=find(element[a]); &#125;&#125; //交叉 int cross(int x1, int y1, int x2, int y2)&#123; return x1 * y2 - x2 * y1;&#125; //判断是否相交int isIntersect(line A,line B)&#123; int c[4]; //考虑共线不相交的情况,快速排斥定理 if(max(A.x1,A.x2) &lt; min(B.x1,B.x2) || max(A.y1,A.y2) &lt; min(B.y1,B.y2) || max(B.x1,B.x2) &lt; min(A.x1,A.x2) || max(B.y1,B.y2) &lt; min(A.y1,A.y2) ) return 0; /*判断两条直线是否相交,即只需判断线是否在另一条线的两端*/ c[0] = cross(A.x2 - A.x1, A.y2 - A.y1, B.x1 - A.x1, B.y1 - A.y1); c[1] = cross(A.x2 - A.x1, A.y2 - A.y1, B.x2 - A.x1, B.y2 - A.y1); c[2] = cross(B.x2 - B.x1, B.y2 - B.y1, A.x1 - B.x1, A.y1 - B.y1); c[3] = cross(B.x2 - B.x1, B.y2 - B.y1, A.x2 - B.x1, A.y2 - B.y1); //向量的叉乘和点乘 if(c[0] * c[1] &lt;= 0 &amp;&amp; c[2] * c[3] &lt;= 0) return 1; return 0;&#125; int main()&#123; int n; while(cin&gt;&gt;n)&#123; //输入每条线的坐标 for(int i = 1; i &lt;= n; i++) l[i].inputLine(); //初始化element for(int i = 1; i &lt;= n; i++) element[i]=i; for(int i = 1; i &lt;= n; i++) &#123; for(int j = i + 1; j &lt;= n; j++) &#123; if(isIntersect(l[i],l[j])) &#123; int a = find(i); int b = find(j); if(a != b) element[a] = b; &#125; &#125; &#125; int a,b; while(cin&gt;&gt;a&gt;&gt;b, a | b) &#123; a = find(a); b = find(b); if(a == b) cout&lt;&lt;"CONNECTED"&lt;&lt;endl; else cout&lt;&lt;"NOT CONNECTED"&lt;&lt;endl; &#125; &#125; return 0;&#125; 输出 判定]]></content>
@@ -257,8 +268,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -1124,9 +1135,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
