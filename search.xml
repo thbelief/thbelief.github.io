@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Coin-row problem]]></title>
+    <url>%2F2019%2F06%2F24%2FCoin-row-problem%2F</url>
+    <content type="text"><![CDATA[目录： Coin-row problem 题目描述 输入 输出 样例输入 样例输出 题目大意 思路 代码 输出 Coin-row problem题目描述There is a row of n coins whose values are some positive integers c₁, c₂,…,cn, not necessarily distinct. The goal is to pick up the maximum amount of money subject to the constraint that no two coins adjacent in the initial row can be picked up. 输入1Two lines, the first line is n (0&lt; n &lt;=10000), and the second line is value of coin(0&lt; value &lt;= 2^32). 输出1the maximum amount of money. 样例输入1265 1 2 10 6 2 样例输出117 题目大意有一排n个硬币，其值是一些正整数c 1，c 2，…，cn，不一定是不同的。目标是获得最大金额，但要受到限制，即不能拾取初始行中相邻的两个硬币。 思路对于每个硬币i有两个选择——要或者不要。 要i: F( i ) = F( i - 2 ) + Ci (Ci为第i个硬币) 不要i:F( i ) = F( i - 1 ) 退出条件：（特殊情况） 当 n = 0 时，有 F（0）= 0 当 n = 1 时，有 F（1）= C1 代码123456789101112131415161718192021#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;//存放的硬币数值的数组int arr[10001]=&#123;0&#125;; void maxValue(int n)&#123; arr[n]=max(arr[n-1],arr[n-2]+arr[n]);&#125;int main()&#123; int n; cin&gt;&gt;n; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;arr[i]; &#125; for(int i=2;i&lt;=n;i++)&#123; maxValue(i); &#125; //这里必须用\r才可以 cout&lt;&lt;arr[n]&lt;&lt;"\r"&lt;&lt;endl; return 0;&#125; 输出]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>Coin-row problem</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Coin-collecting by robot]]></title>
     <url>%2F2019%2F06%2F23%2FCoin-collecting-by-robot%2F</url>
     <content type="text"><![CDATA[目录： Coin-collecting by robot 题目描述 输入 输出 样例输入 样例输出 题目大意 代码 结果 Coin-collecting by robot题目描述Several coins are placed in cells of an n×m board. A robot, located in the upper left cell of the board, needs to collect as many of the coins as possible and bring them to the bottom right cell. On each step, the robot can move either one cell to the right or one cell down from its current location. 输入12The fist line is n,m, which 1&lt; = n,m &lt;= 1000.Then, have n row and m col, which has a coin in cell, the cell number is 1, otherwise is 0. 输出1The max number Coin-collecting by robot. 样例输入1234565 60 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 1 0 0 1 1 0 0 0 1 0 样例输出15 题目大意一个n行m列的单元区域内，从左上角的单元开始，只能向右/向下移动一个单元格，求出从左上角到右下角途中收集到的1的最大数量。 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt; using namespace std;//下面这个数组用来存放1的存放情况int e[1001][1001]=&#123;0&#125;; void solve(int m,int n)&#123; for(int i=1;i&lt;=m;i++)&#123; for(int j=1;j&lt;=n;j++)&#123; if(e[i-1][j]&gt;e[i][j-1])&#123; e[i][j]+=e[i-1][j]; &#125;else&#123; e[i][j]+=e[i][j-1]; &#125; &#125; &#125; //直接输出右下角的内容即可 cout&lt;&lt;e[m][n]&lt;&lt;endl;&#125;int main()&#123; int m,n; cin&gt;&gt;m&gt;&gt;n; for(int i=1;i&lt;=m;i++)&#123; for(int j=1;j&lt;=n;j++)&#123; cin&gt;&gt;e[i][j]; &#125; &#125; //直接调用函数即可 solve(m,n); return 0;&#125; 结果]]></content>
@@ -776,11 +788,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -1135,9 +1147,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -1311,10 +1323,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
-        <tag>学习笔记</tag>
         <tag>Widget</tag>
+        <tag>Flutter</tag>
         <tag>框架</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1416,9 +1428,9 @@
         <category>Dart</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>

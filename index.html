@@ -313,6 +313,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/24/Coin-row-problem/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/24/Coin-row-problem/" itemprop="url">Coin-row problem</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:44:25+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  369
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#coin-row-problem">Coin-row problem</a><ul>
+<li><a href="#题目描述">题目描述</a></li>
+<li><a href="#输入">输入</a></li>
+<li><a href="#输出">输出</a></li>
+<li><a href="#样例输入">样例输入</a></li>
+<li><a href="#样例输出">样例输出</a></li>
+<li><a href="#题目大意">题目大意</a></li>
+<li><a href="#思路">思路</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#输出-1">输出</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="coin-row-problem">Coin-row problem</span></h2><h3><span id="题目描述">题目描述</span></h3><p>There is a row of n coins whose values are some positive integers c₁, c₂,…,cn, not necessarily distinct. The goal is to pick up the maximum amount of money subject to the constraint that no two coins adjacent in the initial row can be picked up.</p>
+<h3><span id="输入">输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Two lines, the first line is n (0&lt; n &lt;=10000), and the second line is value of coin(0&lt; value &lt;= 2^32).</span><br></pre></td></tr></table></figure>
+<h3><span id="输出">输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the maximum amount of money.</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5 1 2 10 6 2</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure>
+<h3><span id="题目大意">题目大意</span></h3><p>有一排n个硬币，其值是一些正整数c 1，c 2，…，cn，不一定是不同的。目标是获得最大金额，但要受到限制，即不能拾取初始行中相邻的两个硬币。</p>
+<h3><span id="思路">思路</span></h3><p>对于每个硬币i有两个选择——<strong>要或者不要。</strong></p>
+<p>要i: <strong>F( i ) = F( i - 2 ) + Ci</strong> (Ci为第i个硬币)</p>
+<p>不要i:<strong>F( i ) = F( i - 1 )</strong> </p>
+<p>退出条件：（特殊情况）</p>
+<p> 当 n = 0 时，有 F（0）= 0<br>        当 n = 1 时，有 F（1）= C1</p>
+<h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//存放的硬币数值的数组</span></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">10001</span>]=&#123;<span class="number">0</span>&#125;; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">maxValue</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	arr[n]=max(arr[n<span class="number">-1</span>],arr[n<span class="number">-2</span>]+arr[n]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		maxValue(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//这里必须用\r才可以 </span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;arr[n]&lt;&lt;<span class="string">"\r"</span>&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="输出">输出</span></h3><p><img src="/2019/06/24/Coin-row-problem/1.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/23/Coin-collecting-by-robot/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2350,234 +2551,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/14/Python学习笔记（六）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/14/Python学习笔记（六）/" itemprop="url">Python学习笔记（六）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T07:48:52+08:00">
-                2019-06-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  797
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#返回函数">返回函数</a><ul>
-<li><a href="#闭包">闭包</a></li>
-<li><a href="#代码">代码</a></li>
-<li><a href="#输出">输出</a></li>
-</ul>
-</li>
-<li><a href="#匿名函数">匿名函数</a><ul>
-<li><a href="#代码-1">代码</a></li>
-<li><a href="#输出-1">输出</a></li>
-</ul>
-</li>
-<li><a href="#装饰器">装饰器</a><ul>
-<li><a href="#代码-2">代码</a></li>
-<li><a href="#输出-2">输出</a></li>
-</ul>
-</li>
-<li><a href="#偏函数">偏函数</a><ul>
-<li><a href="#代码-3">代码</a></li>
-<li><a href="#输出-3">输出</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="返回函数">返回函数</span></h2><p>高阶函数除了可以接受函数作为参数外，还可以<strong>把函数作为结果值返回。</strong></p>
-<p>如果<strong>返回的是函数</strong>的话，必须还要执行一下。</p>
-<h3><span id="闭包">闭包</span></h3><p>所谓的闭包就是——<strong>当一个函数返回了一个函数后，其内部的局部变量还被新函数引用</strong>。</p>
-<p>返回的函数并没有立刻执行，而是直到<strong>调用了</strong>才执行。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/6/11 22:03</span></span><br><span class="line"><span class="comment"># @Author  : thbelief</span></span><br><span class="line"><span class="comment"># @Email   : thbelief520@gmail.com</span></span><br><span class="line"><span class="comment"># @File    : Returns the function.py</span></span><br><span class="line"><span class="comment"># @function: 返回函数的实例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#code</span></span><br><span class="line"><span class="comment">#函数作为返回值</span></span><br><span class="line"><span class="comment">#简单定义一个返回原值的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(tmp)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br><span class="line">print(test(<span class="string">"hello！"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#做一个闭包</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">(tmp)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line">    <span class="keyword">return</span> test</span><br><span class="line">t=test1(<span class="string">"hello，world！"</span>)</span><br><span class="line"><span class="comment">#请注意下面两个的输出</span></span><br><span class="line">print(t);</span><br><span class="line">print(t());</span><br><span class="line"></span><br><span class="line"><span class="comment">#返回函数不要引用任何循环变量，或者后续会发生变化的变量。他都会以最后一个为准。</span></span><br><span class="line"><span class="comment">#返回的既可以是计算结果也可以是函数，如果返回的是函数的话，是未执行的函数。</span></span><br></pre></td></tr></table></figure>
-<h3><span id="输出">输出</span></h3><p><img src="/2019/06/14/Python学习笔记（六）/1.jpg" alt=""></p>
-<h2><span id="匿名函数">匿名函数</span></h2><p>关键字<strong>lambda</strong>表示匿名函数，冒号前面的x表示函数参数。</p>
-<p>匿名函数有个限制，就是<strong>只能有一个表达式，不用写return，返回值就是该表达式的结果。</strong></p>
-<p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br></pre></td></tr></table></figure>
-<h3><span id="代码">代码</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/6/12 20:12</span></span><br><span class="line"><span class="comment"># @Author  : thbelief</span></span><br><span class="line"><span class="comment"># @Email   : thbelief520@gmail.com</span></span><br><span class="line"><span class="comment"># @File    : Anonymous functions.py</span></span><br><span class="line"><span class="comment"># @function: 匿名函数的实例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#code</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span>: x * x + y * y</span><br><span class="line">print(build(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line"><span class="comment">#这里需要注意返回出来的匿名函数是函数</span></span><br><span class="line">test=build(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">print(test());</span><br></pre></td></tr></table></figure>
-<h3><span id="输出">输出</span></h3><p><img src="/2019/06/14/Python学习笔记（六）/2.jpg" alt=""></p>
-<h2><span id="装饰器">装饰器</span></h2><p><strong>在代码运行期间动态增加功能方式</strong>——装饰器。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/6/12 20:27</span></span><br><span class="line"><span class="comment"># @Author  : thbelief</span></span><br><span class="line"><span class="comment"># @Email   : thbelief520@gmail.com</span></span><br><span class="line"><span class="comment"># @File    : decorator.py</span></span><br><span class="line"><span class="comment"># @function: 装饰器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#code</span></span><br><span class="line"><span class="comment">#装饰器 在代码运行期间动态增加功能方式——装饰器</span></span><br><span class="line"><span class="comment">#先定义一个简单的函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        print(<span class="string">'call %s():'</span> % func.__name__)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"><span class="comment">#这里的@相当于now = log(now)</span></span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printFunction</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"2019.6.12"</span>);</span><br><span class="line"><span class="comment"># printFunction();</span></span><br><span class="line"><span class="comment">#现在在上述的功能上添加一个打印日志的功能</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">printFunction();</span><br></pre></td></tr></table></figure>
-<h3><span id="输出">输出</span></h3><p><img src="/2019/06/14/Python学习笔记（六）/3.jpg" alt=""></p>
-<h2><span id="偏函数">偏函数</span></h2><p>当函数的参数个数太多，需要简化时，使用<strong>functools.partial</strong>可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。</p>
-<h3><span id="代码">代码</span></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/6/12 20:41</span></span><br><span class="line"><span class="comment"># @Author  : thbelief</span></span><br><span class="line"><span class="comment"># @Email   : thbelief520@gmail.com</span></span><br><span class="line"><span class="comment"># @File    : Partial function.py</span></span><br><span class="line"><span class="comment"># @function: 偏函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#code</span></span><br><span class="line">print(int(<span class="string">'123456'</span>));</span><br><span class="line"><span class="comment">#默认参数是base，作为进制转换</span></span><br><span class="line">print(int(<span class="string">'123456'</span>,base=<span class="number">8</span>));</span><br><span class="line">print(int(<span class="string">'123456'</span>,<span class="number">8</span>));</span><br><span class="line"><span class="comment">#进制转换函数，这里是2进制</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">int2</span><span class="params">(x,base=<span class="number">2</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> int(x,base);</span><br><span class="line">print(int2(<span class="string">'101111'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">#functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数。</span></span><br><span class="line"><span class="keyword">import</span> functools</span><br><span class="line">int2 = functools.partial(int, base=<span class="number">2</span>);</span><br><span class="line">print(int2(<span class="string">'1011111'</span>));</span><br></pre></td></tr></table></figure>
-<h3><span id="输出">输出</span></h3><p><img src="/2019/06/14/Python学习笔记（六）/4.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2630,7 +2603,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2652,7 +2625,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2737,7 +2710,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共139.5k字</span>
+  <span class="post-count">博客全站共139.8k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
