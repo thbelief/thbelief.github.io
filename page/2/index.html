@@ -313,6 +313,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/15/Python学习笔记（七）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/Python学习笔记（七）/" itemprop="url">Python学习笔记（七）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-15T12:01:08+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  873
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#模块module">模块（Module）</a><ul>
+<li><a href="#简单介绍">简单介绍</a></li>
+<li><a href="#使用">使用</a><ul>
+<li><a href="#简单实例">简单实例</a></li>
+<li><a href="#作用域">作用域</a></li>
+</ul>
+</li>
+<li><a href="#安装第三方模块">安装第三方模块</a><ul>
+<li><a href="#如何安装">如何安装</a></li>
+<li><a href="#python第三方模块网址">Python第三方模块网址</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="模块module">模块（Module）</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p>Python中的模块——<strong>一个.py文件也就是一个模块。</strong></p>
+<p>使用模块可以<strong>避免函数名和变量名冲突</strong>。但是使用的时候还是要注意<strong>避免与内置函数名字出现冲突。</strong></p>
+<p>内置函数如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Built-in Function</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#abs" target="_blank" rel="noopener"><code>abs()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#delattr" target="_blank" rel="noopener"><code>delattr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#hash" target="_blank" rel="noopener"><code>hash()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-memoryview" target="_blank" rel="noopener"><code>memoryview()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-set" target="_blank" rel="noopener"><code>set()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#all" target="_blank" rel="noopener"><code>all()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-dict" target="_blank" rel="noopener"><code>dict()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#help" target="_blank" rel="noopener"><code>help()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#min" target="_blank" rel="noopener"><code>min()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#setattr" target="_blank" rel="noopener"><code>setattr()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#any" target="_blank" rel="noopener"><code>any()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#dir" target="_blank" rel="noopener"><code>dir()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#hex" target="_blank" rel="noopener"><code>hex()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#next" target="_blank" rel="noopener"><code>next()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#slice" target="_blank" rel="noopener"><code>slice()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#ascii" target="_blank" rel="noopener"><code>ascii()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#divmod" target="_blank" rel="noopener"><code>divmod()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#id" target="_blank" rel="noopener"><code>id()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#object" target="_blank" rel="noopener"><code>object()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#sorted" target="_blank" rel="noopener"><code>sorted()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#bin" target="_blank" rel="noopener"><code>bin()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#enumerate" target="_blank" rel="noopener"><code>enumerate()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#input" target="_blank" rel="noopener"><code>input()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#oct" target="_blank" rel="noopener"><code>oct()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank" rel="noopener"><code>staticmethod()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#bool" target="_blank" rel="noopener"><code>bool()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#eval" target="_blank" rel="noopener"><code>eval()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener"><code>int()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#open" target="_blank" rel="noopener"><code>open()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-str" target="_blank" rel="noopener"><code>str()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#breakpoint" target="_blank" rel="noopener"><code>breakpoint()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#exec" target="_blank" rel="noopener"><code>exec()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#isinstance" target="_blank" rel="noopener"><code>isinstance()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#ord" target="_blank" rel="noopener"><code>ord()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#sum" target="_blank" rel="noopener"><code>sum()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#func-bytearray" target="_blank" rel="noopener"><code>bytearray()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#filter" target="_blank" rel="noopener"><code>filter()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#issubclass" target="_blank" rel="noopener"><code>issubclass()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#pow" target="_blank" rel="noopener"><code>pow()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#super" target="_blank" rel="noopener"><code>super()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#func-bytes" target="_blank" rel="noopener"><code>bytes()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#float" target="_blank" rel="noopener"><code>float()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#iter" target="_blank" rel="noopener"><code>iter()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#print" target="_blank" rel="noopener"><code>print()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-tuple" target="_blank" rel="noopener"><code>tuple()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#callable" target="_blank" rel="noopener"><code>callable()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#format" target="_blank" rel="noopener"><code>format()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#len" target="_blank" rel="noopener"><code>len()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#property" target="_blank" rel="noopener"><code>property()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#type" target="_blank" rel="noopener"><code>type()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#chr" target="_blank" rel="noopener"><code>chr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-frozenset" target="_blank" rel="noopener"><code>frozenset()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-list" target="_blank" rel="noopener"><code>list()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#func-range" target="_blank" rel="noopener"><code>range()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#vars" target="_blank" rel="noopener"><code>vars()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#classmethod" target="_blank" rel="noopener"><code>classmethod()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#getattr" target="_blank" rel="noopener"><code>getattr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#locals" target="_blank" rel="noopener"><code>locals()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#repr" target="_blank" rel="noopener"><code>repr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#zip" target="_blank" rel="noopener"><code>zip()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#compile" target="_blank" rel="noopener"><code>compile()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#globals" target="_blank" rel="noopener"><code>globals()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#map" target="_blank" rel="noopener"><code>map()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#reversed" target="_blank" rel="noopener"><code>reversed()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#__import__" target="_blank" rel="noopener"><code>__import__()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/functions.html#complex" target="_blank" rel="noopener"><code>complex()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#hasattr" target="_blank" rel="noopener"><code>hasattr()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#max" target="_blank" rel="noopener"><code>max()</code></a></td>
+<td><a href="https://docs.python.org/3/library/functions.html#round" target="_blank" rel="noopener"><code>round()</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>包的出现——是为了<strong>防止出现模块儿名冲突，引入的按目录来组织模块的方法。</strong></p>
+<p>每一个包目录下面都会有一个<strong>init</strong>.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。<strong>init</strong>.py可以是空文件，也可以有Python代码，因为<strong>init</strong>.py本身就是一个模块，而它的模块名就是包名。</p>
+<h3><span id="使用">使用</span></h3><h4><span id="简单实例">简单实例</span></h4><p>以sys模块为工具写一个hello的模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Time    : 2019/6/14 8:23</span><br><span class="line"># @Author  : thbelief</span><br><span class="line"># @Email   : thbelief520@gmail.com</span><br><span class="line"># @File    : Module.py</span><br><span class="line"># @function: 模块部分的代码——以sys模块为工具写一个hello的模块</span><br><span class="line"></span><br><span class="line">#任何模块代码的第一个字符串都被视为模块的文档注释</span><br><span class="line">&apos; a test module for Module&apos;</span><br><span class="line">#使用__author__变量把作者写进去</span><br><span class="line">__author__ = &apos;thbelief&apos;</span><br><span class="line">#使用其它模块儿的第一步就是导入模块</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">def test():</span><br><span class="line">    #sys模块有一个argv变量，用list存储了命令行的所有参数。argv至少有一个元素，因为第一个参数永远是该.py文件的名称.</span><br><span class="line">    args = sys.argv</span><br><span class="line">    if len(args)==1:</span><br><span class="line">        print(&apos;Hello, world!&apos;)</span><br><span class="line">    elif len(args)==2:</span><br><span class="line">        print(&apos;Hello, %s!&apos; % args[1])</span><br><span class="line">    else:</span><br><span class="line">        print(&apos;So many arguments!&apos;)</span><br><span class="line"></span><br><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2019/06/15/Python学习笔记（七）/1.jpg" alt=""></p>
+<p>注意下面这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if __name__==&apos;__main__&apos;:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>它的作用就是——当我们在命令行运行上面写的这个模块文件时，Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是<strong>运行测试。</strong></p>
+<h4><span id="作用域">作用域</span></h4><p>Python中变量是否给别人使用或者说只在模块内部使用是通过<strong>_前缀</strong>实现的。</p>
+<p><strong>正常的函数和变量名是公开的（public）</strong>，可以被直接引用，比如：abc，x123，PI等。</p>
+<p>类似”_xxx”这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，_abc等。</p>
+<p>一般来说——<strong>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</strong></p>
+<h3><span id="安装第三方模块">安装第三方模块</span></h3><h4><span id="如何安装">如何安装</span></h4><p>首先是在Windows的命令提示符中输入pip，如果提示未安装或者报错的话，安装好再进行下面的操作。</p>
+<p>正常情况如下：</p>
+<p><img src="/2019/06/15/Python学习笔记（七）/2.jpg" alt=""></p>
+<p>安装命令就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install 第三方模块名</span><br></pre></td></tr></table></figure>
+<h4><span id="python第三方模块网址">Python第三方模块网址</span></h4><p><a href="https://pypi.org/" target="_blank" rel="noopener">PyPI</a></p>
+<p>在这个网址里面可以自由搜索想要的第三方模块，因为要安装一个第三方库，必须先知道该库的名称。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/14/Python学习笔记（六）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2142,245 +2476,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/05/JavaScript学习笔记-十八/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/05/JavaScript学习笔记-十八/" itemprop="url">JavaScript学习笔记(十八)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-05T19:42:20+08:00">
-                2019-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  952
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#underscore库">underscore库</a><ul>
-<li><a href="#简单介绍">简单介绍</a></li>
-<li><a href="#collections">Collections</a><ul>
-<li><a href="#mapfilter">map/filter</a></li>
-<li><a href="#everysome">every/some</a></li>
-<li><a href="#maxmin">max/min</a></li>
-<li><a href="#groupby">groupBy</a></li>
-<li><a href="#shuffle-sample">shuffle / sample</a></li>
-</ul>
-</li>
-<li><a href="#arrays">Arrays</a><ul>
-<li><a href="#firstlast">first/last</a></li>
-<li><a href="#flatten">flatten</a></li>
-<li><a href="#zipunzip">zip/unzip</a></li>
-<li><a href="#object">object</a></li>
-<li><a href="#range">range</a></li>
-</ul>
-</li>
-<li><a href="#functions">Functions</a></li>
-<li><a href="#objects">Objects</a></li>
-<li><a href="#chaining">Chaining</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="underscore库">underscore库</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p>JS是函数式的编程语言，支持高阶函数以及闭包，为了更方便的使用函数式的编程以及尽量减少浏览器之间的差异，这里就应运而生了这个库。</p>
-<p>还有就是，这个库绑定之后是可以直接通过object使用的，而原生的array的方法不能直接给object使用，这也是它的优势所在。</p>
-<p><strong>underscore会把自身绑定到唯一的全局变量_上</strong>，这也是它名字的来源（下划线）。</p>
-<h3><span id="collections">Collections</span></h3><p>collections是集合类（Array+Object），underscore为集合类提供了对应的接口。</p>
-<h4><span id="mapfilter">map/filter</span></h4><p>和原本的Array的map/filter是类似的，但是underscore的是支持object的，当作用给object的时候，传入的函数是：</p>
-<p>(第一个参数是value，第二个参数是key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function (value, key)</span><br></pre></td></tr></table></figure>
-<p>简单实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">var obj = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;,</span><br><span class="line">    school: &apos;test school&apos;,</span><br><span class="line">    address: &apos;XI road&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var upper = _.map(obj, function (value, key) &#123;</span><br><span class="line">    return ???;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4><span id="everysome">every/some</span></h4><p>当集合的<strong>所有元素</strong>都满足条件时，.every()函数返回true，当集合的<strong>至少一个元素</strong>满足条件时，.some()函数返回true.</p>
-<h4><span id="maxmin">max/min</span></h4><p>这两个函数就是返回当前集合中的最大/最小数。</p>
-<h4><span id="groupby">groupBy</span></h4><p>groupBy()把集合的元素<strong>按照key归类</strong>。（key由传入的函数返回）</p>
-<h4><span id="shuffle-sample">shuffle / sample</span></h4><p>shuffle()用洗牌算法<strong>随机打乱一个集合</strong>，sample()则是<strong>随机选择一个或多个元素</strong>。</p>
-<h3><span id="arrays">Arrays</span></h3><p>underscore为Array专门的提供了许多的工具类方法，很方便实用。</p>
-<h4><span id="firstlast">first/last</span></h4><p>取第一个和最后一个元素。</p>
-<h4><span id="flatten">flatten</span></h4><p>这个函数会接收一个Array，无论这个Array里面嵌套多少的Array，最后都会被这个函数给<strong>变成一个一维数组。</strong></p>
-<h4><span id="zipunzip">zip/unzip</span></h4><p>zip()会把两个或多个数组的所有元素按索引对齐，然后按<strong>索引</strong>合并成新数组。</p>
-<p>unzip()的作用和zip刚好相反。</p>
-<h4><span id="object">object</span></h4><p>这个只是和JS中的对象object同名，但是是个函数。</p>
-<p><strong>将元素一一对应成object。</strong></p>
-<p>简单实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">var names = [&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;];</span><br><span class="line">var scores = [85, 92, 59];</span><br><span class="line">_.object(names, scores);</span><br></pre></td></tr></table></figure>
-<h4><span id="range">range</span></h4><p><strong>快速生成一个序列。</strong>（神奇，取代for循环）</p>
-<h3><span id="functions">Functions</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bind 修复当使用一个变量指向一个对象的方法时，出现的无法直接调用该方法的问题。(丢失this对象引用)</span><br><span class="line">partial 一个函数创建偏函数。</span><br><span class="line">memoize 自动缓存函数计算结果。</span><br><span class="line">once 保证某个函数执行且仅执行一次。</span><br><span class="line">delay 让一个函数延时执行。（和setTimeout差不多）</span><br></pre></td></tr></table></figure>
-<h3><span id="objects">Objects</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">keys 返回一个object自身所有的key，但不包含从原型链继承下来的.</span><br><span class="line">allKeys 返回除了object自身的key，还包含从原型链继承下来的，即所有的。</span><br><span class="line">values 返回object自身但不包含原型链继承的所有值。</span><br><span class="line">mapObject 针对object的map版本。</span><br><span class="line">invert 把object的每个key-value来个交换，key变成value，value变成key。</span><br><span class="line">extend 把多个object的key-value合并到第一个object并返回。</span><br><span class="line">extendOwn 把多个object的key-value合并到第一个object并返回。（忽略获取属性时忽略从原型链继承下来的属性）</span><br><span class="line">clone 把原有对象的所有属性都复制到新的对象。</span><br><span class="line">isEqual 对两个object进行深度比较，如果内容完全相同，则返回true。（Array其实也可以使用）</span><br></pre></td></tr></table></figure>
-<h3><span id="chaining">Chaining</span></h3><p>underscore其实也是<strong>支持链式调用</strong>的。使用的方法是——chain()。</p>
-<p>简单实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var r = _.chain([1, 4, 9, 16, 25])</span><br><span class="line">         .map(Math.sqrt)</span><br><span class="line">         .filter(x =&gt; x % 2 === 1)</span><br><span class="line">         .value();</span><br></pre></td></tr></table></figure>
-<p>值得注意的是——<strong>由于每一步返回的都是对象，所以最后一步的结果必须通过value方法来获得最终的结果。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2433,7 +2528,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2455,7 +2550,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">175</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2540,7 +2635,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共139.8k字</span>
+  <span class="post-count">博客全站共141.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

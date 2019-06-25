@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/06/25/作业调度方案/
 http://thbelief.coding.me/2019/06/24/Coin-row-problem/
 http://thbelief.coding.me/2019/06/23/Coin-collecting-by-robot/
 http://thbelief.coding.me/2019/06/22/Jack-Straws/
@@ -97,4 +98,3 @@ http://thbelief.coding.me/2019/03/25/Win10-64位Debug安装/
 http://thbelief.coding.me/2019/03/24/递归递推与试除法/
 http://thbelief.coding.me/2019/03/23/java基础-略知一二/
 http://thbelief.coding.me/2019/03/22/java基础-略有小成/
-http://thbelief.coding.me/2019/03/21/分拆素数和/

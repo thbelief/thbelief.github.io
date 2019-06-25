@@ -313,6 +313,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/05/JavaScript学习笔记-十八/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/05/JavaScript学习笔记-十八/" itemprop="url">JavaScript学习笔记(十八)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-05T19:42:20+08:00">
+                2019-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  952
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#underscore库">underscore库</a><ul>
+<li><a href="#简单介绍">简单介绍</a></li>
+<li><a href="#collections">Collections</a><ul>
+<li><a href="#mapfilter">map/filter</a></li>
+<li><a href="#everysome">every/some</a></li>
+<li><a href="#maxmin">max/min</a></li>
+<li><a href="#groupby">groupBy</a></li>
+<li><a href="#shuffle-sample">shuffle / sample</a></li>
+</ul>
+</li>
+<li><a href="#arrays">Arrays</a><ul>
+<li><a href="#firstlast">first/last</a></li>
+<li><a href="#flatten">flatten</a></li>
+<li><a href="#zipunzip">zip/unzip</a></li>
+<li><a href="#object">object</a></li>
+<li><a href="#range">range</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#objects">Objects</a></li>
+<li><a href="#chaining">Chaining</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="underscore库">underscore库</span></h2><h3><span id="简单介绍">简单介绍</span></h3><p>JS是函数式的编程语言，支持高阶函数以及闭包，为了更方便的使用函数式的编程以及尽量减少浏览器之间的差异，这里就应运而生了这个库。</p>
+<p>还有就是，这个库绑定之后是可以直接通过object使用的，而原生的array的方法不能直接给object使用，这也是它的优势所在。</p>
+<p><strong>underscore会把自身绑定到唯一的全局变量_上</strong>，这也是它名字的来源（下划线）。</p>
+<h3><span id="collections">Collections</span></h3><p>collections是集合类（Array+Object），underscore为集合类提供了对应的接口。</p>
+<h4><span id="mapfilter">map/filter</span></h4><p>和原本的Array的map/filter是类似的，但是underscore的是支持object的，当作用给object的时候，传入的函数是：</p>
+<p>(第一个参数是value，第二个参数是key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function (value, key)</span><br></pre></td></tr></table></figure>
+<p>简单实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">var obj = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;,</span><br><span class="line">    school: &apos;test school&apos;,</span><br><span class="line">    address: &apos;XI road&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var upper = _.map(obj, function (value, key) &#123;</span><br><span class="line">    return ???;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4><span id="everysome">every/some</span></h4><p>当集合的<strong>所有元素</strong>都满足条件时，.every()函数返回true，当集合的<strong>至少一个元素</strong>满足条件时，.some()函数返回true.</p>
+<h4><span id="maxmin">max/min</span></h4><p>这两个函数就是返回当前集合中的最大/最小数。</p>
+<h4><span id="groupby">groupBy</span></h4><p>groupBy()把集合的元素<strong>按照key归类</strong>。（key由传入的函数返回）</p>
+<h4><span id="shuffle-sample">shuffle / sample</span></h4><p>shuffle()用洗牌算法<strong>随机打乱一个集合</strong>，sample()则是<strong>随机选择一个或多个元素</strong>。</p>
+<h3><span id="arrays">Arrays</span></h3><p>underscore为Array专门的提供了许多的工具类方法，很方便实用。</p>
+<h4><span id="firstlast">first/last</span></h4><p>取第一个和最后一个元素。</p>
+<h4><span id="flatten">flatten</span></h4><p>这个函数会接收一个Array，无论这个Array里面嵌套多少的Array，最后都会被这个函数给<strong>变成一个一维数组。</strong></p>
+<h4><span id="zipunzip">zip/unzip</span></h4><p>zip()会把两个或多个数组的所有元素按索引对齐，然后按<strong>索引</strong>合并成新数组。</p>
+<p>unzip()的作用和zip刚好相反。</p>
+<h4><span id="object">object</span></h4><p>这个只是和JS中的对象object同名，但是是个函数。</p>
+<p><strong>将元素一一对应成object。</strong></p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">var names = [&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;];</span><br><span class="line">var scores = [85, 92, 59];</span><br><span class="line">_.object(names, scores);</span><br></pre></td></tr></table></figure>
+<h4><span id="range">range</span></h4><p><strong>快速生成一个序列。</strong>（神奇，取代for循环）</p>
+<h3><span id="functions">Functions</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bind 修复当使用一个变量指向一个对象的方法时，出现的无法直接调用该方法的问题。(丢失this对象引用)</span><br><span class="line">partial 一个函数创建偏函数。</span><br><span class="line">memoize 自动缓存函数计算结果。</span><br><span class="line">once 保证某个函数执行且仅执行一次。</span><br><span class="line">delay 让一个函数延时执行。（和setTimeout差不多）</span><br></pre></td></tr></table></figure>
+<h3><span id="objects">Objects</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">keys 返回一个object自身所有的key，但不包含从原型链继承下来的.</span><br><span class="line">allKeys 返回除了object自身的key，还包含从原型链继承下来的，即所有的。</span><br><span class="line">values 返回object自身但不包含原型链继承的所有值。</span><br><span class="line">mapObject 针对object的map版本。</span><br><span class="line">invert 把object的每个key-value来个交换，key变成value，value变成key。</span><br><span class="line">extend 把多个object的key-value合并到第一个object并返回。</span><br><span class="line">extendOwn 把多个object的key-value合并到第一个object并返回。（忽略获取属性时忽略从原型链继承下来的属性）</span><br><span class="line">clone 把原有对象的所有属性都复制到新的对象。</span><br><span class="line">isEqual 对两个object进行深度比较，如果内容完全相同，则返回true。（Array其实也可以使用）</span><br></pre></td></tr></table></figure>
+<h3><span id="chaining">Chaining</span></h3><p>underscore其实也是<strong>支持链式调用</strong>的。使用的方法是——chain()。</p>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var r = _.chain([1, 4, 9, 16, 25])</span><br><span class="line">         .map(Math.sqrt)</span><br><span class="line">         .filter(x =&gt; x % 2 === 1)</span><br><span class="line">         .value();</span><br></pre></td></tr></table></figure>
+<p>值得注意的是——<strong>由于每一步返回的都是对象，所以最后一步的结果必须通过value方法来获得最终的结果。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/04/Android-USBPrompt开发/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2270,201 +2509,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/26/机器学习实验-线性回归预测/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/26/机器学习实验-线性回归预测/" itemprop="url">机器学习实验-线性回归预测</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T10:20:57+08:00">
-                2019-05-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  520
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!--toc-->
-<h2><span id="实验目的">实验目的</span></h2><p><strong>对给定的数据集进行线性回归预测。</strong></p>
-<h2><span id="实验内容">实验内容</span></h2><ol>
-<li>先创建csv 文件。</li>
-<li>利用WEKA 的TOOLS 讲csv 转换为arff 工具。</li>
-<li>利用WEKA 学习线性回归模型。</li>
-</ol>
-<h2><span id="实验过程">实验过程</span></h2><p>(1)首先讲数据集在EXCEL 中进行处理，转变为CSV 文件格式，注意这里<br>需要把原数据集中的属性名称改变为英文。<br>        另存为data.csv 在桌面即可。等会儿还需要使用到。</p>
-<p><img src="/2019/05/26/机器学习实验-线性回归预测/1.jpg" alt=""></p>
-<p>(2)利用WEKA 的TOOLS 将CSV 格式转换为ARFF 格式。<br>        也是另存为桌面为data.arff。</p>
-<p><img src="/2019/05/26/机器学习实验-线性回归预测/2.jpg" alt=""></p>
-<p>（3）将data.arff 导入进WEKA 进行线性回归预测即可。</p>
-<p>（4）先使用Use training set 来测试。</p>
-<p><img src="/2019/05/26/机器学习实验-线性回归预测/3.jpg" alt=""></p>
-<p>（5）采用10 折交叉验证（ 10-fold cross validation） 来选择和评估模型。</p>
-<p><img src="/2019/05/26/机器学习实验-线性回归预测/4.jpg" alt=""></p>
-<p>(6)由于Weka 在<strong>处理丢失数据的时候已经做了均值处理</strong>。所以这里不对缺失值进行操作。</p>
-<h2><span id="实验结果">实验结果</span></h2><p><img src="/2019/05/26/机器学习实验-线性回归预测/结果.jpg" alt=""></p>
-<h2><span id="实验总结">实验总结</span></h2><h3><span id="问题">问题</span></h3><ol>
-<li>首先就是实验中遇到的问题— —缺失值的处理，最开始的想法是<br>使用均值来替代，但是得出的结果和之前不处理是一样的，所以从这<br>里我猜测WEKA 已经做了相关的处理，是以就不用进行另外的处理了。</li>
-<li>最开始不知道如何将CSV 转换为ARFF 格式， 还好是找到了相关<br>的方案。解决了这个问题。</li>
-</ol>
-<h3><span id="总结">总结</span></h3><p>值得注意的是， 数据缺失的话在WEKA 中需要使用? 来替代表示是<br>一个缺失值， 不能使用-或者0 这种东西来替代。<br>        在统计学中， 线性回归(Linear Regression)是利用称为线性回归<br>方程的最小平方函数对一个或多个自变量和因变量之间关系进行建模<br>的一种回归分析。<br>        本次实验就是利用Weka 在生育率、老龄人口占比、老龄人口死亡<br>占比、人口流动比率、女性育龄人口占比这6 个自变量和实际人口数之<br>间进行建模分析。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2517,7 +2561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2539,7 +2583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">175</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2624,7 +2668,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共139.8k字</span>
+  <span class="post-count">博客全站共141.1k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

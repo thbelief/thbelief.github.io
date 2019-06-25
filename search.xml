@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[作业调度方案]]></title>
+    <url>%2F2019%2F06%2F25%2F%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[目录： 作业调度方案 题目描述 输入 输出 样例输入 样例输出 代码 结果 作业调度方案题目描述我们现在要利用m台机器加工n个工件，每个工件都有m道工序，每道工序都在不同的指定的机器上完成。每个工件的每道工序都有指定的加工时间。 每个工件的每个工序称为一个操作，我们用记号j-k表示一个操作，其中j为1到n中的某个数字，为工件号；k为1到m中的某个数字，为工序号，例如2-4表示第2个工件第4道工序的这个操作。在本题中，我们还给定对于各操作的一个安排顺序。 例如，当n=3，m=2时，“1-1，1-2，2-1，3-1，3-2，2-2”就是一个给定的安排顺序，即先安排第1个工件的第1个工序，再安排第1个工件的第2个工序，然后再安排第2个工件的第1个工序，等等。 一方面，每个操作的安排都要满足以下的两个约束条件。 (1) 对同一个工件，每道工序必须在它前面的工序完成后才能开始； (2) 同一时刻每一台机器至多只能加工一个工件。 另一方面，在安排后面的操作时，不能改动前面已安排的操作的工作状态。 由于同一工件都是按工序的顺序安排的，因此，只按原顺序给出工件号，仍可得到同样的安排顺序，于是，在输入数据中，我们将这个安排顺序简写为“1 1 2 3 3 2”。 还要注意，“安排顺序”只要求按照给定的顺序安排每个操作。不一定是各机器上的实际操作顺序。在具体实施时，有可能排在后面的某个操作比前面的某个操作先完成。 当一个操作插入到某台机器的某个空档时（机器上最后的尚未安排操作的部分也可以看作一个空档），可以靠前插入，也可以靠后或居中插入。 为了使问题简单一些，我们约定：在保证约束条件（1）（2）的条件下，尽量靠前插入。并且，我们还约定，如果有多个空档可以插入，就在保证约束条件（1）（2）的条件下，插入到最前面的一个空档。 于是，在这些约定下，上例中的方案一是正确的，而方案二是不正确的。 显然，在这些约定下，对于给定的安排顺序，符合该安排顺序的实施方案是唯一的，请你计算出该方案完成全部任务所需的总时间。 输入12345第1行为两个正整数m和n（其中m（&lt;20）表示机器数，n（&lt;20）表示工件数），用一个空格隔开：第2行：个用空格隔开的数，为给定的安排顺序。接下来的2n行，每行都是用空格隔开的m个正整数，每个数不超过20。其中前n行依次表示每个工件的每个工序所使用的机器号，第1个数为第1个工序的机器号，第2个数为第2个工序机器号，等等。后n行依次表示每个工件的每个工序的加工时间。 输出1只有一个正整数，为最少的加工时间。 样例输入123456782 31 1 2 3 3 21 2 1 2 2 13 2 2 5 2 4 样例输出110 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;using namespace std;int main()&#123; int m,n;//m机器数n工作数 int arr[401]=&#123;0&#125;;//给定的顺序 int machineNum[21][21]=&#123;0&#125;;//存放每个工件的每个工序所使用的机器号 int machineTime[21][21]=&#123;0&#125;;//存放每个工件的每个工序所消耗的时间 int r[21]=&#123;0&#125;; int last[21]=&#123;0&#125;; int F[21][10001]=&#123;0&#125;; int ans=0; cin&gt;&gt;m&gt;&gt;n; int size=m*n; for(int i=1;i&lt;=size;i++)&#123; cin&gt;&gt;arr[i]; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineNum[i][j]; &#125; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineTime[i][j]; &#125; &#125; //下面就是具体的操作 for(int i=1;i&lt;=size;i++)&#123; int t=arr[i];// t第几工件 int c=++r[t];//c 第几工序 int p=machineNum[t][c];//p 第几机器 int sum=0; for(int j=last[t]+1;;j++)&#123; sum++; if(F[p][j]!=0)&#123; sum=0; &#125; if(sum==machineTime[t][c])&#123; if(j&gt;ans) ans=j; last[t]=j; for(int k=j;sum&gt;0;sum--,k--)&#123; F[p][k]=t; &#125; break; &#125; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>作业调度方案</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Coin-row problem]]></title>
     <url>%2F2019%2F06%2F24%2FCoin-row-problem%2F</url>
     <content type="text"><![CDATA[目录： Coin-row problem 题目描述 输入 输出 样例输入 样例输出 题目大意 思路 代码 输出 Coin-row problem题目描述There is a row of n coins whose values are some positive integers c₁, c₂,…,cn, not necessarily distinct. The goal is to pick up the maximum amount of money subject to the constraint that no two coins adjacent in the initial row can be picked up. 输入1Two lines, the first line is n (0&lt; n &lt;=10000), and the second line is value of coin(0&lt; value &lt;= 2^32). 输出1the maximum amount of money. 样例输入1265 1 2 10 6 2 样例输出117 题目大意有一排n个硬币，其值是一些正整数c 1，c 2，…，cn，不一定是不同的。目标是获得最大金额，但要受到限制，即不能拾取初始行中相邻的两个硬币。 思路对于每个硬币i有两个选择——要或者不要。 要i: F( i ) = F( i - 2 ) + Ci (Ci为第i个硬币) 不要i:F( i ) = F( i - 1 ) 退出条件：（特殊情况） 当 n = 0 时，有 F（0）= 0 当 n = 1 时，有 F（1）= C1 代码123456789101112131415161718192021#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;//存放的硬币数值的数组int arr[10001]=&#123;0&#125;; void maxValue(int n)&#123; arr[n]=max(arr[n-1],arr[n-2]+arr[n]);&#125;int main()&#123; int n; cin&gt;&gt;n; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;arr[i]; &#125; for(int i=2;i&lt;=n;i++)&#123; maxValue(i); &#125; //这里必须用\r才可以 cout&lt;&lt;arr[n]&lt;&lt;"\r"&lt;&lt;endl; return 0;&#125; 输出]]></content>
@@ -280,8 +292,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>报错</tag>
+        <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -788,11 +800,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -1147,9 +1159,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
@@ -1323,10 +1335,10 @@
         <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Widget</tag>
         <tag>Flutter</tag>
-        <tag>框架</tag>
         <tag>学习笔记</tag>
+        <tag>Widget</tag>
+        <tag>框架</tag>
       </tags>
   </entry>
   <entry>
@@ -1428,9 +1440,9 @@
         <category>Dart</category>
       </categories>
       <tags>
+        <tag>Dart</tag>
         <tag>Flutter</tag>
         <tag>学习笔记</tag>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
