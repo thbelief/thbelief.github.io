@@ -106,7 +106,7 @@
 <meta property="og:description" content="目录：  Coin Changing 题目描述 输入 输出 样例输入 样例输出 解法 代码 结果     Coin Changing题目描述设有n 种不同面值的硬币，各硬币的面值存于数组T［1:n］中。现要用这些面值的硬币来找钱。可以使用的各种面值的硬币个数存于数组Coins［1:n］中。 对于给定的1≤n≤10，硬币面值数组T和可以使用的各种面值的硬币个数数组Coins，以及钱数m，0≤m≤20">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://thbelief.coding.me/2019/06/18/Coin-Changing/1.jpg">
-<meta property="og:updated_time" content="2019-06-18T02:09:56.956Z">
+<meta property="og:updated_time" content="2019-06-25T13:43:25.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coin Changing">
 <meta name="twitter:description" content="目录：  Coin Changing 题目描述 输入 输出 样例输入 样例输出 解法 代码 结果     Coin Changing题目描述设有n 种不同面值的硬币，各硬币的面值存于数组T［1:n］中。现要用这些面值的硬币来找钱。可以使用的各种面值的硬币个数存于数组Coins［1:n］中。 对于给定的1≤n≤10，硬币面值数组T和可以使用的各种面值的硬币个数数组Coins，以及钱数m，0≤m≤20">
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  751
+                  916
                 </span>
               
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -462,6 +462,8 @@
 <p>假设当前<strong>要找零的钱</strong>是i（1&lt;i&lt;m）,当前所试探的<strong>硬币面值</strong>为k：<br>    （1）当i和k相等时，结果为1，即dp[i] = 1，说明可以直接通过一枚硬币就是最小硬币数了。<br>    （2）当<strong>i大于k</strong>时，若dp[i]为0(<strong>未赋过值</strong>），且dp[i-k]不为0(<strong>从i元中减去k元后剩下的钱可以找开</strong>)<br>                   则dp[i] = dp[i-k]+1，即将子问题划分，然后加上本次的一枚硬币即可。<br>                   若dp[i]不为0(即<strong>已赋值</strong>)，则dp[i] = min( dp[i-k]+1, dp[i] ) 即<strong>dp[i]为dp[i-k]和dp[i]中的较小者</strong>。<br>    （3）所以dp[i]的<strong>动态转移方程</strong>就是:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = min( dp[k], dp[k-t[i]]+<span class="number">1</span> )  <span class="comment">//t[i]&lt;=k&lt;=m</span></span><br></pre></td></tr></table></figure>
 <h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Max 999999</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//硬币种类数n，找零钱数m </span></span><br><span class="line">	<span class="keyword">int</span> n,m,T[<span class="number">11</span>],Coins[<span class="number">11</span>];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;T[i]&gt;&gt;Coins[i];<span class="comment">//面值与对应的个数 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">20002</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20002</span>;i++)&#123;</span><br><span class="line">		<span class="comment">//因为0时找零为0，后面的都初始化为最大值（寻找最少硬币数） </span></span><br><span class="line">		dp[i]=Max;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123; <span class="comment">//一共n种硬币 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=Coins[i];j++)&#123;<span class="comment">//各面值硬币个数 </span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=m;k&gt;=T[i];k--)&#123;<span class="comment">//各面值</span></span><br><span class="line">				<span class="comment">//动态规划思想求解 </span></span><br><span class="line">				dp[k] = min(dp[k], dp[k-T[i]]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dp[m]&lt;=m)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2019.6.25新增（复习）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 99999</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">20002</span>];</span><br><span class="line"><span class="comment">//面值与钱币个数 </span></span><br><span class="line"><span class="keyword">int</span> T[<span class="number">11</span>],Coins[<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20002</span>;i++)&#123;</span><br><span class="line">		<span class="comment">//求最小值故先置MAX</span></span><br><span class="line">		dp[i]=MAX; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;T[i]&gt;&gt;Coins[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//要找的钱数 </span></span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=Coins[i];j++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=m;k&gt;=T[i];k--)&#123;</span><br><span class="line">				dp[k]=min(dp[k],dp[k-T[i]]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dp[m]&lt;=m)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="结果">结果</span></h3><p><img src="/2019/06/18/Coin-Changing/1.jpg" alt=""></p>
 
       
@@ -619,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +643,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-count">176</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -742,7 +744,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共141.1k字</span>
+  <span class="post-count">博客全站共142.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

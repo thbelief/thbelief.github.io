@@ -106,7 +106,7 @@
 <meta property="og:description" content="目录：  Renting Boats 题目 输入 输出 样例输入复制 样例输出 思路 代码 结果     Renting Boats题目长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&amp;lt; =i&amp;lt; j &amp;lt; =n。试设计一个算法，计算出从游艇出租">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://thbelief.coding.me/2019/06/12/Renting-Boats/1.jpg">
-<meta property="og:updated_time" content="2019-06-12T00:16:56.520Z">
+<meta property="og:updated_time" content="2019-06-25T13:24:11.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Renting Boats">
 <meta name="twitter:description" content="目录：  Renting Boats 题目 输入 输出 样例输入复制 样例输出 思路 代码 结果     Renting Boats题目长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&amp;lt; =i&amp;lt; j &amp;lt; =n。试设计一个算法，计算出从游艇出租">
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  476
+                  600
                 </span>
               
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -460,6 +460,8 @@
 <p>我们可以使用数组去存具体的租金，然后算每一段距离的租金之和，如果便宜的话就保存下来下次去比较，知道最后比较完肯定是最少租金的一种方法。</p>
 <h3><span id="代码">代码</span></h3><p>注意这里是<strong>多组输入</strong>！  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	//首先是定义一个数组用来存放出租站的坐标，初始化为0 </span><br><span class="line">	int coordinates[201][201]=&#123;0&#125;; </span><br><span class="line">	int n;//出租站的总数</span><br><span class="line">	while(cin&gt;&gt;n)&#123;</span><br><span class="line">		for(int i=1;i&lt;n;i++)&#123;</span><br><span class="line">			for(int j=i+1;j&lt;=n;j++)&#123;</span><br><span class="line">				cin&gt;&gt;coordinates[i][j];</span><br><span class="line">				//每一次判断之后都将最短距离放到1的位置，然后到最后输出这个值即可。 </span><br><span class="line">				if(coordinates[1][j]&gt;coordinates[1][i]+coordinates[i][j])&#123;</span><br><span class="line">					coordinates[1][j]=coordinates[1][i]+coordinates[i][j];</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">		cout&lt;&lt;coordinates[1][n]&lt;&lt;endl;</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2019.6.25新增（复习）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">201</span>][<span class="number">201</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//多组输入</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">				<span class="built_in">cin</span>&gt;&gt;arr[i][j];</span><br><span class="line">				<span class="comment">//每次输入之后判断一下，之前最少租金是否是最小，如果不是则重新赋值</span></span><br><span class="line">				<span class="keyword">if</span>(arr[<span class="number">1</span>][j]&gt;arr[<span class="number">1</span>][i]+arr[i][j]) arr[<span class="number">1</span>][j]=arr[<span class="number">1</span>][i]+arr[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;arr[<span class="number">1</span>][n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="结果">结果</span></h3><p><img src="/2019/06/12/Renting-Boats/1.jpg" alt=""></p>
 
       
@@ -617,7 +619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,7 +641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-count">176</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -740,7 +742,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共141.1k字</span>
+  <span class="post-count">博客全站共142.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

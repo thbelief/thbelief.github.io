@@ -313,6 +313,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/26/Maximum-Tape-Utilization-Ratio/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/Maximum-Tape-Utilization-Ratio/" itemprop="url">Maximum Tape Utilization Ratio</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-26T09:34:49+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  620
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#maximum-tape-utilization-ratio">Maximum Tape Utilization Ratio</a><ul>
+<li><a href="#题目描述">题目描述</a></li>
+<li><a href="#输入">输入</a></li>
+<li><a href="#输出">输出</a></li>
+<li><a href="#样例输入">样例输入</a></li>
+<li><a href="#样例输出">样例输出</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#结果">结果</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="maximum-tape-utilization-ratio">Maximum Tape Utilization Ratio</span></h2><h3><span id="题目描述">题目描述</span></h3><p>设有n 个程序{1,2,…, n }要存放在长度为L的磁带上。程序i存放在磁带上的长度是li ，1 &lt; = i &lt; = n。 程序存储问题要求确定这n 个程序在磁带上的一个存储方案，使得能够在磁带上存储尽可能多的程序。<strong>在保证存储最多程序的前提下还要求磁带的利用率达到最大。</strong> 对于给定的n个程序存放在磁带上的长度，编程计算磁带上最多可以存储的程序数和占用磁带的长度。</p>
+<h3><span id="输入">输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一行是2 个正整数，分别表示文件个数n &lt;=600和磁带的长度L&lt;=6000。接下来的1 行中，有n个正整数，表示程序存放在磁带上的长度。</span><br></pre></td></tr></table></figure>
+<h3><span id="输出">输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第1 行输出最多可以存储的程序数和占用磁带的长度；第2行输出存放在磁带上的每个程序的长度。</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9 50</span><br><span class="line">2 3 13 8 80 20 21 22 23</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 49</span><br><span class="line">2 3 13 8 23</span><br></pre></td></tr></table></figure>
+<h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//存放每个程序长度的数组（全局数组默认置为0） </span></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">601</span>];</span><br><span class="line"><span class="comment">//程序数</span></span><br><span class="line"><span class="keyword">int</span> d[<span class="number">601</span>][<span class="number">6001</span>];</span><br><span class="line"><span class="comment">//占用磁带长度</span></span><br><span class="line"><span class="keyword">int</span> t[<span class="number">601</span>][<span class="number">6001</span>]; </span><br><span class="line"><span class="keyword">int</span> n,l;<span class="comment">//程序个数 磁带长度</span></span><br><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr[i];j++)&#123;</span><br><span class="line">			d[i][j]=d[i<span class="number">-1</span>][j]; </span><br><span class="line">			t[i][j]=t[i<span class="number">-1</span>][j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=arr[i];j&lt;=l;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(d[i<span class="number">-1</span>][j-arr[i]]+<span class="number">1</span>&gt;d[i<span class="number">-1</span>][j]||(d[i<span class="number">-1</span>][j-arr[i]]+<span class="number">1</span>==d[i<span class="number">-1</span>][j]&amp;&amp;t[i<span class="number">-1</span>][j-arr[i]]+arr[i]&gt;t[i<span class="number">-1</span>][j]))</span><br><span class="line">			&#123;</span><br><span class="line">				d[i][j]=d[i<span class="number">-1</span>][j-arr[i]]+<span class="number">1</span>;</span><br><span class="line">				t[i][j]=t[i<span class="number">-1</span>][j-arr[i]]+arr[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				d[i][j]=d[i<span class="number">-1</span>][j];</span><br><span class="line">				t[i][j]=t[i<span class="number">-1</span>][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;d[n][l]&lt;&lt;<span class="string">" "</span>&lt;&lt;t[n][l]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> i=n;</span><br><span class="line">	<span class="keyword">int</span> j=l;</span><br><span class="line">	<span class="keyword">while</span>(i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(j&gt;=arr[i]&amp;&amp;t[i][j]==t[i<span class="number">-1</span>][j-arr[i]]+arr[i]&amp;&amp;d[i][j]==d[i<span class="number">-1</span>][j-arr[i]]+<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;arr[i];</span><br><span class="line">			k++;</span><br><span class="line">			<span class="keyword">if</span>(k&lt;d[n][l]) <span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">			j-=arr[i];</span><br><span class="line">		&#125;</span><br><span class="line">		i--;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;l;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;arr[n-i];<span class="comment">//逆序存放n~1 </span></span><br><span class="line">	&#125; </span><br><span class="line">	solve(); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="结果">结果</span></h3><p><img src="/2019/06/26/Maximum-Tape-Utilization-Ratio/1.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/25/作业调度方案/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1859,7 +2052,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  751
+                  916
                 </span>
               
 
@@ -1875,7 +2068,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -1924,6 +2117,8 @@
 <p>假设当前<strong>要找零的钱</strong>是i（1&lt;i&lt;m）,当前所试探的<strong>硬币面值</strong>为k：<br>    （1）当i和k相等时，结果为1，即dp[i] = 1，说明可以直接通过一枚硬币就是最小硬币数了。<br>    （2）当<strong>i大于k</strong>时，若dp[i]为0(<strong>未赋过值</strong>），且dp[i-k]不为0(<strong>从i元中减去k元后剩下的钱可以找开</strong>)<br>                   则dp[i] = dp[i-k]+1，即将子问题划分，然后加上本次的一枚硬币即可。<br>                   若dp[i]不为0(即<strong>已赋值</strong>)，则dp[i] = min( dp[i-k]+1, dp[i] ) 即<strong>dp[i]为dp[i-k]和dp[i]中的较小者</strong>。<br>    （3）所以dp[i]的<strong>动态转移方程</strong>就是:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = min( dp[k], dp[k-t[i]]+<span class="number">1</span> )  <span class="comment">//t[i]&lt;=k&lt;=m</span></span><br></pre></td></tr></table></figure>
 <h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Max 999999</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//硬币种类数n，找零钱数m </span></span><br><span class="line">	<span class="keyword">int</span> n,m,T[<span class="number">11</span>],Coins[<span class="number">11</span>];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;T[i]&gt;&gt;Coins[i];<span class="comment">//面值与对应的个数 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">20002</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20002</span>;i++)&#123;</span><br><span class="line">		<span class="comment">//因为0时找零为0，后面的都初始化为最大值（寻找最少硬币数） </span></span><br><span class="line">		dp[i]=Max;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123; <span class="comment">//一共n种硬币 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=Coins[i];j++)&#123;<span class="comment">//各面值硬币个数 </span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=m;k&gt;=T[i];k--)&#123;<span class="comment">//各面值</span></span><br><span class="line">				<span class="comment">//动态规划思想求解 </span></span><br><span class="line">				dp[k] = min(dp[k], dp[k-T[i]]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dp[m]&lt;=m)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2019.6.25新增（复习）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 99999</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">20002</span>];</span><br><span class="line"><span class="comment">//面值与钱币个数 </span></span><br><span class="line"><span class="keyword">int</span> T[<span class="number">11</span>],Coins[<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20002</span>;i++)&#123;</span><br><span class="line">		<span class="comment">//求最小值故先置MAX</span></span><br><span class="line">		dp[i]=MAX; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;T[i]&gt;&gt;Coins[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//要找的钱数 </span></span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=Coins[i];j++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=m;k&gt;=T[i];k--)&#123;</span><br><span class="line">				dp[k]=min(dp[k],dp[k-T[i]]+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dp[m]&lt;=m)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">"-1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="结果">结果</span></h3><p><img src="/2019/06/18/Coin-Changing/1.jpg" alt=""></p>
 
           
@@ -2204,224 +2399,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/16/C-运算符重载/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/16/C-运算符重载/" itemprop="url">C++运算符重载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-16T07:00:53+08:00">
-                2019-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/c/" itemprop="url" rel="index">
-                    <span itemprop="name">c++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  704
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#c-operator运算符重载">C++ Operator运算符重载</a><ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#类成员函数的操作符重载">类成员函数的操作符重载</a></li>
-<li><a href="#非类成员函数全局函数操作数重载">非类成员函数（全局函数）操作数重载</a></li>
-<li><a href="#注意事项">注意事项</a></li>
-<li><a href="#使用范围">使用范围</a></li>
-<li><a href="#限制">限制</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="c-operator运算符重载">C++ Operator运算符重载</span></h2><h3><span id="前言">前言</span></h3><p>一般来说，对于C++本身提供的运算符比如+，-，==等等运算符来说，能比较的只能是基本数据类型或者标准库中的Class，对于我们自己定义的Class的基本运算操作来说，就显得很无力，是以引出了——<strong>运算符重载</strong>这种东西。</p>
-<p>比如说，如果假定一个Class——Person（自定义）,ta存在==这种运算符的比较，当我们想判断两个人是否==的时候，是用原生的==？显然不可能，我们需要重载一下<strong>实现自己独立的运算符规则。</strong></p>
-<h3><span id="类成员函数的操作符重载">类成员函数的操作符重载</span></h3><p>重载的操作符在类体中被声明，声明方式如同普通成员函数一样，只不过<strong>ta的名字包含关键字operator，后面加上一个C++预定义的操作符。</strong></p>
-<p>比如：</p>
-<p>类的声明：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> gender;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    person(<span class="keyword">int</span> a)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">this</span>-&gt;gender=a;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> person &amp;ps) <span class="keyword">const</span>;<span class="comment">//==运算符重载</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>类成员函数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">bool</span> person::<span class="keyword">operator</span>==(<span class="keyword">const</span> person &amp;ps) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">     <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;gender==ps.gender)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">person p1('boy');</span><br><span class="line">person p2('gril');</span><br><span class="line"><span class="keyword">if</span>(p1==p2)<span class="comment">//注意这里的==已经是上面重载过的类成员函数</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;”the age is equal!”&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<h3><span id="非类成员函数全局函数操作数重载">非类成员函数（全局函数）操作数重载</span></h3><p>全局函数必须注意——<strong>操作数的参数必须被显式指定。</strong>因为如果是类成员函数，明显知道类就是它的类型参数，但是全局函数ta不知道，所以必须显示指定。</p>
-<p>如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(person&amp; p1, person <span class="keyword">const</span> &amp; p2)   <span class="comment">//指定参数类型</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (p1.gender == p2.gender)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>; 	 <span class="comment">//满足要求</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="注意事项">注意事项</span></h3><p>1.是否定义为全局函数还是类成员函数是<strong>根据具体情况判断的。</strong></p>
-<p>2.C++要求——<strong>赋值=，下标[]，调用()， 和成员指向-&gt; 操作符</strong>必须被定义为<strong>类成员操作符。</strong>否则会编译错误。</p>
-<p>3.当返回值<strong>不是本函数内定义的局部变量</strong>时就可以返回一个<strong>引用</strong>。</p>
-<p>4.在增量运算符中，放上一个<strong>整数形参</strong>，就是<strong>后增量运行符</strong>，它是值返回，对于前增量没有形参，而且是<strong>引用返回</strong>。</p>
-<h3><span id="使用范围">使用范围</span></h3><p><strong>可以重载的操作符：</strong></p>
-<p><img src="/2019/06/16/C-运算符重载/1.jpg" alt=""></p>
-<h3><span id="限制">限制</span></h3><p>1、只有<strong>C++预定义的操作符</strong>才可以被重载。</p>
-<p>2、重载操作符<strong>不能改变他们的操作符优先级。</strong></p>
-<p>3、除了对（）操作符外，对其他重载操作符提供<strong>缺省实参</strong>都是非法的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2474,7 +2451,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2496,7 +2473,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-count">176</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2581,7 +2558,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共141.1k字</span>
+  <span class="post-count">博客全站共142.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
