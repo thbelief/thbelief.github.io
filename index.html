@@ -313,6 +313,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/27/客户调查/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/27/客户调查/" itemprop="url">客户调查</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T16:17:12+08:00">
+                2019-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  568
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#客户调查">客户调查</a><ul>
+<li><a href="#题目描述">题目描述</a></li>
+<li><a href="#输入">输入</a></li>
+<li><a href="#输出">输出</a></li>
+<li><a href="#样例输入">样例输入</a></li>
+<li><a href="#样例输出">样例输出</a></li>
+<li><a href="#思路">思路</a></li>
+<li><a href="#代码">代码</a></li>
+<li><a href="#结果">结果</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="客户调查">客户调查</span></h2><h3><span id="题目描述">题目描述</span></h3><p>公司派你去和几位客户面谈，以了解他们对公司产品的意见。你逐个打电话与客户联系，得知他们一般都很忙，不过他们还是可以为你抽出一点时间。现在的问题是有些客户的时间有冲突，你无法在一天内联系所有客户。所以你需要一个程序来帮助你安排第一天的工作，使得你能尽可能地和更多的客户进行联系。注意，客户不愿意你打乱他们的计划。如果你和某个客户约定见面，必须按时到达并且充分利用这段时间和他交谈，这样才不至于让他产生不满。你可以假设从一个客户处到另一个客户处的时间短得忽略不计。</p>
+<h3><span id="输入">输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入包括了多个测试数据，每个测试数据开头是一个整数n（1&lt;=n&lt;=1000），表示客户总数。接下来n行每行包括两个正整数s、t，分别表示该客户的空闲时间段的起始时间和终止时间。</span><br></pre></td></tr></table></figure>
+<h3><span id="输出">输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于每个测试数据，在单独一行内输出你所能接触到的最多客户数。</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 15</span><br><span class="line">2 19</span><br><span class="line">15 17</span><br></pre></td></tr></table></figure>
+<h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<h3><span id="思路">思路</span></h3><p>首先先创建一个结构体用来存放开始时间start以及结束时间end，然后通过qsort/sort来对结构体数组进行排序（以结束时间end为准），然后在循环判断即可。</p>
+<h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> start;</span><br><span class="line">	<span class="keyword">int</span> end;</span><br><span class="line">&#125;task[<span class="number">10001</span>];</span><br><span class="line"><span class="comment">//传入的比较算法 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a,<span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (*(point *)a).end-(*(point *)b).end;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,i,count,begin;</span><br><span class="line">	<span class="comment">//多组输入 </span></span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">		count=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;task[i].start&gt;&gt;task[i].end;</span><br><span class="line">		&#125;</span><br><span class="line">		qsort(task,n,<span class="keyword">sizeof</span>(point),cmp);</span><br><span class="line">		begin=task[<span class="number">0</span>].end;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(task[i].start&gt;=begin)&#123;</span><br><span class="line">				count++;</span><br><span class="line">				begin=task[i].end;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;count&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="结果">结果</span></h3><p><img src="/2019/06/27/客户调查/1.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/26/Maximum-Tape-Utilization-Ratio/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -591,7 +786,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.6k
                 </span>
               
 
@@ -607,7 +802,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -662,6 +857,8 @@
 <h3><span id="样例输入">样例输入</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br><span class="line">1 1 2 3 3 2</span><br><span class="line">1 2 </span><br><span class="line">1 2 </span><br><span class="line">2 1</span><br><span class="line">3 2 </span><br><span class="line">2 5 </span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
 <h3><span id="样例输出">样例输出</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
 <h3><span id="代码">代码</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m,n;<span class="comment">//m机器数n工作数</span></span><br><span class="line">	<span class="keyword">int</span> arr[<span class="number">401</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//给定的顺序</span></span><br><span class="line">	<span class="keyword">int</span> machineNum[<span class="number">21</span>][<span class="number">21</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//存放每个工件的每个工序所使用的机器号</span></span><br><span class="line">	<span class="keyword">int</span> machineTime[<span class="number">21</span>][<span class="number">21</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//存放每个工件的每个工序所消耗的时间 </span></span><br><span class="line">	<span class="keyword">int</span> r[<span class="number">21</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> last[<span class="number">21</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> F[<span class="number">21</span>][<span class="number">10001</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	<span class="keyword">int</span> size=m*n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=size;i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;machineNum[i][j]; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;machineTime[i][j]; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//下面就是具体的操作</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=size;i++)&#123; </span><br><span class="line">		<span class="keyword">int</span> t=arr[i];<span class="comment">// t第几工件</span></span><br><span class="line">		<span class="keyword">int</span> c=++r[t];<span class="comment">//c 第几工序</span></span><br><span class="line">		<span class="keyword">int</span> p=machineNum[t][c];<span class="comment">//p 第几机器</span></span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=last[t]+<span class="number">1</span>;;j++)&#123;</span><br><span class="line">			sum++;</span><br><span class="line">			<span class="keyword">if</span>(F[p][j]!=<span class="number">0</span>)&#123;</span><br><span class="line">				sum=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(sum==machineTime[t][c])&#123;</span><br><span class="line">				<span class="keyword">if</span>(j&gt;ans) ans=j;</span><br><span class="line">				last[t]=j;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=j;sum&gt;<span class="number">0</span>;sum--,k--)&#123;</span><br><span class="line">					F[p][k]=t;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2019.6.26新增（复习）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 999 </span></span><br><span class="line"><span class="comment">//m机器数 n工件数 Ans用来存放计算结果 piece步骤 </span></span><br><span class="line"><span class="keyword">int</span> n,m,Ans,piece;</span><br><span class="line"><span class="comment">//origin安排的顺序 machine机器 useTime使用时间 lastwork每个零件已经进行到的最后时间 process进程 </span></span><br><span class="line"><span class="keyword">int</span> origin[MAX],machine[MAX][MAX],useTime[MAX][MAX],lastworktime[MAX],process[MAX];</span><br><span class="line"><span class="comment">//是否正在工作 </span></span><br><span class="line"><span class="keyword">bool</span> isWorking[MAX][MAX];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//解决问题的方法</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m*n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> tmp=origin[i];<span class="comment">//将该初始顺序赋值给tmp</span></span><br><span class="line">		process[tmp]++;<span class="comment">//进程+1</span></span><br><span class="line">		<span class="keyword">int</span> j=lastworktime[tmp];<span class="comment">//将tmp工件的进行到的最后时间赋值给j </span></span><br><span class="line">		<span class="keyword">while</span>(++j)&#123;</span><br><span class="line">			<span class="comment">//如果tmp工件的process工序的最后完成时间为0（即尚未执行）piece++表示步骤+1 </span></span><br><span class="line">			<span class="keyword">if</span>(!isWorking[machine[tmp][process[tmp]]][j]) piece++;</span><br><span class="line">			<span class="comment">//反之，重置为0 </span></span><br><span class="line">			<span class="keyword">else</span> piece=<span class="number">0</span>; </span><br><span class="line">			<span class="comment">//如果tmp工件的process工序的花费时间==piece的话，说明该工序已经完成 </span></span><br><span class="line">			<span class="keyword">if</span>(useTime[tmp][process[tmp]]==piece)&#123; </span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=j+<span class="number">1</span>-piece;k&lt;=j;k++)&#123;</span><br><span class="line">					<span class="comment">//tmp工件的process工序已经工作了 </span></span><br><span class="line">					isWorking[machine[tmp][process[tmp]]][k]=<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//最终花费的时间 </span></span><br><span class="line">				lastworktime[tmp]=j;</span><br><span class="line">				piece=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">//求出最大的lastworktime表示的是最少的加工时间 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	    Ans = max(Ans,lastworktime[i]);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;Ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//居然只是简单的模拟题？？？</span></span><br><span class="line">	<span class="comment">//输入部分 </span></span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m*n;i++) <span class="built_in">cin</span>&gt;&gt;origin[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;machine[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;useTime[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	solve(); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="结果">结果</span></h3><p><img src="/2019/06/25/作业调度方案/1.jpg" alt=""></p>
 
           
@@ -2155,250 +2352,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/06/17/汇编实验（三）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/17/汇编实验（三）/" itemprop="url">汇编实验（三）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-17T06:29:19+08:00">
-                2019-06-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/汇编/" itemprop="url" rel="index">
-                    <span itemprop="name">汇编</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  689
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#指令系统常用">指令系统（常用）</a><ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#mov">MOV</a></li>
-<li><a href="#push">PUSH</a></li>
-<li><a href="#pop">POP</a></li>
-<li><a href="#xchg">XCHG</a></li>
-<li><a href="#lea">LEA</a></li>
-<li><a href="#addadc">ADD，ADC</a></li>
-<li><a href="#subsbb">SUB，SBB</a></li>
-<li><a href="#incdec">INC，DEC</a></li>
-<li><a href="#neg">NEG</a></li>
-<li><a href="#mulimul">MUL，IMUL</a></li>
-<li><a href="#dividiv">DIV，IDIV</a></li>
-<li><a href="#cbwcwd">CBW，CWD</a></li>
-<li><a href="#andorxornottest">AND,OR,XOR,NOT,TEST</a></li>
-<li><a href="#shrshlsarsal">SHR,SHL,SAR,SAL</a></li>
-<li><a href="#cmp">CMP</a></li>
-<li><a href="#jmp">JMP</a></li>
-<li><a href="#jxx">JXX</a></li>
-<li><a href="#loop">LOOP</a></li>
-<li><a href="#nop">NOP</a></li>
-</ul>
-</li>
-<li><a href="#寻址方式">寻址方式</a><ul>
-<li><a href="#简介-1">简介</a></li>
-<li><a href="#立即寻址方式">立即寻址方式</a></li>
-<li><a href="#寄存器寻址方式">寄存器寻址方式</a></li>
-<li><a href="#直接寻址方式">直接寻址方式</a></li>
-<li><a href="#寄存器间接寻址方式">寄存器间接寻址方式</a></li>
-<li><a href="#寄存器相对寻址方式">寄存器相对寻址方式</a></li>
-<li><a href="#基址变址寻址方式">基址变址寻址方式</a></li>
-<li><a href="#相对基址变址寻址方式">相对基址变址寻址方式</a></li>
-</ul>
-</li>
-<li><a href="#masm汇编代码简单框架">MASM汇编代码简单框架</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="指令系统常用">指令系统（常用）</span></h2><h3><span id="简介">简介</span></h3><p>只是收集一些实验过程中经常用到的，并不全面。</p>
-<h3><span id="mov">MOV</span></h3><p>把源操作数送给目的操作数 。</p>
-<h3><span id="push">PUSH</span></h3><p>把操作数压栈。</p>
-<h3><span id="pop">POP</span></h3><p>把操作数弹栈。</p>
-<h3><span id="xchg">XCHG</span></h3><p>交换两个操作数的数据。</p>
-<h3><span id="lea">LEA</span></h3><p>有效地址送到寄存器。</p>
-<h3><span id="addadc">ADD，ADC</span></h3><p>加法与进位加法。</p>
-<h3><span id="subsbb">SUB，SBB</span></h3><p>减法与带借位减法。</p>
-<h3><span id="incdec">INC，DEC</span></h3><p>INC OP即将OP的值加一，DEC OP相反。</p>
-<h3><span id="neg">NEG</span></h3><p>求补（取二进制补码）。</p>
-<h3><span id="mulimul">MUL，IMUL</span></h3><p>无符号和带符号乘法。</p>
-<p>字节/字操作数结果保存在AX。</p>
-<h3><span id="dividiv">DIV，IDIV</span></h3><p>无符号和带符号除法。</p>
-<h3><span id="cbwcwd">CBW，CWD</span></h3><p>有符号数的扩展。</p>
-<h3><span id="andorxornottest">AND,OR,XOR,NOT,TEST</span></h3><p>前面四个都是普通的逻辑指令，Test则是相与结果不保存，根据特征置条件码。</p>
-<h3><span id="shrshlsarsal">SHR,SHL,SAR,SAL</span></h3><p>分别是逻辑右移，逻辑左移，算术右移，算术左移。</p>
-<h3><span id="cmp">CMP</span></h3><p>比较值大小。</p>
-<h3><span id="jmp">JMP</span></h3><p>跳到后面指定的地址。</p>
-<h3><span id="jxx">JXX</span></h3><p> 当特定条件成立则跳往指定地址执行 。</p>
-<p>参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">A: ABOVE,当C=0,Z=0时成立，大于转移</span><br><span class="line">B: BELOW,当C=1时成立，小于转移</span><br><span class="line">C: CARRY,当CF=1时成立 </span><br><span class="line">CXZ: CX寄存器的值为0(ZERO)时成立 </span><br><span class="line">E: EQUAL,当Z=1时成立 </span><br><span class="line">G: GREATER(大于),当Z=0且S=0时成立 </span><br><span class="line">L: LESS(小于),当S不为零时成立 </span><br><span class="line">N: NOT(相反条件),需和其它符号配合使用 </span><br><span class="line">O: OVERFLOW,O=1时成立 </span><br><span class="line">P: PARITY,P=1时成立 </span><br><span class="line">PE: PARITY EVEN,P=1时成立 </span><br><span class="line">PO: PARITY ODD,P=0时成立 </span><br><span class="line">S: SIGN,S=1时成立 </span><br><span class="line">Z: ZERO,Z=1时成立</span><br></pre></td></tr></table></figure>
-<h3><span id="loop">LOOP</span></h3><p>循环控制。（CX）</p>
-<h3><span id="nop">NOP</span></h3><p>不执行任何操作，但是花费CPU一个机器周期。</p>
-<p><a href="https://www.cnblogs.com/Athrun/archive/2008/07/10/1239917.html" target="_blank" rel="noopener">参考文章</a></p>
-<h2><span id="寻址方式">寻址方式</span></h2><h3><span id="简介">简介</span></h3><p>这里只是简单的举例，具体的详细情况可以参考——<a href="https://blog.csdn.net/bytxl/article/details/48462987" target="_blank" rel="noopener">传送门</a>。</p>
-<h3><span id="立即寻址方式">立即寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,1234H</span><br></pre></td></tr></table></figure>
-<h3><span id="寄存器寻址方式">寄存器寻址方式</span></h3><p>AX，AL等等。</p>
-<h3><span id="直接寻址方式">直接寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV BX, [1234H]</span><br></pre></td></tr></table></figure>
-<h3><span id="寄存器间接寻址方式">寄存器间接寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [DI]</span><br></pre></td></tr></table></figure>
-<h3><span id="寄存器相对寻址方式">寄存器相对寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,[DI+1223H]</span><br></pre></td></tr></table></figure>
-<h3><span id="基址变址寻址方式">基址变址寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,[BX][DI]</span><br></pre></td></tr></table></figure>
-<h3><span id="相对基址变址寻址方式">相对基址变址寻址方式</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,[BX+DI-2]</span><br></pre></td></tr></table></figure>
-<h2><span id="masm汇编代码简单框架">MASM汇编代码简单框架</span></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">  </span><br><span class="line">DATA ENDS</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line"> ;DB 20H DUP (0)</span><br><span class="line">STACK ENDS</span><br><span class="line">CODE SEGMENT</span><br><span class="line">ASSUME CS:CODE,DS:DATA,SS:STACK</span><br><span class="line">START:</span><br><span class="line">   MOV AX,DATA</span><br><span class="line">   MOV DS,AX</span><br><span class="line">   MOV AX,STACK</span><br><span class="line">   MOV SS,AX</span><br><span class="line">   ;MOV SP,20H</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">CODE ENDS</span><br><span class="line">END  START</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2451,7 +2404,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2473,7 +2426,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">176</span>
+                  <span class="site-state-item-count">177</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2558,7 +2511,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共142.4k字</span>
+  <span class="post-count">博客全站共143.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

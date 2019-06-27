@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[客户调查]]></title>
+    <url>%2F2019%2F06%2F27%2F%E5%AE%A2%E6%88%B7%E8%B0%83%E6%9F%A5%2F</url>
+    <content type="text"><![CDATA[目录： 客户调查 题目描述 输入 输出 样例输入 样例输出 思路 代码 结果 客户调查题目描述公司派你去和几位客户面谈，以了解他们对公司产品的意见。你逐个打电话与客户联系，得知他们一般都很忙，不过他们还是可以为你抽出一点时间。现在的问题是有些客户的时间有冲突，你无法在一天内联系所有客户。所以你需要一个程序来帮助你安排第一天的工作，使得你能尽可能地和更多的客户进行联系。注意，客户不愿意你打乱他们的计划。如果你和某个客户约定见面，必须按时到达并且充分利用这段时间和他交谈，这样才不至于让他产生不满。你可以假设从一个客户处到另一个客户处的时间短得忽略不计。 输入1输入包括了多个测试数据，每个测试数据开头是一个整数n（1&lt;=n&lt;=1000），表示客户总数。接下来n行每行包括两个正整数s、t，分别表示该客户的空闲时间段的起始时间和终止时间。 输出1对于每个测试数据，在单独一行内输出你所能接触到的最多客户数。 样例输入123431 152 1915 17 样例输出12 思路首先先创建一个结构体用来存放开始时间start以及结束时间end，然后通过qsort/sort来对结构体数组进行排序（以结束时间end为准），然后在循环判断即可。 代码12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;struct point&#123; int start; int end;&#125;task[10001];//传入的比较算法 int cmp(const void *a,const void *b)&#123; return (*(point *)a).end-(*(point *)b).end;&#125;int main()&#123; int n,i,count,begin; //多组输入 while(cin&gt;&gt;n)&#123; count=1; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;task[i].start&gt;&gt;task[i].end; &#125; qsort(task,n,sizeof(point),cmp); begin=task[0].end; for(int i=0;i&lt;n;i++)&#123; if(task[i].start&gt;=begin)&#123; count++; begin=task[i].end; &#125; &#125; cout&lt;&lt;count&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>客户调查</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Maximum Tape Utilization Ratio]]></title>
     <url>%2F2019%2F06%2F26%2FMaximum-Tape-Utilization-Ratio%2F</url>
     <content type="text"><![CDATA[目录： Maximum Tape Utilization Ratio 题目描述 输入 输出 样例输入 样例输出 代码 结果 Maximum Tape Utilization Ratio题目描述设有n 个程序{1,2,…, n }要存放在长度为L的磁带上。程序i存放在磁带上的长度是li ，1 &lt; = i &lt; = n。 程序存储问题要求确定这n 个程序在磁带上的一个存储方案，使得能够在磁带上存储尽可能多的程序。在保证存储最多程序的前提下还要求磁带的利用率达到最大。 对于给定的n个程序存放在磁带上的长度，编程计算磁带上最多可以存储的程序数和占用磁带的长度。 输入1第一行是2 个正整数，分别表示文件个数n &lt;=600和磁带的长度L&lt;=6000。接下来的1 行中，有n个正整数，表示程序存放在磁带上的长度。 输出1第1 行输出最多可以存储的程序数和占用磁带的长度；第2行输出存放在磁带上的每个程序的长度。 样例输入129 502 3 13 8 80 20 21 22 23 样例输出125 492 3 13 8 23 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;iostream&gt;using namespace std;//存放每个程序长度的数组（全局数组默认置为0） int arr[601];//程序数int d[601][6001];//占用磁带长度int t[601][6001]; int n,l;//程序个数 磁带长度int k=0;void solve()&#123; for(int i=1;i&lt;=n;i++)&#123; for(int j=0;j&lt;arr[i];j++)&#123; d[i][j]=d[i-1][j]; t[i][j]=t[i-1][j]; &#125; for(int j=arr[i];j&lt;=l;j++)&#123; if(d[i-1][j-arr[i]]+1&gt;d[i-1][j]||(d[i-1][j-arr[i]]+1==d[i-1][j]&amp;&amp;t[i-1][j-arr[i]]+arr[i]&gt;t[i-1][j])) &#123; d[i][j]=d[i-1][j-arr[i]]+1; t[i][j]=t[i-1][j-arr[i]]+arr[i]; &#125; else &#123; d[i][j]=d[i-1][j]; t[i][j]=t[i-1][j]; &#125; &#125; &#125; cout&lt;&lt;d[n][l]&lt;&lt;" "&lt;&lt;t[n][l]&lt;&lt;endl; int i=n; int j=l; while(i) &#123; if(j&gt;=arr[i]&amp;&amp;t[i][j]==t[i-1][j-arr[i]]+arr[i]&amp;&amp;d[i][j]==d[i-1][j-arr[i]]+1) &#123; cout&lt;&lt;arr[i]; k++; if(k&lt;d[n][l]) cout&lt;&lt;" "; j-=arr[i]; &#125; i--; &#125; cout&lt;&lt;endl;&#125;int main()&#123; cin&gt;&gt;n&gt;&gt;l; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;arr[n-i];//逆序存放n~1 &#125; solve(); return 0;&#125; 结果]]></content>
@@ -15,7 +27,7 @@
   <entry>
     <title><![CDATA[作业调度方案]]></title>
     <url>%2F2019%2F06%2F25%2F%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E6%96%B9%E6%A1%88%2F</url>
-    <content type="text"><![CDATA[目录： 作业调度方案 题目描述 输入 输出 样例输入 样例输出 代码 结果 作业调度方案题目描述我们现在要利用m台机器加工n个工件，每个工件都有m道工序，每道工序都在不同的指定的机器上完成。每个工件的每道工序都有指定的加工时间。 每个工件的每个工序称为一个操作，我们用记号j-k表示一个操作，其中j为1到n中的某个数字，为工件号；k为1到m中的某个数字，为工序号，例如2-4表示第2个工件第4道工序的这个操作。在本题中，我们还给定对于各操作的一个安排顺序。 例如，当n=3，m=2时，“1-1，1-2，2-1，3-1，3-2，2-2”就是一个给定的安排顺序，即先安排第1个工件的第1个工序，再安排第1个工件的第2个工序，然后再安排第2个工件的第1个工序，等等。 一方面，每个操作的安排都要满足以下的两个约束条件。 (1) 对同一个工件，每道工序必须在它前面的工序完成后才能开始； (2) 同一时刻每一台机器至多只能加工一个工件。 另一方面，在安排后面的操作时，不能改动前面已安排的操作的工作状态。 由于同一工件都是按工序的顺序安排的，因此，只按原顺序给出工件号，仍可得到同样的安排顺序，于是，在输入数据中，我们将这个安排顺序简写为“1 1 2 3 3 2”。 还要注意，“安排顺序”只要求按照给定的顺序安排每个操作。不一定是各机器上的实际操作顺序。在具体实施时，有可能排在后面的某个操作比前面的某个操作先完成。 当一个操作插入到某台机器的某个空档时（机器上最后的尚未安排操作的部分也可以看作一个空档），可以靠前插入，也可以靠后或居中插入。 为了使问题简单一些，我们约定：在保证约束条件（1）（2）的条件下，尽量靠前插入。并且，我们还约定，如果有多个空档可以插入，就在保证约束条件（1）（2）的条件下，插入到最前面的一个空档。 于是，在这些约定下，上例中的方案一是正确的，而方案二是不正确的。 显然，在这些约定下，对于给定的安排顺序，符合该安排顺序的实施方案是唯一的，请你计算出该方案完成全部任务所需的总时间。 输入12345第1行为两个正整数m和n（其中m（&lt;20）表示机器数，n（&lt;20）表示工件数），用一个空格隔开：第2行：个用空格隔开的数，为给定的安排顺序。接下来的2n行，每行都是用空格隔开的m个正整数，每个数不超过20。其中前n行依次表示每个工件的每个工序所使用的机器号，第1个数为第1个工序的机器号，第2个数为第2个工序机器号，等等。后n行依次表示每个工件的每个工序的加工时间。 输出1只有一个正整数，为最少的加工时间。 样例输入123456782 31 1 2 3 3 21 2 1 2 2 13 2 2 5 2 4 样例输出110 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;using namespace std;int main()&#123; int m,n;//m机器数n工作数 int arr[401]=&#123;0&#125;;//给定的顺序 int machineNum[21][21]=&#123;0&#125;;//存放每个工件的每个工序所使用的机器号 int machineTime[21][21]=&#123;0&#125;;//存放每个工件的每个工序所消耗的时间 int r[21]=&#123;0&#125;; int last[21]=&#123;0&#125;; int F[21][10001]=&#123;0&#125;; int ans=0; cin&gt;&gt;m&gt;&gt;n; int size=m*n; for(int i=1;i&lt;=size;i++)&#123; cin&gt;&gt;arr[i]; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineNum[i][j]; &#125; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineTime[i][j]; &#125; &#125; //下面就是具体的操作 for(int i=1;i&lt;=size;i++)&#123; int t=arr[i];// t第几工件 int c=++r[t];//c 第几工序 int p=machineNum[t][c];//p 第几机器 int sum=0; for(int j=last[t]+1;;j++)&#123; sum++; if(F[p][j]!=0)&#123; sum=0; &#125; if(sum==machineTime[t][c])&#123; if(j&gt;ans) ans=j; last[t]=j; for(int k=j;sum&gt;0;sum--,k--)&#123; F[p][k]=t; &#125; break; &#125; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125; 结果]]></content>
+    <content type="text"><![CDATA[目录： 作业调度方案 题目描述 输入 输出 样例输入 样例输出 代码 结果 作业调度方案题目描述我们现在要利用m台机器加工n个工件，每个工件都有m道工序，每道工序都在不同的指定的机器上完成。每个工件的每道工序都有指定的加工时间。 每个工件的每个工序称为一个操作，我们用记号j-k表示一个操作，其中j为1到n中的某个数字，为工件号；k为1到m中的某个数字，为工序号，例如2-4表示第2个工件第4道工序的这个操作。在本题中，我们还给定对于各操作的一个安排顺序。 例如，当n=3，m=2时，“1-1，1-2，2-1，3-1，3-2，2-2”就是一个给定的安排顺序，即先安排第1个工件的第1个工序，再安排第1个工件的第2个工序，然后再安排第2个工件的第1个工序，等等。 一方面，每个操作的安排都要满足以下的两个约束条件。 (1) 对同一个工件，每道工序必须在它前面的工序完成后才能开始； (2) 同一时刻每一台机器至多只能加工一个工件。 另一方面，在安排后面的操作时，不能改动前面已安排的操作的工作状态。 由于同一工件都是按工序的顺序安排的，因此，只按原顺序给出工件号，仍可得到同样的安排顺序，于是，在输入数据中，我们将这个安排顺序简写为“1 1 2 3 3 2”。 还要注意，“安排顺序”只要求按照给定的顺序安排每个操作。不一定是各机器上的实际操作顺序。在具体实施时，有可能排在后面的某个操作比前面的某个操作先完成。 当一个操作插入到某台机器的某个空档时（机器上最后的尚未安排操作的部分也可以看作一个空档），可以靠前插入，也可以靠后或居中插入。 为了使问题简单一些，我们约定：在保证约束条件（1）（2）的条件下，尽量靠前插入。并且，我们还约定，如果有多个空档可以插入，就在保证约束条件（1）（2）的条件下，插入到最前面的一个空档。 于是，在这些约定下，上例中的方案一是正确的，而方案二是不正确的。 显然，在这些约定下，对于给定的安排顺序，符合该安排顺序的实施方案是唯一的，请你计算出该方案完成全部任务所需的总时间。 输入12345第1行为两个正整数m和n（其中m（&lt;20）表示机器数，n（&lt;20）表示工件数），用一个空格隔开：第2行：个用空格隔开的数，为给定的安排顺序。接下来的2n行，每行都是用空格隔开的m个正整数，每个数不超过20。其中前n行依次表示每个工件的每个工序所使用的机器号，第1个数为第1个工序的机器号，第2个数为第2个工序机器号，等等。后n行依次表示每个工件的每个工序的加工时间。 输出1只有一个正整数，为最少的加工时间。 样例输入123456782 31 1 2 3 3 21 2 1 2 2 13 2 2 5 2 4 样例输出110 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;using namespace std;int main()&#123; int m,n;//m机器数n工作数 int arr[401]=&#123;0&#125;;//给定的顺序 int machineNum[21][21]=&#123;0&#125;;//存放每个工件的每个工序所使用的机器号 int machineTime[21][21]=&#123;0&#125;;//存放每个工件的每个工序所消耗的时间 int r[21]=&#123;0&#125;; int last[21]=&#123;0&#125;; int F[21][10001]=&#123;0&#125;; int ans=0; cin&gt;&gt;m&gt;&gt;n; int size=m*n; for(int i=1;i&lt;=size;i++)&#123; cin&gt;&gt;arr[i]; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineNum[i][j]; &#125; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machineTime[i][j]; &#125; &#125; //下面就是具体的操作 for(int i=1;i&lt;=size;i++)&#123; int t=arr[i];// t第几工件 int c=++r[t];//c 第几工序 int p=machineNum[t][c];//p 第几机器 int sum=0; for(int j=last[t]+1;;j++)&#123; sum++; if(F[p][j]!=0)&#123; sum=0; &#125; if(sum==machineTime[t][c])&#123; if(j&gt;ans) ans=j; last[t]=j; for(int k=j;sum&gt;0;sum--,k--)&#123; F[p][k]=t; &#125; break; &#125; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125; 2019.6.26新增（复习）： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;iostream&gt;#include&lt;cmath&gt; using namespace std;#define MAX 999 //m机器数 n工件数 Ans用来存放计算结果 piece步骤 int n,m,Ans,piece;//origin安排的顺序 machine机器 useTime使用时间 lastwork每个零件已经进行到的最后时间 process进程 int origin[MAX],machine[MAX][MAX],useTime[MAX][MAX],lastworktime[MAX],process[MAX];//是否正在工作 bool isWorking[MAX][MAX];void solve()&#123; //解决问题的方法 for(int i=1;i&lt;=m*n;i++)&#123; int tmp=origin[i];//将该初始顺序赋值给tmp process[tmp]++;//进程+1 int j=lastworktime[tmp];//将tmp工件的进行到的最后时间赋值给j while(++j)&#123; //如果tmp工件的process工序的最后完成时间为0（即尚未执行）piece++表示步骤+1 if(!isWorking[machine[tmp][process[tmp]]][j]) piece++; //反之，重置为0 else piece=0; //如果tmp工件的process工序的花费时间==piece的话，说明该工序已经完成 if(useTime[tmp][process[tmp]]==piece)&#123; for(int k=j+1-piece;k&lt;=j;k++)&#123; //tmp工件的process工序已经工作了 isWorking[machine[tmp][process[tmp]]][k]=1; &#125; //最终花费的时间 lastworktime[tmp]=j; piece=0; break; &#125; &#125; &#125; //求出最大的lastworktime表示的是最少的加工时间 for(int i=1;i&lt;=n;i++) Ans = max(Ans,lastworktime[i]); cout&lt;&lt;Ans&lt;&lt;endl;&#125;int main()&#123; //居然只是简单的模拟题？？？ //输入部分 cin&gt;&gt;m&gt;&gt;n; for(int i=1;i&lt;=m*n;i++) cin&gt;&gt;origin[i]; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;machine[i][j]; &#125; &#125; for(int i=1;i&lt;=n;i++)&#123; for(int j=1;j&lt;=m;j++)&#123; cin&gt;&gt;useTime[i][j]; &#125; &#125; solve(); return 0;&#125; 结果]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -708,8 +720,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>卡刷</tag>
         <tag>root</tag>
+        <tag>卡刷</tag>
       </tags>
   </entry>
   <entry>
@@ -812,11 +824,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
-        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
+        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -1038,8 +1050,8 @@
       </categories>
       <tags>
         <tag>小米五</tag>
-        <tag>刷机</tag>
         <tag>卡刷</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
   <entry>
@@ -1171,9 +1183,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
