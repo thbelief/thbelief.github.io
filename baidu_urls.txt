@@ -1,3 +1,4 @@
+http://thbelief.coding.me/2019/06/29/Win第三方终端——Fluent-Terminal/
 http://thbelief.coding.me/2019/06/28/Edit-Distance/
 http://thbelief.coding.me/2019/06/27/客户调查/
 http://thbelief.coding.me/2019/06/26/Maximum-Tape-Utilization-Ratio/
@@ -97,4 +98,3 @@ http://thbelief.coding.me/2019/03/29/c-中的vector与set/
 http://thbelief.coding.me/2019/03/28/素性测试/
 http://thbelief.coding.me/2019/03/27/Flutter-Widget框架（一）/
 http://thbelief.coding.me/2019/03/26/C-常用函数/
-http://thbelief.coding.me/2019/03/25/Win10-64位Debug安装/

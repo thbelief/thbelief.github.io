@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Win第三方终端——Fluent Terminal]]></title>
+    <url>%2F2019%2F06%2F29%2FWin%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94Fluent-Terminal%2F</url>
+    <content type="text"><![CDATA[目录： Fluent Terminal 下载地址 安装 Fluent Terminal这是一款专属于Windows平台的UWP技术创造的第三方终端，比起Windows原生的终端不知道好看多少。 下载地址传送门 由于不知名原因，Windows商店并没有上架这款第三方终端，目前只能在github上找到这款第三方终端。 直接下载下面图片显示的这个压缩包即可。 安装右键点击 Install.ps1，选择使用 PowerShell 运行，之后就按照提示进行下一步操作，直到process完即可。 再然后，双击鼠标左键FluentTerminal.App_0.4.1.0_x86_x64.appxbundle就可以打开了。]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Fluent Terminal</tag>
+        <tag>第三方终端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Edit Distance]]></title>
     <url>%2F2019%2F06%2F28%2FEdit-Distance%2F</url>
     <content type="text"><![CDATA[Edit Distance题目描述设A 和B 是2 个字符串。要用最少的字符操作将字符串A 转换为字符串B。这里所说的字符操作包括 (1)删除一个字符； (2)插入一个字符； (3)将一个字符改为另一个字符。 将字符串A变换为字符串B 所用的最少字符操作数称为字符串A到B 的编辑距离，记为d(A,B)。试设计一个有效算法，对任给的2 个字符串A和B，计算出它们的编辑距离d(A,B)。 输入1第一行是字符串A，文件的第二行是字符串B。字符串长度不大于2000。 输出1输出距离d(A,B) 样例输入12fxpimuxwr 样例输出15 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;using namespace std;char str1[2001],str2[2001];int F[2001][2001];int main()&#123; int len1,len2; //多组输入字符串 while(cin&gt;&gt;str1&gt;&gt;str2)&#123; //先把长度确定下来 len1=strlen(str1); len2=strlen(str2); //分别把str1和str2赋值给F的一部分 for(int i=1;i&lt;=len1;i++)&#123; F[i][0]=i; &#125; for(int i=1;i&lt;=len2;i++)&#123; F[0][i]=i; &#125; F[0][0]=0; for(int i=1;i&lt;=len1;i++)&#123; for(int j=1;j&lt;=len2;j++)&#123; F[i][j]=F[i-1][j-1]+(str1[i-1]==str2[j-1]?0:1); F[i][j]=min(F[i][j],F[i-1][j]+1); F[i][j]=min(F[i][j],F[i][j-1]+1); &#125; &#125; cout&lt;&lt;F[len1][len2]&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
@@ -328,8 +340,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>报错</tag>
+        <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -1195,9 +1207,9 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
-        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
