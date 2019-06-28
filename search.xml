@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Edit Distance]]></title>
+    <url>%2F2019%2F06%2F28%2FEdit-Distance%2F</url>
+    <content type="text"><![CDATA[Edit Distance题目描述设A 和B 是2 个字符串。要用最少的字符操作将字符串A 转换为字符串B。这里所说的字符操作包括 (1)删除一个字符； (2)插入一个字符； (3)将一个字符改为另一个字符。 将字符串A变换为字符串B 所用的最少字符操作数称为字符串A到B 的编辑距离，记为d(A,B)。试设计一个有效算法，对任给的2 个字符串A和B，计算出它们的编辑距离d(A,B)。 输入1第一行是字符串A，文件的第二行是字符串B。字符串长度不大于2000。 输出1输出距离d(A,B) 样例输入12fxpimuxwr 样例输出15 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;using namespace std;char str1[2001],str2[2001];int F[2001][2001];int main()&#123; int len1,len2; //多组输入字符串 while(cin&gt;&gt;str1&gt;&gt;str2)&#123; //先把长度确定下来 len1=strlen(str1); len2=strlen(str2); //分别把str1和str2赋值给F的一部分 for(int i=1;i&lt;=len1;i++)&#123; F[i][0]=i; &#125; for(int i=1;i&lt;=len2;i++)&#123; F[0][i]=i; &#125; F[0][0]=0; for(int i=1;i&lt;=len1;i++)&#123; for(int j=1;j&lt;=len2;j++)&#123; F[i][j]=F[i-1][j-1]+(str1[i-1]==str2[j-1]?0:1); F[i][j]=min(F[i][j],F[i-1][j]+1); F[i][j]=min(F[i][j],F[i][j-1]+1); &#125; &#125; cout&lt;&lt;F[len1][len2]&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>Edit Distance</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[客户调查]]></title>
     <url>%2F2019%2F06%2F27%2F%E5%AE%A2%E6%88%B7%E8%B0%83%E6%9F%A5%2F</url>
     <content type="text"><![CDATA[目录： 客户调查 题目描述 输入 输出 样例输入 样例输出 思路 代码 结果 客户调查题目描述公司派你去和几位客户面谈，以了解他们对公司产品的意见。你逐个打电话与客户联系，得知他们一般都很忙，不过他们还是可以为你抽出一点时间。现在的问题是有些客户的时间有冲突，你无法在一天内联系所有客户。所以你需要一个程序来帮助你安排第一天的工作，使得你能尽可能地和更多的客户进行联系。注意，客户不愿意你打乱他们的计划。如果你和某个客户约定见面，必须按时到达并且充分利用这段时间和他交谈，这样才不至于让他产生不满。你可以假设从一个客户处到另一个客户处的时间短得忽略不计。 输入1输入包括了多个测试数据，每个测试数据开头是一个整数n（1&lt;=n&lt;=1000），表示客户总数。接下来n行每行包括两个正整数s、t，分别表示该客户的空闲时间段的起始时间和终止时间。 输出1对于每个测试数据，在单独一行内输出你所能接触到的最多客户数。 样例输入123431 152 1915 17 样例输出12 思路首先先创建一个结构体用来存放开始时间start以及结束时间end，然后通过qsort/sort来对结构体数组进行排序（以结束时间end为准），然后在循环判断即可。 代码12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;struct point&#123; int start; int end;&#125;task[10001];//传入的比较算法 int cmp(const void *a,const void *b)&#123; return (*(point *)a).end-(*(point *)b).end;&#125;int main()&#123; int n,i,count,begin; //多组输入 while(cin&gt;&gt;n)&#123; count=1; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;task[i].start&gt;&gt;task[i].end; &#125; qsort(task,n,sizeof(point),cmp); begin=task[0].end; for(int i=0;i&lt;n;i++)&#123; if(task[i].start&gt;=begin)&#123; count++; begin=task[i].end; &#125; &#125; cout&lt;&lt;count&lt;&lt;endl; &#125; return 0;&#125; 结果]]></content>
@@ -824,11 +836,11 @@
       <tags>
         <tag>移动端开发</tag>
         <tag>Auto.js</tag>
+        <tag>Auto.js Pro</tag>
         <tag>JS</tag>
         <tag>JavaScript</tag>
         <tag>脚本</tag>
         <tag>Script</tag>
-        <tag>Auto.js Pro</tag>
         <tag>新特性</tag>
       </tags>
   </entry>
@@ -1183,9 +1195,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>
