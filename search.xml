@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Soldiers]]></title>
+    <url>%2F2019%2F06%2F30%2FSoldiers%2F</url>
+    <content type="text"><![CDATA[目录： Soldiers 题目描述 输入 输出 样例输入 样例输出 代码 结果 Soldiers题目描述在一个划分成网格的操场上，n个士兵散乱地站在网格点上。网格点由整数坐标(x,y)表示。士兵们可以沿网格边上、下、左、右移动一步，但在同一时刻任一网格点上只能有一名士兵。按照军官的命令，士兵们要整齐地列成一个水平队列，即排列成(x,y),(x+1,y),…,(x+n-1,y)。如何选择x 和y的值才能使士兵们以最少的总移动步数排成一列。计算使所有士兵排成一行需要的最少移动步数。 输入1第1 行是士兵数n，1&lt; =n&lt; =10000。接下来n 行是士兵的位置，每行2个整数x和y，-10000&lt; =x，y&lt; =10000。 输出1第1 行中的数是士兵排成一行需要的最少移动步数。 样例输入12345651 22 21 33 -23 3 样例输出18 代码12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int n,step=0;//x坐标以及y坐标数组(初始化)int x[10001]=&#123;0&#125;,y[10001]=&#123;0&#125;;void solve()&#123; //首先排个序 sort(x,x+n); sort(y,y+n); for(int i=0;i&lt;n;i++)&#123; x[i]=x[i]-i; &#125; sort(x,x+n); for(int i=0,j=n-1;i&lt;j;i++,j--)&#123; step+=(x[j]-x[i])+(y[j]-y[i]); &#125; cout&lt;&lt;step&lt;&lt;endl;&#125;int main()&#123; //输入数据 cin&gt;&gt;n; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;x[i]&gt;&gt;y[i]; &#125; //直接调用函数 solve solve(); return 0; &#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>Soldiers</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Win第三方终端——Fluent Terminal]]></title>
     <url>%2F2019%2F06%2F29%2FWin%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%88%E7%AB%AF%E2%80%94%E2%80%94Fluent-Terminal%2F</url>
     <content type="text"><![CDATA[目录： Fluent Terminal 下载地址 安装 Fluent Terminal这是一款专属于Windows平台的UWP技术创造的第三方终端，比起Windows原生的终端不知道好看多少。 下载地址传送门 由于不知名原因，Windows商店并没有上架这款第三方终端，目前只能在github上找到这款第三方终端。 直接下载下面图片显示的这个压缩包即可。 安装右键点击 Install.ps1，选择使用 PowerShell 运行，之后就按照提示进行下一步操作，直到process完即可。 再然后，双击鼠标左键FluentTerminal.App_0.4.1.0_x86_x64.appxbundle就可以打开了。]]></content>
@@ -340,8 +352,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>报错</tag>
         <tag>Android</tag>
+        <tag>报错</tag>
         <tag>Gradle</tag>
       </tags>
   </entry>
@@ -1207,9 +1219,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM</tag>
         <tag>算法</tag>
         <tag>打表</tag>
+        <tag>ACM</tag>
         <tag>字符串输入</tag>
       </tags>
   </entry>

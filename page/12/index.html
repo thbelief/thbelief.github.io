@@ -313,6 +313,345 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/18/JavaScript学习笔记-一/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/18/JavaScript学习笔记-一/" itemprop="url">JavaScript学习笔记(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T21:06:35+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#入门">入门</a><ul>
+<li><a href="#基本语法">基本语法</a></li>
+<li><a href="#数据类型">数据类型</a><ul>
+<li><a href="#number">Number</a></li>
+<li><a href="#字符串">字符串</a></li>
+<li><a href="#布尔值">布尔值</a></li>
+<li><a href="#比较运算符">比较运算符</a></li>
+<li><a href="#null和undefined">null和undefined</a></li>
+<li><a href="#数组">数组</a></li>
+<li><a href="#对象">对象</a></li>
+<li><a href="#变量">变量</a></li>
+<li><a href="#strict模式">strict模式</a></li>
+</ul>
+</li>
+<li><a href="#字符串-1">字符串</a></li>
+<li><a href="#数组-1">数组</a><ul>
+<li><a href="#length">length</a></li>
+<li><a href="#indexof">indexOf</a></li>
+<li><a href="#slice">slice</a></li>
+<li><a href="#push和pop">push和pop</a></li>
+<li><a href="#unshift和shift">unshift和shift</a></li>
+<li><a href="#sort">sort</a></li>
+<li><a href="#reverse">reverse</a></li>
+<li><a href="#splice">splice</a></li>
+<li><a href="#concat">concat</a></li>
+<li><a href="#join">join</a></li>
+<li><a href="#多维数组">多维数组</a></li>
+</ul>
+</li>
+<li><a href="#对象-1">对象</a></li>
+<li><a href="#条件判断">条件判断</a></li>
+<li><a href="#循环">循环</a><ul>
+<li><a href="#forin">for…in</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#do-while">do while</a></li>
+</ul>
+</li>
+<li><a href="#map和set">Map和Set</a></li>
+<li><a href="#iterable">iterable</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="入门">入门</span></h2><h3><span id="基本语法">基本语法</span></h3><p>每个语句以<code>;</code>结束，语句块用<code>{...}</code>。但是，JavaScript并不强制要求在每个语句的结尾加<code>;</code>，浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上<code>;</code>。</p>
+<h3><span id="数据类型">数据类型</span></h3><h4><span id="number">Number</span></h4><p>JS里面不区分整数和浮点数，都是用Number统一表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">123; // 整数123</span><br><span class="line">0.456; // 浮点数0.456</span><br><span class="line">1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5</span><br><span class="line">-99; // 负数</span><br><span class="line">NaN; // NaN表示Not a Number，当无法计算结果时用NaN表示</span><br><span class="line">Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，就表示为Infinity</span><br></pre></td></tr></table></figure>
+<h4><span id="字符串">字符串</span></h4><p>字符串是以单引号’或双引号”括起来的任意文本，比如’abc’，”xyz”等等。请注意，’’或””本身只是一种表示方式，不是字符串的一部分。</p>
+<h4><span id="布尔值">布尔值</span></h4><p>只表示true或者false。和C++与Java中完全类似，这里不过多赘述。</p>
+<h4><span id="比较运算符">比较运算符</span></h4><p>注意，JavaScript允许对任意数据类型做比较。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">false == 0; // true</span><br><span class="line">false === 0; // false</span><br></pre></td></tr></table></figure>
+<p>特别要注意上述两种格式。</p>
+<p>第一种是<code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p>第二种是<code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</p>
+<p>这是JS自身设计的缺陷，大佬们都是推荐的是<em>不要</em>使用<code>==</code>比较，始终坚持使用<code>===</code>比较。</p>
+<p>还要注意一点是，NaN这个特殊的Number与所有值都不相等，包括它自己。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN === NaN; // false</span><br></pre></td></tr></table></figure>
+<p>唯一能够判断NaN的方法就是isNaN()函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(NaN); // true</span><br></pre></td></tr></table></figure>
+<p>最后，浮点数在运算过程中会产生误差，因为计算机无法精确表示无限循环小数。要比较两个浮点数是否相等，只能计算它们之差的绝对值，看是否小于某个阈值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.abs(1 / 3 - (1 - 2 / 3)) &lt; 0.0000001; // true</span><br></pre></td></tr></table></figure>
+<h4><span id="null和undefined">null和undefined</span></h4><p>null表示一个“空”的值，它和0以及空字符串’’不同，0是一个数值，’’表示长度为0的字符串，而null表示“空”。</p>
+<p>JavaScript的设计者希望用null表示一个空的值，而undefined表示值未定义。事实证明，这并没有什么卵用，区分两者的意义不大。大多数情况下，我们都应该用<strong>null</strong>。undefined仅仅在判断函数参数是否传递的情况下有用。</p>
+<h4><span id="数组">数组</span></h4><p>数组是一组按<strong>顺序</strong>排列的集合，集合的每个值称为元素。JavaScript的数组可以包括<strong>任意数据类型</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3.14, &apos;HelloWorld&apos;, null, true];</span><br></pre></td></tr></table></figure>
+<p>创建数组的另一个方法是Array()函数来实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Array(1, 2, 3); // 创建了数组[1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h4><span id="对象">对象</span></h4><p>JavaScript的对象是一组由键-值组成的无序集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;thbeleif&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    tags: [&apos;js&apos;, &apos;web&apos;, &apos;mobile&apos;],</span><br><span class="line">    city: &apos;mianyang&apos;,</span><br><span class="line">    hasCar: false,</span><br><span class="line">    zipcode: null</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>JavaScript对象的键都是字符串类型，值可以是任意数据类型。上述person对象一共定义了6个键值对，其中每个键又称为对象的属性。</p>
+<p>要获取一个对象的属性，需要用对象变量.属性名的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name; // &apos;thbelief&apos;</span><br><span class="line">person.zipcode; // null</span><br></pre></td></tr></table></figure>
+<h4><span id="变量">变量</span></h4><p>变量在JavaScript中就是用一个变量名表示，变量名是大小写英文、数字、$和_的组合，且<strong>不能用数字开头</strong>。变量名也不能是JavaScript的关键字，如if、while等。</p>
+<p>在Chrome浏览器里面使用JS的时候，可以直接使用<strong>console.log(x)</strong>来打印变量的值。</p>
+<p>相比较于alert()的对话框，前者看起来无疑是更舒心的。</p>
+<h4><span id="strict模式">strict模式</span></h4><p>在JS设计之初，如果一个变量没有通过<code>var</code>申明就被使用，那么该变量就自动被申明为<strong>全局变量</strong>。</p>
+<p>后面有了改良，在<strong>strict模式</strong>下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
+<p>启用strict模式的方法是在JavaScript代码的第一行写上即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br></pre></td></tr></table></figure>
+<h3><span id="字符串">字符串</span></h3><p>如果字符串内部既包含’又包含”可以用转义字符\来标识。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;I\&apos;m \&quot;OK\&quot;!&apos;;</span><br></pre></td></tr></table></figure>
+<p>ASCII字符可以以<code>\x##</code>形式的十六进制表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;\x41&apos;; // 完全等同于 &apos;A&apos;</span><br></pre></td></tr></table></figure>
+<p>还可以用<code>\u####</code>表示一个Unicode字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;\u4e2d\u6587&apos;; // 完全等同于 &apos;中文&apos;</span><br></pre></td></tr></table></figure>
+<p>由于多行字符串用<code>\n</code>写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 <em>`</em> … <em>`</em> 也可以表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`这是一个</span><br><span class="line">多行</span><br><span class="line">字符串`;</span><br></pre></td></tr></table></figure>
+<p>要把多个字符串连接起来，可以用+号连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;小明&apos;;</span><br><span class="line">var age = 20;</span><br><span class="line">var message = &apos;你好, &apos; + name + &apos;, 你今年&apos; + age + &apos;岁了!&apos;;</span><br><span class="line">alert(message);</span><br></pre></td></tr></table></figure>
+<p>字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果。JS对于字符串提供了许多的方法，但是调用这些方法只会返回一个新的字符串，而不会改变原有的字符串内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">toUpperCase()把一个字符串全部变为大写。</span><br><span class="line">indexOf()会搜索指定字符串出现的位置。</span><br><span class="line">substring()返回指定索引区间的子串。</span><br></pre></td></tr></table></figure>
+<h3><span id="数组">数组</span></h3><h4><span id="length">length</span></h4><p>JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。</p>
+<p>Array可以通过length属性来取得长度。</p>
+<p>同时，直接给Array的length赋一个新的值会导致Array大小的变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.length; // 3</span><br><span class="line">arr.length = 6;</span><br><span class="line">arr; // arr变为[1, 2, 3, undefined, undefined, undefined]</span><br><span class="line">arr.length = 2;</span><br><span class="line">arr; // arr变为[1, 2]</span><br></pre></td></tr></table></figure>
+<p>Array可以通过索引把对应的元素修改为新的值，因此，对Array的索引进行赋值会直接修改这个Array。</p>
+<p>如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr[5] = &apos;x&apos;;</span><br><span class="line">arr; // arr变为[1, 2, 3, undefined, undefined, &apos;x&apos;]</span><br></pre></td></tr></table></figure>
+<h4><span id="indexof">indexOf</span></h4><p>Array也可以通过indexOf()来搜索一个指定的元素的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [10, 20, &apos;30&apos;, &apos;xyz&apos;];</span><br><span class="line">arr.indexOf(10); // 元素10的索引为0</span><br><span class="line">arr.indexOf(20); // 元素20的索引为1</span><br><span class="line">arr.indexOf(30); // 元素30没有找到，返回-1</span><br><span class="line">arr.indexOf(&apos;30&apos;); // 元素&apos;30&apos;的索引为2</span><br></pre></td></tr></table></figure>
+<h4><span id="slice">slice</span></h4><p>slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;];</span><br><span class="line">arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]</span><br><span class="line">arr.slice(3); // 从索引3开始到结束: [&apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;]</span><br></pre></td></tr></table></figure>
+<p>注意到<code>slice()</code>的起止参数包括开始索引，<strong>不包括结束索引</strong>。</p>
+<p>如果不给<code>slice()</code>传递任何参数，它就会从头到尾截取所有元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;];</span><br><span class="line">var aCopy = arr.slice();</span><br><span class="line">aCopy; // [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;]</span><br><span class="line">aCopy === arr; // false</span><br></pre></td></tr></table></figure>
+<h4><span id="push和pop">push和pop</span></h4><p>push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉。</p>
+<h4><span id="unshift和shift">unshift和shift</span></h4><p>如果要往Array的头部添加若干元素，使用unshift()方法，shift()方法则把Array的第一个元素删掉。</p>
+<h4><span id="sort">sort</span></h4><p>按照默认顺序进行排序，也可以自定义顺序。</p>
+<h4><span id="reverse">reverse</span></h4><p>翻转整个Array，把元素顺序翻转过来。</p>
+<h4><span id="splice">splice</span></h4><p>从指定的索引开始删除若干元素，然后再从该位置添加若干元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Yahoo&apos;, &apos;AOL&apos;, &apos;Excite&apos;, &apos;Oracle&apos;];</span><br><span class="line">// 从索引2开始删除3个元素,然后再添加两个元素:</span><br><span class="line">arr.splice(2, 3, &apos;Google&apos;, &apos;Facebook&apos;); // 返回删除的元素 [&apos;Yahoo&apos;, &apos;AOL&apos;, &apos;Excite&apos;]</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Google&apos;, &apos;Facebook&apos;, &apos;Oracle&apos;]</span><br><span class="line">// 只删除,不添加:</span><br><span class="line">arr.splice(2, 2); // [&apos;Google&apos;, &apos;Facebook&apos;]</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Oracle&apos;]</span><br><span class="line">// 只添加,不删除:</span><br><span class="line">arr.splice(2, 0, &apos;Google&apos;, &apos;Facebook&apos;); // 返回[],因为没有删除任何元素</span><br><span class="line">arr; // [&apos;Microsoft&apos;, &apos;Apple&apos;, &apos;Google&apos;, &apos;Facebook&apos;, &apos;Oracle&apos;]</span><br></pre></td></tr></table></figure>
+<h4><span id="concat">concat</span></h4><p>把当前的Array和另一个Array连接起来，并返回一个新的Array。</p>
+<p>值得注意的是，concat()方法并没有修改当前Array，而是返回了一个新的Array。</p>
+<h4><span id="join">join</span></h4><p>把当前Array的每个元素都用指定的字符串连接起来，然后返回连接后的字符串。如果Array的元素不是字符串，将自动转换为字符串后再连接。</p>
+<h4><span id="多维数组">多维数组</span></h4><p>如果数组的某个元素又是一个Array，则可以形成多维数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [[1, 2, 3], [400, 500, 600], &apos;-&apos;];</span><br></pre></td></tr></table></figure>
+<h3><span id="对象">对象</span></h3><p>JS的对象是一种无序的集合数据类型，它由若干键值对组成。</p>
+<p>JS用一个{…}表示一个对象，键值对以xxx: xxx形式申明，用,隔开。注意，最后一个键值对不需要在末尾加,。</p>
+<p>访问属性是通过.操作符完成的，但这要求属性名必须是一个有效的变量名。如果属性名包含特殊字符，就必须用’’括起来。</p>
+<p><strong>JavaScript规定，访问不存在的属性不报错，而是返回undefined。</strong></p>
+<p>由于JavaScript的对象是<strong>动态类型</strong>，可以自由地给一个对象添加或删除属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var thbelief = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;</span><br><span class="line">&#125;;</span><br><span class="line">xiaoming.age; // undefined</span><br><span class="line">xiaoming.age = 18; // 新增一个age属性</span><br><span class="line">xiaoming.age; // 18</span><br><span class="line">delete xiaoming.age; // 删除age属性</span><br><span class="line">xiaoming.age; // undefined</span><br><span class="line">delete xiaoming[&apos;name&apos;]; // 删除name属性</span><br><span class="line">xiaoming.name; // undefined</span><br><span class="line">delete xiaoming.school; // 删除一个不存在的school属性也不会报错</span><br></pre></td></tr></table></figure>
+<p>果我们要检测thbelief是否拥有某一属性，可以用in操作符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;name&apos; in thbelief; // true</span><br></pre></td></tr></table></figure>
+<p>另外，如果in判断一个属性存在，这个属性不一定是thbelief的，它可能是thbelief继承得到的。</p>
+<p>要判断一个属性是否是thbelief自身拥有的，而不是继承得到的，可以用hasOwnProperty()方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var thbelief = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;</span><br><span class="line">&#125;;</span><br><span class="line">thbelief.hasOwnProperty(&apos;name&apos;); // true</span><br><span class="line">thbelief.hasOwnProperty(&apos;toString&apos;); // false</span><br></pre></td></tr></table></figure>
+<h3><span id="条件判断">条件判断</span></h3><p>JavaScript可以使用if () { … } else { … }来进行条件判断。</p>
+<p>同时，也可以像C++中一样进行多重的嵌套。</p>
+<h3><span id="循环">循环</span></h3><p>熟悉的是单独的For循环，但是还包括了其他的不熟悉的循环方式。</p>
+<h4><span id="forin">for…in</span></h4><p>它可以把一个对象的所有属性依次循环出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    name: &apos;thbelief&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    city: &apos;mianyang&apos;</span><br><span class="line">&#125;;</span><br><span class="line">for (var key in o) &#123;</span><br><span class="line">    console.log(key); // &apos;name&apos;, &apos;age&apos;, &apos;city&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要过滤掉对象继承的属性，用hasOwnProperty()来实现。（前文对象中曾经提到）</p>
+<p>值得注意的是，for … in对Array的循环得到的是String而不是Number。</p>
+<h4><span id="while">while</span></h4><p>与C++中类似。</p>
+<h4><span id="do-while">do while</span></h4><p>与C++中类似。</p>
+<h3><span id="map和set">Map和Set</span></h3><p>Map是一组键值对的结构，具有极快的查找速度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map([[&apos;Michael&apos;, 95], [&apos;Bob&apos;, 75], [&apos;Tracy&apos;, 85]]);</span><br><span class="line">m.get(&apos;Michael&apos;); // 95</span><br></pre></td></tr></table></figure>
+<p>初始化Map需要一个<strong>二维数组</strong>，或者直接初始化一个<strong>空Map</strong>。Map具有以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map(); // 空Map</span><br><span class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</span><br><span class="line">m.set(&apos;Bob&apos;, 59);</span><br><span class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</span><br><span class="line">m.get(&apos;Adam&apos;); // 67</span><br><span class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</span><br><span class="line">m.get(&apos;Adam&apos;); // undefined</span><br></pre></td></tr></table></figure>
+<p>由于一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map();</span><br><span class="line">m.set(&apos;Adam&apos;, 67);</span><br><span class="line">m.set(&apos;Adam&apos;, 88);</span><br><span class="line">m.get(&apos;Adam&apos;); // 88</span><br></pre></td></tr></table></figure>
+<p>Set和Map类似，也是一组key的集合，但<strong>不存储value</strong>。由于key不能重复，所以，在Set中，没有重复的key。</p>
+<p>要创建一个Set，需要提供一个Array作为输入，或者直接创建一个空Set：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s1 = new Set(); // 空Set</span><br><span class="line">var s2 = new Set([1, 2, 3]); // 含1, 2, 3</span><br></pre></td></tr></table></figure>
+<p>通过add(key)方法可以添加元素到Set中，可以重复添加，但不会有效果。</p>
+<p>同样的，通过delete(key)方法可以删除元素。</p>
+<h3><span id="iterable">iterable</span></h3><p>具有iterable类型的集合可以通过新的for … of循环来遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">var s = new Set([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]);</span><br><span class="line">var m = new Map([[1, &apos;x&apos;], [2, &apos;y&apos;], [3, &apos;z&apos;]]);</span><br><span class="line">for (var x of a) &#123; // 遍历Array</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of s) &#123; // 遍历Set</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of m) &#123; // 遍历Map</span><br><span class="line">    console.log(x[0] + &apos;=&apos; + x[1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for … in循环遍历的实际上是对象的属性名称。一个Array数组实际上也是一个对象，它的每个元素的索引被视为一个属性。如果手动给Array对象添加了额外的属性后，for … in循环将带来意想不到的意外效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">a.name = &apos;Hello&apos;;</span><br><span class="line">for (var x in a) &#123;</span><br><span class="line">    console.log(x); // &apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;name&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>for … in</strong>循环将把name包括在内，但Array的length属性却不包括在内。</p>
+<p><strong>for … of</strong>循环则完全修复了这些问题，它只循环<strong>集合本身的元素</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">a.name = &apos;Hello&apos;;</span><br><span class="line">for (var x of a) &#123;</span><br><span class="line">    console.log(x); // &apos;A&apos;, &apos;B&apos;, &apos;C&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/03/09/java番外-多线程编程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -3289,201 +3628,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/" itemprop="url">真机调试时如何用Androidstudio查询SQLite数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T22:04:39+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/其它/" itemprop="url" rel="index">
-                    <span itemprop="name">其它</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  383
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言：</a><ul>
-<li><a href="#1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</a></li>
-<li><a href="#2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</a></li>
-<li><a href="#3修改下列相关">3.修改下列相关：</a></li>
-<li><a href="#4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</a></li>
-<li><a href="#5点击弹出的网页resource-web-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言：</span></h2><p>今天在调试一个有关于SQLite数据库的app的时候，突发奇想，想在手机上直接找到对应的db文件查看，结果是显而易见的，并没有找到相应的调试app的包名以及对应的文件夹。</p>
-<p>然后在网上找了很多方法，试过之后，找到一个较方便且便捷的方法。如下：</p>
-<h3><span id="1首先在app对应下的buildgradle里面添加下面依赖">1.首先在app对应下的build.gradle里面添加下面依赖：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Stetho core</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho:1.3.1&apos;</span><br><span class="line">//If you want to add a network helper</span><br><span class="line">implementation &apos;com.facebook.stetho:stetho-okhttp3:1.3.1&apos;</span><br></pre></td></tr></table></figure>
-<h3><span id="2自定义一个myapplication继承application在oncreate中初始化stetho">2.自定义一个MyApplication继承Application，在onCreate中初始化stetho：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private void init()&#123;</span><br><span class="line">        Stetho.initializeWithDefaults(this);</span><br><span class="line">        new OkHttpClient.Builder()</span><br><span class="line">                .addNetworkInterceptor(new StethoInterceptor())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="3修改下列相关">3.修改下列相关：</span></h3><p>在AndroidManifest.xml中修改android:name=”.MyApplication”</p>
-<p>然后运行app到手机上即可。</p>
-<h3><span id="4打开chrome浏览器输入网址">4.打开Chrome浏览器，输入网址：</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://inspect</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/1.jpg" alt=""></p>
-<p>操作好之后就是显示手机型号，下面有一个inspect直接点击即可。</p>
-<h3><span id="5点击弹出的网页resource-gtweb-sql即可看到下面是我的数据库显示情况">5.点击弹出的网页Resource-&gt;Web SQL即可看到，下面是我的数据库显示情况：</span></h3><p><img src="/2019/01/09/真机调试时如何用Androidstudio查询SQLite数据库/2.jpg" alt=""></p>
-<p>这样就很简单啦，又方便又快捷！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3536,7 +3680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">122</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3558,7 +3702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-count">181</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3643,7 +3787,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共144k字</span>
+  <span class="post-count">博客全站共144.4k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
