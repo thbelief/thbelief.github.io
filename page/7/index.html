@@ -313,6 +313,364 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/02/Python学习笔记（二）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="THBELIEF">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zhangguoron.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="THBELIEF">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/02/Python学习笔记（二）/" itemprop="url">Python学习笔记（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T12:35:40+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="目录">目录：</span></h1><!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a><ul>
+<li><a href="#字符串">字符串</a><ul>
+<li><a href="#两个转换方法">两个转换方法</a></li>
+<li><a href="#字节bytes">字节bytes</a></li>
+<li><a href="#encode">encode()</a></li>
+<li><a href="#len">len()</a></li>
+<li><a href="#格式化">格式化</a></li>
+<li><a href="#注意">注意</a></li>
+</ul>
+</li>
+<li><a href="#list">List</a><ul>
+<li><a href="#特性">特性</a></li>
+<li><a href="#方法">方法</a></li>
+<li><a href="#tuple">tuple</a><ul>
+<li><a href="#相对不能修改性">相对不能修改性</a></li>
+<li><a href="#单元素元组">单元素元组</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#条件判断">条件判断</a><ul>
+<li><a href="#input与int">input()与int()</a></li>
+</ul>
+</li>
+<li><a href="#循环">循环</a><ul>
+<li><a href="#forin">for…in</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#break与continue">break与continue</a></li>
+</ul>
+</li>
+<li><a href="#dict">dict</a><ul>
+<li><a href="#初始化">初始化</a></li>
+<li><a href="#是否存在">是否存在</a><ul>
+<li><a href="#in">in</a></li>
+<li><a href="#get">get()</a></li>
+</ul>
+</li>
+<li><a href="#删除">删除</a></li>
+<li><a href="#特性-1">特性</a></li>
+</ul>
+</li>
+<li><a href="#set">set</a><ul>
+<li><a href="#初始化-1">初始化</a></li>
+<li><a href="#方法-1">方法</a></li>
+<li><a href="#特性-2">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>貌似最近欠的博客蛮多的…但是做人还是要有始有终，努力填完自己挖的坑！</p>
+<h2><span id="正文">正文</span></h2><h3><span id="字符串">字符串</span></h3><p>最新的Python3版本字符串是以<strong>Unicode编码</strong>的，意味着…Python的字符串支持多语言，例如可以包含中文在内。</p>
+<h4><span id="两个转换方法">两个转换方法</span></h4><p><strong>ord()用于获取字符的整数表示。</strong></p>
+<p><strong>chr()用于获取编码对应的字符。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(ord(&quot;A&quot;))</span><br><span class="line">print(ord(&quot;中&quot;))</span><br><span class="line">print(chr(25990))</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="/2019/05/02/Python学习笔记（二）/1.jpg" alt=""></p>
+<p>甚至可以使用十六进制作为字符串：（两者完全等同）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;\u4e2d\u6587&apos;</span><br><span class="line">&apos;中文&apos;</span><br></pre></td></tr></table></figure>
+<h4><span id="字节bytes">字节bytes</span></h4><p>Python中的字符串是<strong>Unicode编码</strong>，一个字符对应<strong>若干字节</strong>。如果需要上传到网络的话，需要转换为单个字节（bytes）。</p>
+<p><strong>在Python中在数据前面加上b前缀即表示单个字节。</strong>例如：</p>
+<p>表示的是thbelief这8个字节。（单引号双引号都可以，其实就是正常的字符串使用方法，只是表示的意思不同而已）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&apos;thbelief&apos;</span><br></pre></td></tr></table></figure>
+<h4><span id="encode">encode()</span></h4><p>这个方法可以将Unicode表示的字符串编码为指定的bytes，反之亦然。（可以相互转换）</p>
+<h4><span id="len">len()</span></h4><p><strong>计算字符串的字符数。</strong></p>
+<p><strong>计算字节的字节数。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(len(&quot;A&quot;))</span><br><span class="line"></span><br><span class="line">print(len(&quot;你好&quot;))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4><span id="格式化">格式化</span></h4><p>第一种：</p>
+<p>和C语言一致，使用%来实现。参数如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">占位符</th>
+<th style="text-align:left">替换内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">整数</td>
+</tr>
+<tr>
+<td style="text-align:left">%f</td>
+<td style="text-align:left">浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td style="text-align:left">十六进制整数</td>
+</tr>
+</tbody>
+</table>
+<p>简单实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;%2d-%02d&apos; % (3, 1))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3-01</span><br></pre></td></tr></table></figure>
+<p>第二种format：（较麻烦，不推荐）</p>
+<p>将传入的参数依次替换字符串内的占位符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;Hello, &#123;0&#125;,&#123;1&#125;&apos;.format(&apos;thbelief&apos;, &quot;你好&quot;))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, thbelief,你好</span><br></pre></td></tr></table></figure>
+<h4><span id="注意">注意</span></h4><p>Python源代码其实就是一个文本文件，当源代码包含中文的时候，保存时必须指定保存为UTF-8编码，当Python解释器读取到源代码的时候，必须按UTF-8读取，所以一般在文件开头写上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<p>第一行是对于非windows系统的操作，告诉其这是一个Python可执行程序。</p>
+<p>第二行就是说明本程序由UTF-8编码。（这里只是这么给他说，实际上究竟是什么编码还是自己编写的时候确定的，不是说你给他说你是UTF-8编码你就是了）</p>
+<h3><span id="list">List</span></h3><p><strong>list即列表，是一种有序的集合，可以随时添加删除元素。</strong></p>
+<h4><span id="特性">特性</span></h4><p>1.len()可以获取列表list里面的元素数量。</p>
+<p>2.可以通过索引来访问列表中的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listTest[0]</span><br></pre></td></tr></table></figure>
+<p>3.如果列表越界的话，会报一个IndexError的错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listTest=[&apos;hello&apos;,&apos;thbelief&apos;]</span><br><span class="line">print(listTest[0])</span><br><span class="line">print(listTest[1])</span><br><span class="line">print(listTest[2])</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">thbelief</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure>
+<p>4.访问最后一个元素的话，除了len-1索引之外，可以直接用<strong>-1</strong>下标来访问,以此类推，倒数第二个用-2…：</p>
+<p>当然，如果反向访问越界的话，也会报错的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listTest[-1]</span><br></pre></td></tr></table></figure>
+<p>5.替换某个下标位置的元素：</p>
+<p>直接访问赋值即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listTest[i]=&apos;thbelief&apos;</span><br></pre></td></tr></table></figure>
+<p>6.列表中的元素的类型<strong>可以不一致</strong>。</p>
+<h4><span id="方法">方法</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">append() 向列表的末尾增加元素</span><br><span class="line">insert(index，) index为下标，后一个为插入元素</span><br><span class="line">pop() 删除末尾元素</span><br><span class="line">pop(i) 删除指定下标的元素</span><br></pre></td></tr></table></figure>
+<h4><span id="tuple">tuple</span></h4><p>元组，和列表类似，但是<strong>初始化之后不能修改</strong>。<strong>使用()而不是list的[].</strong></p>
+<h5><span id="相对不能修改性">相对不能修改性</span></h5><p>表面上来看，元组不能修改，但是，真的是这样麽？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test=(&apos;a&apos;,&apos;b&apos;,[&apos;A&apos;,&apos;B&apos;])</span><br><span class="line">test[2][0]=&quot;hello&quot;</span><br><span class="line">test[2][1]=&quot;thbelief&quot;</span><br><span class="line">print(test)</span><br></pre></td></tr></table></figure>
+<p>猜猜结果是什么？</p>
+<p><img src="/2019/05/02/Python学习笔记（二）/2.jpg" alt=""></p>
+<p>不是说好不变的麽？为什么变了呢？</p>
+<p>答案是——<strong>元组并没有变，变的是元组内部的列表。指向的list并没有改变，只是其中的内容改变了！</strong></p>
+<h5><span id="单元素元组">单元素元组</span></h5><p>单元素的元组只能这么定义：</p>
+<p><strong>“,”是用来消除歧义的，因为如果是test=(1)，在解释器看来，就只是一个数学计算中的小括号，不会被当做元组。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test=(1,)</span><br></pre></td></tr></table></figure>
+<h3><span id="条件判断">条件判断</span></h3><p>由于大部分内容和C++重合，这里用一个实例来简单概括。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nb=520</span><br><span class="line">if nb&gt;520:</span><br><span class="line">    print(&quot;大于&quot;)</span><br><span class="line">elif nb&lt;520:</span><br><span class="line">    print(&quot;小于&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;等于&quot;)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">等于</span><br></pre></td></tr></table></figure>
+<h4><span id="input与int">input()与int()</span></h4><p>输入，返回的数据类型是<strong>字符串</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test=input(&quot;shuru:&quot;)</span><br></pre></td></tr></table></figure>
+<h3><span id="循环">循环</span></h3><h4><span id="forin">for…in</span></h4><p>依次迭代每个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test=[&quot;hello&quot;,&quot;world&quot;,&quot;thbelief&quot;]</span><br><span class="line">for i in test:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">world</span><br><span class="line">thbelief</span><br></pre></td></tr></table></figure>
+<p><strong>另外，Python提供一个range()函数可以生成一个整数序列，通过list就可以生成一个整数列表。</strong>（从0开始）</p>
+<h4><span id="while">while</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum = 0</span><br><span class="line">n = 99</span><br><span class="line">while n &gt; 0:</span><br><span class="line">    sum = sum + n</span><br><span class="line">    n = n - 2</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<h4><span id="break与continue">break与continue</span></h4><p>用法和其他编译语言一模一样，这里就不过多赘述了。</p>
+<h3><span id="dict">dict</span></h3><p><strong>全称是dictionary，也叫map，使用键值对存储，速度很快。</strong></p>
+<h4><span id="初始化">初始化</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test=&#123;&apos;thbelief&apos;:18,&apos;nihao&apos;:20&#125;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test[&apos;thbelief&apos;]=18</span><br></pre></td></tr></table></figure>
+<h4><span id="是否存在">是否存在</span></h4><h5><span id="in">in</span></h5><p>查询该dict是否存在此key，如果存在的话返回true，否则false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;thbelief&apos; in test</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">true</span><br></pre></td></tr></table></figure>
+<h5><span id="get">get()</span></h5><p>如果没获取到的话就返回第二个参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.get(&apos;thbelief&apos;, -1)</span><br></pre></td></tr></table></figure>
+<h4><span id="删除">删除</span></h4><p>pop(key)即可。注意：<strong>dict内部存放的顺序和key放入的顺序是没有关系的。</strong></p>
+<h4><span id="特性">特性</span></h4><p><strong>1.key为不可变的对象，初始化之后不变。</strong></p>
+<p>2.可变对象不可以作为key。</p>
+<h3><span id="set">set</span></h3><p><strong>也是一组key的集合，不存在重复的key。</strong></p>
+<h4><span id="初始化">初始化</span></h4><p>创建的时候必须提供一个list作为输入集合：(重复元素自动过滤，同时<strong>内部非有序</strong>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test=set([1,2,3])</span><br></pre></td></tr></table></figure>
+<h4><span id="方法">方法</span></h4><p>add(key) 添加元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.add(1)</span><br></pre></td></tr></table></figure>
+<p>remove(key)删除元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.remove(1)</span><br></pre></td></tr></table></figure>
+<h4><span id="特性">特性</span></h4><p>1.无序和无重复元素的集合。</p>
+<p>2.不可以放入可变对象。（如list之于元组的相对不可变性）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/05/01/Win10常用快捷键/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2591,219 +2949,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://thbelief.coding.me/2019/04/22/ACM常见报错详解/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="THBELIEF">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/zhangguoron.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="THBELIEF">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/22/ACM常见报错详解/" itemprop="url">ACM常见报错详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T10:39:24+08:00">
-                2019-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/其它/" itemprop="url" rel="index">
-                    <span itemprop="name">其它</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  939
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1><span id="目录">目录：</span></h1><!-- toc -->
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#waiting">Waiting</a></li>
-<li><a href="#compiling">Compiling</a></li>
-<li><a href="#accepted">Accepted</a></li>
-<li><a href="#wrong-answer">Wrong Answer</a></li>
-<li><a href="#time-limit-exceeded">Time Limit Exceeded</a></li>
-<li><a href="#memory-limit-exceeded">Memory Limit Exceeded</a></li>
-<li><a href="#output-limit-exceeded">Output Limit Exceeded</a></li>
-<li><a href="#floating-point-error">Floating Point Error</a></li>
-<li><a href="#segmentation-fault">Segmentation Fault</a><ul>
-<li><a href="#buffer-overflow-缓冲区溢出">buffer overflow – 缓冲区溢出</a></li>
-<li><a href="#stack-overflow-堆栈溢出">stack overflow – 堆栈溢出</a></li>
-</ul>
-</li>
-<li><a href="#runtime-error">Runtime Error</a></li>
-<li><a href="#restricted-function">Restricted Function</a></li>
-<li><a href="#compilation-error">Compilation Error</a></li>
-<li><a href="#presentation-error">Presentation Error</a></li>
-</ul>
-<!-- tocstop -->
-<h2><span id="前言">前言</span></h2><p><strong>有些时候刷OJ会遇到一些OJ提交之后报错，这里就简单的汇总一下方便以后自己学习与回忆。</strong></p>
-<h2><span id="waiting">Waiting</span></h2><p>正在等待OJ评测程序。</p>
-<h2><span id="compiling">Compiling</span></h2><p>OJ正在编译程序。</p>
-<h2><span id="accepted">Accepted</span></h2><p>程序是正确的，已经成功的过了。</p>
-<h2><span id="wrong-answer">Wrong Answer</span></h2><p>运行的结果在样例下错误了。</p>
-<h2><span id="time-limit-exceeded">Time Limit Exceeded</span></h2><p>程序运行时间太长了，超过了对应题目的时间限制。</p>
-<h2><span id="memory-limit-exceeded">Memory Limit Exceeded</span></h2><p>程序运行所用的内存太多了，超过了对应题目的限制。</p>
-<h2><span id="output-limit-exceeded">Output Limit Exceeded</span></h2><p>程序输出了太多的内容了，超过了OJ的限制，可以试着检查程序中是否有可能存在无限循环输出。</p>
-<h2><span id="floating-point-error">Floating Point Error</span></h2><p>Divide by 0，除0错误。</p>
-<h2><span id="segmentation-fault">Segmentation Fault</span></h2><p>下面的两种情况可能导致次错误：</p>
-<h3><span id="buffer-overflow-缓冲区溢出">buffer overflow – 缓冲区溢出</span></h3><p>访问 了非法内存，或者在C/C++中访问了空指针等等。</p>
-<h3><span id="stack-overflow-堆栈溢出">stack overflow – 堆栈溢出</span></h3><p>有可能在c/c++程序的函数中申请了过大的空间，或者递归层次太多，导致堆栈溢出了。</p>
-<h2><span id="runtime-error">Runtime Error</span></h2><p><strong>程序在运行的时候出错了，异常终止了，</strong>导致这种状态的情况有许多，一般都是一些非法操作，比如文件操作，Java中的网络操作等等。Java中Runtime Error的更详细的叙述见下。另外<strong>C/C++中越界访问函数中定义的数组也会导致Runtime Error</strong>。</p>
-<p>常见错误类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ACCESS_VIOLATION 您的程序想从一些非法的地址空间读取或向其中写入内容。一般例如指针、数组下标越界都会造成这个错误的。</span><br><span class="line"></span><br><span class="line">ARRAY_BOUNDS_EXCEEDED 您的程序试图访问一个超出硬件支持范围的数组单元。</span><br><span class="line"></span><br><span class="line">FLOAT_DENORMAL_OPERAND 进行了一个非正常的浮点操作。一般是由于一个非正常的浮点数参与了浮点操作所引起的，比如这个数的浮点格式不正确。</span><br><span class="line"></span><br><span class="line">FLOAT_DIVIDE_BY_ZERO 浮点数除法出现除数为零的异常。</span><br><span class="line"></span><br><span class="line">FLOAT_OVERFLOW 浮点溢出。要表示的数太大，超出了浮点数的表示范围。</span><br><span class="line"></span><br><span class="line">FLOAT_UNDERFLOW 浮点下溢。要表示的数太小，超出了浮点数的表示范围。</span><br><span class="line"></span><br><span class="line">INTEGER_DIVIDE_BY_ZERO 在进行整数除法的时候出现了除数为零的异常。</span><br><span class="line"></span><br><span class="line">INTEGER_OVERFLOW 整数溢出。要表示的数值太大，超出了整数变量的范围。</span><br><span class="line"></span><br><span class="line">STACK_OVERFLOW 栈溢出。一般是由于无限递归或者在函数里使用了太大的数组变量的原因。顾名思义，stack overflow 就是是栈溢出了。在进行数值运算时，我们常常要和运算结果的溢出打交道。数值运算结果可能上溢（overflow），也可能是下溢（underflow）。不过栈的溢出显然只可能是上溢，即栈空间被用完了。</span><br></pre></td></tr></table></figure>
-<h2><span id="restricted-function">Restricted Function</span></h2><p>程序调用了不该调用的函数，比如fork(),execv(),socket等等危险的函数，在程序中只作与解决问题有关的事情，其他的操作都会被拦截下来。</p>
-<h2><span id="compilation-error">Compilation Error</span></h2><p>编译错误，如果程序在本机能够正常编译，具体的要看OJ给出的提示。</p>
-<h2><span id="presentation-error">Presentation Error</span></h2><p>程序运行的结果是正确的，但是格式和正确结果有点不一样。比如中间<strong>多了回车或者空格，建议仔细检查程序的输出部分</strong>。</p>
-<p>出现这个错误有很多可能，比如说大小写？输出空格？换行符制表符？之类的东西很多，仔细研究一下题干就没问题了，离AC也就是一步之遥。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2856,7 +3001,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-count">124</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2878,7 +3023,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">181</span>
+                  <span class="site-state-item-count">182</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2963,7 +3108,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共144.4k字</span>
+  <span class="post-count">博客全站共144.9k字</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

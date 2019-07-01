@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Independent Task Scheduling]]></title>
+    <url>%2F2019%2F07%2F01%2FIndependent-Task-Scheduling%2F</url>
+    <content type="text"><![CDATA[目录： Independent Task Scheduling 题目描述 输入 输出 样例输入 样例输出 代码 结果 Independent Task Scheduling题目描述用2 台处理机A 和B 处理n 个作业。设第i 个作业交给机器A 处理时需要时间i a ，若由机器B 来处理，则需要时间i b 。由于各作业的特点和机器的性能关系，很可能对于某些i，有ai &gt;=bi，而对于某些j,j≠i，有aj &lt; bj 。既不能将一个作业分开由2 台机器处理，也没有一台机器能同时处理2 个作业。设计一个动态规划算法，使得这2 台机器处理完这n个作业的时间最短(从任何一台机器开工到最后一台机器停工的总时间)。研究一个实例： (a1,a2,a3,a4,a5,a6)＝(2,5,7,10,5,2)；(b1,b2,b3,b4,b5,b6)＝(3,8,4,11,3,4)。 对于给定的2 台处理机A 和B处理n 个作业，找出一个最优调度方案，使2台机器处理完这n 个作业的时间最短。 输入1的第1行是1个正整数n&lt;=200, 表示要处理n个作业。 接下来的2行中，每行有n 个正整数，分别表示处理机A 和B 处理第i 个作业需要的处理时间。 输出1最短处理时间 样例输入12362 5 7 10 5 23 8 4 11 3 4 样例输出115 代码123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cmath&gt; using namespace std;//全局数组默认置为0 int arr[1000][201];int a[201],b[201];int n;//解决问题的函数solve void solve()&#123; int result; int sum=0; for(int k = 1; k &lt;= n; ++k) &#123; sum += a[k]; for(int j = 0; j &lt;= sum; ++j) &#123; arr[j][k] = arr[j][k - 1] + b[k]; if(j &gt;= a[k]) &#123; arr[j][k] = min(arr[j - a[k]][k - 1] , arr[j][k]); &#125; &#125; &#125; result = sum + 2; for(int i = 1; i &lt;= sum; ++i) result = min(result, max(arr[i][n], i)); cout&lt;&lt;result&lt;&lt;endl;&#125; int main()&#123; cin&gt;&gt;n; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;a[i]; &#125; for(int i=1;i&lt;=n;i++)&#123; cin&gt;&gt;b[i]; &#125; solve(); return 0;&#125; 结果]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OJ</tag>
+        <tag>Independent Task Scheduling</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Soldiers]]></title>
     <url>%2F2019%2F06%2F30%2FSoldiers%2F</url>
     <content type="text"><![CDATA[目录： Soldiers 题目描述 输入 输出 样例输入 样例输出 代码 结果 Soldiers题目描述在一个划分成网格的操场上，n个士兵散乱地站在网格点上。网格点由整数坐标(x,y)表示。士兵们可以沿网格边上、下、左、右移动一步，但在同一时刻任一网格点上只能有一名士兵。按照军官的命令，士兵们要整齐地列成一个水平队列，即排列成(x,y),(x+1,y),…,(x+n-1,y)。如何选择x 和y的值才能使士兵们以最少的总移动步数排成一列。计算使所有士兵排成一行需要的最少移动步数。 输入1第1 行是士兵数n，1&lt; =n&lt; =10000。接下来n 行是士兵的位置，每行2个整数x和y，-10000&lt; =x，y&lt; =10000。 输出1第1 行中的数是士兵排成一行需要的最少移动步数。 样例输入12345651 22 21 33 -23 3 样例输出18 代码12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int n,step=0;//x坐标以及y坐标数组(初始化)int x[10001]=&#123;0&#125;,y[10001]=&#123;0&#125;;void solve()&#123; //首先排个序 sort(x,x+n); sort(y,y+n); for(int i=0;i&lt;n;i++)&#123; x[i]=x[i]-i; &#125; sort(x,x+n); for(int i=0,j=n-1;i&lt;j;i++,j--)&#123; step+=(x[j]-x[i])+(y[j]-y[i]); &#125; cout&lt;&lt;step&lt;&lt;endl;&#125;int main()&#123; //输入数据 cin&gt;&gt;n; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;x[i]&gt;&gt;y[i]; &#125; //直接调用函数 solve solve(); return 0; &#125; 结果]]></content>
